@@ -4,26 +4,26 @@ title: Tests avec Playwright
 description: >-
   Drive a webforJ app from JUnit using the Playwright Java bindings to fill
   fields, click buttons, and assert rendered output in the browser.
-_i18n_hash: d0b58780be88b22c15eef134bbd4755a
+_i18n_hash: 3f815af0ad7916fdd5a53d6178846c6d
 ---
-Cette documentation décrit le processus de test des applications webforJ en utilisant Playwright, en se concentrant spécifiquement sur le `HelloWorldView` du `webforj-archetype-hello-world`.
+Cette documentation décrit le processus de test des applications webforJ avec Playwright, en se concentrant sur `HelloWorldView` de `webforj-archetype-hello-world`.
 
-:::info Principes de base de l'application
-Pour en savoir plus sur le `webforj-archetype-hello-world`, consultez la section [Introduction aux principes de base de l'application](../../introduction/basics).
+:::info Notions de base de l’application
+Pour en savoir plus sur `webforj-archetype-hello-world`, consultez la section [Introduction aux notions de base de l’application](../../introduction/basics).
 :::
 
 ## Prérequis {#prerequisites}
 
-Avant d'écrire et d'exécuter les tests Playwright, assurez-vous de ce qui suit :
-- L'application webforJ est correctement configurée et fonctionne sur votre serveur local.
+Avant d’écrire et d’exécuter les tests Playwright, vérifiez que :
+- L’application webforJ est correctement configurée et s’exécute sur votre serveur local.
 - Vous avez installé :
   - Les liaisons Java de Playwright.
   - Un navigateur compatible (Playwright peut installer automatiquement les navigateurs lors de la configuration).
-  - Maven pour les dépendances du projet.
+  - Maven pour gérer les dépendances du projet.
 
-## Configuration Maven {#maven-configuration}
+## Configuration de Maven {#maven-configuration}
 
-Ajoutez les dépendances nécessaires dans votre `pom.xml` pour Playwright :
+Ajoutez les dépendances nécessaires à Playwright dans votre fichier `pom.xml` :
 
 ```xml title="pom.xml"
 <dependencies>
@@ -43,7 +43,7 @@ Ajoutez les dépendances nécessaires dans votre `pom.xml` pour Playwright :
 
 ## Exemple de test : `HelloWorldView` {#testing-example-helloworldview}
 
-Le code suivant montre un test basé sur Playwright pour le composant `HelloWorldView`.
+Le code suivant présente un test basé sur Playwright pour le composant `HelloWorldView`.
 
 ```java title="HelloWorldViewTest.java"
 package com.example.views;
@@ -87,27 +87,27 @@ class HelloWorldViewTest {
 
 1. **Initialiser Playwright** :
    - Créez une instance de `Playwright`.
-   - Lancez une instance de navigateur en utilisant `playwright.chromium().launch()`.
+   - Lancez une instance de navigateur avec `playwright.chromium().launch()`.
 
-2. **Configurer l'environnement de test** :
-   - Ouvrez une nouvelle page de navigateur avec `browser.newPage()`.
-   - Naviguez vers la page `HelloWorldView` en utilisant la méthode `navigate`.
+2. **Configurer l’environnement de test** :
+   - Ouvrez une nouvelle page du navigateur avec `browser.newPage()`.
+   - Accédez à la page `HelloWorldView` à l’aide de la méthode `navigate`.
 
 3. **Interagir avec les éléments** :
-   - Utilisez les [locateurs de Playwright](https://playwright.dev/java/docs/api/class-locator) pour interagir avec les éléments DOM.
-   - Remplissez les champs de saisie en utilisant `locator("input").fill()` et déclenchez des actions en utilisant `getByText("Say Hello").click()`.
+   - Utilisez les [locateurs de Playwright](https://playwright.dev/java/docs/api/class-locator) pour interagir avec les éléments du DOM.
+   - Remplissez les champs de saisie avec `locator("input").fill()` et déclenchez des actions avec `getByText("Say Hello").click()`.
 
 4. **Assertions** :
    - Vérifiez le message toast affiché avec `PlaywrightAssertions.assertThat()`.
 
 5. **Nettoyage** :
-   - Playwright gère automatiquement le nettoyage du navigateur lorsque le test est terminé. Pour un nettoyage manuel, vous pouvez fermer le navigateur en utilisant `browser.close()`.
+   - Playwright s’occupe automatiquement du nettoyage du navigateur à la fin du test. Pour le fermer manuellement, vous pouvez utiliser `browser.close()`.
 
 ### Exécution des tests {#running-tests}
 
 1. Démarrez le serveur webforJ :
    ```bash
-   mvn jetty:run
+   mvn
    ```
 
 2. Exécutez les cas de test :
@@ -117,6 +117,6 @@ class HelloWorldViewTest {
 
 ## Comportement attendu {#expected-behavior}
 
-- En visitant `http://localhost:<port>/`, la page `HelloWorldView` se charge.
-- Saisissez webforJ dans le champ de texte et cliquez sur le bouton `Say Hello`.
-- Un message toast devrait apparaître avec le texte : `Welcome to webforJ Starter webforJ!`.
+- Lorsque vous accédez à `http://localhost:<port>/`, la page `HelloWorldView` s’affiche.
+- Saisissez webforJ dans le champ de texte, puis cliquez sur le bouton `Say Hello`.
+- Un message toast doit apparaître avec le texte : `Welcome to webforJ Starter webforJ!`.

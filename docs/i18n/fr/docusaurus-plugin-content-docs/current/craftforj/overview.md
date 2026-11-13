@@ -8,7 +8,7 @@ description: >-
   Inspect the component tree of a running webforJ app, change components live,
   and write the changes you keep back into your Java source.
 sidebar_class_name: new-content
-_i18n_hash: e5fd219fd4360d24535c26696d1c9d1d
+_i18n_hash: 727e01ac5960e204363665aba672d6c7
 ---
 <Head>
   <style>{`
@@ -18,13 +18,15 @@ _i18n_hash: e5fd219fd4360d24535c26696d1c9d1d
   `}</style>
 </Head>
 
-<DocChip chip='since' label='26.02' />
+<!-- vale off -->
+# craftforJ <DocChip chip='since' label='26.02' />
+<!-- vale on -->
 
-**craftforJ** est l'environnement de développement visuel qui est livré avec webforJ. Il s'exécute à l'intérieur de votre application en mode développement et vous donne une vue en direct des composants que votre code Java a créés. Vous pouvez sélectionner un composant, modifier ses propriétés, voir l'application en cours d'exécution se mettre à jour immédiatement et écrire les modifications que vous souhaitez conserver dans le fichier Java qui les a créées.
+**craftforJ** est l’environnement de développement visuel fourni avec webforJ. Il s’exécute dans votre application en mode développement et vous donne une vue en direct des composants créés par votre code Java. Vous pouvez sélectionner un composant, modifier ses propriétés, voir l’application en cours d’exécution se mettre à jour immédiatement et réécrire dans le fichier Java qui l’a créé les modifications que vous souhaitez conserver.
 
 <!-- INTRO_END -->
 
-Parce que craftforJ lit l'application par l'intermédiaire de webforJ lui-même, il décrit l'application dans les termes dans lesquels vous l'avez écrite. L'arborescence liste vos composants plutôt que le balisage rendu par le navigateur, les propriétés sont celles que vos composants déclarent, et les itinéraires sont ceux que votre routeur a enregistrés, avec les règles d'accès que vous y avez annotées.
+Comme craftforJ lit l’application par l’intermédiaire de webforJ lui-même, il la décrit dans les termes que vous avez utilisés pour l’écrire. L’arborescence répertorie vos composants plutôt que le balisage rendu par le navigateur, les propriétés sont celles que vos composants déclarent et les routes sont celles enregistrées par votre routeur, ainsi que les règles d’accès que vous leur avez associées.
 
 <div class="videos-container">
       <video controls preload="metadata">
@@ -32,21 +34,21 @@ Parce que craftforJ lit l'application par l'intermédiaire de webforJ lui-même,
       </video>
 </div>
 
-## Ce que vous pouvez en faire {#what-you-can-do-with-it}
+## Ce que vous pouvez faire avec {#what-you-can-do-with-it}
 
-- **[Inspecter les composants](/docs/craftforj/inspector)** - parcourez l'arborescence des composants, sélectionnez un composant en cliquant dessus sur la page, et modifiez ses propriétés pendant que l'application s'exécute.
-- **[Écrire les modifications dans la source](/docs/craftforj/source-changes)** - examinez vos modifications en direct sous forme de diff et appliquez-les à vos fichiers Java.
-- **[Travailler avec les itinéraires](/docs/craftforj/routes)** - voyez le tableau de routage, naviguez vers n'importe quel itinéraire et changez les règles d'accès déclarées.
-- **[Thématiser l'application](/docs/craftforj/theme)** - ajustez les tokens de conception de votre application et enregistrez le résultat dans votre feuille de style.
-- **[Utiliser l'agent IA](/docs/craftforj/ai)** - un agent de codage à l'intérieur de l'application en cours d'exécution qui écrit du Java librement, compile ce qu'il a écrit et l'applique avec votre approbation.
+- **[Inspecter les composants](/docs/craftforj/inspector)** - parcourir l’arborescence des composants, sélectionner un composant en cliquant dessus dans la page et modifier ses propriétés pendant l’exécution de l’application.
+- **[Réécrire les modifications dans le code source](/docs/craftforj/source-changes)** - examiner vos modifications en direct sous forme de diff et les appliquer à vos fichiers Java.
+- **[Travailler avec les routes](/docs/craftforj/routes)** - consulter la table de routage, accéder à n’importe quelle route et modifier les règles d’accès qui lui sont associées.
+- **[Personnaliser le thème de l’application](/docs/craftforj/theme)** - ajuster les jetons de conception qui constituent la base de votre application et enregistrer le résultat dans votre feuille de style.
+- **[Utiliser l’agent IA](/docs/craftforj/ai)** - un agent de programmation intégré à l’application en cours d’exécution, qui écrit librement du code Java, compile ce qu’il a écrit et l’applique avec votre approbation.
 
-## En quoi cela diffère d'un débogueur {#how-it-differs-from-a-debugger}
+## En quoi il diffère d’un débogueur {#how-it-differs-from-a-debugger}
 
-Un débogueur met votre code en pause et vous montre l'état de vos variables à ce moment-là. craftforJ laisse l'application s'exécuter et vous montre l'interface produite par votre code, vous permettant ainsi de travailler avec le résultat plutôt qu'avec l'exécution. Les deux répondent à des questions différentes et sont souvent utilisés ensemble.
+Un débogueur met votre code en pause et vous montre l’état de vos variables à cet instant. craftforJ laisse l’application s’exécuter et vous montre l’interface produite par votre code : vous travaillez donc avec le résultat plutôt qu’avec l’exécution. Ces outils répondent à des questions différentes et sont souvent utilisés ensemble.
 
-## Mode développement uniquement {#development-mode-only}
+## Uniquement en mode développement {#development-mode-only}
 
-craftforJ nécessite que deux paramètres séparés soient activés, et par défaut, il ne répond qu'au navigateur s'exécutant sur la même machine que l'application. Les projets créés avec [startforJ](https://docs.webforj.com/startforj) ou à partir d'un [archétype](/docs/building-ui/archetypes/overview) webforJ l'activent pour vous, de sorte qu'il est disponible la première fois que vous les exécutez. Voir [Sécurité](/docs/craftforj/security) pour ce que craftforJ peut atteindre et comment confirmer qu'il est désactivé en production.
+craftforJ nécessite l’activation de deux paramètres distincts et, par défaut, ne répond qu’au navigateur exécuté sur la même machine que l’application. Les projets créés avec [startforJ](https://docs.webforj.com/startforj) ou à partir d’un [archetype](/docs/building-ui/archetypes/overview) webforJ l’activent automatiquement : il est donc disponible dès leur première exécution. Consultez la page [Sécurité](/docs/craftforj/security) pour savoir à quoi craftforJ peut accéder et comment vérifier qu’il est désactivé en production.
 
 ## Sujets {#topics}
 

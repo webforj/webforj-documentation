@@ -1,27 +1,28 @@
 ---
-title: 编写你自己的扩展
+sidebar_class_name: experimental-content
+title: 编写自己的扩展
 sidebar_position: 70
 description: >-
   Add a build step by shipping a BundleExtension that declares packages,
   contributes a Bun plugin, and activates on a file type, shown by building a
   Svelte extension end to end.
-_i18n_hash: fb042c0be37d53bf5f46eb1536056275
+_i18n_hash: bffbcd5a76f34d542765e3c2b59ed24d
 ---
 <DocChip chip='since' label='26.01' />
 <DocChip chip='experimental' />
 
-您可以通过发布扩展来为另一种源添加编译器，在与内置扩展相同的契约上，自定义扩展的读取方式与已发布的扩展完全相同。
+通过发布一个扩展，你可以为另一种源文件类型添加编译器。扩展遵循与内置扩展相同的契约，因此自定义扩展的用法与随附扩展完全一致。
 
-本页以 **[Svelte](https://svelte.dev/)** 扩展为完整示例。Svelte 是一个组件框架，其 `.svelte` 文件在构建时编译为 JavaScript。打包器无法单独处理该源，因此从 webforJ 使用 Svelte 组件意味着需要教会构建如何编译它，这正是扩展的作用。这使得它成为一个合适的示例：一种新源类型，通过您编写的扩展教学构建，然后以任何其他条目的相同方式绑定到一个类。
+本页将构建一个 **[Svelte](https://svelte.dev/)** 扩展作为完整示例。Svelte 是一个组件框架，其 `.svelte` 文件会在构建时编译为 JavaScript。打包器本身不会处理这种源文件，因此要在 webforJ 中使用 Svelte 组件，就需要让构建流程能够编译它，而这正是扩展的作用。这使它成为一个合适的示例：通过你编写的扩展，让构建流程学会处理一种新的源文件类型，然后像绑定其他任何入口一样，将它绑定到一个类。
 
-<!-- 此页面上请勿使用 <ExperimentalWarning />。 -->
-:::warning 实验性 API
-扩展 API 是实验性的，可能会在发布之间发生变化，直到稳定。该机制本身是会保留的，内置扩展也是基于相同的契约构建的，但其方法签名可能会发生变化，因此在升级 webforJ 时，请期待调整自定义扩展。
+<!-- Do NOT use <ExperimentalWarning /> on this page. -->
+:::info 预览版 API
+扩展 API 目前处于预览阶段，在逐步完善的过程中可能会随版本发布而变化。其机制本身会保留，内置扩展也遵循相同的契约，但方法签名可能会调整，因此升级 webforJ 时，请做好相应调整自定义扩展的准备。
 :::
 
 ## 构建时依赖 {#the-build-time-dependency}
 
-要编写扩展，您需要针对打包器 API 进行编译。使用 `provided` 范围将其添加，因为构建提供了它，而您并不打包它：
+要编写扩展，你需要针对打包器 API 进行编译。请添加 `provided` 作用域，因为构建流程会提供它，无需将其打包发布：
 
 ```xml title="pom.xml"
 <dependency>
@@ -32,9 +33,9 @@ _i18n_hash: fb042c0be37d53bf5f46eb1536056275
 </dependency>
 ```
 
-## 插件包装器 {#the-bun-plugin-wrapper}
+## 插件封装器 {#the-bun-plugin-wrapper}
 
-扩展贡献一个 Bun 插件。将插件保留在一个小的 `.mjs` 资源中。它默认导出一个工厂，构建会用您为此扩展设置的选项调用它，并返回 Bun 插件：
+扩展会贡献一个 Bun 插件。将插件保存在一个精简的 `.mjs` 资源文件中。它默认导出一个工厂函数，构建流程会使用你为此扩展设置的选项调用该函数，并返回 Bun 插件：
 
 ```js title="src/main/resources/frontend-extensions/svelte.mjs"
 import { SveltePlugin } from 'bun-plugin-svelte';
@@ -44,7 +45,7 @@ export default (options) => SveltePlugin({ forceSide: 'client', ...options });
 
 ## 扩展 {#the-extension}
 
-实现 `BundleExtension`。它用 id 命名自己，决定何时激活，并在 `onWillBundle` 中声明其包并贡献包装器：
+实现 `BundleExtension`。扩展通过 id 标识自身，确定何时启用，并在 `onWillBundle` 中声明其依赖包并贡献封装器：
 
 ```java title="SvelteExtension.java"
 public class SvelteExtension implements BundleExtension {
@@ -89,26 +90,26 @@ public class SvelteExtension implements BundleExtension {
 
 在此示例中：
 
-- `getId()` 返回用于开启或关闭扩展的 id，并作为关键选项，和 `webforj-scss` 对 SCSS 扩展的角色相同。
-- `isEnabledByDefault` 当存在 `.svelte` 源时激活扩展，这是策划扩展遵循的 [按文件类型激活](/docs/managing-resources/bundler/extensions/overview#activated-by-file-type) 规则。
-- `onWillBundle` 声明编译器所需的构建依赖关系，并在扩展的 id 下贡献 Bun 插件。
+- `getId()` 返回用于启用或停用扩展以及索引其选项的 id；对于 SCSS 扩展，这个作用由 `webforj-scss` 承担。
+- 当存在 `.svelte` 源文件时，`isEnabledByDefault` 会启用扩展。这是精选扩展遵循的[按文件类型激活](/docs/managing-resources/bundler/extensions/overview#activated-by-file-type)规则。
+- `onWillBundle` 会声明编译器所需的构建依赖，并以扩展的 id 为键贡献 Bun 插件。
 
 ## 注册扩展 {#registering-the-extension}
 
-构建将在类路径上将扩展发现为服务。添加一个以 `BundleExtension` 命名的服务文件，包含完全限定的类名：
+构建流程会将类路径上的扩展作为服务发现。添加一个以 `BundleExtension` 命名的服务文件，并在其中写入完全限定类名：
 
 ```text title="META-INF/services/com.webforj.bundle.bun.BundleExtension"
 com.example.SvelteExtension
 ```
 
-服务文件就位后，`.svelte` 源现在可以编译，视图会使用组件注册的元素。
+添加服务文件后，`.svelte` 源文件即可编译，视图也可以使用该组件注册的元素。
 
 ## 选项 {#options}
 
-扩展将您在其 id 下设置的选项直接转发给 Bun 插件。在 `bun.config.ts` 中进行设置：
+扩展会将你在其 id 下设置的选项直接转发给 Bun 插件。在 `bun.config.ts` 中设置这些选项：
 
 ```ts title="src/main/frontend/bun.config.ts"
 export const options = {
-  'svelte': { /* bun-plugin-svelte 选项 */ }
+  'svelte': { /* bun-plugin-svelte options */ }
 };
 ```

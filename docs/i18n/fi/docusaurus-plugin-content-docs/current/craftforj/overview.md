@@ -8,7 +8,7 @@ description: >-
   Inspect the component tree of a running webforJ app, change components live,
   and write the changes you keep back into your Java source.
 sidebar_class_name: new-content
-_i18n_hash: e5fd219fd4360d24535c26696d1c9d1d
+_i18n_hash: 727e01ac5960e204363665aba672d6c7
 ---
 <Head>
   <style>{`
@@ -18,13 +18,15 @@ _i18n_hash: e5fd219fd4360d24535c26696d1c9d1d
   `}</style>
 </Head>
 
-<DocChip chip='since' label='26.02' />
+<!-- vale off -->
+# craftforJ <DocChip chip='since' label='26.02' />
+<!-- vale on -->
 
-**craftforJ** on visuaalinen kehitysympäristö, joka tulee mukana webforJ:stä. Se toimii sovelluksesi sisällä kehitystilassa ja antaa sinulle reaaliaikaisen näkymän komponenteista, jotka Java-koodisi on luonut. Voit valita komponentin, muuttaa sen ominaisuuksia, nähdä käynnissä olevan sovelluksen päivittyvän heti ja kirjoittaa haluamasi muutokset takaisin Java-tiedostoon, joka ne loi.
+**craftforJ** on webforJ:n mukana toimitettava visuaalinen kehitysympäristö. Se toimii sovelluksessasi kehitystilassa ja näyttää reaaliajassa Java-koodisi luomat komponentit. Voit valita komponentin, muuttaa sen ominaisuuksia, nähdä sovelluksen päivittyvän heti ja kirjoittaa haluamasi muutokset takaisin komponentin luoneeseen Java-tiedostoon.
 
 <!-- INTRO_END -->
 
-Koska craftforJ lukee sovellusta webforJ:n kautta, se kuvaa sovellusta käyttämilläsi termeillä. Puu listaa komponenttisi sen sijaan, että se näyttäisi selaimen renderöimän merkkijonon, ominaisuudet ovat niitä, joita komponenttisi ilmoittavat, ja reitit ovat niitä, jotka reititin rekisteröi, yhdessä pääsy sääntöjen kanssa, joilla olet ne merkinnyt.
+Koska craftforJ lukee sovellusta webforJ:n kautta, se kuvaa sovellusta niillä käsitteillä, joilla olet sen kirjoittanut. Puussa näkyvät komponenttisi selaimen renderöimän merkintäkielen sijaan, ominaisuudet ovat komponenttiesi määrittämiä ominaisuuksia, ja reitit ovat reitittimesi rekisteröimiä reittejä sekä niihin lisäämiäsi käyttöoikeussääntöjä.
 
 <div class="videos-container">
       <video controls preload="metadata">
@@ -32,21 +34,21 @@ Koska craftforJ lukee sovellusta webforJ:n kautta, se kuvaa sovellusta käyttäm
       </video>
 </div>
 
-## Mitä voit tehdä sen kanssa {#what-you-can-do-with-it}
+## Mitä voit tehdä sillä {#what-you-can-do-with-it}
 
-- **[Tarkista komponentit](/docs/craftforj/inspector)** - selaa komponenttipuuta, valitse komponentti napsauttamalla sitä sivulla ja muuta sen ominaisuuksia, kun sovellus on käynnissä.
-- **[Kirjoita muutokset lähteeseen](/docs/craftforj/source-changes)** - tarkastele reaaliaikaisia muokkauksiasi vertailuna ja sovella niitä Java-tiedostoihisi.
-- **[Työskentele reittien kanssa](/docs/craftforj/routes)** - katso reititystaulukko, siirry mihin tahansa reittiin ja muuta siihen määriteltyjä pääsy sääntöjä.
-- **[Teemaa sovellus](/docs/craftforj/theme)** - säädä suunnittelutekijöitä, joista sovelluksesi on rakennettu, ja tallenna tulos tyylitiedostoosi.
-- **[Käytä AI-agenttia](/docs/craftforj/ai)** - koodausagentti käynnissä olevassa sovelluksessa, joka kirjoittaa Java-koodia vapaasti, kääntää kirjoittamansa ja soveltaa sitä hyväksynnälläsi.
+- **[Tutki komponentteja](/docs/craftforj/inspector)** – selaa komponenttipuuta, valitse komponentti napsauttamalla sitä sivulla ja muuta sen ominaisuuksia sovelluksen ollessa käynnissä.
+- **[Kirjoita muutokset lähdekoodiin](/docs/craftforj/source-changes)** – tarkastele reaaliaikaisia muokkauksiasi diff-muodossa ja ota ne käyttöön Java-tiedostoissasi.
+- **[Työskentele reittien kanssa](/docs/craftforj/routes)** – tarkastele reititystaulukkoa, siirry mille tahansa reitille ja muuta sille määritettyjä käyttöoikeussääntöjä.
+- **[Teemoita sovellus](/docs/craftforj/theme)** – säädä sovelluksesi suunnittelutunnisteita ja tallenna tulos tyylitiedostoosi.
+- **[Käytä tekoälyagenttia](/docs/craftforj/ai)** – käynnissä olevan sovelluksen sisäinen koodausagentti, joka kirjoittaa vapaasti Java-koodia, kääntää kirjoittamansa koodin ja ottaa sen käyttöön hyväksynnälläsi.
 
-## Kuinka se eroaa virheenkorjaajasta {#how-it-differs-from-a-debugger}
+## Miten se eroaa virheenjäljittimestä {#how-it-differs-from-a-debugger}
 
-Virheenkorjaaja pysäyttää koodisi ja näyttää muuttujiesi tilan tuossa hetkessä. craftforJ jättää sovelluksen käynnissä ja näyttää käyttöliittymän, jonka koodisi tuotti, joten työskentelet tuloksen kanssa sen sijaan, että tarkastelisit suoritusta. Nämä kaksi vastaavat eri kysymyksiin ja niitä käytetään yleisesti yhdessä.
+Virheenjäljitin pysäyttää koodisi ja näyttää muuttujiesi tilan sillä hetkellä. craftforJ jättää sovelluksen käyntiin ja näyttää koodisi tuottaman käyttöliittymän, joten työskentelet suorituksen sijaan sen tuloksen parissa. Ne vastaavat eri kysymyksiin, ja niitä käytetään usein yhdessä.
 
 ## Vain kehitystilassa {#development-mode-only}
 
-craftforJ vaatii kahden erillisen asetuksen olevan käytössä, ja oletusarvoisesti se vastaa vain selaimeen, joka toimii samalla koneella kuin sovellus. Projekteja, jotka on luotu käyttämällä [startforJ](https://docs.webforj.com/startforj) tai webforJ:n [archetype](/docs/building-ui/archetypes/overview), aktivoivat sen puolestasi, jotta se on käytettävissä ensimmäisestä käynnistyksestä alkaen. Katso [Turvallisuus](/docs/craftforj/security) siitä, mihin craftforJ voi päästä ja miten voit varmistaa, että se on pois päältä tuotannossa.
+craftforJ edellyttää kahden erillisen asetuksen käyttöönottoa, ja oletusarvoisesti se vastaa vain sovelluksen kanssa samalla koneella toimivalle selaimelle. [startforJ](https://docs.webforj.com/startforj)-ohjelmalla tai webforJ:n [arkkityypistä](/docs/building-ui/archetypes/overview) luoduissa projekteissa se otetaan käyttöön puolestasi, joten se on käytettävissä heti ensimmäisellä käynnistyskerralla. Katso kohdasta [Tietoturva](/docs/craftforj/security), mihin craftforJ pääsee käsiksi ja miten voit varmistaa, että se on poistettu käytöstä tuotannossa.
 
 ## Aiheet {#topics}
 

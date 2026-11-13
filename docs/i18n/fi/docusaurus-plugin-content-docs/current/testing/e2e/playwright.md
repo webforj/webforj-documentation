@@ -1,29 +1,29 @@
 ---
 sidebar_position: 2
-title: Testaus Playwrightilla
+title: Testaaminen Playwrightilla
 description: >-
   Drive a webforJ app from JUnit using the Playwright Java bindings to fill
   fields, click buttons, and assert rendered output in the browser.
-_i18n_hash: d0b58780be88b22c15eef134bbd4755a
+_i18n_hash: 3f815af0ad7916fdd5a53d6178846c6d
 ---
-Tämä dokumentaatio kuvaa prosessin webforJ-sovellusten testaamiseksi Playwrightilla, erityisesti keskittyen `HelloWorldView`:iin `webforj-archetype-hello-world`-projektista.
+Tässä dokumentaatiossa kuvataan webforJ-sovellusten testaaminen Playwrightilla. Esimerkissä keskitytään `webforj-archetype-hello-world`-projektin `HelloWorldView`-näkymään.
 
-:::info Sovelluksen perusasiat
-Lisätietoja `webforj-archetype-hello-world`:ista löytyy [Sovelluksen perusasiat -esittely](../../introduction/basics) -osiosta.
+:::info Sovelluksen perusteet
+Lisätietoja `webforj-archetype-hello-world`-projektista on [Sovelluksen perusteet -johdanto](../../introduction/basics) -osiossa.
 :::
 
 ## Edellytykset {#prerequisites}
 
-Ennen Playwright-testien kirjoittamista ja suorittamista varmista seuraavat asiat:
-- webforJ-sovellus on oikein asetettu ja käynnissä paikallisella palvelimellasi.
-- Olet asentanut:
-  - Playwright Java -siteet.
-  - Yhteensopivan selaimen (Playwright voi automaattisesti asentaa selaimia asetusten aikana).
-  - Maven-projektiriippuvuuksille.
+Ennen Playwright-testien kirjoittamista ja suorittamista varmista, että:
+- webforJ-sovellus on määritetty oikein ja käynnissä paikallisella palvelimellasi.
+- Olet asentanut seuraavat:
+  - Playwrightin Java-sidokset.
+  - Yhteensopivan selaimen (Playwright voi asentaa selaimet automaattisesti määrityksen aikana).
+  - Mavenin projektin riippuvuuksia varten.
 
-## Maven-konfiguraatio {#maven-configuration}
+## Maven-määritys {#maven-configuration}
 
-Lisää tarvittavat riippuvuudet `pom.xml`:ään Playwrightia varten:
+Lisää Playwrightin tarvittavat riippuvuudet `pom.xml`-tiedostoon:
 
 ```xml title="pom.xml"
 <dependencies>
@@ -43,7 +43,7 @@ Lisää tarvittavat riippuvuudet `pom.xml`:ään Playwrightia varten:
 
 ## Testiesimerkki: `HelloWorldView` {#testing-example-helloworldview}
 
-Seuraava koodi näyttää Playwright-pohjaisen testin `HelloWorldView`-komponentille.
+Seuraava koodi näyttää Playwrightilla toteutetun testin `HelloWorldView`-komponentille.
 
 ```java title="HelloWorldViewTest.java"
 package com.example.views;
@@ -83,31 +83,31 @@ class HelloWorldViewTest {
 }
 ```
 
-### Avainvaiheet {#key-steps}
+### Tärkeimmät vaiheet {#key-steps}
 
 1. **Alusta Playwright**:
    - Luo `Playwright`-instanssi.
-   - Käynnistä selaininstanssi `playwright.chromium().launch()`-metodilla.
+   - Käynnistä selaininstanssi komennolla `playwright.chromium().launch()`.
 
-2. **Aseta testausympäristö**:
-   - Avaa uusi selainikkuna `browser.newPage()`-metodilla.
-   - Siirry `HelloWorldView`-sivulle `navigate`-menetelmällä.
+2. **Määritä testiympäristö**:
+   - Avaa uusi selainikkuna komennolla `browser.newPage()`.
+   - Siirry `HelloWorldView`-sivulle `navigate`-metodilla.
 
-3. **Vuorovaikuta elementtien kanssa**:
-   - Käytä [Playwrightin lokalisaattoreita](https://playwright.dev/java/docs/api/class-locator) vuorovaikutukseen DOM-elementtien kanssa.
-   - Täytä syöttökentät `locator("input").fill()`-metodilla ja laukaise toimintoja `getByText("Say Hello").click()`-menetelmällä.
+3. **Käsittele elementtejä**:
+   - Käytä [Playwrightin paikantimia](https://playwright.dev/java/docs/api/class-locator) DOM-elementtien käsittelyyn.
+   - Täytä syötekentät komennolla `locator("input").fill()` ja käynnistä toiminto komennolla `getByText("Say Hello").click()`.
 
-4. **Vaatimukset**:
-   - Vahvista näytetty toast-viesti `PlaywrightAssertions.assertThat()`-menetelmällä.
+4. **Väitteet**:
+   - Varmista näytettävä ilmoitusviesti komennolla `PlaywrightAssertions.assertThat()`.
 
-5. **Puhdistus**:
-   - Playwright hoitaa selaimen puhdistuksen automaattisesti testin päättyessä. Manuaalista puhdistusta varten voit sulkea selaimen käyttämällä `browser.close()`.
+5. **Siivous**:
+   - Playwright huolehtii selaimen siivouksesta automaattisesti testin päättyessä. Voit sulkea selaimen myös itse komennolla `browser.close()`.
 
 ### Testien suorittaminen {#running-tests}
 
 1. Käynnistä webforJ-palvelin:
    ```bash
-   mvn jetty:run
+   mvn
    ```
 
 2. Suorita testitapaukset:
@@ -115,8 +115,8 @@ class HelloWorldViewTest {
    mvn test
    ```
 
-## Odotettu käyttäytyminen {#expected-behavior}
+## Odotettu toiminta {#expected-behavior}
 
-- Vieraillessasi `http://localhost:<port>/`, `HelloWorldView`-sivu latautuu.
-- Syötä webforJ tekstikenttään ja napsauta `Say Hello`-painiketta.
-- Toast-viestin pitäisi ilmestyä tekstillä: `Welcome to webforJ Starter webforJ!`.
+- Kun siirryt osoitteeseen `http://localhost:<port>/`, `HelloWorldView`-sivu latautuu.
+- Kirjoita tekstikenttään webforJ ja napsauta `Say Hello` -painiketta.
+- Näkyviin tulee ilmoitusviesti, jonka teksti on `Welcome to webforJ Starter webforJ!`.

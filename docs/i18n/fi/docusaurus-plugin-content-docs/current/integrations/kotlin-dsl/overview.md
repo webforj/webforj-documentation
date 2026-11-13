@@ -1,10 +1,12 @@
 ---
-title: Kotlin-DSL
+title: Kotlin DSL
 sidebar_position: 0
 hide_table_of_contents: true
 hide_giscus_comments: true
-sidebar_class_name: new-content
-_i18n_hash: 4198ef6392f249bd21d0395c55b5817d
+description: >-
+  Build webforJ UIs declaratively with the Kotlin DSL, a preview feature, using
+  type-safe builders, lambdas with receivers, and nested blocks.
+_i18n_hash: 5beb40faf3cca20567062bc93ef15e2b
 ---
 <Head>
   <style>{`
@@ -14,10 +16,11 @@ _i18n_hash: 4198ef6392f249bd21d0395c55b5817d
   `}</style>
 </Head>
 
-<DocChip chip='since' label='25.12' />
-<DocChip chip='experimental' />
+<!-- vale off -->
+# Kotlin DSL <DocChip chip='since' label='25.12' /> <DocChip chip='experimental' />
+<!-- vale on -->
 
-webforJ tarjoaa [Kotlin](https://kotlinlang.org/) *Domain Specific Language*, eli DSL:n, jonka avulla voit rakentaa käyttöliittymiä tiiviillä, tyyppi-turvallisella syntaksilla. Sen sijaan, että kirjoitat imperatiivista Java-koodia, kirjoitat deklaraatiokoodia, joka lukee kuin kuvaus käyttöliittymäsi rakenteesta.
+webforJ tarjoaa [Kotlin](https://kotlinlang.org/)-kielen *toimialakohtaisen kielen* eli DSL:n, jonka avulla voit rakentaa käyttöliittymiä tiiviillä ja tyyppiturvallisella syntaksilla. Imperatiivisen Java-koodin sijaan kirjoitat deklaratiivista koodia, joka kuvailee käyttöliittymän rakennetta.
 
 <!-- INTRO_END -->
 
@@ -27,11 +30,11 @@ layout.setDirection(FlexDirection.COLUMN);
 layout.setSpacing("10px");
 
 TextField name = new TextField();
-name.setLabel("Nimi");
-name.setPlaceholder("Nimesi");
+name.setLabel("Name");
+name.setPlaceholder("Your name");
 layout.add(name);
 
-Button submit = new Button("Lähetä", ButtonTheme.PRIMARY);
+Button submit = new Button("Submit", ButtonTheme.PRIMARY);
 submit.onClick(e -> handleSubmit());
 layout.add(submit);
 ```
@@ -41,28 +44,28 @@ flexLayout {
   direction = FlexDirection.COLUMN
   styles["gap"] = "10px"
 
-  textField("Nimi", placeholder = "Nimesi")
-  button("Lähetä", ButtonTheme.PRIMARY) {
+  textField("Name", placeholder = "Your name")
+  button("Submit", ButtonTheme.PRIMARY) {
     onClick { handleSubmit() }
   }
 }
 ```
 
-DSL hyödyntää Kotlinin laajennusfunktioita, vastaanottajalla varustettuja lambdaja ja oletusparametreja luodakseen luonnollisen rakennussyntaksin. Komponentit pesiytyvät toistensa sisälle, konfigurointi tapahtuu lohkossa, ja kääntäjä havaitsee rakenteelliset virheet ennen suorittamista.
+DSL hyödyntää Kotlinin laajennusfunktioita, vastaanottajan sisältäviä lambdoja ja oletusparametreja luonnollisen rakenninsyntaksin luomiseen. Komponentit sisäkkäistyvät toistensa sisään, määritykset tehdään lohkoissa, ja kääntäjä havaitsee rakenteelliset virheet jo ennen suoritusta.
 
-## Setup {#setup}
+## Käyttöönotto {#setup}
 
 <ExperimentalWarning />
 
-Erillistä Kotlin-asennusta ei tarvita. Maven huolehtii käännöksestä Kotlin Maven -lisäosan kautta, joten mikä tahansa projekti, joka jo kääntää Mavenilla, voi lisätä Kotlin-tuen riippuvuus- ja lisäosasäätöjen avulla.
+Erillistä Kotlin-asennusta ei tarvita. Maven hoitaa kääntämisen Kotlin Maven -liitännäisen avulla, joten Kotlin-tuen voi lisätä riippuvuus- ja liitännäismäärityksillä mihin tahansa projektiin, joka käännetään jo Mavenilla.
 
-:::tip Nopea aloitus
-Jos haluat käynnistää webforJ-projektin käyttäen Kotlinia kaikilla tarvittavilla kokoonpanoilla valmiiksi, katso [tämä osio webforJ Kotlin -aloitusprojektin käytöstä](#kotlin-starter-project).
+:::tip Pika-aloitus
+Katso [tästä osiosta, miten webforJ Kotlin Starter otetaan käyttöön](#kotlin-starter-project), jos haluat saada webforJ-projektin Kotlinilla käyttöön kaikkine tarvittavine oletusmäärityksineen.
 :::
 
 ### Riippuvuudet {#dependencies}
 
-Lisää webforJ Kotlin DSL -moduuli ja Kotlinin standardikirjasto `pom.xml`-tiedostoon:
+Lisää webforJ Kotlin DSL -moduuli ja Kotlinin standardikirjasto tiedostoon `pom.xml`:
 
 ```xml
 <dependency>
@@ -78,7 +81,7 @@ Lisää webforJ Kotlin DSL -moduuli ja Kotlinin standardikirjasto `pom.xml`-tied
 </dependency>
 ```
 
-Jos aiot kirjoittaa testejä Kotlinilla, lisää myös Kotlin-testiriippuvuus. Se integroituu JUnit:iin:
+Jos aiot kirjoittaa testejä Kotlinilla, lisää myös Kotlinin testiriippuvuus. Se integroituu JUnitin kanssa:
 
 ```xml
 <dependency>
@@ -89,9 +92,9 @@ Jos aiot kirjoittaa testejä Kotlinilla, lisää myös Kotlin-testiriippuvuus. S
 </dependency>
 ```
 
-### Kotlin Maven -lisäosa {#kotlin-maven-plugin}
+### Kotlin Maven -liitännäinen {#kotlin-maven-plugin}
 
-Lisää Kotlin Maven -lisäosa kääntämään sekä Kotlin- että Java-lähdekoodisi. Alla oleva `sourceDirs`-konfiguraatio sallii Kotlin- ja Java-tiedostojen elää samassa projektissa:
+Lisää Kotlin Maven -liitännäinen Kotlin- ja Java-lähdekoodin kääntämistä varten. Alla oleva `sourceDirs`-määritys mahdollistaa Kotlin- ja Java-tiedostojen käytön samassa projektissa:
 
 ```xml
 <plugin>
@@ -134,18 +137,18 @@ Lisää Kotlin Maven -lisäosa kääntämään sekä Kotlin- että Java-lähdeko
 </plugin>
 ```
 
-Näiden lisäysten myötä `mvn compile` kääntää Kotlin-lähteet yhdessä Java-lähteiden kanssa. Kotlin-tiedostot voivat olla `src/main/kotlin` tai `src/main/java` -kansiossa, ja lisäosa huolehtii molemmista.
+Näiden lisäysten jälkeen `mvn compile` kääntää Kotlin-lähdekoodin Java-koodin rinnalla. Kotlin-tiedostot voi sijoittaa hakemistoon `src/main/kotlin` tai `src/main/java`, ja liitännäinen käsittelee molemmat.
 
-:::tip[Java-yhteensopivuus]
-Kotlin kääntyy JVM-tavukoodiksi, joten se toimii yhdessä olemassa olevan Java-koodin kanssa. Voit käyttää DSL- rakennettuja Kotlin-kokoonpanoja Java-luokista, pesiyttää standardeja Java-komponentteja DSL-lohkoihin `add()`-metodilla, ja sekoittaa Kotlin- ja Java-tiedostoja samassa projektissa.
+:::tip[Java-yhteentoimivuus]
+Kotlin kääntyy JVM-tavukoodiksi, joten se toimii olemassa olevan Java-koodin rinnalla. Voit käyttää DSL:llä rakennettuja Kotlin-koostekomponentteja Java-luokissa, sisällyttää tavallisia Java-komponentteja DSL-lohkoihin `add()`-metodilla sekä yhdistää Kotlin- ja Java-tiedostoja samaan projektiin.
 :::
 
-### Kotlin aloitusprojekti {#kotlin-starter-project}
+### Kotlin Starter -projekti {#kotlin-starter-project}
 
-Jos haluat ohittaa manuaalisen asetuksen, [webforJ Kotlin Starter](https://github.com/webforj/webforj-kotlin-starter) -repo tarjoaa valmiin projektin kaikilla riippuvuuksilla ja lisäosasäätöillä jo paikallaan. Kloonaa se ja ala rakentaa DSL:n kanssa heti.
+Jos haluat ohittaa manuaalisen käyttöönoton, [webforJ Kotlin Starter](https://github.com/webforj/webforj-kotlin-starter) -repositorio tarjoaa heti käyttövalmiin projektin, jossa kaikki riippuvuudet ja liitännäismääritykset ovat valmiina. Kloonaa repositorio ja aloita DSL:n käyttö saman tien.
 
-## Aiheita {#topics}
+## Aiheet {#topics}
 
-Seuraavat aiheet käsittelevät DSL:n käyttöä sekä sen laajentamista kaikkiin muokattuihin komponentteihin tai yhdistelmiin, joita luot.
+Seuraavissa aiheissa käsitellään DSL:n käyttöä sekä sen laajentamista omilla komponenteilla ja koostekomponenteilla.
 
 <DocCardList className="topics-section" />

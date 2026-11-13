@@ -4,10 +4,9 @@ sidebar_position: 15
 description: >-
   Attach a remote Java debugger to a running webforJ app from Visual Studio
   Code, IntelliJ IDEA, or Eclipse using Jetty on port 8000.
-sidebar_class_name: updated-content
-_i18n_hash: c7b0a48745ef8f5793e38a3dd7691176
+_i18n_hash: d3f71dbbc660b90f2f4c33fd071c9819
 ---
-Le débogage est une partie essentielle du développement Java, aidant les développeurs à identifier et à résoudre les problèmes efficacement. Ce guide explique comment configurer le débogage dans webforJ pour Visual Studio Code, IntelliJ IDEA et Eclipse.
+Le débogage est une étape essentielle du développement Java : il aide les développeurs à identifier et à corriger efficacement les problèmes. Ce guide explique comment configurer le débogage dans webforJ avec Visual Studio Code, IntelliJ IDEA et Eclipse.
 
 <Tabs>
 <TabItem value="vscode" label="Visual Studio Code">
@@ -20,9 +19,9 @@ Le débogage est une partie essentielle du développement Java, aidant les déve
 
 1. Ouvrez votre projet webforJ dans VS Code.
 2. Appuyez sur <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>D</kbd> (ou <kbd>Cmd</kbd> + <kbd>Shift</kbd> + <kbd>D</kbd> sur Mac) pour ouvrir le panneau Exécuter et déboguer.
-3. Cliquez sur "créer un fichier launch.json"
+3. Cliquez sur « create a launch.json file ».
 4. Sélectionnez Java comme environnement.
-5. Modifiez `launch.json` pour qu'il corresponde à ce qui suit :
+5. Modifiez `launch.json` comme suit :
 
 ```json title="launch.json"
 {
@@ -51,10 +50,10 @@ Le débogage est une partie essentielle du développement Java, aidant les déve
 </div>
 
 1. Ouvrez votre projet dans IntelliJ IDEA.
-2. Allez dans Exécuter → Modifier les configurations.
+2. Accédez à Exécuter → Modifier les configurations.
 3. Cliquez sur le bouton <kbd>+</kbd> et sélectionnez Débogage JVM à distance.
-4. Définissez l'hôte sur `localhost` et le port sur `8000`.
-5. Enregistrez la configuration et cliquez sur Déboguer pour vous connecter à l'application en cours d'exécution.
+4. Définissez l’hôte sur `localhost` et le port sur `8000`.
+5. Enregistrez la configuration et cliquez sur Déboguer pour vous connecter à l’application en cours d’exécution.
 
 </TabItem>
 <TabItem value="eclipse" label="Eclipse">
@@ -66,7 +65,7 @@ Le débogage est une partie essentielle du développement Java, aidant les déve
 </div>
 
 1. Ouvrez votre projet dans Eclipse.
-2. Allez dans Exécuter → Modifier les configurations.
+2. Accédez à Exécuter → Modifier les configurations.
 3. Sélectionnez Application Java à distance.
 4. Cliquez sur Nouvelle configuration et définissez :
    - Hôte : `localhost`
@@ -76,30 +75,28 @@ Le débogage est une partie essentielle du développement Java, aidant les déve
 </TabItem>
 </Tabs>
 
-## Exécution du débogueur {#running-the-debugger}
+## Exécuter le débogueur {#running-the-debugger}
 
-Une fois que vous avez configuré votre IDE :
+Une fois votre IDE configuré :
 
-1. Démarrez votre application webforJ en utilisant la commande correspondante :
-    - Pour Jetty, utilisez `mvnDebug jetty:run`
-    - Pour Spring Boot, utilisez `mvnDebug spring-boot:run`
+1. Démarrez votre application webforJ avec `mvnDebug`.
 2. Exécutez la configuration de débogage dans votre IDE.
-3. Définissez des points d'arrêt et commencez le débogage.
+3. Définissez des points d’arrêt et commencez le débogage.
 
 :::tip Conseils de débogage
-1. Assurez-vous que le port 8000 est disponible et n'est pas bloqué par un pare-feu.
-2. Si vous utilisez l'un des archétypes webforJ et que vous avez changé le numéro de port dans le fichier pom.xml, assurez-vous que le port utilisé pour le débogage correspond à la valeur mise à jour.
+1. Assurez-vous que le port 8000 est disponible et qu’aucun pare-feu ne le bloque.
+2. Si vous utilisez l’un des archétypes webforJ et que vous avez modifié le numéro de port dans le fichier pom.xml, vérifiez que le port utilisé pour le débogage correspond à la nouvelle valeur.
 :::
 
-## Inspection de l'application en cours d'exécution {#inspecting-the-running-app}
+## Inspecter l’application en cours d’exécution {#inspecting-the-running-app}
 
-Un débogueur vous montre ce que votre code fait. [craftforJ](/docs/craftforj) vous montre l'application que ce code a produite, y compris l'arborescence des composants que webforJ a construite, les propriétés que chaque composant possède, quelle route est active et qui est autorisé à y accéder. Vous pouvez modifier une propriété, voir le résultat dans l'application en cours d'exécution, et écrire ce changement dans le Java d'où il provient.
+Un débogueur vous montre ce que fait votre code. [craftforJ](/docs/craftforj) vous montre l’application produite par ce code, notamment l’arborescence des composants créée par webforJ, les propriétés de chaque composant, la route active et les personnes autorisées à y accéder. Vous pouvez modifier une propriété, voir le résultat dans l’application en cours d’exécution et répercuter cette modification dans le code Java d’origine.
 
-craftforJ est livré avec webforJ et utilise le même mode débogage que vous avez déjà activé, plus une propriété supplémentaire :
+craftforJ est fourni avec webforJ et utilise le même mode de débogage que vous avez déjà activé, avec une propriété supplémentaire :
 
 ```ini title="webforj.conf"
 webforj.debug = true
 webforj.devtools.craftforj.enabled = true
 ```
 
-Voir [Commencer avec craftforJ](/docs/craftforj/getting-started).
+Consultez [Premiers pas avec craftforJ](/docs/craftforj/getting-started).

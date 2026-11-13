@@ -4,33 +4,36 @@ sidebar_position: 10
 description: >-
   Generate a Spring Boot webforJ project with startforJ or Maven archetypes, or
   convert an existing WAR project to an embedded Tomcat JAR.
-_i18n_hash: 855d2d04609e239338e5a18ebe1b02c4
+_i18n_hash: 98535c8b91fd041be0dcb32840ef9302
 ---
-Spring Boot on suosittu valinta Java-sovellusten rakentamisessa, tarjoten riippuvuuksien injektointia, automaattista konfigurointia ja upotetun palvelinmallin. Kun käytät Spring Bootia webforJ:n kanssa, voit injektoida palveluita, varastoja ja muita Springin hallinnoimia komponentteja suoraan käyttöliittymäkomponentteihisi konstruktorin injektoinnin kautta.
+Spring Boot on suosittu valinta Java-sovellusten rakentamiseen. Se tarjoaa riippuvuuksien injektoinnin, automaattisen määrityksen ja sulautetun palvelimen mallin. Kun käytät Spring Bootia webforJ:n kanssa, voit injektoida palveluita, tietovarastoja ja muita Springin hallinnoimia beaneja suoraan käyttöliittymäkomponentteihisi konstruktorin kautta.
 
-Kun käytät Spring Bootia webforJ:n kanssa, sovelluksesi toimii suoritettavana JAR-tiedostona, jossa on upotettu Tomcat-palvelin, sen sijaan, että julkaisisit WAR-tiedoston ulkoiseen sovelluspalvelimeen. Tämä pakkausmalli yksinkertaistaa käyttöönottoa ja vastaa pilviperusteisia käyttöönotto käytäntöjä. webforJ:n komponenttimalli ja reititys toimivat yhdessä Springin sovelluskontextin kanssa riippuvuuksien ja konfiguraation hallitsemiseksi.
+Kun käytät Spring Bootia webforJ:n kanssa, sovelluksesi suoritetaan suoritettavana JAR-tiedostona, johon sisältyy sulautettu Tomcat-palvelin. Ulkoiselle sovelluspalvelimelle ei siis tarvitse ottaa käyttöön WAR-tiedostoa. Tämä pakkausmalli yksinkertaistaa käyttöönottoa ja sopii yhteen pilvinatiivisten käyttöönottokäytäntöjen kanssa. webforJ:n komponenttimalli ja reititys toimivat Springin sovelluskontekstin rinnalla riippuvuuksien ja määritysten hallinnassa.
 
-## Luo Spring Boot -sovellus {#create-a-spring-boot-app}
+## Spring Boot -sovelluksen luominen {#create-a-spring-boot-app}
 
-Sinulla on kaksi vaihtoehtoa uuden webforJ-sovelluksen luomiseen Spring Bootilla: käyttää graafista startforJ-työkalua tai Maven-komentoriviä.
+Voit luoda uuden Spring Bootia käyttävän webforJ-sovelluksen kahdella tavalla: graafisella startforJ-työkalulla tai Mavenin komentoriviltä.
 
-### Vaihtoehto 1: Käyttäen startforJ:tä {#option-1-using-startforj}
+<!-- vale off -->
+### Vaihtoehto 1: startforJ-työkalun käyttäminen {#option-1-using-startforj}
+<!-- vale on -->
 
-Yksinkertaisin tapa luoda uusi webforJ-sovellus on [startforJ](https://docs.webforj.com/startforj), joka luo minimin aloitusprojektin valitun webforJ-archetypen perusteella. Tämä aloitusprojekti sisältää kaikki tarvittavat riippuvuudet, konfiguraatiotiedostot ja valmiin ulkoasun, joten voit aloittaa sen rakentamisen heti.
+Yksinkertaisin tapa luoda uusi webforJ-sovellus on käyttää [startforJ-työkalua](https://docs.webforj.com/startforj), joka luo valittuun webforJ-arkkityyppiin perustuvan minimaalisen aloitusprojektin. Aloitusprojekti sisältää kaikki tarvittavat riippuvuudet ja määritystiedostot sekä valmiin asettelun, joten voit aloittaa sen pohjalta kehittämisen heti.
 
-Kun luot sovelluksen [startforJ:n](https://docs.webforj.com/startforj) avulla, voit mukauttaa sitä antamalla seuraavat tiedot:
+Kun luot sovelluksen [startforJ-työkalulla](https://docs.webforj.com/startforj), voit mukauttaa sitä antamalla seuraavat tiedot:
 
-- Perusprojektin metatiedot (Sovelluksen nimi, Ryhmä-ID, Artefakti-ID)
-- webforJ:n versio ja Java-versio
+- Projektin perustiedot (sovelluksen nimi, ryhmätunnus ja artefaktitunnus)
+- webforJ-versio ja Java-versio
 - Teeman väri ja kuvake
-- Archetype
-- **Toimii** - Valitse **Spring Boot** luodaksesi Spring Boot -projektin
+- Arkkityyppi
+- **Suoritusympäristö** – valitse **Spring Boot**, jos haluat luoda Spring Boot -projektin
 
-Tämän tiedon avulla startforJ luo perusprojektin valitsemastasi archetypestä, joka on konfiguroitu Spring Bootille. Voit valita ladataksesi projektisi ZIP-tiedostona tai julkaista sen suoraan GitHubiin.
+Näiden tietojen perusteella startforJ luo valitsemaasi arkkityyppiin perustuvan Spring Bootille määritetyn perusprojektin.
+Voit ladata projektin ZIP-tiedostona tai julkaista sen suoraan GitHubiin.
 
-### Vaihtoehto 2: Käyttäen komentoriviä {#option-2-using-the-command-line}
+### Vaihtoehto 2: komentorivin käyttäminen {#option-2-using-the-command-line}
 
-Jos haluat käyttää komentoriviä, voit luoda Spring Boot webforJ -projektin suoraan käyttämällä virallisia webforJ-archetypeja:
+Jos haluat käyttää komentoriviä, luo Spring Bootia käyttävä webforJ-projekti suoraan virallisilla webforJ-arkkityypeillä:
 
 ```bash {8}
 mvn -B archetype:generate \
@@ -43,45 +46,51 @@ mvn -B archetype:generate \
   -Dflavor=webforj-spring
 ```
 
-`flavor`-parametri ilmoittaa archetypelle, että se luo Spring Boot -projektin sen sijaan, että se luo standardin webforJ-projektin.
+`flavor`-parametri määrittää, että arkkityypillä luodaan tavallisen webforJ-projektin sijaan Spring Boot -projekti.
 
-Tämä luo täydellisen Spring Boot -projektin, johon kuuluu:
-- Spring Boot -vanhempi POM-konfiguraatio
+Tämä luo täydellisen Spring Boot -projektin, joka sisältää seuraavat:
+
+- Spring Boot -emo-POM-määritys
 - webforJ Spring Boot -aloitusriippuvuus
-- Pääsovellusluokka, jossa on `@SpringBootApplication` ja `@Routify`
+- Pääsovellusluokka, jossa ovat `@SpringBootApplication` ja `@Routify`
 - Esimerkkinäkymät
-- Konfiguraatiotiedostot sekä Springille että webforJ:lle
+- Sekä Springin että webforJ:n määritystiedostot
 
-## Suorita Spring Boot -sovellus {#run-the-spring-boot-app}
+## Spring Boot -sovelluksen suorittaminen {#run-the-spring-boot-app}
 
-Archetype-projekti asettaa oletus Maven-tavoitteen, joten `mvn` ilman argumentteja kääntää sovelluksen, käynnistää [frontend watch](/docs/configuration/deploy-reload/frontend-watch) ja suorittaa sovelluksen:
+Arkkityyppiprojekti määrittää Mavenin oletustavoitteen, joten argumentiton `mvn` kääntää sovelluksen, käynnistää [frontend watch -toiminnon](/docs/configuration/deploy-reload/frontend-watch) ja suorittaa sovelluksen:
 
 ```bash
 mvn
 ```
 
-Sovellus käynnistyy oletuksena upotetulla Tomcat-palvelimella portissa 8080. Olemassa olevat webforJ-näkymät ja reitit toimivat täsmälleen kuten ennenkin, mutta nyt voit injektoida Springin komponentteja ja käyttää Springin ominaisuuksia.
+Sovellus käynnistyy oletusarvoisesti portissa 8080 toimivalla sulautetulla Tomcat-palvelimella. Nykyiset webforJ-näkymäsi ja -reittisi toimivat aivan kuten ennenkin, mutta nyt voit injektoida Spring-beaneja ja käyttää Springin ominaisuuksia.
 
-## Konfigurointi {#configuration}
+## Määritys {#configuration}
 
-Käytä `application.properties` -tiedostoa `src/main/resources` -hakemistossa konfiguroidaksesi sovellustasi. Katso [Property Configuration](/docs/configuration/properties) saadaksesi tietoa webforJ:n konfiguraatiopropertiesistä.
+Määritä sovellus käyttämällä `src/main/resources`-hakemiston `application.properties`-tiedostoa.
+Katso webforJ:n määritysominaisuuksia koskevat tiedot kohdasta [Ominaisuuksien määritys](/docs/configuration/properties).
 
-Seuraavat webforJ:n `application.properties` -asetukset liittyvät erityisesti Springiin:
+Seuraavat webforJ:n `application.properties`-asetukset ovat Spring-kohtaisia:
 
-| Ominaisuus | Tyyppi | Kuvaus | Oletus |
-|------------|--------|--------|--------|
-| **`webforj.servlet-mapping`** | Merkkijono | URL-mapping-malli webforJ-servletille. | `/*` |
-| **`webforj.exclude-urls`** | Lista | URL-mallit, joita ei pitäisi käsitellä webforJ:n kautta, kun se on kartoitettu juureen. Kun webforJ on kartoitettu juurikontekstiin (`/*`), nämä URL-mallit jätetään pois webforJ:n käsittelystä, ja ne voidaan käsitellä Spring MVC -kontrollereiden kautta. Tämä mahdollistaa REST-päätteiden ja muiden Spring MVC -kartoitusten yhteiseloa webforJ-reittien kanssa. | `[]` |
+| Ominaisuus | Tyyppi | Kuvaus | Oletusarvo|
+|----------|------|-------------|--------|
+| **`webforj.servlet-mapping`** | Merkkijono | webforJ-servletin URL-osoitteen täsmäytysmalli. | `/*` |
+| **`webforj.exclude-urls`** | Luettelo | URL-mallit, joita webforJ:n ei tule käsitellä, kun se on yhdistetty juureen. Kun webforJ on yhdistetty juurikontekstiin (`/*`), nämä URL-mallit ohitetaan webforJ:n käsittelyssä, ja Spring MVC -ohjaimet voivat käsitellä ne. Näin REST-päätepisteet ja muut Spring MVC -määritykset voivat toimia yhdessä webforJ-reittien kanssa. | `[]` |
 
-### Konfiguraation erot {#configuration-differences}
+### Määritysten erot {#configuration-differences}
 
-Kun vaihdat Spring Bootiin, useat konfiguraatioasiat muuttuvat:
+Kun siirryt käyttämään Spring Bootia, useat määritykset muuttuvat:
 
-| Ominaisuus | Standard webforJ | Spring Boot webforJ |
-|------------|------------------|---------------------|
-| **Pakkaus** | WAR-tiedosto | Suoritettavan JAR |
-| **Palvelin** | Ulkoinen (Jetty, Tomcat) | Upotettu Tomcat |
-| **Suorituskomento** | `mvn jetty:run` | `mvn spring-boot:run` |
-| **Pään konfiguraatio** | Vain `webforj.conf` | `application.properties` + `webforj.conf` |
-| **Profiilit** | `webforj-dev.conf`, `webforj-prod.conf` | Spring-profiilit `application-{profile}.properties` |
-| **Portin konfigurointi** | Lisäosakonfiguraatiossa | `server.port` konfiguraatiossa |
+| Ominaisuus | Tavallinen webforJ | Spring Bootia käyttävä webforJ |
+|--------|-----------------|-------------------|
+| **Pakkaus** | WAR-tiedosto | Suoritettava JAR-tiedosto |
+| **Palvelin** | Ulkoinen (Jetty, Tomcat) | Sulautettu Tomcat |
+| **Suorituskomento** | `mvn` | `mvn` |
+| **Päämääritystiedosto** | Vain `webforj.conf` | `application.properties` + `webforj.conf` |
+| **Profiilit** | `webforj-dev.conf`, `webforj-prod.conf` | Spring-profiilit ja `application-{profile}.properties` |
+| **Portin määritys** | Liitännäisen määrityksessä | Ominaisuuksissa kohdassa `server.port` |
+
+:::info Suorita komennolla `mvn`, älä komennolla `mvn spring-boot:run`
+`mvn spring-boot:run` käynnistää vain sovelluksen. Se ei käynnistä [frontend watch -toimintoa](/docs/configuration/deploy-reload/frontend-watch), joten `src/main/frontend`-hakemiston lähdekoodia ei käännetä eikä rakenneta uudelleen sovelluksen suorituksen aikana, jos projektissasi on kyseinen hakemisto. Pelkkä `mvn` suorittaa projektin oletustavoitteen, joka käynnistää ensin tarkkailun ja sitten sovelluksen.
+:::

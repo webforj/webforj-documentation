@@ -1,10 +1,12 @@
 ---
-title: Kotlin-DSL
+title: Kotlin DSL
 sidebar_position: 0
 hide_table_of_contents: true
 hide_giscus_comments: true
-sidebar_class_name: new-content
-_i18n_hash: 4198ef6392f249bd21d0395c55b5817d
+description: >-
+  Build webforJ UIs declaratively with the Kotlin DSL, a preview feature, using
+  type-safe builders, lambdas with receivers, and nested blocks.
+_i18n_hash: 5beb40faf3cca20567062bc93ef15e2b
 ---
 <Head>
   <style>{`
@@ -14,10 +16,11 @@ _i18n_hash: 4198ef6392f249bd21d0395c55b5817d
   `}</style>
 </Head>
 
-<DocChip chip='since' label='25.12' />
-<DocChip chip='experimental' />
+<!-- vale off -->
+# Kotlin-DSL <DocChip chip='since' label='25.12' /> <DocChip chip='experimental' />
+<!-- vale on -->
 
-webforJ bietet eine [Kotlin](https://kotlinlang.org/) *domänenspezifische Sprache*, oder DSL, mit der Sie UIs mit prägnanter, typsicher Syntax erstellen können. Anstelle von imperativem Java-Code schreiben Sie deklarativen Code, der wie eine Beschreibung Ihrer UI-Struktur gelesen wird.
+webforJ bietet eine [Kotlin](https://kotlinlang.org/)-*Domain Specific Language* (DSL), mit der sich Benutzeroberflächen mit einer knappen, typsicheren Syntax erstellen lassen. Statt imperativem Java-Code schreibst du deklarativen Code, der deine UI-Struktur beschreibt.
 
 <!-- INTRO_END -->
 
@@ -28,10 +31,10 @@ layout.setSpacing("10px");
 
 TextField name = new TextField();
 name.setLabel("Name");
-name.setPlaceholder("Ihr Name");
+name.setPlaceholder("Your name");
 layout.add(name);
 
-Button submit = new Button("Einreichen", ButtonTheme.PRIMARY);
+Button submit = new Button("Submit", ButtonTheme.PRIMARY);
 submit.onClick(e -> handleSubmit());
 layout.add(submit);
 ```
@@ -41,28 +44,28 @@ flexLayout {
   direction = FlexDirection.COLUMN
   styles["gap"] = "10px"
 
-  textField("Name", placeholder = "Ihr Name")
-  button("Einreichen", ButtonTheme.PRIMARY) {
+  textField("Name", placeholder = "Your name")
+  button("Submit", ButtonTheme.PRIMARY) {
     onClick { handleSubmit() }
   }
 }
 ```
 
-Die DSL nutzt Kotlin-Erweiterungsfunktionen, Lambdas mit Receivern und Standardparameter, um eine natürliche Builder-Syntax zu erstellen. Komponenten verschachteln sich, Konfiguration geschieht in Blöcken, und der Compiler erfasst strukturelle Fehler vor der Laufzeit.
+Die DSL nutzt Kotlin-Erweiterungsfunktionen, Lambdas mit Empfängern und Standardparameter, um eine natürliche Builder-Syntax zu ermöglichen. Komponenten werden ineinander verschachtelt, die Konfiguration erfolgt in Blöcken und der Compiler erkennt strukturelle Fehler bereits vor der Laufzeit.
 
 ## Einrichtung {#setup}
 
 <ExperimentalWarning />
 
-Es ist keine separate Kotlin-Installation erforderlich. Maven kümmert sich über das Kotlin-Maven-Plugin um die Kompilierung, sodass jedes Projekt, das bereits mit Maven gebaut wird, Kotlin-Unterstützung allein durch Konfiguration der Abhängigkeiten und Plugins hinzufügen kann.
+Eine separate Kotlin-Installation ist nicht erforderlich. Maven übernimmt die Kompilierung über das Kotlin-Maven-Plugin. Daher kann jedes Projekt, das bereits mit Maven erstellt wird, allein durch die Konfiguration von Abhängigkeiten und Plugin um Kotlin-Unterstützung erweitert werden.
 
-:::tip Schneller Start
-Um ein webforJ-Projekt mit Kotlin schnell in Betrieb zu nehmen, das alle benötigten Konfigurationen sofort bereitstellt, siehe [diesen Abschnitt zur Verwendung des webforJ Kotlin-Starter](#kotlin-starter-project).
+:::tip Schnellstart
+Eine Anleitung, wie du ein webforJ-Projekt mit Kotlin samt allen erforderlichen Konfigurationen sofort startklar machst, findest du [in diesem Abschnitt zur Verwendung des webforJ Kotlin Starter](#kotlin-starter-project).
 :::
 
 ### Abhängigkeiten {#dependencies}
 
-Fügen Sie das webforJ Kotlin DSL-Modul und die Kotlin-Standardbibliothek zu Ihrer `pom.xml` hinzu:
+Füge das webforJ-Kotlin-DSL-Modul und die Kotlin-Standardbibliothek zu deiner `pom.xml` hinzu:
 
 ```xml
 <dependency>
@@ -78,7 +81,7 @@ Fügen Sie das webforJ Kotlin DSL-Modul und die Kotlin-Standardbibliothek zu Ihr
 </dependency>
 ```
 
-Wenn Sie vorhaben, Tests in Kotlin zu schreiben, fügen Sie auch die Kotlin-Testabhängigkeit hinzu. Sie integriert sich mit JUnit:
+Wenn du Tests in Kotlin schreiben möchtest, füge außerdem die Kotlin-Test-Abhängigkeit hinzu. Sie ist in JUnit integriert:
 
 ```xml
 <dependency>
@@ -89,9 +92,9 @@ Wenn Sie vorhaben, Tests in Kotlin zu schreiben, fügen Sie auch die Kotlin-Test
 </dependency>
 ```
 
-### Kotlin Maven-Plugin {#kotlin-maven-plugin}
+### Kotlin-Maven-Plugin {#kotlin-maven-plugin}
 
-Fügen Sie das Kotlin Maven-Plugin hinzu, um sowohl Ihre Kotlin- als auch Java-Quellen zu kompilieren. Die Konfiguration `sourceDirs` unten ermöglicht es, dass Kotlin- und Java-Dateien im selben Projekt coexistieren:
+Füge das Kotlin-Maven-Plugin hinzu, um sowohl deine Kotlin- als auch deine Java-Quellen zu kompilieren. Die folgende `sourceDirs`-Konfiguration ermöglicht es, Kotlin- und Java-Dateien im selben Projekt zu verwenden:
 
 ```xml
 <plugin>
@@ -134,18 +137,18 @@ Fügen Sie das Kotlin Maven-Plugin hinzu, um sowohl Ihre Kotlin- als auch Java-Q
 </plugin>
 ```
 
-Mit diesen Ergänzungen kompiliert `mvn compile` Kotlin-Quellen zusammen mit Java. Kotlin-Dateien können in `src/main/kotlin` oder `src/main/java` abgelegt werden, und das Plugin kümmert sich um beides.
+Mit diesen Ergänzungen kompiliert `mvn compile` Kotlin-Quellen zusammen mit Java. Kotlin-Dateien können in `src/main/kotlin` oder `src/main/java` abgelegt werden; das Plugin verarbeitet beide Verzeichnisse.
 
-:::tip[Java-Interoperabilität]
-Kotlin wird in JVM-Bytecode kompiliert, sodass es neben vorhandenem Java-Code funktioniert. Sie können DSL-erstellte Kotlin-Komponenten aus Java-Klassen verwenden, Standard-Java-Komponenten innerhalb der DSL-Blöcke mit `add()` einfügen und Kotlin- und Java-Dateien im selben Projekt mischen.
+:::tip[Interoperabilität mit Java]
+Kotlin wird in JVM-Bytecode kompiliert und funktioniert daher zusammen mit vorhandenem Java-Code. Du kannst mit der DSL erstellte Kotlin-Kompositkomponenten in Java-Klassen verwenden, Standard-Java-Komponenten mit `add()` in DSL-Blöcke einbetten und Kotlin- und Java-Dateien im selben Projekt kombinieren.
 :::
 
 ### Kotlin-Starterprojekt {#kotlin-starter-project}
 
-Wenn Sie die manuelle Einrichtung überspringen möchten, bietet das [webforJ Kotlin Starter](https://github.com/webforj/webforj-kotlin-starter) Repository ein einsatzbereites Projekt mit allen Abhängigkeiten und Plugin-Konfigurationen bereits eingerichtet. Klonen Sie es und beginnen Sie sofort mit dem Bau mit der DSL.
+Wenn du die manuelle Einrichtung überspringen möchtest, bietet das Repository [webforJ Kotlin Starter](https://github.com/webforj/webforj-kotlin-starter) ein sofort startbereites Projekt, in dem alle Abhängigkeiten und die Plugin-Konfiguration bereits eingerichtet sind. Klone es und beginne direkt mit der DSL zu arbeiten.
 
 ## Themen {#topics}
 
-Die folgenden Themen behandeln die Verwendung der DSL sowie die Erweiterung um benutzerdefinierte Komponenten oder Zusammenstellungen, die Sie erstellen. 
+Die folgenden Themen behandeln die Verwendung der DSL und ihre Erweiterung um beliebige benutzerdefinierte Komponenten oder Kompositkomponenten.
 
 <DocCardList className="topics-section" />

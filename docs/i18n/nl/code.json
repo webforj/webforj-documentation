@@ -5547,5 +5547,44 @@
   },
   "component.footer.platform.title": {
     "message": "Platform"
+  },
+  "page.intro.opening.eyebrow": {
+    "message": "Inleiding"
+  },
+  "page.intro.opening.title1": {
+    "message": "webforJ in zes schermen."
+  },
+  "page.intro.opening.title2": {
+    "message": "Het volledige framework, van begin tot eind."
+  },
+  "page.intro.opening.lead": {
+    "message": "webforJ is het full-stack Java-framework voor zakelijke webapps: je bouwt de hele app, inclusief de schermen, in Java. Deze rondleiding neemt je in zes korte schermen mee, van je eerste Java-klasse tot de AI-tools. Het duurt ongeveer vijf minuten."
+  },
+  "component.footer.framework.title": {
+    "message": "Framework"
+  },
+  "chip.tooltipText.preview": {
+    "message": "Deze functie is in preview. De API kan in toekomstige releases nog wijzigen.",
+    "description": "Hover text to explain this feature is in preview and its API may change."
+  },
+  "chip.label.preview": {
+    "message": "Voorbeeldweergave",
+    "description": "Label to show this feature is in preview."
+  },
+  "previewNote.title": {
+    "message": "Previewfunctie"
+  },
+  "previewNote.message": {
+    "message": "Deze functie is in preview. De API kan in toekomstige releases nog veranderen."
+  },
+  "component.megaMenu.products.kotlinDSL.summary": {
+    "message": "Bouw declaratief webforJ-UI's in Kotlin met typeveilige builders en geneste blokken, naast je Java-code. In preview."
+  },
+  "component.megaMenu.products.mCPApps.summary": {
+    "message": "Laat een MCP-compatibele AI-app een gerouteerde webforJ-weergave openen in het gesprek, zodat de gebruiker en de AI met dezelfde live UI werken. In preview."
+  },
+  "componentDemo.tabs": {
+    "message": "Bronbestanden",
+    "description": "Accessible label for the file tabs of a component demo"
   }
 }

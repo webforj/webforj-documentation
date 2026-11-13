@@ -98,5 +98,9 @@
   "item.label.Showcase": {
     "message": "展示\n",
     "description": "Navbar item with label Showcase"
+  },
+  "item.label.Framework": {
+    "message": "框架",
+    "description": "Navbar item with label Framework"
   }
 }

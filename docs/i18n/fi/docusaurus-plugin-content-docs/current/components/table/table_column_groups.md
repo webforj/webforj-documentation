@@ -4,15 +4,17 @@ sidebar_position: 7
 description: >-
   Group Table columns under shared, nestable multi-row headers using
   ColumnGroup.of and setColumnGroups for complex layouts.
-_i18n_hash: 7a0ad76ea48fafddc0aa9965309b48b8
+_i18n_hash: 4babef21ef20728da6aa7eec5829e4d1
 ---
-<DocChip chip='since' label='25.12' />
+<!-- vale off -->
+# Sarakeryhmät <DocChip chip='since' label='25.12' />
+<!-- vale on -->
 
-Sarakeryhmät antavat sinun järjestää liittyvät sarakkeet jaettujen, usean rivin otsikoiden alle. Ryhmän etiketti kattaa sen lapsisarakkeet, mikä helpottaa käyttäjien skannata ja ymmärtää monimutkaisten taulukoiden rakennetta. Ryhmiä voidaan sisällyttää mihin tahansa syvyyteen, ja `Table` renderöi automaattisesti oikean määrän otsikkorivejä.
+Sarakeryhmien avulla voit järjestää toisiinsa liittyvät sarakkeet yhteisten, usealle riville ulottuvien otsikoiden alle. Ryhmän otsikko ulottuu sen alisarakkeiden yli, mikä helpottaa monimutkaisten taulukoiden rakenteen hahmottamista. Ryhmiä voi sisäkkäistää rajattomasti, ja `Table` luo automaattisesti oikean määrän otsikkorivejä.
 
 ## Sarakeryhmien luominen {#creating-column-groups}
 
-Luo ryhmä `ColumnGroup.of()` -tehdasmenetelmällä, ja ketjuta `add()` -kutsuja täyttääksesi sen sarakeviitteillä, muilla ryhmillä tai sekoituksella molempia. Hae ryhmät `Table`-objektille käyttämällä `setColumnGroups()`.
+Luo ryhmä `ColumnGroup.of()`-tehdasmetodilla ja lisää siihen sarakeviittauksia, muita ryhmiä tai molempia ketjuttamalla `add()`-kutsuja. Aseta ryhmät `Table`-komponenttiin käyttämällä `setColumnGroups()`-metodia.
 
 <!-- vale off -->
 <ComponentDemo
@@ -26,7 +28,7 @@ height='600px'
 />
 <!-- vale on -->
 
-Kun ryhmät on asetettu, `Table` renderöi usean rivin otsikon, jossa jokainen ryhmän etiketti kattaa sen lapsisarakkeet. Sisäkkäisyyden syvyys määrää, kuinka monta otsikkoriviä näkyy. Tasainen ryhmä lisää yhden ylimääräisen rivin, kun taas kaksi tasoista sisäkkäisyyttä lisää kaksi, ja niin edelleen.
+Kun ryhmät on asetettu, `Table` luo monirivisen otsikon, jossa kunkin ryhmän otsikko ulottuu sen alisarakkeiden yli. Sisäkkäisyyden syvyys määrittää otsikkorivien määrän. Tasainen ryhmä lisää yhden rivin, kaksitasoinen sisäkkäisyys kaksi riviä ja niin edelleen.
 
 <!-- vale off -->
 <ComponentDemo
@@ -41,7 +43,7 @@ height='600px'
 <!-- vale on -->
 
 <!-- vale Google.OxfordComma = NO -->
-Ryhmät voidaan asettaa tai vaihtaa milloin tahansa, ennen tai jälkeen `Table`-renderöinnin. Siirrä `null` tai tyhjää lista `setColumnGroups()` -menetelmään poistaaksesi kaikki ryhmittelyt ja palataksesi yksiriviseen otsikkoon.
+Ryhmät voi asettaa tai muuttaa milloin tahansa, ennen `Table`-komponentin renderöintiä tai sen jälkeen. Poista kaikki ryhmittelyt ja palauta yksirivinen otsikko välittämällä `setColumnGroups()`-metodille `null` tai tyhjä lista.
 <!-- vale Google.OxfordComma = YES -->
 
 ```java
@@ -49,27 +51,27 @@ Ryhmät voidaan asettaa tai vaihtaa milloin tahansa, ennen tai jälkeen `Table`-
 table.setColumnGroups(null);
 ```
 
-## Sarakejärjestys {#column-ordering}
+## Sarakkeiden järjestys {#column-ordering}
 
-Kun ryhmät ovat aktiivisia, visuaalinen sarakejärjestys määräytyy ryhmän puun mukaan eikä sen mukaan, missä järjestyksessä sarakkeet on lisätty `Table`:hen. Puu käydään läpi syvyys ensin, vasemmalta oikealle.
+Kun ryhmittely on käytössä, sarakkeiden visuaalinen järjestys määräytyy ryhmäpuun eikä sen perusteella, missä järjestyksessä sarakkeet lisättiin `Table`-komponenttiin. Puu käydään läpi syvyyssuuntaisesti vasemmalta oikealle.
 
 ```
 Lisätyt sarakkeet:  [A, B, C, D, E]
-Ryhmä:            Ryhmä "G1" [C, A], Ryhmä "G2" [E, D]
-Visuaalinen järjestys:   C, A, E, D, B
+Ryhmät:             Ryhmä "G1" [C, A], Ryhmä "G2" [E, D]
+Visuaalinen järjestys: C, A, E, D, B
 ```
 
-Ryhmittämättömät sarakkeet, joita ei käytetä missään ryhmässä, eivät ole piilotettuja. Ne näkyvät omassa luonnollisessa sijainnissaan suhteessa ryhmiteltyihin sarakkeisiin alkuperäisen lisäämisjärjestyksen mukaan.
+Ryhmittelemättömiä sarakkeita eli sellaisia, joihin ei viitata missään ryhmässä, ei piiloteta. Ne näkyvät luonnollisilla paikoillaan ryhmiteltyihin sarakkeisiin nähden sen mukaan, missä järjestyksessä ne alun perin lisättiin `Table`-komponenttiin.
 
-Esimerkissä `Number` näkyy ensin, koska se lisättiin ennen `Title`:a. `Label` näkyy `Genre`:n ja `Cost`:in välissä, koska se lisättiin niiden väliin alkuperäisessä sarakejärjestyksessä:
+Tässä esimerkissä `Number` näkyy ensin, koska se lisättiin ennen `Title`-saraketta. `Label` näkyy sarakkeiden `Genre` ja `Cost` välissä, koska se lisättiin niiden väliin alkuperäisessä sarakejärjestyksessä:
 
 ```
 Lisätyt sarakkeet:  [Number, Title, Artist, Genre, Label, Cost]
-Ryhmä:            Ryhmä "Music" [Title, Artist, Genre], Ryhmä "Pricing" [Cost]
-Visuaalinen järjestys:   Number, Title, Artist, Genre, Label, Cost
+Ryhmät:             Ryhmä "Music" [Title, Artist, Genre], Ryhmä "Pricing" [Cost]
+Visuaalinen järjestys: Number, Title, Artist, Genre, Label, Cost
 ```
 
-Seuraava demo havainnollistaa tätä käyttäytymistä. `Number` ja `Label` eivät ole mukana missään ryhmässä, mutta ne säilyttävät luonnolliset asemansa sen mukaan, missä järjestyksessä ne on lisätty `Table`-objektiin.
+Seuraava esimerkki havainnollistaa tätä toimintaa. `Number`- ja `Label`-sarakkeisiin ei viitata missään ryhmässä, mutta ne pysyvät luonnollisilla paikoillaan sen perusteella, missä järjestyksessä ne lisättiin `Table`-komponenttiin.
 
 <!-- vale off -->
 <ComponentDemo
@@ -83,42 +85,42 @@ height='600px'
 />
 <!-- vale on -->
 
-:::tip Ryhmittämättömien sarakkeiden sijoittamisen hallinta
-Jos haluat hallita ryhmittämättömien sarakkeiden sijoittamista, lisää ne ylimmän tason sarakeviittauksina ryhmäpuuhun.
+:::tip Ryhmitttelemättömien sarakkeiden sijainnin hallinta
+Voit määrittää ryhmittelemättömien sarakkeiden sijainnin erikseen lisäämällä ne ylimmän tason sarakeviittauksina ryhmäpuuhun.
 :::
 
 ## Sarakkeiden siirtäminen ryhmien sisällä {#column-moving-within-groups}
 
-Kun ryhmät ovat aktiivisia, sarakkeiden vetäminen ja pudottaminen on rajoitettu säilyttämään ryhmän eheys:
+Kun ryhmittely on käytössä, sarakkeiden siirtämistä vetämällä ja pudottamalla rajoitetaan ryhmien rakenteen säilyttämiseksi:
 
-- **Ryhmässä**: ryhmän sisällä olevaa saraketta voidaan siirtää vain sen välittömässä vanhempiryhmässä. Sen vetäminen ryhmän ulkopuolelle hylätään, ja sarake palautuu alkuperäiseen paikkaansa.
-- **Ryhmittämättömät sarakkeet**: ryhmittämättömät sarakkeet voivat siirtyä vain paikkoihin, jotka ovat muiden ryhmittämättömien sarakkeiden käytössä. Niitä ei voida pudottaa ryhmän keskelle.
-- **Ryhmien uudelleenjärjestäminen**: koko ryhmää voidaan vetää siirtämään se uudelleen sen sisaruuksien joukossa samalla sisäkkäisyystasolla.
+- **Ryhmän sisällä**: ryhmään kuuluvaa saraketta voi siirtää vain sen välittömässä yläryhmässä. Sarakkeen siirtäminen ryhmän ulkopuolelle hylätään, ja sarake palautuu alkuperäiselle paikalleen.
+- **Ryhmittelemättömät sarakkeet**: ryhmittelemätöntä saraketta voi siirtää vain paikkoihin, joissa on muita ryhmittelemättömiä sarakkeita. Sitä ei voi pudottaa ryhmän keskelle.
+- **Ryhmien järjestäminen uudelleen**: koko ryhmän voi vetää uuteen järjestykseen sisarustensa joukossa samalla sisäkkäisyystasolla.
 
 ```
-Ryhmä:  Ryhmä "G1" [A, B, C], Ryhmä "G2" [D, E]
+Ryhmät: Ryhmä "G1" [A, B, C], Ryhmä "G2" [D, E]
 
-Siirrä A paikkaan 2 -> OK (G1:n sisällä, tulos: [B, C, A])
-Siirrä A paikkaan 3 -> Hylätty (paikka 3 on G2:n sisällä)
-Siirrä D paikkaan 4 -> OK (G2:n sisällä, tulos: [E, D])
-Siirrä D paikkaan 1 -> Hylätty (paikka 1 on G1:n sisällä)
+Siirrä A paikkaan 2 -> OK (G1-ryhmän sisällä, tulos: [B, C, A])
+Siirrä A paikkaan 3 -> Hylätty (paikka 3 on G2-ryhmän sisällä)
+Siirrä D paikkaan 4 -> OK (G2-ryhmän sisällä, tulos: [E, D])
+Siirrä D paikkaan 1 -> Hylätty (paikka 1 on G1-ryhmän sisällä)
 ```
 
 ## Ryhmien kiinnittäminen {#pinning-groups}
 
-Ryhmä voidaan kiinnittää vasemmalle tai oikealle käyttämällä `setPinDirection()`. Kaikki ryhmän sisällä olevat sarakkeet perivät ryhmän kiinnitys suunnan, ja yksittäisten sarakkeiden kiinnitysasetukset ohitetaan ryhmän toimesta.
+Ryhmän voi kiinnittää vasemmalle tai oikealle käyttämällä `setPinDirection()`-metodia. Kaikki ryhmän sarakkeet perivät ryhmän kiinnityssuunnan, ja ryhmän asetus ohittaa yksittäisten sarakkeiden kiinnitysasetukset.
 
 ```java
-ColumnGroup idInfo = ColumnGroup.of("id-info", "ID Info")
+ColumnGroup idInfo = ColumnGroup.of("id-info", "ID-tiedot")
   .setPinDirection(PinDirection.LEFT)
   .add("number")
   .add("title");
 
-// Sekä "number" että "title" on kiinnitetty vasemmalle,
-// riippumatta omista kiinnitysasetuksistaan
+// Sekä "number" että "title" kiinnitetään vasemmalle
+// niiden omista kiinnitysasetuksista riippumatta
 ```
 
-Ryhmittämättömät sarakkeet säilyttävät omat kiinnityssuuntaustensa sarake määrittelystään.
+Ryhmittelemättömät sarakkeet säilyttävät sarakemäärittelyssään asetetun kiinnityssuunnan.
 
 <!-- vale off -->
 <ComponentDemo
@@ -132,28 +134,28 @@ height='600px'
 />
 <!-- vale on -->
 
-## Ryhmän otsikkokorkeus {#group-header-height}
+## Ryhmän otsikkorivin korkeus {#group-header-height}
 
-Ryhmän otsikkorivin korkeutta voidaan hallita itsenäisesti tavallisista sarakeotsikoista käyttämällä `setGroupHeaderHeight()`.
+Ryhmän otsikkorivin korkeutta voi hallita erikseen tavallisten sarakeotsikoiden korkeudesta käyttämällä `setGroupHeaderHeight()`-metodia.
 
 ```java
-table.setGroupHeaderHeight(32); // Ryhmän rivit ovat 32px korkeita
-table.setHeaderHeight(48);      // Sarakeotsikkorivi pysyy 48px korkeana
+table.setGroupHeaderHeight(32); // Ryhmärivien korkeus on 32px
+table.setHeaderHeight(48);      // Sarakeotsikkorivin korkeus pysyy 48px
 ```
 
-Oletusarvoinen ryhmän otsikkokorkeus vastaa oletusotsikkokorkeutta.
+Ryhmän otsikkorivin oletuskorkeus vastaa otsikkorivin oletuskorkeutta.
 
-## Ryhmien tyylitys CSS-osien avulla {#styling-groups-with-css-parts}
+## Ryhmien tyylittely CSS-osien avulla {#styling-groups-with-css-parts}
 
-Ryhmäotsikot ja sarakkeet altistavat CSS-osia tyylitys varten `::part()`. Seuraavat osat ovat käytettävissä:
+Ryhmien otsikot ja sarakkeet tarjoavat CSS-osia, joita voi tyylitellä `::part()`-valitsimella. Käytettävissä ovat seuraavat osat:
 
 | Osa | Kuvaus |
 | --- | --- |
-| `cell-group-{ID}` | Ryhmän otsikkosolu, johon kohdistuu ryhmän ID |
-| `cell-group-depth-{N}` | Ryhmän otsikkosolu, johon kohdistuu syvyys (`0` = ylimmän tason, `1` = toisen tason jne.) |
-| `cell-column-{ID}` | Kaikki solut (otsikko- ja runkosolut) annetulle sarake-ID:lle |
-| `cell-content-group-{ID}` | Sisällön ympäröivä elementti ryhmäotsikossa |
-| `cell-label-group-{ID}` | Etiketti ryhmäotsikossa |
+| `cell-group-{ID}` | Ryhmän otsikkosolu, kohdistetaan ryhmän tunnuksella |
+| `cell-group-depth-{N}` | Ryhmän otsikkosolu, kohdistetaan sisäkkäisyyssyvyyden mukaan (`0` = ylin taso, `1` = toinen taso jne.) |
+| `cell-column-{ID}` | Tietyn sarakkeen kaikki solut (otsikko ja sisältö) |
+| `cell-content-group-{ID}` | Ryhmän otsikon sisällön kääresäiliö |
+| `cell-label-group-{ID}` | Ryhmän otsikon nimike |
 
 <!-- vale off -->
 <ComponentDemo
@@ -168,9 +170,9 @@ height='600px'
 />
 <!-- vale on -->
 
-### Tyylitys ryhmän ID:n mukaan {#styling-by-group-id}
+### Tyylittely ryhmän tunnuksen mukaan {#styling-by-group-id}
 
-Käytä ryhmän ID:tä kohdistamaan erityisiä ryhmiä ainutlaatuisilla väreillä tai typografialla.
+Kohdista tiettyihin ryhmiin ryhmän tunnuksen avulla, kun haluat käyttää niissä yksilöllisiä värejä tai typografiaa.
 
 ```css
 dwc-table::part(cell-group-catalog) {
@@ -189,18 +191,18 @@ dwc-table::part(cell-column-title) {
 }
 ```
 
-### Tyylitys syvyyden mukaan {#styling-by-depth}
+### Tyylittely sisäkkäisyyssyvyyden mukaan {#styling-by-depth}
 
-Syvyyteen perustuvat osat ovat hyödyllisiä, kun haluat soveltaa johdonmukaista tyylitystä kaikille tietyllä sisäkkäisyystasolla oleville ryhmille ilman, että kohdistat niitä yksitellen.
+Syvyyteen perustuvat osat ovat hyödyllisiä, kun haluat käyttää yhdenmukaista tyyliä kaikissa tietyn sisäkkäisyystason ryhmissä kohdistamatta tyyliä kuhunkin ryhmään erikseen.
 
 ```css
-/* Tyylitä kaikki ylimmän tason ryhmät */
+/* Tyylittele kaikki ylimmän tason ryhmät */
 dwc-table::part(cell-group-depth-0) {
   background: var(--dwc-color-primary-30);
   font-weight: 700;
 }
 
-/* Tyylitä kaikki toisen tason ryhmät */
+/* Tyylittele kaikki toisen tason ryhmät */
 dwc-table::part(cell-group-depth-1) {
   background: var(--dwc-color-primary-40);
 }
@@ -208,7 +210,7 @@ dwc-table::part(cell-group-depth-1) {
 
 ## Piilotetut sarakkeet {#hidden-columns}
 
-Piilotetut sarakkeet on suljettu pois visuaalisesta järjestyksestä ja otsikkorakenteesta. Jos ryhmässä on sekoitus näkyviä ja piilotettuja sarakkeita, vain näkyvät sarakkeet näkyvät ja ryhmän `colspan` säätyy sen mukaisesti. Jos kaikki ryhmässä olevat sarakkeet ovat piilotettuja, ryhmän otsikkoa ei renderöidä lainkaan.
+Piilotetut sarakkeet jätetään pois visuaalisesta järjestyksestä ja otsikkoasettelusta. Jos ryhmässä on sekä näkyviä että piilotettuja sarakkeita, näkyviin tulevat vain näkyvät sarakkeet, ja ryhmän `colspan` mukautuu niiden määrän mukaan. Jos kaikki ryhmän sarakkeet on piilotettu, ryhmän otsikkoa ei renderöidä lainkaan.
 
 <!-- vale off -->
 <ComponentDemo

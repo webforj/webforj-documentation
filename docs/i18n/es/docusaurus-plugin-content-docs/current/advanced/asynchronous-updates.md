@@ -5,31 +5,31 @@ title: Actualizaciones asíncronas
 description: >-
   Run background work off the UI thread and push updates back to webforJ
   components safely with Environment.runLater and PendingResult.
-_i18n_hash: 8dc68aced15dfd90481cd9ea98e4b2f2
+_i18n_hash: 96865999eae550e8c20172458695ee01
 ---
 <DocChip chip='since' label='25.02' />
 <DocChip chip='experimental' />
 <JavadocLink type="foundation" location="com/webforj/Environment" anchor="runLater(com.webforj.Environment,java.lang.Runnable)" top='true'/>
 
-La API `Environment.runLater()` proporciona un mecanismo para actualizar la interfaz de usuario de forma segura desde subprocesos en segundo plano en aplicaciones webforJ. Esta función experimental permite realizar operaciones asíncronas y, al mismo tiempo, mantener la seguridad de los subprocesos al modificar la interfaz de usuario.
+La API `Environment.runLater()` proporciona un mecanismo para actualizar la interfaz de usuario de forma segura desde hilos en segundo plano en aplicaciones webforJ. Esta función en versión preliminar permite realizar operaciones asíncronas y, al mismo tiempo, mantener la seguridad de los hilos al modificar la interfaz de usuario.
 
 <ExperimentalWarning />
 
 <AISkillTip skill="webforj-handling-timers-and-async" />
 
-## Comprender el modelo de subprocesos {#understanding-the-thread-model}
+## Comprender el modelo de hilos {#understanding-the-thread-model}
 
-webforJ impone un modelo de subprocesos estricto según el cual todas las operaciones de la interfaz de usuario deben realizarse en el subproceso `Environment`. Esta restricción existe porque:
+webforJ impone un modelo de hilos estricto, según el cual todas las operaciones de la interfaz de usuario deben ejecutarse en el hilo de `Environment`. Esta restricción existe porque:
 
-1. **Restricciones de la API de webforJ**: La API subyacente de webforJ se vincula al subproceso que creó la sesión.
-2. **Afinidad de los componentes con el subproceso**: Los componentes de la interfaz de usuario mantienen un estado que no es seguro para los subprocesos.
-3. **Despacho de eventos**: Todos los eventos de la interfaz de usuario se procesan secuencialmente en un solo subproceso.
+1. **Restricciones de la API de webforJ**: la API subyacente de webforJ se vincula al hilo que creó la sesión
+2. **Afinidad de hilo de los componentes**: los componentes de la interfaz de usuario mantienen un estado que no es seguro para los hilos
+3. **Despacho de eventos**: todos los eventos de la interfaz de usuario se procesan secuencialmente en un solo hilo
 
-Este modelo de un solo subproceso evita las condiciones de carrera y mantiene un estado coherente para todos los componentes de la interfaz de usuario, pero plantea dificultades al integrarse con tareas de cálculo asíncronas de larga duración.
+Este modelo de un solo hilo evita las condiciones de carrera y mantiene un estado coherente para todos los componentes de la interfaz de usuario, pero plantea dificultades al integrarse con tareas de cálculo asíncronas y de larga duración.
 
-Cada sesión de usuario tiene su propio `Environment` y su propio subproceso `Environment`. Un subproceso en segundo plano no pertenece a ninguna sesión, por lo que se le debe indicar qué `Environment` debe actualizar.
+Cada sesión de usuario tiene su propio `Environment` y su propio hilo de `Environment`. Un hilo en segundo plano no pertenece a ninguna sesión, por lo que hay que indicarle qué `Environment` debe actualizar.
 
-## API `RunLater` {#runlater-api}
+## API de `RunLater` {#runlater-api}
 
 La API `Environment.runLater()` proporciona dos métodos para programar actualizaciones de la interfaz de usuario. Ambos reciben el `Environment` de destino como primer argumento:
 
@@ -41,15 +41,15 @@ public static PendingResult<Void> runLater(Environment target, Runnable task)
 public static <T> PendingResult<T> runLater(Environment target, Supplier<T> supplier)
 ```
 
-Ambos métodos devuelven un <JavadocLink type="foundation" location="com/webforj/PendingResult" code='true'>PendingResult</JavadocLink> que realiza un seguimiento de la finalización de la tarea y proporciona acceso al resultado o a las excepciones que se hayan producido.
+Ambos métodos devuelven un <JavadocLink type="foundation" location="com/webforj/PendingResult" code='true'>PendingResult</JavadocLink> que realiza el seguimiento de la finalización de la tarea y permite acceder al resultado o a las excepciones que se hayan producido.
 
-:::warning[Variantes sin destino]
-Las variantes `runLater(Runnable)` y `runLater(Supplier)` deducen el destino a partir del subproceso que creó el subproceso que realiza la llamada. En un grupo de subprocesos compartido por varios usuarios, cada tarea se ejecuta en el `Environment` del usuario cuya llamada creó ese subproceso del grupo. Estas variantes están obsoletas desde la versión 26.10 y está previsto eliminarlas en la próxima versión principal. Pasa siempre el destino.
+:::warning[Variantes sin un destino]
+Las variantes `runLater(Runnable)` y `runLater(Supplier)` deducen el destino a partir del hilo que creó el hilo que realiza la llamada. En un grupo de hilos compartido por varios usuarios, todas las tareas se ejecutan en el `Environment` del usuario cuya llamada creó ese hilo del grupo. Estas variantes están obsoletas desde la versión 26.10 y está previsto eliminarlas en la próxima versión principal. Pasa siempre el destino.
 :::
 
 ## Pasar el destino {#passing-the-target}
 
-`Environment.getCurrent()` devuelve el `Environment` del subproceso actual. En el subproceso `Environment`, que es donde se ejecutan los constructores, los controladores de eventos y los métodos del ciclo de vida, devuelve el `Environment` de la sesión. En un subproceso en segundo plano devuelve `null`.
+`Environment.getCurrent()` devuelve el `Environment` del hilo actual. En el hilo de `Environment`, que es donde se ejecutan los constructores, los controladores de eventos y los métodos del ciclo de vida, devuelve el `Environment` de la sesión. En un hilo en segundo plano, devuelve `null`.
 
 Lee el destino allí donde esté disponible, antes de que comience el trabajo en segundo plano, y pásalo al trabajo:
 
@@ -74,11 +74,11 @@ public class DataView extends Composite<Div> {
 }
 ```
 
-Como el destino se pasa como argumento, la llamada funciona desde cualquier subproceso: uno creado por la vista, un subproceso de Spring `@Async`, el `ForkJoinPool` común, un subproceso de temporizador o un subproceso de devolución de llamada de un cliente HTTP.
+Como el destino se pasa como argumento, la llamada funciona desde cualquier hilo: uno creado por la vista, un hilo `@Async` de Spring, el `ForkJoinPool` común, un hilo de temporizador o un hilo de devolución de llamada de un cliente HTTP.
 
-### Leer el destino en el subproceso equivocado {#reading-the-target-on-the-wrong-thread}
+### Leer el destino desde el hilo equivocado {#reading-the-target-on-the-wrong-thread}
 
-El único error que debes evitar es leer `Environment.getCurrent()` dentro del trabajo en segundo plano. Allí devuelve `null` y `runLater()` lanza una `NullPointerException`:
+El único error que hay que evitar es leer `Environment.getCurrent()` dentro del trabajo en segundo plano. En ese contexto devuelve `null`, y `runLater()` lanza una `NullPointerException`:
 
 ```java
 executor.submit(() -> {
@@ -89,15 +89,15 @@ executor.submit(() -> {
 });
 ```
 
-Lo mismo se aplica a los inicializadores estáticos, los subprocesos de `java.util.Timer` y las devoluciones de llamada de bibliotecas externas. Ninguno de ellos tiene un `Environment`, por lo que el destino debe obtenerse de un campo, un parámetro o una variable local capturada cuyo valor se haya asignado en el subproceso `Environment`.
+Lo mismo se aplica a los inicializadores estáticos, los hilos de `java.util.Timer` y las devoluciones de llamada de bibliotecas externas. Ninguno de ellos tiene un `Environment`, por lo que el destino debe obtenerse de un campo, un parámetro o una variable local capturada cuyo valor se haya establecido en el hilo de `Environment`.
 
 ## Comportamiento de ejecución {#execution-behavior}
 
-El comportamiento de ejecución de `runLater()` depende del subproceso desde el que se llama:
+El comportamiento de ejecución de `runLater()` depende del hilo desde el que se llama:
 
-### Desde el subproceso de la interfaz de usuario {#from-the-ui-thread}
+### Desde el hilo de la interfaz de usuario {#from-the-ui-thread}
 
-Cuando se llama desde el propio subproceso `Environment` del destino, las tareas se ejecutan **de forma síncrona e inmediata**:
+Cuando se llama desde el propio hilo de `Environment` del destino, las tareas se ejecutan **de forma síncrona e inmediata**:
 
 ```java
 button.onClick(e -> {
@@ -113,11 +113,11 @@ button.onClick(e -> {
 });
 ```
 
-Gracias a este comportamiento síncrono, las actualizaciones de la interfaz de usuario desde los controladores de eventos se aplican de inmediato y no generan una sobrecarga innecesaria por el uso de colas.
+Con este comportamiento síncrono, las actualizaciones de la interfaz de usuario desde los controladores de eventos se aplican de inmediato y no generan una sobrecarga innecesaria de colas.
 
-### Desde subprocesos en segundo plano {#from-background-threads}
+### Desde hilos en segundo plano {#from-background-threads}
 
-Cuando se llama desde cualquier otro subproceso, las tareas se **añaden a una cola para ejecutarse de forma asíncrona**:
+Cuando se llama desde cualquier otro hilo, las tareas se **ponen en cola para su ejecución asíncrona**:
 
 ```java
 @Override
@@ -140,11 +140,11 @@ public void onDidCreate() {
 }
 ```
 
-webforJ procesa las tareas enviadas desde subprocesos en segundo plano en **estricto orden FIFO**, conservando la secuencia de las operaciones incluso cuando se envían simultáneamente desde varios subprocesos. Gracias a esta garantía de orden, las actualizaciones de la interfaz de usuario se aplican exactamente en el orden en que se enviaron. Por lo tanto, si el subproceso A envía la tarea 1 y luego el subproceso B envía la tarea 2, la tarea 1 siempre se ejecutará antes que la tarea 2 en el subproceso de la interfaz de usuario. Procesar las tareas en orden FIFO evita inconsistencias en la interfaz.
+webforJ procesa las tareas enviadas desde hilos en segundo plano en **estricto orden FIFO**, conservando la secuencia de operaciones incluso cuando se envían simultáneamente desde varios hilos. Esta garantía de orden asegura que las actualizaciones de la interfaz de usuario se apliquen exactamente en el orden en que se enviaron. Por ejemplo, si el hilo A envía la tarea 1 y después el hilo B envía la tarea 2, la tarea 1 siempre se ejecutará antes que la tarea 2 en el hilo de la interfaz de usuario. Procesar las tareas en orden FIFO evita incoherencias en la interfaz de usuario.
 
 ## Cancelación de tareas {#task-cancellation}
 
-El <JavadocLink type="foundation" location="com/webforj/PendingResult" code='true'>PendingResult</JavadocLink> que devuelve `Environment.runLater()` admite la cancelación, lo que permite impedir la ejecución de las tareas en cola. Al cancelar tareas pendientes, puedes evitar pérdidas de memoria e impedir que operaciones de larga duración actualicen la interfaz de usuario cuando ya no sea necesario.
+El <JavadocLink type="foundation" location="com/webforj/PendingResult" code='true'>PendingResult</JavadocLink> que devuelve `Environment.runLater()` admite la cancelación, lo que permite impedir la ejecución de tareas en cola. Al cancelar las tareas pendientes, puedes evitar pérdidas de memoria e impedir que las operaciones de larga duración actualicen la interfaz de usuario cuando ya no sea necesario.
 
 ### Cancelación básica {#basic-cancellation}
 
@@ -161,7 +161,7 @@ if (!result.isDone()) {
 
 ### Administrar varias actualizaciones {#managing-multiple-updates}
 
-Al realizar operaciones de larga duración con actualizaciones frecuentes de la interfaz de usuario, haz un seguimiento de todos los resultados pendientes:
+Al realizar operaciones de larga duración con actualizaciones frecuentes de la interfaz de usuario, realiza un seguimiento de todos los resultados pendientes:
 
 ```java
 public class LongRunningTask {
@@ -204,7 +204,7 @@ public class LongRunningTask {
 
 ### Administración del ciclo de vida de los componentes {#component-lifecycle-management}
 
-Cuando se destruyen componentes (por ejemplo, durante la navegación), cancela todas las actualizaciones pendientes para evitar pérdidas de memoria:
+Cuando se destruyen los componentes (por ejemplo, durante la navegación), cancela todas las actualizaciones pendientes para evitar pérdidas de memoria:
 
 ```java
 @Route
@@ -228,17 +228,17 @@ public class CleanupView extends Composite<Div> {
 
 ## Consideraciones de diseño {#design-considerations}
 
-1. **Requisito del destino**: El `Environment` de destino se obtiene con `Environment.getCurrent()` en el subproceso `Environment` y se pasa al trabajo en segundo plano. Si se lee desde un subproceso en segundo plano, devuelve `null`.
+1. **Requisito del destino**: el `Environment` de destino se obtiene con `Environment.getCurrent()` en el hilo de `Environment` y se pasa al trabajo en segundo plano. Si se lee en un hilo en segundo plano, devuelve `null`.
 
-2. **Prevención de pérdidas de memoria**: Haz siempre un seguimiento de los objetos `PendingResult` y cancélalos en los métodos del ciclo de vida de los componentes. Las lambdas en cola capturan referencias a los componentes de la interfaz de usuario e impiden que el recolector de basura los libere si no se cancelan.
+2. **Prevención de pérdidas de memoria**: realiza siempre un seguimiento de los objetos `PendingResult` y cancélalos en los métodos del ciclo de vida de los componentes. Las lambdas en cola capturan referencias a componentes de la interfaz de usuario e impiden que se recolecten como basura si no se cancelan.
 
-3. **Ejecución FIFO**: Todas las tareas se ejecutan en estricto orden FIFO, independientemente de su importancia. No hay un sistema de prioridades.
+3. **Ejecución FIFO**: todas las tareas se ejecutan en estricto orden FIFO, independientemente de su importancia. No hay un sistema de prioridades.
 
-4. **Limitaciones de la cancelación**: La cancelación solo impide la ejecución de las tareas en cola. Las tareas que ya se están ejecutando finalizarán con normalidad.
+4. **Limitaciones de la cancelación**: la cancelación solo impide la ejecución de tareas en cola. Las tareas que ya se están ejecutando se completarán normalmente.
 
 ## Caso práctico completo: `LongTaskView` {#complete-case-study-longtaskview}
 
-A continuación se muestra una implementación completa, lista para producción, que demuestra las prácticas recomendadas para las actualizaciones asíncronas de la interfaz de usuario:
+A continuación se presenta una implementación completa y lista para producción que muestra las prácticas recomendadas para las actualizaciones asíncronas de la interfaz de usuario:
 
 <!-- vale off -->
 
@@ -453,9 +453,9 @@ public class LongTaskView extends Composite<FlexLayout> {
 
 ### Análisis del caso práctico {#case-study-analysis}
 
-Esta implementación muestra varios patrones esenciales:
+Esta implementación muestra varios patrones fundamentales:
 
-#### 1. Administración del grupo de subprocesos {#1-thread-pool-management}
+#### 1. Administración del grupo de hilos {#1-thread-pool-management}
 ```java
 private final ExecutorService executor = Executors.newSingleThreadExecutor(r -> {
   Thread t = new Thread(r, "LongTaskView-Worker");
@@ -463,32 +463,32 @@ private final ExecutorService executor = Executors.newSingleThreadExecutor(r -> 
   return t;
 });
 ```
-- Usa un **ejecutor de un solo subproceso** para evitar el agotamiento de recursos.
-- Crea **subprocesos daemon** que no impedirán el cierre de la JVM.
+- Usa un **ejecutor de un solo hilo** para evitar el agotamiento de recursos
+- Crea **hilos daemon** que no impedirán el cierre de la JVM
 
-#### 2. Asignar un nombre al destino {#2-naming-the-target}
+#### 2. Nombrar el destino {#2-naming-the-target}
 ```java
 Environment env = Environment.getCurrent();
 ```
-`startLongTask()` se ejecuta en el subproceso `Environment`, por lo que obtiene allí el destino y la tarea en segundo plano lo pasa a cada llamada a `Environment.runLater()`. El mismo código funciona sin cambios con un grupo de subprocesos compartido por toda la aplicación.
+`startLongTask()` se ejecuta en el hilo de `Environment`, por lo que lee allí el destino y la tarea en segundo plano lo pasa a cada llamada a `Environment.runLater()`. El mismo código funciona sin cambios en un grupo de hilos compartido por toda la aplicación.
 
 #### 3. Seguimiento de las actualizaciones pendientes {#3-tracking-pending-updates}
 ```java
 private final List<PendingResult<?>> pendingUIUpdates = new ArrayList<>();
 ```
 Se realiza un seguimiento de cada llamada a `Environment.runLater()` para permitir:
-- Cancelarla cuando el usuario hace clic en Cancelar.
-- Evitar pérdidas de memoria en `onDestroy()`.
-- Realizar una limpieza adecuada durante el ciclo de vida del componente.
+- La cancelación cuando el usuario pulsa el botón de cancelar
+- La prevención de pérdidas de memoria en `onDestroy()`
+- La limpieza adecuada durante el ciclo de vida del componente
 
 #### 4. Cancelación cooperativa {#4-cooperative-cancellation}
 ```java
 private volatile boolean isCancelled = false;
 ```
-El subproceso en segundo plano comprueba este indicador en cada iteración, lo que permite:
-- Responder de inmediato a la cancelación.
-- Salir del bucle limpiamente.
-- Evitar nuevas actualizaciones de la interfaz de usuario.
+El hilo en segundo plano comprueba esta marca en cada iteración, lo que permite:
+- Responder de inmediato a la cancelación
+- Salir limpiamente del bucle
+- Evitar más actualizaciones de la interfaz de usuario
 
 #### 5. Administración del ciclo de vida {#5-lifecycle-management}
 ```java
@@ -500,10 +500,10 @@ protected void onDestroy() {
   executor.shutdown();
 }
 ```
-Es esencial para evitar pérdidas de memoria mediante:
-- La cancelación de todas las actualizaciones de la interfaz de usuario pendientes.
-- La interrupción de los subprocesos en ejecución.
-- El cierre del ejecutor.
+Es fundamental para evitar pérdidas de memoria mediante:
+- La cancelación de todas las actualizaciones pendientes de la interfaz de usuario
+- La interrupción de los hilos en ejecución
+- El apagado del ejecutor
 
 #### 6. Prueba de la capacidad de respuesta de la interfaz de usuario {#6-ui-responsiveness-testing}
 ```java
@@ -512,4 +512,4 @@ testButton.onClick(e -> {
   showToast("Click #" + count + " - UI is responsive!", Theme.GRAY);
 });
 ```
-Demuestra que el subproceso de la interfaz de usuario sigue respondiendo durante las operaciones en segundo plano.
+Demuestra que el hilo de la interfaz de usuario sigue respondiendo durante las operaciones en segundo plano.

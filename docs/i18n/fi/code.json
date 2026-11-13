@@ -5547,5 +5547,44 @@
   },
   "component.footer.platform.title": {
     "message": "Alusta"
+  },
+  "page.intro.opening.eyebrow": {
+    "message": "Johdanto"
+  },
+  "page.intro.opening.title1": {
+    "message": "webforJ kuudessa näkymässä."
+  },
+  "page.intro.opening.title2": {
+    "message": "Koko framework alusta loppuun."
+  },
+  "page.intro.opening.lead": {
+    "message": "webforJ on full stack -Java-kehys liiketoiminnan verkkosovelluksiin: rakennat koko sovelluksen näyttöineen Javalla. Tässä esittelyssä tutustut siihen kuudella lyhyellä näkymällä ensimmäisestä Java-luokastasi tekoälytyökaluihin. Esittely kestää noin viisi minuuttia."
+  },
+  "component.footer.framework.title": {
+    "message": "Framework"
+  },
+  "chip.tooltipText.preview": {
+    "message": "Tämä ominaisuus on esikatselussa. Sen API voi vielä muuttua tulevissa julkaisuissa.",
+    "description": "Hover text to explain this feature is in preview and its API may change."
+  },
+  "chip.label.preview": {
+    "message": "Esikatselu",
+    "description": "Label to show this feature is in preview."
+  },
+  "previewNote.title": {
+    "message": "Esikatselutoiminto"
+  },
+  "previewNote.message": {
+    "message": "Tämä ominaisuus on esikatselussa. Sen API voi vielä muuttua tulevissa julkaisuissa."
+  },
+  "component.megaMenu.products.kotlinDSL.summary": {
+    "message": "Luo webforJ-käyttöliittymiä deklaratiivisesti Kotlinilla tyyppiturvallisten rakentajien ja sisäkkäisten lohkojen avulla Java-koodisi rinnalle. Esikatselussa."
+  },
+  "component.megaMenu.products.mCPApps.summary": {
+    "message": "Salli MCP-yhteensopivan tekoälysovelluksen avata reititetty webforJ-näkymä keskustelussaan, jotta käyttäjä ja tekoäly voivat käyttää samaa reaaliaikaista käyttöliittymää. Esikatselussa."
+  },
+  "componentDemo.tabs": {
+    "message": "Lähdetiedostot",
+    "description": "Accessible label for the file tabs of a component demo"
   }
 }

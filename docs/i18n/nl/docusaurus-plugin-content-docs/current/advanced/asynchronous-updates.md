@@ -5,13 +5,13 @@ title: Asynchrone updates
 description: >-
   Run background work off the UI thread and push updates back to webforJ
   components safely with Environment.runLater and PendingResult.
-_i18n_hash: 8dc68aced15dfd90481cd9ea98e4b2f2
+_i18n_hash: 96865999eae550e8c20172458695ee01
 ---
 <DocChip chip='since' label='25.02' />
 <DocChip chip='experimental' />
 <JavadocLink type="foundation" location="com/webforj/Environment" anchor="runLater(com.webforj.Environment,java.lang.Runnable)" top='true'/>
 
-De `Environment.runLater()`-API biedt een mechanisme om de UI veilig bij te werken vanuit achtergrondthreads in webforJ-applicaties. Deze experimentele functie maakt asynchrone bewerkingen mogelijk, terwijl de threadveiligheid van UI-aanpassingen behouden blijft.
+De API `Environment.runLater()` biedt een mechanisme om de UI veilig bij te werken vanuit achtergrondthreads in webforJ-applicaties. Deze previewfunctie maakt asynchrone bewerkingen mogelijk en zorgt tegelijk voor threadveiligheid bij UI-aanpassingen.
 
 <ExperimentalWarning />
 
@@ -19,39 +19,39 @@ De `Environment.runLater()`-API biedt een mechanisme om de UI veilig bij te werk
 
 ## Het threadmodel begrijpen {#understanding-the-thread-model}
 
-webforJ hanteert een strikt threadmodel waarbij alle UI-bewerkingen op de `Environment`-thread moeten plaatsvinden. Deze beperking bestaat omdat:
+webforJ hanteert een strikt threadmodel waarbij alle UI-bewerkingen moeten plaatsvinden op de `Environment`-thread. Deze beperking bestaat omdat:
 
-1. **Beperkingen van de webforJ-API**: De onderliggende webforJ-API is gekoppeld aan de thread die de sessie heeft aangemaakt
+1. **Beperkingen van de webforJ-API**: De onderliggende webforJ-API is gebonden aan de thread waarop de sessie is aangemaakt
 2. **Threadaffiniteit van componenten**: UI-componenten behouden een status die niet threadveilig is
-3. **Eventdispatching**: Alle UI-gebeurtenissen worden sequentieel verwerkt op één thread
+3. **Gebeurtenisafhandeling**: Alle UI-gebeurtenissen worden sequentieel verwerkt op één thread
 
-Dit single-threadmodel voorkomt racecondities en zorgt voor een consistente status van alle UI-componenten, maar veroorzaakt uitdagingen bij de integratie met asynchrone, langdurige rekentaken.
+Dit single-threadmodel voorkomt racecondities en zorgt voor een consistente status van alle UI-componenten, maar maakt de integratie met asynchrone, langlopende rekentaken lastig.
 
-Elke gebruikerssessie heeft een eigen `Environment` en een eigen `Environment`-thread. Een achtergrondthread hoort bij geen enkele sessie en moet daarom worden verteld welke `Environment` moet worden bijgewerkt.
+Elke gebruikerssessie heeft een eigen `Environment` en een eigen `Environment`-thread. Een achtergrondthread hoort bij geen enkele sessie, dus moet deze verteld worden welke `Environment` moet worden bijgewerkt.
 
 ## De `RunLater`-API {#runlater-api}
 
-De `Environment.runLater()`-API biedt twee methoden om UI-updates in te plannen. Bij beide is de doel-`Environment` het eerste argument:
+De API `Environment.runLater()` biedt twee methoden om UI-updates in te plannen. Beide nemen de doel-`Environment` als eerste argument:
 
 ```java title="Environment.java"
-// Plan een taak zonder retourwaarde in
+// Schedule a task with no return value
 public static PendingResult<Void> runLater(Environment target, Runnable task)
 
-// Plan een taak die een waarde retourneert in
+// Schedule a task that returns a value
 public static <T> PendingResult<T> runLater(Environment target, Supplier<T> supplier)
 ```
 
-Beide methoden retourneren een <JavadocLink type="foundation" location="com/webforj/PendingResult" code='true'>PendingResult</JavadocLink> die de voltooiing van de taak bijhoudt en toegang biedt tot het resultaat of eventuele opgetreden uitzonderingen.
+Beide methoden retourneren een <JavadocLink type="foundation" location="com/webforj/PendingResult" code='true'>PendingResult</JavadocLink> die de taakvoltooiing bijhoudt en toegang biedt tot het resultaat of eventuele opgetreden uitzonderingen.
 
 :::warning[Overloads zonder doel]
-De overloads `runLater(Runnable)` en `runLater(Supplier)` leiden het doel af van de thread die de aanroepende thread heeft aangemaakt. In een threadpool die door meerdere gebruikers wordt gedeeld, wordt elke taak uitgevoerd in de `Environment` van de gebruiker wiens aanroep die poolthread heeft aangemaakt. Deze overloads zijn sinds 26.10 verouderd en worden in de volgende hoofdrelease verwijderd. Geef het doel altijd expliciet mee.
+De overloads `runLater(Runnable)` en `runLater(Supplier)` leiden het doel af van de thread waarop de aanroepende thread is aangemaakt. In een threadpool die door meerdere gebruikers wordt gedeeld, wordt elke taak uitgevoerd in de `Environment` van de gebruiker wiens aanroep die poolthread heeft aangemaakt. Deze overloads zijn sinds 26.10 verouderd verklaard en worden in de volgende major release verwijderd. Geef altijd het doel mee.
 :::
 
 ## Het doel meegeven {#passing-the-target}
 
-`Environment.getCurrent()` retourneert de `Environment` van de huidige thread. Op de `Environment`-thread, waarop constructors, eventhandlers en lifecyclemethoden worden uitgevoerd, retourneert deze methode de `Environment` van de sessie. Op een achtergrondthread retourneert de methode `null`.
+`Environment.getCurrent()` retourneert de `Environment` van de huidige thread. Op de `Environment`-thread, waarop constructors, event handlers en lifecycle-methoden worden uitgevoerd, retourneert deze de `Environment` van de sessie. Op een achtergrondthread retourneert deze `null`.
 
-Lees het doel waar het beschikbaar is, voordat het achtergrondwerk begint, en geef het mee aan dat werk:
+Lees het doel waar het beschikbaar is, voordat het achtergrondwerk begint, en geef het mee aan het werk:
 
 ```java
 @Route
@@ -59,7 +59,7 @@ public class DataView extends Composite<Div> {
   private final ExecutorService executor = Executors.newCachedThreadPool();
 
   public DataView() {
-    // De constructor wordt uitgevoerd op de Environment-thread
+    // The constructor runs on the Environment thread
     Environment env = Environment.getCurrent();
 
     executor.submit(() -> {
@@ -74,22 +74,22 @@ public class DataView extends Composite<Div> {
 }
 ```
 
-Doordat het doel als argument wordt meegegeven, werkt de aanroep vanuit elke thread: een thread die door de view is aangemaakt, een Spring-`@Async`-thread, de gedeelde `ForkJoinPool`, een timerthread of een callbackthread van een HTTP-client.
+Omdat het doel als argument wordt meegegeven, werkt de aanroep vanuit elke thread: een thread die door de view is aangemaakt, een Spring-`@Async`-thread, de algemene `ForkJoinPool`, een timerthread of een callbackthread van een HTTP-client.
 
-### Het doel op de verkeerde thread lezen {#reading-the-target-on-the-wrong-thread}
+### Het doel op de verkeerde thread uitlezen {#reading-the-target-on-the-wrong-thread}
 
-De enige fout die je moet vermijden, is `Environment.getCurrent()` aanroepen binnen het achtergrondwerk. Daar retourneert de methode `null` en veroorzaakt `runLater()` een `NullPointerException`:
+De enige fout die je moet vermijden, is `Environment.getCurrent()` uitlezen binnen het achtergrondwerk. Daar retourneert deze `null`, waardoor `runLater()` een `NullPointerException` veroorzaakt:
 
 ```java
 executor.submit(() -> {
   String data = fetchRemoteData();
 
-  // Fout: getCurrent() retourneert null op een achtergrondthread
+  // Wrong: getCurrent() returns null on a background thread
   Environment.runLater(Environment.getCurrent(), () -> dataLabel.setText(data));
 });
 ```
 
-Hetzelfde geldt voor statische initialisatoren, `java.util.Timer`-threads en callbacks van externe bibliotheken. Geen daarvan heeft een `Environment`, dus moet het doel afkomstig zijn uit een veld, een parameter of een vastgelegde lokale variabele die op de `Environment`-thread is gevuld.
+Hetzelfde geldt voor statische initializers, threads van `java.util.Timer` en callbacks van externe bibliotheken. Geen daarvan heeft een `Environment`, dus moet het doel afkomstig zijn uit een veld, een parameter of een lokale variabele die op de `Environment`-thread is gevuld.
 
 ## Uitvoeringsgedrag {#execution-behavior}
 
@@ -102,22 +102,22 @@ Wanneer de methode wordt aangeroepen vanaf de eigen `Environment`-thread van het
 ```java
 button.onClick(e -> {
   Environment env = Environment.getCurrent();
-  System.out.println("Voor: " + Thread.currentThread().getName());
+  System.out.println("Before: " + Thread.currentThread().getName());
 
   PendingResult<String> result = Environment.runLater(env, () -> {
-    System.out.println("Binnen: " + Thread.currentThread().getName());
-    return "voltooid";
+    System.out.println("Inside: " + Thread.currentThread().getName());
+    return "completed";
   });
 
-  System.out.println("Na: " + result.isDone());  // true
+  System.out.println("After: " + result.isDone());  // true
 });
 ```
 
-Dankzij dit synchrone gedrag worden UI-updates vanuit eventhandlers onmiddellijk toegepast, zonder onnodige wachtrijoverhead.
+Dankzij dit synchrone gedrag worden UI-updates vanuit event handlers onmiddellijk toegepast en ontstaat er geen onnodige overhead door wachtrijen.
 
 ### Vanaf achtergrondthreads {#from-background-threads}
 
-Wanneer de methode wordt aangeroepen vanaf een andere thread, worden taken **in de wachtrij geplaatst voor asynchrone uitvoering**:
+Wanneer de methode wordt aangeroepen vanaf een andere thread, worden taken **in de wachtrij gezet voor asynchrone uitvoering**:
 
 ```java
 @Override
@@ -125,35 +125,35 @@ public void onDidCreate() {
   Environment env = Environment.getCurrent();
 
   CompletableFuture.runAsync(() -> {
-    // Dit wordt uitgevoerd op een ForkJoinPool-thread
-    System.out.println("Achtergrond: " + Thread.currentThread().getName());
+    // This runs on a ForkJoinPool thread
+    System.out.println("Background: " + Thread.currentThread().getName());
 
     PendingResult<Void> result = Environment.runLater(env, () -> {
-      // Dit wordt uitgevoerd op de Environment-thread
-      System.out.println("UI-update: " + Thread.currentThread().getName());
-      statusLabel.setText("Verwerking voltooid");
+      // This runs on the Environment thread
+      System.out.println("UI Update: " + Thread.currentThread().getName());
+      statusLabel.setText("Processing complete");
     });
 
-    // result.isDone() zou hier false zijn
-    // De taak staat in de wachtrij en wordt asynchroon uitgevoerd
+    // result.isDone() would be false here
+    // The task is queued and will execute asynchronously
   });
 }
 ```
 
-webforJ verwerkt taken die vanuit achtergrondthreads worden ingediend in **strikte FIFO-volgorde**, zodat de volgorde van bewerkingen behouden blijft, ook wanneer ze gelijktijdig vanuit meerdere threads worden ingediend. Dankzij deze garantie worden UI-updates precies in de volgorde toegepast waarin ze zijn ingediend. Als thread A dus taak 1 indient en thread B daarna taak 2, wordt taak 1 altijd vóór taak 2 uitgevoerd op de UI-thread. FIFO-verwerking voorkomt inconsistenties in de UI.
+webforJ verwerkt taken die vanuit achtergrondthreads worden ingediend in **strikte FIFO-volgorde**, waarbij de volgorde van bewerkingen behouden blijft, ook wanneer meerdere threads tegelijk taken indienen. Dankzij deze volgorde worden UI-updates precies toegepast in de volgorde waarin ze zijn ingediend. Als thread A dus taak 1 indient en thread B daarna taak 2, wordt taak 1 altijd vóór taak 2 uitgevoerd op de UI-thread. FIFO-verwerking voorkomt inconsistenties in de UI.
 
 ## Taken annuleren {#task-cancellation}
 
-De <JavadocLink type="foundation" location="com/webforj/PendingResult" code='true'>PendingResult</JavadocLink> die door `Environment.runLater()` wordt geretourneerd, ondersteunt annulering. Zo kun je voorkomen dat taken in de wachtrij worden uitgevoerd. Door taken die nog in de wachtrij staan te annuleren, kun je geheugenlekken voorkomen en voorkomen dat langdurige bewerkingen de UI bijwerken wanneer dat niet langer nodig is.
+De <JavadocLink type="foundation" location="com/webforj/PendingResult" code='true'>PendingResult</JavadocLink> die `Environment.runLater()` retourneert, ondersteunt annulering. Zo kun je voorkomen dat taken in de wachtrij worden uitgevoerd. Door openstaande taken te annuleren, kun je geheugenlekken voorkomen en ervoor zorgen dat langlopende bewerkingen de UI niet bijwerken wanneer dat niet langer nodig is.
 
-### Eenvoudige annulering {#basic-cancellation}
+### Eenvoudig annuleren {#basic-cancellation}
 
 ```java
 PendingResult<Void> result = Environment.runLater(env, () -> {
   updateUI();
 });
 
-// Annuleer de taak als deze nog niet is uitgevoerd
+// Cancel if not yet executed
 if (!result.isDone()) {
   result.cancel();
 }
@@ -161,7 +161,7 @@ if (!result.isDone()) {
 
 ### Meerdere updates beheren {#managing-multiple-updates}
 
-Houd bij langdurige bewerkingen met frequente UI-updates alle openstaande resultaten bij:
+Houd bij langlopende bewerkingen met frequente UI-updates alle openstaande resultaten bij:
 
 ```java
 public class LongRunningTask {
@@ -180,7 +180,7 @@ public class LongRunningTask {
           progressBar.setValue(progress);
         });
 
-        // Bijhouden voor eventuele annulering
+        // Track for potential cancellation
         pendingUpdates.add(update);
 
         Thread.sleep(100);
@@ -191,7 +191,7 @@ public class LongRunningTask {
   public void cancelTask() {
     isCancelled = true;
 
-    // Alle openstaande UI-updates annuleren
+    // Cancel all pending UI updates
     for (PendingResult<?> pending : pendingUpdates) {
       if (!pending.isDone()) {
         pending.cancel();
@@ -204,7 +204,7 @@ public class LongRunningTask {
 
 ### De lifecycle van componenten beheren {#component-lifecycle-management}
 
-Wanneer componenten worden vernietigd (bijvoorbeeld tijdens navigatie), annuleer dan alle openstaande updates om geheugenlekken te voorkomen:
+Annuleer bij het vernietigen van componenten (bijvoorbeeld tijdens navigatie) alle openstaande updates om geheugenlekken te voorkomen:
 
 ```java
 @Route
@@ -215,7 +215,7 @@ public class CleanupView extends Composite<Div> {
   protected void onDestroy() {
     super.onDestroy();
 
-    // Alle openstaande updates annuleren om geheugenlekken te voorkomen
+    // Cancel all pending updates to prevent memory leaks
     for (PendingResult<?> pending : pendingUpdates) {
       if (!pending.isDone()) {
         pending.cancel();
@@ -228,17 +228,17 @@ public class CleanupView extends Composite<Div> {
 
 ## Ontwerpoverwegingen {#design-considerations}
 
-1. **Doel vereist**: De doel-`Environment` wordt met `Environment.getCurrent()` gelezen op de `Environment`-thread en meegegeven aan het achtergrondwerk. Als je deze methode op een achtergrondthread aanroept, retourneert ze `null`.
+1. **Vereist doel**: Het doel-`Environment` wordt met `Environment.getCurrent()` uitgelezen op de `Environment`-thread en meegegeven aan het achtergrondwerk. Op een achtergrondthread uitlezen retourneert `null`.
 
-2. **Geheugenlekken voorkomen**: Houd `PendingResult`-objecten altijd bij en annuleer ze in lifecyclemethoden van componenten. Lambdas in de wachtrij leggen verwijzingen naar UI-componenten vast, waardoor deze niet door de garbagecollector kunnen worden opgeruimd als ze niet worden geannuleerd.
+2. **Geheugenlekken voorkomen**: Houd `PendingResult`-objecten altijd bij en annuleer ze in lifecycle-methoden van componenten. Lambdas in de wachtrij houden verwijzingen naar UI-componenten vast, waardoor garbage collection wordt voorkomen als ze niet worden geannuleerd.
 
-3. **FIFO-uitvoering**: Alle taken worden uitgevoerd in strikte FIFO-volgorde, ongeacht hun belang. Er is geen prioriteitssysteem.
+3. **FIFO-uitvoering**: Alle taken worden in strikte FIFO-volgorde uitgevoerd, ongeacht hun belang. Er is geen prioriteitssysteem.
 
-4. **Beperkingen van annulering**: Annulering voorkomt alleen de uitvoering van taken die nog in de wachtrij staan. Taken die al worden uitgevoerd, worden normaal voltooid.
+4. **Beperkingen van annulering**: Annulering voorkomt alleen dat taken in de wachtrij worden uitgevoerd. Taken die al worden uitgevoerd, worden normaal voltooid.
 
 ## Volledige casestudy: `LongTaskView` {#complete-case-study-longtaskview}
 
-De volgende code is een volledige, productieklare implementatie die alle best practices voor asynchrone UI-updates demonstreert:
+Hieronder staat een complete, productieklare implementatie die alle best practices voor asynchrone UI-updates demonstreert:
 
 <!-- vale off -->
 
@@ -247,35 +247,35 @@ De volgende code is een volledige, productieklare implementatie die alle best pr
 ```java
 @Route("/")
 public class LongTaskView extends Composite<FlexLayout> {
-  // Gebruik een executor met één thread om uitputting van resources te voorkomen
-  // Overweeg voor productie een gedeelde threadpool voor de hele applicatie
+  // Use a single thread executor to prevent resource exhaustion
+  // For production, consider using a shared application-wide thread pool
   private final ExecutorService executor = Executors.newSingleThreadExecutor(r -> {
     Thread t = new Thread(r, "LongTaskView-Worker");
     t.setDaemon(true);
     return t;
   });
 
-  // Houd de huidige taak en openstaande UI-updates bij
+  // Track the current task and pending UI updates
   private CompletableFuture<Void> currentTask = null;
   private final List<PendingResult<?>> pendingUIUpdates = new ArrayList<>();
   private volatile boolean isCancelled = false;
 
-  // UI-componenten
+  // UI components
   private final FlexLayout self = getBoundComponent();
-  private H2 titleLabel = new H2("Demo van UI-updates op de achtergrond");
+  private H2 titleLabel = new H2("Background UI Updates Demo");
   private Paragraph descriptionPara = new Paragraph(
-      "Deze demo laat zien hoe Environment.runLater() veilige UI-updates vanuit achtergrondthreads mogelijk maakt. " +
-          "Klik op 'Langdurige taak starten' om een berekening van 10 seconden op de achtergrond uit te voeren die de voortgang in de UI bijwerkt. " +
-          "De knop 'UI testen' laat zien dat de UI responsief blijft tijdens de bewerking op de achtergrond.");
+      "This demo shows how Environment.runLater() enables safe UI updates from background threads. " +
+          "Click 'Start Long Task' to run a 10-second background computation that updates the UI progress. " +
+          "The 'Test UI' button proves the UI remains responsive during the background operation.");
   private TextField statusField = new TextField("Status");
   private ProgressBar progressBar = new ProgressBar();
-  private TextField resultField = new TextField("Resultaat");
-  private Button startButton = new Button("Langdurige taak starten");
-  private Button cancelButton = new Button("Taak annuleren");
-  private Button testButton = new Button("UI testen - klik hier!");
+  private TextField resultField = new TextField("Result");
+  private Button startButton = new Button("Start Long Task");
+  private Button cancelButton = new Button("Cancel Task");
+  private Button testButton = new Button("Test UI - Click Me!");
   private Paragraph footerPara = new Paragraph(
-      "Opmerking: De taak kan op elk moment worden geannuleerd. Zo wordt getoond hoe zowel de " +
-          "achtergrondthread als updates in de wachtrij correct worden opgeruimd.");
+      "Note: The task can be cancelled at any time, demonstrating proper cleanup of both the " +
+          "background thread and queued UI updates.");
   private Toast globalToast = new Toast("", 3000, Theme.GRAY);
   private AtomicInteger clickCount = new AtomicInteger(0);
 
@@ -284,25 +284,25 @@ public class LongTaskView extends Composite<FlexLayout> {
     self.setMaxWidth(400);
     self.setStyle("margin", "1em auto");
 
-    // Velden configureren
+    // Configure fields
     statusField.setReadOnly(true);
-    statusField.setValue("Klaar om te starten");
+    statusField.setValue("Ready to start");
     statusField.setLabel("Status");
 
-    // Voortgangsbalk configureren
+    // Configure progress bar
     progressBar.setMin(0);
     progressBar.setMax(100);
     progressBar.setValue(0);
     progressBar.setAnimated(true);
     progressBar.setStriped(true);
-    progressBar.setText("Voortgang: {{x}}%");
+    progressBar.setText("Progress: {{x}}%");
     progressBar.setTheme(Theme.PRIMARY);
 
     resultField.setReadOnly(true);
     resultField.setValue("");
-    resultField.setLabel("Resultaat");
+    resultField.setLabel("Result");
 
-    // Knoppen configureren
+    // Configure buttons
     startButton.setTheme(ButtonTheme.PRIMARY);
     startButton.onClick(e -> startLongTask());
 
@@ -312,10 +312,10 @@ public class LongTaskView extends Composite<FlexLayout> {
 
     testButton.onClick(e -> {
       int count = clickCount.incrementAndGet();
-      showToast("Klik #" + count + " - de UI reageert!", Theme.GRAY);
+      showToast("Click #" + count + " - UI is responsive!", Theme.GRAY);
     });
 
-    // Componenten toevoegen
+    // Add components
     self.add(titleLabel, descriptionPara, statusField, progressBar, resultField,
         startButton, cancelButton, testButton, footerPara);
   }
@@ -324,83 +324,83 @@ public class LongTaskView extends Composite<FlexLayout> {
   protected void onDestroy() {
     super.onDestroy();
 
-    // Eventuele actieve taak en openstaande UI-updates annuleren
+    // Cancel any running task and pending UI updates
     cancelTask();
 
-    // Verwijzing naar de taak wissen
+    // Clear task reference
     currentTask = null;
 
-    // De executor van deze instantie op een nette manier afsluiten
+    // Shutdown the instance executor gracefully
     executor.shutdown();
   }
 
   private void startLongTask() {
     startButton.setEnabled(false);
     cancelButton.setEnabled(true);
-    statusField.setValue("Achtergrondtaak starten...");
+    statusField.setValue("Starting background task...");
     progressBar.setValue(0);
     resultField.setValue("");
 
-    // De annuleringsvlag resetten en eerdere openstaande updates wissen
+    // Reset cancelled flag and clear previous pending updates
     isCancelled = false;
     pendingUIUpdates.clear();
 
-    // De doel-Environment op de UI-thread lezen, voordat de achtergrondtaak start
+    // Read the target Environment on the UI thread, before the background task starts
     Environment env = Environment.getCurrent();
 
-    // Achtergrondtaak starten met een expliciete executor
-    // Opmerking: cancel(true) onderbreekt de thread, waardoor Thread.sleep() een
-    // InterruptedException genereert
+    // Start background task with explicit executor
+    // Note: cancel(true) will interrupt the thread, causing Thread.sleep() to throw
+    // InterruptedException
     currentTask = CompletableFuture.runAsync(() -> {
       double result = 0;
 
-      // Langdurige taak simuleren met 100 stappen
+      // Simulate long task with 100 steps
       for (int i = 0; i <= 100; i++) {
-        // Controleren of de taak is geannuleerd
+        // Check if cancelled
         if (isCancelled) {
           PendingResult<Void> cancelUpdate = Environment.runLater(env, () -> {
-            statusField.setValue("Taak geannuleerd!");
+            statusField.setValue("Task cancelled!");
             progressBar.setValue(0);
             resultField.setValue("");
             startButton.setEnabled(true);
             cancelButton.setEnabled(false);
-            showToast("Taak is geannuleerd", Theme.GRAY);
+            showToast("Task was cancelled", Theme.GRAY);
           });
           pendingUIUpdates.add(cancelUpdate);
           return;
         }
 
         try {
-          Thread.sleep(100); // In totaal 10 seconden
+          Thread.sleep(100); // 10 seconds total
         } catch (InterruptedException e) {
-          // De thread is onderbroken: onmiddellijk stoppen
-          Thread.currentThread().interrupt(); // De interruptstatus herstellen
+          // Thread was interrupted - exit immediately
+          Thread.currentThread().interrupt(); // Restore interrupted status
           return;
         }
 
-        // Een berekening uitvoeren (deterministisch voor de demo)
-        // Levert waarden tussen 0 en 1 op
+        // Do some calculation (deterministic for demo)
+        // Produces values between 0 and 1
         result += Math.sin(i) * 0.5 + 0.5;
 
-        // De voortgang bijwerken vanuit de achtergrondthread
+        // Update progress from background thread
         final int progress = i;
         PendingResult<Void> updateResult = Environment.runLater(env, () -> {
           progressBar.setValue(progress);
-          statusField.setValue("Bezig met verwerken... " + progress + "%");
+          statusField.setValue("Processing... " + progress + "%");
         });
         pendingUIUpdates.add(updateResult);
       }
 
-      // Laatste update met resultaat (deze code wordt alleen bereikt als de taak zonder
-      // annulering is voltooid)
+      // Final update with result (this code is only reached if the task completed without
+      // cancellation)
       if (!isCancelled) {
         final double finalResult = result;
         PendingResult<Void> finalUpdate = Environment.runLater(env, () -> {
-          statusField.setValue("Taak voltooid!");
-          resultField.setValue("Resultaat: " + String.format("%.2f", finalResult));
+          statusField.setValue("Task completed!");
+          resultField.setValue("Result: " + String.format("%.2f", finalResult));
           startButton.setEnabled(true);
           cancelButton.setEnabled(false);
-          showToast("Achtergrondtaak voltooid!", Theme.SUCCESS);
+          showToast("Background task finished!", Theme.SUCCESS);
         });
         pendingUIUpdates.add(finalUpdate);
       }
@@ -409,13 +409,13 @@ public class LongTaskView extends Composite<FlexLayout> {
 
   private void cancelTask() {
     if (currentTask != null && !currentTask.isDone()) {
-      // De annuleringsvlag instellen
+      // Set the cancelled flag
       isCancelled = true;
 
-      // De hoofdtaak annuleren (onderbreekt de thread)
+      // Cancel the main task (interrupts the thread)
       currentTask.cancel(true);
 
-      // Alle openstaande UI-updates annuleren
+      // Cancel all pending UI updates
       for (PendingResult<?> pending : pendingUIUpdates) {
         if (!pending.isDone()) {
           pending.cancel();
@@ -423,10 +423,10 @@ public class LongTaskView extends Composite<FlexLayout> {
       }
 
       if (!statusField.isDestroyed() && !cancelButton.isDestroyed()) {
-        statusField.setValue("Taak annuleren...");
+        statusField.setValue("Cancelling task...");
         cancelButton.setEnabled(false);
 
-        showToast("Annulering aangevraagd", Theme.GRAY);
+        showToast("Cancellation requested", Theme.GRAY);
       }
     }
   }
@@ -466,27 +466,27 @@ private final ExecutorService executor = Executors.newSingleThreadExecutor(r -> 
 - Gebruikt een **executor met één thread** om uitputting van resources te voorkomen
 - Maakt **daemonthreads** aan die het afsluiten van de JVM niet verhinderen
 
-#### 2. Het doel bepalen {#2-naming-the-target}
+#### 2. Het doel vastleggen {#2-naming-the-target}
 ```java
 Environment env = Environment.getCurrent();
 ```
-`startLongTask()` wordt uitgevoerd op de `Environment`-thread. Daarom leest de methode daar het doel en geeft de achtergrondtaak dit mee aan elke aanroep van `Environment.runLater()`. Dezelfde code werkt ongewijzigd met een gedeelde threadpool voor de hele applicatie.
+`startLongTask()` wordt uitgevoerd op de `Environment`-thread, dus wordt het doel daar uitgelezen en geeft de achtergrondtaak het mee aan elke aanroep van `Environment.runLater()`. Dezelfde code werkt ongewijzigd met een gedeelde threadpool voor de hele applicatie.
 
 #### 3. Openstaande updates bijhouden {#3-tracking-pending-updates}
 ```java
 private final List<PendingResult<?>> pendingUIUpdates = new ArrayList<>();
 ```
-Elke aanroep van `Environment.runLater()` wordt bijgehouden, zodat het volgende mogelijk is:
-- Annulering wanneer de gebruiker op Annuleren klikt
-- Voorkomen van geheugenlekken in `onDestroy()`
-- Correct opruimen tijdens de lifecycle van componenten
+Elke aanroep van `Environment.runLater()` wordt bijgehouden om het volgende mogelijk te maken:
+- Annulering wanneer de gebruiker op annuleren klikt
+- Het voorkomen van geheugenlekken in `onDestroy()`
+- Correcte opruiming tijdens de lifecycle van de component
 
 #### 4. Coöperatieve annulering {#4-cooperative-cancellation}
 ```java
 private volatile boolean isCancelled = false;
 ```
-De achtergrondthread controleert deze vlag bij elke iteratie, wat het volgende mogelijk maakt:
-- Direct reageren op annulering
+De achtergrondthread controleert deze vlag bij elke iteratie. Hierdoor is het volgende mogelijk:
+- Onmiddellijk reageren op annulering
 - De lus netjes verlaten
 - Verdere UI-updates voorkomen
 
@@ -495,7 +495,7 @@ De achtergrondthread controleert deze vlag bij elke iteratie, wat het volgende m
 @Override
 protected void onDestroy() {
   super.onDestroy();
-  cancelTask();  // Hergebruikt de annuleringslogica
+  cancelTask();  // Reuses cancellation logic
   currentTask = null;
   executor.shutdown();
 }
@@ -509,7 +509,7 @@ Essentieel om geheugenlekken te voorkomen door:
 ```java
 testButton.onClick(e -> {
   int count = clickCount.incrementAndGet();
-  showToast("Klik #" + count + " - de UI reageert!", Theme.GRAY);
+  showToast("Click #" + count + " - UI is responsive!", Theme.GRAY);
 });
 ```
-Toont aan dat de UI-thread responsief blijft tijdens bewerkingen op de achtergrond.
+Demonstreert dat de UI-thread responsief blijft tijdens achtergrondbewerkingen.

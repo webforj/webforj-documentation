@@ -1,27 +1,28 @@
 ---
+sidebar_class_name: experimental-content
 title: Écrire votre propre extension
 sidebar_position: 70
 description: >-
   Add a build step by shipping a BundleExtension that declares packages,
   contributes a Bun plugin, and activates on a file type, shown by building a
   Svelte extension end to end.
-_i18n_hash: fb042c0be37d53bf5f46eb1536056275
+_i18n_hash: bffbcd5a76f34d542765e3c2b59ed24d
 ---
 <DocChip chip='since' label='26.01' />
 <DocChip chip='experimental' />
 
-Vous ajoutez un compilateur pour un autre type de source en expédiant une extension, sur le même contrat que les extensions intégrées, de sorte qu'une extension personnalisée se lise exactement comme une extension expédiée.
+Vous pouvez ajouter un compilateur pour un autre type de source en fournissant une extension qui respecte le même contrat que les extensions intégrées. Ainsi, une extension personnalisée se présente exactement comme une extension fournie avec webforJ.
 
-Cette page construit une **[Svelte](https://svelte.dev/)** extension comme exemple complet. Svelte est un cadre de composants dont les fichiers `.svelte` se compilent en JavaScript au moment de la construction. Le bundler ne gère pas cette source par lui-même, donc consommer un composant Svelte depuis webforJ signifie enseigner à la construction comment le compiler, ce que fait exactement une extension. Cela en fait un exemple approprié : un nouveau type de source, enseigné à la construction par l'extension que vous écrivez, puis lié à une classe de la même manière que toute autre entrée.
+Cette page présente une extension **[Svelte](https://svelte.dev/)** complète. Svelte est un framework de composants dont les fichiers `.svelte` sont compilés en JavaScript au moment de la compilation. Le bundler ne traite pas ce type de source de lui-même. Pour utiliser un composant Svelte avec webforJ, il faut donc apprendre au processus de compilation à le compiler : c’est précisément le rôle d’une extension. Cet exemple est donc particulièrement adapté : un nouveau type de source, pris en charge par le processus de compilation grâce à l’extension que vous écrivez, puis associé à une classe comme n’importe quelle autre entrée.
 
-<!-- Ne pas utiliser <ExperimentalWarning /> sur cette page. -->
-:::warning API expérimentale
-L'API d'extension est expérimentale et peut changer entre les versions pendant qu'elle se stabilise. Le mécanisme lui-même est là pour rester, les extensions intégrées sont basées sur le même contrat, mais ses signatures de méthode peuvent évoluer, donc attendez-vous à ajuster une extension personnalisée lorsque vous mettez à jour webforJ.
+<!-- Do NOT use <ExperimentalWarning /> on this page. -->
+:::info API en préversion
+L’API des extensions est en préversion et peut évoluer d’une version à l’autre pendant sa stabilisation. Le mécanisme lui-même est là pour durer, et les extensions intégrées reposent sur le même contrat, mais les signatures de ses méthodes peuvent changer. Prévoyez donc d’adapter votre extension personnalisée lors de la mise à niveau de webforJ.
 :::
 
-## La dépendance au moment de la construction {#the-build-time-dependency}
+## Dépendance au moment de la compilation {#the-build-time-dependency}
 
-Pour écrire une extension, vous compilez contre l'API du bundler. Ajoutez-la avec le scope `provided`, puisque la construction la fournit et que vous ne l'expédiez pas :
+Pour écrire une extension, vous devez compiler votre code avec l’API du bundler. Ajoutez-la avec une portée `provided`, puisque le processus de compilation la fournit et que vous ne l’incluez pas dans votre livrable :
 
 ```xml title="pom.xml"
 <dependency>
@@ -32,9 +33,9 @@ Pour écrire une extension, vous compilez contre l'API du bundler. Ajoutez-la av
 </dependency>
 ```
 
-## L'enveloppe du plugin {#the-bun-plugin-wrapper}
+## Enveloppe du plug-in Bun {#the-bun-plugin-wrapper}
 
-Une extension contribue à un plugin Bun. Gardez le plugin dans une petite ressource `.mjs`. Il exporte par défaut une fabrique que la construction appelle avec les options que vous avez définies pour cette extension, et renvoie le plugin Bun :
+Une extension fournit un plug-in Bun. Placez le plug-in dans une petite ressource `.mjs`. Celle-ci exporte par défaut une fabrique que le processus de compilation appelle avec les options définies pour cette extension, et qui renvoie le plug-in Bun :
 
 ```js title="src/main/resources/frontend-extensions/svelte.mjs"
 import { SveltePlugin } from 'bun-plugin-svelte';
@@ -42,9 +43,9 @@ import { SveltePlugin } from 'bun-plugin-svelte';
 export default (options) => SveltePlugin({ forceSide: 'client', ...options });
 ```
 
-## L'extension {#the-extension}
+## L’extension {#the-extension}
 
-Implémentez `BundleExtension`. Elle se nomme avec un id, décide quand elle s'active, et dans `onWillBundle`, déclare ses paquets et contribue à l'enveloppe :
+Implémentez `BundleExtension`. L’extension s’identifie à l’aide d’un ID, détermine quand elle s’active et déclare ses packages et fournit son enveloppe dans `onWillBundle` :
 
 ```java title="SvelteExtension.java"
 public class SvelteExtension implements BundleExtension {
@@ -89,26 +90,26 @@ public class SvelteExtension implements BundleExtension {
 
 Dans cet exemple :
 
-- `getId()` retourne l'id utilisé pour activer ou désactiver l'extension et pour clé ses options, le même rôle que `webforj-scss` joue pour l'extension SCSS.
-- `isEnabledByDefault` active l'extension quand une source `.svelte` est présente, la règle [activer par type de fichier](/docs/managing-resources/bundler/extensions/overview#activated-by-file-type) que suivent les extensions curées.
-- `onWillBundle` déclare les dépendances de construction dont le compilateur a besoin et contribue le plugin Bun sous l'id de l'extension.
+- `getId()` renvoie l’ID utilisé pour activer ou désactiver l’extension et définir ses options. Il joue le même rôle que `webforj-scss` pour l’extension SCSS.
+- `isEnabledByDefault` active l’extension lorsqu’une source `.svelte` est présente, conformément à la règle [d’activation par type de fichier](/docs/managing-resources/bundler/extensions/overview#activated-by-file-type) suivie par les extensions sélectionnées.
+- `onWillBundle` déclare les dépendances de compilation requises par le compilateur et fournit le plug-in Bun sous l’ID de l’extension.
 
-## Enregistrement de l'extension {#registering-the-extension}
+## Enregistrement de l’extension {#registering-the-extension}
 
-La construction découvre une extension comme un service sur le classpath. Ajoutez un fichier de service nommé pour `BundleExtension`, avec le nom de classe entièrement qualifié :
+Le processus de compilation découvre une extension en tant que service présent dans le classpath. Ajoutez un fichier de service portant le nom de `BundleExtension` et contenant le nom de classe complet :
 
 ```text title="META-INF/services/com.webforj.bundle.bun.BundleExtension"
 com.example.SvelteExtension
 ```
 
-Avec le fichier de service en place, une source `.svelte` se compile maintenant, et la vue consomme l'élément que le composant enregistre.
+Une fois le fichier de service en place, les sources `.svelte` sont compilées, et la vue utilise l’élément enregistré par le composant.
 
 ## Options {#options}
 
-L'extension transmet les options que vous définissez sous son id directement au plugin Bun. Définissez-les dans `bun.config.ts` :
+L’extension transmet directement au plug-in Bun les options que vous définissez sous son ID. Définissez-les dans `bun.config.ts` :
 
 ```ts title="src/main/frontend/bun.config.ts"
 export const options = {
-  'svelte': { /* options du bun-plugin-svelte */ }
+  'svelte': { /* bun-plugin-svelte options */ }
 };
 ```

@@ -1805,5 +1805,18 @@
   "page.uiComponents.entrance.sectionsLabel": "0923f438706b493816122b5c00df8cd1",
   "page.uiComponents.meta.title": "93f8ca6fc247eab42cec4d756f26a03d",
   "page.uiComponents.meta.description": "def916adce36486ac74978f62f4ccec6",
-  "component.footer.platform.title": "419f3742e6de8e0ec4b22cce005e7630"
+  "component.footer.platform.title": "419f3742e6de8e0ec4b22cce005e7630",
+  "item.label.Framework": "07782c22a88d1e82a09910124a9225a2",
+  "page.intro.opening.eyebrow": "0b79795d3efc95b9976c7c5b933afce2",
+  "page.intro.opening.title1": "3290539b9a28eeb2d5023bc00790350e",
+  "page.intro.opening.title2": "71ac678e67afd152c1d5a63c516770fa",
+  "page.intro.opening.lead": "b77352f4645b9af8afe0a14f8cfc1e1a",
+  "chip.tooltipText.preview": "ca83cf187fb062aee461f198ce62740a",
+  "chip.label.preview": "31fde7b05ac8952dacf4af8a704074ec",
+  "previewNote.title": "452bacad20aa1092ee6e33b2bd820579",
+  "previewNote.message": "ca83cf187fb062aee461f198ce62740a",
+  "component.megaMenu.products.kotlinDSL.summary": "5309efa27f7c4d96db191f42887ab5ec",
+  "component.megaMenu.products.mCPApps.summary": "1b9d85b3ff240b5783376aca5a42fca9",
+  "component.footer.framework.title": "07782c22a88d1e82a09910124a9225a2",
+  "componentDemo.tabs": "13aff1404de364a08f481ebb15989627"
 }

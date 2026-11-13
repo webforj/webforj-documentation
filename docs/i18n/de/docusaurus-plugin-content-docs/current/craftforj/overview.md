@@ -8,7 +8,7 @@ description: >-
   Inspect the component tree of a running webforJ app, change components live,
   and write the changes you keep back into your Java source.
 sidebar_class_name: new-content
-_i18n_hash: e5fd219fd4360d24535c26696d1c9d1d
+_i18n_hash: 727e01ac5960e204363665aba672d6c7
 ---
 <Head>
   <style>{`
@@ -18,13 +18,15 @@ _i18n_hash: e5fd219fd4360d24535c26696d1c9d1d
   `}</style>
 </Head>
 
-<DocChip chip='since' label='26.02' />
+<!-- vale off -->
+# craftforJ <DocChip chip='since' label='26.02' />
+<!-- vale on -->
 
-**craftforJ** ist die visuelle Entwicklungsumgebung, die mit webforJ geliefert wird. Sie läuft in Ihrer App im Entwicklungsmodus und bietet Ihnen eine Live-Ansicht der Komponenten, die Ihr Java-Code erstellt hat. Sie können eine Komponente auswählen, ihre Eigenschaften ändern, sehen, wie sich die laufende App sofort aktualisiert, und die Änderungen, die Sie behalten möchten, zurück in die Java-Datei schreiben, die sie erstellt hat.
+**craftforJ** ist die visuelle Entwicklungsumgebung, die mit webforJ ausgeliefert wird. Sie läuft im Entwicklungsmodus innerhalb Ihrer App und zeigt live die Komponenten an, die Ihr Java-Code erstellt hat. Sie können eine Komponente auswählen, ihre Eigenschaften ändern, die sofortige Aktualisierung der laufenden App sehen und die gewünschten Änderungen in die Java-Datei zurückschreiben, in der die Komponente erstellt wurde.
 
 <!-- INTRO_END -->
 
-Da craftforJ die App über webforJ selbst liest, beschreibt es die App in den Begriffen, in denen Sie sie geschrieben haben. Der Baum listet Ihre Komponenten auf, anstatt das Markup anzuzeigen, das der Browser gerendert hat; die Eigenschaften sind die, die Ihre Komponenten deklarieren, und die Routen sind die, die Ihr Router registriert hat, zusammen mit den Zugriffsregeln, die Sie annotiert haben.
+Da craftforJ die App über webforJ selbst ausliest, beschreibt es die App anhand der Begriffe, mit denen Sie sie geschrieben haben. Der Komponentenbaum zeigt Ihre Komponenten statt des Markups, das der Browser gerendert hat. Die Eigenschaften entsprechen den von Ihren Komponenten deklarierten Eigenschaften, und die Routen entsprechen den von Ihrem Router registrierten Routen, einschließlich der Zugriffskontrollen, die Sie dafür festgelegt haben.
 
 <div class="videos-container">
       <video controls preload="metadata">
@@ -34,19 +36,19 @@ Da craftforJ die App über webforJ selbst liest, beschreibt es die App in den Be
 
 ## Was Sie damit tun können {#what-you-can-do-with-it}
 
-- **[Komponenten inspizieren](/docs/craftforj/inspector)** - durchsuchen Sie den Komponentenbaum, wählen Sie eine Komponente aus, indem Sie darauf in der Seite klicken, und ändern Sie ihre Eigenschaften, während die App läuft.
-- **[Änderungen an den Quellcode schreiben](/docs/craftforj/source-changes)** - überprüfen Sie Ihre Live-Bearbeitungen als Diff und wenden Sie sie auf Ihre Java-Dateien an.
-- **[Mit Routen arbeiten](/docs/craftforj/routes)** - sehen Sie die Routing-Tabelle, navigieren Sie zu beliebigen Routen und ändern Sie die darauf deklarierten Zugriffsregeln.
-- **[Das App-Thema anpassen](/docs/craftforj/theme)** - passen Sie die Designtokens an, auf denen Ihre App basiert, und speichern Sie das Ergebnis in Ihrem Stylesheet.
-- **[Den KI-Agenten nutzen](/docs/craftforj/ai)** - ein Programmieragent innerhalb der laufenden App, der Java unabhängig schreibt, was er geschrieben hat kompiliert und es mit Ihrer Genehmigung anwendet.
+- **[Komponenten untersuchen](/docs/craftforj/inspector)** – Durchsuchen Sie den Komponentenbaum, wählen Sie eine Komponente durch Anklicken auf der Seite aus und ändern Sie ihre Eigenschaften, während die App läuft.
+- **[Änderungen in den Quellcode schreiben](/docs/craftforj/source-changes)** – Überprüfen Sie Ihre Live-Änderungen als Diff und übernehmen Sie sie in Ihre Java-Dateien.
+- **[Mit Routen arbeiten](/docs/craftforj/routes)** – Sehen Sie sich die Routing-Tabelle an, navigieren Sie zu einer beliebigen Route und ändern Sie die dafür festgelegten Zugriffskontrollen.
+- **[Die App gestalten](/docs/craftforj/theme)** – Passen Sie die Design-Tokens an, aus denen Ihre App aufgebaut ist, und speichern Sie das Ergebnis in Ihrem Stylesheet.
+- **[Den KI-Agenten verwenden](/docs/craftforj/ai)** – Ein Coding-Agent innerhalb der laufenden App, der beliebigen Java-Code schreibt, diesen kompiliert und nach Ihrer Freigabe anwendet.
 
-## Wie es sich von einem Debugger unterscheidet {#how-it-differs-from-a-debugger}
+## Unterschiede zu einem Debugger {#how-it-differs-from-a-debugger}
 
-Ein Debugger pausiert Ihren Code und zeigt Ihnen den Status Ihrer Variablen in diesem Moment. craftforJ lässt die App laufen und zeigt Ihnen die Benutzeroberfläche, die Ihr Code erzeugt hat, sodass Sie mit dem Ergebnis anstelle der Ausführung arbeiten. Die beiden beantworten unterschiedliche Fragen und werden oft zusammen verwendet.
+Ein Debugger hält Ihren Code an und zeigt Ihnen den Zustand Ihrer Variablen zu diesem Zeitpunkt. craftforJ lässt die App weiterlaufen und zeigt Ihnen die von Ihrem Code erzeugte Benutzeroberfläche. Sie arbeiten also mit dem Ergebnis statt mit der Ausführung. Die beiden beantworten unterschiedliche Fragen und werden häufig gemeinsam verwendet.
 
 ## Nur im Entwicklungsmodus {#development-mode-only}
 
-craftforJ erfordert, dass zwei separate Einstellungen aktiviert sind, und standardmäßig antwortet es nur auf den Browser, der auf demselben Rechner wie die App läuft. Projekte, die mit [startforJ](https://docs.webforj.com/startforj) oder aus einem webforJ [Archetyp](/docs/building-ui/archetypes/overview) erstellt wurden, aktivieren es für Sie, sodass es beim ersten Ausführen verfügbar ist. Siehe [Sicherheit](/docs/craftforj/security), um zu erfahren, worauf craftforJ Zugriff hat und wie Sie bestätigen können, dass es in der Produktion deaktiviert ist.
+Für craftforJ müssen zwei separate Einstellungen aktiviert sein. Standardmäßig antwortet es nur dem Browser, der auf demselben Rechner wie die App läuft. Projekte, die mit [startforJ](https://docs.webforj.com/startforj) oder einem webforJ-[Archetyp](/docs/building-ui/archetypes/overview) erstellt wurden, aktivieren craftforJ automatisch, sodass es bereits beim ersten Start verfügbar ist. Unter [Sicherheit](/docs/craftforj/security) erfahren Sie, worauf craftforJ zugreifen kann und wie Sie überprüfen, dass es in der Produktionsumgebung deaktiviert ist.
 
 ## Themen {#topics}
 

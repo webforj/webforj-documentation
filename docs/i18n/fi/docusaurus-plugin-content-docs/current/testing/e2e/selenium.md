@@ -4,26 +4,26 @@ title: Testaus Seleniumilla
 description: >-
   Drive a webforJ app from JUnit with Selenium WebDriver and WebDriverManager to
   simulate user interactions and assert UI state.
-_i18n_hash: 865e29cc6d656fb60a0a3332a805c5f4
+_i18n_hash: 482f683ba0db2228dfbfb9fdbea794e7
 ---
-Tämä dokumentaatio kuvaa prosessia webforJ-sovellusten testaamiseen Seleniumin avulla, keskittyen erityisesti `HelloWorldView`:hin `webforj-archetype-hello-world`-projektista.
+Tässä dokumentaatiossa kuvataan webforJ-sovellusten testaaminen Seleniumilla. Esimerkissä keskitytään `webforj-archetype-hello-world`-sovelluksen `HelloWorldView`-näkymään.
 
 :::info Sovelluksen perusteet
-Lisätietoja `webforj-archetype-hello-world`-projektista saat [Sovelluksen perusteet -esittely](../../introduction/basics) -osiosta.
+Lisätietoja `webforj-archetype-hello-world`-sovelluksesta on kohdassa [Sovelluksen perusteiden esittely](../../introduction/basics).
 :::
 
-## Esivaatimukset {#prerequisites}
+## Edellytykset {#prerequisites}
 
-Ennen Selenium-testien suorittamista varmista, että:
-- webforJ-sovellus on oikein asetettu ja toimii paikallisella palvelimellasi.
-- Olet asentanut:
-  - Selenium Java -kirjastot.
-  - Yhteensopivan WebDriverin selaimellesi.
-  - Maven projektin riippuvuuksia varten.
+Varmista ennen Selenium-testien suorittamista seuraavat asiat:
+- webforJ-sovellus on määritetty oikein ja käynnissä paikallisella palvelimellasi.
+- Olet asentanut seuraavat:
+  - Seleniumin Java-sidokset.
+  - Selaimellesi yhteensopivan WebDriverin.
+  - Mavenin projektin riippuvuuksien hallintaa varten.
 
-## Maven-konfiguraatio {#maven-configuration}
+## Maven-määritys {#maven-configuration}
 
-Lisää tarvittavat riippuvuudet `pom.xml`-tiedostoon Seleniumille ja muille testauskirjastoille:
+Lisää Seleniumin ja muiden testikirjastojen tarvittavat riippuvuudet tiedostoon `pom.xml`:
 
 ```xml title="pom.xml"
 <dependencies>
@@ -47,7 +47,7 @@ Lisää tarvittavat riippuvuudet `pom.xml`-tiedostoon Seleniumille ja muille tes
 
 ## Testiesimerkki: `HelloWorldView` {#testing-example-helloworldview}
 
-Seuraava koodi esittää Selenium-pohjaisen testin `HelloWorldView`-komponentille.
+Seuraava koodi näyttää Selenium-pohjaisen testin `HelloWorldView`-komponentille.
 
 ```java title="HelloWorldViewTest.java"
 package com.example.views;
@@ -104,28 +104,28 @@ class HelloWorldViewTest {
 ### Keskeiset vaiheet {#key-steps}
 
 1. **Alusta WebDriver**:
-   - Käytä [`WebDriverManager`](https://github.com/bonigarcia/webdrivermanager) -työkalua hallitaksesi selaimen ajurin suoritettavaa tiedostoa automaattisesti.
+   - Käytä [`WebDriverManager`](https://github.com/bonigarcia/webdrivermanager)-kirjastoa selaimen ajuriohjelman automaattiseen hallintaan.
 
-2. **Aseta testausympäristö**:
-   - Käynnistä testipalvelin `http://localhost:<port>/`.
-   - Odota, kunnes sivun otsikko vastaa odotettua `webforJ Hello World`.
+2. **Määritä testiympäristö**:
+   - Käynnistä testipalvelin osoitteessa `http://localhost:<port>/`.
+   - Odota, kunnes sivun otsikko vastaa odotettua arvoa `webforJ Hello World`.
 
-3. **Vuorovaikuta elementtien kanssa**:
-   - Etsi elementtejä käyttäen `By.tagName`, `By.id` tai muita Selenium-lokattoreita.
-   - Vahvista odotettu käyttäytyminen, kuten painikkeiden napsautukset tai tekstin muutokset.
+3. **Käsittele elementtejä**:
+   - Etsi elementtejä käyttämällä `By.tagName`-, `By.id`- tai muita Seleniumin paikantimia.
+   - Varmista odotettu toiminta, kuten painikkeen napsauttaminen tai tekstin muuttuminen.
 
   :::info
-  Koska webforJ tuottaa yksisivuisen verkkosovelluksen, Selenium ei ole tietoinen DOM-muokkauksista sen jälkeen, kun alkuperäinen sivu on ladattu. Voit käyttää Seleniumin [WebDriverWait API:a](https://www.selenium.dev/selenium/docs/api/java/org/openqa/selenium/support/ui/WebDriverWait.html) odottaaksesi, kunnes DOM on käännetty.
+  Koska webforJ tuottaa yksisivuisen verkkosovelluksen, Selenium ei havaitse DOM-manipulaatiota sivun ensimmäisen latauksen jälkeen. Voit odottaa DOMin kääntämistä Seleniumin [WebDriverWait-rajapinnalla](https://www.selenium.dev/selenium/docs/api/java/org/openqa/selenium/support/ui/WebDriverWait.html).
   :::
 
-4. **Siivous**:
-   - Lopeta WebDriver-istunto vapauttaaksesi resurssit.
+4. **Siivoa testin jälkeen**:
+   - Sulje WebDriver-istunto vapauttaaksesi resurssit.
 
 ### Testien suorittaminen {#running-tests}
 
 1. Käynnistä webforJ-palvelin:
    ```bash
-   mvn jetty:run
+   mvn
    ```
 
 2. Suorita testitapaukset:
@@ -133,7 +133,7 @@ class HelloWorldViewTest {
    mvn test
    ```
 
-## Odotettu käyttäytyminen {#expected-behavior}
+## Odotettu toiminta {#expected-behavior}
 
-- Käyttäessäsi `http://localhost:<port>/`, `HelloWorldView`-sivu latautuu.
-- `dwc-button`-elementin, jonka teksti on `Say Hello`, pitäisi olla läsnä.
+- Kun avaat osoitteen `http://localhost:<port>/`, `HelloWorldView`-sivu latautuu.
+- `dwc-button`-elementin, jonka teksti on `Say Hello`, pitäisi olla näkyvissä.

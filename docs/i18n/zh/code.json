@@ -5547,5 +5547,44 @@
   },
   "component.footer.platform.title": {
     "message": "平台"
+  },
+  "chip.tooltipText.preview": {
+    "message": "此功能目前处于预览阶段，其 API 在未来版本中仍可能发生变化。",
+    "description": "Hover text to explain this feature is in preview and its API may change."
+  },
+  "chip.label.preview": {
+    "message": "预览",
+    "description": "Label to show this feature is in preview."
+  },
+  "previewNote.title": {
+    "message": "预览功能"
+  },
+  "previewNote.message": {
+    "message": "此功能目前处于预览阶段，其 API 未来版本中仍可能更改。"
+  },
+  "component.megaMenu.products.kotlinDSL.summary": {
+    "message": "使用 Kotlin 以声明式方式构建 webforJ UI，通过类型安全构建器和嵌套块与 Java 代码并用。预览中。"
+  },
+  "component.megaMenu.products.mCPApps.summary": {
+    "message": "让支持 MCP 的 AI 应用在对话中打开路由式 webforJ 视图，让用户和 AI 在同一实时界面中协作。预览版。"
+  },
+  "page.intro.opening.eyebrow": {
+    "message": "简介"
+  },
+  "page.intro.opening.title1": {
+    "message": "webforJ，六屏呈现"
+  },
+  "page.intro.opening.title2": {
+    "message": "从头到尾的完整框架。"
+  },
+  "page.intro.opening.lead": {
+    "message": "webforJ 是面向企业 Web 应用的全栈 Java 框架：整个应用，包括界面，都用 Java 构建。本导览通过六个简短页面，带你了解从第一个 Java 类到 AI 工具的内容。大约需要五分钟。"
+  },
+  "component.footer.framework.title": {
+    "message": "框架"
+  },
+  "componentDemo.tabs": {
+    "message": "源文件",
+    "description": "Accessible label for the file tabs of a component demo"
   }
 }

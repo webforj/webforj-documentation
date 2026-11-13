@@ -1,13 +1,12 @@
 ---
-title: Fehlerbehebung
+title: Fehlersuche
 sidebar_position: 15
 description: >-
   Attach a remote Java debugger to a running webforJ app from Visual Studio
   Code, IntelliJ IDEA, or Eclipse using Jetty on port 8000.
-sidebar_class_name: updated-content
-_i18n_hash: c7b0a48745ef8f5793e38a3dd7691176
+_i18n_hash: d3f71dbbc660b90f2f4c33fd071c9819
 ---
-Debugging ist ein wesentlicher Bestandteil der Java-Entwicklung, der Entwicklern hilft, Probleme effizient zu identifizieren und zu beheben. Diese Anleitung erklärt, wie man das Debugging in webforJ für Visual Studio Code, IntelliJ IDEA und Eclipse konfiguriert.
+Das Debuggen ist ein wesentlicher Bestandteil der Java-Entwicklung und hilft Entwicklern, Probleme effizient zu erkennen und zu beheben. Diese Anleitung erklärt, wie Sie das Debuggen in webforJ für Visual Studio Code, IntelliJ IDEA und Eclipse konfigurieren.
 
 <Tabs>
 <TabItem value="vscode" label="Visual Studio Code">
@@ -19,10 +18,10 @@ Debugging ist ein wesentlicher Bestandteil der Java-Entwicklung, der Entwicklern
 </div>
 
 1. Öffnen Sie Ihr webforJ-Projekt in VS Code.
-2. Drücken Sie <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>D</kbd> (oder <kbd>Cmd</kbd> + <kbd>Shift</kbd> + <kbd>D</kbd> auf Mac), um das Panel Ausführen und Debuggen zu öffnen.
-3. Klicken Sie auf "create a launch.json file".
-4. Wählen Sie Java als das Umfeld aus.
-5. Ändern Sie `launch.json`, um Folgendes zu entsprechen:
+2. Drücken Sie <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>D</kbd> (oder auf dem Mac <kbd>Cmd</kbd> + <kbd>Shift</kbd> + <kbd>D</kbd>), um den Bereich „Ausführen und Debuggen“ zu öffnen.
+3. Klicken Sie auf „create a launch.json file“.
+4. Wählen Sie Java als Umgebung aus.
+5. Passen Sie `launch.json` wie folgt an:
 
 ```json title="launch.json"
 {
@@ -39,7 +38,7 @@ Debugging ist ein wesentlicher Bestandteil der Java-Entwicklung, der Entwicklern
 }
 ```
 
-6. Speichern Sie die Datei und klicken Sie auf Start Debugging.
+6. Speichern Sie die Datei und klicken Sie auf „Debuggen starten“.
 
 </TabItem>
 <TabItem value="intellij" label="IntelliJ IDEA">
@@ -51,10 +50,10 @@ Debugging ist ein wesentlicher Bestandteil der Java-Entwicklung, der Entwicklern
 </div>
 
 1. Öffnen Sie Ihr Projekt in IntelliJ IDEA.
-2. Navigieren Sie zu Ausführen → Konfigurationen bearbeiten.
-3. Klicken Sie auf die <kbd>+</kbd>-Schaltfläche und wählen Sie Remote JVM Debug.
-4. Setzen Sie den Host auf `localhost` und den Port auf `8000`.
-5. Speichern Sie die Konfiguration und klicken Sie auf Debug, um sich an die laufende App anzuhängen.
+2. Navigieren Sie zu „Run“ → „Edit Configurations“.
+3. Klicken Sie auf die Schaltfläche <kbd>+</kbd> und wählen Sie „Remote JVM Debug“ aus.
+4. Legen Sie den Host auf `localhost` und den Port auf `8000` fest.
+5. Speichern Sie die Konfiguration und klicken Sie auf „Debug“, um eine Verbindung zur laufenden App herzustellen.
 
 </TabItem>
 <TabItem value="eclipse" label="Eclipse">
@@ -66,40 +65,38 @@ Debugging ist ein wesentlicher Bestandteil der Java-Entwicklung, der Entwicklern
 </div>
 
 1. Öffnen Sie Ihr Projekt in Eclipse.
-2. Gehen Sie zu Ausführen → Konfigurationen bearbeiten.
-3. Wählen Sie Remote Java Application.
-4. Klicken Sie auf Neue Konfiguration und setzen Sie:
+2. Navigieren Sie zu „Run“ → „Edit Configurations“.
+3. Wählen Sie „Remote Java Application“ aus.
+4. Klicken Sie auf „New Configuration“ und legen Sie Folgendes fest:
    - Host: `localhost`
    - Port: `8000`
-5. Speichern Sie und starten Sie den Debugger.
+5. Speichern Sie die Konfiguration und starten Sie den Debugger.
 
 </TabItem>
 </Tabs>
 
-## Ausführen des Debuggers {#running-the-debugger}
+## Debugger ausführen {#running-the-debugger}
 
-Sobald Sie Ihre IDE konfiguriert haben:
+Nachdem Sie Ihre IDE konfiguriert haben:
 
-1. Starten Sie Ihre webforJ-App mit dem entsprechenden Befehl:
-    - Für Jetty verwenden Sie `mvnDebug jetty:run`.
-    - Für Spring Boot verwenden Sie `mvnDebug spring-boot:run`.
+1. Starten Sie Ihre webforJ-App mit `mvnDebug`.
 2. Führen Sie die Debug-Konfiguration in Ihrer IDE aus.
 3. Setzen Sie Haltepunkte und beginnen Sie mit dem Debuggen.
 
-:::tip Debugging Tipps
-1. Stellen Sie sicher, dass der Port 8000 verfügbar ist und nicht durch eine Firewall blockiert wird.
-2. Wenn Sie eines der webforJ-Archetypen verwenden und die Portnummer in der pom.xml-Datei geändert haben, stellen Sie sicher, dass der für das Debugging verwendete Port mit dem aktualisierten Wert übereinstimmt.
+:::tip Tipps zum Debuggen
+1. Vergewissern Sie sich, dass Port 8000 verfügbar und nicht durch eine Firewall blockiert ist.
+2. Wenn Sie eines der webforJ-Archetypen verwenden und die Portnummer in der Datei pom.xml geändert haben, muss der für das Debuggen verwendete Port mit dem aktualisierten Wert übereinstimmen.
 :::
 
-## Überprüfen der laufenden App {#inspecting-the-running-app}
+## Laufende App untersuchen {#inspecting-the-running-app}
 
-Ein Debugger zeigt Ihnen, was Ihr Code tut. [craftforJ](/docs/craftforj) zeigt Ihnen die App, die der Code produziert hat, einschließlich des Komponentenbaums, den webforJ erstellt hat, die Eigenschaften, die jede Komponente hat, welcher Pfad aktiv ist und wer darauf zugreifen darf. Sie können eine Eigenschaft ändern, das Ergebnis in der laufenden App sehen und diese Änderung in den ursprünglichen Java-Code zurückschreiben.
+Ein Debugger zeigt Ihnen, was Ihr Code gerade tut. [craftforJ](/docs/craftforj) zeigt Ihnen die App, die dieser Code erstellt hat, einschließlich des Komponentenbaums, den webforJ aufgebaut hat, der Eigenschaften jeder Komponente, der aktiven Route und der Personen, die darauf zugreifen dürfen. Sie können eine Eigenschaft ändern, das Ergebnis in der laufenden App sehen und die Änderung zurück in den Java-Code schreiben, aus dem sie stammt.
 
-craftforJ wird mit webforJ ausgeliefert und verwendet den gleichen Debug-Modus, den Sie bereits aktiviert haben, plus eine zusätzliche Eigenschaft:
+craftforJ wird mit webforJ ausgeliefert und verwendet denselben Debug-Modus, den Sie bereits aktiviert haben, sowie eine zusätzliche Eigenschaft:
 
 ```ini title="webforj.conf"
 webforj.debug = true
 webforj.devtools.craftforj.enabled = true
 ```
 
-Siehe [Erste Schritte mit craftforJ](/docs/craftforj/getting-started).
+Weitere Informationen finden Sie unter [Erste Schritte mit craftforJ](/docs/craftforj/getting-started).

@@ -102,5 +102,9 @@
   "item.label.Showcase": {
     "message": "Showcase",
     "description": "Navbar item with label Showcase"
+  },
+  "item.label.Framework": {
+    "message": "Framework",
+    "description": "Navbar item with label Framework"
   }
 }

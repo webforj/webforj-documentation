@@ -5,13 +5,13 @@ title: 异步更新
 description: >-
   Run background work off the UI thread and push updates back to webforJ
   components safely with Environment.runLater and PendingResult.
-_i18n_hash: 8dc68aced15dfd90481cd9ea98e4b2f2
+_i18n_hash: 96865999eae550e8c20172458695ee01
 ---
 <DocChip chip='since' label='25.02' />
 <DocChip chip='experimental' />
 <JavadocLink type="foundation" location="com/webforj/Environment" anchor="runLater(com.webforj.Environment,java.lang.Runnable)" top='true'/>
 
-`Environment.runLater()` API 提供了一种机制，可在 webforJ 应用中从后台线程安全地更新 UI。此实验性功能支持异步操作，同时确保 UI 修改的线程安全。
+`Environment.runLater()` API 提供了一种机制，可在 webforJ 应用中从后台线程安全地更新 UI。此预览功能支持异步操作，同时确保 UI 修改的线程安全。
 
 <ExperimentalWarning />
 
@@ -19,19 +19,19 @@ _i18n_hash: 8dc68aced15dfd90481cd9ea98e4b2f2
 
 ## 了解线程模型 {#understanding-the-thread-model}
 
-webforJ 强制采用严格的线程模型，所有 UI 操作都必须在 `Environment` 线程上执行。此限制的原因包括：
+webforJ 强制采用严格的线程模型，所有 UI 操作都必须在 `Environment` 线程上执行。此限制的原因如下：
 
-1. **webforJ API 的限制**：底层 webforJ API 会绑定到创建会话的线程
-2. **组件的线程亲和性**：UI 组件维护的状态并非线程安全
+1. **webforJ API 约束**：底层 webforJ API 绑定到创建会话的线程
+2. **组件的线程关联性**：UI 组件会维护非线程安全的状态
 3. **事件分发**：所有 UI 事件都在单个线程上按顺序处理
 
-这种单线程模型可以避免竞态条件，并确保所有 UI 组件的状态一致，但在集成异步的长时间运行计算任务时会带来挑战。
+这种单线程模型可以避免竞态条件，并确保所有 UI 组件的状态一致，但在集成异步、长时间运行的计算任务时会带来挑战。
 
-每个用户会话都有自己的 `Environment` 和对应的 `Environment` 线程。后台线程不属于任何会话，因此必须指定要更新的 `Environment`。
+每个用户会话都有自己的 `Environment` 和 `Environment` 线程。后台线程不属于任何会话，因此必须明确指定要更新哪个 `Environment`。
 
 ## `RunLater` API {#runlater-api}
 
-`Environment.runLater()` API 提供了两种用于安排 UI 更新的方法。两种方法的第一个参数都是目标 `Environment`：
+`Environment.runLater()` API 提供了两种用于安排 UI 更新的方法。两种方法都将目标 `Environment` 作为第一个参数：
 
 ```java title="Environment.java"
 // Schedule a task with no return value
@@ -41,17 +41,17 @@ public static PendingResult<Void> runLater(Environment target, Runnable task)
 public static <T> PendingResult<T> runLater(Environment target, Supplier<T> supplier)
 ```
 
-两种方法都会返回一个 <JavadocLink type="foundation" location="com/webforj/PendingResult" code='true'>PendingResult</JavadocLink>，用于跟踪任务完成状态，并提供访问结果或所发生异常的方式。
+两种方法都会返回一个 <JavadocLink type="foundation" location="com/webforj/PendingResult" code='true'>PendingResult</JavadocLink>，用于跟踪任务完成情况，并提供访问结果或发生的异常的方式。
 
-:::warning[不带目标参数的重载]
-`runLater(Runnable)` 和 `runLater(Supplier)` 这两个重载会根据创建当前调用线程的线程来推测目标。如果线程池由多个用户共享，那么每个任务都会在创建该池线程的用户所对应的 `Environment` 中运行。这些重载自 26.10 起已弃用，并计划在下一个主要版本中移除。请始终传入目标参数。
+:::warning[不带目标参数的重载方法]
+重载方法 `runLater(Runnable)` 和 `runLater(Supplier)` 会根据创建当前线程的线程来推测目标。如果在线程池由多个用户共享的情况下使用，每个任务都会在创建该线程池线程的用户所对应的 `Environment` 中运行。这些重载方法自 26.10 起已弃用，并计划在下一个主版本中移除。请始终传入目标。
 :::
 
 ## 传入目标 {#passing-the-target}
 
-`Environment.getCurrent()` 返回当前线程的 `Environment`。在 `Environment` 线程上（构造函数、事件处理程序和生命周期方法都在该线程上运行），它会返回会话的 `Environment`。在后台线程上，它会返回 `null`。
+`Environment.getCurrent()` 会返回当前线程的 `Environment`。在 `Environment` 线程上（构造函数、事件处理程序和生命周期方法都在此线程上运行），它会返回会话的 `Environment`。在后台线程上，它会返回 `null`。
 
-应在目标可用时，也就是后台工作开始之前读取目标，并将其传递给后台工作：
+请在目标可用时，也就是后台工作开始前读取目标，并将其传递给后台工作：
 
 ```java
 @Route
@@ -74,11 +74,11 @@ public class DataView extends Composite<Div> {
 }
 ```
 
-由于目标作为参数传入，因此可以从任何线程调用此方法：视图创建的线程、Spring `@Async` 线程、公共 `ForkJoinPool`、计时器线程，或 HTTP 客户端的回调线程。
+由于目标是作为参数传入的，因此可以从任何线程调用此方法：视图创建的线程、Spring `@Async` 线程、公共 `ForkJoinPool`、计时器线程或 HTTP 客户端的回调线程。
 
 ### 在错误的线程上读取目标 {#reading-the-target-on-the-wrong-thread}
 
-需要避免的错误是在后台工作中调用 `Environment.getCurrent()`。此时它会返回 `null`，导致 `runLater()` 抛出 `NullPointerException`：
+应避免的唯一错误是在后台工作中调用 `Environment.getCurrent()`。此时它会返回 `null`，导致 `runLater()` 抛出 `NullPointerException`：
 
 ```java
 executor.submit(() -> {
@@ -89,7 +89,7 @@ executor.submit(() -> {
 });
 ```
 
-静态初始化器、`java.util.Timer` 线程和外部库回调也有同样的问题。它们都没有 `Environment`，因此目标必须来自字段、参数，或在 `Environment` 线程上赋值后捕获的局部变量。
+静态初始化器、`java.util.Timer` 线程和外部库回调也同样如此。它们都没有 `Environment`，因此目标必须来自字段、参数，或在 `Environment` 线程上赋值并捕获的局部变量。
 
 ## 执行行为 {#execution-behavior}
 
@@ -97,7 +97,7 @@ executor.submit(() -> {
 
 ### 从 UI 线程调用 {#from-the-ui-thread}
 
-如果从目标自身的 `Environment` 线程调用，任务会**同步并立即**执行：
+从目标自身的 `Environment` 线程调用时，任务会**同步且立即**执行：
 
 ```java
 button.onClick(e -> {
@@ -113,11 +113,11 @@ button.onClick(e -> {
 });
 ```
 
-借助这种同步行为，事件处理程序中的 UI 更新会立即应用，不会产生不必要的排队开销。
+得益于这种同步行为，事件处理程序中的 UI 更新会立即应用，不会产生不必要的排队开销。
 
 ### 从后台线程调用 {#from-background-threads}
 
-如果从任何其他线程调用，任务会**排队等待异步执行**：
+从任何其他线程调用时，任务会**排队等待异步执行**：
 
 ```java
 @Override
@@ -140,11 +140,11 @@ public void onDidCreate() {
 }
 ```
 
-webforJ 会严格按照 **FIFO 顺序**处理从后台线程提交的任务，即使这些任务是由多个线程并发提交的，也会保留其操作顺序。借助这一顺序保证，UI 更新会严格按照提交顺序应用。因此，如果线程 A 提交任务 1，随后线程 B 提交任务 2，那么任务 1 总会先于任务 2 在 UI 线程上执行。按 FIFO 顺序处理任务可以避免 UI 状态不一致。
+webforJ 会按照严格的 FIFO 顺序处理从后台线程提交的任务，即使任务是由多个线程并发提交的，也能保持操作顺序。有了这一顺序保证，UI 更新会严格按照提交顺序应用。因此，如果线程 A 提交任务 1，随后线程 B 提交任务 2，那么任务 1 始终会先于任务 2 在 UI 线程上执行。按 FIFO 顺序处理任务可以避免 UI 状态不一致。
 
-## 取消任务 {#task-cancellation}
+## 任务取消 {#task-cancellation}
 
-`Environment.runLater()` 返回的 <JavadocLink type="foundation" location="com/webforj/PendingResult" code='true'>PendingResult</JavadocLink> 支持取消，因此可以阻止排队中的任务执行。取消待处理任务有助于避免内存泄漏，并防止不再需要的长时间运行操作继续更新 UI。
+`Environment.runLater()` 返回的 <JavadocLink type="foundation" location="com/webforj/PendingResult" code='true'>PendingResult</JavadocLink> 支持取消，因此可以阻止排队中的任务执行。取消待处理任务可以避免内存泄漏，并防止不再需要的长时间运行操作继续更新 UI。
 
 ### 基本取消 {#basic-cancellation}
 
@@ -161,7 +161,7 @@ if (!result.isDone()) {
 
 ### 管理多个更新 {#managing-multiple-updates}
 
-执行长时间运行的操作并频繁更新 UI 时，应跟踪所有待处理结果：
+执行长时间运行且需要频繁更新 UI 的操作时，请跟踪所有待处理结果：
 
 ```java
 public class LongRunningTask {
@@ -204,7 +204,7 @@ public class LongRunningTask {
 
 ### 组件生命周期管理 {#component-lifecycle-management}
 
-组件销毁时（例如导航期间），应取消所有待处理更新，以避免内存泄漏：
+组件销毁时（例如，在导航过程中），请取消所有待处理的更新，以避免内存泄漏：
 
 ```java
 @Route
@@ -228,17 +228,17 @@ public class CleanupView extends Composite<Div> {
 
 ## 设计注意事项 {#design-considerations}
 
-1. **目标要求**：在 `Environment` 线程上通过 `Environment.getCurrent()` 读取目标 `Environment`，并将其传递给后台工作。在后台线程上读取会返回 `null`。
+1. **目标要求**：在 `Environment` 线程上通过 `Environment.getCurrent()` 读取目标 `Environment`，并将其传递给后台工作。在后台线程上读取时会返回 `null`。
 
 2. **防止内存泄漏**：始终在组件生命周期方法中跟踪并取消 `PendingResult` 对象。排队中的 lambda 会捕获 UI 组件的引用；如果不取消，就会阻止垃圾回收。
 
-3. **FIFO 执行**：所有任务都严格按照 FIFO 顺序执行，不考虑任务的重要性。此处没有优先级系统。
+3. **FIFO 执行**：所有任务都会严格按照 FIFO 顺序执行，无论其重要性如何。系统没有优先级机制。
 
-4. **取消的限制**：取消只能阻止尚在排队中的任务执行。已经开始执行的任务会正常完成。
+4. **取消限制**：取消只能阻止排队中的任务执行。已经开始执行的任务会正常完成。
 
 ## 完整案例研究：`LongTaskView` {#complete-case-study-longtaskview}
 
-下面是一个完整且可用于生产环境的实现，展示了异步 UI 更新的所有最佳实践：
+以下是一个完整的、可用于生产环境的实现，展示了异步 UI 更新的所有最佳实践：
 
 <!-- vale off -->
 
@@ -453,7 +453,7 @@ public class LongTaskView extends Composite<FlexLayout> {
 
 ### 案例分析 {#case-study-analysis}
 
-此实现展示了几个关键模式：
+此实现展示了几种关键模式：
 
 #### 1. 线程池管理 {#1-thread-pool-management}
 ```java
@@ -463,32 +463,32 @@ private final ExecutorService executor = Executors.newSingleThreadExecutor(r -> 
   return t;
 });
 ```
-- 使用**单线程执行器**，避免资源耗尽
-- 创建**守护线程**，使其不会阻止 JVM 关闭
+- 使用**单线程执行器**以避免资源耗尽
+- 创建**守护线程**，不会阻止 JVM 关闭
 
-#### 2. 指定目标 {#2-naming-the-target}
+#### 2. 命名目标 {#2-naming-the-target}
 ```java
 Environment env = Environment.getCurrent();
 ```
-`startLongTask()` 在 `Environment` 线程上运行，因此它会在该线程上读取目标，并由后台任务将目标传递给每次 `Environment.runLater()` 调用。相同代码也可以直接用于共享的应用级线程池。
+`startLongTask()` 在 `Environment` 线程上运行，因此会在该线程上读取目标，并由后台任务将其传递给每次 `Environment.runLater()` 调用。相同的代码也可以直接用于应用范围内共享的线程池。
 
-#### 3. 跟踪待处理的更新 {#3-tracking-pending-updates}
+#### 3. 跟踪待处理更新 {#3-tracking-pending-updates}
 ```java
 private final List<PendingResult<?>> pendingUIUpdates = new ArrayList<>();
 ```
 跟踪每次 `Environment.runLater()` 调用，以便：
-- 用户点击取消时取消任务
+- 在用户点击取消时取消任务
 - 在 `onDestroy()` 中防止内存泄漏
-- 在组件生命周期内执行适当的清理
+- 在组件生命周期内妥善清理
 
 #### 4. 协作式取消 {#4-cooperative-cancellation}
 ```java
 private volatile boolean isCancelled = false;
 ```
 后台线程会在每次迭代时检查此标志，从而实现：
-- 立即响应取消请求
-- 正常退出循环
-- 防止继续更新 UI
+- 对取消操作立即响应
+- 干净地退出循环
+- 防止继续进行 UI 更新
 
 #### 5. 生命周期管理 {#5-lifecycle-management}
 ```java
@@ -500,7 +500,7 @@ protected void onDestroy() {
   executor.shutdown();
 }
 ```
-这是防止内存泄漏的关键措施，具体包括：
+这对于防止内存泄漏至关重要，具体方式包括：
 - 取消所有待处理的 UI 更新
 - 中断正在运行的线程
 - 关闭执行器
@@ -512,4 +512,4 @@ testButton.onClick(e -> {
   showToast("Click #" + count + " - UI is responsive!", Theme.GRAY);
 });
 ```
-此示例展示了在后台操作期间，UI 线程仍能保持响应。
+此示例说明，即使在后台操作期间，UI 线程仍能保持响应。

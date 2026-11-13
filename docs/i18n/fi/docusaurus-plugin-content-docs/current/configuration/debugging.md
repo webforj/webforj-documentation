@@ -1,13 +1,12 @@
 ---
-title: Vianetsintä
+title: Virheenkorjaus
 sidebar_position: 15
 description: >-
   Attach a remote Java debugger to a running webforJ app from Visual Studio
   Code, IntelliJ IDEA, or Eclipse using Jetty on port 8000.
-sidebar_class_name: updated-content
-_i18n_hash: c7b0a48745ef8f5793e38a3dd7691176
+_i18n_hash: d3f71dbbc660b90f2f4c33fd071c9819
 ---
-Virheenkorjaus on olennainen osa Java-kehitystä, ja se auttaa kehittäjiä tunnistamaan ja korjaamaan ongelmia tehokkaasti. Tämä opas selittää, kuinka konfiguroidaan virheenkorjaus webforJ:ssä Visual Studio Codessa, IntelliJ IDEA:ssa ja Eclipsessä.
+Virheenkorjaus on olennainen osa Java-kehitystä, sillä se auttaa kehittäjiä tunnistamaan ja korjaamaan ongelmia tehokkaasti. Tässä oppaassa kerrotaan, miten virheenkorjaus määritetään webforJ:ssä Visual Studio Codea, IntelliJ IDEAa ja Eclipseä varten.
 
 <Tabs>
 <TabItem value="vscode" label="Visual Studio Code">
@@ -19,10 +18,10 @@ Virheenkorjaus on olennainen osa Java-kehitystä, ja se auttaa kehittäjiä tunn
 </div>
 
 1. Avaa webforJ-projektisi VS Codessa.
-2. Paina <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>D</kbd> (tai <kbd>Cmd</kbd> + <kbd>Shift</kbd> + <kbd>D</kbd> Macilla) avataksesi Suorita ja virheenkorjaus -paneelin.
-3. Napsauta "luo launch.json-tiedosto"
+2. Avaa Suorita ja virheenkorjaus -paneeli painamalla <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>D</kbd> (tai Macissa <kbd>Cmd</kbd> + <kbd>Shift</kbd> + <kbd>D</kbd>).
+3. Napsauta "create a launch.json file".
 4. Valitse ympäristöksi Java.
-5. Muokkaa `launch.json` seuraavaksi:
+5. Muokkaa `launch.json`-tiedostoa seuraavasti:
 
 ```json title="launch.json"
 {
@@ -30,7 +29,7 @@ Virheenkorjaus on olennainen osa Java-kehitystä, ja se auttaa kehittäjiä tunn
   "configurations": [
     {
       "type": "java",
-      "name": "Liity Jettyyn",
+      "name": "Attach to Jetty",
       "request": "attach",
       "hostName": "localhost",
       "port": 8000
@@ -39,7 +38,7 @@ Virheenkorjaus on olennainen osa Java-kehitystä, ja se auttaa kehittäjiä tunn
 }
 ```
 
-6. Tallenna tiedosto ja napsauta Käynnistä virheenkorjaus.
+6. Tallenna tiedosto ja napsauta Aloita virheenkorjaus.
 
 </TabItem>
 <TabItem value="intellij" label="IntelliJ IDEA">
@@ -50,11 +49,11 @@ Virheenkorjaus on olennainen osa Java-kehitystä, ja se auttaa kehittäjiä tunn
       </video>
 </div>
 
-1. Avaa projektisi IntelliJ IDEA:ssa.
-2. Siirry kohtaan Suorita → Muokkaa konfiguraatioita.
-3. Napsauta <kbd>+</kbd> -painiketta ja valitse Etä-JVM-virheenkorjaus.
-4. Aseta isäntäkoneeksi `localhost` ja portiksi `8000`.
-5. Tallenna konfiguraatio ja napsauta Virheenkorjaus liittääksesi käynnissä olevaan sovellukseen.
+1. Avaa projektisi IntelliJ IDEAssa.
+2. Valitse Run → Edit Configurations.
+3. Napsauta <kbd>+</kbd>-painiketta ja valitse Remote JVM Debug.
+4. Aseta palvelimeksi `localhost` ja portiksi `8000`.
+5. Tallenna määritys ja liitä se käynnissä olevaan sovellukseen napsauttamalla Debug.
 
 </TabItem>
 <TabItem value="eclipse" label="Eclipse">
@@ -66,40 +65,38 @@ Virheenkorjaus on olennainen osa Java-kehitystä, ja se auttaa kehittäjiä tunn
 </div>
 
 1. Avaa projektisi Eclipsessä.
-2. Siirry kohtaan Suorita → Muokkaa konfiguraatioita.
-3. Valitse Etäinen Java-sovellus.
-4. Napsauta Uusi konfiguraatio ja aseta:
-   - Isäntä: `localhost`
-   - Portti: `8000`
-5. Tallenna ja käynnistä virheenkorjaus.
+2. Valitse Run → Edit Configurations.
+3. Valitse Remote Java Application.
+4. Napsauta New Configuration ja määritä:
+   - Host: `localhost`
+   - Port: `8000`
+5. Tallenna määritys ja käynnistä virheenjäljitin.
 
 </TabItem>
 </Tabs>
 
-## Virheenkorjaimen käyttö {#running-the-debugger}
+## Virheenkorjaimen suorittaminen {#running-the-debugger}
 
-Kun olet konfiguroinut IDE:si:
+Kun olet määrittänyt IDE:n:
 
-1. Käynnistä webforJ-sovelluksesi vastaavalla komennolla:
-    - Jettylle käytä `mvnDebug jetty:run`
-    - Spring Bootille käytä `mvnDebug spring-boot:run`
-2. Suorita virheenkorjauskonfiguraatio IDE:ssäsi.
-3. Aseta katkokohdat ja ala virheenkorjata.
+1. Käynnistä webforJ-sovelluksesi komennolla `mvnDebug`.
+2. Suorita virheenkorjausmääritys IDE:ssäsi.
+3. Aseta keskeytyskohdat ja aloita virheenkorjaus.
 
-:::tip Virheenkorjausvinkit
-1. Varmista, että portti 8000 on käytettävissä eikä minkään palomuurin estämä.
-2. Jos käytät jotain webforJ-mallia ja olet muuttanut porttinumeroa pom.xml-tiedostossa, varmista, että virheenkorjauksessa käytettävä portti vastaa päivitettyä arvoa.
+:::tip Virheenkorjausvinkkejä
+1. Varmista, että portti 8000 on käytettävissä eikä palomuuri estä sitä.
+2. Jos käytät jotakin webforJ-arkkityyppiä ja olet muuttanut porttinumeroa pom.xml-tiedostossa, varmista, että virheenkorjauksessa käytetään uutta porttinumeroa.
 :::
 
 ## Käynnissä olevan sovelluksen tarkastelu {#inspecting-the-running-app}
 
-Virheenkorjausohjelma näyttää, mitä koodisi tekee. [craftforJ](/docs/craftforj) näyttää sinulle sovelluksen, jonka koodi tuotti, mukaan lukien komponenttipuun, jonka webforJ rakensi, kunkin komponentin ominaisuudet, mikä reitti on aktiivinen ja kuka voi käyttää sitä. Voit muuttaa ominaisuutta, nähdä tuloksen käynnissä olevassa sovelluksessa ja kirjoittaa muutoksen takaisin siihen Javaan, josta se tuli.
+Virheenkorjain näyttää, mitä koodisi tekee. [craftforJ](/docs/craftforj) näyttää sovelluksen, jonka koodi tuotti. Näet esimerkiksi webforJ:n luoman komponenttipuun, kunkin komponentin ominaisuudet, aktiivisen reitin ja sen, kenellä on pääsy reitille. Voit muuttaa ominaisuutta, nähdä muutoksen vaikutuksen käynnissä olevassa sovelluksessa ja kirjoittaa muutoksen takaisin sitä vastaavaan Java-koodiin.
 
-craftforJ toimitetaan webforJ:n mukana ja käyttää samaa virheenkorjaustilaa, jonka olet jo mahdollistanut, plus yhden lisäominaisuuden:
+craftforJ toimitetaan webforJ:n mukana, ja se käyttää samaa virheenkorjaustilaa, jonka olet jo ottanut käyttöön, sekä yhtä lisäominaisuutta:
 
 ```ini title="webforj.conf"
 webforj.debug = true
 webforj.devtools.craftforj.enabled = true
 ```
 
-Katso [Aloitus craftforJ:n kanssa](/docs/craftforj/getting-started).
+Katso [craftforJ:n käytön aloittaminen](/docs/craftforj/getting-started).

@@ -4,15 +4,17 @@ sidebar_position: 7
 description: >-
   Group Table columns under shared, nestable multi-row headers using
   ColumnGroup.of and setColumnGroups for complex layouts.
-_i18n_hash: 7a0ad76ea48fafddc0aa9965309b48b8
+_i18n_hash: 4babef21ef20728da6aa7eec5829e4d1
 ---
-<DocChip chip='since' label='25.12' />
+<!-- vale off -->
+# Spaltengruppen <DocChip chip='since' label='25.12' />
+<!-- vale on -->
 
-Spaltengruppen ermöglichen es Ihnen, verwandte Spalten unter gemeinsamen, mehrzeiligen Überschriften zu organisieren. Ein Gruppenlabel spannt sich über seine Kindspalten und erleichtert es den Benutzern, die Struktur komplexer Tabellen zu scannen und zu verstehen. Gruppen können beliebig tief geschachtelt werden, und die `Table` rendert automatisch die richtige Anzahl an Kopfzeilen.
+Mit Spaltengruppen können Sie zusammengehörige Spalten unter gemeinsamen, mehrzeiligen Überschriften organisieren. Die Beschriftung einer Gruppe erstreckt sich über die zugehörigen Spalten. So können Benutzer die Struktur komplexer Tabellen leichter erfassen. Gruppen lassen sich beliebig tief verschachteln, und die `Table` rendert automatisch die richtige Anzahl an Kopfzeilen.
 
-## Erstellen von Spaltengruppen {#creating-column-groups}
+## Spaltengruppen erstellen {#creating-column-groups}
 
-Erstellen Sie eine Gruppe mit der Fabrikmethode `ColumnGroup.of()`, und verketten Sie dann `add()`-Aufrufe, um sie mit Spaltenverweisen, anderen Gruppen oder einer Mischung aus beidem zu füllen. Wenden Sie die Gruppen mit `setColumnGroups()` auf eine `Table` an.
+Erstellen Sie eine Gruppe mit der Factory-Methode `ColumnGroup.of()` und fügen Sie anschließend mit verketteten `add()`-Aufrufen Spaltenreferenzen, weitere Gruppen oder eine Kombination aus beidem hinzu. Wenden Sie die Gruppen mit `setColumnGroups()` auf eine `Table` an.
 
 <!-- vale off -->
 <ComponentDemo
@@ -26,7 +28,7 @@ height='600px'
 />
 <!-- vale on -->
 
-Wenn Gruppen festgelegt sind, rendert die `Table` eine mehrzeilige Kopfzeile, in der jedes Gruppenlabel über seinen Kindspalten spannt. Die Schachtelungstiefe bestimmt, wie viele Kopfzeilen erscheinen. Eine flache Gruppe fügt eine zusätzliche Zeile hinzu, während eine zweistufige Schachtelung zwei hinzufügt, und so weiter.
+Wenn Gruppen festgelegt sind, rendert die `Table` eine mehrzeilige Kopfzeile, in der sich die Beschriftung jeder Gruppe über die zugehörigen Spalten erstreckt. Die Verschachtelungstiefe bestimmt, wie viele Kopfzeilen angezeigt werden. Eine einfache Gruppe fügt eine zusätzliche Zeile hinzu, eine zweistufige Verschachtelung zwei und so weiter.
 
 <!-- vale off -->
 <ComponentDemo
@@ -41,7 +43,7 @@ height='600px'
 <!-- vale on -->
 
 <!-- vale Google.OxfordComma = NO -->
-Gruppen können jederzeit festgelegt oder geändert werden, bevor oder nachdem die `Table` gerendert wird. Übergeben Sie `null` oder eine leere Liste an `setColumnGroups()`, um alle Gruppierungen zu entfernen und zu einer einzeiligen Kopfzeile zurückzukehren.
+Gruppen können jederzeit festgelegt oder geändert werden, sowohl vor als auch nach dem Rendern der `Table`. Übergeben Sie `null` oder eine leere Liste an `setColumnGroups()`, um alle Gruppierungen zu entfernen und wieder eine einzeilige Kopfzeile zu erhalten.
 <!-- vale Google.OxfordComma = YES -->
 
 ```java
@@ -51,25 +53,25 @@ table.setColumnGroups(null);
 
 ## Spaltenreihenfolge {#column-ordering}
 
-Wenn Gruppen aktiv sind, wird die visuelle Spaltenreihenfolge durch den Gruppenzweig bestimmt, nicht durch die Reihenfolge, in der die Spalten zur `Table` hinzugefügt wurden. Der Baum wird tiefenorientiert von links nach rechts durchlaufen.
+Wenn Gruppen aktiv sind, wird die visuelle Spaltenreihenfolge durch den Gruppenbaum bestimmt und nicht durch die Reihenfolge, in der die Spalten zur `Table` hinzugefügt wurden. Der Baum wird tiefensuchend von links nach rechts durchlaufen.
 
 ```
-Hinzufügte Spalten:  [A, B, C, D, E]
-Gruppen:           Gruppe "G1" [C, A], Gruppe "G2" [E, D]
-Visuelle Reihenfolge:   C, A, E, D, B
+Hinzugefügte Spalten: [A, B, C, D, E]
+Gruppen:              Gruppe "G1" [C, A], Gruppe "G2" [E, D]
+Visuelle Reihenfolge: C, A, E, D, B
 ```
 
-Ungruppierte Spalten, die in keiner Gruppe referenziert sind, werden nicht ausgeblendet. Sie erscheinen an ihrer natürlichen Position im Verhältnis zu gruppierten Spalten, basierend auf der Reihenfolge, in der sie ursprünglich zur `Table` hinzugefügt wurden.
+Nicht gruppierte Spalten, also Spalten, auf die in keiner Gruppe verwiesen wird, werden nicht ausgeblendet. Sie erscheinen an ihrer natürlichen Position relativ zu den gruppierten Spalten, entsprechend der Reihenfolge, in der sie ursprünglich zur `Table` hinzugefügt wurden.
 
-In diesem Beispiel erscheint `Number` zuerst, weil es vor `Title` hinzugefügt wurde. `Label` erscheint zwischen `Genre` und `Cost`, weil es zwischen ihnen in der ursprünglichen Spaltenreihenfolge hinzugefügt wurde:
+In diesem Beispiel erscheint `Number` zuerst, da es vor `Title` hinzugefügt wurde. `Label` erscheint zwischen `Genre` und `Cost`, da es in der ursprünglichen Spaltenreihenfolge zwischen ihnen hinzugefügt wurde:
 
 ```
-Hinzufügte Spalten:  [Number, Title, Artist, Genre, Label, Cost]
-Gruppen:           Gruppe "Music" [Title, Artist, Genre], Gruppe "Pricing" [Cost]
-Visuelle Reihenfolge:   Number, Title, Artist, Genre, Label, Cost
+Hinzugefügte Spalten: [Number, Title, Artist, Genre, Label, Cost]
+Gruppen:              Gruppe "Music" [Title, Artist, Genre], Gruppe "Pricing" [Cost]
+Visuelle Reihenfolge: Number, Title, Artist, Genre, Label, Cost
 ```
 
-Die folgende Demo veranschaulicht dieses Verhalten. `Number` und `Label` sind in keiner Gruppe referenziert, behalten aber ihre natürlichen Positionen basierend auf der Reihenfolge, in der sie zur `Table` hinzugefügt wurden.
+Die folgende Demo veranschaulicht dieses Verhalten. Auf `Number` und `Label` wird in keiner Gruppe verwiesen. Sie behalten jedoch ihre natürliche Position entsprechend der Reihenfolge, in der sie zur `Table` hinzugefügt wurden.
 
 <!-- vale off -->
 <ComponentDemo
@@ -83,30 +85,30 @@ height='600px'
 />
 <!-- vale on -->
 
-:::tip Kontrolle der Platzierung ungruppierter Spalten
-Um die Platzierung ungruppierter Spalten explizit zu steuern, fügen Sie sie als oberste Spaltenverweise im Gruppenzweig hinzu.
+:::tip Platzierung nicht gruppierter Spalten steuern
+Um die Platzierung nicht gruppierter Spalten explizit zu steuern, nehmen Sie sie als Spaltenreferenzen der obersten Ebene in den Gruppenbaum auf.
 :::
 
-## Spaltenverschiebung innerhalb von Gruppen {#column-moving-within-groups}
+## Spalten innerhalb von Gruppen verschieben {#column-moving-within-groups}
 
-Wenn Gruppen aktiv sind, ist die Drag-and-Drop-Spaltenbewegung eingeschränkt, um die Integrität der Gruppe aufrechtzuerhalten:
+Wenn Gruppen aktiv sind, ist das Verschieben von Spalten per Drag-and-drop eingeschränkt, damit die Gruppenstruktur erhalten bleibt:
 
-- **Innerhalb einer Gruppe**: Eine Spalte innerhalb einer Gruppe kann nur innerhalb ihrer unmittelbaren übergeordneten Gruppe verschoben werden. Das Ziehen nach außerhalb der Gruppe wird abgelehnt, und die Spalte springt an ihre ursprüngliche Position zurück.
-- **Ungruppierte Spalten**: Eine ungruppierte Spalte kann nur in Positionen verschoben werden, die von anderen ungruppierten Spalten besetzt sind. Sie kann nicht in die Mitte einer Gruppe fallen.
-- **Gruppen neu anordnen**: Eine gesamte Gruppe kann gezogen werden, um sie unter ihren Geschwistern auf derselben Schachtelungsebene neu anzuordnen.
+- **Innerhalb einer Gruppe**: Eine Spalte innerhalb einer Gruppe kann nur innerhalb ihrer unmittelbaren übergeordneten Gruppe verschoben werden. Wird sie aus der Gruppe gezogen, wird die Aktion abgelehnt und die Spalte springt an ihre ursprüngliche Position zurück.
+- **Nicht gruppierte Spalten**: Eine nicht gruppierte Spalte kann nur an Positionen verschoben werden, die von anderen nicht gruppierten Spalten belegt sind. Sie kann nicht mitten in einer Gruppe abgelegt werden.
+- **Gruppen neu anordnen**: Eine ganze Gruppe kann gezogen werden, um sie zwischen ihren Geschwistergruppen auf derselben Verschachtelungsebene neu anzuordnen.
 
 ```
-Gruppen:  Gruppe "G1" [A, B, C], Gruppe "G2" [D, E]
+Gruppen: Gruppe "G1" [A, B, C], Gruppe "G2" [D, E]
 
-Bewege A zu Position 2 -> OK (innerhalb G1, Ergebnis: [B, C, A])
-Bewege A zu Position 3 -> Abgelehnt (Position 3 liegt innerhalb G2)
-Bewege D zu Position 4 -> OK (innerhalb G2, Ergebnis: [E, D])
-Bewege D zu Position 1 -> Abgelehnt (Position 1 liegt innerhalb G1)
+A an Position 2 verschieben -> OK (innerhalb von G1, Ergebnis: [B, C, A])
+A an Position 3 verschieben -> Abgelehnt (Position 3 befindet sich innerhalb von G2)
+D an Position 4 verschieben -> OK (innerhalb von G2, Ergebnis: [E, D])
+D an Position 1 verschieben -> Abgelehnt (Position 1 befindet sich innerhalb von G1)
 ```
 
-## Gruppen anheften {#pinning-groups}
+## Gruppen fixieren {#pinning-groups}
 
-Eine Gruppe kann links oder rechts mit `setPinDirection()` angeheftet werden. Alle Spalten innerhalb der Gruppe erben die Gruppenheftrichtung, und individuelle Spaltenhefteinstellungen werden von der Gruppe überschrieben.
+Eine Gruppe kann mit `setPinDirection()` links oder rechts fixiert werden. Alle Spalten innerhalb der Gruppe übernehmen die Fixierungsrichtung der Gruppe. Individuelle Fixierungseinstellungen der Spalten werden dabei überschrieben.
 
 ```java
 ColumnGroup idInfo = ColumnGroup.of("id-info", "ID Info")
@@ -114,11 +116,11 @@ ColumnGroup idInfo = ColumnGroup.of("id-info", "ID Info")
   .add("number")
   .add("title");
 
-// Sowohl "number" als auch "title" sind links angepinnt,
-// unabhängig von ihren eigenen Heftungseinstellungen
+// Sowohl "number" als auch "title" werden links fixiert,
+// unabhängig von ihren eigenen Fixierungseinstellungen
 ```
 
-Ungrroupierte Spalten behalten ihre eigene Heftrichtung aus ihrer Spaltendefinition.
+Nicht gruppierte Spalten behalten die Fixierungsrichtung aus ihrer Spaltendefinition bei.
 
 <!-- vale off -->
 <ComponentDemo
@@ -134,26 +136,26 @@ height='600px'
 
 ## Höhe der Gruppenüberschrift {#group-header-height}
 
-Die Höhe der Gruppenüberschrift kann unabhängig von regulären Spaltenüberschriften mit `setGroupHeaderHeight()` kontrolliert werden.
+Die Höhe der Kopfzeilen für Gruppen lässt sich unabhängig von der Höhe regulärer Spaltenüberschriften mit `setGroupHeaderHeight()` steuern.
 
 ```java
 table.setGroupHeaderHeight(32); // Gruppenzeilen sind 32px hoch
-table.setHeaderHeight(48);      // Die Spaltenüberschrift bleibt bei 48px
+table.setHeaderHeight(48);      // Die Spaltenkopfzeile bleibt 48px hoch
 ```
 
-Die Standardhöhe der Gruppenüberschrift entspricht der Standardhöhe der Kopfzeile.
+Standardmäßig entspricht die Höhe der Gruppenüberschrift der Standardhöhe der Kopfzeile.
 
-## Stylen von Gruppen mit CSS-Teilen {#styling-groups-with-css-parts}
+## Gruppen mit CSS-Parts gestalten {#styling-groups-with-css-parts}
 
-Gruppenüberschriften und -spalten bieten CSS-Teile für das Styling über `::part()`. Die folgenden Teile sind verfügbar:
+Gruppenüberschriften und Spalten stellen CSS-Parts bereit, die sich mit `::part()` gestalten lassen. Die folgenden Parts sind verfügbar:
 
-| Teil | Beschreibung |
+| Part | Beschreibung |
 | --- | --- |
-| `cell-group-{ID}` | Gruppenüberschriftzelle, die nach Gruppen-ID angesprochen wird |
-| `cell-group-depth-{N}` | Gruppenüberschriftzelle, die nach Tiefe angesprochen wird (`0` = oberste Ebene, `1` = zweite Ebene usw.) |
-| `cell-column-{ID}` | Alle Zellen (Kopf- und Bodenteil) für eine gegebene Spalten-ID |
-| `cell-content-group-{ID}` | Inhaltswrapper innerhalb einer Gruppenüberschrift |
-| `cell-label-group-{ID}` | Label innerhalb einer Gruppenüberschrift |
+| `cell-group-{ID}` | Gruppenkopfzelle, gezielt über die Gruppen-ID |
+| `cell-group-depth-{N}` | Gruppenkopfzelle, gezielt über die Verschachtelungstiefe (`0` = oberste Ebene, `1` = zweite Ebene usw.) |
+| `cell-column-{ID}` | Alle Zellen (Kopf- und Inhaltsbereich) einer bestimmten Spalten-ID |
+| `cell-content-group-{ID}` | Inhaltscontainer innerhalb einer Gruppenkopfzeile |
+| `cell-label-group-{ID}` | Beschriftung innerhalb einer Gruppenkopfzeile |
 
 <!-- vale off -->
 <ComponentDemo
@@ -168,9 +170,9 @@ height='600px'
 />
 <!-- vale on -->
 
-### Styling nach Gruppen-ID {#styling-by-group-id}
+### Nach Gruppen-ID gestalten {#styling-by-group-id}
 
-Verwenden Sie die Gruppen-ID, um bestimmte Gruppen mit einzigartigen Farben oder Typografie anzusprechen.
+Verwenden Sie die Gruppen-ID, um bestimmte Gruppen mit eigenen Farben oder Schriftstilen anzusprechen.
 
 ```css
 dwc-table::part(cell-group-catalog) {
@@ -189,26 +191,26 @@ dwc-table::part(cell-column-title) {
 }
 ```
 
-### Styling nach Tiefe {#styling-by-depth}
+### Nach Verschachtelungstiefe gestalten {#styling-by-depth}
 
-Tiefe-basierte Teile sind nützlich, wenn Sie ein einheitliches Styling für alle Gruppen auf einer bestimmten Schachtelungsebene anwenden möchten, ohne jede Gruppe einzeln anzusprechen.
+Parts, die auf der Verschachtelungstiefe basieren, sind nützlich, wenn Sie alle Gruppen auf einer bestimmten Ebene einheitlich gestalten möchten, ohne jede Gruppe einzeln anzusprechen.
 
 ```css
-/* Stil für alle Gruppen auf oberster Ebene */
+/* Alle Gruppen der obersten Ebene gestalten */
 dwc-table::part(cell-group-depth-0) {
   background: var(--dwc-color-primary-30);
   font-weight: 700;
 }
 
-/* Stil für alle Gruppen auf zweiter Ebene */
+/* Alle Gruppen der zweiten Ebene gestalten */
 dwc-table::part(cell-group-depth-1) {
   background: var(--dwc-color-primary-40);
 }
 ```
 
-## Versteckte Spalten {#hidden-columns}
+## Ausgeblendete Spalten {#hidden-columns}
 
-Versteckte Spalten sind von der visuellen Reihenfolge und dem Layout der Kopfzeile ausgeschlossen. Wenn eine Gruppe eine Mischung aus sichtbaren und versteckten Spalten enthält, erscheinen nur die sichtbaren und die `colspan` der Gruppe passt sich entsprechend an. Wenn jede Spalte in einer Gruppe versteckt ist, wird die Gruppenüberschrift überhaupt nicht gerendert.
+Ausgeblendete Spalten werden aus der visuellen Reihenfolge und dem Kopfzeilenlayout ausgeschlossen. Enthält eine Gruppe sowohl sichtbare als auch ausgeblendete Spalten, werden nur die sichtbaren angezeigt und der `colspan` der Gruppe wird entsprechend angepasst. Sind alle Spalten einer Gruppe ausgeblendet, wird die Gruppenüberschrift gar nicht gerendert.
 
 <!-- vale off -->
 <ComponentDemo

@@ -5547,5 +5547,44 @@
   },
   "component.footer.platform.title": {
     "message": "Plattform"
+  },
+  "chip.tooltipText.preview": {
+    "message": "Diese Funktion befindet sich in der Vorschau. Die API kann sich in zukünftigen Versionen noch ändern.",
+    "description": "Hover text to explain this feature is in preview and its API may change."
+  },
+  "chip.label.preview": {
+    "message": "Vorschau",
+    "description": "Label to show this feature is in preview."
+  },
+  "previewNote.title": {
+    "message": "Vorschaufunktion"
+  },
+  "previewNote.message": {
+    "message": "Diese Funktion befindet sich in der Vorschau. Ihre API kann sich in zukünftigen Versionen noch ändern."
+  },
+  "component.megaMenu.products.kotlinDSL.summary": {
+    "message": "Erstellen Sie webforJ-UIs deklarativ in Kotlin mit typsicheren Buildern und verschachtelten Blöcken – neben Ihrem Java-Code. In der Vorschau."
+  },
+  "component.megaMenu.products.mCPApps.summary": {
+    "message": "Ermöglichen Sie einer MCP-fähigen KI-App, eine geroutete webforJ-Ansicht in ihrer Unterhaltung zu öffnen, in der Nutzer und KI gemeinsam mit derselben Live-Oberfläche arbeiten. In der Vorschau."
+  },
+  "page.intro.opening.eyebrow": {
+    "message": "Einführung"
+  },
+  "page.intro.opening.title1": {
+    "message": "webforJ auf sechs Bildschirmen."
+  },
+  "page.intro.opening.title2": {
+    "message": "Das gesamte Framework, von Anfang bis Ende."
+  },
+  "page.intro.opening.lead": {
+    "message": "webforJ ist das Full-Stack-Java-Framework für Business-Webanwendungen: Sie entwickeln die gesamte App, einschließlich der Bildschirme, in Java. Diese Tour führt Sie in sechs kurzen Ansichten durch das Framework – von Ihrer ersten Java-Klasse bis zu den KI-Tools. Sie dauert etwa fünf Minuten."
+  },
+  "component.footer.framework.title": {
+    "message": "Framework"
+  },
+  "componentDemo.tabs": {
+    "message": "Quelldateien",
+    "description": "Accessible label for the file tabs of a component demo"
   }
 }

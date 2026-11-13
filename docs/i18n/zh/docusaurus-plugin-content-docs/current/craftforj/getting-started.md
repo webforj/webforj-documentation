@@ -1,26 +1,28 @@
 ---
-title: 开始使用
+title: 入门
 sidebar_position: 2
 description: >-
   Add the devtools dependency, enable craftforJ in your configuration, and open
   craftforJ over a running webforJ app.
-_i18n_hash: fb5860ba7349ef5523c2dfb6bc425d9b
+_i18n_hash: 6cb150ca0da866a142787024af9e2bd1
 ---
-<DocChip chip='since' label='26.02' />
+<!-- vale off -->
+# 开始使用 <DocChip chip='since' label='26.02' />
+<!-- vale on -->
 
-craftforJ 随 webforJ 一起发布，因此无需单独下载。本页面介绍了在 craftforJ 出现之前您的应用所需的内容，以及如何打开它。
+craftforJ 随 webforJ 一同提供，因此无需单独下载。本页介绍 craftforJ 显示前应用需要满足的条件，以及如何打开它。
 
-:::tip 已在生成的项目中启用
-使用 [startforJ](https://docs.webforj.com/startforj) 创建的项目，或从 webforJ [原型](/docs/building-ui/archetypes/overview) 创建的项目都已启用 craftforJ。如果您是从中开始的，请运行您的应用并跳到 [打开 craftforJ](#opening-craftforj)。
+:::tip 在生成的项目中已启用
+使用 [startforJ](https://docs.webforj.com/startforj) 或 webforJ [原型](/docs/building-ui/archetypes/overview)创建的项目已启用 craftforJ。如果你使用这类项目，请运行应用，然后跳转到[打开 craftforJ](#opening-craftforj)。
 :::
 
 ## 要求 {#requirements}
 
-仅在以下所有条件都满足时，craftforJ 才会附加到应用程序上。如果其中一个条件不满足，则页面上不会出现任何内容。
+只有满足以下所有条件时，craftforJ 才会连接到应用。如果未满足其中任一条件，页面上就不会显示任何内容。
 
 ### 添加依赖项 {#add-the-dependency}
 
-如果您的项目中还没有 `webforj-devtools`，请将其添加到您的项目中：
+如果项目中尚未包含 `webforj-devtools`，请添加它：
 
 ```xml title="pom.xml"
 <dependency>
@@ -32,24 +34,24 @@ craftforJ 随 webforJ 一起发布，因此无需单独下载。本页面介绍�
 
 ### 调试模式和 craftforJ 标志 {#debug-mode-and-the-craftforj-flag}
 
-将以下属性添加到您的项目中。如果您有一个标准的 webforJ 应用，请在 `webforj.conf` 中设置属性。对于使用 [Spring](/docs/integrations/spring/overview) 的 webforJ 项目，请在 `application.properties` 中设置属性。
+将以下属性添加到项目中。如果你使用标准 webforJ 应用，请在 `webforj.conf` 中设置这些属性。如果你的 webforJ 项目使用 [Spring](/docs/integrations/spring/overview)，请在 `application.properties` 中设置这些属性。
 
 ```ini
 webforj.debug = true
 webforj.devtools.craftforj.enabled = true
 ```
 
-只有在启用这两个属性时，craftforJ 才能正常工作；因此，处于调试模式的应用在生产时不会暴露您的源树。
+只有同时启用这两个属性，craftforJ 才能正常工作；因此，即使应用在部署到生产环境时仍开启调试模式，也不会暴露源代码树。
 
 ### 本地浏览器和开发者许可证 {#a-local-browser-and-a-developer-license}
 
-从运行应用的机器打开应用，并确保您拥有有效的开发者许可证。要从另一台机器访问 craftforJ，请将其地址添加到 [`hosts-allowed`](/docs/craftforj/configuration#access)。
+请在运行应用的机器上打开应用，并确保你拥有有效的开发者许可证。若要从另一台机器访问 craftforJ，请将其地址添加到 [`hosts-allowed`](/docs/craftforj/configuration#access)。
 
-这些准备就绪后，重启应用并重新加载页面。
+完成以上设置后，重启应用并重新加载页面。
 
 ## 打开 craftforJ {#opening-craftforj}
 
-当 craftforJ 激活时，触发按钮会出现在您的应用上。点击它以打开 craftforJ，或在应用中的任何地方按 <kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>D</kbd>。相同的快捷键会关闭 craftforJ，您可以将触发器拖到适合您的任意角落。
+craftforJ 激活后，应用上会出现一个触发按钮。点击它即可打开 craftforJ，也可以在应用的任意位置按 <kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>D</kbd>。使用相同的快捷键可再次关闭 craftforJ，并且你可以将触发按钮拖到任意角落。
 
 <div class="videos-container">
   <video controls preload="metadata">
@@ -57,27 +59,28 @@ webforj.devtools.craftforj.enabled = true
   </video>
 </div>
 
-其选项卡涵盖 [组件树](/docs/craftforj/inspector)、[路由](/docs/craftforj/routes)、[主题](/docs/craftforj/theme) 和 [助手](/docs/craftforj/ai)。设置和应用信息与之并排。
+其选项卡包含[组件树](/docs/craftforj/inspector)、[路由](/docs/craftforj/routes)、[主题](/docs/craftforj/theme)和[助手](/docs/craftforj/ai)。设置和应用信息也位于其中。
 
-- **触发器** 是打开和关闭 craftforJ 的按钮。当 craftforJ 关闭时，它会保持不显眼。
-- **选项卡条** 沿着最靠近应用的边缘运行，并在 craftforJ 显示的内容之间切换。
-- **窗口菜单** 包含有关 craftforJ 位置的所有信息，涵盖在 [Where craftforJ sits](#where-craftforj-sits) 中。
 
-:::info macOS 快捷键
-craftforJ 使用您所在平台的修饰符编写每个快捷键，因此 <kbd>Alt</kbd> 显示为 <kbd>⌥</kbd>，<kbd>Ctrl</kbd> 显示为 <kbd>⌘</kbd>。在 craftforJ 中按 <kbd>Shift</kbd> + <kbd>?</kbd> 可查看当前列表。
+- **触发按钮**用于打开和关闭 craftforJ。craftforJ 关闭时，它会停留在不碍事的位置。
+- **选项卡栏**位于靠近应用的一侧，可在 craftforJ 展示的内容之间切换。
+- **窗口菜单**包含有关 craftforJ 位置的所有选项，详见[craftforJ 的位置](#where-craftforj-sits)。
+
+:::info macOS 上的快捷键
+craftforJ 会根据你当前使用的平台显示各快捷键的修饰键，因此 <kbd>Alt</kbd> 会显示为 <kbd>⌥</kbd>，<kbd>Ctrl</kbd> 会显示为 <kbd>⌘</kbd>。在 craftforJ 中按 <kbd>Shift</kbd> + <kbd>?</kbd> 可查看当前快捷键列表。
 :::
 
 ## craftforJ 的位置 {#where-craftforj-sits}
 
-craftforJ 默认悬浮在您的应用上。您可以将其拖动到页面上的任何位置，从任何边缘调整大小，并在想要使用应用时将其最小化回触发器。将其拖到页面的边缘会将其停靠在该处，保持全高或全宽，每个边缘保持您给定的大小。将其从边缘拖开后，它会再次悬浮。
+默认情况下，craftforJ 会悬浮在应用上方。你可以将它拖到页面上的任意位置，从任意边缘调整大小，并在需要使用应用时将它最小化为触发按钮。将它拖到页面边缘即可停靠在该处，并占据全高或全宽；每条边缘都会保留你设置的尺寸。将它拖离边缘后，它会再次悬浮。
 
-:::info 停靠覆盖应用，而不是重新布局它
-craftforJ 是在页面上方绘制的。您的应用不会调整大小，且其中的内容不会移出视野，因此 craftforJ 下面的任何内容在其存在时都会被隐藏。要查看其下方的内容，请将 craftforJ 移动到另一个边缘或将其退出页面。
+:::info 停靠会覆盖应用，不会调整应用布局
+craftforJ 会绘制在页面上方。应用不会调整大小，其中的内容也不会移开，因此 craftforJ 覆盖的区域会被遮挡。若要查看下方的内容，请将 craftforJ 移到另一侧边缘，或将它移出页面。
 :::
 
-![craftforJ 停靠在应用页面右侧，覆盖该边缘的应用](/img/craftforj/getting-started/docking.png#rounded-border)
+![craftforJ 停靠在应用页面右侧，覆盖了应用的该侧区域](/img/craftforj/getting-started/docking.png#rounded-border)
 
-要完全停止覆盖应用，请将 craftforJ 移出页面，放到单独的浏览器窗口或标签中，这适合第二个显示器。它仍然通过打开它的页面检查您的应用，因此请保持该页面打开。如果您导航离开或关闭它，craftforJ 将不再有内容进行检查，直到您再次打开应用。
+若要完全避免覆盖应用，请将 craftforJ 移出页面，放入独立的浏览器窗口或标签页中，这种方式适合搭配第二台显示器使用。craftforJ 仍会通过打开它的页面检查应用，因此请保持该页面打开。如果你离开该页面或将其关闭，在再次打开应用之前，craftforJ 就没有可供检查的内容。
 
 <div class="videos-container">
   <video controls preload="metadata">
@@ -85,10 +88,10 @@ craftforJ 是在页面上方绘制的。您的应用不会调整大小，且其�
   </video>
 </div>
 
-如果您使用 Chrome 的拆分视图，在其中您的应用和 craftforJ 并排显示并只接受真实标签，则选择选项卡而不是窗口。右键单击应用的选项卡，将其添加到新的拆分视图中，然后选择 craftforJ 选项卡。
+如果你使用 Chrome 的分屏视图，请选择标签页而不是窗口。分屏视图会将应用和 craftforJ 并排显示，并且只接受真正的标签页。右键点击应用的标签页，将其添加到新的分屏视图中，然后选择 craftforJ 标签页。
 
-:::info 拆分视图是 Chrome 功能
-Chrome 提供并排的排列，而不是 craftforJ。其他浏览器没有等效项，因此 craftforJ 在其他浏览器中打开为普通选项卡，您切换到它。craftforJ 本身在两种方式下的工作原理相同。
+:::info 分屏视图是 Chrome 的功能
+并排排列由 Chrome 提供，而非 craftforJ。其他浏览器没有对应功能，因此在其他浏览器中，craftforJ 会在普通标签页中打开，你需要切换到该标签页。无论采用哪种方式，craftforJ 本身的工作方式都相同。
 :::
 
 <div class="videos-container">
@@ -97,19 +100,19 @@ Chrome 提供并排的排列，而不是 craftforJ。其他浏览器没有等效
   </video>
 </div>
 
-:::tip 在助手写作时移动
-将 craftforJ 移入另一个窗口会结束仍在流式传输的回复。craftforJ 首先会询问，一切前写的内容将保留在聊天中。
+:::tip 助手正在生成回复时移动
+将 craftforJ 移到另一个窗口会中断仍在生成的回复。craftforJ 会先询问你；到那时为止已生成的内容会保留在聊天中。
 :::
 
-## 做第一次更改 {#making-a-first-change}
+## 进行首次更改 {#making-a-first-change}
 
-1. 按 <kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> 开始选择一个组件。
-2. 将鼠标悬停在应用中的某个元素上并单击它。
-3. 组件树选择该组件，侧边栏填充了它的属性。
-4. 更改一个属性。正在运行的应用会立即更新。
+1. 按 <kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> 开始选择组件。
+2. 将鼠标悬停在应用中的某个元素上，然后点击它。
+3. 组件树会选中该组件，侧边栏则会显示它的属性。
+4. 更改某个属性，运行中的应用会立即更新。
 
-更改仅影响您面前的应用。您的文件保持不变，直到您审查更改并应用它，如 [将更改写入源](/docs/craftforj/source-changes) 中所述。
+更改只会影响当前显示的应用。只有在检查并应用更改后，文件才会被修改。相关内容请参阅[将更改写入源代码](/docs/craftforj/source-changes)。
 
-![craftforJ 在运行的应用旁边打开，选中一个组件](/img/craftforj/getting-started/first-open.png#rounded-border)
+![craftforJ 在运行中的应用旁打开，并选中了一个组件](/img/craftforj/getting-started/first-open.png#rounded-border)
 
-如果什么都没有出现，请查阅 [故障排除](/docs/craftforj/troubleshooting)。
+如果完全没有显示任何内容，请按[故障排除](/docs/craftforj/troubleshooting)中的步骤逐一检查。

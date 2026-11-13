@@ -5547,5 +5547,44 @@
   },
   "component.footer.platform.title": {
     "message": "Plateforme"
+  },
+  "chip.tooltipText.preview": {
+    "message": "Cette fonctionnalité est en préversion. Son API peut encore évoluer dans les prochaines versions.",
+    "description": "Hover text to explain this feature is in preview and its API may change."
+  },
+  "chip.label.preview": {
+    "message": "Aperçu",
+    "description": "Label to show this feature is in preview."
+  },
+  "previewNote.title": {
+    "message": "Fonctionnalité d’aperçu"
+  },
+  "previewNote.message": {
+    "message": "Cette fonctionnalité est en préversion. Son API peut encore évoluer dans les prochaines versions."
+  },
+  "component.megaMenu.products.kotlinDSL.summary": {
+    "message": "Créez des interfaces webforJ de manière déclarative en Kotlin, avec des builders typés et des blocs imbriqués, en complément de votre code Java. En préversion."
+  },
+  "component.megaMenu.products.mCPApps.summary": {
+    "message": "Permettez à une application d’IA compatible avec MCP d’ouvrir une vue webforJ avec routage dans sa conversation, afin que la personne et l’IA interagissent avec la même interface en direct. En aperçu."
+  },
+  "page.intro.opening.eyebrow": {
+    "message": "Introduction"
+  },
+  "page.intro.opening.title1": {
+    "message": "webforJ en six écrans."
+  },
+  "page.intro.opening.title2": {
+    "message": "Tout le framework, du début à la fin."
+  },
+  "page.intro.opening.lead": {
+    "message": "webforJ est le framework Java full-stack pour les applications web d’entreprise : vous créez toute l’application, écrans compris, en Java. Cette visite vous le présente en six courts écrans, de votre première classe Java aux outils d’IA. Elle dure environ cinq minutes."
+  },
+  "component.footer.framework.title": {
+    "message": "Framework"
+  },
+  "componentDemo.tabs": {
+    "message": "Fichiers source",
+    "description": "Accessible label for the file tabs of a component demo"
   }
 }

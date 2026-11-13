@@ -5547,5 +5547,44 @@
   },
   "component.footer.platform.title": {
     "message": "Platform"
+  },
+  "page.intro.opening.eyebrow": {
+    "message": "Introduction"
+  },
+  "page.intro.opening.title1": {
+    "message": "webforJ in six screens."
+  },
+  "page.intro.opening.title2": {
+    "message": "The whole framework, start to finish."
+  },
+  "page.intro.opening.lead": {
+    "message": "webforJ is the full-stack Java framework for business web apps: you build the whole app, screens included, in Java. This tour walks through it in six short screens, from your first Java class to the AI tooling. It takes about five minutes."
+  },
+  "chip.tooltipText.preview": {
+    "message": "This feature is in preview. Its API may still change in future releases.",
+    "description": "Hover text to explain this feature is in preview and its API may change."
+  },
+  "chip.label.preview": {
+    "message": "Preview",
+    "description": "Label to show this feature is in preview."
+  },
+  "previewNote.title": {
+    "message": "Preview feature"
+  },
+  "previewNote.message": {
+    "message": "This feature is in preview. Its API may still change in future releases."
+  },
+  "component.megaMenu.products.kotlinDSL.summary": {
+    "message": "Build webforJ UIs declaratively in Kotlin with type-safe builders and nested blocks, alongside your Java code. In preview."
+  },
+  "component.megaMenu.products.mCPApps.summary": {
+    "message": "Let an MCP-capable AI app open a routed webforJ view in its conversation, where the person and the AI work with the same live UI. In preview."
+  },
+  "component.footer.framework.title": {
+    "message": "Framework"
+  },
+  "componentDemo.tabs": {
+    "message": "Source files",
+    "description": "Accessible label for the file tabs of a component demo"
   }
 }

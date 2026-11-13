@@ -1,27 +1,28 @@
 ---
+sidebar_class_name: experimental-content
 title: Oman laajennuksen kirjoittaminen
 sidebar_position: 70
 description: >-
   Add a build step by shipping a BundleExtension that declares packages,
   contributes a Bun plugin, and activates on a file type, shown by building a
   Svelte extension end to end.
-_i18n_hash: fb042c0be37d53bf5f46eb1536056275
+_i18n_hash: bffbcd5a76f34d542765e3c2b59ed24d
 ---
 <DocChip chip='since' label='26.01' />
 <DocChip chip='experimental' />
 
-Voit lisätä kääntäjän toisen tyyppisen lähteen lisäämällä laajennuksen, joka käyttää samaa sopimusta kuin sisäänrakennetut laajennukset, joten mukautettu laajennus lukee tarkalleen kuten toimitettu.
+Lisää kääntäjä toiselle lähdetyypille toimittamalla laajennus, joka noudattaa samaa sopimusta kuin sisäänrakennetut laajennukset. Näin mukautettu laajennus toimii samalla tavalla kuin toimitettu laajennus.
 
-Tällä sivulla rakennetaan **[Svelte](https://svelte.dev/)**-laajennus täydellisenä esimerkkinä. Svelte on komponenttipohjainen kehys, jonka `.svelte`-tiedostot käännetään JavaScriptiksi rakennusvaiheessa. Pakkaaja ei käsittele tuota lähdettä yksinään, joten Svelte-komponentin kuluttaminen webforJ:ltä tarkoittaa, että rakennukselle opetetaan kääntämään se, mikä on juuri se, mitä laajennus tekee. Tämä tekee siitä sopivan esimerkin: uusi lähdetyyppi, jonka rakennus opetetaan kirjoittamasi laajennuksen avulla, sitten sidottu luokkaan samalla tavalla kuin mikä tahansa muu syöte.
+Tällä sivulla rakennetaan **[Svelte](https://svelte.dev/)**-laajennus kokonaisena esimerkkinä. Svelte on komponenttikehys, jonka `.svelte`-tiedostot käännetään JavaScriptiksi koontivaiheessa. Bundleri ei käsittele kyseistä lähdekoodia itsenäisesti, joten Svelte-komponentin käyttäminen webforJ:ssä edellyttää koonnin opettamista kääntämään se. Juuri tämän laajennus tekee. Siksi se sopii esimerkiksi: uusi lähdetyyppi opetetaan koonnille kirjoittamallasi laajennuksella, minkä jälkeen se sidotaan luokkaan samalla tavoin kuin mikä tahansa muukin kohde.
 
-<!-- ÄLÄ käytä <ExperimentalWarning /> tällä sivulla. -->
-:::warning Kokeellinen API
-Laajennus API on kokeellinen, ja se voi muuttua julkaisujen välillä sen vakiinnuttaessa. Mekanismi itsessään jää voimaan, sisäänrakennetut laajennukset perustuvat samaan sopimukseen, mutta sen menetelmien allekirjoitukset voivat muuttua, joten odota mukauttavasi mukautettua laajennusta, kun päivität webforJ:ta.
+<!-- Do NOT use <ExperimentalWarning /> on this page. -->
+:::info Esikatselussa oleva API
+Laajennus-API on esikatselussa, ja se saattaa muuttua julkaisuversioiden välillä sen vakiintuessa. Mekanismi itsessään on pysyvä, ja sisäänrakennetut laajennukset perustuvat samaan sopimukseen, mutta menetelmien allekirjoitukset voivat muuttua. Varaudu siis muokkaamaan mukautettua laajennusta, kun päivität webforJ:n.
 :::
 
-## Rakennusaikainen riippuvuus {#the-build-time-dependency}
+## Koontiajan riippuvuus {#the-build-time-dependency}
 
-Kirjoittaaksesi laajennuksen, sinun on käännettävä pakkaajan API:n mukaan. Lisää se `provided`-alueella, koska rakennus toimittaa sen etkä sinä toimita sitä:
+Laajennuksen kirjoittamista varten käännä se bundlerin API:a vasten. Lisää riippuvuus `provided`-laajuudella, sillä koonti toimittaa sen eikä sitä sisällytetä toimitukseesi:
 
 ```xml title="pom.xml"
 <dependency>
@@ -32,9 +33,9 @@ Kirjoittaaksesi laajennuksen, sinun on käännettävä pakkaajan API:n mukaan. L
 </dependency>
 ```
 
-## Laajennuksen wrapper {#the-bun-plugin-wrapper}
+## Plugin-kääre {#the-bun-plugin-wrapper}
 
-Laajennus antaa panoksensa Bun-laajennukseen. Pidä laajennus pienessä `.mjs`-resurssissa. Se vie oletusvientinä tehtaan, jota rakennus kutsuu asetusten kanssa, jotka asetat tälle laajennukselle, ja palauttaa Bun-laajennuksen:
+Laajennus tuo käyttöön Bun-pluginin. Sijoita plugin pieneen `.mjs`-resurssitiedostoon. Se vie oletuksena tehtaana toimivan funktion, jota koonti kutsuu tälle laajennukselle määrittämilläsi asetuksilla. Funktio palauttaa Bun-pluginin:
 
 ```js title="src/main/resources/frontend-extensions/svelte.mjs"
 import { SveltePlugin } from 'bun-plugin-svelte';
@@ -44,7 +45,7 @@ export default (options) => SveltePlugin({ forceSide: 'client', ...options });
 
 ## Laajennus {#the-extension}
 
-Toteuta `BundleExtension`. Se nimeää itsensä id:llä, päättää milloin se aktivoituu, ja `onWillBundle`-menetelmässä julkistaa pakettinsa ja antaa wrapperin:
+Toteuta `BundleExtension`. Se nimeää itsensä tunnisteella, määrittää, milloin se aktivoituu, ja ilmoittaa paketit sekä tuo kääreen käyttöön `onWillBundle`-metodissa:
 
 ```java title="SvelteExtension.java"
 public class SvelteExtension implements BundleExtension {
@@ -76,7 +77,7 @@ public class SvelteExtension implements BundleExtension {
   private String readWrapper(String path) {
     try (InputStream in = getClass().getResourceAsStream(path)) {
       if (in == null) {
-        throw new IOException("puuttuva wrapper " + path);
+        throw new IOException("missing wrapper " + path);
       }
 
       return new String(in.readAllBytes(), StandardCharsets.UTF_8);
@@ -89,26 +90,26 @@ public class SvelteExtension implements BundleExtension {
 
 Tässä esimerkissä:
 
-- `getId()` palauttaa id:n, jota käytetään laajennuksen kytkemiseen päälle tai pois sekä sen asetusten avaimena, sama rooli kuin `webforj-scss` SCSS-laajennukselle.
-- `isEnabledByDefault` aktivoi laajennuksen kun `.svelte`-lähde on läsnä, [aktivointi tiedostotyypin mukaan](/docs/managing-resources/bundler/extensions/overview#activated-by-file-type) sääntö, jota kuratoidut laajennukset noudattavat.
-- `onWillBundle` julkistaa rakennusriippuvuudet, joita kääntäjä tarvitsee, ja antaa Bun-laajennuksen laajennuksen id:n alla.
+- `getId()` palauttaa tunnisteen, jolla laajennus otetaan käyttöön tai poistetaan käytöstä ja jonka alle sen asetukset määritetään. SCSS-laajennuksessa vastaavassa roolissa on `webforj-scss`.
+- `isEnabledByDefault` aktivoi laajennuksen, kun käytössä on `.svelte`-lähdetiedosto. Tämä on [tiedostotyypin perusteella aktivoinnin](/docs/managing-resources/bundler/extensions/overview#activated-by-file-type) sääntö, jota valikoidut laajennukset noudattavat.
+- `onWillBundle` ilmoittaa kääntäjän tarvitsemat koontiriippuvuudet ja tuo Bun-pluginin käyttöön laajennuksen tunnisteella.
 
 ## Laajennuksen rekisteröinti {#registering-the-extension}
 
-Rakennus havaitsee laajennuksen palveluna luokkatiessä. Lisää palvelutiedosto, joka on nimetty `BundleExtension`, täydellisesti kvalifioidulla luokan nimellä:
+Koonti löytää laajennuksen luokkapolulta palveluna. Lisää `BundleExtension`-rajapinnan mukaan nimetty palvelutiedosto, johon merkitään luokan täydellinen nimi:
 
 ```text title="META-INF/services/com.webforj.bundle.bun.BundleExtension"
 com.example.SvelteExtension
 ```
 
-Kun palvelutiedosto on paikallaan, nyt `.svelte`-lähde käännetään, ja näkymä käyttää komponentin rekisteröimää elementtiä.
+Kun palvelutiedosto on paikallaan, `.svelte`-lähdetiedosto käännetään ja näkymä käyttää komponentin rekisteröimää elementtiä.
 
 ## Asetukset {#options}
 
-Laajennus välittää asetukset, jotka asetat sen id:n alla suoraan Bun-laajennukselle. Aseta ne `bun.config.ts`-tiedostoon:
+Laajennus välittää tunnisteensa alle määrittämäsi asetukset suoraan Bun-pluginille. Määritä ne tiedostossa `bun.config.ts`:
 
 ```ts title="src/main/frontend/bun.config.ts"
 export const options = {
-  'svelte': { /* bun-plugin-svelte asetukset */ }
+  'svelte': { /* bun-plugin-svelte options */ }
 };
 ```

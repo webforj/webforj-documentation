@@ -1,26 +1,28 @@
 ---
-title: Einen Einstieg finden
+title: Erste Schritte
 sidebar_position: 2
 description: >-
   Add the devtools dependency, enable craftforJ in your configuration, and open
   craftforJ over a running webforJ app.
-_i18n_hash: fb5860ba7349ef5523c2dfb6bc425d9b
+_i18n_hash: 6cb150ca0da866a142787024af9e2bd1
 ---
-<DocChip chip='since' label='26.02' />
+<!-- vale off -->
+# Erste Schritte <DocChip chip='since' label='26.02' />
+<!-- vale on -->
 
-craftforJ wird zusammen mit webforJ ausgeliefert, sodass nichts separat heruntergeladen werden muss. Diese Seite behandelt die Anforderungen, die Ihre App erfüllen muss, bevor craftforJ verfügbar ist, und wie Sie es öffnen.
+craftforJ wird mit webforJ ausgeliefert, sodass kein separater Download erforderlich ist. Auf dieser Seite erfahren Sie, was Ihre App benötigt, bevor craftforJ angezeigt wird, und wie Sie craftforJ öffnen.
 
-:::tip Bereits in generierten Projekten aktiviert
-Projekte, die mit [startforJ](https://docs.webforj.com/startforj) oder aus einem webforJ [Archetyp](/docs/building-ui/archetypes/overview) erstellt wurden, haben craftforJ aktiviert. Wenn Sie von einem solchen Projekt gestartet sind, führen Sie Ihre App aus und springen Sie direkt zu [Öffnen von craftforJ](#opening-craftforj).
+:::tip In generierten Projekten bereits aktiviert
+Projekte, die mit [startforJ](https://docs.webforj.com/startforj) oder aus einem webforJ-[Archetyp](/docs/building-ui/archetypes/overview) erstellt wurden, haben craftforJ bereits aktiviert. Wenn Sie mit einem solchen Projekt gestartet sind, führen Sie Ihre App aus und springen Sie direkt zu [craftforJ öffnen](#opening-craftforj).
 :::
 
-## Anforderungen {#requirements}
+## Voraussetzungen {#requirements}
 
-craftforJ wird nur an eine App angehängt, wenn alle folgenden Bedingungen erfüllt sind. Wenn eine von ihnen nicht erfüllt ist, erscheint nichts auf der Seite.
+craftforJ wird nur dann an eine App angehängt, wenn alle folgenden Bedingungen erfüllt sind. Ist auch nur eine davon nicht erfüllt, wird nichts auf der Seite angezeigt.
 
 ### Abhängigkeit hinzufügen {#add-the-dependency}
 
-Fügen Sie `webforj-devtools` zu Ihrem Projekt hinzu, falls es dort noch nicht vorhanden ist:
+Fügen Sie `webforj-devtools` zu Ihrem Projekt hinzu, falls es noch nicht enthalten ist:
 
 ```xml title="pom.xml"
 <dependency>
@@ -30,26 +32,26 @@ Fügen Sie `webforj-devtools` zu Ihrem Projekt hinzu, falls es dort noch nicht v
 </dependency>
 ```
 
-### Debug-Modus und das craftforJ-Flag {#debug-mode-and-the-craftforj-flag}
+### Debug-Modus und craftforJ-Flag {#debug-mode-and-the-craftforj-flag}
 
-Fügen Sie die folgenden Eigenschaften zu Ihrem Projekt hinzu. Wenn Sie eine Standard webforJ-App haben, setzen Sie die Eigenschaften in `webforj.conf`. Für ein webforJ-Projekt, das [Spring](/docs/integrations/spring/overview) verwendet, setzen Sie die Eigenschaften in `application.properties`.
+Fügen Sie Ihrem Projekt die folgenden Eigenschaften hinzu. Wenn Sie eine standardmäßige webforJ-App haben, legen Sie die Eigenschaften in `webforj.conf` fest. Für ein webforJ-Projekt mit [Spring](/docs/integrations/spring/overview) legen Sie die Eigenschaften in `application.properties` fest.
 
 ```ini
 webforj.debug = true
 webforj.devtools.craftforj.enabled = true
 ```
 
-craftforJ funktioniert nur, wenn beide Eigenschaften aktiviert sind; daher gibt eine App, die in die Produktion geht, ohne den Debug-Modus auszuschalten, Ihren Quellbaum nicht preis.
+craftforJ funktioniert nur, wenn beide Eigenschaften aktiviert sind. Daher gibt eine App, die mit aktiviertem Debug-Modus in Produktion geht, Ihren Quellbaum nicht preis.
 
-### Ein lokaler Browser und eine Entwicklerlizenz {#a-local-browser-and-a-developer-license}
+### Lokaler Browser und Entwicklerlizenz {#a-local-browser-and-a-developer-license}
 
-Öffnen Sie die App von dem Computer, auf dem sie ausgeführt wird, und stellen Sie sicher, dass Sie eine gültige Entwicklerlizenz haben. Um von einem anderen Computer auf craftforJ zuzugreifen, fügen Sie dessen Adresse zu [`hosts-allowed`](/docs/craftforj/configuration#access) hinzu.
+Öffnen Sie die App auf dem Rechner, auf dem sie ausgeführt wird, und vergewissern Sie sich, dass Sie über eine gültige Entwicklerlizenz verfügen. Um craftforJ von einem anderen Rechner aus zu erreichen, fügen Sie dessen Adresse zu [`hosts-allowed`](/docs/craftforj/configuration#access) hinzu.
 
-Sobald diese Anforderungen erfüllt sind, starten Sie die App neu und laden Sie die Seite neu.
+Sobald diese Voraussetzungen erfüllt sind, starten Sie die App neu und laden Sie die Seite erneut.
 
-## Öffnen von craftforJ {#opening-craftforj}
+## craftforJ öffnen {#opening-craftforj}
 
-Wenn craftforJ aktiv ist, erscheint ein Auslöserbutton über Ihrer App. Klicken Sie darauf, um craftforJ zu öffnen, oder drücken Sie <kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>D</kbd> von überall in der App. Die gleiche Tastenkombination schließt craftforJ wieder, und Sie können den Auslöser an die Ecke ziehen, die Ihnen am besten passt.
+Wenn craftforJ aktiv ist, erscheint eine Schaltfläche über Ihrer App. Klicken Sie darauf, um craftforJ zu öffnen, oder drücken Sie an beliebiger Stelle in der App <kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>D</kbd>. Mit derselben Tastenkombination schließen Sie craftforJ wieder. Sie können die Schaltfläche an eine beliebige Ecke ziehen.
 
 <div class="videos-container">
   <video controls preload="metadata">
@@ -57,27 +59,28 @@ Wenn craftforJ aktiv ist, erscheint ein Auslöserbutton über Ihrer App. Klicken
   </video>
 </div>
 
-Seine Registerkarten decken den [Komponentenbaum](/docs/craftforj/inspector), [Routen](/docs/craftforj/routes), das [Thema](/docs/craftforj/theme) und den [Assistenten](/docs/craftforj/ai) ab. Einstellungen und Anwendungsinformationen befinden sich daneben.
+Die Registerkarten umfassen den [Komponentenbaum](/docs/craftforj/inspector), [Routen](/docs/craftforj/routes), das [Theme](/docs/craftforj/theme) und den [Assistenten](/docs/craftforj/ai). Einstellungen und App-Informationen befinden sich daneben.
 
-- **Der Auslöser** ist die Schaltfläche, die craftforJ öffnet und schließt. Sie bleibt aus dem Weg, während craftforJ geschlossen ist.
-- **Die Registerkartenleiste** verläuft entlang der Kante, die der App am nächsten ist, und wechselt zwischen dem, was craftforJ Ihnen zeigt.
-- **Das Fenster-Menü** enthält alles über den Standort von craftforJ, das in [Wo sich craftforJ befindet](#where-craftforj-sits) behandelt wird.
 
-:::info Tastenkombinationen auf macOS
-craftforJ schreibt jede Tastenkombination unter Verwendung der Modifikatoren der Plattform, auf der Sie sich befinden, sodass <kbd>Alt</kbd> als <kbd>⌥</kbd> und <kbd>Ctrl</kbd> als <kbd>⌘</kbd> erscheint. Drücken Sie <kbd>Shift</kbd> + <kbd>?</kbd> in craftforJ, um die aktuelle Liste zu sehen.
+- **Der Auslöser** ist die Schaltfläche, mit der craftforJ geöffnet und geschlossen wird. Wenn craftforJ geschlossen ist, bleibt sie unauffällig.
+- **Die Registerkartenleiste** verläuft entlang der Kante, die der App am nächsten ist, und wechselt zwischen den Ansichten von craftforJ.
+- **Das Fenstermenü** enthält alle Einstellungen zur Position von craftforJ, die unter [Position von craftforJ](#where-craftforj-sits) beschrieben werden.
+
+:::info Tastenkombinationen unter macOS
+craftforJ zeigt jede Tastenkombination mit den Modifikatortasten der jeweiligen Plattform an. Daher wird <kbd>Alt</kbd> als <kbd>⌥</kbd> und <kbd>Ctrl</kbd> als <kbd>⌘</kbd> angezeigt. Drücken Sie in craftforJ <kbd>Shift</kbd> + <kbd>?</kbd>, um die aktuelle Liste anzuzeigen.
 :::
 
-## Wo sich craftforJ befindet {#where-craftforj-sits}
+## Position von craftforJ {#where-craftforj-sits}
 
-craftforJ schwebt standardmäßig über Ihrer App. Ziehen Sie es irgendwo auf der Seite, ändern Sie die Größe von jeder Kante und minimieren Sie es zurück zu seinem Auslöser, wenn Sie die App für sich selbst haben möchten. Das Ziehen an eine Kante der Seite dockt es dort an, mit voller Höhe oder voller Breite, und jede Kante behält die Größe, die Sie ihm gegeben haben. Wenn Sie es von der Kante wegziehen, schwebt es wieder.
+Standardmäßig schwebt craftforJ über Ihrer App. Ziehen Sie es an eine beliebige Stelle auf der Seite, ändern Sie seine Größe an einer beliebigen Kante und minimieren Sie es wieder auf den Auslöser, wenn Sie die App für sich haben möchten. Wenn Sie es an eine Kante der Seite ziehen, wird es dort angedockt – über die gesamte Höhe oder Breite. Dabei bleibt die für jede Kante festgelegte Größe erhalten. Ziehen Sie es von der Kante weg, schwebt es wieder.
 
-:::info Docking verdeckt die App, sie wird nicht umflossen
-craftforJ wird über die Seite gezeichnet. Ihre App verändert nicht ihre Größe, und nichts darin bewegt sich aus dem Weg, sodass alles, was sich unter craftforJ befindet, verborgen ist, solange es dort ist. Um zu sehen, was sich darunter befindet, verschieben Sie craftforJ an eine andere Kante oder entfernen Sie es von der Seite.
+:::info Beim Andocken wird die App überlagert, nicht neu angeordnet
+craftforJ wird über der Seite angezeigt. Die Größe Ihrer App ändert sich nicht, und nichts darin wird verschoben. Daher wird alles, was sich unter craftforJ befindet, verdeckt. Um den darunterliegenden Inhalt zu sehen, verschieben Sie craftforJ an eine andere Kante oder nehmen Sie es aus der Seite heraus.
 :::
 
-![craftforJ dockt rechts an einer App-Seite an und verdeckt diese Kante der App](/img/craftforj/getting-started/docking.png#rounded-border)
+![craftforJ rechts neben einer App-Seite angedockt und überlagert diese Seite an der Kante](/img/craftforj/getting-started/docking.png#rounded-border)
 
-Um die App überhaupt nicht zu überdecken, bewegen Sie craftforJ aus der Seite in ein eigenes Browserfenster oder -tab, was sich für einen zweiten Monitor eignet. Es inspiziert Ihre App weiterhin durch die Seite, die es geöffnet hat, also lassen Sie diese Seite geöffnet. Navigieren Sie weg oder schließen Sie sie, und craftforJ hat nichts mehr zu inspizieren, bis Sie die App erneut öffnen.
+Damit craftforJ die App gar nicht mehr überlagert, verschieben Sie es aus der Seite heraus in ein eigenes Browserfenster oder einen eigenen Tab. Das ist praktisch bei Verwendung eines zweiten Monitors. craftforJ untersucht Ihre App weiterhin über die Seite, von der aus es geöffnet wurde. Lassen Sie diese Seite daher geöffnet. Wenn Sie von ihr weg navigieren oder sie schließen, kann craftforJ nichts mehr untersuchen, bis Sie die App erneut öffnen.
 
 <div class="videos-container">
   <video controls preload="metadata">
@@ -85,10 +88,10 @@ Um die App überhaupt nicht zu überdecken, bewegen Sie craftforJ aus der Seite 
   </video>
 </div>
 
-Wählen Sie eine Registerkarte anstelle eines Fensters, wenn Sie den geteilten Blick von Chrome verwenden, der Ihre App und craftforJ nebeneinander anzeigt und nur echte Registerkarten akzeptiert. Klicken Sie mit der rechten Maustaste auf die Registerkarte Ihrer App, fügen Sie sie zu einer neuen Ansicht hinzu und wählen Sie dann die craftforJ-Registerkarte.
+Wählen Sie statt eines Fensters einen Tab, wenn Sie die geteilte Ansicht von Chrome verwenden. Damit werden Ihre App und craftforJ nebeneinander angezeigt; unterstützt werden dabei nur echte Tabs. Klicken Sie mit der rechten Maustaste auf den Tab Ihrer App, fügen Sie ihn einer neuen geteilten Ansicht hinzu und wählen Sie anschließend den craftforJ-Tab aus.
 
-:::info Geteilter Blick ist eine Chrome-Funktion
-Chrome bietet das nebeneinander angeordnete Layout, nicht craftforJ. Andere Browser haben keine Entsprechung, sodass craftforJ in anderen Browsern in einer gewöhnlichen Registerkarte geöffnet wird, zu der Sie wechseln. craftforJ selbst funktioniert in beiden Fällen gleich.
+:::info Die geteilte Ansicht ist eine Chrome-Funktion
+Die nebeneinander angeordnete Ansicht wird von Chrome bereitgestellt, nicht von craftforJ. Andere Browser bieten keine entsprechende Funktion. Dort wird craftforJ in einem normalen Tab geöffnet, zu dem Sie wechseln können. craftforJ selbst funktioniert in beiden Fällen gleich.
 :::
 
 <div class="videos-container">
@@ -97,19 +100,19 @@ Chrome bietet das nebeneinander angeordnete Layout, nicht craftforJ. Andere Brow
   </video>
 </div>
 
-:::tip Bewegen, während der Assistent schreibt
-Das Bewegen von craftforJ in ein anderes Fenster beendet eine Antwort, die noch gestreamt wird. craftforJ fragt zuerst, und alles, was bis dahin geschrieben wurde, bleibt im Chat.
+:::tip Verschieben, während der Assistent eine Antwort schreibt
+Wenn Sie craftforJ in ein anderes Fenster verschieben, wird eine noch laufende Antwort beendet. craftforJ fragt vorher nach, und alles, was bis dahin geschrieben wurde, bleibt im Chat erhalten.
 :::
 
-## Erste Änderungen vornehmen {#making-a-first-change}
+## Erste Änderung vornehmen {#making-a-first-change}
 
-1. Drücken Sie <kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd>, um einen Komponentenauswahlprozess zu starten.
-2. Fahren Sie mit der Maus über etwas in Ihrer App und klicken Sie darauf.
-3. Der Baum wählt diese Komponente aus, und die Seitenleiste wird mit ihren Eigenschaften gefüllt.
-4. Ändern Sie eine Eigenschaft. Die laufende App aktualisiert sich sofort.
+1. Drücken Sie <kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd>, um die Komponentenauswahl zu starten.
+2. Bewegen Sie den Mauszeiger über ein Element in Ihrer App und klicken Sie darauf.
+3. Der Baum wählt diese Komponente aus, und in der Seitenleiste werden ihre Eigenschaften angezeigt.
+4. Ändern Sie eine Eigenschaft. Die laufende App wird sofort aktualisiert.
 
-Die Änderung beeinflusst nur die App, die Sie vor sich haben. Ihre Dateien bleiben unangetastet, bis Sie die Änderung überprüfen und anwenden, was in [Änderungen am Quellcode vornehmen](/docs/craftforj/source-changes) behandelt wird.
+Die Änderung betrifft nur die App, die gerade vor Ihnen geöffnet ist. Ihre Dateien bleiben unverändert, bis Sie die Änderung überprüfen und anwenden. Dies wird unter [Änderungen in den Quellcode schreiben](/docs/craftforj/source-changes) beschrieben.
 
-![craftforJ geöffnet neben einer laufenden App mit ausgewählter Komponente](/img/craftforj/getting-started/first-open.png#rounded-border)
+![craftforJ neben einer laufenden App geöffnet, in der eine Komponente ausgewählt ist](/img/craftforj/getting-started/first-open.png#rounded-border)
 
-Wenn überhaupt nichts erscheint, arbeiten Sie die [Fehlerbehebung](/docs/craftforj/troubleshooting) durch.
+Wenn überhaupt nichts angezeigt wird, gehen Sie die [Fehlerbehebung](/docs/craftforj/troubleshooting) durch.
