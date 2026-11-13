@@ -5,4 +5,4 @@
   - Button "Search":
     - Icon [slot=suffix] [name=external-link] [composite=Element] [node=dwc-icon]
   - Button:
-    - Img [composite=Element] [node=img] [src="https://documentation.webforj.com/img/webforj.svg"]
+    - Img [composite=Element] [node=img] [src="https://documentation.webforj.com/img/webforj.svg"] [alt=webforJ]
