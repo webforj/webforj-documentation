@@ -74,7 +74,8 @@
       text-transform: uppercase;
       position: absolute;
       right: 0.75rem;
-      top: 0.4rem;
+      top: 50%;
+      margin-top: -0.625rem;
       z-index: 1;
       pointer-events: none;
     }
@@ -82,6 +83,8 @@
     .theme-doc-sidebar-item-category.new-content:before,
     .theme-doc-sidebar-item-category.updated-content:before {
       right: 2.75rem;
+      // The item grows when expanded, so centre on its first row.
+      top: 0.925rem;
     }
 
     .menu__list-item.new-content:before {
@@ -101,6 +104,11 @@
 
     .has-new-content>.menu__list-item-collapsible {
       position: relative;
+    }
+
+    // Keep the label clear of the dot, so long labels wrap before it.
+    .has-new-content>.menu__list-item-collapsible>.menu__link {
+      padding-right: 1.5rem;
     }
 
     // A section with something new inside carries a small still dot.
