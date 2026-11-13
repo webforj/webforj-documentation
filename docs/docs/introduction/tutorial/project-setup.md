@@ -108,6 +108,57 @@ webforj.entry = com.webforj.tutorial.Application
 webforj.debug=true
 ```
 
+## Testing setup {#testbed-setup}
+
+The testing sections use [TestBed](/docs/testing/testbed/overview), available since webforJ **26.03**. The tutorial's [testbed branch](https://github.com/webforj/webforj-tutorial/tree/testbed) includes a complete test and its configuration for each step. To download those examples into a separate directory:
+
+```bash
+git clone --branch testbed https://github.com/webforj/webforj-tutorial.git webforj-tutorial-testbed
+```
+
+If you're building your own project, use webforJ 26.03 or higher and add the Spring TestBed module to your `pom.xml`. Its version comes from the webforJ bill of materials already imported by the generated project:
+
+```xml title="pom.xml"
+<dependency>
+  <groupId>com.webforj</groupId>
+  <artifactId>webforj-spring-testbed</artifactId>
+  <scope>test</scope>
+</dependency>
+```
+
+Keep the generated `spring-boot-starter-test` dependency as well; it provides Spring's testing support and JUnit. Put test classes in `src/test/java/com/webforj/tutorial` and create a test profile to turn off development tools:
+
+```properties title="src/test/resources/application-test.properties"
+spring.devtools.livereload.enabled=false
+webforj.devtools.browser.open=false
+webforj.devtools.livereload.enabled=false
+webforj.devtools.livereload.static-resources-enabled=false
+webforj.devtools.craftforj.enabled=false
+webforj.debug=false
+```
+
+For steps 2 through 6, also add `spring.jpa.hibernate.ddl-auto=create-drop` to this test profile. These steps use the tutorial's H2 database; Spring creates the schema for the test context and loads the initial customer records through `DataInitializer`.
+
+Each test class combines `@SpringBootTest`, `@ActiveProfiles("test")`, and `@WebforjTest`. Spring starts the app context and injects services; TestBed creates a fresh page for each test method. The Spring context remains cached across methods. The database examples also use `@Transactional` so each test's database changes roll back when it finishes.
+
+From the directory containing the current step's `pom.xml`, run:
+
+```bash
+mvn test
+```
+
+This runs the JUnit tests without launching the development server. For more details about the annotations and lifecycle, see [Spring testing](/docs/integrations/spring/testing).
+
+## Optional AI and craftforJ setup {#optional-ai-and-craftforj-setup}
+
+For the optional AI checkpoints, open the current step's project directory in Claude Code and install the [webforJ AI plugin](/docs/ai-tooling#installation). Follow that guide to verify the plugin is connected before asking it to work on your app. Give Claude the current lesson and ask it to use the webforJ documentation when explaining or changing code. Review its changes and run the app to check the result.
+
+The craftforJ checkpoints require webforJ **26.02 or higher**, a developer license, and a browser on the machine running your app. You can complete the tutorial without these optional checkpoints on an earlier supported version. Follow [Getting Started with craftforJ](/docs/craftforj/getting-started#requirements) to check the `webforj-devtools` dependency and enable both debug mode and craftforJ in `application.properties`.
+
+New projects generated with current startforJ or archetypes include craftforJ setup. For cloned tutorial examples, check the POM and properties in each step's directory before using it. Restart the app after changing its configuration, then open craftforJ with <kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>D</kbd>.
+
+craftforJ also has its own [AI assistant](/docs/craftforj/ai). To use the assistant prompts in this tutorial, configure a supported model first. This is separate from Claude Code and doesn't require choosing Claude as the model.
+
 ## Running the app {#running-the-app}
 
 To see the app in action as you progress through the tutorial:

@@ -494,3 +494,37 @@ public class MainView extends Composite<FlexLayout> {
 
 </ExpandableCode>
 <!-- vale on -->
+
+## Optional: review the app shell with craftforJ {#review-the-app-shell-with-craftforj}
+
+With the completed app running, open craftforJ and select the header and side menu. Follow their parents in the component tree to see how `AppLayout` contains the routed views. Inspect editable layout properties and preview a small spacing adjustment where supported.
+
+In the [Theme tab](/docs/craftforj/theme#adjusting-a-theme), try a palette or typography adjustment and check its effect on the table, customer form, and about page. Property edits use the [source change review](/docs/craftforj/source-changes); theme previews are saved separately to your stylesheet through [Saving a theme](/docs/craftforj/theme#saving-a-theme). Review the resulting project diff before keeping either kind of change.
+
+For a final source review, ask Claude Code:
+
+> Review the completed webforJ customer app after the AppLayout changes. Trace navigation between the customer table, add/edit form, and about page. Check that the layout changes preserve route parameters, customer binding, validation, and submit/cancel behavior. Use the webforJ documentation and report findings before making changes.
+
+Navigate through all three views, add a customer, and edit that customer. Check the layout at narrow and wide browser widths and verify that any saved visual changes remain after restarting the app.
+
+## Testing the app layout {#testing-with-testbed}
+
+With the completed app, use the [step 6 test](https://github.com/webforj/webforj-tutorial/blob/testbed/6-integrating-an-app-layout/src/test/java/com/webforj/tutorial/ApplicationLayoutTest.java) to check navigation within the shared layout. This test uses `@WebforjTest(app = Application.class)` with `@SpringBootTest`, `@ActiveProfiles("test")`, and `@Transactional`. Starting the app includes the routes discovered by `@Routify` and their `MainLayout` outlet.
+
+```java title="ApplicationLayoutTest.java (excerpt)"
+context.navigate(MainView.class);
+var layout = ComponentLocator.of(MainLayout.class).locate();
+verifyThat(ComponentLocator.of(H1.class).within(layout).locate()).hasText("Customer Table");
+
+UserInteraction.click(ComponentLocator.of(AppNavItem.class).byText("About").locate());
+verifyThat(ComponentLocator.of(H1.class).within(layout).locate()).hasText("About");
+verifyThat(layout).isAttached();
+
+UserInteraction.click(ComponentLocator.of(AppNavItem.class).byText("Dashboard").locate());
+verifyThat(ComponentLocator.of(H1.class).within(layout).locate()).hasText("Customer Table");
+verifyThat(ComponentLocator.of(Table.class).locate()).isAttached();
+```
+
+`within(layout)` scopes the heading locator to the shared layout. Clicking **About** changes that heading while the same layout remains attached. Clicking **Dashboard** restores the customer heading and table.
+
+Run `mvn test` from this step's directory using the [testing setup](/docs/introduction/tutorial/project-setup#testbed-setup). This checks route and component behavior; use the running app to check the header, drawer, theme, and responsive layout in a browser.

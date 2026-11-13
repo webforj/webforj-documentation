@@ -632,6 +632,45 @@ public class FormView extends Composite<Div> {
 </ExpandableCode>
 <!-- vale on -->
 
+## Optional: refine the customer form with craftforJ {#refine-the-form-with-craftforj}
+
+Run the completed app and open the add-customer form. In craftforJ, select a field with the component picker and follow its parents in the tree to the `ColumnsLayout` and `FormView`. Compare that structure with the Java code you just wrote.
+
+Try changing a field's label in its editable properties. Select the layout and inspect the available spacing properties, then preview a spacing adjustment if one is editable. Check that the labels remain clear and the fields and buttons fit at both narrow and wide browser widths.
+
+You can also attach the selected form to the [craftforJ assistant](/docs/craftforj/ai#working-with-the-app-in-a-conversation) and ask:
+
+> Inspect this webforJ add-customer form and its ColumnsLayout. Suggest a small improvement to labels or spacing using the existing components. Preserve the customer fields, submit and cancel behavior, and responsive breakpoints. Explain the proposed change before editing.
+
+Property previews haven't changed your Java files. Open the [change review](/docs/craftforj/source-changes#reviewing-and-applying), inspect the proposed diff, and apply only the changes you want to keep. Review any assistant edits in your project diff as well. Rebuild and restart if needed, then add a customer to check that the form still works.
+
+## Testing navigation and form submission {#testing-with-testbed}
+
+The [step 3 test](https://github.com/webforj/webforj-tutorial/blob/testbed/3-routing-and-composites/src/test/java/com/webforj/tutorial/CustomerNavigationTest.java) registers the two views explicitly with `@WebforjTest(routeClasses = {MainView.class, FormView.class})`, alongside `@SpringBootTest`, `@ActiveProfiles("test")`, and `@Transactional`. It injects `CustomerService` to compare the database before and after submission.
+
+The following excerpt starts at the table, opens the form, enters a customer, and submits it:
+
+```java title="CustomerNavigationTest.java (excerpt)"
+long before = customers.getTotalCustomersCount();
+context.navigate(MainView.class);
+UserInteraction.click(ComponentLocator.of(Button.class).byText("Add Customer").locate());
+
+UserInteraction.type(ComponentLocator.of(TextField.class).byLabel("First Name").locate(), "Ada");
+UserInteraction.type(ComponentLocator.of(TextField.class).byLabel("Last Name").locate(), "Lovelace");
+UserInteraction.type(ComponentLocator.of(TextField.class).byLabel("Company").locate(), "Analytical Engines");
+UserInteraction.selectKey(ComponentLocator.of(ChoiceBox.class).byLabel("Country").locate(), Country.ENGLAND);
+UserInteraction.click(ComponentLocator.of(Button.class).byText("Submit").locate());
+
+assertEquals(before + 1, customers.getTotalCustomersCount());
+verifyThat(ComponentLocator.of(Table.class).locate()).hasItemCount((int) before + 1);
+assertEquals("/", context.getRouter().orElseThrow().getHistory()
+    .getLocation().orElseThrow().getFullURI());
+```
+
+Locating fields by their labels keeps the test tied to the visible interface. `selectKey()` selects the country by its `Country` enum key. After submission, the assertions check the saved record count, the table's item count, and the return to `/`.
+
+The complete test also opens the form directly, enters an unsaved name, and clicks **Cancel**. It checks that the customer count stays the same and the table is attached again. Run both cases with `mvn test` from this step's directory after completing the [testing setup](/docs/introduction/tutorial/project-setup#testbed-setup).
+
 ## Next step {#next-step}
 
 Since users can now add customers, your app should be able to edit existing customers using the same form. In the next step, [Observers and Route Parameters](/docs/introduction/tutorial/observers-and-route-parameters), you’ll allow the customer `id` to be an initial parameter for `FormView`, so it can fill in the form with that customer's data and allow users to change the properties.

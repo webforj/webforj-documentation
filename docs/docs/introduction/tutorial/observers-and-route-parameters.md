@@ -389,6 +389,36 @@ public class MainView extends Composite<Div> {
 }
 ```
 
+## Optional navigation checkpoint {#review-navigation-with-claude-code}
+
+Ask Claude Code to trace the two ways a user reaches your form:
+
+> In this webforJ project, trace navigation from MainView to FormView for adding a customer and editing an existing customer. Explain how the route parameter, ParametersBag, and onWillEnter() determine which customer the form loads. Use the current source and webforJ documentation without changing the code.
+
+Check the explanation against your implementation. Open a new customer form and verify that it's empty. Then select an existing customer, confirm that the form loads that customer's values, and save a change. The table should show the updated record rather than an extra customer.
+
+## Testing route parameters and observers {#testing-with-testbed}
+
+The [step 4 test](https://github.com/webforj/webforj-tutorial/blob/testbed/4-observers-and-route-parameters/src/test/java/com/webforj/tutorial/CustomerRoutesTest.java) keeps the route registration and test annotations from step 3. It injects both `CustomerRepository` and `CustomerService` so it can choose an existing customer and check the saved change.
+
+```java title="CustomerRoutesTest.java (excerpt)"
+var customer = repository.findAll().getFirst();
+context.navigate(FormView.class, ParametersBag.of("id=" + customer.getId()));
+
+verifyThat(ComponentLocator.of(TextField.class).byLabel("First Name").locate())
+    .hasValue(customer.getFirstName());
+var company = ComponentLocator.of(TextField.class).byLabel("Company").locate();
+verifyThat(company).hasValue(customer.getCompany());
+UserInteraction.type(company, "Updated Company");
+UserInteraction.click(ComponentLocator.of(Button.class).byText("Submit").locate());
+
+assertEquals("Updated Company", customers.getCustomerByKey(customer.getId()).getCompany());
+```
+
+Navigating with `ParametersBag` runs the route observer, so the assertions check the values that `onWillEnter()` loaded. The final assertion checks that submitting the form updates the customer identified by the route.
+
+The complete test also navigates to `customer/999999` and checks that an unknown customer redirects to `MainView` at `/`. Run `mvn test` from this step's directory to exercise both routes. The [test profile and transaction setup](/docs/introduction/tutorial/project-setup#testbed-setup) keep each test's database changes from affecting the next test.
+
 ## Next step {#next-step}
 
 Now that users can edit customer data directly, your app should validate changes before committing them to the repository. In [Validating and Binding Data](/docs/introduction/tutorial/validating-and-binding-data), you’ll create validation rules and directly associate the data model with the UI, allowing the components to display error messages when the data is invalid.

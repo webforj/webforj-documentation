@@ -351,6 +351,46 @@ public class FormView extends Composite<Div> implements WillEnterObserver {
 </ExpandableCode>
 <!-- vale on -->
 
+## Optional form checkpoint {#check-the-form-with-ai}
+
+With the completed form running, use craftforJ to inspect the fields and their layout. Resize the browser to check the `ColumnsLayout` at narrow and wide widths. If labels or spacing need adjustment, preview a supported property edit, then [review and apply it](/docs/craftforj/source-changes) to keep it.
+
+For a review of the binding logic, ask Claude Code:
+
+> Explain how this webforJ FormView binds Customer properties, loads a customer's values, and validates before saving. Trace BindingContext, fillForm(), and submitCustomer() in the current source. Identify which validation rules apply to each field, using the webforJ documentation. Don't change the code.
+
+Test a submission that violates one of your declared rules and check the validation feedback and submit button state. Then enter valid values and save. Repeat with an existing customer to check that validation and saving work for both paths.
+
+## Testing validation and binding {#testing-with-testbed}
+
+The [step 5 test](https://github.com/webforj/webforj-tutorial/blob/testbed/5-validating-and-binding-data/src/test/java/com/webforj/tutorial/CustomerValidationTest.java) uses the same Spring, test profile, route registration, and transaction annotations as the previous step. After navigating to `FormView`, it enters an invalid first name and checks both the field and submit button:
+
+```java title="CustomerValidationTest.java (excerpt)"
+long before = customers.getTotalCustomersCount();
+context.navigate(FormView.class);
+var firstName = ComponentLocator.of(TextField.class).byLabel("First Name").locate();
+var submit = ComponentLocator.of(Button.class).byText("Submit").locate();
+
+UserInteraction.type(firstName, "123");
+UserInteraction.type(ComponentLocator.of(TextField.class).byLabel("Last Name").locate(), "Hopper");
+verifyThat(firstName).isInvalid();
+verifyThat(submit).isDisabled();
+assertEquals(before, customers.getTotalCustomersCount());
+
+UserInteraction.type(firstName, "Grace");
+UserInteraction.type(ComponentLocator.of(TextField.class).byLabel("Company").locate(), "Compiler Systems");
+UserInteraction.selectKey(ComponentLocator.of(ChoiceBox.class).byLabel("Country").locate(), Country.USA);
+verifyThat(firstName).isValid();
+verifyThat(submit).isEnabled();
+UserInteraction.click(submit);
+
+assertEquals(before + 1, customers.getTotalCustomersCount());
+```
+
+The first assertions check the validation state without submitting invalid data. Correcting the name makes the field valid and enables submission. The complete test then reads the saved customer through `CustomerRepository` and checks the last name, company, and country, verifying that binding transferred the field values into the entity.
+
+Run `mvn test` from this step's directory using the [testing setup](/docs/introduction/tutorial/project-setup#testbed-setup). Continue checking the responsive form layout in a browser; these assertions check the Java component state and saved data.
+
 ## Next step {#next-step}
 
 The next step, [Integrating an App Layout](/docs/introduction/tutorial/integrating-an-app-layout), focuses on using an `AppLayout` to add a side menu that’s available for users on both the customer table and customer form pages. You’ll also learn about another layout tool, the `FlexLayout` component.

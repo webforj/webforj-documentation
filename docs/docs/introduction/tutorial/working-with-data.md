@@ -263,6 +263,14 @@ public class CustomerService {
 }
 ```
 
+### Optional data flow checkpoint {#trace-data-with-claude-code}
+
+After creating the entity, repository, and service, ask Claude Code:
+
+> Read Customer, CustomerRepository, and CustomerService in this webforJ project. Explain how a customer is stored and how getRepositoryAdapter() makes the data available to a Table. Use the webforJ documentation and point to the relevant methods in the project source. Don't change the code.
+
+Follow the explanation through your classes. Once you've completed the table below, check that the initial customer records appear in the browser.
+
 ## Loading initial data {#loading-initial-data}
 
 For this tutorial, the initial customer data set comes from a JSON file. The Java app loads the file, not the browser, so create it inside `src/main/resources/data` using the following data:
@@ -408,6 +416,10 @@ table.setMaxWidth("90vw");
 table.setColumnsToAutoFit();
 ```
 
+:::tip Optional: inspect the table with craftforJ
+After completing this step and running the app, select the table in craftforJ. Inspect its size properties and change an editable width or maximum width. Resize the browser and check how the table fits. Revert the preview afterward, or [review and apply the change](/docs/craftforj/source-changes) to keep it in your project.
+:::
+
 ### User interactions {#user-interactions}
 
 The `Table` component also has methods to control how users interact with the columns:
@@ -471,6 +483,29 @@ public class Application extends App {
 
 }
 ```
+
+## Testing the customer table {#testing-with-testbed}
+
+The [step 2 test](https://github.com/webforj/webforj-tutorial/blob/testbed/2-working-with-data/src/test/java/com/webforj/tutorial/ApplicationTest.java) checks that the table displays the customers loaded by Spring. It uses the same annotations as step 1, adds `@Transactional`, and injects `CustomerService` with `@Autowired`:
+
+```java title="ApplicationTest.java (excerpt)"
+@Autowired
+private CustomerService customers;
+
+@Test
+void showsTheCustomersLoadedBySpring(WebforjTestbed context) {
+  var table = ComponentLocator.of(Table.class).locate();
+  assertTrue(customers.getTotalCustomersCount() > 0);
+  verifyThat(table).isAttached().hasItemCount((int) customers.getTotalCustomersCount());
+
+  UserInteraction.click(ComponentLocator.of(Button.class).byText("Info").locate());
+  assertEquals("This is a tutorial!", context.getShownOptionDialogs().getFirst().getMessage());
+}
+```
+
+The positive count assertion checks that `DataInitializer` loaded records. `hasItemCount()` then compares the table's data with the service's count. This checks the connection from Spring data to the UI component rather than relying on a fixed number of customers.
+
+Use the [test profile for database steps](/docs/introduction/tutorial/project-setup#testbed-setup) and run `mvn test` from this step's directory. The linked test contains the full class and imports, including the JUnit assertions and TestBed's `verifyThat` static import.
 
 ## Next step {#next-step}
 

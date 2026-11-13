@@ -27,6 +27,14 @@ As you develop your app, you can use [1-creating-a-basic-app](https://github.com
 
 Running the app automatically opens a new browser at `http://localhost:8080`.
 
+## Optional AI checkpoint {#develop-with-claude-code}
+
+With the [webforJ AI plugin configured](/docs/introduction/tutorial/project-setup#optional-ai-and-craftforj-setup), try this prompt in Claude Code before building the interface:
+
+> For step 1 of the webforJ customer app tutorial, Creating a Basic App, read this project's `Application` class and explain its Spring Boot entry point. Use the webforJ documentation to help build the components shown in this lesson, one section at a time. Keep the work within this step and explain each change.
+
+Compare the explanation with the sections below. After each change, run the app and check that the components appear and the button responds as described in the lesson.
+
 ## The entry point {#entry-point}
 
 Every webforJ app contains a single class that extends <JavadocLink type="foundation" location="com/webforj/App" code='true'>App</JavadocLink>. For this tutorial, and other published webforJ projects, it's commonly called `Application`. This class is inside a package that's named after the `groupId` you used in [Project Setup](/docs/introduction/tutorial/project-setup):
@@ -215,6 +223,56 @@ public class Application extends App {
 :::tip Multiple pages
 For a more complex app, you can divide the UI into multiple pages for better organization. This concept is covered later in this tutorial in [Routing and Composites](/docs/introduction/tutorial/routing-and-composites).
 :::
+
+## Optional: inspect your first interface {#inspect-your-first-interface}
+
+Open craftforJ over the running app. Use the [component picker](/docs/craftforj/inspector#selecting-a-component) to select the button, then find it in the component tree. In its editable properties, change its text and check that the running button shows the new value.
+
+This property edit is a live preview. Revert it when you're finished, or [review and apply it to source](/docs/craftforj/source-changes#reviewing-and-applying) if you want to keep it. After applying, rebuild and restart the app if your reload setup doesn't do so automatically, and verify the text again.
+
+## Testing the button and dialog {#testing-with-testbed}
+
+With the [TestBed setup](/docs/introduction/tutorial/project-setup#testbed-setup) in place, you can check the button's behavior without opening a browser. Create `ApplicationTest.java` in `src/test/java/com/webforj/tutorial`:
+
+```java title="ApplicationTest.java"
+package com.webforj.tutorial;
+
+import static com.webforj.testbed.assertion.WebforjAssertions.verifyThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import com.webforj.automation.act.UserInteraction;
+import com.webforj.automation.find.ComponentLocator;
+import com.webforj.component.button.Button;
+import com.webforj.component.html.elements.Paragraph;
+import com.webforj.testbed.WebforjTestbed;
+import com.webforj.testbed.annotation.WebforjTest;
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
+
+@SpringBootTest
+@ActiveProfiles("test")
+@WebforjTest(app = Application.class)
+class ApplicationTest {
+  @Test
+  void opensTheInformationDialog(WebforjTestbed context) {
+    var greeting = ComponentLocator.of(Paragraph.class).byText("Tutorial App!").locate();
+    verifyThat(greeting).isAttached();
+
+    var info = ComponentLocator.of(Button.class).byText("Info").locate();
+    UserInteraction.click(info);
+
+    assertEquals(1, context.getShownOptionDialogs().size());
+    var dialog = context.getShownOptionDialogs().getFirst();
+    assertEquals("Info", dialog.getTitle());
+    assertEquals("This is a tutorial!", dialog.getMessage());
+  }
+}
+```
+
+`@WebforjTest(app = Application.class)` starts the app inside TestBed. The test follows a find, act, check sequence: `ComponentLocator` finds components by their visible text, `UserInteraction.click()` runs the button's listener, and assertions check the result. TestBed dismisses message dialogs automatically and keeps their contents in `getShownOptionDialogs()` for inspection.
+
+Run `mvn test` from this step's directory. The [complete test on the testbed branch](https://github.com/webforj/webforj-tutorial/blob/testbed/1-creating-a-basic-app/src/test/java/com/webforj/tutorial/ApplicationTest.java) includes the same checks. TestBed verifies the behavior; use the browser to check the card's CSS and appearance.
 
 ## Next step {#next-step}
 
