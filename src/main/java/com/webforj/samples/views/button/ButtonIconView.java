@@ -22,7 +22,7 @@ public class ButtonIconView extends Composite<FlexLayout> {
     link = new Button("Search").setSuffixComponent(TablerIcon.create("external-link"));
 
     Img imgIcon =
-        new Img("https://documentation.webforj.com/img/webforj.svg").setSize("100px", "30px");
+        new Img("https://documentation.webforj.com/img/webforj.svg", "webforJ").setSize("100px", "30px");
     imgButton = new Button(imgIcon);
 
     self.setSpacing("var(--dwc-space-l)")

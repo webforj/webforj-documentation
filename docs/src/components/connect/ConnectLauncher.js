@@ -323,7 +323,7 @@ export default function ConnectLauncher() {
 
   const avatar = (
     <span className={styles.avatar} aria-hidden="true">
-      <img src={icon} alt="" width="24" height="24" />
+      <img src={icon} alt="webforJ" width="24" height="24" />
       <span className={styles.online} />
     </span>
   );

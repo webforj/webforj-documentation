@@ -17,7 +17,7 @@ export default function ConnectCard() {
     <div className={styles.card}>
       <div className={styles.team}>
         <span className={styles.avatar}>
-          <img src={icon} alt="" width="22" height="22" />
+          <img src={icon} alt="webforJ" width="22" height="22" />
           <span className={styles.online} aria-hidden="true" />
         </span>
         <span className={styles.teamName}>

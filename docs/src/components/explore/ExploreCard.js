@@ -41,7 +41,7 @@ function VideoThumb({ video }) {
   };
   return (
     <span className={styles.frame}>
-      {short && <img className={styles.backdrop} src={video.thumbnail} alt="" aria-hidden="true" loading="lazy" onError={fallback} />}
+      {short && <img className={styles.backdrop} src={video.thumbnail} alt={cleanTitle(video.title || '')} aria-hidden="true" loading="lazy" onError={fallback} />}
       <img className={short ? styles.upright : styles.wide} src={video.thumbnail} alt={cleanTitle(video.title || '')} loading="lazy" onError={fallback} />
       <span className={styles.play} aria-hidden="true">
         <FaPlay />

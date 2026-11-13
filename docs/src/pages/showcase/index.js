@@ -666,7 +666,7 @@ function Project({ project, number }) {
                           src={shownImage.full}
                           width={project.size.width}
                           height={project.size.height}
-                          alt={active ? shownImage.alt : ''}
+                          alt={shownImage.alt}
                           loading="lazy"
                           decoding="async"
                         />
@@ -707,7 +707,7 @@ function Project({ project, number }) {
                       sizes={DESKTOP_SIZES}
                       width={project.size.width}
                       height={project.size.height}
-                      alt=""
+                      alt={getImage(project.screens[leaving]).alt}
                       aria-hidden="true"
                     />
                   )}

@@ -43,7 +43,7 @@ function WebforjMark({ className }) {
     <img
       className={className}
       src={useBaseUrl('/img/webforj_icon.svg')}
-      alt=""
+      alt="webforJ"
       aria-hidden="true"
       width="20"
       height="20"
