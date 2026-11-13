@@ -184,5 +184,5 @@ converter.setJwtGrantedAuthoritiesConverter(
 ## Limits {#limits}
 
 - An authentication entry point set on `oauth2ResourceServer` isn't used for rejected header tokens. These always receive the `401` response described in [Login behavior](#login-behavior).
-- A `POST` with only the cookie to a path outside webforJ counts as a request without a token and removes the stored token login. The next page load or webforJ request reads the cookie again.
+- A `POST` with only the cookie to a path outside webforJ carries no readable token, so it keeps the stored token login and never logs the user out mid request. The login is removed only once its token has expired. The next page load or webforJ request reads the cookie again.
 - When a form login is stored in the session, a token login on top of it also receives the authorities of the form login.
