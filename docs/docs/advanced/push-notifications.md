@@ -11,11 +11,7 @@ Push notifications can reach users even when an app isn't open. The browser subs
 
 <!-- INTRO_END -->
 
-<div class="videos-container">
-  <video controls preload="metadata">
-    <source src="https://cdn.webforj.com/webforj-documentation/video/push-notifications/push.mp4" type="video/mp4"/>
-  </video>
-</div>
+<VideoPlayer video="push-notifications/push" width={1920} height={1072} title="Push notifications" />
 
 ## Setup and prerequisites {#setup-and-prerequisites}
 

@@ -19,11 +19,7 @@ A Spring Boot MCP server can give you both. Spring AI runs the MCP server and ta
 
 The code in this post comes from a working invoice workspace built with Spring Boot, Spring AI and webforJ 26.02. This is the workspace running inside an AI client:
 
-<div class="videos-container">
-  <video controls muted preload="metadata">
-    <source src="https://cdn.webforj.com/webforj-documentation/video/mcp-apps/webforj-mcp-app.mp4" type="video/mp4"/>
-  </video>
-</div>
+<VideoPlayer video="mcp-apps/webforj-mcp-app" width={1920} height={1080} title="WebforJ MCP app" muted />
 
 ## The problem with tools alone {#problem-with-tools-alone}
 

@@ -1,0 +1,68 @@
+.frame {
+  margin: 2rem auto;
+  border: 1px solid var(--dwc-border-color);
+  border-radius: var(--dwc-border-radius-l);
+  overflow: hidden;
+  background: #000;
+  line-height: 0;
+}
+
+/* Inside a frame the page already draws: no own margin, border or corners. */
+.plain {
+  width: 100%;
+  margin: 0;
+  border: 0;
+  border-radius: 0;
+}
+
+.barHidden {
+  display: none;
+}
+
+.controller,
+.video {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.video {
+  object-fit: contain;
+  background: #000;
+}
+
+.controller {
+  --media-font-family: var(--ifm-font-family-base);
+  --media-primary-color: #fff;
+  --media-secondary-color: transparent;
+  --media-control-background: transparent;
+  --media-control-hover-background: rgb(255 255 255 / 0.12);
+  --media-range-bar-color: var(--dwc-color-primary);
+  --media-range-track-background: rgb(255 255 255 / 0.28);
+  --media-range-thumb-background: #fff;
+  --media-time-range-buffered-color: rgb(255 255 255 / 0.45);
+  --media-text-color: #fff;
+  --media-focus-box-shadow: inset 0 0 0 2px var(--dwc-color-primary);
+}
+
+.bar {
+  width: 100%;
+  padding: 0 0.25rem;
+  background: rgb(0 0 0 / 0.72);
+}
+
+.bigPlay {
+  --media-control-background: var(--dwc-color-primary);
+  --media-control-hover-background: var(--dwc-color-primary-dark);
+  --media-button-icon-width: 2.25rem;
+  --media-button-icon-height: 2.25rem;
+  width: 4.5rem;
+  height: 4.5rem;
+  padding: 1.125rem;
+  border-radius: 50%;
+}
+
+/* Hide the big button once playback starts. */
+.controller:not([mediapaused]) .bigPlay {
+  display: none;
+}

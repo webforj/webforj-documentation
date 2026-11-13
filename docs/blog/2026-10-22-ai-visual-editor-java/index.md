@@ -36,21 +36,13 @@ Neither setting does anything alone. Projects created with [startforJ](https://d
 
 Start the app and press <kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> to open craftforJ. Turn on pick mode and click any component on the page to select it in the inspector. The tree shows the components your Java code created, in the order it created them.
 
-<div class="videos-container">
-  <video controls preload="metadata">
-    <source src="https://cdn.webforj.com/webforj-documentation/video/craftforJ/pick-mode.mp4#t=0.5" type="video/mp4" />
-  </video>
-</div>
+<VideoPlayer video="craftforj/pick-mode" width={1920} height={992} title="Pick mode" />
 
 ## Ask for a change in plain language {#ask-for-a-change-in-plain-language}
 
 Open the [assistant](/docs/craftforj/ai) and describe the change the way you would to a colleague, for example: show the total as a dollar amount. The assistant looks at the live components, plans the change, and writes the Java for it. Expect a small, focused edit, about the size you would make by hand, rather than a rewrite of the view.
 
-<div class="videos-container">
-  <video controls preload="metadata">
-    <source src="https://cdn.webforj.com/webforj-documentation/video/craftforJ/ai-conversation.mp4#t=0.5" type="video/mp4" />
-  </video>
-</div>
+<VideoPlayer video="craftforj/ai-conversation" width={1920} height={1000} title="AI conversation" />
 
 ## How does the compile gate work? {#how-the-compile-gate-works}
 
@@ -64,11 +56,7 @@ The compile gate catches code that does not compile. It does not decide whether 
 
 Changing a property touches only the running app. Writing to source is a separate step. Press <kbd>Cmd/Ctrl</kbd> + <kbd>S</kbd> to open the review. Changes are grouped by the file they land in, and each one expands into its diff. Nothing is written until you apply. What lands in your files is plain Java, which is why [visual editing here does not lock you in](/blog/low-code-to-pro-code-java).
 
-<div class="videos-container">
-  <video controls preload="metadata">
-    <source src="https://cdn.webforj.com/webforj-documentation/video/craftforJ/apply-changes.mp4#t=0.5" type="video/mp4" />
-  </video>
-</div>
+<VideoPlayer video="craftforj/apply-changes" width={1920} height={992} title="Apply changes" />
 
 Applying a change restarts the app. The assistant waits for the restart, reconnects, and picks its plan up where it left off, so a task that spans several edits and restarts still finishes. Keep your work in version control before you apply, and read the diff again before you commit.
 

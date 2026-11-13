@@ -25,11 +25,13 @@ import GalleryGrid from '@site/src/components/GalleryGrid/GalleryGrid';
 import ExperimentalWarning from '@site/src/components/DocsTools/ExperimentalWarning';
 import AutomatedUpgradeTip from '@site/src/components/DocsTools/AutomatedUpgradeTip';
 import AISkillTip from '@site/src/components/DocsTools/AISkillTip';
+import VideoPlayer from '@site/src/components/VideoPlayer';
 
 
 export default {
   ...MDXComponents,
   ComponentDemo,
+  VideoPlayer,
   DocCardList,
   DocChip,
   JavadocLink,

@@ -46,7 +46,7 @@ export default function getPanels() {
             id: 'page.craftforj.panels.inspector.view1',
             message: 'Pick a component',
           }),
-          video: 'https://cdn.webforj.com/webforj-documentation/video/craftforJ/pick-mode.mp4',
+          video: 'craftforj/pick-mode',
           width: 1920,
           height: 992,
           alt: translate({
@@ -60,7 +60,7 @@ export default function getPanels() {
             id: 'page.craftforj.panels.inspector.view2',
             message: 'Edit a property',
           }),
-          video: 'https://cdn.webforj.com/webforj-documentation/video/craftforJ/property-edit.mp4',
+          video: 'craftforj/property-edit',
           width: 1920,
           height: 1000,
           alt: translate({
@@ -113,7 +113,7 @@ export default function getPanels() {
             id: 'page.craftforj.panels.sourceChanges.view1',
             message: 'Save to source',
           }),
-          video: 'https://cdn.webforj.com/webforj-documentation/video/craftforJ/apply-changes.mp4',
+          video: 'craftforj/apply-changes',
           width: 1920,
           height: 992,
           alt: translate({
@@ -162,7 +162,7 @@ export default function getPanels() {
             id: 'page.craftforj.panels.routes.view1',
             message: 'Navigate to a route',
           }),
-          video: 'https://cdn.webforj.com/webforj-documentation/video/craftforJ/route-navigate.mp4',
+          video: 'craftforj/route-navigate',
           width: 1920,
           height: 1000,
           alt: translate({
@@ -175,7 +175,7 @@ export default function getPanels() {
             id: 'page.craftforj.panels.routes.view2',
             message: 'Set an access rule',
           }),
-          video: 'https://cdn.webforj.com/webforj-documentation/video/craftforJ/route-security.mp4',
+          video: 'craftforj/route-security',
           width: 1920,
           height: 1000,
           alt: translate({
@@ -219,7 +219,7 @@ export default function getPanels() {
       views: [
         {
           label: translate({ id: 'page.craftforj.panels.theme.view1', message: 'Theme controls' }),
-          video: 'https://cdn.webforj.com/webforj-documentation/video/craftforJ/theme-knobs.mp4',
+          video: 'craftforj/theme-knobs',
           width: 1920,
           height: 992,
           alt: translate({
@@ -265,7 +265,7 @@ export default function getPanels() {
         {
           label: translate({ id: 'page.craftforj.panels.ai.view1', message: 'A conversation' }),
           video:
-            'https://cdn.webforj.com/webforj-documentation/video/craftforJ/ai-conversation.mp4',
+            'craftforj/ai-conversation',
           width: 1920,
           height: 1000,
           alt: translate({

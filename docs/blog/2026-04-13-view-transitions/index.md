@@ -17,11 +17,7 @@ There's something about native mobile apps that's hard to copy on the web: thing
 
 To see what this looks like in practice, I threw together a quick travel destinations app with a card grid and detail pages to browse through. It shows two things at once: slide animations between routes via `@RouteTransition`, and a shared element morph where the card thumbnail expands into the full hero image on the detail page.
 
-<div class="videos-container">
-<video controls preload="metadata">
-  <source src="https://cdn.webforj.com/webforj-documentation/blogs/2026-04-03-view-transitions/view-transitions.mp4" type="video/mp4"/>
-</video>
-</div>
+<VideoPlayer video="view-transitions/view-transitions" width={1720} height={1440} title="View transitions" />
 
 ## How it works {#how-it-works}
 

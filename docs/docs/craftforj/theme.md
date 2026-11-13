@@ -6,11 +6,7 @@ description: Adjust the DWC design tokens of a running webforJ app, preview the 
 
 The Theme tab lets you change how your app looks while it runs. It works with the [DWC design tokens](/docs/styling/css-variables) your app already uses, so a single change reaches every component that reads that token instead of one rule at a time.
 
-<div class="videos-container">
-  <video controls preload="metadata">
-    <source src="https://cdn.webforj.com/webforj-documentation/video/craftforJ/theme-knobs.mp4#t=0.5" type="video/mp4" />
-  </video>
-</div>
+<VideoPlayer video="craftforj/theme-knobs" width={1920} height={992} title="Theme knobs" />
 
 ## Adjusting a theme {#adjusting-a-theme}
 

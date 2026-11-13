@@ -18,11 +18,7 @@ You can navigate to any route directly from craftforJ. Routes that take paramete
 
 Navigating this way is a real navigation, so your app's [lifecycle observers](/docs/routing/navigation-lifecycle/observers) run exactly as they would for a user. The tree also follows the app, so navigating in the app itself moves the marker.
 
-<div class="videos-container">
-  <video controls preload="metadata">
-    <source src="https://cdn.webforj.com/webforj-documentation/video/craftforJ/route-navigate.mp4#t=0.5" type="video/mp4" />
-  </video>
-</div>
+<VideoPlayer video="craftforj/route-navigate" width={1920} height={1000} title="Route navigate" />
 
 ## Access rules {#access-rules}
 
@@ -34,8 +30,4 @@ Only `@RolesAllowed` and `@DenyAll` count as protected. `@PermitAll` names no ro
 
 You can also change a route's access rule from craftforJ. craftforJ writes the annotation into the route's class and the app restarts, so the change goes through the same review as any other [source change](/docs/craftforj/source-changes). The option is unavailable when craftforJ isn't allowed to write Java.
 
-<div class="videos-container">
-  <video controls preload="metadata">
-    <source src="https://cdn.webforj.com/webforj-documentation/video/craftforJ/route-security.mp4#t=0.5" type="video/mp4" />
-  </video>
-</div>
+<VideoPlayer video="craftforj/route-security" width={1920} height={1000} title="Route security" />

@@ -15,10 +15,6 @@ The webforJ 25.x cycle covered a lot of ground: new components, a fresh design l
 
 <!-- truncate -->
 
-<div class="videos-container">
-  <video controls poster="https://cdn.webforj.com/webforj-documentation/blogs/webforj-v26.00/video-cover.jpg">
-    <source src="https://cdn.webforj.com/webforj-documentation/blogs/webforj-v26.00/v25-highlights.mp4" type="video/mp4"/>
-  </video>
-</div>
+<VideoPlayer video="highlights/v25-highlights" cover="https://cdn.webforj.com/webforj-documentation/blogs/webforj-v26.00/video-cover.jpg" width={1920} height={1080} title="V25 highlights" />
 
 For the full release notes, code samples, and upgrade tooling, head over to [What's new in version `26.00`](/blog/whats-new-v26.00).

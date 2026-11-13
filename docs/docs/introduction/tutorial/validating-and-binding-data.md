@@ -12,11 +12,7 @@ Your app from [Observers and Route Parameters](/docs/introduction/tutorial/obser
 
 Completing this step creates a version of [5-validating-and-binding-data](https://github.com/webforj/webforj-tutorial/tree/main/5-validating-and-binding-data).
 
-<!-- <div class="videos-container">
-  <video controls>
-    <source src="https://cdn.webforj.com/webforj-documentation/video/tutorials/validating-and-binding-data.mp4" type="video/mp4"/>
-  </video>
-</div> -->
+<!-- <VideoPlayer video="tutorial/validating-and-binding-data" width={1920} height={1080} title="Validating and binding data" /> -->
 
 ## Running the app {#running-the-app}
 

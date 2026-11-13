@@ -21,11 +21,7 @@ You can test a Java MCP App without an AI host, and skip that loop entirely. A w
 
 A typical MCP tool hands back text or JSON for the model to read. An MCP App hands back something the user can see and use: a view that opens inside the AI app's own conversation. The official MCP Apps starter templates cover JavaScript frameworks such as React, Vue and Svelte. webforJ brings MCP Apps to Java as a feature of the framework itself: the view is an ordinary routed view with one extra annotation, `@McpApp`, not a separate frontend project. It stays part of your Java app and uses the same components, services, routing and state it uses in a browser, so you don't build a second UI for the AI app. A fuller build of the same idea is a [Spring Boot MCP server with tools and a live UI](/blog/spring-boot-mcp-server-ui).
 
-<div class="videos-container">
-  <video controls muted preload="metadata">
-    <source src="https://cdn.webforj.com/webforj-documentation/video/mcp-apps/webforj-mcp-app.mp4" type="video/mp4"/>
-  </video>
-</div>
+<VideoPlayer video="mcp-apps/webforj-mcp-app" width={1920} height={1080} title="WebforJ MCP app" muted />
 
 Spring and webforJ split the work cleanly. [Spring AI's MCP server](https://docs.spring.io/spring-ai/reference/api/mcp/mcp-server-boot-starter-docs.html) handles the protocol: it registers tools, serves resources and talks to the AI app. What Spring doesn't give you is the interactive interface that the [MCP Apps extension](https://modelcontextprotocol.io/docs/extensions/apps) expects a server to provide. webforJ fills that gap. Its [Spring Boot integration](/docs/integrations/mcp-apps/spring) publishes your routed views through the Spring AI server, so one Java app ships both the tool and the UI the user sees in the chat.
 

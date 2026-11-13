@@ -106,11 +106,7 @@ On the first run, JBang downloads the dependencies, compiles the file, starts th
 
 The video below shows two single-file apps started this way: a counter, and a process manager that lists and stops processes on the machine.
 
-<div class="videos-container">
-  <video controls muted preload="metadata">
-    <source src="https://cdn.webforj.com/webforj-documentation/blogs/2026-09-23-jbang-java-web-app/jbang-muted.mp4#t=0.5" type="video/mp4" />
-  </video>
-</div>
+<VideoPlayer video="jbang/jbang-muted" width={1920} height={1080} title="JBang muted" muted />
 
 On macOS and Linux you can also make the file executable with `chmod +x HelloWorld.java`, then start it with `./HelloWorld.java`. The shebang line is what makes that work.
 

@@ -12,7 +12,7 @@ import Translate, { translate } from '@docusaurus/Translate';
 
 export function getVideo() {
   return {
-    src: 'https://cdn.webforj.com/webforj-documentation/video/mcp-apps/webforj-mcp-app.mp4',
+    video: 'mcp-apps/webforj-mcp-app',
     width: 1920,
     height: 1080,
     label: translate({

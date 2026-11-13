@@ -20,6 +20,7 @@ import {
   getVideo,
 } from './_content';
 import styles from './mcp-apps.module.css';
+import VideoPlayer from '@site/src/components/VideoPlayer';
 
 function cx(...classNames) {
   return classNames.filter(Boolean).join(' ');
@@ -81,17 +82,15 @@ function Hero() {
               </Translate>
             </span>
           </div>
-          <video
-            className={styles.video}
-            controls
-            muted
-            playsInline
-            preload="metadata"
+          <VideoPlayer
+            video={video.video}
             width={video.width}
             height={video.height}
-            aria-label={video.label}>
-            <source src={`${video.src}#t=0.5`} type="video/mp4" />
-          </video>
+            title={video.label}
+            muted
+            plain
+            controlsOnPlay
+          />
         </figure>
       </div>
     </header>

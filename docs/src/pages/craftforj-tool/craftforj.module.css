@@ -308,10 +308,7 @@
   background: var(--cj-frame-bg);
 }
 
-.heroShot img {
-  display: block;
-  width: 100%;
-  height: auto;
+.heroShot > div {
   border-radius: var(--cj-radius-media);
 }
 
@@ -550,7 +547,7 @@
 }
 
 .media img,
-.media video {
+.media > div {
   display: block;
   width: min(100%, calc(var(--w) * 1px), calc(var(--stage-h) * var(--w) / var(--h)));
   height: auto;

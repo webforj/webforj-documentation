@@ -35,21 +35,13 @@ craftforJ starts from the other end. It does not own a model of your screen. It 
 
 Open any route in development, select a component on the page and change a property. The running app updates straight away. Nothing in your files has changed yet, and that is deliberate. A live edit affects only the app in front of you. The [visual UI designer for Java](/blog/java-visual-ui-designer) post covers inspecting the live component tree in more detail.
 
-<div class="videos-container">
-<video controls preload="metadata">
-  <source src="https://cdn.webforj.com/webforj-documentation/video/craftforJ/property-edit.mp4#t=0.5" type="video/mp4"/>
-</video>
-</div>
+<VideoPlayer video="craftforj/property-edit" width={1920} height={1000} title="Property edit" />
 
 ## Changes reach your source as a diff {#changes-reach-your-source-as-a-diff}
 
 To keep an edit, press <kbd>Cmd/Ctrl</kbd> + <kbd>S</kbd>. craftforJ opens a review that groups the pending changes by the file they will land in. Each one shows the property with its old and new value and expands into the diff of that file. Nothing is written until you apply, and you can revert or discard each change on its own.
 
-<div class="videos-container">
-<video controls preload="metadata">
-  <source src="https://cdn.webforj.com/webforj-documentation/video/craftforJ/apply-changes.mp4#t=0.5" type="video/mp4"/>
-</video>
-</div>
+<VideoPlayer video="craftforj/apply-changes" width={1920} height={992} title="Apply changes" />
 
 If a change would replace a computed value with a fixed one, craftforJ warns you and names the expression it is about to replace. The full flow is on the [applying changes](/docs/craftforj/source-changes) page.
 
@@ -72,17 +64,9 @@ The same rule applies to the other things you tune visually:
 - **Themes.** You adjust the design tokens your app is built from, and saving writes the theme into your app's stylesheet, where it appears in your diff and ships with the app.
 - **The AI assistant.** It writes Java, compiles it before offering it to you, and applies it with the approval level you set, so what it produces is ordinary code too. The post on [editing a running app with AI](/blog/ai-visual-editor-java) shows it in use.
 
-<div class="videos-container">
-<video controls preload="metadata">
-  <source src="https://cdn.webforj.com/webforj-documentation/video/craftforJ/route-security.mp4#t=0.5" type="video/mp4"/>
-</video>
-</div>
+<VideoPlayer video="craftforj/route-security" width={1920} height={1000} title="Route security" />
 
-<div class="videos-container">
-<video controls preload="metadata">
-  <source src="https://cdn.webforj.com/webforj-documentation/video/craftforJ/theme-knobs.mp4#t=0.5" type="video/mp4"/>
-</video>
-</div>
+<VideoPlayer video="craftforj/theme-knobs" width={1920} height={992} title="Theme knobs" />
 
 ## Low code versus craftforJ {#low-code-versus-craftforj}
 

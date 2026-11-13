@@ -246,8 +246,4 @@ No external services (like REST or WebSockets) are needed. All coordination is d
 
 Explore the code: [webforj/webforj-tictactoe](https://github.com/webforj/webforj-tictactoe)
 
-<div class="videos-container">
-  <video controls>
-    <source src="https://cdn.webforj.com/webforj-documentation/video/tic-tac-toe.mp4" type="video/mp4"/>
-  </video>
-</div>
+<VideoPlayer video="namespaces/tic-tac-toe" width={1660} height={902} title="Tic tac toe" />

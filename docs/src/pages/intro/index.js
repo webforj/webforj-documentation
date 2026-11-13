@@ -20,10 +20,10 @@ import {
   AI_INSTALL,
 } from './_code';
 import styles from './intro.module.css';
+import VideoPlayer from '@site/src/components/VideoPlayer';
 
 const SCREEN_IDS = ['screen-1', 'screen-2', 'screen-3', 'screen-4', 'screen-5', 'screen-6'];
 
-const CRAFT_VIDEO = 'https://cdn.webforj.com/webforj-documentation/video/craftforJ/intro.mp4#t=0.5';
 
 const COMPONENT_TILES = ['Login', 'ComboBox', 'Upload', 'GoogleCharts', 'Slider', 'Terminal'];
 
@@ -486,20 +486,19 @@ function CraftScreen() {
       accent={<Translate id="page.intro.craft.title2">Change it while it runs.</Translate>}
       visual={
         <Window bar={<span className={styles.windowName}>craftforJ</span>}>
-          <video
-            className={styles.video}
-            controls
-            muted
-            preload="metadata"
-            width="1920"
-            height="1080"
-            aria-label={translate({
+          <VideoPlayer
+            video="craftforj/intro"
+            width={1920}
+            height={1080}
+            title={translate({
               id: 'page.intro.craft.videoLabel',
               message:
                 'craftforJ open over a running webforJ app: selecting a component, changing its properties and applying the change to the Java source',
-            })}>
-            <source src={CRAFT_VIDEO} type="video/mp4" />
-          </video>
+            })}
+            muted
+            plain
+            controlsOnPlay
+          />
         </Window>
       }>
       <p className={styles.lede}>

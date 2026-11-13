@@ -92,7 +92,7 @@ McpToolNamePrefixGenerator mcpToolNames() {
 
 ## The view: streaming, thinking, cancel {#the-view-streaming-thinking-cancel}
 
-<video src="https://cdn.webforj.com/webforj-documentation/blogs/webforj-v25.11/ghsot-ai.mov" autoPlay muted loop playsInline style={{width: '100%', borderRadius: '8px', marginBottom: '1rem'}}></video>
+<video src="https://cdn.webforj.com/webforj-documentation/video/ai/ghost-ai.mp4" poster="https://cdn.webforj.com/webforj-documentation/video/ai/ghost-ai-cover.jpg" autoPlay muted loop playsInline style={{width: '100%', borderRadius: '8px', marginBottom: '1rem'}}></video>
 
 [Streaming raw tokens into a Java UI](/blog/stream-llm-response-java) is where features usually go wrong. ghost:ai uses webforJ's `MarkdownViewer`, which renders markdown progressively as text is appended. Two flags matter: `setAutoScroll(true)` keeps the newest text in view as the response grows, and `setProgressiveRender(true)` renders markdown as it streams in, so code fences and lists appear formatted rather than raw text.
 

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useState } from 'react';
 import Layout from '@theme/Layout';
 import Link from '@docusaurus/Link';
 import CodeBlock from '@theme/CodeBlock';
@@ -7,6 +7,7 @@ import Translate, { translate } from '@docusaurus/Translate';
 import { ArrowIcon } from '@site/src/components/pageKit/icons';
 import getPanels from './_panels';
 import styles from './craftforj.module.css';
+import VideoPlayer from '@site/src/components/VideoPlayer';
 
 // Copied from docs/craftforj/getting-started.md
 const DEPENDENCY = `<dependency>
@@ -307,7 +308,6 @@ function Step({ number, title, text, children }) {
 
 function Hero() {
   const shortcuts = getShortcuts();
-  const shot = useBaseUrl('/img/craftforj/getting-started/first-open.png');
   return (
     <header className={styles.hero}>
       <div className={styles.container}>
@@ -362,17 +362,18 @@ function Hero() {
           </div>
         </div>
         <figure className={styles.heroShot}>
-          <img
-            src={shot}
-            width={985}
-            height={568}
-            alt={translate({
-              id: 'page.craftforj.hero.shotAlt',
+          <VideoPlayer
+            video="craftforj/intro"
+            width={1920}
+            height={1080}
+            title={translate({
+              id: 'page.craftforj.hero.videoLabel',
               message:
-                'craftforJ open over a running app with AppNav selected in the component tree and its properties in the sidebar',
+                'craftforJ open over a running webforJ app: inspecting components, editing properties, theming and asking the AI assistant',
             })}
-            decoding="async"
-            fetchpriority="high"
+            muted
+            plain
+            controlsOnPlay
           />
         </figure>
       </div>
@@ -416,24 +417,19 @@ function Loop() {
 // A video has its own controls and pauses when its tab or its view is no
 // longer the one on screen.
 function ViewMedia({ view, base, shown }) {
-  const videoRef = useRef(null);
-  useEffect(() => {
-    if (!shown) videoRef.current?.pause();
-  }, [shown]);
   return (
     <figure className={styles.media} style={{ '--w': view.width, '--h': view.height }}>
       {view.video ? (
-        <video
-          ref={videoRef}
-          controls
-          muted
-          playsInline
-          preload="metadata"
+        <VideoPlayer
+          video={view.video}
           width={view.width}
           height={view.height}
-          aria-label={view.alt}>
-          <source src={`${view.video}#t=0.5`} type="video/mp4" />
-        </video>
+          title={view.alt}
+          muted
+          plain
+          controlsOnPlay
+          active={shown}
+        />
       ) : (
         <img
           src={`${base}${view.file}`}

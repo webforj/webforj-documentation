@@ -45,11 +45,7 @@ The real power? You can apply complex logic and generate rich HTML—all from a 
 
 ## The Scenario: A Cryptocurrency Dashboard {#the-scenario-a-cryptocurrency-dashboard}
 
-<div class="videos-container">
-  <video autoplay="autoplay" controls muted preload="metadata">
-    <source src="https://cdn.webforj.com/webforj-documentation/blogs/table-renderers/dashboard-full.mp4" type="video/mp4"/>
-  </video>
-</div>
+<VideoPlayer video="table/renderers-dashboard" width={1920} height={992} title="Renderers dashboard" autoPlay muted />
 
 As mentioned, I built a cryptocurrency dashboard that displays real-time market data. It's the perfect use case for renderers because crypto traders need to process information fast - a few seconds of hesitation can mean missing an opportunity.
 
@@ -118,11 +114,7 @@ The result? One renderer class that handles all the edge cases, formats data int
 
 <!-- Video of the renderer only -->
 
-<div class="videos-container">
-  <video autoplay="autoplay" controls muted preload="metadata" width='35%'>
-    <source src="https://cdn.webforj.com/webforj-documentation/blogs/table-renderers/renderer-video.mp4" type="video/mp4"/>
-  </video>
-</div>
+<VideoPlayer video="table/renderer" width={1040} height={1920} title="Renderer" autoPlay muted />
 
 ## Using the Renderer in Your Table {#using-the-renderer-in-your-table}
 
@@ -149,11 +141,7 @@ The table handles the rest - your renderer gets called for each row, receives th
 
 <!-- Video of the whole app -->
 
-<div class="videos-container">
-  <video autoplay="autoplay" controls muted preload="metadata">
-    <source src="https://cdn.webforj.com/webforj-documentation/blogs/table-renderers/final-renderer.mp4" type="video/mp4"/>
-  </video>
-</div>
+<VideoPlayer video="table/final-renderer" width={1920} height={992} title="Final renderer" autoPlay muted />
 
 ## Built-in Renderers {#built-in-renderers}
 

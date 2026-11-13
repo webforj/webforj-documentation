@@ -6,11 +6,7 @@ description: A coding agent that works inside your running webforJ app, writes J
 
 craftforJ includes a full coding agent that works inside your **running app**. It writes Java freely, compiles what it wrote before you ever see it, applies the change, and carries on working after your app restarts. Everything it does, it does against the app that's actually running in front of you, rather than against a guess made from your repository.
 
-<div class="videos-container">
-  <video controls preload="metadata">
-    <source src="https://cdn.webforj.com/webforj-documentation/video/craftforJ/ai-conversation.mp4#t=0.5" type="video/mp4" />
-  </video>
-</div>
+<VideoPlayer video="craftforj/ai-conversation" width={1920} height={1000} title="AI conversation" />
 
 :::warning AI can still make mistakes
 Working against the running app and compiling its own output makes the agent considerably more accurate than one writing blind. It can still be wrong. Review what it did before you keep it.
