@@ -4,85 +4,81 @@ sidebar_position: 7
 description: >-
   A coding agent that works inside your running webforJ app, writes Java freely
   behind a compile gate, and applies changes with your approval.
-_i18n_hash: 716e267ebccf57080f5238335670d1b7
+_i18n_hash: e9d943043e52eae5368dfe4ba7795142
 ---
-craftforJ umfasst einen vollständigen Codierungsagenten, der innerhalb Ihrer **laufenden App** arbeitet. Er schreibt Java frei, kompiliert das, was er geschrieben hat, bevor Sie es jemals sehen, wendet die Änderungen an und arbeitet weiter, nachdem Ihre App neu gestartet wurde. Alles, was er tut, geschieht gegen die App, die tatsächlich vor Ihnen läuft, und nicht gegen einen Schätzwert aus Ihrem Repository.
+craftforJ enthält einen vollständigen Coding-Agenten, der in deiner **laufenden App** arbeitet. Er schreibt Java, kompiliert den geschriebenen Code, bevor du ihn überhaupt siehst, wendet die Änderung an und arbeitet nach dem Neustart deiner App weiter. Alles, was er tut, tut er anhand der App, die tatsächlich vor dir läuft, statt anhand einer Vermutung auf Basis deines Repositorys.
 
-<div class="videos-container">
-  <video controls preload="metadata">
-    <source src="https://cdn.webforj.com/webforj-documentation/video/craftforJ/ai-conversation.mp4#t=0.5" type="video/mp4" />
-  </video>
-</div>
+<VideoPlayer video="craftforj/ai-conversation" width={1920} height={1000} title="AI conversation" />
 
-:::warning KI kann immer noch Fehler machen
-Arbeiten gegen die laufende App und das Kompilieren eigener Ausgaben macht den Agenten erheblich genauer als einen, der blind schreibt. Er kann jedoch immer noch falsch sein. Überprüfen Sie, was er getan hat, bevor Sie es beibehalten.
+:::warning KI kann trotzdem Fehler machen
+Da der Agent mit der laufenden App arbeitet und seine eigenen Ergebnisse kompiliert, ist er deutlich genauer als ein Agent, der ohne Kontext arbeitet. Trotzdem kann er Fehler machen. Prüfe seine Änderungen, bevor du sie übernimmst.
 :::
 
 ## Er schreibt Java {#it-writes-java}
 
-Der Agent ist nicht auf die Eigenschaftenänderungen beschränkt, die Sie von Hand vornehmen können. Beschreiben Sie ein Problem, und er schreibt den Code dafür, fügt Methoden hinzu, ändert die Logik und restrukturiert eine Ansicht, wie es die Aufgabe erfordert.
+Der Agent ist nicht auf die Eigenschaftsänderungen beschränkt, die du von Hand vornehmen kannst. Beschreibe ein Problem, und er schreibt den dafür nötigen Code, fügt Methoden hinzu, ändert die Logik und strukturiert eine Ansicht je nach Aufgabe um.
 
-Jede Änderung, die er schreibt, wird gestaged, anstatt auf die Festplatte geschrieben zu werden. Gestaged Änderungen gehen direkt an einen echten Java-Compiler, und der Agent liest die zurückkommenden Diagnosen und korrigiert seine eigenen Fehler, bevor die Änderung jemals Ihnen angeboten wird. Was zur Überprüfung erreicht, ist Code, der bereits gegen Ihre laufende App kompiliert.
+Alle von ihm geschriebenen Änderungen werden vorgemerkt, statt direkt auf die Festplatte geschrieben zu werden. Vorgemerkte Änderungen werden an einen echten Java-Compiler übergeben. Der Agent liest die zurückgegebenen Diagnosen und behebt seine eigenen Fehler, bevor dir die Änderung überhaupt angeboten wird. Der Code, den du prüfst, lässt sich bereits mit deiner laufenden App kompilieren.
 
-Für eine vollständige Validierung wird ein JDK benötigt. Auf einem JRE greift craftforJ auf das Parsen des Codes zurück, markiert die Änderung als nicht verifiziert und weist den Agenten an, dies zu sagen, anstatt es als geprüft zu präsentieren.
+Für eine vollständige Validierung wird ein JDK benötigt. Mit einem JRE wechselt craftforJ zur Codeanalyse, kennzeichnet die Änderung als nicht verifiziert und weist den Agenten an, dies anzugeben, statt sie als geprüft darzustellen.
 
-Das Anwenden einer Änderung startet Ihre App neu. Der Agent wartet auf den Neustart, stellt die Verbindung wieder her und nimmt seinen Plan dort wieder auf, wo er aufgehört hat, sodass eine Aufgabe, die mehrere Änderungen und Neustarts umfasst, zu einem Abschluss kommt.
+Beim Anwenden einer Änderung wird deine App neu gestartet. Der Agent wartet auf den Neustart, verbindet sich erneut und setzt seinen Plan dort fort, wo er ihn unterbrochen hat. So wird auch eine Aufgabe, die mehrere Änderungen und Neustarts umfasst, abgeschlossen.
 
 ## Er arbeitet in Schritten {#it-works-in-steps}
 
-Sie geben dem Agenten ein Ziel, keinen Befehl. Er plant, inspiziert alles Notwendige, handelt, prüft das Ergebnis und korrigiert sich selbst und führt viele Schritte in einem einzigen Durchgang durch, ohne dass Sie jeden einzelnen steuern müssen. Jeder Schritt erscheint im Transkript, während er geschieht, und Sie können jeden von ihnen erweitern, um genau zu sehen, was der Agent aufgerufen hat und was zurück kam.
+Du gibst dem Agenten ein Ziel vor, keinen Befehl. Er plant, prüft, was er benötigt, handelt, kontrolliert das Ergebnis und korrigiert sich selbst. In einem einzigen Durchlauf führt er viele Schritte aus, ohne dass du jeden einzelnen anstoßen musst. Jeder Schritt wird während der Ausführung im Transkript angezeigt. Du kannst jeden davon aufklappen, um genau zu sehen, was der Agent aufgerufen hat und welche Antwort zurückkam.
 
-## Was er erreichen kann {#what-it-can-reach}
+## Worauf er zugreifen kann {#what-it-can-reach}
 
-Der Agent hat ein umfangreiches Werkzeugset, das alles abdeckt, was craftforJ über Ihre App weiß, einschließlich:
+Der Agent verfügt über eine umfangreiche Werkzeugsammlung, die alles abdeckt, was craftforJ über deine App weiß, darunter:
 
-- **Ihre Komponenten** - den Live-Baum, die tatsächlichen Eigenschaftswerte und das Java, das jede einzelne aufgebaut hat. Er kann Eigenschaften ändern, Komponenten entfernen und eine auf der Seite hervorheben.
-- **Ihre Quelle** - Lesen von Dateien unter Ihrem Projektstamm, Staging von Änderungen, Anzeigen von Diffs und deren Anwendung.
-- **Ihre Routen** - die Routing-Tabelle, die aktive Route, Navigation überall und Änderung der deklarierten Zugriffsregeln auf einer Route.
-- **Ihr Thema und Stil** - Lesen und Festlegen von Design-Tokens, Speichern eines Themas und Suchen nach den verfügbaren Schriften und Symbolen.
-- **Die Seite selbst** - Einspeisen von CSS und JavaScript auf die live Seite und Erstellen eines Screenshots einer Komponente zur Ansicht.
-- **Die webforJ Wissensdatenbank** - die gleiche Dokumentation, Komponenten-Stiloberfläche und `--dwc-*` Token-Werkzeuge, die der [webforJ MCP-Server](/docs/ai-tooling/mcp) Ihrem Editor zur Verfügung stellt. Es ist eingebaut und immer verfügbar.
+- **Deine Komponenten** – den Live-Baum, die tatsächlichen Eigenschaftswerte und den Java-Code, mit dem die einzelnen Komponenten erstellt wurden. Er kann Eigenschaften ändern, Komponenten entfernen und eine Komponente auf der Seite hervorheben.
+- **Dein Quellcode** – beliebige Dateien im Projektverzeichnis lesen, Änderungen vormerken, Diffs anzeigen und Änderungen anwenden.
+- **Deine Routen** – die Routing-Tabelle, die aktive Route, die Navigation zu beliebigen Zielen und das Ändern der für eine Route festgelegten Zugriffsregeln.
+- **Dein Theme und deine Stile** – Design-Tokens lesen und festlegen, ein Theme speichern und die verfügbaren Schriftarten und Symbole durchsuchen.
+- **Die Seite selbst** – CSS und JavaScript auf der Live-Seite einfügen und einen Screenshot einer Komponente aufnehmen.
+- **Die webforJ-Wissensdatenbank** – dieselbe Dokumentation, dieselbe Oberfläche für die Komponentenstilgestaltung und dieselben `--dwc-*`-Token-Werkzeuge, die der [webforJ-MCP-Server](/docs/ai-tooling/mcp) deinem Editor zur Verfügung stellt. Sie ist integriert und jederzeit verfügbar.
 
-Da es dies alles über craftforJ erreicht, arbeitet es mit denselben Informationen, die Sie auch nutzen. Es liest echte Werte, nicht die, die Ihre Quelle impliziert.
+Da der Agent über craftforJ auf all diese Bereiche zugreift, arbeitet er mit denselben Informationen wie du. Er liest die tatsächlichen Werte und nicht die Werte, die dein Quellcode vermuten lässt.
 
-## Genehmigungen {#approvals}
+## Freigaben {#approvals}
 
-Sie entscheiden im Voraus, wie viel der Agent selbstständig tun darf:
+Du legst im Voraus fest, wie viel der Agent selbstständig erledigen darf:
 
-- **Vor der Handlung fragen** - jede Aktion mit einer Auswirkung stoppt zur Genehmigung.
-- **Änderungen automatisch anwenden** - der Agent arbeitet frei, fragt jedoch immer noch, bevor er etwas entfernt oder ein Skript ausführt.
-- **Autonom arbeiten** - der Agent arbeitet ohne Unterbrechung.
+- **Vor jeder Aktion fragen** – jede Aktion mit Auswirkungen wird angehalten, bis du sie freigibst.
+- **Änderungen automatisch anwenden** – der Agent arbeitet frei, fragt aber weiterhin nach, bevor er etwas entfernt oder ein Skript ausführt.
+- **Autonom arbeiten** – der Agent arbeitet ohne Unterbrechungen.
 
-Wenn der Agent fragt, erscheint die Anfrage inline im Transkript mit der Aktion, die er durchführen möchte, und Sie können ihm dies einmal oder für den Rest des Gesprächs erlauben.
+Wenn der Agent nachfragt, erscheint die Anfrage zusammen mit der geplanten Aktion direkt im Transkript. Du kannst sie einmalig oder für den Rest der Unterhaltung freigeben.
 
-![Der Assistent fragt, bevor er handelt, inline im Transkript](/img/craftforj/ai/approval-prompt.png#rounded-border)
+![Der Assistent fragt direkt im Transkript um Erlaubnis, bevor er handelt](/img/craftforj/ai/approval-prompt.png#rounded-border)
 
-Wenn Sie neu beim Agenten sind, beginnen Sie damit, ihn um alles zu fragen. Sobald Sie gesehen haben, wie er arbeitet, entfernt das Zulassen, dass er seine eigenen Änderungen anwendet, die meisten Unterbrechungen, während die wichtigen Entscheidungen bei Ihnen bleiben.
+Wenn du den Agenten noch nicht kennst, solltest du ihn zunächst bei jeder Aktion nachfragen lassen. Sobald du gesehen hast, wie er arbeitet, kannst du ihm erlauben, Änderungen selbst anzuwenden. Dadurch werden die meisten Unterbrechungen vermieden, während die wichtigen Entscheidungen bei dir bleiben.
 
-## Arbeiten mit der App in einem Gespräch {#working-with-the-app-in-a-conversation}
+## In einer Unterhaltung mit der App arbeiten {#working-with-the-app-in-a-conversation}
 
-Der Agent liest, was er benötigt, während er es benötigt, anstatt Ihnen Ihre gesamte App im Voraus zu übergeben, und craftforJ zeigt Ihnen, was mit dem Gespräch verbunden ist. Sie können ihm direkt eine Komponente aus dem Baum übergeben oder eine von der Seite mitten in einem Gespräch auswählen. Für Fragen dazu, wie etwas aussieht, kann der Agent einen Screenshot einer Komponente machen. Dies erfordert ein Modell, das Bilder akzeptiert.
+Der Agent liest Informationen bei Bedarf, statt zu Beginn deine gesamte App zu erhalten. craftforJ zeigt dir, welche Informationen an die Unterhaltung angehängt sind. Du kannst ihm direkt eine Komponente aus dem Baum übergeben oder während einer Unterhaltung eine Komponente auf der Seite auswählen. Bei Fragen zum Aussehen kann der Agent einen Screenshot einer Komponente aufnehmen. Dafür ist ein Modell erforderlich, das Bilder verarbeiten kann.
 
-:::warning Screenshots umfassen alles, was auf dem Bildschirm zu sehen ist
-Ein Screenshot trägt alle Daten, die Ihre App in diesem Moment anzeigt. Berücksichtigen Sie das, bevor Sie ein gehostetes Modell an eine App richten, die mit echten Daten arbeitet.
+:::warning Screenshots enthalten alles, was auf dem Bildschirm zu sehen ist
+Ein Screenshot enthält alle Daten, die deine App zu diesem Zeitpunkt anzeigt. Bedenke das, bevor du ein gehostetes Modell auf eine App zugreifen lässt, die mit echten Daten läuft.
 :::
 
-## Konfigurieren eines Modells {#configuring-a-model}
+## Ein Modell konfigurieren {#configuring-a-model}
 
-craftforJ liefert kein eigenes Modell mit, sodass Sie das auswählen, das es ausführt. Fügen Sie einen API-Schlüssel für einen der unterstützten Anbieter hinzu oder richten Sie craftforJ gegen ein lokal ausgeführtes Modell ein. Ihr Schlüssel wird auf dem Gerät gespeichert, auf dem Ihre App läuft, und der Assistent hält ihn nur solange im Speicher, wie die Seite geöffnet ist, niemals im Browser-Speicher. Es kommuniziert mit dem Anbieter, den Sie im Browser gewählt haben, und mit niemand anderem.
+craftforJ enthält kein eigenes Modell. Du wählst daher das Modell aus, das den Agenten antreibt. Füge einen API-Schlüssel für einen der unterstützten Anbieter hinzu oder verbinde craftforJ mit einem lokal laufenden Modell. Dein Schlüssel wird auf dem Rechner gespeichert, auf dem deine App läuft. Der Assistent hält ihn nur so lange im Arbeitsspeicher, wie die Seite geöffnet ist, und speichert ihn niemals im Browserspeicher. Er kommuniziert direkt aus dem Browser mit dem ausgewählten Anbieter und mit niemand anderem.
 
-Der Modellwähler zeigt, was ein Modell von einem anderen unterscheidet, einschließlich wie viel Ihrer App und des Gesprächs auf einmal passt, was ein Gespräch kostet und ob das Modell Bilder akzeptiert oder vor dem Antworten Gründe angibt. Ein Modell, das keine Werkzeuge aufrufen kann, kann zwar ein Gespräch führen, aber nichts inspizieren oder ändern.
+Die Modellauswahl zeigt die Unterschiede zwischen den Modellen: wie viel von deiner App und Unterhaltung jeweils gleichzeitig in den Kontext passt, welche Kosten für eine Unterhaltung anfallen und ob das Modell Bilder verarbeiten oder vor einer Antwort Schlussfolgerungen ziehen kann. Ein Modell, das keine Tools aufrufen kann, kann zwar an einer Unterhaltung teilnehmen, aber nichts untersuchen oder ändern.
 
-![Der Modellwähler zeigt, was die verfügbaren Modelle unterscheidet](/img/craftforj/ai/model-picker.png#rounded-border)
+![Die Modellauswahl zeigt die Unterschiede zwischen den verfügbaren Modellen](/img/craftforj/ai/model-picker.png#rounded-border)
 
-Ein lokal ausgeführtes Modell hält alles auf Ihrem Gerät. Lokale Modelle haben oft ein kleines Kontextfenster als Standard, das durch ein Gespräch über eine reale App schnell gefüllt wird, also geben Sie dem Modell so viel Kontext, wie Ihr Gerät tragen kann.
+Wenn du ein Modell lokal ausführst, bleiben alle Daten auf deinem Rechner. Lokale Modelle verwenden oft standardmäßig ein kleines Kontextfenster. Eine Unterhaltung über eine echte App füllt es daher schnell. Gib dem Modell so viel Kontext, wie dein Rechner verarbeiten kann.
 
-## Gespräche {#conversations}
+## Unterhaltungen {#conversations}
 
-Gespräche werden pro App gespeichert, und der Agent kann auf frühere zurückblicken, wenn eine Frage auf Arbeiten verweist, die Sie zuvor gemacht haben. Wenn ein Gespräch das Kontextlimit des Modells überschreitet, fasst craftforJ die älteren Nachrichten zusammen, sodass die Arbeit fortgesetzt werden kann, anstatt zu scheitern, und vermerkt im Chat, dass es dies getan hat.
+Unterhaltungen werden pro App gespeichert. Wenn sich eine Frage auf frühere Arbeiten bezieht, kann der Agent frühere Unterhaltungen heranziehen. Wenn eine Unterhaltung den Kontext des Modells übersteigt, fasst craftforJ die älteren Nachrichten zusammen, damit die Arbeit fortgesetzt werden kann, statt abzubrechen. Im Chat wird vermerkt, dass dies geschehen ist.
 
-Wenn die Arbeit das Maß von craftforJ überschreitet, können Sie das Gespräch zusammenfassen und es dem Assistenten Ihres Editors übergeben. Dieser Assistent nimmt die Arbeit genauer mit dem [webforJ AI-Plugin](/docs/ai-tooling) auf, das installiert ist.
+Wenn die Arbeit den Rahmen von craftforJ übersteigt, kannst du die Unterhaltung zusammenfassen und an den Assistenten deines Editors übergeben. Mit installiertem [webforJ-KI-Plugin](/docs/ai-tooling) kann dieser Assistent die Arbeit mit größerer Genauigkeit fortsetzen.
 
 ## Deaktivieren {#turning-it-off}
 
-Die [`ai.enabled`](/docs/craftforj/configuration#feature-flags) Eigenschaft entfernt den Assistenten vollständig aus craftforJ. Die [`ai.freeform-changes`](/docs/craftforj/configuration#feature-flags) Eigenschaft erhält den Assistenten, stoppt jedoch seine eigenen Java-Schreibvorgänge.
+Die Eigenschaft [`ai.enabled`](/docs/craftforj/configuration#feature-flags) entfernt den Assistenten vollständig aus craftforJ. Mit der Eigenschaft [`ai.freeform-changes`](/docs/craftforj/configuration#feature-flags) bleibt der Assistent verfügbar, kann aber keinen eigenen Java-Code mehr schreiben.

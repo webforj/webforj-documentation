@@ -4,40 +4,32 @@ sidebar_position: 5
 description: >-
   See every registered route in a running webforJ app, navigate to it from
   craftforJ, and change the access rules declared on it.
-_i18n_hash: b276ce8df35b91ed18f07c8a686fb688
+_i18n_hash: ec7a4521cd9c4328f9cd6550ebc9d90b
 ---
-La pestaña Rutas muestra la tabla de enrutamiento de la aplicación en ejecución en la [jerarquía](/docs/routing/route-hierarchy/overview) que el enrutador mantiene, con la ruta activa marcada. Las rutas registradas [de forma dinámica](/docs/routing/routes-registration) aparecen junto a las anotadas.
+La pestaña Rutas muestra la tabla de enrutamiento de la aplicación en ejecución, en la [jerarquía](/docs/routing/route-hierarchy/overview) en la que la mantiene el enrutador, y marca la ruta activa. Las rutas registradas [dinámicamente](/docs/routing/routes-registration) aparecen junto a las anotadas.
 
 ![El árbol de rutas con la ruta activa marcada](/img/craftforj/routes/tree.png#rounded-border)
 
 ## Detalles de la ruta {#route-details}
 
-Seleccionar una ruta muestra lo que el enrutador sabe sobre ella, incluyendo su ruta, la clase detrás de ella, los observadores del ciclo de vida adjuntos y su configuración. Puedes abrir esa clase en el visor de código fuente desde aquí.
+Al seleccionar una ruta, se muestra lo que el enrutador sabe sobre ella, incluidos su path, la clase que la respalda, los observadores del ciclo de vida asociados y su configuración. Desde aquí puedes abrir esa clase en el visor de código fuente.
 
-## Navegando desde craftforJ {#navigating-from-craftforj}
+## Navegar desde craftforJ {#navigating-from-craftforj}
 
-Puedes navegar a cualquier ruta directamente desde craftforJ. Las rutas que toman parámetros ofrecen un campo para cada uno y resuelven la ruta a medida que los llenas, para que puedas confirmar a dónde llegarás antes de ir.
+Puedes navegar directamente a cualquier ruta desde craftforJ. Las rutas que aceptan parámetros ofrecen un campo para cada uno y resuelven el path a medida que los completas, para que puedas confirmar adónde llegarás antes de navegar.
 
-Navegar de esta manera es una navegación real, por lo que los [observadores del ciclo de vida](/docs/routing/navigation-lifecycle/observers) de tu app se ejecutan exactamente como lo harían para un usuario. El árbol también sigue la aplicación, así que navegar dentro de la aplicación misma mueve el marcador.
+Navegar de esta manera es una navegación real, así que los [observadores del ciclo de vida](/docs/routing/navigation-lifecycle/observers) de tu aplicación se ejecutan exactamente igual que para un usuario. El árbol también sigue el estado de la aplicación, por lo que navegar en la propia aplicación mueve el marcador.
 
-<div class="videos-container">
-  <video controls preload="metadata">
-    <source src="https://cdn.webforj.com/webforj-documentation/video/craftforJ/route-navigate.mp4#t=0.5" type="video/mp4" />
-  </video>
-</div>
+<VideoPlayer video="craftforj/route-navigate" width={1920} height={1000} title="Route navigate" />
 
 ## Reglas de acceso {#access-rules}
 
-Cada ruta lleva una insignia para la [anotación de seguridad](/docs/security/annotations) declarada en ella, y puedes limitar el árbol a rutas públicas o protegidas desde la barra de herramientas.
+Cada ruta muestra una insignia con la [anotación de seguridad](/docs/security/annotations) declarada en ella, y puedes filtrar el árbol para mostrar rutas públicas o protegidas desde la barra de herramientas.
 
-Solo `@RolesAllowed` y `@DenyAll` cuentan como protegidas. `@PermitAll` no nombra roles y requiere solo que alguien esté registrado, por lo que el filtro la trata como pública. Ten esto en cuenta al verificar qué rutas restringen el acceso por rol.
+Solo `@RolesAllowed` y `@DenyAll` cuentan como protegidas. `@PermitAll` no especifica roles y solo requiere que alguien haya iniciado sesión, por lo que el filtro la trata como pública. Tenlo en cuenta al comprobar qué rutas restringen el acceso según el rol.
 
 ![El árbol de rutas con una insignia de acceso en cada ruta](/img/craftforj/routes/access-badge.png#rounded-border)
 
-También puedes cambiar la regla de acceso de una ruta desde craftforJ. craftforJ escribe la anotación en la clase de la ruta y la app se reinicia, por lo que el cambio pasa por la misma revisión que cualquier otro [cambio en el código fuente](/docs/craftforj/source-changes). La opción no está disponible cuando no se permite a craftforJ escribir en Java.
+También puedes cambiar la regla de acceso de una ruta desde craftforJ. craftforJ escribe la anotación en la clase de la ruta y la aplicación se reinicia, por lo que el cambio pasa por la misma revisión que cualquier otro [cambio en el código fuente](/docs/craftforj/source-changes). Esta opción no está disponible cuando craftforJ no tiene permiso para escribir código Java.
 
-<div class="videos-container">
-  <video controls preload="metadata">
-    <source src="https://cdn.webforj.com/webforj-documentation/video/craftforJ/route-security.mp4#t=0.5" type="video/mp4" />
-  </video>
-</div>
+<VideoPlayer video="craftforj/route-security" width={1920} height={1000} title="Route security" />

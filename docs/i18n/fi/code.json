@@ -5586,5 +5586,8 @@
   "componentDemo.tabs": {
     "message": "Lähdetiedostot",
     "description": "Accessible label for the file tabs of a component demo"
+  },
+  "page.craftforj.hero.videoLabel": {
+    "message": "craftforJ käynnissä olevan webforJ-sovelluksen päällä: komponenttien tarkastelu, ominaisuuksien muokkaus, teeman mukauttaminen ja tekoälyavustajan käyttö"
   }
 }

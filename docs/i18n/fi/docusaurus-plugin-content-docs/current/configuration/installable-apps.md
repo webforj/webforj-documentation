@@ -4,70 +4,66 @@ sidebar_position: 20
 description: >-
   Annotate a webforJ app with AppProfile to generate a Web App Manifest with
   icons, screenshots, and metadata for device installation.
-_i18n_hash: 60a6bf616536e9c202af684e9a505af6
+_i18n_hash: 9aa99cc9da864a6808d72602b6e5c572
 ---
 <DocChip chip='since' label='24.21' />
 <JavadocLink type="foundation" location="com/webforj/annotation/AppProfile" top='true'/>
 
-`@AppProfile`-annotaatio webforJ:ssä mahdollistaa sovelluksesi asentamisen tuetuilla alustoilla.
-Asennettavat web-sovellukset integroituvat laitteen käyttöjärjestelmään.
-Asennettuna ne näkyvät kotinäytössä tai sovellusvalikossa, kuten natiivisovellukset.
-Tätä varten on annettava tiettyjä metatietoja, kuten nimi, kuvaus ja ikonit.
-Nämä tiedot auttavat käyttöjärjestelmää tunnistamaan ja näyttämään sovelluksen.
+webforJ:n `@AppProfile`-annotaation avulla voit tehdä sovelluksestasi tuetuilla alustoilla asennettavan.
+Asennettavat verkkosovellukset integroituvat laitteen käyttöjärjestelmään.
+Asennettuina ne näkyvät aloitusnäytössä tai sovellusvalikossa samalla tavalla kuin natiivisovellukset.
+Tätä varten on annettava tietyt metatiedot, kuten nimi, kuvaus ja kuvakkeet.
+Näiden tietojen avulla käyttöjärjestelmä tunnistaa sovelluksen ja näyttää sen.
 
-:::info Turvallisen alkuperän vaatimus
-Sovelluksen ollakseen asennettavissa, sen on oltava palvelimelta turvallisesta alkuperästä, kuten `https`.
-Selain hylkää asennusyritykset epäturvallisista alkuperistä. Tämä sääntö ei kuitenkaan koske, kun sovellusta toimitetaan paikallisesti `localhost`-ympäristössä kehityksen aikana.
+:::info Suojatun alkuperän vaatimus
+Jotta sovellus voidaan asentaa, sitä on tarjottava suojatusta alkuperästä, kuten `https`-osoitteesta.
+Selaimet estävät asennusyritykset suojaamattomista alkuperistä. Tämä sääntö ei kuitenkaan koske paikallisesti `localhost`-osoitteesta kehityksen aikana tarjottavaa sovellusta.
 
 <!-- vale off -->
-Lisätietoja turvallisista konteksteista ja niiden tärkeydestä löytyy [Secure Contexts MDN -dokumentaatiosta](https://developer.mozilla.org/en-US/docs/Web/Security/Secure_Contexts).
+Lisätietoja suojatuista konteksteista ja niiden merkityksestä on [MDN:n Secure Contexts -dokumentaatiossa](https://developer.mozilla.org/en-US/docs/Web/Security/Secure_Contexts).
 <!-- vale on -->
 :::
 
-<div class="videos-container">
-  <video controls>
-    <source src="/video/install-chrome.mp4" type="video/mp4"/>
-  </video>
-</div>
+<VideoPlayer video="installable-apps/install-chrome" width={1908} height={1052} title="Install chrome" />
 
-## Selaintuki {#browser-support}
+## Selainyhteensopivuus {#browser-support}
 
-Tuki web-sovelluksen asentamiselle vaihtelee selaimen ja alustan mukaan.
+Verkkosovelluksen asennuksen tuki vaihtelee selaimen ja alustan mukaan.
 
-### Työpöytä {#browser-support-desktop}
+### Tietokoneet {#browser-support-desktop}
 
-- **Chromium-selaimet** (Chrome, Edge, Opera, Brave ja muut) asentavat minkä tahansa sovelluksen, joka sisältää manifestitiedoston, kaikilla tuetuilla työpöytäkäyttöjärjestelmillä.
-- **Safari** tukee **Tiedosto → Lisää Dockiin** macOS Sonamassa (Safari 17) ja myöhemmin. Tämä prosessi toimii minkä tahansa web-sovelluksen, oli sillä manifestitiedostoa tai ei.
-- **Firefox** ei tue web-sovellusten asentamista manifestitiedostosta työpöydällä.
+- **Chromium-selaimet** (Chrome, Edge, Opera, Brave ja muut) asentavat manifestitiedoston sisältävät sovellukset kaikissa tuetuissa tietokonekäyttöjärjestelmissä.
+- **Safari** tukee macOS Sonomassa (Safari 17) ja uudemmissa versioissa toimintoa **Tiedosto → Lisää Dockiin**. Toiminto toimii kaikissa verkkosovelluksissa, riippumatta siitä, sisältävätkö ne manifestitiedoston.
+- **Firefox** ei tue manifestitiedostoon perustuvien verkkosovellusten asentamista tietokoneille.
 
-### Mobiili {#browser-support-mobile}
+### Mobiililaitteet {#browser-support-mobile}
 
-- **Androidilla** Chrome, Edge, Firefox, Opera ja Samsung Internet tukevat kaikkia web-sovellusten asentamista.
-- **iOS 16.3 ja aikaisemmat** versiot mahdollistavat web-sovellusten asentamisen vain Safarista (**Jaa → Lisää Kotonäytölle**).
-- **iOS 16.4 ja uudemmissa** versioissa web-sovelluksia voidaan asentaa Jaa-valikosta Safarissa, Chromessa, Edgessä, Firefoxissa ja Orionissa.
+- **Androidissa** Chrome, Edge, Firefox, Opera ja Samsung Internet tukevat kaikki verkkosovellusten asentamista.
+- **iOS 16.3:ssa ja sitä vanhemmissa versioissa** verkkosovelluksia voi asentaa vain Safarista (**Jaa → Lisää Koti-valikkoon**).
+- **iOS 16.4:ssä ja uudemmissa versioissa** verkkosovelluksia voi asentaa Safarin, Chromen, Edgen, Firefoxin ja Orionin Jaa-valikosta.
 
 ## `@AppProfile`-annotaatio {#appprofile-annotation}
 
-`@AppProfile`-annotaatio on määritettävä pääsovellusluokkaan ja se vaatii vain vähäistä konfigurointia. Vähintään on annettava:
+`@AppProfile`-annotaatiota käytetään sovelluksen pääluokassa, ja se vaatii vain vähän määrityksiä. Vähintään on annettava seuraavat tiedot:
 
 - **name**: Sovelluksen koko nimi.
-- **shortName**: Tiivistetty versio nimestä käytettäväksi rajoitetuissa tiloissa.
+- **shortName**: Nimen lyhyt versio tilanteisiin, joissa tilaa on rajoitetusti.
 
-Lisävalinnaiset ominaisuudet mahdollistavat sovelluksen ulkoasun ja käyttäytymisen mukauttamisen.
+Muiden valinnaisten ominaisuuksien avulla voit mukauttaa sovelluksen ulkoasua ja toimintaa.
 
-Kun `@AppProfile`-annotaatio on läsnä, webforJ:
+Kun `@AppProfile`-annotaatio on käytössä, webforJ:
 
-- Asettaa automaattisesti tarvittavat metatiedot.
-- Luo [Web-sovelluksen manifestin](https://developer.mozilla.org/en-US/docs/Web/Manifest).
-- Palvelee siihen liittyviä resursseja, kuten ikoneita ja näyttökuvia.
+- Määrittää tarvittavat metatunnisteet automaattisesti.
+- Luo [verkkosovelluksen manifestin](https://developer.mozilla.org/en-US/docs/Web/Manifest).
+- Tarjoaa siihen liittyvät resurssit, kuten kuvakkeet ja kuvakaappaukset.
 
-### Esimerkki: `@AppProfile`-annotaation käyttäminen {#example-applying-appprofile}
+### Esimerkki: `@AppProfile`-annotaation käyttö {#example-applying-appprofile}
 
 ```java
 @AppProfile(
   name = "Zyntric Bank",
   shortName = "ZBank",
-  description = "Zyntric Bank on yksinkertainen pankkisovellus, joka on rakennettu webforJ:llä",
+  description = "Zyntric Bank is a simple banking application built with webforJ",
   screenshots = {
     @AppProfile.Screenshot(
       src = "ws://img/screenshots/s1.jpg",
@@ -81,33 +77,33 @@ public class Application extends App {
 
 ## `@AppProfile`-ominaisuudet {#appprofile-properties}
 
-Seuraavassa taulukossa on listattu kaikki `@AppProfile`-annotaatiossa tuetut ominaisuudet:
+Seuraavassa taulukossa luetellaan kaikki `@AppProfile`-annotaation tukemat ominaisuudet:
 
-| **Ominaisuus**    | **Tyyppi**                                     | **Kuvaus**                                                                                          | **Oletusarvo**     |
-| ------------------ | ---------------------------------------------- | --------------------------------------------------------------------------------------------------- | ------------------- |
-| `name`             | `String`                                       | Sovelluksen koko nimi, joka näkyy sovellusvalikoissa ja asennusdialogeissa.                        | **Pakollinen**     |
-| `shortName`        | `String`                                       | Nimen lyhyt versio, jota käytetään rajoitetuissa tiloissa. Sen ei tulisi ylittää 12 merkkiä.         | **Pakollinen**     |
-| `description`      | `String`                                       | Lyhyt kuvaus sovelluksesta, joka näkyy asennuksen aikana ja sovelluksen asetuksissa.                | `""`                |
-| `themeColor`       | `String`                                       | Sovelluksen teeman väri, jota sovelletaan selaimen käyttöliittymään sovelluksen avatessa.           | `"#ffffff"`         |
-| `backgroundColor`  | `String`                                       | Alkuperäinen taustaväri sovellukselle latauksen aikana.                                            | `"#f8fafc"`         |
-| `startUrl`         | `String`                                       | URL-osoite, joka avataan, kun sovellus käynnistetään.                                              | `"."`               |
-| `display`          | `Display` **_Enum_**                          | Sovelluksen näyttötila (esim. `FULLSCREEN`, `STANDALONE`, `BROWSER`).                             | `STANDALONE`        |
-| `orientation`      | `Orientation` **_Enum_**                       | Sovelluksen oletussuunnittelu (esim. `PORTRAIT`, `LANDSCAPE`, `NATURAL`).                          | `NATURAL`           |
-| `icons`            | [`Icon[]`](#appprofileicon-properties)        | Taulukko ikoneista, jotka edustavat sovellusta eri tarkkuuksilla.                                  | `[]`                |
-| `defaultIcon`      | [`DefaultIcon`](#appprofiledefaulticon-properties) | Määrittää oletuskuvakkeen sovellukselle. Automatisoi ikoni-polkujen generoinnin useissa koossa, jos on konfiguroitu. | `icons://icon.png` |
-| `screenshots`      | [`Screenshot[]`](#appprofilescreenshot-properties) | Taulukko sovelluksen näyttökuvista, joita käytetään asennusdialogeissa.                            | `[]`                |
-| `categories`       | `String[]`                                     | Luokittelu, joka luokittelee sovelluksen (esim. `Rahoitus`, `Ostokset`).                          | `[]`                |
+| **Ominaisuus**    | **Tyyppi**                                         | **Kuvaus**                                                                                                  | **Oletusarvo**        |
+| ----------------- | -------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | --------------------- |
+| `name`            | `String`                                           | Sovelluksen koko nimi, joka näytetään sovellusvalikoissa ja asennusikkunoissa.                               | **Pakollinen**        |
+| `shortName`       | `String`                                           | Nimen lyhyt versio tilanteisiin, joissa tilaa on rajoitetusti. Enintään 12 merkkiä.                          | **Pakollinen**        |
+| `description`     | `String`                                           | Sovelluksen lyhyt kuvaus, joka näytetään asennuksen aikana ja sovelluksen asetuksissa.                       | `""`                  |
+| `themeColor`      | `String`                                           | Sovelluksen teemaväri, jota käytetään selaimen käyttöliittymässä sovellusta käynnistettäessä.                | `"#ffffff"`           |
+| `backgroundColor` | `String`                                           | Sovelluksen taustaväri latauksen aikana.                                                                    | `"#f8fafc"`           |
+| `startUrl`        | `String`                                           | Osoite, joka avataan sovellusta käynnistettäessä.                                                           | `"."`                 |
+| `display`         | `Display` **_Enum_**                               | Sovelluksen näyttötila (esim. `FULLSCREEN`, `STANDALONE`, `BROWSER`).                                       | `STANDALONE`          |
+| `orientation`     | `Orientation` **_Enum_**                           | Sovelluksen oletussuunta (esim. `PORTRAIT`, `LANDSCAPE`, `NATURAL`).                                        | `NATURAL`             |
+| `icons`           | [`Icon[]`](#appprofileicon-properties)             | Taulukko sovelluksen eri tarkkuuksia vastaavista kuvakkeista.                                                | `[]`                  |
+| `defaultIcon`     | [`DefaultIcon`](#appprofiledefaulticon-properties) | Määrittää sovelluksen oletuskuvakkeen. Luo automaattisesti erikokoisten kuvakkeiden polut, jos ominaisuus määritetään. | `icons://icon.png` |
+| `screenshots`     | [`Screenshot[]`](#appprofilescreenshot-properties) | Taulukko sovelluksen kuvakaappauksista, joita käytetään asennusikkunoissa.                                   | `[]`                  |
+| `categories`      | `String[]`                                         | Sovelluksen luokitteluun käytettävät kategoriat (esim. `Finance`, `Shopping`).                              | `[]`                  |
 
-### `@AppProfile.Icon` -ominaisuudet {#appprofileicon-properties}
+### `@AppProfile.Icon`-ominaisuudet {#appprofileicon-properties}
 
-Ikonit määrittävät sovelluksesi visuaalisen esityksen valikoissa ja kotinäytöissä. `@AppProfile.Icon`-annotaatio tukee seuraavia ominaisuuksia:
+Kuvakkeet määrittävät sovelluksen visuaalisen ilmeen valikoissa ja aloitusnäytöissä. `@AppProfile.Icon`-annotaatio tukee seuraavia ominaisuuksia:
 
-| **Ominaisuus**                                                                     | **Tyyppi** | **Kuvaus**                                                                                        | **Oletusarvo** |
-| ---------------------------------------------------------------------------------- | ---------- | -------------------------------------------------------------------------------------------------- | --------------- |
-| `src`                                                                             | `String`   | Polku ikonille. Tämä voi olla absoluuttinen URL tai `ws://`-polku.                                 | **Pakollinen** |
-| `sizes`                                                                           | `String`   | Merkkijono, joka määrittää yhden tai useamman kuvan koon muodossa `LeveysxKorkeus` (esim. `512x512`). | **Pakollinen** |
-| `type`                                                                            | `String`   | Kuvakkeen media tyyppi (esim. `image/png`, `image/jpeg`). Jos ei annettu, se havaitaan automaattisesti | `""`            |
-| [`purpose`](https://developer.mozilla.org/en-US/docs/Web/Manifest/icons#purpose)  | `String`   | Kuvakkeen käyttötarkoitus (esim. `any`, `maskable`, `monochrome`).                                   | `""`            |
+| **Ominaisuus**                                                                   | **Tyyppi** | **Kuvaus**                                                                                              | **Oletusarvo** |
+| -------------------------------------------------------------------------------- | -------- | ------------------------------------------------------------------------------------------------------ | ----------------- |
+| `src`                                                                            | `String` | Kuvakkeen polku. Tämä voi olla absoluuttinen URL-osoite tai `ws://`-polku.                              | **Pakollinen**     |
+| `sizes`                                                                          | `String` | Merkkijono, joka määrittää yhden tai useamman kuvakoon muodossa `LeveysxKorkeus` (esim. `512x512`).    | **Pakollinen**     |
+| `type`                                                                           | `String` | Kuvakkeen mediatyyppi (esim. `image/png`, `image/jpeg`). Jos arvoa ei anneta, tyyppi tunnistetaan.      | `""`              |
+| [`purpose`](https://developer.mozilla.org/en-US/docs/Web/Manifest/icons#purpose) | `String` | Kuvakkeen käyttötarkoitus (esim. `any`, `maskable`, `monochrome`).                                     | `""`              |
 
 ### Esimerkki {#example}
 
@@ -119,42 +115,42 @@ Ikonit määrittävät sovelluksesi visuaalisen esityksen valikoissa ja kotinäy
 )
 ```
 
-### `@AppProfile.DefaultIcon` -ominaisuudet {#appprofiledefaulticon-properties}
+### `@AppProfile.DefaultIcon`-ominaisuudet {#appprofiledefaulticon-properties}
 
-`DefaultIcon`-annotaatio yksinkertaistaa sovellusikonien konfigurointia luomalla useita koko variaatioita perustason ikonista.
-Se tuottaa ikoneita laitteiden yleisesti pyytämillä tarkkuuksilla.
+`DefaultIcon`-annotaatio helpottaa sovelluskuvakkeiden määritystä luomalla peruskuvakkeesta useita erikokoisia versioita.
+Se luo kuvakkeet tarkkuuksilla, joita laitteet tavallisesti pyytävät.
 
-| **Ominaisuus** | **Tyyppi** | **Kuvaus**                                                                    | **Oletusarvo** |
-| --------------- | ---------- | ---------------------------------------------------------------------------- | --------------- |
-| `value`         | `String`   | Polku peruskuvaketiedostoon. Tämä voi olla absoluuttinen URL tai `ws://`-polku. | **Pakollinen** |
-| `sizes`         | `int[]`    | Taulukko generaattoreista, jotka on määritelty kokonaislukuina (esim. `{144, 192, 512}`). | `{144, 192, 512}` |
+| **Ominaisuus** | **Tyyppi** | **Kuvaus**                                                                 | **Oletusarvo** |
+| ------------ | -------- | ------------------------------------------------------------------------------- | ----------------- |
+| `value`      | `String` | Peruskuvaketiedoston polku. Tämä voi olla absoluuttinen URL-osoite tai `ws://`-polku. | **Pakollinen**     |
+| `sizes`      | `int[]`  | Taulukko luotavista kokovaihtoehdoista kokonaislukuina (esim. `{144, 192, 512}`). | `{144, 192, 512}` |
 
-:::info Kuvake tiedosto vaatimukset
-Tämä konfigurointi ei automaattisesti luo varsinaisia kuvaketiedostoja sovellukselle. Sen sijaan se käyttää `@AppProfile.DefaultIcon` -annotaatiota luodakseen vastaavat [`@AppProfile.Icon`](#appprofileicon-properties) merkinnät jokaiselle määritellylle koolle.
+:::info Kuvaketiedostojen vaatimukset
+Tämä määritys ei luo sovelluksen varsinaisia kuvaketiedostoja automaattisesti. Sen sijaan `@AppProfile.DefaultIcon`-annotaatio luo vastaavat [`@AppProfile.Icon`](#appprofileicon-properties)-merkinnät jokaiselle määritetylle koolle.
 
-#### Jos käytetään [webserver-protokollaa](../managing-resources/assets-protocols#the-webserver-protocol) {#if-using-the-webserver-protocol}
-- Sinun on tarjottava perus `icon.png` -tiedosto `static/icons`-kansioon.
-- Sinun odotetaan sisältävän lisäkuvakuvia nimeltään `icon-144x144.png`, `icon-192x192.png` ja `icon-512x512.png`.
-- Nämä tietyt koot kattavat laitteiden yleisesti pyytämät tarkkuudet.
+#### Jos käytät [webserver-protokollaa](../managing-resources/assets-protocols#the-webserver-protocol) {#if-using-the-webserver-protocol}
+- Sinun on lisättävä peruskuvaketiedosto `icon.png` kansioon `static/icons`.
+- Sinun on lisättävä myös erikokoiset kuvakkeet nimillä `icon-144x144.png`, `icon-192x192.png` ja `icon-512x512.png`.
+- Nämä koot kattavat tarkkuudet, joita laitteet tavallisesti pyytävät.
 
-#### Jos käytetään [ikonit-protokollaa](../managing-resources/assets-protocols#the-icons-protocol) {#if-using-the-icons-protocol}
+#### Jos käytät [icons-protokollaa](../managing-resources/assets-protocols#the-icons-protocol) {#if-using-the-icons-protocol}
 
-- Sinun odotetaan tarjoavan perus `icon.png` -tiedosto `/icons`-kansioon.
-- `icons`-päätepiste tarjoaa dynaamisesti erilaiset kuvakokoja kysynnän mukaan, kun niitä kysytään.
+- Sinun on lisättävä peruskuvaketiedosto `icon.png` kansioon `/icons`.
+- `icons`-päätepiste tarjoaa pyydettäessä dynaamisesti erikokoisia kuvakkeita.
 :::
 
-### `@AppProfile.Screenshot` -ominaisuudet {#appprofilescreenshot-properties}
+### `@AppProfile.Screenshot`-ominaisuudet {#appprofilescreenshot-properties}
 
-Näyttökuvat tarjoavat esikatselun sovelluksesta asennusdialogeissa tai sovelluskaupoissa. `@AppProfile.Screenshot` -annotaatio tukee seuraavia ominaisuuksia:
+Kuvakaappaukset näyttävät sovelluksen esikatselun asennusikkunoissa tai sovelluskaupoissa. `@AppProfile.Screenshot`-annotaatio tukee seuraavia ominaisuuksia:
 
-| **Ominaisuus**                                                                                  | **Tyyppi** | **Kuvaus**                                                                                             | **Oletusarvo** |
-| ----------------------------------------------------------------------------------------------- | ---------- | ------------------------------------------------------------------------------------------------------- | --------------- |
-| `src`                                                                                           | `String`   | Polku näyttökuvalle. Tämä voi olla absoluuttinen URL tai `ws://`-polku.                                | **Pakollinen** |
-| `sizes`                                                                                         | `String`   | Merkkijono, joka määrittää yhden tai useamman kuvan koon muodossa `LeveysxKorkeus` (esim. `1080x1920`). | **Pakollinen** |
-| `type`                                                                                          | `String`   | Näyttökuvan media tyyppi (esim. `image/png`, `image/jpeg`). Jos ei annettu, se havaitaan automaattisesti | `""`            |
-| `label`                                                                                         | `String`   | Kuvauksellinen etiketti näyttökuvalle.                                                                  | `""`            |
-| [`formFactor`](https://developer.mozilla.org/en-US/docs/Web/Manifest/screenshots#form_factor)   | `String`   | Näyttökuvan muototekijä (esim. `narrow`, `wide`).                                                      | `""`            |
-| [`platform`](https://developer.mozilla.org/en-US/docs/Web/Manifest/screenshots#platform)        | `String`   | Alusta, johon näyttökuva on tarkoitettu (esim. `ios`, `android`).                                     | `""`            |
+| **Ominaisuus**                                                                              | **Tyyppi** | **Kuvaus**                                                                                                 | **Oletusarvo** |
+| --------------------------------------------------------------------------------------------- | -------- | ----------------------------------------------------------------------------------------------------------- | ----------------- |
+| `src`                                                                                         | `String` | Kuvakaappauksen polku. Tämä voi olla absoluuttinen URL-osoite tai `ws://`-polku.                            | **Pakollinen**     |
+| `sizes`                                                                                       | `String` | Merkkijono, joka määrittää yhden tai useamman kuvakoon muodossa `LeveysxKorkeus` (esim. `1080x1920`).      | **Pakollinen**     |
+| `type`                                                                                        | `String` | Kuvakaappauksen mediatyyppi (esim. `image/png`, `image/jpeg`). Jos arvoa ei anneta, tyyppi tunnistetaan.    | `""`              |
+| `label`                                                                                       | `String` | Kuvakaappauksen kuvaava nimi.                                                                               | `""`              |
+| [`formFactor`](https://developer.mozilla.org/en-US/docs/Web/Manifest/screenshots#form_factor) | `String` | Kuvakaappauksen muoto (esim. `narrow`, `wide`).                                                             | `""`              |
+| [`platform`](https://developer.mozilla.org/en-US/docs/Web/Manifest/screenshots#platform)      | `String` | Alusta, jolle kuvakaappaus on tarkoitettu (esim. `ios`, `android`).                                         | `""`              |
 
 ### Esimerkki {#example-1}
 
@@ -165,8 +161,4 @@ Näyttökuvat tarjoavat esikatselun sovelluksesta asennusdialogeissa tai sovellu
 )
 ```
 
-<div class="videos-container">
-  <video controls>
-    <source src="/video/install-android.mp4" type="video/mp4"/>
-  </video>
-</div>
+<VideoPlayer video="installable-apps/install-android" width={374} height={824} title="Install android" />

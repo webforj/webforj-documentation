@@ -4,85 +4,81 @@ sidebar_position: 7
 description: >-
   A coding agent that works inside your running webforJ app, writes Java freely
   behind a compile gate, and applies changes with your approval.
-_i18n_hash: 716e267ebccf57080f5238335670d1b7
+_i18n_hash: e9d943043e52eae5368dfe4ba7795142
 ---
-craftforJ bevat een volledige codering-agent die werkt binnen je **lopende app**. Het schrijft Java, compileert wat het heeft geschreven voordat je het ooit ziet, past de wijziging toe en gaat door met werken nadat je app opnieuw wordt opgestart. Alles wat het doet, gebeurt tegen de app die daadwerkelijk voor je draait, in plaats van tegen een gok uit je repository.
+craftforJ bevat een volledige codeeragent die binnen je **actieve app** werkt. De agent schrijft vrijelijk Java, compileert wat hij heeft geschreven voordat jij het ooit te zien krijgt, past de wijziging toe en gaat verder met werken nadat je app opnieuw is opgestart. Alles wat de agent doet, doet hij met de app die daadwerkelijk voor je draait, en niet met een inschatting op basis van je repository.
 
-<div class="videos-container">
-  <video controls preload="metadata">
-    <source src="https://cdn.webforj.com/webforj-documentation/video/craftforJ/ai-conversation.mp4#t=0.5" type="video/mp4" />
-  </video>
-</div>
+<VideoPlayer video="craftforj/ai-conversation" width={1920} height={1000} title="AI conversation" />
 
 :::warning AI kan nog steeds fouten maken
-Werken met de lopende app en het compileren van zijn eigen output maakt de agent aanzienlijk nauwkeuriger dan degene die blind schrijft. Het kan nog steeds fout zijn. Controleer wat het heeft gedaan voordat je het accepteert.
+Doordat de agent met de actieve app werkt en zijn eigen uitvoer compileert, is hij aanzienlijk nauwkeuriger dan een agent die in het wilde weg schrijft. Toch kan hij fouten maken. Controleer wat hij heeft gedaan voordat je het behoudt.
 :::
 
-## Het schrijft Java {#it-writes-java}
+## De agent schrijft Java {#it-writes-java}
 
-De agent is niet beperkt tot de eigenschapswijzigingen die je handmatig kunt aanbrengen. Beschrijf een probleem en het schrijft de code ervoor, voegt methoden toe, wijzigt de logica en herschikt een weergave zoals de taak vereist.
+De agent is niet beperkt tot de wijzigingen in eigenschappen die je handmatig kunt aanbrengen. Beschrijf een probleem en de agent schrijft de code ervoor: hij voegt methoden toe, wijzigt logica en herstructureert een weergave als de taak daarom vraagt.
 
-Elke wijziging die het schrijft, is in behandeling in plaats van naar schijf geschreven. In behandeling zijnde aanpassingen gaan rechtstreeks naar een echte Java-compiler, en de agent leest de diagnostiek die terugkomt en verhelpt zijn eigen fouten voordat de wijziging ooit aan jou wordt aangeboden. Wat jouw beoordeling bereikt, is code die al compileert tegen je lopende app.
+Elke wijziging die de agent schrijft, wordt klaargezet in plaats van naar schijf geschreven. Klaargezette wijzigingen worden rechtstreeks aan een echte Java-compiler voorgelegd. De agent leest de diagnostische meldingen die daaruit voortkomen en herstelt zijn eigen fouten voordat de wijziging ooit aan jou wordt aangeboden. De code die je ter beoordeling krijgt, compileert dus al met je actieve app.
 
-Volledige validatie vereist een JDK. Op een JRE valt craftforJ terug op het parseren van de code, markeert de wijziging als niet-verifieerbaar en instrueert de agent om dat aan te geven in plaats van het als gecheckt voor te stellen.
+Voor volledige validatie is een JDK vereist. Met een JRE valt craftforJ terug op het parsen van de code, markeert de wijziging als niet-geverifieerd en instrueert de agent om dit te vermelden in plaats van de wijziging als gecontroleerd voor te stellen.
 
-Het toepassen van een wijziging herstart je app. De agent wacht op de herstart, maakt opnieuw verbinding en pikt zijn plan op waar het was gebleven, zodat een taak die zich over verschillende wijzigingen en herstarts uitstrekt, wordt voltooid.
+Als je een wijziging toepast, wordt je app opnieuw opgestart. De agent wacht tot het opnieuw opstarten is voltooid, maakt opnieuw verbinding en gaat verder met zijn plan. Zo wordt een taak die meerdere wijzigingen en herstarts omvat, helemaal afgerond.
 
-## Het werkt in stappen {#it-works-in-steps}
+## De agent werkt in stappen {#it-works-in-steps}
 
-Je geeft de agent een doel, geen opdracht. Het plant, inspecteert wat het nodig heeft, handelt, controleert het resultaat en corrigeert zichzelf, terwijl het veel stappen in één beurt uitvoert zonder dat jij elke stap aanstuurt. Elke stap verschijnt in het transcript terwijl het gebeurt, en je kunt elke stap uitbreiden om precies te zien wat de agent heeft aangeroepen en wat er is teruggekomen.
+Je geeft de agent een doel, geen opdracht. De agent maakt een plan, inspecteert wat nodig is, voert acties uit, controleert het resultaat en corrigeert zichzelf. Zo voert hij in één beurt meerdere stappen uit zonder dat jij elke stap hoeft aan te sturen. Elke stap verschijnt tijdens de uitvoering in het transcript. Je kunt elke stap uitvouwen om precies te zien wat de agent heeft aangeroepen en wat het resultaat was.
 
-## Wat het kan bereiken {#what-it-can-reach}
+## Wat de agent kan benaderen {#what-it-can-reach}
 
-De agent heeft een grote set tools die alles dekt wat craftforJ weet over je app, inclusief:
+De agent beschikt over een uitgebreide set tools voor alles wat craftforJ over je app weet, waaronder:
 
-- **Je componenten** - de live boom, de echte eigenschapswaarden, en de Java die elk component heeft gebouwd. Het kan eigenschappen wijzigen, componenten verwijderen en een component op de pagina markeren.
-- **Je bron** - het lezen van elk bestand onder je projectroot, het in behandeling nemen van wijzigingen, het tonen van verschillen en deze toepassen.
-- **Je routes** - de routeringstabel, de actieve route, navigeren overal naartoe, en het wijzigen van de toegangsregels die op een route zijn opgesteld.
-- **Je thema en stijlen** - het lezen en instellen van ontwerp-tokens, het opslaan van een thema en het zoeken naar de beschikbare lettertypen en iconen.
-- **De pagina zelf** - het injecteren van CSS en JavaScript op de live pagina, en het maken van een screenshot van een component om deze te bekijken.
-- **De webforJ kennisbasis** - dezelfde documentatie, component-stijlen oppervlakte, en `--dwc-*` token tools die de [webforJ MCP server](/docs/ai-tooling/mcp) aan je editor biedt. Het is ingebouwd en altijd beschikbaar.
+- **Je componenten** - de live componentenboom, de echte eigenschapswaarden en de Java-code waarmee elk component is opgebouwd. De agent kan eigenschappen wijzigen, componenten verwijderen en een component op de pagina markeren.
+- **Je broncode** - elk bestand onder de hoofdmap van je project lezen, wijzigingen klaarzetten, verschillen tonen en wijzigingen toepassen.
+- **Je routes** - de routeringstabel, de actieve route, naar elke route navigeren en de toegangsregels wijzigen die voor een route zijn opgegeven.
+- **Je thema en stijlen** - ontwerptokens lezen en instellen, een thema opslaan en zoeken in de beschikbare lettertypen en pictogrammen.
+- **De pagina zelf** - CSS en JavaScript injecteren in de actieve pagina en een screenshot van een component maken om te bekijken.
+- **De kennisbank van webforJ** - dezelfde documentatie, componentstijlen en `--dwc-*`-tools voor tokens die de [webforJ MCP-server](/docs/ai-tooling/mcp) je editor biedt. Deze zijn ingebouwd en altijd beschikbaar.
 
-Omdat het dit allemaal bereikt via craftforJ, werkt het met dezelfde informatie die jij gebruikt. Het leest echte waarden, niet de waarden die je bron suggereert.
+Omdat de agent dit allemaal via craftforJ benadert, werkt hij met dezelfde informatie als jij. Hij leest echte waarden, niet de waarden die je broncode suggereert.
 
 ## Goedkeuringen {#approvals}
 
 Je bepaalt vooraf hoeveel de agent zelfstandig mag doen:
 
-- **Vraag voordat je actie onderneemt** - elke actie met een effect stopt voor jouw goedkeuring.
-- **Pas wijzigingen automatisch toe** - de agent werkt vrij, maar vraagt nog steeds om goedkeuring voordat het iets verwijdert of een script uitvoert.
-- **Voer autonoom uit** - de agent werkt zonder te stoppen.
+- **Eerst om toestemming vragen** - elke actie met gevolgen wordt ter goedkeuring aan je voorgelegd.
+- **Wijzigingen automatisch toepassen** - de agent werkt vrijuit, maar vraagt nog wel toestemming voordat hij iets verwijdert of een script uitvoert.
+- **Autonoom werken** - de agent werkt zonder te stoppen.
 
-Wanneer de agent vraagt, verschijnt de aanvraag inline in het transcript met de actie die het wil ondernemen, en je kunt het eenmalig of voor de rest van het gesprek toestaan.
+Wanneer de agent om toestemming vraagt, verschijnt het verzoek inline in het transcript, samen met de actie die hij wil uitvoeren. Je kunt de actie één keer toestaan of voor de rest van het gesprek.
 
-![De assistent die vraagt voordat hij handelt, inline in het transcript](/img/craftforj/ai/approval-prompt.png#rounded-border)
+![De assistent vraagt inline in het transcript om toestemming voordat hij een actie uitvoert](/img/craftforj/ai/approval-prompt.png#rounded-border)
 
-Als je nieuw bent met de agent, begin dan met het laten vragen voor alles. Zodra je ziet hoe het werkt, verwijdert het toestaan van het toepassen van zijn eigen wijzigingen de meeste onderbrekingen terwijl de beslissingen die belangrijk zijn bij jou blijven.
+Ben je nieuw met de agent, laat hem dan in het begin overal toestemming voor vragen. Als je eenmaal hebt gezien hoe hij werkt, voorkom je de meeste onderbrekingen door hem zijn eigen wijzigingen te laten toepassen. De belangrijke beslissingen blijven dan wel bij jou.
 
-## Werken met de app in een gesprek {#working-with-the-app-in-a-conversation}
+## In een gesprek met de app werken {#working-with-the-app-in-a-conversation}
 
-De agent leest wat het nodig heeft wanneer het nodig is, in plaats van dat je het hele app vooraf aanbiedt, en craftforJ toont je wat aan het gesprek is gekoppeld. Je kunt het direct een component uit de boom geven, of er een kiezen van de pagina midden in een gesprek. Voor vragen over hoe iets eruitziet, kan de agent een screenshot van een component maken. Dit vereist een model dat afbeeldingen accepteert.
+De agent leest informatie wanneer hij die nodig heeft, in plaats van vooraf je hele app te ontvangen. craftforJ laat je zien welke informatie aan het gesprek is toegevoegd. Je kunt een component rechtstreeks vanuit de boom aan de agent doorgeven of er midden in een gesprek een op de pagina selecteren. Als je vragen hebt over hoe iets eruitziet, kan de agent een screenshot van een component maken. Hiervoor is een model nodig dat afbeeldingen accepteert.
 
 :::warning Screenshots bevatten alles wat op het scherm staat
-Een screenshot bevat alle gegevens die je app op dat moment weergeeft. Overweeg dat voordat je een gehost model op een app met echte gegevens richt.
+Een screenshot bevat alle gegevens die je app op dat moment weergeeft. Houd hier rekening mee voordat je een gehost model gebruikt met een app die echte gegevens toont.
 :::
 
 ## Een model configureren {#configuring-a-model}
 
-craftforJ wordt zonder eigen model geleverd, zodat jij degene kunt kiezen die het uitvoert. Voeg een API-sleutel toe voor een van de ondersteunde providers, of wijs craftforJ op een lokaal draaiend model. Je sleutel wordt op de machine die je app uitvoert opgeslagen en de assistent houdt deze alleen in het geheugen zo lang de pagina is open, nooit in browseropslag. Het communiceert met de provider die je vanuit de browser hebt gekozen in plaats van via jouw server, en met niemand anders.
+craftforJ wordt niet met een eigen model geleverd, dus je kiest zelf welk model de agent aandrijft. Voeg een API-sleutel toe voor een van de ondersteunde providers of laat craftforJ verbinding maken met een lokaal model. Je sleutel wordt opgeslagen op de machine waarop je app draait. De assistent bewaart de sleutel alleen in het geheugen zolang de pagina is geopend, en nooit in de browseropslag. De assistent communiceert vanuit de browser met de provider die je hebt gekozen, en met niemand anders.
 
-De modelkeuze toont wat één model onderscheidt van een ander, inclusief hoeveel van je app en gesprek tegelijkertijd past, wat een gesprek kost, en of het model afbeeldingen accepteert of redeneert voordat het antwoord geeft. Een model dat geen tools kan aanroepen, kan wel een gesprek voeren maar kan niets inspecteren of wijzigen.
+De modelkiezer toont waarin de modellen van elkaar verschillen, waaronder hoeveel van je app en gesprek tegelijk in het contextvenster passen, wat een gesprek kost en of het model afbeeldingen accepteert of eerst redeneert voordat het antwoord geeft. Een model dat geen tools kan aanroepen, kan wel een gesprek voeren, maar niets inspecteren of wijzigen.
 
-![De modelkeuze die toont wat de beschikbare modellen onderscheidt](/img/craftforj/ai/model-picker.png#rounded-border)
+![De modelkiezer met de verschillen tussen de beschikbare modellen](/img/craftforj/ai/model-picker.png#rounded-border)
 
-Het lokaal draaien van een model houdt alles op jouw machine. Lokale modellen hebben vaak een klein contextvenster, dat snel wordt gevuld bij een gesprek over een echte app, dus geef het model zoveel context als jouw machine kan dragen.
+Als je een model lokaal uitvoert, blijft alles op je machine. Lokale modellen gebruiken vaak standaard een klein contextvenster. Een gesprek over een echte app vult dat snel, dus geef het model zoveel context als je machine aankan.
 
 ## Gesprekken {#conversations}
 
-Gesprekken worden per app bewaard en de agent kan terugkijken over eerdere gesprekken wanneer een vraag verwijst naar werk dat je eerder hebt gedaan. Wanneer een gesprek de context van het model overschrijdt, vat craftforJ de oudere berichten samen, zodat het werk doorgaat in plaats van te falen, en noteert dit in de chat.
+Gesprekken worden per app bewaard. Als je vraag verwijst naar eerder werk, kan de agent eerdere gesprekken teruglezen. Wanneer een gesprek groter wordt dan het contextvenster van het model, vat craftforJ de oudere berichten samen zodat het werk doorgaat in plaats van vast te lopen. In de chat wordt vermeld dat dit is gebeurd.
 
-Wanneer het werk de mogelijkheden van craftforJ overschrijdt, kun je het gesprek samenvatten en het overhandigen aan de assistent van je editor. Die assistent pakt het werk nauwkeuriger op met de [webforJ AI plugin](/docs/ai-tooling) geïnstalleerd.
+Wanneer het werk de mogelijkheden van craftforJ overstijgt, kun je het gesprek samenvatten en doorgeven aan de assistent in je editor. Met de [webforJ AI-plug-in](/docs/ai-tooling) geïnstalleerd kan die assistent het werk nauwkeuriger voortzetten.
 
-## Zet het uit {#turning-it-off}
+## Uitschakelen {#turning-it-off}
 
-De [`ai.enabled`](/docs/craftforj/configuration#feature-flags) eigenschap verwijdert de assistent volledig uit craftforJ. De [`ai.freeform-changes`](/docs/craftforj/configuration#feature-flags) eigenschap houdt de assistent, maar voorkomt dat deze zelf Java schrijft.
+Met de eigenschap [`ai.enabled`](/docs/craftforj/configuration#feature-flags) verwijder je de assistent volledig uit craftforJ. Met de eigenschap [`ai.freeform-changes`](/docs/craftforj/configuration#feature-flags) behoud je de assistent, maar voorkom je dat hij zelf Java schrijft.

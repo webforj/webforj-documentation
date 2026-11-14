@@ -5586,5 +5586,8 @@
   "componentDemo.tabs": {
     "message": "Bronbestanden",
     "description": "Accessible label for the file tabs of a component demo"
+  },
+  "page.craftforj.hero.videoLabel": {
+    "message": "craftforJ openen bovenop een actieve webforJ-app: componenten inspecteren, eigenschappen bewerken, thema's aanpassen en de AI-assistent vragen stellen"
   }
 }

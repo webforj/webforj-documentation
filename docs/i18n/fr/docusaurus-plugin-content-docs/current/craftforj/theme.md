@@ -4,35 +4,31 @@ sidebar_position: 6
 description: >-
   Adjust the DWC design tokens of a running webforJ app, preview the result
   immediately, and save it into your stylesheet.
-_i18n_hash: c7dd349ebf7570b2e34953fce990173d
+_i18n_hash: fe089afe4f44e457a98622707bf995e5
 ---
-L'onglet Thème vous permet de modifier l'apparence de votre application pendant son exécution. Il fonctionne avec les [tokens de conception DWC](/docs/styling/css-variables) que votre application utilise déjà, de sorte qu'un seul changement affecte tous les composants qui lisent ce token, au lieu de mettre à jour une règle à la fois.
+L’onglet Theme vous permet de modifier l’apparence de votre application pendant son exécution. Il utilise les [jetons de conception DWC](/docs/styling/css-variables) dont votre application se sert déjà : une seule modification s’applique à chaque composant qui utilise ce jeton, plutôt que de devoir modifier les règles une par une.
 
-<div class="videos-container">
-  <video controls preload="metadata">
-    <source src="https://cdn.webforj.com/webforj-documentation/video/craftforJ/theme-knobs.mp4#t=0.5" type="video/mp4" />
-  </video>
-</div>
+<VideoPlayer video="craftforj/theme-knobs" width={1920} height={992} title="Theme knobs" />
 
-## Ajustement d'un thème {#adjusting-a-theme}
+## Ajuster un thème {#adjusting-a-theme}
 
-Les contrôles sont regroupés par ce qu'ils affectent, couvrant la palette à partir de laquelle l'application est construite, les surfaces derrière elle, la forme de ses bords et coins, sa typographie et son espacement. Chaque contrôle explique ce qu'il fait, car certains d'entre eux modifient la lisibilité de l'application plutôt que seulement son apparence.
+Les commandes sont regroupées selon leur effet : elles couvrent la palette qui sert de base à l’application, les surfaces d’arrière-plan, la forme des bords et des coins, la typographie et l’espacement. Chaque commande explique son effet, car certaines modifient la lisibilité de l’application, et pas seulement son apparence.
 
-Un thème a un côté clair et un côté sombre. Vous pouvez appliquer une modification aux deux côtés ou à un seul, et faire basculer l'application entre les deux pour voir le côté sur lequel vous travaillez. Un aperçu montre la palette, les surfaces, un spécimen de typographie et les couleurs d'état ensemble, afin que vous puissiez repérer une combinaison qui fonctionne sur un écran mais pas sur un autre avant de l'enregistrer.
+Un thème comporte une variante claire et une variante sombre. Vous pouvez appliquer une modification aux deux ou à une seule, et basculer entre les deux variantes dans l’application pour voir celle sur laquelle vous travaillez. Un aperçu rassemble la palette, les surfaces, un spécimen typographique et les couleurs d’état : vous pouvez ainsi repérer une combinaison qui fonctionne sur un écran, mais pas sur un autre, avant de l’enregistrer.
 
-![Les contrôles de thème à côté de l'aperçu](/img/craftforj/theme/knob-rail.png#rounded-border)
+![Les commandes du thème à côté de l’aperçu](/img/craftforj/theme/knob-rail.png#rounded-border)
 
-## Enregistrement d'un thème {#saving-a-theme}
+## Enregistrer un thème {#saving-a-theme}
 
-Un thème sur lequel vous travaillez est appliqué à l'application mais ne fait pas encore partie de votre projet, et recharger la page le supprime. L'enregistrement l'écrit dans la feuille de style de votre application, où il survit aux redémarrages, apparaît dans votre diff et est expédié avec votre application.
+Le thème sur lequel vous travaillez est appliqué à l’application, mais ne fait pas encore partie de votre projet. Si vous rechargez la page, il est perdu. L’enregistrer l’ajoute à la feuille de style de votre application : il est alors conservé après les redémarrages, apparaît dans votre diff et est inclus dans votre application.
 
-craftforJ écrit dans une seule feuille de style, qu'il détecte automatiquement ou que vous nommez dans les paramètres de craftforJ. Si ce fichier contient déjà un thème, l'enregistrement le remplace entièrement plutôt que de superposer un second, et craftforJ vous demande de confirmer d'abord. Si le fichier a changé après que craftforJ l'ait lu, rien n'est écrit et craftforJ vous demande de sauvegarder à nouveau.
+craftforJ écrit dans une seule feuille de style, qu’il détecte automatiquement ou que vous indiquez dans les paramètres de craftforJ. Si ce fichier contient déjà un thème, l’enregistrement le remplace entièrement au lieu d’en superposer un autre, et craftforJ vous demande d’abord de confirmer. Si le fichier a été modifié depuis que craftforJ l’a lu, aucune modification n’est écrite et craftforJ vous demande de réessayer l’enregistrement.
 
-Vous pouvez rétablir un thème à son dernier état enregistré, ou le supprimer complètement de la feuille de style sans affecter quoi que ce soit d'autre dans le fichier.
+Vous pouvez rétablir la dernière version enregistrée d’un thème ou le supprimer entièrement de la feuille de style sans toucher au reste du fichier.
 
 ## Thèmes prédéfinis {#preset-themes}
 
-Au-delà de l'apparence par défaut, craftforJ dispose de plusieurs thèmes prédéfinis parmi lesquels choisir. Ce qui suit montre une comparaison entre les thèmes App Default et Portico.
+En plus de l’apparence par défaut, craftforJ propose plusieurs thèmes prédéfinis. Voici une comparaison entre les thèmes App Default et Portico.
 
 <Tabs>
   <TabItem value="app-default" label="App Default" default>
@@ -43,6 +39,6 @@ Au-delà de l'apparence par défaut, craftforJ dispose de plusieurs thèmes pré
   </TabItem>
 </Tabs>
 
-## Désactivation {#turning-it-off}
+## Désactiver cette fonctionnalité {#turning-it-off}
 
-Vous pouvez désactiver l'enregistrement des styles pour une application dans les paramètres de craftforJ, ou le supprimer entièrement avec la propriété [`stylesheet-changes`](/docs/craftforj/configuration#feature-flags). Avec l'une ou l'autre désactivée, l'onglet fonctionne toujours et repeint l'application en cours d'exécution, mais vous ne pouvez pas enregistrer le résultat.
+Vous pouvez désactiver l’enregistrement des styles d’une application dans les paramètres de craftforJ, ou le supprimer entièrement à l’aide de la propriété [`stylesheet-changes`](/docs/craftforj/configuration#feature-flags). Dans les deux cas, l’onglet reste fonctionnel et actualise toujours l’application en cours d’exécution, mais vous ne pouvez pas enregistrer le résultat.

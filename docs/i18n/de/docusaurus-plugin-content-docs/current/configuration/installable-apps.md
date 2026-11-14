@@ -4,65 +4,66 @@ sidebar_position: 20
 description: >-
   Annotate a webforJ app with AppProfile to generate a Web App Manifest with
   icons, screenshots, and metadata for device installation.
-_i18n_hash: 60a6bf616536e9c202af684e9a505af6
+_i18n_hash: 9aa99cc9da864a6808d72602b6e5c572
 ---
 <DocChip chip='since' label='24.21' />
 <JavadocLink type="foundation" location="com/webforj/annotation/AppProfile" top='true'/>
 
-Die `@AppProfile`-Annotation in webforJ ermöglicht es Ihnen, Ihre App auf unterstützten Plattformen installierbar zu machen. Installierbare Web-Apps integrieren sich mit dem Betriebssystem des Geräts. Wenn sie installiert sind, erscheinen sie auf dem Startbildschirm oder im App-Menü, ähnlich wie native Apps. Um dies zu erreichen, müssen bestimmte Metadaten wie Name, Beschreibung und Symbole bereitgestellt werden. Diese Details helfen dem Betriebssystem, die App zu identifizieren und anzuzeigen.
+Mit der Annotation `@AppProfile` in webforJ können Sie Ihre App auf unterstützten Plattformen installierbar machen.
+Installierbare Web-Apps sind in das Betriebssystem des Geräts integriert.
+Nach der Installation erscheinen sie auf dem Startbildschirm oder im App-Menü, ähnlich wie native Apps.
+Dazu müssen bestimmte Metadaten wie Name, Beschreibung und Symbole angegeben werden.
+Diese Angaben helfen dem Betriebssystem, die App zu erkennen und anzuzeigen.
 
-:::info Anforderung an sichere Ursprünge
-Damit eine App installierbar ist, muss sie von einem sicheren Ursprung, wie `https`, bereitgestellt werden. Browser lehnen Installationsversuche von unsicheren Ursprüngen ab. Diese Regel gilt jedoch nicht, wenn die App lokal von `localhost` während der Entwicklung bereitgestellt wird.
+:::info Anforderung an einen sicheren Ursprung
+Damit eine App installierbar ist, muss sie von einem sicheren Ursprung wie `https` bereitgestellt werden.
+Browser lehnen Installationsversuche von unsicheren Ursprüngen ab. Diese Regel gilt jedoch nicht, wenn die App während der Entwicklung lokal über `localhost` bereitgestellt wird.
 
 <!-- vale off -->
-Für weitere Informationen zu sicheren Kontexten und deren Bedeutung beziehen Sie sich auf die [Secure Contexts MDN-Dokumentation](https://developer.mozilla.org/en-US/docs/Web/Security/Secure_Contexts).
+Weitere Informationen zu sicheren Kontexten und ihrer Bedeutung finden Sie in der [MDN-Dokumentation zu sicheren Kontexten](https://developer.mozilla.org/en-US/docs/Web/Security/Secure_Contexts).
 <!-- vale on -->
 :::
 
-<div class="videos-container">
-  <video controls>
-    <source src="/video/install-chrome.mp4" type="video/mp4"/>
-  </video>
-</div>
+<VideoPlayer video="installable-apps/install-chrome" width={1908} height={1052} title="Install chrome" />
 
-## Unterstützung durch Browser {#browser-support}
+## Browserunterstützung {#browser-support}
 
 Die Unterstützung für die Installation einer Web-App variiert je nach Browser und Plattform.
 
 ### Desktop {#browser-support-desktop}
 
-- **Chromium-Browser** (Chrome, Edge, Opera, Brave und andere) installieren jede App, die eine Manifestdatei bereitstellt, auf allen unterstützen Desktop-Betriebssystemen.
-- **Safari** unterstützt **Ablage → Zum Dock hinzufügen** auf macOS Sonoma (Safari 17) und später. Der Ablauf funktioniert für jede Web-App, mit oder ohne Manifestdatei.
-- **Firefox** unterstützt die Installation von Web-Apps aus einer Manifestdatei auf dem Desktop nicht.
+- **Chromium-Browser** (Chrome, Edge, Opera, Brave und andere) installieren auf allen unterstützten Desktopbetriebssystemen jede App, die eine Manifestdatei enthält.
+- **Safari** unterstützt **Ablage → Zum Dock hinzufügen** unter macOS Sonoma (Safari 17) und höher. Dieser Ablauf funktioniert mit jeder Web-App, unabhängig davon, ob sie eine Manifestdatei enthält.
+- **Firefox** unterstützt die Installation von Web-Apps über eine Manifestdatei auf dem Desktop nicht.
 
-### Mobil {#browser-support-mobile}
+### Mobilgeräte {#browser-support-mobile}
 
-- Auf **Android** unterstützen Chrome, Edge, Firefox, Opera und Samsung Internet alle die Installation von Web-Apps.
-- Auf **iOS 16.3 und früher** können Web-Apps nur aus Safari installiert werden (**Teilen → Zum Home-Bildschirm hinzufügen**).
-- Auf **iOS 16.4 und später** können Web-Apps über das Teilen-Menü in Safari, Chrome, Edge, Firefox und Orion installiert werden.
+- Unter **Android** unterstützen Chrome, Edge, Firefox, Opera und Samsung Internet die Installation von Web-Apps.
+- Unter **iOS 16.3 und älter** können Web-Apps nur über Safari installiert werden (**Teilen → Zum Home-Bildschirm**).
+- Unter **iOS 16.4 und höher** können Web-Apps über das Menü „Teilen“ in Safari, Chrome, Edge, Firefox und Orion installiert werden.
 
-## `@AppProfile`-Annotation {#appprofile-annotation}
+## Annotation `@AppProfile` {#appprofile-annotation}
 
-Die `@AppProfile`-Annotation wird auf die Haupt-App-Klasse angewendet und erfordert eine minimale Konfiguration. Mindestens müssen Sie Folgendes bereitstellen:
+Die Annotation `@AppProfile` wird auf die Haupt-App-Klasse angewendet und erfordert nur eine minimale Konfiguration. Mindestens müssen Sie Folgendes angeben:
 
 - **name**: Der vollständige Name der App.
-- **shortName**: Eine kurze Version des Namens, die in Kontexten mit begrenztem Platz verwendet wird.
+- **shortName**: Eine Kurzform des Namens für die Verwendung in Bereichen mit begrenztem Platz.
 
-Zusätzliche optionale Eigenschaften ermöglichen eine Anpassung der Erscheinung und des Verhaltens der App.
+Zusätzliche optionale Eigenschaften ermöglichen die Anpassung des Erscheinungsbilds und Verhaltens der App.
 
-Wenn die `@AppProfile`-Annotation vorhanden ist, erstellt webforJ:
+Wenn die Annotation `@AppProfile` vorhanden ist, führt webforJ Folgendes aus:
 
-- Automatisch die erforderlichen Meta-Tags.
-- Generiert ein [Web Application Manifest](https://developer.mozilla.org/en-US/docs/Web/Manifest).
-- Stellt verwandte Ressourcen wie Symbole und Screenshots zur Verfügung.
+- Richtet automatisch die erforderlichen Meta-Tags ein.
+- Generiert ein [Web-App-Manifest](https://developer.mozilla.org/en-US/docs/Web/Manifest).
+- Stellt zugehörige Ressourcen wie Symbole und Screenshots bereit.
 
-### Beispiel: Anwendung von `@AppProfile` {#example-applying-appprofile}
+### Beispiel: `@AppProfile` anwenden {#example-applying-appprofile}
 
 ```java
 @AppProfile(
   name = "Zyntric Bank",
   shortName = "ZBank",
-  description = "Zyntric Bank ist eine einfache Banking-App, die mit webforJ erstellt wurde",
+  description = "Zyntric Bank is a simple banking application built with webforJ",
   screenshots = {
     @AppProfile.Screenshot(
       src = "ws://img/screenshots/s1.jpg",
@@ -74,35 +75,35 @@ public class Application extends App {
 }
 ```
 
-## `@AppProfile`-Eigenschaften {#appprofile-properties}
+## Eigenschaften von `@AppProfile` {#appprofile-properties}
 
-Die folgende Tabelle listet alle Eigenschaften auf, die von der `@AppProfile`-Annotation unterstützt werden:
+In der folgenden Tabelle sind alle von der Annotation `@AppProfile` unterstützten Eigenschaften aufgeführt:
 
-| **Eigenschaft**   | **Typ**                                          | **Beschreibung**                                                                                           | **Standardwert**     |
-| ----------------- | ------------------------------------------------ | --------------------------------------------------------------------------------------------------------- | --------------------- |
-| `name`            | `String`                                        | Der vollständige Name der App, der in App-Menüs und Installationsdialogen angezeigt wird.                 | **Obligatorisch**     |
-| `shortName`       | `String`                                        | Eine kurze Version des Namens, die in Kontexten mit begrenztem Platz verwendet wird. Sollte 12 Zeichen nicht überschreiten. | **Obligatorisch**     |
-| `description`     | `String`                                        | Eine kurze Beschreibung der App, die während der Installation und in den App-Einstellungen angezeigt wird. | `""`                  |
-| `themeColor`      | `String`                                        | Die Theme-Farbe für die App, die auf die Benutzeroberfläche des Browsers angewendet wird, wenn die App gestartet wird. | `"#ffffff"`           |
-| `backgroundColor` | `String`                                        | Die Anfangshintergrundfarbe für die App während des Ladens.                                               | `"#f8fafc"`           |
-| `startUrl`        | `String`                                        | Die URL, die geöffnet wird, wenn die App gestartet wird.                                                | `"."`                 |
-| `display`         | `Display` **_Enum_**                            | Der Anzeigemodus der App (z.B. `FULLSCREEN`, `STANDALONE`, `BROWSER`).                                   | `STANDALONE`          |
-| `orientation`     | `Orientation` **_Enum_**                        | Die Standardorientierung der App (z.B. `PORTRAIT`, `LANDSCAPE`, `NATURAL`).                             | `NATURAL`             |
-| `icons`           | [`Icon[]`](#appprofileicon-properties)         | Ein Array von Symbolen, die die App in verschiedenen Auflösungen darstellen.                              | `[]`                  |
-| `defaultIcon`     | [`DefaultIcon`](#appprofiledefaulticon-properties) | Gibt ein Standard-Symbol für die App an. Automatisch werden Symbolpfade in verschiedenen Größen generiert, wenn konfiguriert. | `icons://icon.png` |
-| `screenshots`     | [`Screenshot[]`](#appprofilescreenshot-properties) | Ein Array von Screenshots für die App, die in Installationsdialogen verwendet werden.                      | `[]`                  |
-| `categories`      | `String[]`                                      | Kategorien zur Klassifizierung der App (z.B. `Finanzen`, `Einkaufen`).                                    | `[]`                  |
+| **Eigenschaft**   | **Typ**                                           | **Beschreibung**                                                                                           | **Standardwert**     |
+| ----------------- | -------------------------------------------------- | --------------------------------------------------------------------------------------------------------- | --------------------- |
+| `name`            | `String`                                           | Der vollständige Name der App, der in App-Menüs und Installationsdialogen angezeigt wird.                 | **Erforderlich**      |
+| `shortName`       | `String`                                           | Eine Kurzform des Namens für Bereiche mit begrenztem Platz. Sollte höchstens 12 Zeichen umfassen.         | **Erforderlich**      |
+| `description`     | `String`                                           | Eine kurze Beschreibung der App, die während der Installation und in den App-Einstellungen angezeigt wird. | `""`                  |
+| `themeColor`      | `String`                                           | Die Designfarbe der App, die beim Start der App auf die Browseroberfläche angewendet wird.                | `"#ffffff"`           |
+| `backgroundColor` | `String`                                           | Die anfängliche Hintergrundfarbe der App während des Ladens.                                              | `"#f8fafc"`           |
+| `startUrl`        | `String`                                           | Die URL, die beim Start der App geöffnet wird.                                                            | `"."`                 |
+| `display`         | `Display` **_Enum_**                               | Der Anzeigemodus der App (z. B. `FULLSCREEN`, `STANDALONE`, `BROWSER`).                                   | `STANDALONE`          |
+| `orientation`     | `Orientation` **_Enum_**                           | Die Standardausrichtung der App (z. B. `PORTRAIT`, `LANDSCAPE`, `NATURAL`).                               | `NATURAL`             |
+| `icons`           | [`Icon[]`](#appprofileicon-properties)             | Ein Array von Symbolen, die die App in verschiedenen Auflösungen darstellen.                              | `[]`                  |
+| `defaultIcon`     | [`DefaultIcon`](#appprofiledefaulticon-properties) | Gibt ein Standardsymbol für die App an. Bei entsprechender Konfiguration werden automatisch Symbolpfade in mehreren Größen generiert. | `icons://icon.png` |
+| `screenshots`     | [`Screenshot[]`](#appprofilescreenshot-properties) | Ein Array von Screenshots der App, die in Installationsdialogen verwendet werden.                         | `[]`                  |
+| `categories`      | `String[]`                                         | Kategorien zur Klassifizierung der App (z. B. `Finance`, `Shopping`).                                     | `[]`                  |
 
-### `@AppProfile.Icon`-Eigenschaften {#appprofileicon-properties}
+### Eigenschaften von `@AppProfile.Icon` {#appprofileicon-properties}
 
-Symbole definieren die visuelle Darstellung Ihrer App in Menüs und auf dem Startbildschirm. Die `@AppProfile.Icon`-Annotation unterstützt die folgenden Eigenschaften:
+Symbole stellen Ihre App visuell in Menüs und auf Startbildschirmen dar. Die Annotation `@AppProfile.Icon` unterstützt die folgenden Eigenschaften:
 
-| **Eigenschaft**                                                                     | **Typ** | **Beschreibung**                                                                                             | **Standardwert** |
-| ---------------------------------------------------------------------------------- | ------- | ----------------------------------------------------------------------------------------------------------- | ----------------- |
-| `src`                                                                             | `String` | Der Pfad zum Symbol. Dies kann eine absolute URL oder ein `ws://`-Pfad sein.                                 | **Obligatorisch** |
-| `sizes`                                                                           | `String` | Ein Zeichenfolgenformat, das eine oder mehrere Größen des Bildes im Format `BreitexHöhe` (z.B. `512x512`) angibt. | **Obligatorisch** |
-| `type`                                                                            | `String` | Der Medientyp des Symbols (z.B. `image/png`, `image/jpeg`). Wenn nicht angegeben, wird er automatisch erkannt. | `""`              |
-| [`purpose`](https://developer.mozilla.org/en-US/docs/Web/Manifest/icons#purpose) | `String` | Der Zweck des Symbols (z.B. `any`, `maskable`, `monochrome`).                                                 | `""`              |
+| **Eigenschaft**                                                                     | **Typ** | **Beschreibung**                                                                                         | **Standardwert** |
+| ----------------------------------------------------------------------------------- | -------- | ------------------------------------------------------------------------------------------------------- | ----------------- |
+| `src`                                                                               | `String` | Der Pfad zum Symbol. Dies kann eine absolute URL oder ein `ws://`-Pfad sein.                            | **Erforderlich**  |
+| `sizes`                                                                             | `String` | Eine Zeichenfolge, die eine oder mehrere Bildgrößen im Format `BreitexHöhe` angibt (z. B. `512x512`). | **Erforderlich**  |
+| `type`                                                                              | `String` | Der Medientyp des Symbols (z. B. `image/png`, `image/jpeg`). Wenn nicht angegeben, wird er automatisch erkannt. | `""`              |
+| [`purpose`](https://developer.mozilla.org/en-US/docs/Web/Manifest/icons#purpose)     | `String` | Der Zweck des Symbols (z. B. `any`, `maskable`, `monochrome`).                                         | `""`              |
 
 ### Beispiel {#example}
 
@@ -114,41 +115,42 @@ Symbole definieren die visuelle Darstellung Ihrer App in Menüs und auf dem Star
 )
 ```
 
-### `@AppProfile.DefaultIcon`-Eigenschaften {#appprofiledefaulticon-properties}
+### Eigenschaften von `@AppProfile.DefaultIcon` {#appprofiledefaulticon-properties}
 
-Die `DefaultIcon`-Annotation vereinfacht die Konfiguration von App-Symbolen, indem mehrere Größenvarianten aus einem Basissymbol generiert werden. Sie erzeugt Symbole in den Auflösungen, die üblicherweise von Geräten angefordert werden.
+Die Annotation `DefaultIcon` vereinfacht die Konfiguration von App-Symbolen, indem sie aus einem Basissymbol mehrere Größenvarianten generiert.
+Sie erzeugt Symbole in den Auflösungen, die Geräte häufig anfordern.
 
-| **Eigenschaft** | **Typ** | **Beschreibung**                                                                    | **Standardwert** |
-| --------------- | ------- | ---------------------------------------------------------------------------------- | ----------------- |
-| `value`         | `String` | Der Pfad zur Basis-Symbol-Datei. Dies kann eine absolute URL oder ein `ws://`-Pfad sein. | **Obligatorisch** |
-| `sizes`         | `int[]` | Ein Array von Größen, die generiert werden sollen, angegeben als Ganzzahlen (z.B. `{144, 192, 512}`). | `{144, 192, 512}` |
+| **Eigenschaft** | **Typ** | **Beschreibung**                                                                 | **Standardwert** |
+| --------------- | -------- | ------------------------------------------------------------------------------- | ----------------- |
+| `value`         | `String` | Der Pfad zur Basissymbol-Datei. Dies kann eine absolute URL oder ein `ws://`-Pfad sein. | **Erforderlich**  |
+| `sizes`         | `int[]`  | Ein Array der zu generierenden Größen, angegeben als Ganzzahlen (z. B. `{144, 192, 512}`). | `{144, 192, 512}` |
 
-:::info Anforderungen an Symbol-Dateien
-Diese Konfiguration generiert nicht automatisch die tatsächlichen Symbol-Dateien für die App. Stattdessen verwendet sie die `@AppProfile.DefaultIcon`-Annotation, um entsprechende [`@AppProfile.Icon`](#appprofileicon-properties) Einträge für jede angegebene Größe zu generieren.
+:::info Anforderungen an Symboldateien
+Durch diese Konfiguration werden die eigentlichen Symboldateien für die App nicht automatisch generiert. Stattdessen verwendet sie die Annotation `@AppProfile.DefaultIcon`, um für jede angegebene Größe entsprechende Einträge für [`@AppProfile.Icon`](#appprofileicon-properties) zu generieren.
 
-#### Wenn das [Webserver-Protokoll](../managing-resources/assets-protocols#the-webserver-protocol) verwendet wird {#if-using-the-webserver-protocol}
+#### Bei Verwendung des [webserver-Protokolls](../managing-resources/assets-protocols#the-webserver-protocol) {#if-using-the-webserver-protocol}
 - Sie müssen eine Basisdatei `icon.png` im Ordner `static/icons` bereitstellen.
-- Sie müssen weitere Symbolvariationen hinzufügen, die `icon-144x144.png`, `icon-192x192.png` und `icon-512x512.png` heißen.
-- Diese spezifischen Größen decken die Auflösungen ab, die Geräte üblicherweise anfordern.
+- Es wird erwartet, dass Sie zusätzliche Symbolvarianten mit den Namen `icon-144x144.png`, `icon-192x192.png` und `icon-512x512.png` bereitstellen.
+- Diese Größen decken die Auflösungen ab, die Geräte häufig anfordern.
 
-#### Wenn das [Icons-Protokoll](../managing-resources/assets-protocols#the-icons-protocol) verwendet wird {#if-using-the-icons-protocol}
+#### Bei Verwendung des [icons-Protokolls](../managing-resources/assets-protocols#the-icons-protocol) {#if-using-the-icons-protocol}
 
-- Sie müssen eine Basisdatei `icon.png` im `/icons`-Ordner bereitstellen.
-- Der `icons`-Endpunkt bietet dynamisch verschiedene Symbolgrößen auf Anfrage, wenn sie angefordert werden.
+- Es wird erwartet, dass Sie eine Basisdatei `icon.png` im Ordner `/icons` bereitstellen.
+- Der Endpunkt `icons` stellt bei Bedarf dynamisch verschiedene Symbolgrößen bereit.
 :::
 
-### `@AppProfile.Screenshot`-Eigenschaften {#appprofilescreenshot-properties}
+### Eigenschaften von `@AppProfile.Screenshot` {#appprofilescreenshot-properties}
 
-Screenshots bieten eine Vorschau auf die App in Installationsdialogen oder App-Stores. Die `@AppProfile.Screenshot`-Annotation unterstützt die folgenden Eigenschaften:
+Screenshots bieten eine Vorschau der App in Installationsdialogen oder App-Stores. Die Annotation `@AppProfile.Screenshot` unterstützt die folgenden Eigenschaften:
 
-| **Eigenschaft**                                                                                  | **Typ** | **Beschreibung**                                                                                             | **Standardwert** |
-| ----------------------------------------------------------------------------------------------- | ------- | ----------------------------------------------------------------------------------------------------------- | ----------------- |
-| `src`                                                                                           | `String` | Der Pfad zum Screenshot. Dies kann eine absolute URL oder ein `ws://`-Pfad sein.                          | **Obligatorisch** |
-| `sizes`                                                                                         | `String` | Ein Zeichenfolgenformat, das eine oder mehrere Größen des Bildes im Format `BreitexHöhe` (z.B. `1080x1920`) angibt. | **Obligatorisch** |
-| `type`                                                                                          | `String` | Der Medientyp des Screenshots (z.B. `image/png`, `image/jpeg`). Wenn nicht angegeben, wird er automatisch erkannt. | `""`              |
-| `label`                                                                                         | `String` | Ein beschreibendes Etikett für den Screenshot.                                                              | `""`              |
-| [`formFactor`](https://developer.mozilla.org/en-US/docs/Web/Manifest/screenshots#form_factor)  | `String` | Der Formfaktor des Screenshots (z.B. `narrow`, `wide`).                                                  | `""`              |
-| [`platform`](https://developer.mozilla.org/en-US/docs/Web/Manifest/screenshots#platform)       | `String` | Die Plattform, für die der Screenshot vorgesehen ist (z.B. `ios`, `android`).                              | `""`              |
+| **Eigenschaft**                                                                                  | **Typ** | **Beschreibung**                                                                                              | **Standardwert** |
+| ------------------------------------------------------------------------------------------------- | -------- | ------------------------------------------------------------------------------------------------------------ | ----------------- |
+| `src`                                                                                             | `String` | Der Pfad zum Screenshot. Dies kann eine absolute URL oder ein `ws://`-Pfad sein.                             | **Erforderlich**  |
+| `sizes`                                                                                           | `String` | Eine Zeichenfolge, die eine oder mehrere Bildgrößen im Format `BreitexHöhe` angibt (z. B. `1080x1920`).    | **Erforderlich**  |
+| `type`                                                                                            | `String` | Der Medientyp des Screenshots (z. B. `image/png`, `image/jpeg`). Wenn nicht angegeben, wird er automatisch erkannt. | `""`              |
+| `label`                                                                                           | `String` | Eine beschreibende Bezeichnung für den Screenshot.                                                            | `""`              |
+| [`formFactor`](https://developer.mozilla.org/en-US/docs/Web/Manifest/screenshots#form_factor)     | `String` | Der Formfaktor des Screenshots (z. B. `narrow`, `wide`).                                                     | `""`              |
+| [`platform`](https://developer.mozilla.org/en-US/docs/Web/Manifest/screenshots#platform)          | `String` | Die Plattform, für die der Screenshot vorgesehen ist (z. B. `ios`, `android`).                               | `""`              |
 
 ### Beispiel {#example-1}
 
@@ -159,8 +161,4 @@ Screenshots bieten eine Vorschau auf die App in Installationsdialogen oder App-S
 )
 ```
 
-<div class="videos-container">
-  <video controls>
-    <source src="/video/install-android.mp4" type="video/mp4"/>
-  </video>
-</div>
+<VideoPlayer video="installable-apps/install-android" width={374} height={824} title="Install android" />

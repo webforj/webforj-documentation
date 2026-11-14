@@ -4,67 +4,67 @@ sidebar_position: 40
 description: >-
   Share thread-safe key-value state across sessions, thread groups, or the
   entire JVM using Private, Group, and Global namespaces.
-_i18n_hash: fb5d7a0ef2a65790f0692612c07d9044
+_i18n_hash: f932a175d81df4147cae1335991db3d5
 ---
 <DocChip chip='since' label='24.22' />
 <JavadocLink type="foundation" location="com/webforj/environment/namespace/Namespace" top='true'/>
 
-Los namespaces en webforJ proporcionan un mecanismo para almacenar y recuperar datos compartidos a través de diferentes ámbitos en una aplicación web. Permiten la comunicación de datos entre componentes y sesiones cruzadas sin depender de técnicas de almacenamiento tradicionales como atributos de sesión o campos estáticos. Esta abstracción permite a los desarrolladores encapsular y acceder al estado de manera controlada y segura para hilos. Los namespaces son ideales para construir herramientas de colaboración multiusuario o simplemente para mantener configuraciones globales consistentes, y permiten coordinar datos de manera segura y eficiente.
+Los espacios de nombres en webforJ ofrecen un mecanismo para almacenar y recuperar datos compartidos en distintos ámbitos de una aplicación web. Permiten la comunicación de datos entre componentes y sesiones sin depender de técnicas de almacenamiento tradicionales, como los atributos de sesión o los campos estáticos. Esta abstracción permite a los desarrolladores encapsular y acceder al estado de forma controlada y segura para los subprocesos. Los espacios de nombres son ideales para crear herramientas de colaboración multiusuario o simplemente mantener una configuración global coherente, y permiten coordinar datos de forma segura y eficiente.
 
-## ¿Qué es un namespace? {#whats-a-namespace}
+## ¿Qué es un espacio de nombres? {#whats-a-namespace}
 
-Un namespace es un contenedor nombrado que almacena pares clave-valor. Estos valores se pueden acceder y modificar a través de diferentes partes de tu aplicación según el tipo de namespace que utilices. Piénsalo como un mapa distribuido seguro para hilos con control de eventos y mecanismos de bloqueo incorporados.
+Un espacio de nombres es un contenedor con nombre que almacena pares clave-valor. Se puede acceder a estos valores y modificarlos desde distintas partes de la aplicación, según el tipo de espacio de nombres que se utilice. Considérelo como un mapa distribuido y seguro para los subprocesos, con mecanismos integrados de gestión de eventos y bloqueo.
 
-### Cuándo usar namespaces {#when-to-use-namespaces}
+### Cuándo usar espacios de nombres {#when-to-use-namespaces}
 
-Utiliza namespaces cuando:
+Use espacios de nombres cuando:
 
-- Necesites compartir valores entre sesiones de usuario o componentes de la aplicación.
-- Quieras reaccionar a los cambios de valor a través de oyentes.
-- Requieras un bloqueo granular para secciones críticas.
-- Necesites persistir y recuperar el estado de manera eficiente a través de tu aplicación.
+- Necesite compartir valores entre sesiones de usuario o componentes de la aplicación.
+- Quiera reaccionar a los cambios de valor mediante escuchas.
+- Necesite un bloqueo detallado para secciones críticas.
+- Necesite conservar y recuperar el estado de forma eficiente en toda la aplicación.
 
-### Tipos de namespaces {#types-of-namespaces}
+### Tipos de espacios de nombres {#types-of-namespaces}
 
-webforJ ofrece tres tipos de namespaces:
+webforJ ofrece tres tipos de espacios de nombres:
 
-| Tipo         | Ámbito                                                                                                               | Uso Típico                               |
-|--------------|---------------------------------------------------------------------------------------------------------------------|------------------------------------------|
-| **Privado**  | Compartido entre clientes que utilizan el mismo prefijo y nombre. La memoria se libera automáticamente cuando no quedan referencias. | Estado compartido entre sesiones de usuario relacionadas. |
-| **Grupo**    | Compartido por todos los hilos generados desde el mismo hilo padre.                                                  | Coordinación de estado dentro de un grupo de hilos.   |
-| **Global**   | Accesible a través de todos los hilos del servidor (a nivel de JVM). La memoria se retiene hasta que las claves se eliminan explícitamente. | Estado compartido a nivel de aplicación. |
+| Tipo        | Ámbito                                                                                                               | Uso habitual                                 |
+| ----------- | ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------- |
+| **Private** | Compartido entre los clientes que usan el mismo prefijo y nombre. La memoria se libera automáticamente cuando ya no quedan referencias. | Estado compartido entre sesiones de usuario relacionadas. |
+| **Group**   | Compartido por todos los subprocesos iniciados desde el mismo subproceso principal.                                  | Coordinación del estado dentro de un grupo de subprocesos.   |
+| **Global**  | Accesible desde todos los subprocesos del servidor (en toda la JVM). La memoria se conserva hasta que se eliminen explícitamente las claves.              | Estado compartido en toda la aplicación.              |
 
-:::tip Eligiendo un predeterminado - Preferir `PrivateNamespace`
-Cuando tengas dudas, utiliza un `PrivateNamespace`. Ofrece un compartimiento seguro y delimitado entre sesiones relacionadas sin afectar el estado global o a nivel de servidor. Esto lo convierte en un valor predeterminado confiable para la mayoría de las aplicaciones.
+:::tip Cómo elegir uno de forma predeterminada: prefiera `PrivateNamespace`
+Si tiene dudas, use un `PrivateNamespace`. Ofrece un uso compartido seguro y acotado entre sesiones relacionadas, sin afectar al estado global ni al estado de todo el servidor. Por eso es una opción predeterminada fiable para la mayoría de las aplicaciones.
 :::
 
-## Creando y usando un namespace {#creating-and-using-a-namespace}
+## Crear y usar un espacio de nombres {#creating-and-using-a-namespace}
 
-Los namespaces se crean instanciando uno de los tipos disponibles. Cada tipo define cómo y dónde se comparte la información. Los ejemplos a continuación demuestran cómo crear un namespace e interactuar con sus valores.
+Los espacios de nombres se crean mediante la instanciación de uno de los tipos disponibles. Cada tipo determina cómo y dónde se comparten los datos. Los ejemplos siguientes muestran cómo crear un espacio de nombres e interactuar con sus valores.
 
-### Namespace `Privado` {#private-namespace}
+### Espacio de nombres `Private` {#private-namespace}
 
-El nombre del namespace privado se compone de dos partes:
+El nombre de un espacio de nombres privado consta de dos partes:
 
-- **Prefijo**: Un identificador definido por el desarrollador que debe ser único para tu aplicación o módulo para evitar conflictos.
-- **Nombre base**: El nombre específico para el contexto o dato compartido que deseas gestionar.
+- **Prefijo**: identificador definido por el desarrollador que debe ser único para la aplicación o el módulo, a fin de evitar conflictos.
+- **Nombre base**: nombre específico del contexto o los datos compartidos que se desean gestionar.
 
-Juntos, forman el nombre completo del namespace utilizando el formato:
+Juntas, estas partes forman el nombre completo del espacio de nombres con el formato:
 
 ```text
-prefijo + "." + nombreBase
+prefix + "." + baseName
 ```
 
 Por ejemplo, `"myApp.sharedState"`.
 
-Los namespaces creados con el mismo prefijo y nombre base siempre se refieren a la _misma instancia subyacente_. Esto asegura un acceso compartido consistente en todas las llamadas a `PrivateNamespace` que utilizan los mismos identificadores.
+Los espacios de nombres creados con el mismo prefijo y nombre base siempre hacen referencia a la _misma instancia subyacente_. Esto garantiza un acceso compartido coherente en todas las llamadas a `PrivateNamespace` que usen los mismos identificadores.
 
 ```java
-// Crear o recuperar un namespace privado
+// Crear o recuperar un espacio de nombres privado
 PrivateNamespace ns = new PrivateNamespace("myApp", "sharedState");
 ```
 
-Puedes comprobar la existencia antes de la creación:
+Puede comprobar si existe antes de crearlo:
 
 ```java
 if (PrivateNamespace.isPresent("myApp.sharedState")) {
@@ -72,84 +72,84 @@ if (PrivateNamespace.isPresent("myApp.sharedState")) {
 }
 ```
 
-:::tip Directrices de Nomenclatura
-Al nombrar un `PrivateNamespace`, sigue estas reglas:
+:::tip Reglas para asignar nombres
+Al asignar un nombre a un `PrivateNamespace`, siga estas reglas:
 
-- Ambas partes deben estar no vacías.
-- Cada una debe comenzar con una letra.
+- Ninguna de las dos partes puede estar vacía.
+- Cada parte debe empezar con una letra.
 - Solo se permiten caracteres imprimibles.
-- No se permite el espacio en blanco.
+- No se permiten espacios en blanco.
 
 Ejemplos:
 - ✓ mycrm.sessionData
 - ✓ acme.analytics
-- X shared.data (demasiado genérico, propenso a conflictos)
+- X shared.data (demasiado genérico; es probable que entre en conflicto)
 :::
 
-### Namespaces `Grupo` y `Global` {#group-and-global-namespaces}
+### Espacios de nombres `Group` y `Global` {#group-and-global-namespaces}
 
-Además de `PrivateNamespace`, webforJ proporciona dos otros tipos para contextos de compartición más amplios. Estos son útiles cuando el estado necesita persistir más allá de una sola sesión o grupo de hilos.
+Además de `PrivateNamespace`, webforJ proporciona otros dos tipos para contextos de uso compartido más amplios. Son útiles cuando el estado debe persistir más allá de una sesión o un grupo de subprocesos.
 
-- **Namespace Global**: Accesible a través de todos los hilos del servidor (a nivel de JVM).
-- **Namespace de Grupo**: Compartido entre hilos que provienen del mismo padre.
+- **Espacio de nombres global**: accesible desde todos los subprocesos del servidor (en toda la JVM).
+- **Espacio de nombres de grupo**: compartido entre los subprocesos que se originan en el mismo principal.
 
 ```java
-// Estado compartido global, accesible a nivel de aplicación
+// Estado compartido global, accesible en toda la aplicación
 GlobalNamespace globalNs = new GlobalNamespace();
 globalNs.put("globalTheme", "dark");
 
-// Estado específico del grupo, limitado a hilos que comparten un padre común
+// Estado específico del grupo, limitado a los subprocesos que comparten un principal
 GroupNamespace groupNs = new GroupNamespace();
 groupNs.put("localCache", new HashMap<>());
 ```
 
-## Trabajando con valores {#working-with-values}
+## Trabajar con valores {#working-with-values}
 
-Los namespaces proporcionan una interfaz consistente para gestionar datos compartidos a través de pares clave-valor. Esto incluye establecer, recuperar, eliminar valores, sincronizar el acceso y observar cambios en tiempo real.
+Los espacios de nombres proporcionan una interfaz coherente para gestionar datos compartidos mediante pares clave-valor. Esto incluye definir, recuperar y eliminar valores, sincronizar el acceso y observar los cambios en tiempo real.
 
-### Estableciendo y eliminando valores {#setting-and-removing-values}
+### Definir y eliminar valores {#setting-and-removing-values}
 
-Utiliza `put()` para almacenar un valor bajo una clave específica. Si la clave está actualmente bloqueada, el método espera hasta que el bloqueo se libere o expire el tiempo de espera.
+Use `put()` para almacenar un valor con una clave específica. Si la clave está bloqueada, el método espera hasta que se libere el bloqueo o se agote el tiempo de espera.
 
 ```java
-// Espera hasta 20 ms (por defecto) para establecer el valor
+// Esperar hasta 20 ms (valor predeterminado) para definir el valor
 ns.put("username", "admin");
 
-// Especifica un tiempo de espera personalizado en milisegundos
+// Especificar un tiempo de espera personalizado en milisegundos
 ns.put("config", configObject, 100);
 ```
 
-Para eliminar una clave del namespace:
+Para eliminar una clave del espacio de nombres:
 
 ```java
 ns.remove("username");
 ```
 
-Tanto `put()` como `remove()` son operaciones bloqueantes si la clave objetivo está bloqueada. Si el tiempo de espera expira antes de que se libere el bloqueo, se lanza una `NamespaceLockedException`.
+Tanto `put()` como `remove()` son operaciones bloqueantes si la clave de destino está bloqueada. Si se agota el tiempo de espera antes de que se libere el bloqueo, se lanza una `NamespaceLockedException`.
 
-Para actualizaciones concurrentes seguras donde solo necesitas sobrescribir el valor, utiliza `atomicPut()`. Bloquea la clave, escribe el valor y libera el bloqueo en un solo paso:
+Para realizar actualizaciones simultáneas de forma segura cuando solo necesite sobrescribir el valor, use `atomicPut()`. Este método bloquea la clave, escribe el valor y libera el bloqueo en un solo paso:
 
 ```java
 ns.atomicPut("counter", 42);
 ```
 
-Esto previene condiciones de carrera y evita la necesidad de bloqueos manuales en escenarios de actualización simples.
+Esto evita las condiciones de carrera y la necesidad de bloquear manualmente en situaciones sencillas de actualización.
 
-### Obteniendo valores {#getting-values}
+### Obtener valores {#getting-values}
 
-Para recuperar un valor, utiliza `get()`:
+Para recuperar un valor, use `get()`:
 
 ```java
 Object value = ns.get("username");
 ```
 
-Si la clave no existe, esto lanza una `NoSuchElementException`. Para evitar excepciones, utiliza `getOrDefault()`:
+Si la clave no existe, se lanza una `NoSuchElementException`. Para evitar excepciones, use `getOrDefault()`:
 
 ```java
 Object value = ns.getOrDefault("username", "guest");
 ```
 
-Para verificar si una clave está definida:
+Para comprobar si una clave está definida:
 
 ```java
 if (ns.contains("username")) {
@@ -157,73 +157,73 @@ if (ns.contains("username")) {
 }
 ```
 
-Si deseas inicializar un valor perezosamente solo cuando falta, utiliza `computeIfAbsent()`:
+Si quiere inicializar un valor de forma diferida solo cuando no exista, use `computeIfAbsent()`:
 
 ```java
 Object token = ns.computeIfAbsent("authToken", key -> generateToken());
 ```
 
-Esto es útil para valores compartidos que se crean una vez y se reutilizan, como tokens de sesión, bloques de configuración o datos en caché.
+Esto resulta útil para los valores compartidos que se crean una vez y se reutilizan, como los tokens de sesión, los bloques de configuración o los datos almacenados en caché.
 
 ### Bloqueo manual {#manual-locking}
 
-Si necesitas realizar múltiples operaciones sobre la misma clave o coordinar a través de múltiples claves, utiliza el bloqueo manual.
+Si necesita realizar varias operaciones en la misma clave o coordinar varias claves, use el bloqueo manual.
 
 ```java
-ns.setLock("flag", 500); // Espera hasta 500 ms para el bloqueo
+ns.setLock("flag", 500); // Esperar hasta 500 ms para obtener el bloqueo
 
-// La sección crítica comienza
+// Inicio de la sección crítica
 Object existing = ns.get("flag");
 ns.put("flag", "in-progress");
-// La sección crítica termina
+// Fin de la sección crítica
 
 ns.removeLock("flag");
 ```
 
-Utiliza este patrón cuando una secuencia de operaciones debe realizarse atómicamente a través de lecturas y escrituras. Asegúrate siempre de liberar el bloqueo para evitar bloquear otros hilos.
+Use este patrón cuando una secuencia de operaciones deba ejecutarse de forma atómica entre lecturas y escrituras. Asegúrese siempre de liberar el bloqueo para evitar bloquear otros subprocesos.
 
-### Escuchar cambios {#listening-for-changes}
+### Escuchar los cambios {#listening-for-changes}
 
-Los namespaces admiten oyentes de eventos que te permiten reaccionar al acceso o la modificación de valores. Esto es útil para escenarios tales como:
+Los espacios de nombres admiten escuchas de eventos que permiten reaccionar al acceso o la modificación de valores. Esto resulta útil en situaciones como:
 
-- Registrar o auditar el acceso a claves sensibles
-- Activar actualizaciones cuando un valor de configuración cambia
-- Monitorear cambios de estado compartidos en aplicaciones multiusuario
+- Registrar o auditar el acceso a claves confidenciales
+- Activar actualizaciones cuando cambia un valor de configuración
+- Supervisar cambios en el estado compartido en aplicaciones multiusuario
 
-#### Métodos de oyente disponibles {#available-listener-methods}
+#### Métodos de escucha disponibles {#available-listener-methods}
 
-| Método                    | Disparador                      | Ámbito             |
-|---------------------------|----------------------------------|--------------------|
-| `onAccess`                | Cualquier clave es leída        | Todo el namespace   |
-| `onChange`                | Cualquier clave es modificada   | Todo el namespace   |
-| `onKeyAccess("key")`      | Una clave específica es leída    | Por clave          |
-| `onKeyChange("key")`      | Una clave específica es modificada| Por clave          |
+| Método                    | Activador                        | Ámbito              |
+|---------------------------|--------------------------------|--------------------|
+| `onAccess`                | Se lee cualquier clave                | Espacio de nombres completo    |
+| `onChange`                | Se modifica cualquier clave            | Espacio de nombres completo    |
+| `onKeyAccess("key")`      | Se lee una clave específica         | Por clave            |
+| `onKeyChange("key")`      | Se modifica una clave específica     | Por clave            |
 
-Cada oyente recibe un objeto de evento que contiene:
+Cada escucha recibe un objeto de evento que contiene:
 - El nombre de la clave
-- El valor antiguo
+- El valor anterior
 - El nuevo valor
-- Una referencia al namespace
+- Una referencia al espacio de nombres
 
-#### Ejemplo: Responder a cualquier cambio de clave {#example-respond-to-any-key-change}
+#### Ejemplo: responder a cualquier cambio de clave {#example-respond-to-any-key-change}
 
 ```java
 ns.onChange(event -> {
-  System.out.println("Cambio de clave: " + event.getVariableName());
-  System.out.println("Valor antiguo: " + event.getOldValue());
-  System.out.println("Nuevo valor: " + event.getNewValue());
+  System.out.println("Key changed: " + event.getVariableName());
+  System.out.println("Old value: " + event.getOldValue());
+  System.out.println("New value: " + event.getNewValue());
 });
 ```
 
-#### Ejemplo: Rastrear el acceso a una clave específica {#example-track-access-to-a-specific-key}
+#### Ejemplo: hacer un seguimiento del acceso a una clave específica {#example-track-access-to-a-specific-key}
 
 ```java
 ns.onKeyAccess("sessionToken", event -> {
-  System.out.println("Token fue accedido: " + event.getNewValue());
+  System.out.println("Token was accessed: " + event.getNewValue());
 });
 ```
 
-Los oyentes devuelven un objeto `ListenerRegistration` que puedes utilizar para anular el registro del oyente más tarde:
+Las escuchas devuelven un objeto `ListenerRegistration` que puede utilizar para anular el registro de la escucha más adelante:
 
 ```java
 ListenerRegistration<NamespaceKeyChangeEvent> reg = ns.onKeyChange("status", event -> {
@@ -232,22 +232,18 @@ ListenerRegistration<NamespaceKeyChangeEvent> reg = ns.onKeyChange("status", eve
 reg.remove();
 ```
 
-## Ejemplo: Compartiendo el estado del juego en Tres en Raya {#example-sharing-game-state-in-tic-tac-toe}
+## Ejemplo: compartir el estado de una partida de tres en raya {#example-sharing-game-state-in-tic-tac-toe}
 
-La [demostración de Tres en Raya de webforJ](https://github.com/webforj/webforj-tictactoe) proporciona un simple juego de dos jugadores donde los turnos se comparten entre los usuarios. El proyecto demuestra cómo se puede utilizar `Namespace` para coordinar el estado sin depender de herramientas externas como bases de datos o APIs.
+La [demo de tres en raya de webforJ](https://github.com/webforj/webforj-tictactoe) ofrece un sencillo juego para dos jugadores en el que los turnos se comparten entre los usuarios. El proyecto muestra cómo se puede usar `Namespace` para coordinar el estado sin depender de herramientas externas como bases de datos o API.
 
-En este ejemplo, un objeto de juego en Java compartido se almacena en un `PrivateNamespace`, permitiendo que múltiples clientes interactúen con la misma lógica del juego. El namespace sirve como un contenedor central para el estado del juego, asegurando que:
+En este ejemplo, se almacena un objeto de juego Java compartido en un `PrivateNamespace`, lo que permite que varios clientes interactúen con la misma lógica de juego. El espacio de nombres funciona como contenedor central del estado de la partida y garantiza que:
 
-- Ambos jugadores vean actualizaciones consistentes del tablero
+- Ambos jugadores vean actualizaciones coherentes del tablero
 - Los turnos estén sincronizados
-- La lógica del juego esté compartida entre sesiones
+- La lógica del juego se comparta entre sesiones
 
-No se necesitan servicios externos (como REST o WebSockets). Toda la coordinación se realiza a través de namespaces, destacando su capacidad para gestionar el estado compartido en tiempo real con una infraestructura mínima.
+No se necesitan servicios externos (como REST o WebSockets). Toda la coordinación se realiza mediante espacios de nombres, lo que demuestra su capacidad para gestionar el estado compartido en tiempo real con una infraestructura mínima.
 
-Explora el código: [webforj/webforj-tictactoe](https://github.com/webforj/webforj-tictactoe)
+Explore el código: [webforj/webforj-tictactoe](https://github.com/webforj/webforj-tictactoe)
 
-<div class="videos-container">
-  <video controls>
-    <source src="https://cdn.webforj.com/webforj-documentation/video/tic-tac-toe.mp4" type="video/mp4"/>
-  </video>
-</div>
+<VideoPlayer video="namespaces/tic-tac-toe" width={1660} height={902} title="Tic tac toe" />

@@ -1,28 +1,30 @@
 ---
-title: Projektin asetukset
+title: Projektin käyttöönotto
 sidebar_position: 1
 description: >-
   Discover where to download the tutorial project, how to navigate it, and run
   the apps within.
-_i18n_hash: 8c9cc05d141898612beff7f1c3f73fae
+_i18n_hash: 95bc825bd041018765a732bf464d77b7
 ---
-Aloittaaksesi tämän oppaan, tarvitset paikan projektiisi, jossa voit hallita luokkiasi ja resurssejasi. Seuraavat osat kuvaavat eri tapoja, joilla voit luoda webforJ-projektisi tälle oppaalle.
+Aloittaaksesi tämän opetusohjelman tarvitset projektillesi sijainnin, jossa voit hallita luokkiasi ja resurssejasi. Seuraavissa osioissa kuvataan eri tavat luoda webforJ-projekti tätä opetusohjelmaa varten.
 
-## Käyttäen lähdekoodia {#using-source-code}
+## Lähdekoodin käyttäminen {#using-source-code}
 
-Helpoin tapa seurata tätä opasta on viitata sen lähdekoodiin. Voit ladata koko projektin tai kloonata sen GitHubista:
+Helpoin tapa seurata tätä opetusohjelmaa on tutustua sen lähdekoodiin. Voit ladata koko projektin tai kloonata sen GitHubista:
 
 <!-- vale off -->
-- Lataa ZIP: [webforj-tutorial.zip](https://github.com/webforj/webforj-tutorial/archive/refs/heads/main.zip)
-- GitHub-repositorio: Kloonaa projekti [suoraan GitHubista](https://github.com/webforj/webforj-tutorial)
+- Lataa ZIP-tiedosto: [webforj-tutorial.zip](https://github.com/webforj/webforj-tutorial/archive/refs/heads/main.zip)
+- GitHub-arkisto: Kloonaa projekti [suoraan GitHubista](https://github.com/webforj/webforj-tutorial)
 <!-- vale on -->
 ```bash
 git clone https://github.com/webforj/webforj-tutorial.git
 ```
 
-### Projektirakenne {#project-structure}
+<!-- <VideoPlayer video="tutorial/project-setup" width={1920} height={1080} title="Project setup" /> -->
 
-Projektissa on kuusi alikansiota, yksi jokaiselle oppaan vaiheelle, ja jokaisessa on suoritettava sovellus. Seuraamalla mukana voit nähdä, miten sovellus etenee yksinkertaisesta asetuksesta täysin toimivaksi asiakashallintajärjestelmäksi.
+### Projektin rakenne {#project-structure}
+
+Projektissa on kuusi alihakemistoa, yksi kutakin opetusohjelman vaihetta varten. Jokaisessa on suoritettava sovellus. Kun seuraat vaiheita, näet, miten sovellus kehittyy perusasetuksista täysin toimivaksi asiakashallintajärjestelmäksi.
 
 ```
 webforj-tutorial
@@ -38,17 +40,19 @@ webforj-tutorial
 └───6-integrating-an-app-layout
 ```
 
-## Käyttäen startforJ:ta {#using-startforj}
+<!-- vale off -->
+## startforJ:n käyttäminen {#using-startforj}
+<!-- vale on -->
 
-Jos haluat luoda uuden projektin, voit käyttää [startforJ:ta](https://docs.webforj.com/startforj) luomaan minimaalisen aloitusprojektin. Katso [Aloittaminen](/docs/introduction/getting-started) saadaksesi tarkempia tietoja startforJ:n käytöstä.
+Jos haluat mieluummin luoda uuden projektin, voit luoda minimaalisen aloitusprojektin [startforJ:n](https://docs.webforj.com/startforj) avulla. Katso lisätietoja startforJ:n käytöstä kohdasta [Aloittaminen](/docs/introduction/getting-started).
 
 :::note Vaaditut asetukset
-- Valitse **webforJ version** -pudotusvalikosta webforJ versio **26.01 tai uudempi**.
-- Valitse **Runs on** -kohdasta **Spring Boot**.
+- Valitse **webforJ version** -pudotusvalikosta webforJ-versioksi **26.01 tai uudempi**.
+- Valitse kohdasta **Runs on** vaihtoehto **Spring Boot**.
 
-## Käyttäen komentoriviä {#using-command-line}
+## Komentorivin käyttäminen {#using-command-line}
 
-Voit myös luoda uuden projektin seuraavalla komennolla:
+Voit luoda uuden projektin myös seuraavalla komennolla:
 
 <!-- vale off -->
 <Tabs>
@@ -76,7 +80,7 @@ mvn -B archetype:generate `
   -Dflavor="webforj-spring"
 ```
   </TabItem>
-  <TabItem value="cmd" label="Komentoikkuna">
+  <TabItem value="cmd" label="Command Prompt">
 ```
 mvn -B archetype:generate ^
   -DarchetypeGroupId="com.webforj" ^
@@ -91,9 +95,9 @@ mvn -B archetype:generate ^
 </Tabs>
 <!-- vale on -->
 
-## Konfiguraatiot {#configurations}
+## Asetukset {#configurations}
 
-Kaksi mainittua tapaa uuden projektin luomiseksi käyttää webforJ [archetypeja](/docs/building-ui/archetypes/overview), jotka lisäävät automaattisesti tarvittavat konfiguraatiot projektiisi. Tämä sisältää Spring [riippuvuudet](/docs/integrations/spring/spring-boot), webforJ Maven -liitännäisen, joka rakentaa ja valvoo frontend-lähteitä, sekä seuraavat ominaisuudet tiedostossa `src/main/resources/application.properties`:
+Molemmissa mainituissa tavoissa luoda uusi projekti käytetään webforJ:n [arkkityyppejä](/docs/building-ui/archetypes/overview), jotka lisäävät projektiin tarvittavat asetukset automaattisesti. Näihin kuuluvat Springin [riippuvuudet](/docs/integrations/spring/spring-boot), webforJ:n Maven-laajennus, joka kääntää käyttöliittymän lähdekoodit ja valvoo niiden muutoksia, sekä seuraavat ominaisuudet tiedostossa `src/main/resources/application.properties`:
 
 ```
 spring.application.name=CustomerApplication
@@ -104,15 +108,17 @@ webforj.debug=true
 
 ## Sovelluksen suorittaminen {#running-the-app}
 
-Nähdäksesi sovelluksen toiminnassa edetessäsi oppaan läpi:
+Voit nähdä sovelluksen toiminnassa opetusohjelman edetessä seuraavasti:
 
-1. Siirry halutun vaiheen hakemistoon. Tämä tulisi olla kyseisen vaiheen ylimmän tason hakemisto, jossa on `pom.xml`.
+1. Siirry haluamasi vaiheen hakemistoon. Sen pitäisi olla kyseisen vaiheen ylimmän tason hakemisto, joka sisältää tiedoston `pom.xml`.
 
-2. Käytä seuraavaa Maven-komentoa suorittaaksesi Spring Boot -sovelluksen paikallisesti:
+2. Suorita Spring Boot -sovellus paikallisesti seuraavalla Maven-komennolla:
     ```bash
     mvn
     ```
 
-   Luotu POM määrittää tämän oletuskomennon kokoamaan sovelluksen, käynnistämään webforJ frontend -valvojan ja suorittamaan Spring Bootin.
+   Luotu POM määrittää tämän oletuskomennon kääntämään sovelluksen, käynnistämään webforJ:n käyttöliittymän lähdekoodien valvojan ja suorittamaan Spring Bootin.
 
-Sovelluksen käynnistäminen avaa automaattisesti uuden selaimen osoitteessa `http://localhost:8080`.
+<!-- vale Google.WordList = NO -->
+Sovelluksen suorittaminen avaa automaattisesti uuden selainikkunan osoitteessa `http://localhost:8080`.
+<!-- vale Google.WordList = YES -->

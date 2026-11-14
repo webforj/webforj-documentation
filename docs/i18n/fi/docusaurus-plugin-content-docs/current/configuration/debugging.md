@@ -1,25 +1,21 @@
 ---
-title: Virheenkorjaus
+title: Virheenjäljitys
 sidebar_position: 15
 description: >-
   Attach a remote Java debugger to a running webforJ app from Visual Studio
   Code, IntelliJ IDEA, or Eclipse using Jetty on port 8000.
-_i18n_hash: d3f71dbbc660b90f2f4c33fd071c9819
+_i18n_hash: 6e761f399c4a1f8d562acf85f92af615
 ---
 Virheenkorjaus on olennainen osa Java-kehitystä, sillä se auttaa kehittäjiä tunnistamaan ja korjaamaan ongelmia tehokkaasti. Tässä oppaassa kerrotaan, miten virheenkorjaus määritetään webforJ:ssä Visual Studio Codea, IntelliJ IDEAa ja Eclipseä varten.
 
 <Tabs>
 <TabItem value="vscode" label="Visual Studio Code">
 
-<div class="videos-container">
-      <video controls>
-        <source src="https://cdn.webforj.com/webforj-documentation/video/debug/vscode.mp4" type="video/mp4" />
-      </video>
-</div>
+<VideoPlayer video="debugging/vscode" width={1920} height={1080} title="VS Code" />
 
 1. Avaa webforJ-projektisi VS Codessa.
 2. Avaa Suorita ja virheenkorjaus -paneeli painamalla <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>D</kbd> (tai Macissa <kbd>Cmd</kbd> + <kbd>Shift</kbd> + <kbd>D</kbd>).
-3. Napsauta "create a launch.json file".
+3. Valitse ”create a launch.json file”.
 4. Valitse ympäristöksi Java.
 5. Muokkaa `launch.json`-tiedostoa seuraavasti:
 
@@ -38,44 +34,36 @@ Virheenkorjaus on olennainen osa Java-kehitystä, sillä se auttaa kehittäjiä 
 }
 ```
 
-6. Tallenna tiedosto ja napsauta Aloita virheenkorjaus.
+6. Tallenna tiedosto ja valitse Aloita virheenkorjaus.
 
 </TabItem>
 <TabItem value="intellij" label="IntelliJ IDEA">
 
-<div class="videos-container">
-      <video controls>
-        <source src="https://cdn.webforj.com/webforj-documentation/video/debug/intellij.mp4" type="video/mp4" />
-      </video>
-</div>
+<VideoPlayer video="debugging/intellij" width={1920} height={1080} title="IntelliJ" />
 
 1. Avaa projektisi IntelliJ IDEAssa.
-2. Valitse Run → Edit Configurations.
+2. Siirry kohtaan Suorita → Muokkaa määrityksiä.
 3. Napsauta <kbd>+</kbd>-painiketta ja valitse Remote JVM Debug.
-4. Aseta palvelimeksi `localhost` ja portiksi `8000`.
-5. Tallenna määritys ja liitä se käynnissä olevaan sovellukseen napsauttamalla Debug.
+4. Määritä palvelimeksi `localhost` ja portiksi `8000`.
+5. Tallenna määritys ja liitä virheenkorjaus käynnissä olevaan sovellukseen valitsemalla Debug.
 
 </TabItem>
 <TabItem value="eclipse" label="Eclipse">
 
-<div class="videos-container">
-      <video controls>
-        <source src="https://cdn.webforj.com/webforj-documentation/video/debug/eclipse.mp4" type="video/mp4" />
-      </video>
-</div>
+<VideoPlayer video="debugging/eclipse" width={1920} height={1080} title="Eclipse" />
 
 1. Avaa projektisi Eclipsessä.
-2. Valitse Run → Edit Configurations.
+2. Siirry kohtaan Suorita → Muokkaa määrityksiä.
 3. Valitse Remote Java Application.
-4. Napsauta New Configuration ja määritä:
-   - Host: `localhost`
-   - Port: `8000`
-5. Tallenna määritys ja käynnistä virheenjäljitin.
+4. Valitse New Configuration ja määritä:
+   - Palvelin: `localhost`
+   - Portti: `8000`
+5. Tallenna määritys ja käynnistä virheenkorjaus.
 
 </TabItem>
 </Tabs>
 
-## Virheenkorjaimen suorittaminen {#running-the-debugger}
+## Virheenkorjaimen käynnistäminen {#running-the-debugger}
 
 Kun olet määrittänyt IDE:n:
 
@@ -83,16 +71,16 @@ Kun olet määrittänyt IDE:n:
 2. Suorita virheenkorjausmääritys IDE:ssäsi.
 3. Aseta keskeytyskohdat ja aloita virheenkorjaus.
 
-:::tip Virheenkorjausvinkkejä
+:::tip Vinkkejä virheenkorjaukseen
 1. Varmista, että portti 8000 on käytettävissä eikä palomuuri estä sitä.
-2. Jos käytät jotakin webforJ-arkkityyppiä ja olet muuttanut porttinumeroa pom.xml-tiedostossa, varmista, että virheenkorjauksessa käytetään uutta porttinumeroa.
+2. Jos käytät jotakin webforJ-arkkityypeistä ja olet muuttanut portin numeroa pom.xml-tiedostossa, varmista, että virheenkorjauksessa käytettävä portti vastaa päivitettyä arvoa.
 :::
 
 ## Käynnissä olevan sovelluksen tarkastelu {#inspecting-the-running-app}
 
-Virheenkorjain näyttää, mitä koodisi tekee. [craftforJ](/docs/craftforj) näyttää sovelluksen, jonka koodi tuotti. Näet esimerkiksi webforJ:n luoman komponenttipuun, kunkin komponentin ominaisuudet, aktiivisen reitin ja sen, kenellä on pääsy reitille. Voit muuttaa ominaisuutta, nähdä muutoksen vaikutuksen käynnissä olevassa sovelluksessa ja kirjoittaa muutoksen takaisin sitä vastaavaan Java-koodiin.
+Virheenkorjain näyttää, mitä koodisi tekee. [craftforJ](/docs/craftforj) näyttää koodin tuottaman sovelluksen, mukaan lukien webforJ:n luoman komponenttipuun, kunkin komponentin ominaisuudet, aktiivisen reitin ja sen, kenellä on siihen pääsy. Voit muuttaa ominaisuutta, nähdä muutoksen vaikutuksen käynnissä olevassa sovelluksessa ja kirjoittaa muutoksen takaisin sen tuottaneeseen Java-koodiin.
 
-craftforJ toimitetaan webforJ:n mukana, ja se käyttää samaa virheenkorjaustilaa, jonka olet jo ottanut käyttöön, sekä yhtä lisäominaisuutta:
+craftforJ toimitetaan webforJ:n mukana. Se käyttää samaa virheenkorjaustilaa, jonka olet jo ottanut käyttöön, ja lisäksi yhtä lisäominaisuutta:
 
 ```ini title="webforj.conf"
 webforj.debug = true

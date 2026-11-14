@@ -4,40 +4,32 @@ sidebar_position: 5
 description: >-
   See every registered route in a running webforJ app, navigate to it from
   craftforJ, and change the access rules declared on it.
-_i18n_hash: b276ce8df35b91ed18f07c8a686fb688
+_i18n_hash: ec7a4521cd9c4328f9cd6550ebc9d90b
 ---
-Het tabblad Routes toont de routeringstabel van de draaiende app in de [hiërarchie](/docs/routing/route-hierarchy/overview) waarin de router deze vasthoudt, met de actieve route gemarkeerd. Routes die [dynamisch](/docs/routing/routes-registration) zijn geregistreerd, verschijnen naast de geannoteerde.
+Het tabblad Routes toont de routeringstabel van de actieve app in de [hiërarchie](/docs/routing/route-hierarchy/overview) waarin de router deze bijhoudt, met de actieve route gemarkeerd. Routes die [dynamisch](/docs/routing/routes-registration) zijn geregistreerd, verschijnen naast routes met annotaties.
 
-![De routeringsboom met de actieve route gemarkeerd](/img/craftforj/routes/tree.png#rounded-border)
+![De routestructuur met de actieve route gemarkeerd](/img/craftforj/routes/tree.png#rounded-border)
 
-## Route-details {#route-details}
+## Routedetails {#route-details}
 
-Een route selecteren toont wat de router erover weet, inclusief het pad, de bijbehorende klasse, de levenscycluswaarnemers die eraan zijn gekoppeld en de configuratie. Je kunt deze klasse vanuit hier openen in de source viewer.
+Als je een route selecteert, zie je wat de router erover weet, waaronder het pad, de bijbehorende klasse, de lifecycle-observers die eraan gekoppeld zijn en de configuratie. Je kunt de klasse hier openen in de broncodeviewer.
 
 ## Navigeren vanuit craftforJ {#navigating-from-craftforj}
 
-Je kunt rechtstreeks naar elke route navigeren vanuit craftforJ. Routes die parameters vereisen bieden een veld voor elk en lossen het pad op terwijl je ze invult, zodat je kunt bevestigen waar je terechtkomt voordat je gaat.
+Je kunt vanuit craftforJ rechtstreeks naar elke route navigeren. Routes met parameters bieden voor elke parameter een veld en vullen het pad in terwijl je de waarden opgeeft. Zo kun je bevestigen waar je terechtkomt voordat je gaat.
 
-Op deze manier navigeren is echte navigatie, zodat de [levenscycluswaarnemers](/docs/routing/navigation-lifecycle/observers) van je app precies zo functioneren als voor een gebruiker. De boom volgt ook de app, dus navigeren in de app zelf verplaatst de marker.
+Navigeren op deze manier is een echte navigatie, dus de [lifecycle-observers](/docs/routing/navigation-lifecycle/observers) van je app worden precies zo uitgevoerd als bij een gebruiker. De boomstructuur volgt de app ook, dus wanneer je in de app zelf navigeert, verplaatst de markering mee.
 
-<div class="videos-container">
-  <video controls preload="metadata">
-    <source src="https://cdn.webforj.com/webforj-documentation/video/craftforJ/route-navigate.mp4#t=0.5" type="video/mp4" />
-  </video>
-</div>
+<VideoPlayer video="craftforj/route-navigate" width={1920} height={1000} title="Route navigate" />
 
 ## Toegangsregels {#access-rules}
 
-Elke route heeft een badge voor de op deze route gedeclareerde [beveiligingsannotatie](/docs/security/annotations), en je kunt de boom beperken tot openbare of beschermde routes vanuit de werkbalk.
+Elke route heeft een badge voor de [beveiligingsannotatie](/docs/security/annotations) die erop is gedeclareerd. Via de werkbalk kun je de boomstructuur beperken tot openbare of beveiligde routes.
 
-Alleen `@RolesAllowed` en `@DenyAll` worden als beschermd beschouwd. `@PermitAll` benoemt geen rollen en vereist alleen dat iemand is ingelogd, zodat de filter het als openbaar behandelt. Houd hier rekening mee wanneer je controleert welke routes toegang beperken op basis van rol.
+Alleen `@RolesAllowed` en `@DenyAll` gelden als beveiligd. `@PermitAll` noemt geen rollen en vereist alleen dat iemand is aangemeld, dus het filter behandelt deze als openbaar. Houd hier rekening mee wanneer je controleert welke routes de toegang op basis van rollen beperken.
 
-![De routeringsboom met een toegangsbadge op elke route](/img/craftforj/routes/access-badge.png#rounded-border)
+![De routestructuur met een toegangsbadge op elke route](/img/craftforj/routes/access-badge.png#rounded-border)
 
-Je kunt ook de toegangsregel van een route wijzigen vanuit craftforJ. craftforJ schrijft de annotatie in de klasse van de route en de app wordt opnieuw opgestart, zodat de wijziging dezelfde beoordeling ondergaat als elke andere [bronwijziging](/docs/craftforj/source-changes). De optie is niet beschikbaar wanneer craftforJ geen toestemming heeft om Java te schrijven.
+Je kunt ook de toegangsregel van een route wijzigen vanuit craftforJ. craftforJ schrijft de annotatie naar de klasse van de route en de app wordt opnieuw gestart. De wijziging doorloopt dus dezelfde controle als elke andere [broncodewijziging](/docs/craftforj/source-changes). Deze optie is niet beschikbaar wanneer craftforJ geen Java-code mag schrijven.
 
-<div class="videos-container">
-  <video controls preload="metadata">
-    <source src="https://cdn.webforj.com/webforj-documentation/video/craftforJ/route-security.mp4#t=0.5" type="video/mp4" />
-  </video>
-</div>
+<VideoPlayer video="craftforj/route-security" width={1920} height={1000} title="Route security" />

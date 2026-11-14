@@ -1,31 +1,30 @@
 ---
 title: 现代化教程
 sidebar_position: 4
-_i18n_hash: b938ea9adf24f0f2624f22a1a012d0cd
+description: >-
+  Modernize a Swing customer management app step by step by embedding it with
+  WebswingConnector and layering in webforJ dialogs and forms.
+_i18n_hash: ded3a5a3abe3905086532c58861652f8
 ---
-本教程讲解了如何通过集成 `WebswingConnector` 将现有的 Java Swing 应用现代化。您将学习如何使传统的桌面应用程序可通过网络访问，并逐步添加现代网页特性，例如使用 webforJ 组件的基于网络的对话框和交互式表单。
+本教程将介绍如何通过集成 `WebswingConnector`，将现有 Java Swing 应用现代化。你将学习如何让传统桌面应用可通过 Web 访问，并逐步添加现代 Web 功能，例如基于 Web 的对话框，以及使用 webforJ 组件构建的交互式表单。
 
-:::note 前提条件
-在开始本教程之前，请完成 [设置和配置](./setup) 步骤以配置您的 Webswing 服务器和 CORS 设置。
+:::note 前置条件
+开始本教程前，请先完成[设置和配置](./setup)步骤，以配置 Webswing 服务器和 CORS 设置。
 :::
 
 :::tip 源代码
-本教程的完整源代码可在 GitHub 上找到：[webforj/webforj-webswing-integration-tutorial](https://github.com/webforj/webforj-webswing-integration-tutorial)
+本教程的完整源代码托管在 GitHub 上：[webforj/webforj-webswing-integration-tutorial](https://github.com/webforj/webforj-webswing-integration-tutorial)
 :::
 
-<div class="videos-container">
-  <video controls preload="metadata">
-    <source src="https://cdn.webforj.com/webforj-documentation/video/tutorials/webswing/modernization-tutorial.mp4#t=5" type="video/mp4"/>
-  </video>
-</div>
+<VideoPlayer video="webswing/modernization-tutorial" width={1920} height={1080} title="Modernization tutorial" />
 
 ## 场景 {#the-scenario}
 
-假设您有一个用 Swing 构建的客户管理应用程序，已经投入生产多年。它运行良好，但用户现在期望能够网络访问和现代化界面。与其从头开始重写，不如使用 Webswing 使其立即可通过网络访问，然后逐步添加现代网络功能，如使用 webforJ 组件的基于网络的对话框和表单。
+假设你有一个使用 Swing 构建的客户管理应用，已经投入生产多年。它运行良好，但用户现在期望能够通过 Web 访问，并使用现代化界面。与其从头重写，不如使用 Webswing 立即让应用支持 Web 访问，然后逐步使用 webforJ 组件添加现代 Web 功能，例如基于 Web 的对话框和表单。
 
-## 起始点：Swing 应用程序 {#starting-point-the-swing-app}
+## 起点：Swing 应用 {#starting-point-the-swing-app}
 
-示例 Swing 应用程序是一个包含典型 CRUD 操作的客户表。像许多企业级 Swing 应用程序一样，它遵循标准模式：
+示例 Swing 应用是一个带有典型 CRUD 操作的客户表格。与许多企业级 Swing 应用一样，它遵循标准模式：
 
 ```java
 public class Application {
@@ -50,7 +49,7 @@ public class Application {
       @Override
       public void mouseClicked(MouseEvent e) {
         if (e.getClickCount() == 2) {
-          // 处理双击以编辑
+          // Handle double-click to edit
         }
       }
     });
@@ -73,15 +72,15 @@ public class Application {
 }
 ```
 
-这个应用程序作为桌面应用程序运行良好，但缺乏网络可访问性。用户必须安装 Java 并在本地运行 JAR 文件。
+此应用作为桌面应用运行良好，但不支持 Web 访问。用户必须安装 Java，并在本地运行 JAR 文件。
 
-## 第一步：使其具备 Webswing 感知 {#step-1-making-it-webswing-aware}
+## 步骤 1：让应用识别 Webswing {#step-1-making-it-webswing-aware}
 
-第一步是使 Swing 应用程序能够检测它是否在 Webswing 下运行。这使其能够适应其行为而不破坏桌面兼容性。
+第一步是让 Swing 应用检测自己是否运行在 Webswing 下。这样，应用就能调整自身行为，同时保持桌面环境下的兼容性。
 
 ### 检测 Webswing 环境 {#detecting-the-webswing-environment}
 
-将 Webswing API 依赖项添加到您的 Swing 项目中：
+将 Webswing API 依赖项添加到 Swing 项目中：
 
 ```xml
 <dependency>
@@ -91,7 +90,7 @@ public class Application {
 </dependency>
 ```
 
-然后修改您的应用程序以检测 Webswing 运行时：
+然后修改应用以检测 Webswing 运行时：
 
 ```java
 private void initWebswing() {
@@ -104,11 +103,11 @@ private void initWebswing() {
 }
 ```
 
-此处的关键点是 `WebswingUtil.getWebswingApi()` 在作为常规桌面应用程序运行时返回 `null`，允许您保持双模式兼容性。
+这里的关键在于，当应用作为普通桌面应用运行时，`WebswingUtil.getWebswingApi()` 会返回 `null`，因此可以保持双模式兼容性。
 
-### 为网络部署适应行为 {#adapting-behavior-for-web-deployment}
+### 调整应用在 Web 部署下的行为 {#adapting-behavior-for-web-deployment}
 
-有了检测，您现在可以适应应用程序的行为。最重要的变化是用户交互的处理方式：
+完成检测后，就可以调整应用的行为了。最重要的变化是处理用户交互的方式：
 
 ```java
 private void handleDoubleClick(MouseEvent e) {
@@ -125,15 +124,15 @@ private void handleDoubleClick(MouseEvent e) {
 }
 ```
 
-通过根据 `isWebswing` 的值分支行为，代码库可以处理两种环境。
+根据 `isWebswing` 的值分支处理后，代码就可以同时支持这两种环境。
 
-## 第二步：创建 webforJ 包装器 {#step-2-creating-the-webforj-wrapper}
+## 步骤 2：创建 webforJ 封装应用 {#step-2-creating-the-webforj-wrapper}
 
-现在 Swing 应用程序可以通过事件进行通信，创建一个 webforJ 应用程序，将 Swing 应用程序嵌入并添加现代网页功能，如基于网页的对话框和表单。
+现在，Swing 应用已经可以通过事件进行通信。接下来，创建一个 webforJ 应用来嵌入 Swing 应用，并添加现代 Web 功能，例如基于 Web 的对话框和表单。
 
 ### 设置连接器 {#setting-up-the-connector}
 
-`WebswingConnector` 组件将您的 Webswing 托管应用程序嵌入到 webforJ 视图中：
+`WebswingConnector` 组件可将 Webswing 托管的应用嵌入 webforJ 视图中：
 
 ```java
 @Route("/")
@@ -149,11 +148,11 @@ public class CustomerTableView extends Composite<FlexLayout> {
 }
 ```
 
-连接器连接到您的 Webswing 服务器，建立双向通信通道。
+连接器会连接到 Webswing 服务器，并建立双向通信通道。
 
 ### 处理来自 Swing 的事件 {#handling-events-from-swing}
 
-当 Swing 应用程序发送事件（如用户双击行时），连接器接收这些事件：
+当 Swing 应用发送事件时（例如用户双击某一行），连接器会接收这些事件：
 
 ```java
 connector.onAction(event -> {
@@ -173,26 +172,26 @@ connector.onAction(event -> {
 });
 ```
 
-现在，用户看到的是使用 webforJ 组件构建的现代网页表单，而不是 Swing 对话框。
+这样，用户看到的就不再是 Swing 对话框，而是使用 webforJ 组件构建的现代 Web 表单。
 
-## 第三步：双向通信 {#step-3-bidirectional-communication}
+## 步骤 3：双向通信 {#step-3-bidirectional-communication}
 
-当通信双向流动时，集成变得强大。webforJ 应用程序可以将更新发送回 Swing 应用程序，使两个用户界面保持同步。
+当通信能够双向流动时，这种集成才真正发挥威力。webforJ 应用可以向 Swing 应用发送更新，使两个 UI 保持同步。
 
-### 发送更新到 Swing {#sending-updates-to-swing}
+### 向 Swing 发送更新 {#sending-updates-to-swing}
 
-在使用 webforJ 对话框编辑客户后：
+用户在 webforJ 对话框中编辑客户信息后：
 
 ```java
 dialog.onSave(() -> {
-  // 将更新的客户发送回 Swing
+  // Send updated customer back to Swing
   connector.performAction("update-customer", gson.toJson(customer));
 });
 ```
 
 ### 在 Swing 中处理更新 {#processing-updates-in-swing}
 
-Swing 应用程序监听这些更新并刷新其显示：
+Swing 应用会监听这些更新并刷新显示内容：
 
 ```java
 private void setupWebswingListeners() {
@@ -207,26 +206,26 @@ private void setupWebswingListeners() {
 
 ## 架构优势 {#architecture-benefits}
 
-这种方法相比于完全重写提供了几个优势：
+与完全重写相比，这种方法有几个优势：
 
-### 立即网络部署 {#immediate-web-deployment}
+### 立即部署到 Web {#immediate-web-deployment}
 
-您的 Swing 应用程序立即变得可通过网络访问，无需代码更改。用户可以通过浏览器访问它，同时您进行增强工作。
+无需修改代码，Swing 应用即可立即支持 Web 访问。你可以在进行功能增强的同时，让用户通过浏览器访问应用。
 
-### 渐进增强 {#progressive-enhancement}
+### 渐进式增强 {#progressive-enhancement}
 
-首先只替换编辑对话框，然后逐步替换更多组件：
+可以先只替换编辑对话框，然后逐步替换更多组件：
 
-1. **第一阶段**：嵌入整个 Swing 应用程序，只替换编辑对话框
-2. **第二阶段**：在嵌入的应用程序周围添加 webforJ 导航和菜单
-3. **第三阶段**：用 webforJ 表替换表格，保留 Swing 以处理不可替换的特性
-4. **第四阶段**：最终替换所有 Swing 组件
+1. **阶段 1**：嵌入整个 Swing 应用，只替换编辑对话框
+2. **阶段 2**：在嵌入的应用周围添加 webforJ 导航和菜单
+3. **阶段 3**：将表格替换为 webforJ 表格，同时保留 Swing 中无法替代的功能
+4. **阶段 4**：最终替换所有 Swing 组件
 
-### 风险缓解 {#risk-mitigation}
+### 降低风险 {#risk-mitigation}
 
-由于原始 Swing 应用程序保持功能，您可以：
+由于原始 Swing 应用仍可正常运行，你可以：
 
-- 如有需要，可以回退到桌面部署
-- 在现有功能旁边测试新功能
+- 必要时回退到桌面部署
+- 在现有功能旁测试新功能
 - 逐步迁移用户
-- 保持相同的业务逻辑
+- 保留相同的业务逻辑

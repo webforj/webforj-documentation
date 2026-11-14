@@ -1,28 +1,23 @@
 ---
 sidebar_position: 39
-sidebar_class_name: new-content
 title: Notificaciones push
 description: >-
   Use the Push class, PushSender, and PushMessage to subscribe browsers and send
   notifications from the server, even when the app isn't open.
-_i18n_hash: 47adf06762f8af67111f20937368723c
+_i18n_hash: be5e6f5947bf38824dde0289d6415971
 ---
 <DocChip chip='since' label='26.02' />
 <JavadocLink type="push" location="com/webforj/push/Push" top='true'/>
 
-Las notificaciones push pueden llegar a los usuarios incluso cuando una aplicación no está abierta. El navegador se suscribe una vez, la aplicación almacena la suscripción y el servidor la utiliza para enviar notificaciones cuando ocurre un evento. <JavadocLink type="push" location="com/webforj/push/Push" code='true'>Push</JavadocLink> gestiona la suscripción y la cancelación en el navegador. En el servidor, <JavadocLink type="push" location="com/webforj/push/PushSender" code='true'>PushSender</JavadocLink> envía un <JavadocLink type="push" location="com/webforj/push/PushMessage" code='true'>PushMessage</JavadocLink> a una suscripción almacenada.
+Las notificaciones push pueden llegar a los usuarios incluso cuando la aplicación no está abierta. El navegador se suscribe una vez, la aplicación almacena la suscripción y el servidor la usa para enviar notificaciones cuando se produce un evento. <JavadocLink type="push" location="com/webforj/push/Push" code='true'>Push</JavadocLink> gestiona la suscripción y la cancelación en el navegador. En el servidor, <JavadocLink type="push" location="com/webforj/push/PushSender" code='true'>PushSender</JavadocLink> envía un <JavadocLink type="push" location="com/webforj/push/PushMessage" code='true'>PushMessage</JavadocLink> a una suscripción almacenada.
 
 <!-- INTRO_END -->
 
-<div class="videos-container">
-  <video controls preload="metadata">
-    <source src="https://cdn.webforj.com/webforj-documentation/video/push-notifications/push.mp4" type="video/mp4"/>
-  </video>
-</div>
+<VideoPlayer video="push-notifications/push" width={1920} height={1072} title="Push notifications" />
 
 ## Configuración y requisitos previos {#setup-and-prerequisites}
 
-Las notificaciones push son proporcionadas por un módulo separado. Añádelo a tu aplicación:
+Las notificaciones push se proporcionan mediante un módulo independiente. Añádelo a tu aplicación:
 
 <Tabs>
 <TabItem value="maven" label="Maven">
@@ -48,19 +43,19 @@ dependencies {
 
 Las notificaciones push requieren:
 
-- Un despliegue servlet, como Jetty, Spring Boot, o un archivo WAR.
-- Un par de claves, que se genera a continuación, que el despliegue utiliza para firmar las notificaciones.
-- Un origen seguro. Los navegadores rechazan suscripciones servidas sobre cualquier cosa que no sea `https`, excepto desde `localhost` durante el desarrollo.
+- Una implementación de servlet, como Jetty, Spring Boot o un archivo WAR.
+- Un par de claves, que se genera más adelante, y que la implementación usa para firmar las notificaciones.
+- Un origen seguro. Los navegadores rechazan las suscripciones servidas mediante cualquier protocolo que no sea `https`, excepto desde `localhost` durante el desarrollo.
 
 :::info Orígenes seguros
 <!-- vale off -->
-Para más información sobre contextos seguros y por qué son importantes, consulta la [documentación de Contextos Seguros de MDN](https://developer.mozilla.org/en-US/docs/Web/Security/Secure_Contexts).
+Para obtener más información sobre los contextos seguros y por qué son importantes, consulta la [documentación de MDN sobre contextos seguros](https://developer.mozilla.org/en-US/docs/Web/Security/Secure_Contexts).
 <!-- vale on -->
 :::
 
-### Generando las claves {#generating-the-keys}
+### Generar las claves {#generating-the-keys}
 
-Los servicios push aceptan solo notificaciones firmadas por el despliegue al que se suscribió el navegador. Ejecuta el [plugin de construcción](/docs/configuration/build-plugin) una vez para cada despliegue para generar su par de claves:
+Los servicios push solo aceptan notificaciones firmadas por la implementación a la que se suscribió el navegador. Ejecuta el [complemento de compilación](/docs/configuration/build-plugin) una vez por cada implementación para generar su par de claves:
 
 <Tabs>
 <TabItem value="maven" label="Maven">
@@ -79,7 +74,7 @@ mvn webforj:push-keys
 </TabItem>
 </Tabs>
 
-El comando genera tres líneas de configuración. Pégalas en `application.properties` sin las comillas, o cópialas como se imprimieron en `webforj.conf`. Reemplaza el sujeto con la dirección de contacto del despliegue. Debe ser una dirección `mailto:` o `https://` que los servicios push puedan usar para contactar al operador.
+El comando muestra tres líneas de configuración. Pégalas en `application.properties` sin las comillas o cópialas tal como aparecen en `webforj.conf`. Reemplaza el asunto por la dirección de contacto de la implementación. Debe ser una dirección `mailto:` o `https://` que los servicios push puedan usar para ponerse en contacto con el operador.
 
 ```Ini title="application.properties"
 webforj.push.public-key=...
@@ -89,36 +84,36 @@ webforj.push.subject=mailto:ops@example.com
 
 | Propiedad | Explicación |
 |----------|-------------|
-| `webforj.push.public-key` | La mitad pública del par de claves utilizado por el despliegue para firmar notificaciones |
-| `webforj.push.private-key` | La mitad privada del par de claves. Al igual que cualquier otro secreto, mantenlo fuera del control de versiones |
-| `webforj.push.subject` | La dirección de contacto del despliegue. Debe ser una dirección `mailto:` o `https://` a través de la cual los servicios push puedan alcanzar al operador |
+| `webforj.push.public-key` | La parte pública del par de claves que la implementación usa para firmar las notificaciones |
+| `webforj.push.private-key` | La parte privada del par de claves. Como cualquier otro secreto, mantenla fuera del control de versiones |
+| `webforj.push.subject` | La dirección de contacto de la implementación. Debe ser una dirección `mailto:` o `https://` mediante la que los servicios push puedan ponerse en contacto con el operador |
 
-La aplicación lee estas propiedades al inicio. Si la configuración incluye solo algunas de ellas, el inicio falla y se informa cuáles propiedades faltan.
+La aplicación lee estas propiedades al iniciarse. Si la configuración incluye solo algunas de ellas, el inicio falla e indica qué propiedades faltan.
 
 :::warning Rotación de claves
-Cada navegador se suscribe a un par de claves. Si las claves cambian, el servicio push rechaza las suscripciones existentes. La próxima llamada a `subscribe()` en cada navegador reemplaza su suscripción.
+Cada navegador se suscribe a un par de claves. Si las claves cambian, el servicio push rechaza las suscripciones existentes. La siguiente llamada a `subscribe()` en cada navegador reemplaza su suscripción.
 :::
 
 ## Cómo funciona {#how-it-works}
 
-El proceso tiene tres pasos:
+El proceso consta de tres pasos:
 
-1. **Suscribirse.** Desde una vista, `Push.getCurrent().subscribe()` solicita el permiso del usuario y devuelve una `PushSubscription` que identifica la dirección del navegador.
-2. **Almacenar.** La aplicación guarda la suscripción con sus datos y la asocia con el usuario correspondiente.
-3. **Enviar.** Más tarde, desde cualquier hilo, `PushSender.send(subscription, message)` pasa el mensaje al servicio push del proveedor del navegador. El servicio muestra la notificación ya sea que la aplicación esté abierta o no.
+1. **Suscribirse.** Desde una vista, `Push.getCurrent().subscribe()` solicita el permiso del usuario y devuelve un `PushSubscription` que identifica la dirección del navegador.
+2. **Almacenar.** La aplicación guarda la suscripción junto con sus datos y la asocia al usuario correspondiente.
+3. **Enviar.** Más adelante, desde cualquier hilo, `PushSender.send(subscription, message)` pasa el mensaje al servicio push del proveedor del navegador. El servicio muestra la notificación tanto si la aplicación está abierta como si no.
 
 ```java
 Push.getCurrent().subscribe().thenAccept(subscriptions::save);
 
 sender.send(subscription,
-    PushMessage.create("Pedido enviado").setUrl("/orders/42").build());
+    PushMessage.create("Order shipped").setUrl("/orders/42").build());
 ```
 
-Las siguientes secciones explican lo que muestra el navegador y cómo manejar los fallos en cada paso.
+En las siguientes secciones se explica qué muestra el navegador y cómo gestionar los errores en cada paso.
 
 ## Instancia {#instance}
 
-Recupera la instancia push para el entorno actual:
+Obtén la instancia push del entorno actual:
 
 ```java
 import com.webforj.push.Push;
@@ -134,9 +129,9 @@ Push.ifPresent(p -> {
 });
 ```
 
-## Suscribiendo el navegador {#subscribing-the-browser}
+## Suscribir el navegador {#subscribing-the-browser}
 
-Llama a `subscribe()` en respuesta a una acción del usuario, como hacer clic en un botón de "Habilitar notificaciones". El <JavadocLink type="foundation" location="com/webforj/PendingResult" code='true'>PendingResult</JavadocLink> devuelto se completa con la <JavadocLink type="push" location="com/webforj/push/PushSubscription" code='true'>PushSubscription</JavadocLink> del navegador. Si el navegador no puede suscribirse, se completa excepcionalmente con un <JavadocLink type="push" location="com/webforj/push/exception/WebforjPushException" code='true'>WebforjPushException</JavadocLink>.
+Llama a `subscribe()` como respuesta a una acción del usuario, por ejemplo, al hacer clic en un botón «Activar notificaciones». El <JavadocLink type="foundation" location="com/webforj/PendingResult" code='true'>PendingResult</JavadocLink> devuelto se completa con el <JavadocLink type="push" location="com/webforj/push/PushSubscription" code='true'>PushSubscription</JavadocLink> del navegador. Si el navegador no puede suscribirse, el resultado se completa de forma excepcional con un <JavadocLink type="push" location="com/webforj/push/exception/WebforjPushException" code='true'>WebforjPushException</JavadocLink>.
 
 ```java
 PendingResult<PushSubscription> request = Push.getCurrent().subscribe();
@@ -152,17 +147,17 @@ request.exceptionally(throwable -> {
 });
 ```
 
-Si el navegador ya está suscrito, llamar a `subscribe()` nuevamente devuelve la suscripción existente. Por lo tanto, puedes llamarlo de manera segura en cada visita.
+Si el navegador ya está suscrito, volver a llamar a `subscribe()` devuelve la suscripción existente. Por lo tanto, puedes llamarlo sin riesgo en cada visita.
 
-:::info Permiso del navegador
-La primera llamada a `subscribe()` solicita permiso al usuario. El navegador muestra este aviso, no es parte de la UI de la aplicación. Debido a que los navegadores muestran el aviso solo en respuesta a una acción del usuario, llama a `subscribe()` desde un listener de clic en lugar de desde el constructor de la vista.
+:::info Permisos del navegador
+La primera llamada a `subscribe()` solicita permiso al usuario. El navegador muestra esta solicitud; no forma parte de la interfaz de la aplicación. Como los navegadores solo muestran la solicitud en respuesta a una acción del usuario, llama a `subscribe()` desde un listener de clics y no desde el constructor de la vista.
 
-Si el usuario bloquea el aviso, la aplicación no puede volver a solicitarlo para ese origen.
+Si el usuario bloquea la solicitud, la aplicación no puede volver a solicitar permiso para ese origen.
 :::
 
-### Almacenando suscripciones {#storing-subscriptions}
+### Almacenar suscripciones {#storing-subscriptions}
 
-Una suscripción representa la dirección de un navegador y pertenece al servidor. Almacénala con los datos de la aplicación, utilizando su endpoint como clave. Incluye cualquier información que la aplicación necesite para seleccionar los navegadores apropiados más tarde, como el usuario asociado. Cada suscripción contiene tres valores de texto:
+Una suscripción representa la dirección de un navegador y debe almacenarse en el servidor. Guárdala junto con los datos de la aplicación y usa su endpoint como clave. Incluye la información que la aplicación necesite para seleccionar los navegadores adecuados más adelante, como el usuario asociado. Cada suscripción contiene tres valores de texto:
 
 | Valor | Significado |
 |-------|---------|
@@ -170,11 +165,11 @@ Una suscripción representa la dirección de un navegador y pertenece al servido
 | `getP256dh()` | La clave pública del navegador |
 | `getAuth()` | El secreto de autenticación del navegador |
 
-Un usuario que se suscriba desde dos navegadores tendrá dos suscripciones. Elimina una suscripción cuando su navegador se desuscriba o cuando un envío informe que ha expirado. Consulta [Estado de fallo](#failure-status).
+Un usuario que se suscribe desde dos navegadores tiene dos suscripciones. Elimina una suscripción cuando se cancele desde su navegador o cuando un envío indique que ha caducado. Consulta [Estado de error](#failure-status).
 
-### Restaurando una suscripción {#restoring-a-subscription}
+### Restaurar una suscripción {#restoring-a-subscription}
 
-`getSubscription()` devuelve la suscripción actual del navegador, o un resultado vacío si no existe. Úsalo para sincronizar la copia del servidor, por ejemplo, después de que el almacenamiento de la aplicación haya sido restablecido:
+`getSubscription()` devuelve la suscripción actual del navegador o un resultado vacío si no existe ninguna. Úsalo para sincronizar la copia del servidor, por ejemplo, después de restablecer el almacenamiento de la aplicación:
 
 ```java
 Push.getCurrent().getSubscription().thenAccept(existing -> {
@@ -182,11 +177,11 @@ Push.getCurrent().getSubscription().thenAccept(existing -> {
 });
 ```
 
-A través de <JavadocLink type="push" location="com/webforj/push/PushPermission" code='true'>PushPermission</JavadocLink>, `getPermission()` informa si el usuario concedió, denegó, o aún no ha respondido al aviso de notificación. Usa este resultado para ocultar el botón "Habilitar notificaciones" cuando hacer clic en él no tendría efecto.
+Mediante <JavadocLink type="push" location="com/webforj/push/PushPermission" code='true'>PushPermission</JavadocLink>, `getPermission()` indica si el usuario ha concedido o denegado el permiso, o si todavía no ha respondido a la solicitud de notificaciones. Usa este resultado para ocultar el botón «Activar notificaciones» cuando hacer clic en él no tendría ningún efecto.
 
-### Desuscribiéndose {#unsubscribing}
+### Cancelar la suscripción {#unsubscribing}
 
-`unsubscribe()` cancela la suscripción del navegador. Se completa con la suscripción eliminada para que la aplicación pueda eliminar su copia almacenada, o con un resultado vacío si el navegador no tenía suscripción.
+`unsubscribe()` cancela la suscripción del navegador. Se completa con la suscripción eliminada para que la aplicación pueda borrar su copia almacenada, o con un resultado vacío si el navegador no tenía ninguna suscripción.
 
 ```java
 Push.getCurrent().unsubscribe().thenAccept(removed -> {
@@ -194,11 +189,11 @@ Push.getCurrent().unsubscribe().thenAccept(removed -> {
 });
 ```
 
-## Enviando notificaciones {#sending-notifications}
+## Enviar notificaciones {#sending-notifications}
 
-<JavadocLink type="push" location="com/webforj/push/PushSender" code='true'>PushSender</JavadocLink> envía un <JavadocLink type="push" location="com/webforj/push/PushMessage" code='true'>PushMessage</JavadocLink> a una suscripción almacenada. Firma el mensaje con las claves del despliegue y lo pasa al servicio push del proveedor del navegador. Ese servicio activa el navegador y muestra la notificación. Dado que la operación nunca bloquea el hilo que llama, puedes invocarla desde un listener de clic, un trabajo programado, o un manejador de solicitud.
+<JavadocLink type="push" location="com/webforj/push/PushSender" code='true'>PushSender</JavadocLink> envía un <JavadocLink type="push" location="com/webforj/push/PushMessage" code='true'>PushMessage</JavadocLink> a una suscripción almacenada. Firma el mensaje con las claves de la implementación y lo pasa al servicio push del proveedor del navegador. Ese servicio activa el navegador y muestra la notificación. Como la operación nunca bloquea el hilo que la invoca, puedes llamarla desde un listener de clics, una tarea programada o un controlador de solicitudes.
 
-Después de que las propiedades están configuradas, el sender está disponible como un bean que puedes inyectar en vistas, servicios, y trabajos programados. Para reemplazarlo, define tu propio bean `PushSender`.
+Una vez configuradas las propiedades, el emisor está disponible como bean que puedes inyectar en vistas, servicios y tareas programadas. Para reemplazarlo, define tu propio bean `PushSender`.
 
 ```java
 @Route("/orders")
@@ -210,24 +205,24 @@ public class OrdersView extends Composite<FlexLayout> {
 }
 ```
 
-Sin Spring, `new PushSender()` lee las claves desde la configuración de la aplicación. Crea el sender en un hilo de aplicación, ya sea en una vista o en `App.run()`, y luego úsalo desde cualquier hilo. Todos los senders comparten un solo grupo de conexiones a los servicios push, por lo que no hay costo en crear uno donde sea necesario.
+Sin Spring, `new PushSender()` lee las claves de la configuración de la aplicación. Crea el emisor en un hilo de la aplicación, ya sea en una vista o en `App.run()`, y luego úsalo desde cualquier hilo. Todos los emisores comparten un único grupo de conexiones con los servicios push, así que no tiene ningún coste crear uno donde lo necesites.
 
-Para notificaciones que deben enviarse más tarde o después de que el usuario se vaya, utiliza un temporizador en el servidor como `TaskScheduler` de Spring. No utilices un temporizador de página como `Interval`, porque se detiene cuando se cierra la pestaña.
+Para las notificaciones que deban enviarse más tarde o después de que el usuario se vaya, usa un temporizador en el servidor, como `TaskScheduler` de Spring. No uses un temporizador de página como `Interval`, porque deja de funcionar cuando se cierra la pestaña.
 
-### Componiendo un mensaje {#composing-a-message}
+### Crear un mensaje {#composing-a-message}
 
-Crea un mensaje con su título, luego configura cada otra opción en el constructor:
+Crea un mensaje con su título y, luego, configura las demás opciones en el builder:
 
 ```java
-PushMessage message = PushMessage.create("Pedido enviado")
-    .setBody("El Pedido #42 está en camino")
+PushMessage message = PushMessage.create("Order shipped")
+    .setBody("Order #42 is on its way")
     .setIcon("icons://icon-192x192.png")
     .setUrl("/orders/42")
-    .setActions(List.of(new PushAction("seguir", "Seguir", "/orders/42/tracking")))
+    .setActions(List.of(new PushAction("track", "Track", "/orders/42/tracking")))
     .build();
 
 PendingResult<Void> sent = sender.send(subscription, message);
-sent.thenAccept(v -> status.setText("Enviado"));
+sent.thenAccept(v -> status.setText("Sent"));
 sent.exceptionally(throwable -> {
   WebforjPushException error = (WebforjPushException) throwable;
   status.setText(error.getStatus() + ": " + error.getMessage());
@@ -236,43 +231,43 @@ sent.exceptionally(throwable -> {
 });
 ```
 
-`send()` devuelve inmediatamente. El <JavadocLink type="foundation" location="com/webforj/PendingResult" code='true'>PendingResult</JavadocLink> se completa cuando el servicio push acepta el mensaje, o se completa excepcionalmente si el servicio no lo acepta. Si `send()` se llama en un hilo de aplicación, como desde un listener, sus callbacks se ejecutan en ese hilo y pueden actualizar componentes. Si la sesión que llamó a `send()` finaliza antes de que llegue la respuesta, los callbacks no se ejecutan, pero la notificación aún se entrega.
+`send()` devuelve el control inmediatamente. El <JavadocLink type="foundation" location="com/webforj/PendingResult" code='true'>PendingResult</JavadocLink> se completa cuando el servicio push acepta el mensaje o se completa de forma excepcional si el servicio no lo acepta. Si se llama a `send()` en un hilo de la aplicación, por ejemplo, desde un listener, sus callbacks se ejecutan en ese hilo y pueden actualizar componentes. Si la sesión que llamó a `send()` termina antes de que llegue la respuesta, los callbacks no se ejecutan, pero la notificación se entrega igualmente.
 
-Un envío espera hasta 30 segundos por el servicio push antes de fallar con `UNREACHABLE`. Usa `setTimeout(Duration)` para cambiar el tiempo de espera para cada sender.
+El envío espera hasta 30 segundos a que responda el servicio push antes de fallar con `UNREACHABLE`. Usa `setTimeout(Duration)` para cambiar el tiempo de espera de cada emisor.
 
 | Opción | Efecto |
 |--------|--------|
-| `setBody` | Establece el texto mostrado debajo del título |
-| `setIcon` | Establece la imagen mostrada con la notificación. Acepta URLs absolutas y los protocolos `icons://` y `ws://`. Consulta [Recursos](/docs/managing-resources/assets-protocols). No acepta el protocolo `context://` porque los servicios push limitan un mensaje a 4 KB |
-| `setUrl` | Establece la página que se abre cuando el usuario hace clic en la notificación. Las URLs relativas se resuelven en contra de la raíz de la aplicación. Si no se establece ninguna URL, se abre la raíz de la aplicación |
-| `setActions` | Establece los botones mostrados en la notificación, con una URL separada para cada botón. Consulta [Compatibilidad del navegador](#browser-support) |
-| `setTag` | Establece una etiqueta identificativa. Si una notificación mostrada tiene la misma etiqueta, la nueva notificación la reemplaza |
+| `setBody` | Define el texto que se muestra debajo del título |
+| `setIcon` | Define la imagen que se muestra con la notificación. Acepta URL absolutas y los protocolos `icons://` y `ws://`. Consulta [Recursos](/docs/managing-resources/assets-protocols). No acepta el protocolo `context://`, porque los servicios push limitan los mensajes a 4 KB |
+| `setUrl` | Define la página que se abre cuando el usuario hace clic en la notificación. Las URL relativas se resuelven en relación con la raíz de la aplicación. Si no se establece ninguna URL, se abre la raíz de la aplicación |
+| `setActions` | Define los botones que se muestran en la notificación, cada uno con su propia URL. Consulta [Compatibilidad con navegadores](#browser-support) |
+| `setTag` | Define una etiqueta identificativa. Si una notificación mostrada tiene la misma etiqueta, la nueva la reemplaza |
 | `setSilent` | Muestra la notificación sin sonido ni vibración |
-| `setTimeToLive` | Establece cuánto tiempo retiene el servicio push el mensaje para un dispositivo sin conexión, hasta cuatro semanas |
-| `setUrgency` | Usa <JavadocLink type="push" location="com/webforj/push/PushUrgency" code='true'>PushUrgency</JavadocLink> para permitir que el dispositivo retrase mensajes de baja urgencia y ahorre batería |
-| `setTopic` | Reemplaza un mensaje que aún está esperando en el servicio push cuando ambos mensajes tienen el mismo tema. Los temas pueden contener como máximo 32 caracteres que son seguros en una URL |
+| `setTimeToLive` | Define durante cuánto tiempo el servicio push conserva el mensaje para un dispositivo desconectado, hasta un máximo de cuatro semanas |
+| `setUrgency` | Usa <JavadocLink type="push" location="com/webforj/push/PushUrgency" code='true'>PushUrgency</JavadocLink> para permitir que el dispositivo retrase los mensajes de baja urgencia y ahorre batería |
+| `setTopic` | Reemplaza un mensaje que todavía esté en espera en el servicio push si ambos mensajes tienen el mismo tema. Los temas pueden contener como máximo 32 caracteres seguros para URL |
 
-Cuando una pestaña ya muestra la página, hacer clic en la notificación enfoca la aplicación. De lo contrario, la página se abre en una nueva pestaña. Hacer clic en un botón de notificación abre su URL de la misma manera.
+Si una pestaña ya muestra la página, al hacer clic en la notificación se activa la aplicación. De lo contrario, la página se abre en una pestaña nueva. Al hacer clic en un botón de notificación, su URL se abre de la misma manera.
 
 :::info Una notificación por mensaje
-Cada mensaje muestra una notificación. Dado que los navegadores no activan una página para un mensaje que no muestra nada, push no puede usarse para actualizaciones de datos silenciosas.
+Cada mensaje muestra una notificación. Como los navegadores no activan una página para un mensaje que no muestra nada, las notificaciones push no se pueden usar para actualizaciones de datos silenciosas.
 :::
 
-## Estado de fallo {#failure-status}
+## Estado de error {#failure-status}
 
-Cuando `subscribe()` o `send()` falla, su `PendingResult` informa un `WebforjPushException`. <JavadocLink type="push" location="com/webforj/push/PushStatus" code='true'>PushStatus</JavadocLink> identifica la razón:
+Cuando `subscribe()` o `send()` falla, su `PendingResult` informa de un `WebforjPushException`. <JavadocLink type="push" location="com/webforj/push/PushStatus" code='true'>PushStatus</JavadocLink> identifica el motivo:
 
 | Estado | Cuándo | Qué hacer |
 |--------|------|------------|
-| `PERMISSION_DENIED` | El usuario ha bloqueado las notificaciones para la aplicación | Explica dónde puede el usuario permitir notificaciones en la configuración del navegador |
-| `UNSUPPORTED` | Push no es compatible con el navegador, la página no está en un contexto seguro, o la aplicación no está desplegada como servlet | Oculta la función |
-| `NOT_CONFIGURED` | Al menos una propiedad `webforj.push.*` falta o está incompleta | Genera las claves y configura todas las tres propiedades |
-| `SUBSCRIPTION_EXPIRED` | El servicio push ya no reconoce la suscripción porque el usuario se desuscribió o reinstaló el navegador | Elimina la suscripción almacenada |
+| `PERMISSION_DENIED` | El usuario ha bloqueado las notificaciones de la aplicación | Explica dónde puede permitir el usuario las notificaciones en la configuración del navegador |
+| `UNSUPPORTED` | El navegador no admite las notificaciones push, la página no está en un contexto seguro o la aplicación no está implementada como servlet | Oculta la función |
+| `NOT_CONFIGURED` | Falta al menos una propiedad `webforj.push.*` o su configuración está incompleta | Genera las claves y configura las tres propiedades |
+| `SUBSCRIPTION_EXPIRED` | El servicio push ya no reconoce la suscripción porque el usuario canceló la suscripción o reinstaló el navegador | Elimina la suscripción almacenada |
 | `REJECTED` | El servicio push rechazó el mensaje; `getStatusCode()` contiene su respuesta | Verifica las claves y el tamaño del mensaje |
-| `UNREACHABLE` | El servicio push no respondió antes del tiempo de espera | Intenta de nuevo más tarde |
-| `UNKNOWN` | La URL almacenada no es válida, o la suscripción o el mensaje no pudieron ser codificados | Verifica la suscripción almacenada |
+| `UNREACHABLE` | El servicio push no respondió antes de que se agotara el tiempo de espera | Vuelve a intentarlo más tarde |
+| `UNKNOWN` | El endpoint almacenado no es una URL válida, o no se pudo codificar la suscripción o el mensaje | Verifica la suscripción almacenada |
 
-Elimina las suscripciones expiradas durante cada envío:
+Elimina las suscripciones caducadas durante cada envío:
 
 ```java
 sender.send(subscription, message).exceptionally(throwable -> {
@@ -285,23 +280,23 @@ sender.send(subscription, message).exceptionally(throwable -> {
 });
 ```
 
-:::tip La expiración llega un mensaje tarde
-Los servicios push desregistran las suscripciones de manera perezosa. Aún aceptan el primer mensaje después de que un usuario se desuscribe, pero no va a ninguna parte. El siguiente mensaje informa `SUBSCRIPTION_EXPIRED`. Un envío aceptado significa que el mensaje llegó al servicio push, no que el usuario lo vio.
+:::tip La caducidad se informa un mensaje después
+Los servicios push cancelan las suscripciones de forma diferida. Siguen aceptando el primer mensaje después de que el usuario cancele la suscripción, pero no llega a ninguna parte. El siguiente mensaje informa de `SUBSCRIPTION_EXPIRED`. Que se acepte un envío significa que el mensaje llegó al servicio push, no que el usuario lo haya visto.
 :::
 
-## Compatibilidad del navegador {#browser-support}
+## Compatibilidad con navegadores {#browser-support}
 
 Todos los principales navegadores de escritorio y móviles muestran notificaciones push después de suscribirse. Ten en cuenta estas limitaciones:
 
-- En iPhone y iPad, push funciona solo para aplicaciones web añadidas a la Pantalla de Inicio en iOS 16.4 o posterior. En una pestaña de Safari, `subscribe()` informa `UNSUPPORTED`. Consulta [Aplicaciones Instalables](/docs/configuration/installable-apps) para el manifiesto de aplicación requerido.
-- Safari no muestra botones de notificación. Muestra mensajes con acciones sin sus botones, pero hacer clic en la notificación aún abre la URL del mensaje.
+- En iPhone y iPad, las notificaciones push solo funcionan con aplicaciones web añadidas a la pantalla de inicio en iOS 16.4 o posterior. En una pestaña de Safari, `subscribe()` informa de `UNSUPPORTED`. Consulta [Aplicaciones instalables](/docs/configuration/installable-apps) para ver el manifiesto de aplicación requerido.
+- Safari no muestra botones en las notificaciones. Muestra los mensajes con acciones sin sus botones, pero al hacer clic en la notificación se abre igualmente la URL del mensaje.
 - Las WebViews de Android e iOS no muestran notificaciones.
 
-Para más detalles por navegador, consulta la tabla de compatibilidad de MDN [showNotification](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerRegistration/showNotification#browser_compatibility).
+Para consultar los detalles de cada navegador, consulta la [tabla de compatibilidad de showNotification](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerRegistration/showNotification#browser_compatibility) de MDN.
 
 ## Ejemplo completo {#complete-example}
 
-La siguiente vista suscribe y desuscribe el navegador, almacena suscripciones en memoria, y envía un mensaje a cada suscripción almacenada. Puede enviar inmediatamente o esperar ocho segundos utilizando `TaskScheduler` de Spring, permitiendo que la pestaña se cierre antes de que llegue la notificación. La clase de la aplicación usa `@EnableScheduling` para hacer disponible el programador.
+La siguiente vista suscribe y cancela la suscripción del navegador, almacena las suscripciones en memoria y envía un mensaje a todas las suscripciones almacenadas. Puede enviarlo inmediatamente o esperar ocho segundos usando `TaskScheduler` de Spring, lo que permite cerrar la pestaña antes de que llegue la notificación. La clase de la aplicación usa `@EnableScheduling` para habilitar el planificador.
 
 ```java title="PushSubscriptions.java"
 package com.example;
@@ -363,13 +358,13 @@ import org.springframework.scheduling.TaskScheduler;
 public class PushView extends Composite<FlexLayout> {
 
   private final FlexLayout self = getBoundComponent();
-  private final Paragraph status = new Paragraph("Comprobando suscripción…");
-  private final TextField message = new TextField("Mensaje", "El Pedido #42 está en camino");
+  private final Paragraph status = new Paragraph("Checking subscription…");
+  private final TextField message = new TextField("Message", "Order #42 is on its way");
   private final Button subscribe =
-      new Button("Habilitar notificaciones", ButtonTheme.PRIMARY);
-  private final Button unsubscribe = new Button("Deshabilitar notificaciones");
-  private final Button sendNow = new Button("Enviar ahora");
-  private final Button sendLater = new Button("Enviar en 8 segundos");
+      new Button("Enable notifications", ButtonTheme.PRIMARY);
+  private final Button unsubscribe = new Button("Disable notifications");
+  private final Button sendNow = new Button("Send now");
+  private final Button sendLater = new Button("Send in 8 seconds");
 
   public PushView(PushSubscriptions subscriptions, PushSender sender, TaskScheduler scheduler) {
     self.setDirection(FlexDirection.COLUMN).setSpacing("1em");
@@ -378,12 +373,12 @@ public class PushView extends Composite<FlexLayout> {
     subscribe.onClick(ev -> Push.getCurrent().subscribe()
         .thenAccept(subscription -> {
           subscriptions.save(subscription);
-          status.setText("Suscrito");
+          status.setText("Subscribed");
         })
         .exceptionally(throwable -> {
           WebforjPushException error = (WebforjPushException) throwable.getCause();
           status.setText(error.getStatus() == PushStatus.PERMISSION_DENIED
-              ? "Las notificaciones están bloqueadas en este navegador"
+              ? "Notifications are blocked in this browser"
               : error.getMessage());
 
           return null;
@@ -391,21 +386,21 @@ public class PushView extends Composite<FlexLayout> {
 
     unsubscribe.onClick(ev -> Push.getCurrent().unsubscribe().thenAccept(removed -> {
       removed.ifPresent(subscriptions::delete);
-      status.setText(removed.isPresent() ? "Desuscrito" : "No había ninguna suscripción");
+      status.setText(removed.isPresent() ? "Unsubscribed" : "There was no subscription");
     }));
 
     sendNow.onClick(ev -> sendToAll(subscriptions, sender, message.getValue(), status::setText));
 
     sendLater.onClick(ev -> {
       String text = message.getValue();
-      status.setText("Enviando en 8 segundos, cierra la pestaña ahora");
+      status.setText("Sending in 8 seconds, close the tab now");
       scheduler.schedule(() -> sendToAll(subscriptions, sender, text, outcome -> {
       }), Instant.now().plusSeconds(8));
     });
 
     Push.getCurrent().getSubscription().thenAccept(existing -> {
       existing.ifPresent(subscriptions::save);
-      status.setText(existing.isPresent() ? "Suscrito" : "No suscrito");
+      status.setText(existing.isPresent() ? "Subscribed" : "Not subscribed");
     });
 
     self.add(status, message, subscribe, unsubscribe, sendNow, sendLater);
@@ -413,21 +408,21 @@ public class PushView extends Composite<FlexLayout> {
 
   private static void sendToAll(PushSubscriptions subscriptions, PushSender sender, String text,
       Consumer<String> report) {
-    report.accept("Enviando a " + subscriptions.findAll().size() + " suscripciones");
+    report.accept("Sending to " + subscriptions.findAll().size() + " subscriptions");
 
     for (PushSubscription subscription : subscriptions.findAll()) {
-      PendingResult<Void> sent = sender.send(subscription, PushMessage.create("Pedidos")
+      PendingResult<Void> sent = sender.send(subscription, PushMessage.create("Orders")
           .setBody(text)
           .setIcon("icons://icon-192x192.png")
           .setUrl("/push")
-          .setActions(List.of(new PushAction("inicio", "Abrir inicio", "/")))
+          .setActions(List.of(new PushAction("home", "Open home", "/")))
           .build());
-      sent.thenAccept(v -> report.accept("Entregado"));
+      sent.thenAccept(v -> report.accept("Delivered"));
       sent.exceptionally(throwable -> {
         WebforjPushException error = (WebforjPushException) throwable;
         if (error.getStatus() == PushStatus.SUBSCRIPTION_EXPIRED) {
           subscriptions.delete(subscription);
-          report.accept("Una suscripción expiró y fue eliminada");
+          report.accept("A subscription expired and was removed");
         } else {
           report.accept(error.getMessage());
         }

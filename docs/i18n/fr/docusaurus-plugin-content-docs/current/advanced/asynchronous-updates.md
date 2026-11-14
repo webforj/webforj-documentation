@@ -5,13 +5,13 @@ title: Mises à jour asynchrones
 description: >-
   Run background work off the UI thread and push updates back to webforJ
   components safely with Environment.runLater and PendingResult.
-_i18n_hash: 96865999eae550e8c20172458695ee01
+_i18n_hash: 7fedd93e44d699bba0a959504c7bb40c
 ---
 <DocChip chip='since' label='25.02' />
 <DocChip chip='experimental' />
 <JavadocLink type="foundation" location="com/webforj/Environment" anchor="runLater(com.webforj.Environment,java.lang.Runnable)" top='true'/>
 
-L’API `Environment.runLater()` fournit un mécanisme permettant de mettre à jour l’interface utilisateur en toute sécurité depuis des threads d’arrière-plan dans les applications webforJ. Cette fonctionnalité en préversion permet d’effectuer des opérations asynchrones tout en garantissant la sécurité des modifications de l’interface utilisateur du point de vue des threads.
+L’API `Environment.runLater()` permet de mettre à jour l’interface utilisateur en toute sécurité depuis des threads d’arrière-plan dans les applications webforJ. Cette fonctionnalité en aperçu permet les opérations asynchrones tout en garantissant la sécurité des modifications de l’interface utilisateur en matière de concurrence entre threads.
 
 <ExperimentalWarning />
 
@@ -19,39 +19,39 @@ L’API `Environment.runLater()` fournit un mécanisme permettant de mettre à j
 
 ## Comprendre le modèle de threads {#understanding-the-thread-model}
 
-webforJ impose un modèle de threads strict, dans lequel toutes les opérations de l’interface utilisateur doivent s’exécuter sur le thread `Environment`. Cette restriction s’explique par les raisons suivantes :
+webforJ impose un modèle strict de gestion des threads : toutes les opérations sur l’interface utilisateur doivent s’effectuer sur le thread `Environment`. Cette restriction s’explique par les raisons suivantes :
 
-1. **Contraintes de l’API webforJ** : l’API webforJ sous-jacente est liée au thread qui a créé la session
-2. **Affinité des composants avec un thread** : les composants de l’interface utilisateur conservent un état qui n’est pas sûr pour une utilisation concurrente
-3. **Distribution des événements** : tous les événements de l’interface utilisateur sont traités séquentiellement sur un seul thread
+1. **Contraintes de l’API webforJ** : l’API webforJ sous-jacente est liée au thread qui a créé la session.
+2. **Affinité des composants avec les threads** : les composants d’interface utilisateur conservent un état qui n’est pas sécurisé en cas d’accès concurrent.
+3. **Distribution des événements** : tous les événements d’interface utilisateur sont traités séquentiellement sur un seul thread.
 
-Ce modèle à thread unique évite les conditions de concurrence et garantit un état cohérent pour tous les composants de l’interface utilisateur, mais il complique l’intégration avec des tâches de calcul asynchrones et de longue durée.
+Ce modèle à thread unique évite les conditions de concurrence et garantit un état cohérent pour tous les composants d’interface utilisateur, mais complique l’intégration avec des tâches de calcul asynchrones et de longue durée.
 
-Chaque session utilisateur possède son propre `Environment` et son propre thread `Environment`. Un thread d’arrière-plan n’appartient à aucune session : il faut donc lui indiquer quel `Environment` mettre à jour.
+Chaque session utilisateur possède son propre `Environment` et son propre thread `Environment`. Un thread d’arrière-plan n’appartient à aucune session ; il faut donc lui indiquer quel `Environment` mettre à jour.
 
 ## API `RunLater` {#runlater-api}
 
-L’API `Environment.runLater()` fournit deux méthodes pour planifier des mises à jour de l’interface utilisateur. Les deux prennent l’`Environment` cible comme premier argument :
+L’API `Environment.runLater()` propose deux méthodes pour planifier des mises à jour de l’interface utilisateur. Elles prennent toutes deux l’`Environment` cible en premier argument :
 
 ```java title="Environment.java"
-// Planifier une tâche sans valeur de retour
+// Schedule a task with no return value
 public static PendingResult<Void> runLater(Environment target, Runnable task)
 
-// Planifier une tâche qui renvoie une valeur
+// Schedule a task that returns a value
 public static <T> PendingResult<T> runLater(Environment target, Supplier<T> supplier)
 ```
 
-Les deux méthodes renvoient un <JavadocLink type="foundation" location="com/webforj/PendingResult" code='true'>PendingResult</JavadocLink> qui suit l’achèvement de la tâche et donne accès au résultat ou aux éventuelles exceptions qui se sont produites.
+Les deux méthodes renvoient un <JavadocLink type="foundation" location="com/webforj/PendingResult" code='true'>PendingResult</JavadocLink> qui suit l’achèvement de la tâche et permet d’accéder à son résultat ou aux exceptions qui se sont produites.
 
 :::warning[Surcharges sans cible]
-Les surcharges `runLater(Runnable)` et `runLater(Supplier)` déduisent la cible à partir du thread qui a créé le thread appelant. Dans un pool de threads partagé par plusieurs utilisateurs, chaque tâche s’exécute dans l’`Environment` de l’utilisateur dont l’appel a créé ce thread du pool. Ces surcharges sont obsolètes depuis la version 26.10 et leur suppression est prévue dans la prochaine version majeure. Passez toujours la cible.
+Les surcharges `runLater(Runnable)` et `runLater(Supplier)` déduisent la cible à partir du thread qui a créé le thread appelant. Dans un pool de threads partagé entre plusieurs utilisateurs, chaque tâche s’exécute dans l’`Environment` de l’utilisateur dont l’appel a créé ce thread du pool. Ces surcharges sont obsolètes depuis la version 26.10 et leur suppression est prévue dans la prochaine version majeure. Passez toujours la cible en argument.
 :::
 
 ## Passer la cible {#passing-the-target}
 
-`Environment.getCurrent()` renvoie l’`Environment` du thread courant. Sur le thread `Environment`, où s’exécutent les constructeurs, les gestionnaires d’événements et les méthodes du cycle de vie, cette méthode renvoie l’`Environment` de la session. Sur un thread d’arrière-plan, elle renvoie `null`.
+`Environment.getCurrent()` renvoie l’`Environment` du thread courant. Sur le thread `Environment` — là où s’exécutent les constructeurs, les gestionnaires d’événements et les méthodes du cycle de vie —, cette méthode renvoie l’`Environment` de la session. Sur un thread d’arrière-plan, elle renvoie `null`.
 
-Récupérez la cible lorsqu’elle est disponible, avant le démarrage du travail en arrière-plan, puis transmettez-la à ce travail :
+Récupérez la cible là où elle est disponible, avant le démarrage du travail en arrière-plan, puis transmettez-la à ce travail :
 
 ```java
 @Route
@@ -59,7 +59,7 @@ public class DataView extends Composite<Div> {
   private final ExecutorService executor = Executors.newCachedThreadPool();
 
   public DataView() {
-    // Le constructeur s’exécute sur le thread Environment
+    // The constructor runs on the Environment thread
     Environment env = Environment.getCurrent();
 
     executor.submit(() -> {
@@ -78,46 +78,46 @@ Comme la cible est passée en argument, l’appel fonctionne depuis n’importe 
 
 ### Récupérer la cible depuis le mauvais thread {#reading-the-target-on-the-wrong-thread}
 
-La seule erreur à éviter consiste à appeler `Environment.getCurrent()` dans le travail en arrière-plan. Dans ce contexte, la méthode renvoie `null`, et `runLater()` lève une `NullPointerException` :
+La seule erreur à éviter consiste à appeler `Environment.getCurrent()` depuis le travail en arrière-plan. Dans ce cas, la méthode renvoie `null` et `runLater()` lève une `NullPointerException` :
 
 ```java
 executor.submit(() -> {
   String data = fetchRemoteData();
 
-  // Incorrect : getCurrent() renvoie null sur un thread d’arrière-plan
+  // Wrong: getCurrent() returns null on a background thread
   Environment.runLater(Environment.getCurrent(), () -> dataLabel.setText(data));
 });
 ```
 
-Il en va de même pour les initialisateurs statiques, les threads `java.util.Timer` et les rappels de bibliothèques externes. Aucun d’eux ne possède d’`Environment` : la cible doit donc provenir d’un champ, d’un paramètre ou d’une variable locale capturée, renseignée sur le thread `Environment`.
+Il en va de même pour les initialiseurs statiques, les threads `java.util.Timer` et les rappels de bibliothèques externes. Aucun d’eux ne dispose d’un `Environment` ; la cible doit donc provenir d’un champ, d’un paramètre ou d’une variable locale capturée, renseignée sur le thread `Environment`.
 
-## Comportement de l’exécution {#execution-behavior}
+## Comportement à l’exécution {#execution-behavior}
 
-Le comportement d’exécution de `runLater()` dépend du thread qui l’appelle :
+Le comportement de `runLater()` dépend du thread qui l’appelle :
 
-### Depuis le thread de l’interface utilisateur {#from-the-ui-thread}
+### Depuis le thread d’interface utilisateur {#from-the-ui-thread}
 
-Lorsqu’elles sont appelées depuis le thread `Environment` propre à la cible, les tâches s’exécutent **de manière synchrone et immédiate** :
+Lorsque la méthode est appelée depuis le thread `Environment` de la cible, les tâches s’exécutent **de façon synchrone et immédiate** :
 
 ```java
 button.onClick(e -> {
   Environment env = Environment.getCurrent();
-  System.out.println("Avant : " + Thread.currentThread().getName());
+  System.out.println("Before: " + Thread.currentThread().getName());
 
   PendingResult<String> result = Environment.runLater(env, () -> {
-    System.out.println("Dans la tâche : " + Thread.currentThread().getName());
-    return "terminé";
+    System.out.println("Inside: " + Thread.currentThread().getName());
+    return "completed";
   });
 
-  System.out.println("Après : " + result.isDone());  // true
+  System.out.println("After: " + result.isDone());  // true
 });
 ```
 
-Grâce à ce comportement synchrone, les mises à jour de l’interface utilisateur effectuées depuis les gestionnaires d’événements sont appliquées immédiatement, sans surcoût inutile de mise en file d’attente.
+Grâce à ce comportement synchrone, les mises à jour de l’interface utilisateur depuis les gestionnaires d’événements sont appliquées immédiatement et n’entraînent pas de surcharge inutile liée à la mise en file d’attente.
 
 ### Depuis des threads d’arrière-plan {#from-background-threads}
 
-Lorsqu’elles sont appelées depuis tout autre thread, les tâches sont **mises en file d’attente pour une exécution asynchrone** :
+Lorsqu’elle est appelée depuis tout autre thread, la tâche est **mise en file d’attente pour une exécution asynchrone** :
 
 ```java
 @Override
@@ -125,26 +125,26 @@ public void onDidCreate() {
   Environment env = Environment.getCurrent();
 
   CompletableFuture.runAsync(() -> {
-    // Cette tâche s’exécute sur un thread ForkJoinPool
-    System.out.println("Arrière-plan : " + Thread.currentThread().getName());
+    // This runs on a ForkJoinPool thread
+    System.out.println("Background: " + Thread.currentThread().getName());
 
     PendingResult<Void> result = Environment.runLater(env, () -> {
-      // Cette tâche s’exécute sur le thread Environment
-      System.out.println("Mise à jour de l’interface : " + Thread.currentThread().getName());
-      statusLabel.setText("Traitement terminé");
+      // This runs on the Environment thread
+      System.out.println("UI Update: " + Thread.currentThread().getName());
+      statusLabel.setText("Processing complete");
     });
 
-    // result.isDone() renverrait false ici
-    // La tâche est mise en file d’attente et s’exécutera de manière asynchrone
+    // result.isDone() would be false here
+    // The task is queued and will execute asynchronously
   });
 }
 ```
 
-webforJ traite les tâches soumises depuis des threads d’arrière-plan dans un **ordre FIFO strict**, préservant ainsi la séquence des opérations même lorsqu’elles sont soumises simultanément depuis plusieurs threads. Grâce à cette garantie d’ordre, les mises à jour de l’interface utilisateur sont appliquées exactement dans l’ordre où elles ont été soumises. Ainsi, si le thread A soumet la tâche 1, puis le thread B soumet la tâche 2, la tâche 1 s’exécutera toujours avant la tâche 2 sur le thread de l’interface utilisateur. Le traitement des tâches dans l’ordre FIFO évite les incohérences dans l’interface utilisateur.
+webforJ traite les tâches soumises depuis des threads d’arrière-plan dans un **ordre FIFO strict**, en préservant la séquence des opérations même lorsque plusieurs threads les soumettent simultanément. Cette garantie d’ordre assure que les mises à jour de l’interface utilisateur sont appliquées exactement dans l’ordre de leur soumission. Ainsi, si le thread A soumet la tâche 1, puis le thread B la tâche 2, la tâche 1 s’exécutera toujours avant la tâche 2 sur le thread d’interface utilisateur. Le traitement des tâches dans l’ordre FIFO évite les incohérences dans l’interface utilisateur.
 
 ## Annulation des tâches {#task-cancellation}
 
-Le <JavadocLink type="foundation" location="com/webforj/PendingResult" code='true'>PendingResult</JavadocLink> renvoyé par `Environment.runLater()` permet l’annulation, ce qui vous permet d’empêcher l’exécution des tâches en attente. L’annulation des tâches en attente permet d’éviter les fuites de mémoire et d’empêcher les opérations de longue durée de mettre à jour l’interface utilisateur lorsqu’elles ne sont plus nécessaires.
+Le <JavadocLink type="foundation" location="com/webforj/PendingResult" code='true'>PendingResult</JavadocLink> renvoyé par `Environment.runLater()` prend en charge l’annulation, ce qui permet d’empêcher l’exécution des tâches en file d’attente. L’annulation des tâches en attente permet d’éviter les fuites de mémoire et d’empêcher les opérations de longue durée de mettre à jour l’interface utilisateur lorsqu’elles ne sont plus nécessaires.
 
 ### Annulation de base {#basic-cancellation}
 
@@ -153,15 +153,15 @@ PendingResult<Void> result = Environment.runLater(env, () -> {
   updateUI();
 });
 
-// Annuler si l’exécution n’a pas encore eu lieu
+// Cancel if not yet executed
 if (!result.isDone()) {
   result.cancel();
 }
 ```
 
-### Gérer plusieurs mises à jour {#managing-multiple-updates}
+### Gestion de plusieurs mises à jour {#managing-multiple-updates}
 
-Lors d’opérations de longue durée qui effectuent fréquemment des mises à jour de l’interface utilisateur, suivez tous les résultats en attente :
+Lorsque vous effectuez des opérations de longue durée avec des mises à jour fréquentes de l’interface utilisateur, suivez tous les résultats en attente :
 
 ```java
 public class LongRunningTask {
@@ -180,7 +180,7 @@ public class LongRunningTask {
           progressBar.setValue(progress);
         });
 
-        // Conserver une référence pour une éventuelle annulation
+        // Track for potential cancellation
         pendingUpdates.add(update);
 
         Thread.sleep(100);
@@ -191,7 +191,7 @@ public class LongRunningTask {
   public void cancelTask() {
     isCancelled = true;
 
-    // Annuler toutes les mises à jour de l’interface en attente
+    // Cancel all pending UI updates
     for (PendingResult<?> pending : pendingUpdates) {
       if (!pending.isDone()) {
         pending.cancel();
@@ -204,7 +204,7 @@ public class LongRunningTask {
 
 ### Gestion du cycle de vie des composants {#component-lifecycle-management}
 
-Lorsque des composants sont détruits (par exemple, lors d’une navigation), annulez toutes les mises à jour en attente afin d’éviter les fuites de mémoire :
+Lorsque les composants sont détruits (par exemple, lors d’une navigation), annulez toutes les mises à jour en attente afin d’éviter les fuites de mémoire :
 
 ```java
 @Route
@@ -215,7 +215,7 @@ public class CleanupView extends Composite<Div> {
   protected void onDestroy() {
     super.onDestroy();
 
-    // Annuler toutes les mises à jour en attente afin d’éviter les fuites de mémoire
+    // Cancel all pending updates to prevent memory leaks
     for (PendingResult<?> pending : pendingUpdates) {
       if (!pending.isDone()) {
         pending.cancel();
@@ -228,13 +228,13 @@ public class CleanupView extends Composite<Div> {
 
 ## Considérations de conception {#design-considerations}
 
-1. **Cible obligatoire** : la cible `Environment` est récupérée avec `Environment.getCurrent()` sur le thread `Environment`, puis transmise au travail en arrière-plan. L’appeler depuis un thread d’arrière-plan renvoie `null`.
+1. **Cible obligatoire** : l’`Environment` cible est récupéré avec `Environment.getCurrent()` sur le thread `Environment`, puis transmis au travail en arrière-plan. La méthode renvoie `null` si elle est appelée depuis un thread d’arrière-plan.
 
-2. **Prévention des fuites de mémoire** : suivez et annulez toujours les objets `PendingResult` dans les méthodes du cycle de vie des composants. Les lambdas mises en file d’attente capturent des références aux composants de l’interface utilisateur, empêchant leur récupération par le ramasse-miettes si elles ne sont pas annulées.
+2. **Prévention des fuites de mémoire** : suivez et annulez toujours les objets `PendingResult` dans les méthodes du cycle de vie des composants. Les lambdas en file d’attente capturent des références aux composants d’interface utilisateur, ce qui empêche leur récupération par le ramasse-miettes si elles ne sont pas annulées.
 
-3. **Exécution FIFO** : toutes les tâches s’exécutent dans un ordre FIFO strict, quelle que soit leur importance. Il n’existe aucun système de priorité.
+3. **Exécution FIFO** : toutes les tâches s’exécutent dans un ordre FIFO strict, quelle que soit leur importance. Il n’existe pas de système de priorité.
 
-4. **Limites de l’annulation** : l’annulation empêche uniquement l’exécution des tâches en attente. Les tâches déjà en cours d’exécution se terminent normalement.
+4. **Limites de l’annulation** : l’annulation empêche uniquement l’exécution des tâches en file d’attente. Les tâches déjà en cours d’exécution se terminent normalement.
 
 ## Étude de cas complète : `LongTaskView` {#complete-case-study-longtaskview}
 
@@ -247,35 +247,35 @@ Voici une implémentation complète, prête pour la production, qui illustre les
 ```java
 @Route("/")
 public class LongTaskView extends Composite<FlexLayout> {
-  // Utiliser un exécuteur à thread unique pour éviter l’épuisement des ressources
-  // En production, envisager d’utiliser un pool de threads partagé à l’échelle de l’application
+  // Use a single thread executor to prevent resource exhaustion
+  // For production, consider using a shared application-wide thread pool
   private final ExecutorService executor = Executors.newSingleThreadExecutor(r -> {
     Thread t = new Thread(r, "LongTaskView-Worker");
     t.setDaemon(true);
     return t;
   });
 
-  // Suivre la tâche en cours et les mises à jour de l’interface utilisateur en attente
+  // Track the current task and pending UI updates
   private CompletableFuture<Void> currentTask = null;
   private final List<PendingResult<?>> pendingUIUpdates = new ArrayList<>();
   private volatile boolean isCancelled = false;
 
-  // Composants de l’interface utilisateur
+  // UI components
   private final FlexLayout self = getBoundComponent();
-  private H2 titleLabel = new H2("Démonstration des mises à jour de l’interface en arrière-plan");
+  private H2 titleLabel = new H2("Background UI Updates Demo");
   private Paragraph descriptionPara = new Paragraph(
-      "Cette démonstration montre comment Environment.runLater() permet de mettre à jour l’interface utilisateur en toute sécurité depuis des threads d’arrière-plan. " +
-          "Cliquez sur « Démarrer la tâche longue » pour lancer un calcul de 10 secondes en arrière-plan qui met à jour la progression dans l’interface. " +
-          "Le bouton « Tester l’interface » prouve que l’interface reste réactive pendant l’opération en arrière-plan.");
-  private TextField statusField = new TextField("État");
+      "This demo shows how Environment.runLater() enables safe UI updates from background threads. " +
+          "Click 'Start Long Task' to run a 10-second background computation that updates the UI progress. " +
+          "The 'Test UI' button proves the UI remains responsive during the background operation.");
+  private TextField statusField = new TextField("Status");
   private ProgressBar progressBar = new ProgressBar();
-  private TextField resultField = new TextField("Résultat");
-  private Button startButton = new Button("Démarrer la tâche longue");
-  private Button cancelButton = new Button("Annuler la tâche");
-  private Button testButton = new Button("Tester l’interface - Cliquez ici !");
+  private TextField resultField = new TextField("Result");
+  private Button startButton = new Button("Start Long Task");
+  private Button cancelButton = new Button("Cancel Task");
+  private Button testButton = new Button("Test UI - Click Me!");
   private Paragraph footerPara = new Paragraph(
-      "Remarque : la tâche peut être annulée à tout moment, ce qui montre le nettoyage approprié du thread " +
-          "d’arrière-plan et des mises à jour de l’interface utilisateur en attente.");
+      "Note: The task can be cancelled at any time, demonstrating proper cleanup of both the " +
+          "background thread and queued UI updates.");
   private Toast globalToast = new Toast("", 3000, Theme.GRAY);
   private AtomicInteger clickCount = new AtomicInteger(0);
 
@@ -284,25 +284,25 @@ public class LongTaskView extends Composite<FlexLayout> {
     self.setMaxWidth(400);
     self.setStyle("margin", "1em auto");
 
-    // Configurer les champs
+    // Configure fields
     statusField.setReadOnly(true);
-    statusField.setValue("Prêt à démarrer");
-    statusField.setLabel("État");
+    statusField.setValue("Ready to start");
+    statusField.setLabel("Status");
 
-    // Configurer la barre de progression
+    // Configure progress bar
     progressBar.setMin(0);
     progressBar.setMax(100);
     progressBar.setValue(0);
     progressBar.setAnimated(true);
     progressBar.setStriped(true);
-    progressBar.setText("Progression : {{x}}%");
+    progressBar.setText("Progress: {{x}}%");
     progressBar.setTheme(Theme.PRIMARY);
 
     resultField.setReadOnly(true);
     resultField.setValue("");
-    resultField.setLabel("Résultat");
+    resultField.setLabel("Result");
 
-    // Configurer les boutons
+    // Configure buttons
     startButton.setTheme(ButtonTheme.PRIMARY);
     startButton.onClick(e -> startLongTask());
 
@@ -312,10 +312,10 @@ public class LongTaskView extends Composite<FlexLayout> {
 
     testButton.onClick(e -> {
       int count = clickCount.incrementAndGet();
-      showToast("Clic n°" + count + " - L’interface est réactive !", Theme.GRAY);
+      showToast("Click #" + count + " - UI is responsive!", Theme.GRAY);
     });
 
-    // Ajouter les composants
+    // Add components
     self.add(titleLabel, descriptionPara, statusField, progressBar, resultField,
         startButton, cancelButton, testButton, footerPara);
   }
@@ -324,83 +324,83 @@ public class LongTaskView extends Composite<FlexLayout> {
   protected void onDestroy() {
     super.onDestroy();
 
-    // Annuler toute tâche en cours et toutes les mises à jour de l’interface en attente
+    // Cancel any running task and pending UI updates
     cancelTask();
 
-    // Effacer la référence à la tâche
+    // Clear task reference
     currentTask = null;
 
-    // Arrêter proprement l’exécuteur de l’instance
+    // Shutdown the instance executor gracefully
     executor.shutdown();
   }
 
   private void startLongTask() {
     startButton.setEnabled(false);
     cancelButton.setEnabled(true);
-    statusField.setValue("Démarrage de la tâche en arrière-plan...");
+    statusField.setValue("Starting background task...");
     progressBar.setValue(0);
     resultField.setValue("");
 
-    // Réinitialiser l’indicateur d’annulation et effacer les mises à jour précédentes en attente
+    // Reset cancelled flag and clear previous pending updates
     isCancelled = false;
     pendingUIUpdates.clear();
 
-    // Récupérer l’Environment cible sur le thread de l’interface utilisateur, avant le démarrage de la tâche en arrière-plan
+    // Read the target Environment on the UI thread, before the background task starts
     Environment env = Environment.getCurrent();
 
-    // Démarrer la tâche en arrière-plan avec un exécuteur explicite
-    // Remarque : cancel(true) interrompt le thread, ce qui provoque une
-    // InterruptedException lors de Thread.sleep()
+    // Start background task with explicit executor
+    // Note: cancel(true) will interrupt the thread, causing Thread.sleep() to throw
+    // InterruptedException
     currentTask = CompletableFuture.runAsync(() -> {
       double result = 0;
 
-      // Simuler une tâche longue composée de 100 étapes
+      // Simulate long task with 100 steps
       for (int i = 0; i <= 100; i++) {
-        // Vérifier si la tâche a été annulée
+        // Check if cancelled
         if (isCancelled) {
           PendingResult<Void> cancelUpdate = Environment.runLater(env, () -> {
-            statusField.setValue("Tâche annulée !");
+            statusField.setValue("Task cancelled!");
             progressBar.setValue(0);
             resultField.setValue("");
             startButton.setEnabled(true);
             cancelButton.setEnabled(false);
-            showToast("La tâche a été annulée", Theme.GRAY);
+            showToast("Task was cancelled", Theme.GRAY);
           });
           pendingUIUpdates.add(cancelUpdate);
           return;
         }
 
         try {
-          Thread.sleep(100); // 10 secondes au total
+          Thread.sleep(100); // 10 seconds total
         } catch (InterruptedException e) {
-          // Le thread a été interrompu : quitter immédiatement
-          Thread.currentThread().interrupt(); // Rétablir l’état d’interruption
+          // Thread was interrupted - exit immediately
+          Thread.currentThread().interrupt(); // Restore interrupted status
           return;
         }
 
-        // Effectuer un calcul (déterministe pour la démonstration)
-        // Produit des valeurs comprises entre 0 et 1
+        // Do some calculation (deterministic for demo)
+        // Produces values between 0 and 1
         result += Math.sin(i) * 0.5 + 0.5;
 
-        // Mettre à jour la progression depuis le thread d’arrière-plan
+        // Update progress from background thread
         final int progress = i;
         PendingResult<Void> updateResult = Environment.runLater(env, () -> {
           progressBar.setValue(progress);
-          statusField.setValue("Traitement en cours... " + progress + "%");
+          statusField.setValue("Processing... " + progress + "%");
         });
         pendingUIUpdates.add(updateResult);
       }
 
-      // Mise à jour finale avec le résultat (ce code n’est atteint que si la tâche s’est terminée sans
-      // être annulée)
+      // Final update with result (this code is only reached if the task completed without
+      // cancellation)
       if (!isCancelled) {
         final double finalResult = result;
         PendingResult<Void> finalUpdate = Environment.runLater(env, () -> {
-          statusField.setValue("Tâche terminée !");
-          resultField.setValue("Résultat : " + String.format("%.2f", finalResult));
+          statusField.setValue("Task completed!");
+          resultField.setValue("Result: " + String.format("%.2f", finalResult));
           startButton.setEnabled(true);
           cancelButton.setEnabled(false);
-          showToast("La tâche en arrière-plan est terminée !", Theme.SUCCESS);
+          showToast("Background task finished!", Theme.SUCCESS);
         });
         pendingUIUpdates.add(finalUpdate);
       }
@@ -409,13 +409,13 @@ public class LongTaskView extends Composite<FlexLayout> {
 
   private void cancelTask() {
     if (currentTask != null && !currentTask.isDone()) {
-      // Définir l’indicateur d’annulation
+      // Set the cancelled flag
       isCancelled = true;
 
-      // Annuler la tâche principale (interrompt le thread)
+      // Cancel the main task (interrupts the thread)
       currentTask.cancel(true);
 
-      // Annuler toutes les mises à jour de l’interface en attente
+      // Cancel all pending UI updates
       for (PendingResult<?> pending : pendingUIUpdates) {
         if (!pending.isDone()) {
           pending.cancel();
@@ -423,10 +423,10 @@ public class LongTaskView extends Composite<FlexLayout> {
       }
 
       if (!statusField.isDestroyed() && !cancelButton.isDestroyed()) {
-        statusField.setValue("Annulation de la tâche...");
+        statusField.setValue("Cancelling task...");
         cancelButton.setEnabled(false);
 
-        showToast("Demande d’annulation envoyée", Theme.GRAY);
+        showToast("Cancellation requested", Theme.GRAY);
       }
     }
   }
@@ -443,11 +443,7 @@ public class LongTaskView extends Composite<FlexLayout> {
 
 </ExpandableCode>
 
-<div class="videos-container" style={{maxWidth: '400px', margin: '0 auto'}}>
-  <video controls>
-    <source src="https://cdn.webforj.com/webforj-documentation/video/webforj-long-tasks.mp4" type="video/mp4"/>
-  </video>
-</div>
+<VideoPlayer video="async/long-tasks" width={1080} height={1288} title="Long tasks" />
 
 <!-- vale on -->
 
@@ -463,53 +459,53 @@ private final ExecutorService executor = Executors.newSingleThreadExecutor(r -> 
   return t;
 });
 ```
-- Utilise un **exécuteur à thread unique** pour éviter l’épuisement des ressources
-- Crée des **threads démons** qui n’empêcheront pas l’arrêt de la JVM
+- Utilise un **exécuteur à thread unique** pour éviter l’épuisement des ressources.
+- Crée des **threads démons** qui n’empêcheront pas l’arrêt de la JVM.
 
 #### 2. Nommer la cible {#2-naming-the-target}
 ```java
 Environment env = Environment.getCurrent();
 ```
-`startLongTask()` s’exécute sur le thread `Environment`. Il y récupère donc la cible, que la tâche en arrière-plan transmet à chaque appel de `Environment.runLater()`. Le même code fonctionne sans modification avec un pool de threads partagé à l’échelle de l’application.
+`startLongTask()` s’exécute sur le thread `Environment` ; la cible y est donc récupérée et la tâche d’arrière-plan la transmet à chaque appel de `Environment.runLater()`. Le même code fonctionne sans modification avec un pool de threads partagé à l’échelle de l’application.
 
 #### 3. Suivre les mises à jour en attente {#3-tracking-pending-updates}
 ```java
 private final List<PendingResult<?>> pendingUIUpdates = new ArrayList<>();
 ```
 Chaque appel à `Environment.runLater()` est suivi afin de permettre :
-- L’annulation lorsque l’utilisateur clique sur le bouton d’annulation
-- La prévention des fuites de mémoire dans `onDestroy()`
-- Un nettoyage approprié pendant le cycle de vie du composant
+- l’annulation lorsque l’utilisateur clique sur le bouton d’annulation ;
+- la prévention des fuites de mémoire dans `onDestroy()` ;
+- un nettoyage correct pendant le cycle de vie du composant.
 
 #### 4. Annulation coopérative {#4-cooperative-cancellation}
 ```java
 private volatile boolean isCancelled = false;
 ```
 Le thread d’arrière-plan vérifie cet indicateur à chaque itération, ce qui permet :
-- De réagir immédiatement à l’annulation
-- De quitter proprement la boucle
-- D’empêcher toute nouvelle mise à jour de l’interface utilisateur
+- de réagir immédiatement à l’annulation ;
+- de quitter proprement la boucle ;
+- d’empêcher toute nouvelle mise à jour de l’interface utilisateur.
 
 #### 5. Gestion du cycle de vie {#5-lifecycle-management}
 ```java
 @Override
 protected void onDestroy() {
   super.onDestroy();
-  cancelTask();  // Réutilise la logique d’annulation
+  cancelTask();  // Reuses cancellation logic
   currentTask = null;
   executor.shutdown();
 }
 ```
 Cette étape est essentielle pour éviter les fuites de mémoire en :
-- Annulant toutes les mises à jour de l’interface en attente
-- Interrompant les threads en cours d’exécution
-- Arrêtant l’exécuteur
+- annulant toutes les mises à jour de l’interface utilisateur en attente ;
+- interrompant les threads en cours d’exécution ;
+- arrêtant l’exécuteur.
 
-#### 6. Tester la réactivité de l’interface utilisateur {#6-ui-responsiveness-testing}
+#### 6. Vérifier la réactivité de l’interface utilisateur {#6-ui-responsiveness-testing}
 ```java
 testButton.onClick(e -> {
   int count = clickCount.incrementAndGet();
-  showToast("Clic n°" + count + " - L’interface est réactive !", Theme.GRAY);
+  showToast("Click #" + count + " - UI is responsive!", Theme.GRAY);
 });
 ```
-Cela montre que le thread de l’interface utilisateur reste réactif pendant les opérations en arrière-plan.
+Cela montre que le thread d’interface utilisateur reste réactif pendant les opérations en arrière-plan.

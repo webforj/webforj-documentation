@@ -4,45 +4,41 @@ sidebar_position: 6
 description: >-
   Adjust the DWC design tokens of a running webforJ app, preview the result
   immediately, and save it into your stylesheet.
-_i18n_hash: c7dd349ebf7570b2e34953fce990173d
+_i18n_hash: fe089afe4f44e457a98622707bf995e5
 ---
-主题选项卡允许您在应用运行时更改其外观。它与您的应用已经使用的[DWC设计令牌](/docs/styling/css-variables)协同工作，因此单个更改会影响每个读取该令牌的组件，而不是一次只影响一个规则。
+“主题”选项卡可让你在应用运行时更改其外观。它与应用已经使用的 [DWC 设计令牌](/docs/styling/css-variables)配合使用，因此，只需更改一次，就能影响所有读取该令牌的组件，而不必逐条修改规则。
 
-<div class="videos-container">
-  <video controls preload="metadata">
-    <source src="https://cdn.webforj.com/webforj-documentation/video/craftforJ/theme-knobs.mp4#t=0.5" type="video/mp4" />
-  </video>
-</div>
+<VideoPlayer video="craftforj/theme-knobs" width={1920} height={992} title="Theme knobs" />
 
 ## 调整主题 {#adjusting-a-theme}
 
-控制项按其影响的内容分组，涵盖构建应用的调色板、背景表面、边缘和角落的形状、排版以及间距。每个控制项都解释其作用，因为其中一些会改变应用的可读性，而不仅仅是外观。
+这些控件按影响范围分组，涵盖构成应用的调色板、背景表面、边缘和圆角形状、字体排版以及间距。每个控件都会说明其作用，因为有些控件改变的不只是应用的外观，还会影响其可读性。
 
-主题有明亮的一面和黑暗的一面。您可以同时对两者进行编辑，或者只对其中一个进行编辑，并在它们之间切换，以查看您正在处理的那一面。预览显示调色板、表面、字体样本和状态颜色，这样您可以在保存之前发现某个组合在一个屏幕上有效而在另一个屏幕上无效。
+主题分为浅色和深色两种模式。你可以将更改应用到两种模式，也可以只应用到其中一种，还可以在两种模式间切换，查看当前正在调整的模式。预览会同时展示调色板、背景表面、字体样例和状态颜色，让你在保存前就能发现某种搭配可能适用于一个屏幕，却不适用于另一个屏幕。
 
-![主题控制与预览在一起](/img/craftforj/theme/knob-rail.png#rounded-border)
+![主题控件与预览并排显示](/img/craftforj/theme/knob-rail.png#rounded-border)
 
 ## 保存主题 {#saving-a-theme}
 
-您正在处理的主题已应用于应用程序，但尚未成为您项目的一部分，重新加载页面将丢弃它。保存会将其写入应用的样式表，使其在重启后还保留、显示在您的差异中，并随应用一起发布。
+你正在编辑的主题会应用到应用中，但尚未写入项目，重新加载页面后便会丢失。保存后，主题会写入应用的样式表，在应用重启后仍然保留、显示在差异中，并随应用一起发布。
 
-craftforJ写入单个样式表，该样式表由其自行检测或您在craftforJ设置中命名。如果该文件已保存主题，保存操作将完全替换它，而不是在其上叠加第二个主题，并且craftforJ会首先要求您确认。如果在craftforJ读取后文件已更改，则不会写入任何内容，并且craftforJ会让您再次保存。
+craftforJ 会写入单个样式表：它可以自动检测该样式表，也可以由你在 craftforJ 设置中指定。如果该文件中已包含主题，保存时会整体替换原有主题，而不会叠加第二个主题；craftforJ 会先征求你的确认。如果该文件在 craftforJ 读取后发生了更改，则不会写入任何内容，并会提示你重新保存。
 
-您可以将主题恢复到上一次保存的状态，或者完全从样式表中删除它，而不会影响文件中的其他内容。
+你可以将主题还原到上次保存的状态，也可以将其从样式表中完全移除，而不影响文件中的其他内容。
 
 ## 预设主题 {#preset-themes}
 
-除了默认的外观和感觉，craftforJ还有几个可供选择的主题预设。以下显示了应用默认主题与Portico主题之间的比较。
+除了默认外观，craftforJ 还提供了多个主题预设供你选择。下方对比了 App Default 和 Portico 两种主题。
 
 <Tabs>
-  <TabItem value="app-default" label="应用默认">
-    ![使用应用默认主题的应用](/img/craftforj/theme/theme-app-default.png#rounded-border)
+  <TabItem value="app-default" label="App Default" default>
+    ![使用 App Default 主题的应用](/img/craftforj/theme/theme-app-default.png#rounded-border)
   </TabItem>
   <TabItem value="portico" label="Portico">
-    ![使用Portico主题的应用](/img/craftforj/theme/theme-portico.png#rounded-border)
+    ![使用 Portico 主题的应用](/img/craftforj/theme/theme-portico.png#rounded-border)
   </TabItem>
 </Tabs>
 
-## 关闭它 {#turning-it-off}
+## 关闭主题功能 {#turning-it-off}
 
-您可以在craftforJ设置中关闭样式保存，或通过[`stylesheet-changes`](/docs/craftforj/configuration#feature-flags)属性完全删除它。无论哪种情况，选项卡仍然有效并重新绘制正在运行的应用，但您无法保存结果。
+你可以在 craftforJ 设置中关闭应用的样式保存功能，也可以通过 [`stylesheet-changes`](/docs/craftforj/configuration#feature-flags) 属性将其完全移除。无论采用哪种方式，选项卡仍然可以使用，也仍会重新渲染正在运行的应用，但你无法保存更改结果。

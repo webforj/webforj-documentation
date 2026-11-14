@@ -6,7 +6,7 @@ hide_giscus_comments: true
 description: >-
   Expose routed webforJ views as interactive MCP applications that an MCP host
   can open and use inside its own interface.
-_i18n_hash: 27896fdcd80b0f7414e1e41f1087d848
+_i18n_hash: c654b2ac1c5344132602148ba19216b3
 ---
 <Head>
   <style>{`
@@ -20,21 +20,17 @@ _i18n_hash: 27896fdcd80b0f7414e1e41f1087d848
 # MCP Apps <DocChip chip='since' label='26.02' /> <DocChip chip='experimental' />
 <!-- vale Google.Headings = YES -->
 
-MCP Apps ermöglichen einer [MCP](https://modelcontextprotocol.io/)-fähigen KI-App, auch als Host bezeichnet, eine geroutete webforJ-Ansicht innerhalb ihres Gesprächs zu öffnen. Die Ansicht bleibt Teil der Java-App, sodass sie dieselben Komponenten, Dienste, Routen und Zustände verwendet wie im Browser.
+MCP Apps ermöglichen es einer KI-App mit [MCP](https://modelcontextprotocol.io/)-Unterstützung, auch Host genannt, eine geroutete webforJ-Ansicht innerhalb ihrer Unterhaltung zu öffnen. Die Ansicht bleibt Teil der Java-App und verwendet daher dieselben Komponenten, Services, Routing- und Zustandsmechanismen wie im Browser.
 
-Die Person und die KI können mit derselben live UI arbeiten. Die KI kann Eingaben liefern, wenn sie die Ansicht öffnet, Aktionen aufrufen, die die offene Ansicht ändern, und Kontext aus den Entscheidungen erhalten, die die Person in der UI trifft. Die Person kann weiterhin die gerenderten webforJ-Komponenten direkt verwenden.
+Die Person und die KI können mit derselben Live-Benutzeroberfläche arbeiten. Die KI kann beim Öffnen der Ansicht Eingaben übergeben, Aktionen aufrufen, die die geöffnete Ansicht ändern, und Kontext zu den Auswahlen der Person in der Benutzeroberfläche erhalten. Die Person kann die gerenderten webforJ-Komponenten weiterhin direkt verwenden.
 
-Spring Boot mit Spring AI ist der primäre Weg, um eine MCP-App zu veröffentlichen. Die Integration entdeckt markierte Routen und fügt sie zum MCP-Server von Spring AI hinzu. Beginnen Sie mit der [Spring Boot-Konfiguration](./spring) und testen Sie dann [die Verbindung](./testing) mit der minimal veröffentlichten Ansicht. Anwendungen, die Spring Boot nicht verwenden, können stattdessen die [Standard-Servlet-Konfiguration](./without-spring) verwenden.
+Spring Boot mit Spring AI ist die primäre Möglichkeit, eine MCP-App bereitzustellen. Die Integration erkennt markierte Routen und fügt sie dem MCP-Server von Spring AI hinzu. Beginnen Sie mit der [Spring-Boot-Einrichtung](./spring) und [testen Sie anschließend die Verbindung](./testing) mit der minimalen bereitgestellten Ansicht. Anwendungen ohne Spring Boot können stattdessen die [Standard-Servlet-Einrichtung](./without-spring) verwenden.
 
-<div class="videos-container">
-    <video controls>
-      <source src="https://cdn.webforj.com/webforj-documentation/video/mcp-apps/webforj-mcp-app.mp4" type="video/mp4" />
-    </video>
-</div>
+<VideoPlayer video="mcp-apps/webforj-mcp-app" width={1920} height={1080} title="WebforJ MCP app" />
 
-:::info[Die Unterstützung von Hosts variiert]
+:::info[Die Host-Unterstützung variiert]
 
-MCP Apps sind eine sich entwickelnde Erweiterung der MCP-Spezifikation, sodass Hosts ihre Überarbeitungen und Sicherheitsrichtlinien in ihrem eigenen Tempo übernehmen. Die App erklärt die Ursprünge, von denen ihre Ansicht geladen wird und zu denen sie sich verbindet, und ein Host, der diese zulässt, rendert die Ansicht. Hosts können auch strengere Richtlinien anwenden. Das Öffnungswerkzeug gibt immer seinen Textinhalt zurück, und die Route bleibt als reguläre Browserseite verfügbar. Überprüfen Sie jeden Host, den Sie anvisieren, mit den Schritten in [Testing](./testing).
+MCP Apps ist eine sich weiterentwickelnde Erweiterung der MCP-Spezifikation. Hosts übernehmen ihre Überarbeitungen und Sicherheitsrichtlinien daher in unterschiedlichem Tempo. Die App gibt die Ursprünge an, von denen ihre Ansicht geladen wird und zu denen sie eine Verbindung herstellt. Ein Host, der diese zulässt, rendert die Ansicht. Hosts können auch strengere Richtlinien anwenden. Das aufrufende Tool gibt immer seinen Textinhalt zurück, und die Route bleibt als reguläre Browserseite verfügbar. Überprüfen Sie jeden Host, den Sie verwenden möchten, anhand der Schritte unter [Testen](./testing).
 :::
 
 ## Themen {#topics}

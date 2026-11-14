@@ -4,45 +4,41 @@ sidebar_position: 6
 description: >-
   Adjust the DWC design tokens of a running webforJ app, preview the result
   immediately, and save it into your stylesheet.
-_i18n_hash: c7dd349ebf7570b2e34953fce990173d
+_i18n_hash: fe089afe4f44e457a98622707bf995e5
 ---
-Die Theme-Registerkarte ermöglicht es Ihnen, das Aussehen Ihrer App während des Betriebs zu ändern. Sie arbeitet mit den [DWC-Design-Token](/docs/styling/css-variables), die Ihre App bereits verwendet, sodass eine einzige Änderung jede Komponente erreicht, die dieses Token liest, anstatt eine Regel nach der anderen zu ändern.
+Über den Tab „Theme“ kannst du das Aussehen deiner App ändern, während sie läuft. Er nutzt die [DWC-Design-Tokens](/docs/styling/css-variables), die deine App bereits verwendet. Eine einzelne Änderung wirkt sich dadurch auf jede Komponente aus, die dieses Token verwendet, statt nur auf eine einzelne Regel.
 
-<div class="videos-container">
-  <video controls preload="metadata">
-    <source src="https://cdn.webforj.com/webforj-documentation/video/craftforJ/theme-knobs.mp4#t=0.5" type="video/mp4" />
-  </video>
-</div>
+<VideoPlayer video="craftforj/theme-knobs" width={1920} height={992} title="Theme knobs" />
 
-## Anpassung eines Themas {#adjusting-a-theme}
+## Ein Theme anpassen {#adjusting-a-theme}
 
-Die Steuerelemente sind nach ihren Einflussbereichen gruppiert und decken die Palette ab, aus der die App aufgebaut ist, die Oberflächen dahinter, die Form ihrer Kanten und Ecken, ihre Typografie sowie ihren Abstand. Jedes Steuerelement erklärt, was es tut, da einige von ihnen die Lesbarkeit der App ändern, nicht nur ihr Aussehen.
+Die Steuerelemente sind nach ihren Auswirkungen gruppiert. Sie umfassen die Palette, auf der die App aufbaut, die Oberflächen im Hintergrund, die Form der Kanten und Ecken, die Typografie und die Abstände. Jedes Steuerelement erklärt seine Funktion, denn einige beeinflussen die Lesbarkeit der App und nicht nur ihr Aussehen.
 
-Ein Thema hat eine helle und eine dunkle Seite. Sie können eine Bearbeitung auf beide Seiten oder nur auf eine anwenden und die App zwischen ihnen umschalten, um die Seite zu sehen, an der Sie arbeiten. Eine Vorschau zeigt die Palette, die Oberflächen, ein Typbeispiel und die Statusfarben zusammen an, sodass Sie eine Kombination erkennen können, die auf einem Bildschirm funktioniert, aber auf einem anderen nicht, bevor Sie sie speichern.
+Ein Theme hat eine helle und eine dunkle Variante. Du kannst eine Änderung auf beide oder nur auf eine anwenden und zwischen ihnen wechseln, um die Variante zu sehen, die du gerade bearbeitest. Eine Vorschau zeigt die Palette, die Oberflächen, ein Schriftmuster und die Statusfarben gemeinsam. So erkennst du, wenn eine Kombination auf einem Bildschirm funktioniert, auf einem anderen aber nicht – noch bevor du sie speicherst.
 
-![Die Themensteuerelemente neben der Vorschau](/img/craftforj/theme/knob-rail.png#rounded-border)
+![Die Theme-Steuerelemente neben der Vorschau](/img/craftforj/theme/knob-rail.png#rounded-border)
 
-## Speichern eines Themas {#saving-a-theme}
+## Ein Theme speichern {#saving-a-theme}
 
-Ein Thema, an dem Sie arbeiten, wird auf die App angewendet, gehört jedoch noch nicht zu Ihrem Projekt, und ein Neuladen der Seite verwirft es. Das Speichern schreibt es in das Stylesheet Ihrer App, wo es Überarbeitungen übersteht, in Ihrem Diff angezeigt wird und mit Ihrer App ausgeliefert wird.
+Ein Theme, an dem du gerade arbeitest, wird auf die App angewendet, gehört aber noch nicht zu deinem Projekt. Beim erneuten Laden der Seite gehen die Änderungen verloren. Beim Speichern wird das Theme in das Stylesheet deiner App geschrieben. Dort bleibt es auch nach einem Neustart erhalten, erscheint in deinem Diff und wird mit deiner App ausgeliefert.
 
-craftforJ schreibt in ein einzelnes Stylesheet, das es selbst erkennt oder das Sie in den Einstellungen von craftforJ benennen. Wenn diese Datei bereits ein Thema enthält, ersetzt das Speichern sie als Ganzes, anstatt ein zweites darüber zu legen, und craftforJ bittet Sie, dies zuerst zu bestätigen. Wenn die Datei sich geändert hat, nachdem craftforJ sie gelesen hat, wird nichts geschrieben, und craftforJ fordert Sie auf, erneut zu speichern.
+craftforJ schreibt in ein einzelnes Stylesheet, das es entweder selbst erkennt oder das du in den craftforJ-Einstellungen angibst. Wenn diese Datei bereits ein Theme enthält, wird es beim Speichern vollständig ersetzt, anstatt ein zweites Theme darüberzulegen. craftforJ bittet dich vorher um eine Bestätigung. Wenn die Datei geändert wurde, seit craftforJ sie eingelesen hat, werden keine Änderungen geschrieben und craftforJ fordert dich auf, erneut zu speichern.
 
-Sie können ein Thema auf den zuletzt gespeicherten Zustand zurücksetzen oder es vollständig aus dem Stylesheet entfernen, ohne andere Inhalte in der Datei zu beeinträchtigen.
+Du kannst ein Theme auf den zuletzt gespeicherten Stand zurücksetzen oder es vollständig aus dem Stylesheet entfernen, ohne andere Inhalte der Datei zu beeinflussen.
 
-## Vorgefertigte Themen {#preset-themes}
+## Vordefinierte Themes {#preset-themes}
 
-Über das standardmäßige Aussehen und Gefühl hinaus bietet craftforJ mehrere Themenvorgaben zur Auswahl. Das folgende zeigt einen Vergleich zwischen den Themen App Standard und Portico.
+Zusätzlich zum standardmäßigen Erscheinungsbild bietet craftforJ mehrere vordefinierte Themes zur Auswahl. Der folgende Vergleich zeigt die Themes App Default und Portico.
 
 <Tabs>
-  <TabItem value="app-default" label="App Standard" default>
-    ![App mit dem App Standard-Thema](/img/craftforj/theme/theme-app-default.png#rounded-border)
+  <TabItem value="app-default" label="App Default" default>
+    ![App mit dem Theme App Default](/img/craftforj/theme/theme-app-default.png#rounded-border)
   </TabItem>
   <TabItem value="portico" label="Portico">
-    ![App mit dem Portico-Thema](/img/craftforj/theme/theme-portico.png#rounded-border)
+    ![App mit dem Theme Portico](/img/craftforj/theme/theme-portico.png#rounded-border)
   </TabItem>
 </Tabs>
 
 ## Deaktivieren {#turning-it-off}
 
-Sie können das Speichern von Stilen für eine App in den Einstellungen von craftforJ deaktivieren oder es vollständig mit der [`stylesheet-changes`](/docs/craftforj/configuration#feature-flags) Eigenschaft entfernen. Wenn eines von beidem deaktiviert ist, funktioniert die Registerkarte weiterhin und malt die laufende App neu, aber Sie können das Ergebnis nicht speichern.
+In den craftforJ-Einstellungen kannst du das Speichern von Styles für eine App deaktivieren oder es mit der Eigenschaft [`stylesheet-changes`](/docs/craftforj/configuration#feature-flags) vollständig entfernen. In beiden Fällen funktioniert der Tab weiterhin und aktualisiert das Aussehen der laufenden App, aber du kannst das Ergebnis nicht speichern.

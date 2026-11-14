@@ -4,45 +4,41 @@ sidebar_position: 6
 description: >-
   Adjust the DWC design tokens of a running webforJ app, preview the result
   immediately, and save it into your stylesheet.
-_i18n_hash: c7dd349ebf7570b2e34953fce990173d
+_i18n_hash: fe089afe4f44e457a98622707bf995e5
 ---
-Teema-välilehti sallii sinulle vaihdon sovelluksesi ulkoa näyttäessäsi. Se toimii sovelluksesi jo käyttämien [DWC-suunnittelutunnusten](/docs/styling/css-variables) kanssa, joten yksi muutos saavuttaa jokaisen komponentin, joka lukee tuota tunnusta, sen sijaan että muokkaisit sääntöjä yksi kerrallaan.
+Teema-välilehdellä voit muuttaa sovelluksesi ulkoasua sen ollessa käynnissä. Se toimii sovelluksesi jo käyttämien [DWC-suunnittelutunnisteiden](/docs/styling/css-variables) kanssa, joten yksittäinen muutos vaikuttaa kaikkiin kyseistä tunnistetta käyttäviin komponentteihin sen sijaan, että muuttaisit sääntöjä yksi kerrallaan.
 
-<div class="videos-container">
-  <video controls preload="metadata">
-    <source src="https://cdn.webforj.com/webforj-documentation/video/craftforJ/theme-knobs.mp4#t=0.5" type="video/mp4" />
-  </video>
-</div>
+<VideoPlayer video="craftforj/theme-knobs" width={1920} height={992} title="Theme knobs" />
 
-## Teeman säätö {#adjusting-a-theme}
+## Teeman muokkaaminen {#adjusting-a-theme}
 
-Ohjaimet on ryhmitelty sen mukaan, mitä ne vaikuttavat, kattaen sovelluksen rakennuspalletin, sen taustat, reunoja ja kulmia, typografian ja väliotsikot. Jokainen ohjain selittää, mitä se tekee, sillä jotkut niistä muuttavat sovelluksen luettavuutta ennemmin kuin vain ulkonäköä.
+Säätimet on ryhmitelty niiden vaikutuksen mukaan. Niillä voi muokata sovelluksen väripalettia, taustapintoja, reunojen ja kulmien muotoa, typografiaa sekä välistyksiä. Kunkin säätimen toiminta selitetään, sillä jotkin säätimet vaikuttavat sovelluksen luettavuuteen eivätkä ainoastaan sen ulkoasuun.
 
-Teemalla on vaalea puoli ja tumma puoli. Voit soveltaa muokkausta molempiin tai vain yhteen, ja kääntää sovellusta niiden välillä nähdäksesi, mihin puoleen työskentelet. Esikatselu näyttää paletin, pinnat, tyypinäytteen ja tilavärit yhdessä, jotta voit havaita yhdistelmän, joka toimii yhdellä näytöllä mutta ei toisella, ennen kuin tallennat sen.
+Teemalla on vaalea ja tumma puoli. Muutoksen voi ottaa käyttöön molemmilla puolilla tai vain toisella, ja voit vaihtaa sovellusta vaalean ja tumman tilan välillä nähdäksesi, mitä puolta olet muokkaamassa. Esikatselussa näkyvät yhdessä väripaletti, taustapinnat, tekstinäyte ja tilavärit. Näin huomaat ennen tallentamista, jos yhdistelmä toimii yhdellä näytöllä mutta ei toisella.
 
-![Teeman ohjaimet esikatselun vieressä](/img/craftforj/theme/knob-rail.png#rounded-border)
+![Teeman säätimet esikatselun vieressä](/img/craftforj/theme/knob-rail.png#rounded-border)
 
-## Teeman tallennus {#saving-a-theme}
+## Teeman tallentaminen {#saving-a-theme}
 
-Työstämäsi teema on sovelluksessa käytössä, mutta se ei vielä kuulu projektiisi, ja sivun uudelleenlataus hylkää sen. Tallentaminen kirjoittaa sen sovelluksesi tyyliarkistoon, missä se säilyy uudelleenkäynnistyksissä, näkyy erotuksissasi ja toimitetaan sovelluksesi mukana.
+Muokkaamasi teema otetaan käyttöön sovelluksessa, mutta sitä ei vielä tallenneta osaksi projektiasi. Sivun lataaminen uudelleen hylkää muutokset. Tallentaminen kirjoittaa teeman sovelluksesi tyylitiedostoon, jossa se säilyy uudelleenkäynnistysten yli, näkyy diffissäsi ja toimitetaan sovelluksesi mukana.
 
-craftforJ kirjoittaa yhteen tyyliarkistoon, jonka se havaitsee itsenäisesti tai jonka nimeät craftforJ-asetuksissa. Jos tiedosto pitää jo teemaa, tallentaminen korvataan kokonaisuudessaan sen sijaan, että kerrostaisi toisen sen päälle, ja craftforJ pyytää sinua ensin vahvistamaan. Jos tiedostoa on muutettu craftforJ:n sen lukeman jälkeen, mitään ei kirjoiteta ja craftforJ pyytää sinua tallentamaan uudelleen.
+craftforJ kirjoittaa yhteen tyylitiedostoon, jonka se tunnistaa automaattisesti tai jonka määrität craftforJ-asetuksissa. Jos tiedosto sisältää jo teeman, tallennettaessa se korvataan kokonaan eikä sen päälle lisätä toista teemaa. craftforJ pyytää sinua ensin vahvistamaan tämän. Jos tiedosto on muuttunut sen jälkeen, kun craftforJ luki sen, mitään ei kirjoiteta ja craftforJ pyytää tallentamaan uudelleen.
 
-Voit palauttaa teeman viimeiseen tallennettuun tilaan tai poistaa sen täysin tyyliarkistosta vaikuttamatta muihin tiedostossa.
+Voit palauttaa teeman viimeksi tallennettuun tilaan tai poistaa sen kokonaan tyylitiedostosta vaikuttamatta tiedoston muuhun sisältöön.
 
-## Esiasetetut teemat {#preset-themes}
+## Teeman esiasetukset {#preset-themes}
 
-Olemassa olevan ulkonäön ja tunteen lisäksi craftforJ:llä on useita teeman esiasetuksia valittavana. Seuraavassa on vertailu teemojen App Default ja Portico välillä.
+Oletusulkoasun lisäksi craftforJ sisältää useita teeman esiasetuksia, joista voit valita. Seuraavassa vertaillaan teemoja App Default ja Portico.
 
 <Tabs>
   <TabItem value="app-default" label="App Default" default>
-    ![Sovellus App Default -teeman kanssa](/img/craftforj/theme/theme-app-default.png#rounded-border)
+    ![Sovellus App Default -teemalla](/img/craftforj/theme/theme-app-default.png#rounded-border)
   </TabItem>
   <TabItem value="portico" label="Portico">
-    ![Sovellus Portico-teeman kanssa](/img/craftforj/theme/theme-portico.png#rounded-border)
+    ![Sovellus Portico-teemalla](/img/craftforj/theme/theme-portico.png#rounded-border)
   </TabItem>
 </Tabs>
 
-## Sammuttaminen {#turning-it-off}
+## Toiminnon poistaminen käytöstä {#turning-it-off}
 
-Voit sammuttaa tyylien tallentamisen sovellukselle craftforJ-asetuksissa tai poistaa sen kokonaan [`stylesheet-changes`](/docs/craftforj/configuration#feature-flags) ominaisuudella. Jommankumman ollessa pois päältä, välilehti toimii edelleen ja maalauksia ajavalle sovellukselle, mutta et voi tallentaa tulosta.
+Voit poistaa sovelluksen tyylien tallentamisen käytöstä craftforJ-asetuksissa tai poistaa sen kokonaan [`stylesheet-changes`](/docs/craftforj/configuration#feature-flags)-ominaisuudella. Kun jompikumpi näistä on poistettu käytöstä, välilehti toimii edelleen ja päivittää käynnissä olevan sovelluksen ulkoasun, mutta tulosta ei voi tallentaa.

@@ -2,154 +2,159 @@
 title: Tarkkailijat ja reittiparametrit
 sidebar_position: 5
 description: Step 4 - Use route parameters to control what content loads.
-_i18n_hash: c87796ee04dafe840b3903ae8a1fa0ab
+_i18n_hash: 413e52a1a6601beef4ece9b9e7a1757e
 ---
-Sovellus kohdasta [Reititys ja yhdistelmät](/docs/introduction/tutorial/routing-and-composites) voi lisätä vain uusia asiakkaita tietokantaan. Käyttämällä seuraavia käsitteitä, annat käyttäjille mahdollisuuden myös muokata olemassa olevien asiakkaiden tietoja:
+Sovellus sivulta [Reititys ja koostekomponentit](/docs/introduction/tutorial/routing-and-composites) voi lisätä tietokantaan vain uusia asiakkaita. Seuraavien käsitteiden avulla voit antaa käyttäjille mahdollisuuden myös muokata olemassa olevien asiakkaiden tietoja:
 
 - Reittimallit
-- Parametrien välittäminen URL-osoitteen kautta
+- Parametriarvojen välittäminen URL-osoitteessa
 - Elinkaaren tarkkailijat
 
-Tämän vaiheen suorittaminen luo version [4-tarkkailijat-ja-reittiparametrit](https://github.com/webforj/webforj-tutorial/tree/main/4-observers-and-route-parameters).
+Tämän vaiheen suorittaminen luo version [4-observers-and-route-parameters](https://github.com/webforj/webforj-tutorial/tree/main/4-observers-and-route-parameters)-esimerkistä.
 
-## Sovelluksen ajaminen {#running-the-app}
+<!-- <VideoPlayer video="tutorial/scaling-with-routing-and-composites" width={1920} height={1080} title="Scaling with routing and composites" /> -->
 
-Kun kehität sovellustasi, voit käyttää [4-tarkkailijat-ja-reittiparametrit](https://github.com/webforj/webforj-tutorial/tree/main/4-observers-and-route-parameters) vertailuna. Näet sovelluksen toiminnassa:
+## Sovelluksen suorittaminen {#running-the-app}
 
-1. Siirry ykköstason hakemistoon, joka sisältää `pom.xml`-tiedoston, tämä on `4-tarkkailijat-ja-reittiparametrit`, jos seuraat GitHubin versiota.
+Kun kehität sovellustasi, voit käyttää vertailukohtana [4-observers-and-route-parameters](https://github.com/webforj/webforj-tutorial/tree/main/4-observers-and-route-parameters)-esimerkkiä. Näet sovelluksen toiminnassa seuraavasti:
 
-2. Käytä seuraavaa Maven-komentoa ajaaksesi Spring Boot -sovellusta paikallisesti:
+1. Siirry ylimmän tason hakemistoon, joka sisältää `pom.xml`-tiedoston. Jos seuraat GitHubissa olevaa versiota, hakemisto on `4-observers-and-route-parameters`.
+
+2. Suorita Spring Boot -sovellus paikallisesti seuraavalla Maven-komennolla:
     ```bash
     mvn
     ```
 
-Sovelluksen ajaminen avaa automaattisesti uuden selaimen osoitteeseen `http://localhost:8080`.
+Sovelluksen suorittaminen avaa automaattisesti uuden selaimen osoitteessa `http://localhost:8080`.
 
-## Käyttäjän `id` käyttö {#using-the-customers-id}
+## Asiakkaan `id`-tunnuksen käyttäminen {#using-the-customers-id}
 
-Jotta voit käyttää `FormView`-komponenttia olemassa olevien asiakkaiden muokkaamiseen, sinun on kerrottava sille, mikä asiakas muokataan. Voit tehdä tämän tarjoamalla alkuperäisen parametrin `FormView`:lle, joka edustaa asiakkaan tunnusta. Osa [Työskentely datan kanssa](/docs/introduction/tutorial/working-with-data) -osiosta, loit `Customer`-entiteetin, joka määrittää numeerisen `Long`-arvon ainutlaatuiseksi `id`:ksi asiakkaille, kun ne lisätään tietokantaan.
+Jotta voit muokata olemassa olevia asiakkaita `FormView`-näkymässä, tarvitset tavan kertoa sille, mitä asiakasta muokataan.
+Voit tehdä tämän antamalla `FormView`-näkymälle alkuparametrin, joka vastaa asiakkaan tunnusta.
+[Työskentely datan kanssa](/docs/introduction/tutorial/working-with-data) -osiossa loit `Customer`-entiteetin, joka määrittää asiakkaalle yksilölliseksi `id`-tunnukseksi numeerisen `Long`-arvon, kun asiakas lisätään tietokantaan.
 
 ```java
-@Id
-@GeneratedValue(strategy = GenerationType.IDENTITY)
-private Long id;
+ @Id
+ @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long id;
 ```
 
-Tässä vaiheessa teet muutoksia `FormView`:iin, jotta se käyttää `id`:tä alkuperäisenä parametrina ennen kuin mitään latautuu. Sitten saat `FormView`:n arvioimaan `id`:n päättääksesi, onko lomake uuden asiakkaan lisäämistä varten vai olemassa olevan päivittämistä varten. Lopuksi muokkaat `MainView`:ta, jotta se lähettää `id`-arvon siirryttäessä `FormView`:iin.
+Tässä vaiheessa muokkaat `FormView`-näkymää niin, että se käyttää `id`-tunnusta alkuparametrina ennen kuin mitään ladataan. Sen jälkeen `FormView` tarkistaa `id`-tunnuksen avulla, lisätäänkö lomakkeella uusi asiakas vai päivitetäänkö olemassa olevaa. Lopuksi muokkaat `MainView`-näkymää niin, että se välittää `id`-arvon siirryttäessä `FormView`-näkymään.
 
-## Reittimallin lisääminen `FormView`:iin {#adding-a-route-pattern}
+## Reittimallin lisääminen `FormView`-näkymään {#adding-a-route-pattern}
 
-Aikaisemmassa vaiheessa reitin määrittäminen `FormView`:lle `@Route(customer)` yhdistää luokan paikallisesti osoitteeseen `http://localhost:8080/customer`. Reittimallin lisääminen antaa sinun liittää `id`:n alkuperäiseksi parametri `FormView`:hin.
+Edellisessä vaiheessa reitin asettaminen `FormView`-näkymässä muotoon `@Route(customer)` yhdisti luokan paikallisesti osoitteeseen `http://localhost:8080/customer`. Reittimallin lisääminen mahdollistaa `id`-tunnuksen lisäämisen `FormView`-näkymän alkuparametriksi.
 
-[Reittimalli](/docs/routing/route-patterns) antaa sinun lisätä parametrin URL-osoitteeseen, tehdä siitä valinnaisen ja asettaa rajoituksia voimassa oleville malleille. Käyttämällä `@Route`-annotaatiota, tästä tulee `id`:stä valinnainen reittiparametri `FormView`:lle:
+[Reittimallin](/docs/routing/route-patterns) avulla voit lisätä URL-osoitteeseen parametrin, määrittää sen valinnaiseksi ja asettaa kelvollisia malleja koskevia rajoituksia. `@Route`-annotaatiolla voit määrittää `id`-tunnuksen `FormView`-näkymän valinnaiseksi reittiparametriksi seuraavasti:
 
-- **`/:id`** antaa reitille nimettynä parametrinä `id`, joten siirtyminen osoitteeseen `http://localhost:8080/customer/6` lataa `FormView`:n `id`-parametrilla `6`.
+- **`/:id`** antaa reitille nimetyn `id`-parametrin. Kun siirryt osoitteeseen `http://localhost:8080/customer/6`, `FormView` avautuu ja sen `id`-parametrin arvo on `6`.
 
-- **`?`** tekee `id`-parametrista valinnaisen. Oletusarvoisesti parametrit ovat pakollisia, mutta tekemällä `id`:n valinnaiseksi voit käyttää `FormView`:ta uusien asiakkaiden lisäämiseen, joilla ei vielä ole `id`:tä.
+- **`?`** määrittää `id`-parametrin valinnaiseksi. Parametrit ovat oletusarvoisesti pakollisia, mutta `id`-parametrin määrittäminen valinnaiseksi mahdollistaa `FormView`-näkymän käyttämisen uusien asiakkaiden lisäämiseen, vaikka heillä ei vielä ole `id`-tunnusta.
 
-- **`<[0-9]+>`** rajoittaa `id`:n positiiviseksi numeroksi. Kulmasuluissa `<>` voit lisätä rajoituksia säännöllisen lausekkeen muodossa parametrille. Jos `id` ei vastaa rajoitusta, esim. `http://localhost:8080/customer/john-smith`, se ohjaa käyttäjän 404-sivulle.
+- **`<[0-9]+>`** rajoittaa `id`-arvon positiiviseksi luvuksi. Kulmasulkeissa `<>` voit määrittää parametrille säännöllisen lausekkeen mukaisen rajoituksen. Jos `id` ei vastaa rajoitusta, esimerkiksi osoitteessa `http://localhost:8080/customer/john-smith`, käyttäjä ohjataan 404-sivulle.
 
-Lisätäksesi valinnaisen reittiparametrin `FormView`:iin, muuta `@Route`-annotaatio seuraavaksi:
+Lisää valinnainen reittiparametri `FormView`-näkymään muuttamalla `@Route`-annotaatio seuraavaksi:
 
 ```java
 @Route("customer/:id?<[0-9]+>")
 ```
 
-## Reititys `FormView`:iin {#routing-to-formview}
+## Reititys `FormView`-näkymään {#routing-to-formview}
 
-`FormView` hyväksyy nyt valinnaisen `id`-parametrin ja latautuu vain, jos `id` on kokonaispositiivinen luku.
+`FormView` hyväksyy nyt valinnaisen `id`-parametrin ja latautuu vain, jos `id` on positiivinen kokonaisluku.
 
-Kuitenkin `FormView` voi silti ladata, kun käyttäjä syöttää manuaalisesti URL-osoitteen ei-olemassa olevalle asiakkaalle, kuten `http://localhost:8080/customer/5000`. Elinkaaren tarkkailijan lisääminen ennen siirtymistä `FormView`:iin antaa sovelluksesi mahdollisuuden päättää, miten käsitellä saapuvaa `id`-arvoa.
+Käyttäjä voi kuitenkin yhä avata `FormView`-näkymän kirjoittamalla selaimeen manuaalisesti olemattoman asiakkaan URL-osoitteen, kuten `http://localhost:8080/customer/5000`. Elinkaaren tarkkailijan lisääminen ennen `FormView`-näkymään siirtymistä antaa sovellukselle mahdollisuuden päättää, miten saapuvaa `id`-arvoa käsitellään.
 
 ### Ehdollinen reititys {#conditional-routing}
 
-Elinkaaren tarkkailijat mahdollistavat komponenttien reagoida elinkaaritapahtumiin tietyissä vaiheissa. [Elinkaaren tarkkailijat](/docs/routing/navigation-lifecycle/observers) -artikkeli listaa käytettävissä olevat tarkkailijat, mutta tässä vaiheessa käytetään vain `WillEnterObserver`:ia.
+Elinkaaren tarkkailijoiden avulla komponentit voivat reagoida elinkaaren tapahtumiin tietyissä vaiheissa. [Elinkaaren tarkkailijat](/docs/routing/navigation-lifecycle/observers) -artikkelissa luetellaan käytettävissä olevat tarkkailijat, mutta tässä vaiheessa käytetään vain `WillEnterObserver`-tarkkailijaa.
 
-`WillEnterObserver`-aika tapahtuu ennen, kuin komponentin reititys on valmis. Tämän tarkkailijan käyttö mahdollistaa saapuvan `id`:n arvioimisen. Jos `id` ei vastaa olemassa olevaa asiakasta, voit ohjata käyttäjän takaisin `MainView`:iin etsimään voimassa olevaa asiakasta muokattavaksi.
+`WillEnterObserver` käynnistyy ennen kuin komponentin reititys on valmis.
+Tämän tarkkailijan avulla voit tarkistaa saapuvan `id`-arvon. Jos `id` ei vastaa olemassa olevaa asiakasta, voit ohjata käyttäjän takaisin `MainView`-näkymään, josta hän voi etsiä muokattavan asiakkaan.
 
-Ennen kuin käsittelemme `WillEnterObserver`-koodia, seuraava vuokaavio havainnollistaa mahdollisia tuloksia reititettäessä `FormView`:iin:
+Ennen kuin käsittelemme `WillEnterObserver`-tarkkailijan koodia, seuraava vuokaavio esittää mahdolliset lopputulokset reititettäessä `FormView`-näkymään:
 
 ```mermaid
 flowchart TD
-    A[Siirtyminen FormView:iin] --> B{Onko id-parametria?}
-    B -->|Ei| C[Siirry tyhjään FormView:iin]
-    B -->|Kyllä| D{Vastaako id-arvo asiakkaan id:tä?}
-    D -->|Kyllä| E[Siirry täytettyyn FormView:iin]
-    D -->|Ei| F[Ohjaa MainView:iin]
+    A[Going to FormView] --> B{Is there an id parameter?}
+    B -->|No| C[Go to an empty FormView]
+    B -->|Yes| D{Does that id value match with a customer id?}
+    D -->|Yes| E[Go to a filled FormView]
+    D -->|No| F[Redirect to MainView]
 ```
 
-### `WillEnterObserver`:in käyttö {#using-the-willenterobserver}
+### `WillEnterObserver`-tarkkailijan käyttäminen {#using-the-willenterobserver}
 
-Käyttämällä elinkaaren tarkkailijaa, joka laukaisee ennen kuin komponentti latautuu kokonaan, `WillEnterObserver`, voit lisätä ehtoja määrittääksesi, tuleeko sovelluksen jatkaa `FormView`:iin vai ohjataanko käyttäjä `MainView`:iin.
+Ennen komponentin täyttä latautumista käynnistyvän elinkaaren tarkkailijan `WillEnterObserver` avulla voit määrittää ehdot, joiden perusteella päätetään, jatkaako sovellus `FormView`-näkymään vai pitääkö käyttäjä ohjata `MainView`-näkymään.
 
-Jokainen elinkaaren tarkkailija on rajapinta, joten toteuta `WillEnterObserver` osana `FormView`:n deklarointia:
+Jokainen elinkaaren tarkkailija on rajapinta, joten ota `WillEnterObserver` käyttöön osana `FormView`-luokan määrittelyä:
 
 ```java
 public class FormView extends Composite<Div> implements WillEnterObserver {
 ```
 
-`WillEnterObserver`-tarkkailijassa on `onWillEnter()`-metodi, jota webforJ kutsuu ennen siirtymistä komponenttiin. Tällä metodilla on kaksi parametria: `WillEnterEvent` ja `ParametersBag`.
+`WillEnterObserver`-tarkkailijassa on `onWillEnter()`-metodi, jota webforJ kutsuu ennen komponenttiin reitittämistä. Metodilla on kaksi parametria: `WillEnterEvent` ja `ParametersBag`.
 
-`WillEnterEvent` määrittää, jatketaanko reitittämistä komponenttiin `accept()`-metodilla, vai estetäänkö reititys käyttämällä `reject()`-metodia. Kun nykyinen reitti hylätään, sinun on ohjattava käyttäjä muualle.
+`WillEnterEvent`-parametrin `accept()`-metodilla voit jatkaa reititystä komponenttiin, ja `reject()`-metodilla voit pysäyttää sen. Kun hylkäät nykyisen reitin, sinun on ohjattava käyttäjä johonkin muualle.
 
-`ParametersBag` sisältää URL-osoitteen reititysparametrit. Käytät `ParametersBag`:ia seuraavassa osiossa luodaksesi ehtologiiikan `onWillEnter()`-metodille käyttäen `id`-parametria.
+`ParametersBag` sisältää URL-osoitteen reitittimen parametrit. Seuraavassa osiossa käytät `ParametersBag`-oliota `onWillEnter()`-metodin ehdollisen logiikan luomiseen `id`-parametrin avulla.
 
-Seuraava `onWillEnter()` on esimerkki, jossa on vain kaksi tulosta:
+Seuraava `onWillEnter()`-esimerkki sisältää vain kaksi mahdollista lopputulosta:
 
 ```java
 @Override
 public void onWillEnter(WillEnterEvent event, ParametersBag parameters) {
 
-  //Lisää ehtologikka
+  //Add conditional logic
   if (<condition>) {
 
-    //Salli siirtyminen FormView:iin
+    //Allow routing to FormView to proceed
     event.accept();
 
   } else {
 
-    //Pysäytä siirtyminen FormView:iin
+    //Stop routing to FormView
     event.reject();
 
-    //Lähetä käyttäjä MainView:iin
+    //Send the user to MainView
     navigateToMain();
   }
 }
 ```
 
-### `ParametersBag`:in käyttö {#using-the-parametersbag}
+### `ParametersBag`-olion käyttäminen {#using-the-parametersbag}
 
-Kuten edellisessä osiossa mainittiin, `ParametersBag` sisältää reititysparametrin URL-osoitteesta. Jokaisella elinkaaren tarkkailijalla on pääsy tähän objektiin, ja sen käyttö sovelluksessa antaa sinun saada `id`-arvon.
+Kuten edellisessä osiossa lyhyesti mainittiin, `ParametersBag` sisältää URL-osoitteen reitittimen parametrin. Jokaisella elinkaaren tarkkailijalla on pääsy tähän olioon, ja sen avulla sovellus voi hakea `id`-arvon.
 
-`ParametersBag`-objekti tarjoaa useita kyselymenetelmiä, joiden avulla voit noutaa parametrin tietyn objektityypin mukaan. Esimerkiksi `getInt()` voi antaa sinulle parametrin `Integer`-tyyppisenä.
+`ParametersBag`-olio tarjoaa useita kyselymetodeja, joilla parametri voidaan hakea tietyn tyyppisenä oliona. Esimerkiksi `getInt()` voi hakea parametrin `Integer`-arvona.
 
-Koska jotkin parametrit ovat valinnaisia, mitä `getInt()` todellisuudessa palauttaa, on `Optional<Integer>`. Käyttämällä `ifPresentOrElse()`-metodia `Optional<Integer>`:ssä voit asettaa muuttujan käyttäen `Integer`-arvoa.
+Koska jotkin parametrit ovat kuitenkin valinnaisia, `getInt()` palauttaa todellisuudessa arvon `Optional<Integer>`. `Optional<Integer>`-olion `ifPresentOrElse()`-metodilla voit asettaa muuttujan `Integer`-arvon perusteella.
 
-Kun `id`:tä ei ole läsnä, käyttäjä voi jatkaa `FormView`:iin uuden asiakkaan lisäämistä varten.
+Jos `id`-arvoa ei ole, käyttäjä voi jatkaa `FormView`-näkymään uuden asiakkaan lisäämistä varten.
 
 ```java
 @Override
 public void onWillEnter(WillEnterEvent event, ParametersBag parameters) {
 
-  //Määritä, mikä parametrin on noudettava, ja tarkista onko se läsnä vai ei
+  //Determine which parameter to get, and check if it's present or not
   parameters.getInt("id").ifPresentOrElse(id -> {
 
-    //Käytä id:tä muuttujana
+    //Use the id as a variable
     customerId = Long.valueOf(id);
 
-  //Kun id:tä ei ole läsnä, jatka siirtymistä FormView:iin uuden asiakkaan lisäämistä varten
+  //When no id is present, continue to FormView for a new customer
   }, () -> event.accept());
 
 }
 ```
 
-### Onko `id` voimassa? {#is-the-id-valid}
+### Onko `id` kelvollinen? {#is-the-id-valid}
 
-T tällä hetkellä `WillEnterObserver`, jonka viimeisessä osiossa käsiteltiin, hyväksyy reitityksen vain, jos `id`-parametria ei ole läsnä. Tarkkailijan on suoritettava yksi vahvistus ennen `FormView`:iin jatkamista: varmista, että `id` vastaa olemassa olevaa asiakasta.
+Tässä vaiheessa edellisen osion `WillEnterObserver`-tarkkailija hyväksyy reitityksen vain silloin, kun `id`-arvoa ei ole. Ennen `FormView`-näkymään siirtymistä tarkkailijan on tehtävä vielä yksi tarkistus: varmista, että `id` vastaa olemassa olevaa asiakasta.
 
-Nyt `FormView` voi käyttää `CustomerService`:ia varmistaakseen asiakkaan olemassaolon `doesCustomerExist()`-metodin avulla. Jos vastaavuutta ei löydy, sovellus voi hylätä nykyisen reitityksen ja ohjata käyttäjän `MainView`:iin käyttäen `navigateToMain()`:ia.
+`FormView` voi nyt käyttää `CustomerService`-palvelua asiakkaan olemassaolon tarkistamiseen `doesCustomerExist()`-metodilla. Jos vastaavaa asiakasta ei löydy, sovellus voi hylätä nykyisen reitin ja ohjata käyttäjän `MainView`-näkymään `navigateToMain()`-metodilla.
 
-Kun tarjotaan voimassa olevaa `id`:tä, sovellus voi käyttää `accept()`:ia jatkaakseen reitittämistä `FormView`:iin. Luo `fillForm()`-metodi, joka määrittää `customer`-muuttujan asiakkaaksi, jolla on vastaava `id` tietokannassa, ja asettaa kenttien arvot:
+Jos `id` on kelvollinen, sovellus voi jatkaa reititystä `FormView`-näkymään `accept()`-metodilla. Luo `fillForm()`-metodi, joka asettaa `customer`-muuttujaksi tietokannasta löytyvän, vastaavan `id`-tunnuksen asiakkaan ja määrittää kenttien arvot:
 
 ```java
 public void fillForm(Long customerId) {
@@ -161,43 +166,50 @@ public void fillForm(Long customerId) {
 }
 ```
 
-Kuten uuden asiakkaan lisäämisessä, työn alla oleva kopio mahdollistaa käyttäjien muokata asiakastietoja käyttöliittymässä suoraan muokkaamatta arkistointia.
+Kuten uutta asiakasta lisättäessä, työkopion avulla käyttäjät voivat muokata asiakkaan tietoja käyttöliittymässä ilman, että he muokkaavat tietovarastoa suoraan.
 
 ### Valmis `onWillEnter()` {#completed-onwillenter}
 
-Kaksi viimeistä osiota käsitteli tarkasti, kuinka käsitellä jokaista tulosta reitittäessä `FormView`:iin käyttäen `ParametersBag`:ia ja `CustomerService`:a.
+Kahdessa edellisessä osiossa käsiteltiin yksityiskohtaisesti, miten `FormView`-näkymään reititettäessä voidaan käsitellä eri lopputuloksia `ParametersBag`- ja `CustomerService`-olioiden avulla.
 
-Seuraava on valmis `onWillEnter()` `FormView`:lle, joka käyttää `ParametersBag`:ia hylätä tai hyväksyä saapuva reitti ja kutsuu muita metodeja täyttääkseen lomakkeen tai lähettääkseen käyttäjän `MainView`:iin:
+Seuraava `FormView`-näkymän valmis `onWillEnter()`-metodi käyttää `ParametersBag`-oliota saapuvan reitin hylkäämiseen tai hyväksymiseen ja kutsuu muita metodeja joko lomakkeen täyttämiseksi tai käyttäjän ohjaamiseksi `MainView`-näkymään:
 
 ```java
 @Override
 public void onWillEnter(WillEnterEvent event, ParametersBag parameters) {
 
-  //Määritä, mikä parametrin on noudettava, ja tarkista onko se läsnä vai ei
+  //Determine which parameter to get, and check if it's present or not
   parameters.getInt("id").ifPresentOrElse(id -> {
+
+    //Use the id as a variable
     customerId = Long.valueOf(id);
-    //Tarkista, onko asiakasta tämän id:n kanssa
+
+    //Check if there's a customer with this id
     if (customerService.doesCustomerExist(customerId)) {
-        //Tämä asiakas on olemassa, joten jatka reitittämistä FormView:iin ja alustaa kentät käyttäen id:tä
+
+        //This customer exists, so continue to FormView, and initialize the fields using the id
         event.accept();
         fillForm(customerId);
       } else {
-        //Tätä asiakasta ei ole, joten ohjaa MainView:iin
+
+        //This customer doesn't exists, so redirect to MainView
         event.reject();
         navigateToMain();
       }
-  //Ei id:tä ollut läsnä, joten jatka reitittämistä FormView:iin uuden asiakkaan lisäämistä varten
+
+  //No id was present, so continue to FormView for a new customer
   }, () -> event.accept());
+
 }
 ```
 
 ## Asiakkaan lisääminen tai muokkaaminen {#adding-or-editing-a-customer}
 
-Aikaisemmassa versiossa tätä sovellusta lisättiin vain uusia asiakkaita, kun käyttäjä lähetti lomakkeen. Nyt kun käyttäjät voivat muokata olemassa olevia asiakkaita, `submitCustomer()`-metodin on varmista, että asiakas on jo olemassa ennen tietokannan päivittämistä.
+Sovelluksen edellinen versio lisäsi uusia asiakkaita vain, kun käyttäjä lähetti lomakkeen. Nyt kun käyttäjät voivat muokata olemassa olevia asiakkaita, `submitCustomer()`-metodin on tarkistettava ennen tietokannan päivittämistä, onko asiakas jo olemassa.
 
-Aluksi ei ollut tarpeen määrittää muuttujaa asiakkaan `id`:lle `FormView`:ssa, koska uusille asiakkaille annetaan ainutlaatuinen `id`, kun ne lähetetään tietokantaan. Kuitenkin, jos määrittelet `customerId`:n ensimmäiseksi muuttujaksi `FormView`:ssa, jossa on käyttämätön `id`-arvo, se pysyy koskemattomana uusille asiakkaille ja ylikirjoitetaan `onWillEnter()`-metodissa olemassa oleville.
+Aluksi `FormView`-näkymässä ei tarvinnut määrittää muuttujaa asiakkaan `id`-tunnukselle, koska uusille asiakkaille määritetään yksilöllinen `id`-tunnus, kun ne lisätään tietokantaan. Jos kuitenkin määrität `customerId`-muuttujan `FormView`-näkymässä alkuarvolla, joka ei ole käytössä, sen arvo säilyy muuttumattomana uusien asiakkaiden kohdalla ja korvataan `onWillEnter()`-metodissa olemassa olevien asiakkaiden kohdalla.
 
-Tämä sallii käyttää `doesCustomerExist()`-metodia tarkistaaksesi, lisätäänkö uusi asiakas vai päivitetäänkö olemassa oleva.
+Näin voit tarkistaa `doesCustomerExist()`-metodilla, lisätäänkö uusi asiakas vai päivitetäänkö olemassa olevaa.
 
 ```java
 private Long customerId = 0L;
@@ -216,22 +228,26 @@ private void submitCustomer() {
 
 ## Valmis `FormView` {#completed-formview}
 
-Tässä on miltä `FormView` pitäisi näyttää, nyt kun se voi käsitellä olemassa olevien asiakkaiden muokkaamista:
+Tältä `FormView`-näkymän pitäisi näyttää nyt, kun sillä voi käsitellä olemassa olevien asiakkaiden muokkaamista:
+
+<!-- vale off -->
+<ExpandableCode title="FormView.java" language="java" startLine={1} endLine={15}>
 
 ```java
 @Route("customer/:id?<[0-9]+>")
-@FrameTitle("Asiakastiedot")
+@FrameTitle("Customer Form")
 public class FormView extends Composite<Div> implements WillEnterObserver {
   private final CustomerService customerService;
   private Customer customer = new Customer();
   private Long customerId = 0L;
   private Div self = getBoundComponent();
-  private TextField firstName = new TextField("Etunimi", e -> customer.setFirstName(e.getValue()));
-  private TextField lastName = new TextField("Sukunimi", e -> customer.setLastName(e.getValue()));
-  private TextField company = new TextField("Yritys", e -> customer.setCompany(e.getValue()));
-  private ChoiceBox country = new ChoiceBox("Maa", e -> customer.setCountry((Customer.Country) e.getSelectedItem().getKey()));
-  private Button submit = new Button("Lähetä", ButtonTheme.PRIMARY, e -> submitCustomer());
-  private Button cancel = new Button("Peruuta", ButtonTheme.OUTLINED_PRIMARY, e -> navigateToMain());
+  private TextField firstName = new TextField("First Name", e -> customer.setFirstName(e.getValue()));
+  private TextField lastName = new TextField("Last Name", e -> customer.setLastName(e.getValue()));
+  private TextField company = new TextField("Company", e -> customer.setCompany(e.getValue()));
+  private ChoiceBox country = new ChoiceBox("Country",
+      e -> customer.setCountry((Customer.Country) e.getSelectedItem().getKey()));
+  private Button submit = new Button("Submit", ButtonTheme.PRIMARY, e -> submitCustomer());
+  private Button cancel = new Button("Cancel", ButtonTheme.OUTLINED_PRIMARY, e -> navigateToMain());
   private ColumnsLayout layout = new ColumnsLayout(
       firstName, lastName,
       company, country,
@@ -249,7 +265,8 @@ public class FormView extends Composite<Div> implements WillEnterObserver {
   }
 
   private void setColumnsLayout() {
-    List<Breakpoint> breakpoints = List.of(new Breakpoint(600, 2));
+    List<Breakpoint> breakpoints = List.of(
+        new Breakpoint(600, 2));
     layout.setSpacing("var(--dwc-space-l)")
         .setBreakpoints(breakpoints);
   }
@@ -301,11 +318,14 @@ public class FormView extends Composite<Div> implements WillEnterObserver {
 }
 ```
 
-## Siirtyminen `MainView`:ista `FormView`:iin asiakkaiden muokkaamista varten {#navigating-from-mainview-to-formview-to-edit-customers}
+</ExpandableCode>
+<!-- vale on -->
 
-Aikaisemmin tässä vaiheessa käytit olemassa olevaa `ParametersBag`:ia määrittämään `id`:n arvon. Uuden `ParametersBag`:in luominen antaa sinun siirtyä luokkien välillä suoraan valitsemiesi parametrien kanssa. Käyttäjien lähettäminen `FormView`:iin asiakkaan `id`:n kera taulukoissa on mahdollista.
+## Siirtyminen `MainView`-näkymästä `FormView`-näkymään asiakkaiden muokkaamista varten {#navigating-from-mainview-to-formview-to-edit-customers}
 
-Samalla tavalla kuten napsautat painiketta, siirtymisen sitominen käyttäjän valitsemaan toimintaan antaa heidän päättää, milloin mennä `FormView`:iin. Lisäämällä tapahtumakuuntelijan `Table`:lle voit lähettää käyttäjän `FormView`:iin `ParametersBag`:in kanssa:
+Aiemmin tässä vaiheessa käytit olemassa olevaa `ParametersBag`-oliota `id`-arvon selvittämiseen. Luomalla uuden `ParametersBag`-olion voit siirtyä suoraan luokasta toiseen valitsemiesi parametrien avulla. `Table`-komponentin datan avulla käyttäjä voidaan ohjata `FormView`-näkymään asiakkaan `id`-tunnuksen kanssa.
+
+Painikkeen tapaan navigoinnin sitominen käyttäjän valitsemaan toimintoon antaa käyttäjälle mahdollisuuden päättää, milloin hän siirtyy `FormView`-näkymään. Lisäämällä tapahtumankuuntelijan `Table`-komponenttiin voit ohjata käyttäjän `FormView`-näkymään `ParametersBag`-olion kanssa:
 
 ```java
 table.addItemClickListener(this::editCustomer);
@@ -313,25 +333,25 @@ table.addItemClickListener(this::editCustomer);
 private void editCustomer(TableItemClickEvent<Customer> e) {
   Router.getCurrent().navigate(FormView.class,
       ParametersBag.of("id=" + e.getItemKey()));
-}
+  }
 ```
 
-Kuitenkin, `Table`-elementtien avaimet luodaan automaattisesti oletusarvoisesti. Voit nimenomaisesti tehdä jokaisesta avaimesta vastaavan asiakkaan `id`:n käyttämällä `setKeyProvider()`-menetelmää:
+`Table`-komponentin alkioiden avaimet luodaan kuitenkin oletusarvoisesti automaattisesti. Voit määrittää kunkin avaimen vastaamaan asiakkaan `id`-tunnusta käyttämällä `setKeyProvider()`-metodia:
 
 ```java
 table.setKeyProvider(Customer::getId);
 ```
 
-`MainView`:ssa lisää `addItemClickListener()` ja `setKeyProvider()`-menetelmät `buildTable()`-metodiin, ja lisää sitten metodi, joka lähettää käyttäjän `FormView`:iin `ParametersBag`:illa, jossa on `id`-arvo riippuen siitä, mihin taulukossa käyttäjä napsautti:
+Lisää `addItemClickListener()`- ja `setKeyProvider()`-metodit `MainView`-näkymän `buildTable()`-metodiin. Lisää sitten metodi, joka ohjaa käyttäjän `FormView`-näkymään ja välittää `ParametersBag`-oliossa `id`-arvon sen perusteella, mitä taulukon kohtaa käyttäjä napsautti:
 
 ```java title="MainView.java" {30-31,34-37}
 @Route("/")
-@FrameTitle("Asiakastaulukko")
+@FrameTitle("Customer Table")
 public class MainView extends Composite<Div> {
   private final CustomerService customerService;
   private Div self = getBoundComponent();
   private Table<Customer> table = new Table<>();
-  private Button addCustomer = new Button("Lisää asiakas", ButtonTheme.PRIMARY,
+  private Button addCustomer = new Button("Add Customer", ButtonTheme.PRIMARY,
       e -> Router.getCurrent().navigate(FormView.class));
 
   public MainView(CustomerService customerService) {
@@ -346,10 +366,10 @@ public class MainView extends Composite<Div> {
   private void buildTable() {
     table.setSize("1000px", "294px");
     table.setMaxWidth("90vw");
-    table.addColumn("firstName", Customer::getFirstName).setLabel("Etunimi");
-    table.addColumn("lastName", Customer::getLastName).setLabel("Sukunimi");
-    table.addColumn("company", Customer::getCompany).setLabel("Yritys");
-    table.addColumn("country", Customer::getCountry).setLabel("Maa");
+    table.addColumn("firstName", Customer::getFirstName).setLabel("First Name");
+    table.addColumn("lastName", Customer::getLastName).setLabel("Last Name");
+    table.addColumn("company", Customer::getCompany).setLabel("Company");
+    table.addColumn("country", Customer::getCountry).setLabel("Country");
     table.setColumnsToAutoFit();
     table.setColumnsToResizable(false);
     table.getColumns().forEach(column -> column.setSortable(true));
@@ -367,4 +387,4 @@ public class MainView extends Composite<Div> {
 
 ## Seuraava vaihe {#next-step}
 
-Nyt kun käyttäjät voivat muokata asiakastietoja suoraan, sovelluksesi tulisi validoida muutokset ennen niiden tallentamista arkistoon. Osa [Validointi ja datan sitominen](/docs/introduction/tutorial/validating-and-binding-data) luodaan validointisäännöt ja liitetään datamalli suoraan käyttöliittymään, jolloin komponentit voivat näyttää virheilmoituksia, kun data on virheellistä.
+Nyt kun käyttäjät voivat muokata asiakkaiden tietoja suoraan, sovelluksen pitäisi validoida muutokset ennen niiden tallentamista tietovarastoon. [Datan validointi ja sidonta](/docs/introduction/tutorial/validating-and-binding-data) -osiossa luot validointisäännöt ja liität datamallin suoraan käyttöliittymään, jolloin komponentit voivat näyttää virheilmoituksia, kun data ei ole kelvollista.

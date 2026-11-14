@@ -4,35 +4,31 @@ sidebar_position: 6
 description: >-
   Adjust the DWC design tokens of a running webforJ app, preview the result
   immediately, and save it into your stylesheet.
-_i18n_hash: c7dd349ebf7570b2e34953fce990173d
+_i18n_hash: fe089afe4f44e457a98622707bf995e5
 ---
-La pestaña de Tema te permite cambiar la apariencia de tu aplicación mientras se ejecuta. Funciona con los [tokens de diseño de DWC](/docs/styling/css-variables) que tu aplicación ya utiliza, por lo que un solo cambio impacta en cada componente que lee ese token en lugar de una regla a la vez.
+La pestaña Tema te permite cambiar el aspecto de tu aplicación mientras se ejecuta. Funciona con los [tokens de diseño de DWC](/docs/styling/css-variables) que ya usa tu aplicación, así que un solo cambio llega a todos los componentes que leen ese token, en lugar de tener que cambiar una regla a la vez.
 
-<div class="videos-container">
-  <video controls preload="metadata">
-    <source src="https://cdn.webforj.com/webforj-documentation/video/craftforJ/theme-knobs.mp4#t=0.5" type="video/mp4" />
-  </video>
-</div>
+<VideoPlayer video="craftforj/theme-knobs" width={1920} height={992} title="Theme knobs" />
 
-## Ajustando un tema {#adjusting-a-theme}
+## Ajustar un tema {#adjusting-a-theme}
 
-Los controles están agrupados por lo que afectan, cubriendo la paleta con la que se construye la aplicación, las superficies detrás de ella, la forma de sus bordes y esquinas, su tipografía y su espaciado. Cada control explica lo que hace, ya que algunos de ellos cambian cuán legible es la aplicación en lugar de solo cómo se ve.
+Los controles están agrupados según lo que afectan: la paleta en la que se basa la aplicación, las superficies de fondo, las formas de los bordes y las esquinas, la tipografía y el espaciado. Cada control explica su función, ya que algunos afectan a la legibilidad de la aplicación, no solo a su aspecto.
 
-Un tema tiene un lado claro y un lado oscuro. Puedes aplicar una edición a ambos o a uno, y alternar la aplicación entre ellos para ver el lado en el que estás trabajando. Una vista previa muestra la paleta, las superficies, una muestra tipográfica y los colores de estado juntos, para que puedas detectar una combinación que funcione en una pantalla pero no en otra antes de guardarla.
+Un tema tiene una variante clara y una oscura. Puedes aplicar un cambio a ambas o a una sola, y alternar entre ellas en la aplicación para ver la variante que estás editando. Una vista previa muestra la paleta, las superficies, una muestra tipográfica y los colores de estado a la vez. Así puedes detectar antes de guardar una combinación que funciona en una pantalla, pero no en otra.
 
 ![Los controles del tema junto a la vista previa](/img/craftforj/theme/knob-rail.png#rounded-border)
 
-## Guardando un tema {#saving-a-theme}
+## Guardar un tema {#saving-a-theme}
 
-Un tema en el que estás trabajando se aplica a la aplicación pero aún no forma parte de tu proyecto, y recargar la página lo descarta. Guardar lo escribe en la hoja de estilos de tu aplicación, donde sobrevive a reinicios, aparece en tu diff y se envía con tu aplicación.
+El tema en el que estás trabajando se aplica a la aplicación, pero todavía no forma parte de tu proyecto; si vuelves a cargar la página, se descarta. Al guardarlo, se escribe en la hoja de estilos de tu aplicación, donde se conserva tras los reinicios, aparece en tu diff y se incluye con tu aplicación.
 
-craftforJ escribe en una sola hoja de estilos, la cual detecta por sí misma o que nombras en la configuración de craftforJ. Si ese archivo ya contiene un tema, guardar lo reemplaza por completo en lugar de superponer uno nuevo, y craftforJ te pide confirmación primero. Si el archivo cambió después de que craftforJ lo leyó, no se escribe nada y craftforJ te pide que lo guardes nuevamente.
+craftforJ escribe en una sola hoja de estilos, que detecta automáticamente o que puedes indicar en la configuración de craftforJ. Si ese archivo ya contiene un tema, al guardar se reemplaza por completo en lugar de superponerle otro, y craftforJ te pide confirmación antes de hacerlo. Si el archivo cambia después de que craftforJ lo lea, no se escribe nada y craftforJ te pide que vuelvas a guardar.
 
-Puedes revertir un tema a su último estado guardado o eliminarlo de la hoja de estilos por completo sin afectar nada más en el archivo.
+Puedes revertir un tema a su último estado guardado o eliminarlo por completo de la hoja de estilos sin afectar al resto del archivo.
 
-## Temas preestablecidos {#preset-themes}
+## Temas predefinidos {#preset-themes}
 
-Más allá del aspecto y la sensación predeterminados, craftforJ tiene varios temas preestablecidos para elegir. A continuación se muestra una comparación entre los temas App Default y Portico.
+Además del aspecto predeterminado, craftforJ ofrece varios temas predefinidos entre los que puedes elegir. A continuación, se comparan los temas App Default y Portico.
 
 <Tabs>
   <TabItem value="app-default" label="App Default" default>
@@ -43,6 +39,6 @@ Más allá del aspecto y la sensación predeterminados, craftforJ tiene varios t
   </TabItem>
 </Tabs>
 
-## Desactivándolo {#turning-it-off}
+## Desactivarlo {#turning-it-off}
 
-Puedes desactivar la opción de guardar estilos para una aplicación en la configuración de craftforJ, o eliminarla por completo con la propiedad [`stylesheet-changes`](/docs/craftforj/configuration#feature-flags). Con cualquiera de las opciones desactivadas, la pestaña aún funciona y sigue repaintando la aplicación en ejecución, pero no puedes guardar el resultado.
+Puedes desactivar el guardado de estilos para una aplicación en la configuración de craftforJ, o eliminarlo por completo con la propiedad [`stylesheet-changes`](/docs/craftforj/configuration#feature-flags). Si desactivas cualquiera de estas opciones, la pestaña seguirá funcionando y actualizando la aplicación en ejecución, pero no podrás guardar el resultado.

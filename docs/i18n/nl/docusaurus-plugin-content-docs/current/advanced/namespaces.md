@@ -4,67 +4,67 @@ sidebar_position: 40
 description: >-
   Share thread-safe key-value state across sessions, thread groups, or the
   entire JVM using Private, Group, and Global namespaces.
-_i18n_hash: fb5d7a0ef2a65790f0692612c07d9044
+_i18n_hash: f932a175d81df4147cae1335991db3d5
 ---
 <DocChip chip='since' label='24.22' />
 <JavadocLink type="foundation" location="com/webforj/environment/namespace/Namespace" top='true'/>
 
-Namespaces in webforJ bieden een mechanisme voor het opslaan en ophalen van gedeelde gegevens over verschillende scope's in een webapplicatie. Ze stellen intercomponent- en cross-sessie gegevenscommunicatie mogelijk zonder gebruik te maken van traditionele opslagtechnieken zoals sessie-attributen of statische velden. Deze abstractie stelt ontwikkelaars in staat om status op een gecontroleerde, threadveilige manier te verpakken en te benaderen. Namespaces zijn ideaal voor het bouwen van samenwerkingshulpmiddelen voor meerdere gebruikers of gewoon voor het behouden van consistente globale instellingen, en stellen je in staat om gegevens veilig en efficiënt te coördineren.
+Naamruimten in webforJ bieden een manier om gedeelde gegevens op te slaan en op te halen binnen verschillende scopes in een webapp. Ze maken communicatie tussen componenten en sessies mogelijk zonder afhankelijk te zijn van traditionele opslagtechnieken zoals sessieattributen of statische velden. Dankzij deze abstractie kunnen ontwikkelaars de status op een gecontroleerde, threadveilige manier inkapselen en benaderen. Naamruimten zijn ideaal voor het bouwen van samenwerkingstools voor meerdere gebruikers of voor het onderhouden van consistente globale instellingen. Ze maken het mogelijk om gegevens veilig en efficiënt te coördineren.
 
-## Wat is een namespace? {#whats-a-namespace}
+## Wat is een naamruimte? {#whats-a-namespace}
 
-Een namespace is een benoemde container die sleutel-waarde paren opslaat. Deze waarden kunnen afhankelijk van het type namespace dat je gebruikt, vanuit verschillende delen van je app worden benaderd en gewijzigd. Beschouw het als een thread-veilige, gedistribueerde kaart met ingebouwde gebeurtenishandling en vergrendelmechanismen.
+Een naamruimte is een benoemde container waarin sleutel-waardeparen worden opgeslagen. Afhankelijk van het type naamruimte dat je gebruikt, zijn deze waarden toegankelijk en aanpasbaar vanuit verschillende delen van je app. Je kunt het zien als een threadveilige, gedistribueerde map met ingebouwde gebeurtenisafhandeling en vergrendelingsmechanismen.
 
-### Wanneer namespaces te gebruiken {#when-to-use-namespaces}
+### Wanneer gebruik je naamruimten? {#when-to-use-namespaces}
 
-Gebruik namespaces wanneer:
+Gebruik naamruimten wanneer:
 
 - Je waarden wilt delen tussen gebruikerssessies of app-componenten.
-- Je wilt reageren op waarde veranderingen via luisteraars.
-- Je fijne vergrendeling vereist voor kritieke secties.
-- Je status efficiënt wilt opslaan en ophalen in je app.
+- Je met listeners wilt reageren op wijzigingen in waarden.
+- Je fijnmazige vergrendeling nodig hebt voor kritieke secties.
+- Je de status efficiënt wilt bewaren en ophalen in je app.
 
-### Typen namespaces {#types-of-namespaces}
+### Typen naamruimten {#types-of-namespaces}
 
-webforJ biedt drie typen namespaces:
+webforJ biedt drie typen naamruimten:
 
-| Type        | Scope                                                                                                               | Typisch gebruik                               |
-| ----------- | ------------------------------------------------------------------------------------------------------------------- | --------------------------------------------- |
-| **Privé**   | Gedeeld tussen clients die dezelfde prefix en naam gebruiken. Geheugen wordt automatisch vrijgegeven wanneer er geen referenties meer zijn. | Gedeelde status tussen gerelateerde gebruikerssessies. |
-| **Groep**   | Gedeeld door alle threads die zijn aangemaakt vanuit dezelfde bovenliggende thread.                                   | Coördineren van status binnen een threadgroep.  |
-| **Globaal** | Toegankelijk over alle serverthreads (JVM-breed). Geheugen wordt behouden totdat sleutels expliciet worden verwijderd.  | Applicatie-brede gedeelde status.             |
+| Type        | Scope                                                                                                                       | Typisch gebruik                                   |
+| ----------- | --------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------- |
+| **Private** | Gedeeld door clients die hetzelfde voorvoegsel en dezelfde naam gebruiken. Het geheugen wordt automatisch vrijgegeven zodra er geen verwijzingen meer zijn. | Gedeelde status tussen verwante gebruikerssessies. |
+| **Group**   | Gedeeld door alle threads die door dezelfde bovenliggende thread zijn gestart.                                               | Status coördineren binnen een threadgroep.        |
+| **Global**  | Toegankelijk voor alle serverthreads (JVM-breed). Het geheugen blijft behouden totdat sleutels expliciet worden verwijderd.  | Applicatiebreed gedeelde status.                  |
 
-:::tip Kies een standaard - Geef de voorkeur aan `PrivateNamespace`
-Wanneer je twijfelt, gebruik dan een `PrivateNamespace`. Het biedt veilige, scoped sharing tussen gerelateerde sessies zonder de globale of server-brede status te beïnvloeden. Dit maakt het een betrouwbare standaard voor de meeste applicaties.
+:::tip Een standaard kiezen - geef de voorkeur aan `PrivateNamespace`
+Gebruik bij twijfel een `PrivateNamespace`. Deze biedt veilige, afgebakende deling tussen verwante sessies zonder globale of serverbrede status te beïnvloeden. Daarmee is dit een betrouwbare standaardkeuze voor de meeste applicaties.
 :::
 
-## Een namespace creëren en gebruiken {#creating-and-using-a-namespace}
+## Een naamruimte maken en gebruiken {#creating-and-using-a-namespace}
 
-Namespaces worden gemaakt door één van de beschikbare types te instantiëren. Elk type definieert hoe en waar de gegevens worden gedeeld. De onderstaande voorbeelden demonstreren hoe je een namespace kunt creëren en interactie kunt hebben met de waarden ervan.
+Naamruimten worden gemaakt door een van de beschikbare typen te instantiëren. Elk type bepaalt hoe en waar de gegevens worden gedeeld. In de onderstaande voorbeelden zie je hoe je een naamruimte maakt en met de waarden ervan werkt.
 
-### `Privé` namespace {#private-namespace}
+### Naamruimte `Private` {#private-namespace}
 
-De naam van de privé namespace bestaat uit twee delen:
+De naam van een private naamruimte bestaat uit twee delen:
 
-- **Prefix**: Een door de ontwikkelaar gedefinieerde identificator die uniek moet zijn voor jouw app of module om conflicten te voorkomen.
-- **Basis naam**: De specifieke naam voor de gedeelde context of gegevens die je wilt beheren.
+- **Prefix**: Een door de ontwikkelaar gedefinieerde identificatie die uniek moet zijn voor je app of module om conflicten te voorkomen.
+- **Basisnaam**: De specifieke naam voor de gedeelde context of gegevens die je wilt beheren.
 
-Samen vormen ze de volledige naam van de namespace met het formaat:
+Samen vormen ze de volledige naam van de naamruimte, volgens deze indeling:
 
 ```text
 prefix + "." + baseName
 ```
 
-Bijvoorbeeld, `"myApp.sharedState"`.
+Bijvoorbeeld: `"myApp.sharedState"`.
 
-Namespaces die met dezelfde prefix en basisnaam zijn gemaakt, verwijzen altijd naar de _zelfde onderliggende instantie_. Dit zorgt voor consistente gedeelde toegang bij alle aanroepen van `PrivateNamespace` met behulp van dezelfde identificatoren.
+Naamruimten die met hetzelfde voorvoegsel en dezelfde basisnaam worden gemaakt, verwijzen altijd naar _dezelfde onderliggende instantie_. Zo is gedeelde toegang consistent bij alle aanroepen van `PrivateNamespace` met dezelfde identificaties.
 
 ```java
-// Maak of haal een privé namespace op
+// Create or retrieve a private namespace
 PrivateNamespace ns = new PrivateNamespace("myApp", "sharedState");
 ```
 
-Je kunt controleren op aanwezigheid voordat je deze maakt:
+Je kunt controleren of de naamruimte al bestaat voordat je deze maakt:
 
 ```java
 if (PrivateNamespace.isPresent("myApp.sharedState")) {
@@ -72,182 +72,178 @@ if (PrivateNamespace.isPresent("myApp.sharedState")) {
 }
 ```
 
-:::tip Naamgevingsrichtlijnen
-Bij het benoemen van een `PrivateNamespace` volg je deze regels:
+:::tip Richtlijnen voor naamgeving
+Volg deze regels bij het benoemen van een `PrivateNamespace`:
 
-- Beide delen moeten niet leeg zijn.
-- Elke moet beginnen met een letter.
+- Beide delen moeten niet-leeg zijn.
+- Elk deel moet met een letter beginnen.
 - Alleen afdrukbare tekens zijn toegestaan.
 - Witruimte is niet toegestaan.
 
 Voorbeelden:
 - ✓ mycrm.sessionData
 - ✓ acme.analytics
-- X shared.data (te algemeen, waarschijnlijk in conflict)
+- X shared.data (te algemeen en waarschijnlijk conflicterend)
 :::
 
-### `Groep` en `Globaal` namespaces {#group-and-global-namespaces}
+### Naamruimten `Group` en `Global` {#group-and-global-namespaces}
 
-Naast PrivateNamespace biedt webforJ twee andere typen voor bredere deelcontexten. Deze zijn nuttig wanneer status moet voortduren voorbij een enkele sessie of threadgroep.
+Naast `PrivateNamespace` biedt webforJ nog twee typen voor bredere deelcontexten. Deze zijn handig wanneer de status langer behouden moet blijven dan één sessie of threadgroep.
 
-- **Globale Namespace**: Toegankelijk over alle serverthreads (JVM-breed).
-- **Groep Namespace**: Gedeeld onder threads die afkomstig zijn van dezelfde bovenliggende.
+- **Global Namespace**: Toegankelijk voor alle serverthreads (JVM-breed).
+- **Group Namespace**: Gedeeld door threads die van dezelfde bovenliggende thread afkomstig zijn.
 
 ```java
-// Globale gedeelde status, toegankelijk applicatie-breed
+// Global shared state, accessible application-wide
 GlobalNamespace globalNs = new GlobalNamespace();
 globalNs.put("globalTheme", "dark");
 
-// Groep-specifieke status, beperkt tot threads die een gemeenschappelijke ouder delen
+// Group-specific state, limited to threads sharing a common parent
 GroupNamespace groupNs = new GroupNamespace();
 groupNs.put("localCache", new HashMap<>());
 ```
 
 ## Werken met waarden {#working-with-values}
 
-Namespaces bieden een consistente interface voor het beheren van gedeelde gegevens via sleutel-waarde paren. Dit omvat het instellen, ophalen, verwijderen van waarden, synchroniseren van toegang, en observeren van veranderingen in realtime.
+Naamruimten bieden een consistente interface voor het beheren van gedeelde gegevens met sleutel-waardeparen. Dit omvat het instellen, ophalen en verwijderen van waarden, het synchroniseren van toegang en het in realtime volgen van wijzigingen.
 
 ### Waarden instellen en verwijderen {#setting-and-removing-values}
 
-Gebruik `put()` om een waarde op te slaan onder een specifieke sleutel. Als de sleutel momenteel is vergrendeld, wacht de methode totdat de vergrendeling is vrijgegeven of de timeout is verstreken.
+Gebruik `put()` om een waarde onder een specifieke sleutel op te slaan. Als de sleutel momenteel vergrendeld is, wacht de methode totdat de vergrendeling wordt opgeheven of de time-out verstrijkt.
 
 ```java
-// Wacht tot 20 ms (standaard) om de waarde in te stellen
+// Waits up to 20ms (default) to set the value
 ns.put("username", "admin");
 
-// Specificeer aangepaste timeout in milliseconden
+// Specify custom timeout in milliseconds
 ns.put("config", configObject, 100);
 ```
 
-Om een sleutel uit de namespace te verwijderen:
+Een sleutel uit de naamruimte verwijderen:
 
 ```java
 ns.remove("username");
 ```
 
-Zowel `put()` als `remove()` zijn blokkeringoperaties als de doel sleutel is vergrendeld. Als de timeout verstrijkt voordat de vergrendeling is vrijgegeven, wordt een `NamespaceLockedException` opgegooid.
+Zowel `put()` als `remove()` zijn blokkerende bewerkingen als de doelsleutel vergrendeld is. Als de time-out verstrijkt voordat de vergrendeling wordt opgeheven, wordt een `NamespaceLockedException` gegenereerd.
 
-Voor veilige gelijktijdige updates waarbij je alleen de waarde wilt overschrijven, gebruik `atomicPut()`. Het vergrendelt de sleutel, schrijft de waarde en geeft de vergrendeling in één stap vrij:
+Gebruik `atomicPut()` voor veilige gelijktijdige updates waarbij je alleen de waarde hoeft te overschrijven. Deze methode vergrendelt de sleutel, schrijft de waarde en heft de vergrendeling in één stap op:
 
 ```java
 ns.atomicPut("counter", 42);
 ```
 
-Dit voorkomt race-voorwaarden en vermijdt de noodzaak voor handmatige vergrendeling in eenvoudige update scenario's.
+Zo voorkom je raceconditions en hoef je in eenvoudige updatesituaties niet handmatig te vergrendelen.
 
 ### Waarden ophalen {#getting-values}
 
-Om een waarde op te halen, gebruik `get()`:
+Gebruik `get()` om een waarde op te halen:
 
 ```java
 Object value = ns.get("username");
 ```
 
-Als de sleutel niet bestaat, wordt hiermee een `NoSuchElementException` opgegooid. Om uitzonderingen te vermijden, gebruik `getOrDefault()`:
+Als de sleutel niet bestaat, wordt een `NoSuchElementException` gegenereerd. Gebruik `getOrDefault()` om uitzonderingen te voorkomen:
 
 ```java
 Object value = ns.getOrDefault("username", "guest");
 ```
 
-Om te controleren of een sleutel gedefinieerd is:
+Controleren of een sleutel is gedefinieerd:
 
 ```java
 if (ns.contains("username")) {
-  // sleutel bestaat
+  // key exists
 }
 ```
 
-Als je een waarde alleen wilt lazy initialiseren wanneer deze ontbreekt, gebruik dan `computeIfAbsent()`:
+Gebruik `computeIfAbsent()` om een waarde alleen te initialiseren als deze ontbreekt:
 
 ```java
 Object token = ns.computeIfAbsent("authToken", key -> generateToken());
 ```
 
-Dit is nuttig voor gedeelde waarden die eenmaal worden aangemaakt en hergebruikt, zoals sessietokens, configuratieblokken of gecachte gegevens.
+Dit is handig voor gedeelde waarden die één keer worden aangemaakt en vervolgens opnieuw worden gebruikt, zoals sessietokens, configuratieblokken of gecachte gegevens.
 
-### Handmatige vergrendeling {#manual-locking}
+### Handmatig vergrendelen {#manual-locking}
 
-Als je meerdere operaties op dezelfde sleutel moet uitvoeren of coördineren over meerdere sleutels, gebruik handmatige vergrendeling.
+Gebruik handmatige vergrendeling als je meerdere bewerkingen op dezelfde sleutel moet uitvoeren of meerdere sleutels moet coördineren.
 
 ```java
-ns.setLock("flag", 500); // Wacht tot 500 ms voor de vergrendeling
+ns.setLock("flag", 500); // Wait up to 500ms for the lock
 
-// Kritieke sectie begint
+// Critical section starts
 Object existing = ns.get("flag");
 ns.put("flag", "in-progress");
-// Kritieke sectie eindigt
+// Critical section ends
 
 ns.removeLock("flag");
 ```
 
-Gebruik dit patroon wanneer een reeks operaties atomisch moet worden uitgevoerd over lees- en schrijfbewerkingen. Zorg er altijd voor dat de vergrendeling wordt vrijgegeven om te voorkomen dat andere threads worden geblokkeerd.
+Gebruik dit patroon wanneer een reeks bewerkingen atomair moet worden uitgevoerd tijdens het lezen en schrijven. Zorg er altijd voor dat de vergrendeling wordt opgeheven, zodat andere threads niet worden geblokkeerd.
 
-### Luisteren naar veranderingen {#listening-for-changes}
+### Luisteren naar wijzigingen {#listening-for-changes}
 
-Namespaces ondersteunen gebeurtenislisteren die je in staat stellen te reageren op toegang of wijziging van waarden. Dit is nuttig voor scenario's zoals:
+Naamruimten ondersteunen gebeurtenislisteners waarmee je kunt reageren wanneer waarden worden benaderd of gewijzigd. Dit is handig voor situaties zoals:
 
-- Loggen of auditen van toegang tot gevoelige sleutels
-- Triggeren van updates wanneer een configuratiewaarde verandert
-- Monitoren van gedeelde statusveranderingen in multi-gebruikers apps
+- Toegang tot gevoelige sleutels registreren of controleren
+- Updates activeren wanneer een configuratiewaarde verandert
+- Wijzigingen in gedeelde status in apps voor meerdere gebruikers volgen
 
-#### Beschikbare luistermethoden {#available-listener-methods}
+#### Beschikbare listenermethoden {#available-listener-methods}
 
-| Methode                     | Trigger                          | Scope              |
-|----------------------------|----------------------------------|--------------------|
-| `onAccess`                 | Elke sleutel wordt gelezen       | Hele namespace      |
-| `onChange`                 | Elke sleutel wordt gewijzigd     | Hele namespace      |
-| `onKeyAccess("key")`      | Een specifieke sleutel wordt gelezen | Per sleutel        |
-| `onKeyChange("key")`      | Een specifieke sleutel wordt gewijzigd | Per sleutel        |
+| Methode                  | Trigger                          | Scope               |
+|--------------------------|----------------------------------|---------------------|
+| `onAccess`               | Er wordt een sleutel gelezen     | Hele naamruimte     |
+| `onChange`               | Er wordt een sleutel gewijzigd   | Hele naamruimte     |
+| `onKeyAccess("key")`     | Er wordt een specifieke sleutel gelezen | Per sleutel        |
+| `onKeyChange("key")`     | Er wordt een specifieke sleutel gewijzigd | Per sleutel        |
 
-Elke luisteraar ontvangt een gebeurtenisobject met:
-- De sleutelnaam
+Elke listener ontvangt een gebeurtenisobject met daarin:
+- De naam van de sleutel
 - De oude waarde
 - De nieuwe waarde
-- Een referentie naar de namespace
+- Een verwijzing naar de naamruimte
 
-#### Voorbeeld: Reageer op elke sleutelwijziging {#example-respond-to-any-key-change}
+#### Voorbeeld: Reageren op een wijziging van een willekeurige sleutel {#example-respond-to-any-key-change}
 
 ```java
 ns.onChange(event -> {
-  System.out.println("Sleutel veranderd: " + event.getVariableName());
-  System.out.println("Oude waarde: " + event.getOldValue());
-  System.out.println("Nieuwe waarde: " + event.getNewValue());
+  System.out.println("Key changed: " + event.getVariableName());
+  System.out.println("Old value: " + event.getOldValue());
+  System.out.println("New value: " + event.getNewValue());
 });
 ```
 
-#### Voorbeeld: Houd toegang tot een specifieke sleutel bij {#example-track-access-to-a-specific-key}
+#### Voorbeeld: Toegang tot een specifieke sleutel volgen {#example-track-access-to-a-specific-key}
 
 ```java
 ns.onKeyAccess("sessionToken", event -> {
-  System.out.println("Token werd benaderd: " + event.getNewValue());
+  System.out.println("Token was accessed: " + event.getNewValue());
 });
 ```
 
-Luisteraars retourneren een `ListenerRegistration` object dat je kunt gebruiken om de luisteraar later te unregisteren:
+Listeners retourneren een `ListenerRegistration`-object waarmee je de listener later kunt afmelden:
 
 ```java
 ListenerRegistration<NamespaceKeyChangeEvent> reg = ns.onKeyChange("status", event -> {
-  // logica
+  // logic
 });
 reg.remove();
 ```
 
-## Voorbeeld: Gedeelde spelstatus in Tic-Tac-Toe {#example-sharing-game-state-in-tic-tac-toe}
+## Voorbeeld: Spelstatus delen in Boter-kaas-en-eieren {#example-sharing-game-state-in-tic-tac-toe}
 
-De [webforJ Tic-Tac-Toe demo](https://github.com/webforj/webforj-tictactoe) biedt een eenvoudige tweespelersgame waarbij beurten worden gedeeld tussen gebruikers. Het project demonstreert hoe `Namespace` kan worden gebruikt om status te coördineren zonder te vertrouwen op externe hulpmiddelen zoals databases of API's.
+De [webforJ-demo van Boter-kaas-en-eieren](https://github.com/webforj/webforj-tictactoe) is een eenvoudig spel voor twee spelers waarin de beurten tussen gebruikers worden gedeeld. Het project laat zien hoe `Namespace` kan worden gebruikt om de status te coördineren zonder afhankelijk te zijn van externe tools zoals databases of API's.
 
-In dit voorbeeld wordt een gedeeld Java-gameobject opgeslagen in een `PrivateNamespace`, waardoor meerdere clients kunnen interageren met dezelfde spel logica. De namespace dient als een centrale container voor de spelstatus, waardoor wordt gegarandeerd dat:
+In dit voorbeeld wordt een gedeeld Java-spelobject opgeslagen in een `PrivateNamespace`, zodat meerdere clients met dezelfde spellogica kunnen werken. De naamruimte fungeert als centrale container voor de spelstatus en zorgt ervoor dat:
 
-- Beide spelers consistente bordupdates zien
-- Beurten gesynchroniseerd zijn
-- De spel logica wordt gedeeld over sessies
+- Beide spelers dezelfde bordupdates zien
+- Beurten worden gesynchroniseerd
+- De spellogica tussen sessies wordt gedeeld
 
-Geen externe services (zoals REST of WebSockets) zijn nodig. Alle coördinatie gebeurt via namespaces, wat hun vermogen benadrukt om gedeelde status in realtime te beheren met minimale infrastructuur.
+Er zijn geen externe services nodig, zoals REST of WebSockets. Alle coördinatie verloopt via naamruimten, wat laat zien hoe die met minimale infrastructuur de gedeelde status in realtime kunnen beheren.
 
-Verken de code: [webforj/webforj-tictactoe](https://github.com/webforj/webforj-tictactoe)
+Bekijk de code: [webforj/webforj-tictactoe](https://github.com/webforj/webforj-tictactoe)
 
-<div class="videos-container">
-  <video controls>
-    <source src="https://cdn.webforj.com/webforj-documentation/video/tic-tac-toe.mp4" type="video/mp4"/>
-  </video>
-</div>
+<VideoPlayer video="namespaces/tic-tac-toe" width={1660} height={902} title="Tic tac toe" />

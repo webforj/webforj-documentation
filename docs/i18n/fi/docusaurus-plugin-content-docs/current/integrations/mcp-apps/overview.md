@@ -6,7 +6,7 @@ hide_giscus_comments: true
 description: >-
   Expose routed webforJ views as interactive MCP applications that an MCP host
   can open and use inside its own interface.
-_i18n_hash: 27896fdcd80b0f7414e1e41f1087d848
+_i18n_hash: c654b2ac1c5344132602148ba19216b3
 ---
 <Head>
   <style>{`
@@ -17,26 +17,22 @@ _i18n_hash: 27896fdcd80b0f7414e1e41f1087d848
 </Head>
 
 <!-- vale Google.Headings = NO -->
-# MCP-sovellukset <DocChip chip='since' label='26.02' /> <DocChip chip='experimental' />
+# MCP Apps <DocChip chip='since' label='26.02' /> <DocChip chip='experimental' />
 <!-- vale Google.Headings = YES -->
 
-MCP-sovellukset antavat [MCP](https://modelcontextprotocol.io/)-yhteensopivalle AI-sovellukselle, jota kutsutaan myös isännäksi, avata ohjatun webforJ-näkymän keskustelussaan. Näkymä pysyy osana Java-sovellusta, joten se käyttää samoja komponentteja, palveluita, reititystä ja tilaa kuin selainversiossa.
+MCP Appsin avulla [MCP:tä](https://modelcontextprotocol.io/) tukeva tekoälysovellus, jota kutsutaan myös isännäksi, voi avata reititetyn webforJ-näkymän keskustelussaan. Näkymä pysyy osana Java-sovellusta, joten se käyttää samoja komponentteja, palveluita, reititystä ja tilaa kuin selaimessa.
 
-Henkilö ja AI voivat työskennellä saman elävän käyttöliittymän kanssa. AI voi tarjota syötteitä avatessaan näkymän, kutsua toimintoja, jotka muuttavat avattua näkymää, ja vastaanottaa asiayhteyttä henkilöltä saatujen valintojen perusteella käyttöliittymässä. Henkilö voi jatkaa renderöityjen webforJ-komponenttien käyttöä suoraan.
+Käyttäjä ja tekoäly voivat käyttää samaa reaaliaikaista käyttöliittymää. Tekoäly voi antaa syötteen näkymää avattaessa, kutsua avoinna olevaa näkymää muuttavia toimintoja ja vastaanottaa kontekstia käyttäjän käyttöliittymässä tekemistä valinnoista. Käyttäjä voi jatkaa renderöityjen webforJ-komponenttien suoraa käyttöä.
 
-Spring Boot ja Spring AI ovat ensisijainen tapa julkaista MCP-sovellus. Integraatio löytää merkittyjä reittejä ja lisää ne Spring AI:n MCP-palvelimeen. Aloita [Spring Boot -asetuksesta](./spring), sitten [testaa yhteys](./testing) vähintään julkaistulla näkymällä. Sovellukset, jotka eivät käytä Spring Bootia, voivat käyttää [standardi servlet-asetusta](./without-spring) sen sijaan.
+Spring Boot ja Spring AI ovat ensisijainen tapa julkaista MCP App. Integraatio etsii merkityt reitit ja lisää ne Spring AI:n MCP-palvelimeen. Aloita [Spring Bootin määrityksistä](./spring) ja [testaa sitten yhteys](./testing) yksinkertaisella julkaistulla näkymällä. Sovellukset, joissa ei käytetä Spring Bootia, voivat sen sijaan käyttää [tavallista servlet-määritystä](./without-spring).
 
-<div class="videos-container">
-    <video controls>
-      <source src="https://cdn.webforj.com/webforj-documentation/video/mcp-apps/webforj-mcp-app.mp4" type="video/mp4" />
-    </video>
-</div>
+<VideoPlayer video="mcp-apps/webforj-mcp-app" width={1920} height={1080} title="WebforJ MCP app" />
 
-:::info[Isäntätuet vaihtelevat]
+:::info[Isäntien tuki vaihtelee]
 
-MCP-sovellukset ovat kehittyvä laajennus MCP-määritykselle, joten isännät omaksuvat sen muutokset ja turvallisuuspolitiikat omaan tahtiinsa. Sovellus ilmoittaa lähteet, joista sen näkymä lataa ja johon se yhdistää, ja isäntä, joka sallii ne, renderöi näkymän. Isännät voivat myös soveltaa tiukempia käytäntöjä. Avautuva työkalu palauttaa aina tekstisisältönsä, ja reitti pysyy saatavilla tavallisena selainversiona. Varmista jokainen isäntä, johon kohdistut, vaiheiden avulla [Testauksessa](./testing).
+MCP Apps on MCP-määrityksen kehittyvä laajennus, joten isännät ottavat sen eri versiot ja suojauskäytännöt käyttöön omaan tahtiinsa. Sovellus määrittää alkuperät, joista sen näkymä ladataan ja joihin se muodostaa yhteyden, ja ne salliva isäntä renderöi näkymän. Isännät voivat myös soveltaa tiukempia käytäntöjä. Avaustyökalu palauttaa aina tekstisisältönsä, ja reitti on edelleen käytettävissä tavallisena selaimen sivuna. Varmista kunkin kohdeisännän toiminta [testauksen](./testing) ohjeiden avulla.
 :::
 
-## Aihealueet {#topics}
+## Aiheet {#topics}
 
 <DocCardList className="topics-section" />

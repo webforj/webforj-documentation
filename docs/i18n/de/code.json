@@ -5586,5 +5586,8 @@
   "componentDemo.tabs": {
     "message": "Quelldateien",
     "description": "Accessible label for the file tabs of a component demo"
+  },
+  "page.craftforj.hero.videoLabel": {
+    "message": "craftforJ über einer laufenden webforJ-App öffnen: Komponenten inspizieren, Eigenschaften bearbeiten, Design anpassen und den KI-Assistenten fragen"
   }
 }

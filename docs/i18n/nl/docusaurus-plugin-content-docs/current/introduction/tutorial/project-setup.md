@@ -1,28 +1,30 @@
 ---
-title: Projectconfiguratie
+title: Project instellen
 sidebar_position: 1
 description: >-
   Discover where to download the tutorial project, how to navigate it, and run
   the apps within.
-_i18n_hash: 8c9cc05d141898612beff7f1c3f73fae
+_i18n_hash: 95bc825bd041018765a732bf464d77b7
 ---
-Om deze tutorial te beginnen, heeft u een locatie nodig voor uw project waar u uw klassen en bronnen kunt beheren. De volgende secties beschrijven de verschillende manieren waarop u uw webforJ-project voor deze tutorial kunt maken.
+Om met deze tutorial te beginnen, heb je een locatie voor je project nodig waar je je klassen en resources kunt beheren. In de volgende secties worden de verschillende manieren beschreven waarop je je webforJ-project voor deze tutorial kunt maken.
 
-## Gebruik van de broncode {#using-source-code}
+## De broncode gebruiken {#using-source-code}
 
-De eenvoudigste manier om deze tutorial te volgen, is door naar de broncode te verwijzen. U kunt het gehele project downloaden of het van GitHub klonen:
+De eenvoudigste manier om deze tutorial te volgen, is door de broncode te raadplegen. Je kunt het hele project downloaden of klonen vanaf GitHub:
 
 <!-- vale off -->
-- Download ZIP: [webforj-tutorial.zip](https://github.com/webforj/webforj-tutorial/archive/refs/heads/main.zip)
-- GitHub Repository: Clone het project [direct van GitHub](https://github.com/webforj/webforj-tutorial)
+- ZIP downloaden: [webforj-tutorial.zip](https://github.com/webforj/webforj-tutorial/archive/refs/heads/main.zip)
+- GitHub-repository: kloon het project [rechtstreeks vanaf GitHub](https://github.com/webforj/webforj-tutorial)
 <!-- vale on -->
 ```bash
 git clone https://github.com/webforj/webforj-tutorial.git
 ```
 
+<!-- <VideoPlayer video="tutorial/project-setup" width={1920} height={1080} title="Project setup" /> -->
+
 ### Projectstructuur {#project-structure}
 
-Het project heeft zes subdirectories, één voor elke stap van de tutorial, en elke bevat een uitvoerbare app. Door deze stappen te volgen, kunt u zien hoe de app evolueert van een basisopstelling naar een volledig functioneel klantenbeheersysteem.
+Het project heeft zes submappen, één voor elke stap van de tutorial. Elke map bevat een uitvoerbare app. Door mee te doen, zie je hoe de app zich ontwikkelt van een eenvoudige basisconfiguratie tot een volledig functioneel klantbeheersysteem.
 
 ```
 webforj-tutorial
@@ -38,17 +40,19 @@ webforj-tutorial
 └───6-integrating-an-app-layout
 ```
 
-## Gebruik van startforJ {#using-startforj}
+<!-- vale off -->
+## startforJ gebruiken {#using-startforj}
+<!-- vale on -->
 
-Als u liever een nieuw project maakt, kunt u [startforJ](https://docs.webforj.com/startforj) gebruiken om een minimaal startproject te genereren. Zie [Aan de slag](/docs/introduction/getting-started) voor meer gedetailleerde informatie over het gebruik van startforJ.
+Als je liever een nieuw project maakt, kun je [startforJ](https://docs.webforj.com/startforj) gebruiken om een minimaal startproject te genereren. Zie [Aan de slag](/docs/introduction/getting-started) voor meer informatie over het gebruik van startforJ.
 
 :::note Vereiste instellingen
-- Kies in de dropdown **webforJ versie** de versie **26.01 of hoger**.
+- Kies in de vervolgkeuzelijst **webforJ version** de webforJ-versie **26.01 of hoger**.
 - Kies onder **Runs on** voor **Spring Boot**.
 
-## Gebruik van de opdrachtregel {#using-command-line}
+## De opdrachtregel gebruiken {#using-command-line}
 
-U kunt ook een nieuw project genereren met de volgende opdracht:
+Je kunt ook een nieuw project genereren met de volgende opdracht:
 
 <!-- vale off -->
 <Tabs>
@@ -76,7 +80,7 @@ mvn -B archetype:generate `
   -Dflavor="webforj-spring"
 ```
   </TabItem>
-  <TabItem value="cmd" label="Opdrachtprompt">
+  <TabItem value="cmd" label="Command Prompt">
 ```
 mvn -B archetype:generate ^
   -DarchetypeGroupId="com.webforj" ^
@@ -91,9 +95,9 @@ mvn -B archetype:generate ^
 </Tabs>
 <!-- vale on -->
 
-## Configuraties {#configurations}
+## Configuratie {#configurations}
 
-De twee genoemde manieren om een nieuw project te creëren, maken gebruik van webforJ [archetypes](/docs/building-ui/archetypes/overview), die automatisch de benodigde configuraties aan uw project toevoegen. Dit omvat Spring [afhankelijkheden](/docs/integrations/spring/spring-boot), de webforJ Maven-plugin die de frontendbronnen bouwt en in de gaten houdt, en de volgende eigenschappen in `src/main/resources/application.properties`:
+De twee genoemde manieren om een nieuw project te maken, gebruiken webforJ-[archetypen](/docs/building-ui/archetypes/overview), die automatisch de benodigde configuraties aan je project toevoegen. Dit omvat Spring-[afhankelijkheden](/docs/integrations/spring/spring-boot), de webforJ Maven-plug-in die frontendbronnen bouwt en in de gaten houdt, en de volgende eigenschappen in `src/main/resources/application.properties`:
 
 ```
 spring.application.name=CustomerApplication
@@ -104,15 +108,17 @@ webforj.debug=true
 
 ## De app uitvoeren {#running-the-app}
 
-Om de app in actie te zien terwijl u door de tutorial vordert:
+Voer de volgende stappen uit om de app te bekijken terwijl je de tutorial doorloopt:
 
-1. Navigeer naar de directory voor de gewenste stap. Dit moet de bovenste directory voor die stap zijn, die de `pom.xml` bevat.
+1. Ga naar de map voor de gewenste stap. Dit is de hoofdmap voor die stap, met daarin de `pom.xml`.
 
 2. Gebruik de volgende Maven-opdracht om de Spring Boot-app lokaal uit te voeren:
     ```bash
     mvn
     ```
 
-   De gegenereerde POM configureert deze standaardopdracht om de app te compileren, de webforJ frontend-watcher te starten en Spring Boot uit te voeren.
+   De gegenereerde POM configureert deze standaardopdracht om de app te compileren, de frontend-watcher van webforJ te starten en Spring Boot uit te voeren.
 
-Running the app automatically opens a new browser at `http://localhost:8080`.
+<!-- vale Google.WordList = NO -->
+Wanneer je de app uitvoert, wordt automatisch een nieuw browservenster geopend op `http://localhost:8080`.
+<!-- vale Google.WordList = YES -->

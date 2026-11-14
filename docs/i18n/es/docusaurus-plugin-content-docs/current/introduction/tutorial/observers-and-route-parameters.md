@@ -2,34 +2,36 @@
 title: Observadores y parámetros de ruta
 sidebar_position: 5
 description: Step 4 - Use route parameters to control what content loads.
-_i18n_hash: c87796ee04dafe840b3903ae8a1fa0ab
+_i18n_hash: 413e52a1a6601beef4ece9b9e7a1757e
 ---
-La aplicación de [Routing and Composites](/docs/introduction/tutorial/routing-and-composites) solo puede agregar nuevos clientes a la base de datos. Utilizando los siguientes conceptos, les darás a los usuarios la capacidad de editar los datos de los clientes existentes:
+La aplicación de [Routing and Composites](/docs/introduction/tutorial/routing-and-composites) solo puede agregar clientes nuevos a la base de datos. Con los siguientes conceptos, permitirás que los usuarios también editen los datos de los clientes existentes:
 
 - Patrones de ruta
 - Pasar valores de parámetros a través de una URL
-- Observadores de ciclo de vida
+- Observadores del ciclo de vida
 
-Completar este paso crea una versión de [4-observers-and-route-parameters](https://github.com/webforj/webforj-tutorial/tree/main/4-observers-and-route-parameters).
+Al completar este paso, crearás una versión de [4-observers-and-route-parameters](https://github.com/webforj/webforj-tutorial/tree/main/4-observers-and-route-parameters).
 
-## Ejecutando la aplicación {#running-the-app}
+<!-- <VideoPlayer video="tutorial/scaling-with-routing-and-composites" width={1920} height={1080} title="Scaling with routing and composites" /> -->
 
-Mientras desarrollas tu aplicación, puedes usar [4-observers-and-route-parameters](https://github.com/webforj/webforj-tutorial/tree/main/4-observers-and-route-parameters) como comparación. Para ver la aplicación en acción:
+## Ejecutar la aplicación {#running-the-app}
 
-1. Navega al directorio de nivel superior que contiene el archivo `pom.xml`, que es `4-observers-and-route-parameters` si estás siguiendo la versión en GitHub.
+Mientras desarrollas la aplicación, puedes usar [4-observers-and-route-parameters](https://github.com/webforj/webforj-tutorial/tree/main/4-observers-and-route-parameters) como referencia para comparar. Para ver la aplicación en acción:
+
+1. Ve al directorio de nivel superior que contiene el archivo `pom.xml`. Si estás siguiendo la versión de GitHub, este directorio es `4-observers-and-route-parameters`.
 
 2. Usa el siguiente comando de Maven para ejecutar la aplicación Spring Boot localmente:
     ```bash
     mvn
     ```
 
-Ejecutar la aplicación abre automáticamente un nuevo navegador en `http://localhost:8080`.
+Al ejecutar la aplicación, se abre automáticamente una nueva ventana del navegador en `http://localhost:8080`.
 
-## Usando el `id` del cliente {#using-the-customers-id}
+## Usar el `id` del cliente {#using-the-customers-id}
 
-Para usar `FormView` para editar clientes existentes, necesitarás una forma de indicarle qué cliente editar.
-Puedes hacerlo proporcionando un parámetro inicial a `FormView` que representa el ID del cliente.
-En [Trabajando con Datos](/docs/introduction/tutorial/working-with-data), creaste una entidad `Customer` que asigna un valor numérico `Long` como un `id` único a los clientes cuando se agregan a la base de datos.
+Para usar `FormView` con el fin de editar clientes existentes, necesitarás una forma de indicarle qué cliente debe editar.
+Puedes hacerlo proporcionando a `FormView` un parámetro inicial que represente el ID del cliente.
+En [Working with Data](/docs/introduction/tutorial/working-with-data), creaste una entidad `Customer` que asigna un valor numérico `Long` como `id` único a los clientes cuando se agregan a la base de datos.
 
 ```java
  @Id
@@ -37,121 +39,122 @@ En [Trabajando con Datos](/docs/introduction/tutorial/working-with-data), creast
   private Long id;
 ```
 
-En este paso, realizarás cambios en `FormView` para que use un `id` como parámetro inicial antes de que se cargue cualquier cosa. Luego, harás que `FormView` evalúe el `id` para determinar si el formulario es para agregar un nuevo cliente o actualizar uno existente. Finalmente, modificarás `MainView` para que envíe un valor de `id` al navegar a `FormView`.
+En este paso, modificarás `FormView` para que use un `id` como parámetro inicial antes de que se cargue cualquier contenido. Luego, `FormView` evaluará el `id` para determinar si el formulario sirve para agregar un cliente nuevo o actualizar uno existente. Por último, modificarás `MainView` para que envíe un valor de `id` al navegar a `FormView`.
 
-## Agregando un patrón de ruta a `FormView` {#adding-a-route-pattern}
+## Agregar un patrón de ruta a `FormView` {#adding-a-route-pattern}
 
-En el paso anterior, al establecer la ruta en `FormView` a `@Route(customer)`, mapeas la clase localmente a `http://localhost:8080/customer`. Agregar un patrón de ruta te permite añadir un `id` como un parámetro inicial a `FormView`.
+En el paso anterior, establecer la ruta de `FormView` en `@Route(customer)` asigna la clase localmente a `http://localhost:8080/customer`. Al agregar un patrón de ruta, puedes incluir un `id` como parámetro inicial para `FormView`.
 
-Un [Patrón de Ruta](/docs/routing/route-patterns) te permite agregar un parámetro en la URL, hacerlo opcional y establecer restricciones sobre patrones válidos. Usando la anotación `@Route`, aquí está lo que hace que `id` sea un parámetro de ruta opcional para `FormView`:
+Un [patrón de ruta](/docs/routing/route-patterns) permite agregar un parámetro a la URL, hacerlo opcional y establecer restricciones para los patrones válidos. Con la anotación `@Route`, esto es lo que convierte `id` en un parámetro de ruta opcional para `FormView`:
 
-- **`/:id`** le da a la ruta un parámetro nombrado de `id`, así que ir a `http://localhost:8080/customer/6` carga `FormView` con un parámetro `id` de `6`.
+- **`/:id`** asigna a la ruta un parámetro llamado `id`, de modo que al ir a `http://localhost:8080/customer/6`, se carga `FormView` con el parámetro `id` cuyo valor es `6`.
 
-- **`?`** hace que el parámetro `id` sea opcional. Por defecto, los parámetros son requeridos, pero al hacer que el `id` sea opcional, puedes usar `FormView` para agregar nuevos clientes que aún no tengan un `id`.
+- **`?`** hace que el parámetro `id` sea opcional. De forma predeterminada, los parámetros son obligatorios, pero al hacer que `id` sea opcional puedes usar `FormView` para agregar clientes nuevos que todavía no tienen un `id`.
 
-- **`<[0-9]+>`** restringe `id` a ser un número positivo. En corchetes angulares `<>`, puedes agregar una restricción como una expresión regular al parámetro. Si el `id` no coincide con la restricción, por ejemplo, `http://localhost:8080/customer/john-smith`, envía al usuario a una página 404.
+- **`<[0-9]+>`** restringe `id` a un número positivo. Entre corchetes angulares, `<>`, puedes agregar una restricción al parámetro mediante una expresión regular. Si el `id` no coincide con la restricción, por ejemplo, `http://localhost:8080/customer/john-smith`, se envía al usuario a una página 404.
 
-Para agregar el parámetro de ruta opcional a `FormView`, cambia la anotación `@Route` a esto:
+Para agregar el parámetro de ruta opcional a `FormView`, cambia la anotación `@Route` por esta:
 
 ```java
 @Route("customer/:id?<[0-9]+>")
 ```
 
-## Enrutamiento a `FormView` {#routing-to-formview}
+## Enrutar a `FormView` {#routing-to-formview}
 
-`FormView` ahora acepta un parámetro `id` opcional y solo se carga si el `id` es un número positivo entero.
+Ahora `FormView` acepta un parámetro `id` opcional y solo se carga si el `id` es un número entero positivo.
 
-Sin embargo, `FormView` aún puede cargarse cuando un usuario ingresa manualmente una URL para un cliente que no existe, como `http://localhost:8080/customer/5000`. Agregar un observador de ciclo de vida antes de entrar en `FormView` permite que tu aplicación determine cómo manejar el valor `id` entrante.
+Sin embargo, `FormView` aún puede cargarse si un usuario escribe manualmente la URL de un cliente inexistente, como `http://localhost:8080/customer/5000`. Agregar un observador del ciclo de vida antes de entrar a `FormView` permite que tu aplicación determine cómo gestionar el valor de `id` recibido.
 
 ### Enrutamiento condicional {#conditional-routing}
 
-Los observadores de ciclo de vida permiten que los componentes reaccionen a eventos del ciclo de vida en etapas específicas. El artículo [Observadores de Ciclo de Vida](/docs/routing/navigation-lifecycle/observers) enumera los observadores disponibles, pero este paso solo utiliza el `WillEnterObserver`.
+Los observadores del ciclo de vida permiten que los componentes reaccionen a eventos del ciclo de vida en etapas específicas. El artículo [Lifecycle Observers](/docs/routing/navigation-lifecycle/observers) enumera los observadores disponibles, pero en este paso solo usarás `WillEnterObserver`.
 
-El tiempo de `WillEnterObserver` ocurre antes de que se complete el enrutamiento del componente. Usar este observador te permite evaluar el `id` entrante. Si el `id` no coincide con un cliente existente, puedes redirigir al usuario de vuelta a `MainView` para encontrar un cliente válido para editar.
+El evento de `WillEnterObserver` ocurre antes de que termine el enrutamiento del componente.
+Este observador permite evaluar el `id` recibido. Si el `id` no coincide con un cliente existente, puedes redirigir al usuario a `MainView` para que encuentre un cliente válido que editar.
 
-Antes de discutir el código para el `WillEnterObserver`, el siguiente diagrama de flujo describe cuáles deberían ser los posibles resultados al enrutarse a `FormView`:
+Antes de analizar el código de `WillEnterObserver`, el siguiente diagrama de flujo muestra los posibles resultados al enrutar a `FormView`:
 
 ```mermaid
 flowchart TD
-    A[Ir a FormView] --> B{¿Hay un parámetro id?}
-    B -->|No| C[Ir a un FormView vacío]
-    B -->|Sí| D{¿Ese valor de id coincide con un id de cliente?}
-    D -->|Sí| E[Ir a un FormView lleno]
-    D -->|No| F[Redirigir a MainView]
+    A[Going to FormView] --> B{Is there an id parameter?}
+    B -->|No| C[Go to an empty FormView]
+    B -->|Yes| D{Does that id value match with a customer id?}
+    D -->|Yes| E[Go to a filled FormView]
+    D -->|No| F[Redirect to MainView]
 ```
 
-### Usando el `WillEnterObserver` {#using-the-willenterobserver}
+### Usar `WillEnterObserver` {#using-the-willenterobserver}
 
-Usando el observador del ciclo de vida que se activa antes de que el componente se cargue completamente, el `WillEnterObserver`, puedes agregar condiciones para determinar si la aplicación debe continuar a `FormView`, o si necesita redirigir a los usuarios a `MainView`.
+El observador del ciclo de vida `WillEnterObserver`, que se activa antes de que el componente se cargue por completo, permite agregar condiciones para determinar si la aplicación debe continuar a `FormView` o redirigir a los usuarios a `MainView`.
 
-Cada observador de ciclo de vida es una interfaz, así que implementa `WillEnterObserver` como parte de la declaración para `FormView`:
+Cada observador del ciclo de vida es una interfaz, así que implementa `WillEnterObserver` como parte de la declaración de `FormView`:
 
 ```java
 public class FormView extends Composite<Div> implements WillEnterObserver {
 ```
 
-El observador `WillEnterObserver` tiene el método `onWillEnter()` que webforJ llama antes de enrutarse al componente. Este método tiene dos parámetros: el `WillEnterEvent` y el `ParametersBag`.
+El observador `WillEnterObserver` tiene el método `onWillEnter()`, que webforJ llama antes de enrutar al componente. Este método tiene dos parámetros: `WillEnterEvent` y `ParametersBag`.
 
-El `WillEnterEvent` determina si continuar el enrutamiento al componente con el método `accept()`, o detener el enrutamiento utilizando el método `reject()`. Después de rechazar la ruta actual, necesitas redirigir al usuario a otro lugar.
+`WillEnterEvent` determina si se continúa el enrutamiento al componente mediante el método `accept()` o si se detiene mediante el método `reject()`. Después de rechazar la ruta actual, debes redirigir al usuario a otro lugar.
 
-El `ParametersBag` contiene los parámetros del enrutador de la URL. Utilizarás el `ParametersBag` en la siguiente sección para crear la lógica condicional para `onWillEnter()` usando el parámetro `id`.
+`ParametersBag` contiene los parámetros del enrutador que provienen de la URL. En la siguiente sección, usarás `ParametersBag` para crear la lógica condicional de `onWillEnter()` con el parámetro `id`.
 
-El siguiente `onWillEnter()` es un ejemplo con solo dos resultados:
+El siguiente ejemplo de `onWillEnter()` tiene solo dos resultados:
 
 ```java
 @Override
 public void onWillEnter(WillEnterEvent event, ParametersBag parameters) {
 
-  //Agregar lógica condicional
+  //Add conditional logic
   if (<condition>) {
 
-    //Permitir que el enrutamiento a FormView proceda
+    //Allow routing to FormView to proceed
     event.accept();
 
   } else {
 
-    //Detener el enrutamiento a FormView
+    //Stop routing to FormView
     event.reject();
 
-    //Enviar al usuario a MainView
+    //Send the user to MainView
     navigateToMain();
   }
 }
 ```
 
-### Usando el `ParametersBag` {#using-the-parametersbag}
+### Usar `ParametersBag` {#using-the-parametersbag}
 
-Como se mencionó brevemente en la sección anterior, el `ParametersBag` contiene el parámetro del enrutador de la URL. Cada observador del ciclo de vida tiene acceso a este objeto, y usarlo en tu aplicación te permite obtener el valor `id`.
+Como se mencionó brevemente en la sección anterior, `ParametersBag` contiene el parámetro del enrutador que proviene de la URL. Todos los observadores del ciclo de vida tienen acceso a este objeto, y usarlo en tu aplicación te permite obtener el valor de `id`.
 
-El objeto `ParametersBag` proporciona varios métodos de consulta para recuperar un parámetro como un tipo de objeto específico. Por ejemplo, `getInt()` puede obtenerte un parámetro como un `Integer`.
+El objeto `ParametersBag` proporciona varios métodos de consulta para recuperar un parámetro como un tipo de objeto específico. Por ejemplo, `getInt()` permite obtener un parámetro como un `Integer`.
 
-Sin embargo, dado que algunos parámetros son opcionales, lo que realmente devuelve `getInt()` es `Optional<Integer>`. Usar el método `ifPresentOrElse()` sobre el `Optional<Integer>` te permite establecer una variable usando el `Integer`.
+Sin embargo, como algunos parámetros son opcionales, lo que `getInt()` devuelve en realidad es `Optional<Integer>`. Al usar el método `ifPresentOrElse()` en el `Optional<Integer>`, puedes asignar un valor a una variable usando el `Integer`.
 
-Cuando no hay un `id` presente, el usuario puede continuar dirigiéndose a `FormView` para agregar un nuevo cliente.
+Si no hay ningún `id`, el usuario puede continuar a `FormView` para agregar un cliente nuevo.
 
 ```java
 @Override
 public void onWillEnter(WillEnterEvent event, ParametersBag parameters) {
 
-  //Determinar qué parámetro obtener y verificar si está presente o no
+  //Determine which parameter to get, and check if it's present or not
   parameters.getInt("id").ifPresentOrElse(id -> {
 
-    //Usar el id como una variable
+    //Use the id as a variable
     customerId = Long.valueOf(id);
 
-  //Cuando no hay un id presente, continuar a FormView para un nuevo cliente
+  //When no id is present, continue to FormView for a new customer
   }, () -> event.accept());
 
 }
 ```
 
-### ¿Es válido el `id`? {#is-the-id-valid}
+### ¿El `id` es válido? {#is-the-id-valid}
 
-En este momento, el `WillEnterObserver` de la última sección solo acepta el enrutamiento cuando no hay un `id` presente. El observador necesita realizar una verificación más antes de continuar a `FormView`: verificar que el `id` coincide con un cliente existente.
+Por ahora, el `WillEnterObserver` de la sección anterior solo acepta el enrutamiento cuando no hay ningún `id`. Antes de continuar a `FormView`, el observador debe realizar una verificación más: comprobar que el `id` coincida con un cliente existente.
 
-Ahora `FormView` puede usar `CustomerService` para confirmar la existencia de un cliente usando el método `doesCustomerExist()`. Si no hay coincidencia, la aplicación puede rechazar el enrutamiento actual y redirigir al usuario a `MainView` usando `navigateToMain()`.
+Ahora `FormView` puede usar `CustomerService` para confirmar la existencia de un cliente mediante el método `doesCustomerExist()`. Si no hay ninguna coincidencia, la aplicación puede rechazar el enrutamiento actual y redirigir al usuario a `MainView` mediante `navigateToMain()`.
 
-Cuando se proporciona un `id` válido, la aplicación puede usar `accept()` para continuar el enrutamiento a `FormView`. Crea un método `fillForm()` para asignar la variable `customer` al cliente con el `id` correspondiente en la base de datos y establecer los valores de los campos:
+Si el `id` es válido, la aplicación puede usar `accept()` para continuar el enrutamiento a `FormView`. Crea un método `fillForm()` para asignar a la variable `customer` el cliente de la base de datos cuyo `id` coincide y establecer los valores de los campos:
 
 ```java
 public void fillForm(Long customerId) {
@@ -163,45 +166,50 @@ public void fillForm(Long customerId) {
 }
 ```
 
-Al igual que al agregar un nuevo cliente, usar la copia de trabajo permite a los usuarios editar los datos del cliente en la interfaz de usuario sin editar directamente el repositorio.
+Al igual que cuando se agrega un cliente nuevo, el uso de una copia de trabajo permite que los usuarios editen los datos del cliente en la interfaz de usuario sin modificar directamente el repositorio.
 
-### `onWillEnter()` completado {#completed-onwillenter}
+### `onWillEnter()` completo {#completed-onwillenter}
 
-Las dos últimas secciones entraron en detalle sobre cómo manejar cada resultado para el enrutamiento a `FormView` usando el `ParametersBag` y el `CustomerService`.
+Las dos secciones anteriores detallaron cómo gestionar cada resultado posible al enrutar a `FormView` mediante `ParametersBag` y `CustomerService`.
 
-El siguiente es el `onWillEnter()` completado para `FormView` que usa el `ParametersBag` para rechazar o aceptar la ruta entrante y llama a otros métodos para llenar el formulario o enviar al usuario a `MainView`:
+A continuación, se muestra el método `onWillEnter()` completo de `FormView`, que usa `ParametersBag` para rechazar o aceptar la ruta recibida y llama a otros métodos para rellenar el formulario o enviar al usuario a `MainView`:
 
 ```java
 @Override
 public void onWillEnter(WillEnterEvent event, ParametersBag parameters) {
 
-  //Determinar qué parámetro obtener y verificar si está presente o no
+  //Determine which parameter to get, and check if it's present or not
   parameters.getInt("id").ifPresentOrElse(id -> {
+
+    //Use the id as a variable
     customerId = Long.valueOf(id);
-    //Verificar si hay un cliente con este id
+
+    //Check if there's a customer with this id
     if (customerService.doesCustomerExist(customerId)) {
-        //Este cliente existe, así que continuar a FormView e inicializar los campos usando el id
+
+        //This customer exists, so continue to FormView, and initialize the fields using the id
         event.accept();
         fillForm(customerId);
       } else {
-        //Este cliente no existe, redirigir a MainView
+
+        //This customer doesn't exists, so redirect to MainView
         event.reject();
         navigateToMain();
       }
 
-  //No se presentó id, así que continuar a FormView para un nuevo cliente
+  //No id was present, so continue to FormView for a new customer
   }, () -> event.accept());
 
 }
 ```
 
-## Agregando o editando un cliente {#adding-or-editing-a-customer}
+## Agregar o editar un cliente {#adding-or-editing-a-customer}
 
-La versión anterior de esta aplicación solo añadía nuevos clientes cuando el usuario enviaba el formulario. Ahora que los usuarios pueden editar clientes existentes, el método `submitCustomer()` debe verificar si el cliente ya existe antes de actualizar la base de datos.
+La versión anterior de esta aplicación solo agregaba clientes nuevos cuando el usuario enviaba el formulario. Ahora que los usuarios pueden editar clientes existentes, el método `submitCustomer()` debe verificar si el cliente ya existe antes de actualizar la base de datos.
 
-Inicialmente, no era necesario asignar una variable para el `id` del cliente en `FormView`, porque los nuevos clientes reciben un `id` único cuando se envían a la base de datos. Sin embargo, si declaras `customerId` como una variable inicial en `FormView` con un valor de `id` que no esté en uso, permanecerá intacto para nuevos clientes y será sobrescrito en `onWillEnter()` para los existentes.
+Al principio, no era necesario asignar una variable para el `id` del cliente en `FormView`, porque a los clientes nuevos se les asigna un `id` único al guardarlos en la base de datos. Sin embargo, si declaras `customerId` como una variable inicial en `FormView` con un valor de `id` que no esté en uso, este permanecerá intacto para los clientes nuevos y se sobrescribirá en `onWillEnter()` para los clientes existentes.
 
-Esto te permite usar `doesCustomerExist()` para verificar si se debe agregar un nuevo cliente o actualizar uno existente.
+Esto te permite usar `doesCustomerExist()` para verificar si debes agregar un cliente nuevo o actualizar uno existente.
 
 ```java
 private Long customerId = 0L;
@@ -218,27 +226,28 @@ private void submitCustomer() {
 }
 ```
 
-## `FormView` completado {#completed-formview}
+## `FormView` completo {#completed-formview}
 
-Aquí está cómo debería lucir `FormView`, ahora que puede manejar la edición de clientes existentes:
+Así debería quedar `FormView` ahora que puede gestionar la edición de clientes existentes:
 
+<!-- vale off -->
 <ExpandableCode title="FormView.java" language="java" startLine={1} endLine={15}>
 
 ```java
 @Route("customer/:id?<[0-9]+>")
-@FrameTitle("Formulario de Cliente")
+@FrameTitle("Customer Form")
 public class FormView extends Composite<Div> implements WillEnterObserver {
   private final CustomerService customerService;
   private Customer customer = new Customer();
   private Long customerId = 0L;
   private Div self = getBoundComponent();
-  private TextField firstName = new TextField("Nombre", e -> customer.setFirstName(e.getValue()));
-  private TextField lastName = new TextField("Apellido", e -> customer.setLastName(e.getValue()));
-  private TextField company = new TextField("Empresa", e -> customer.setCompany(e.getValue()));
-  private ChoiceBox country = new ChoiceBox("País",
+  private TextField firstName = new TextField("First Name", e -> customer.setFirstName(e.getValue()));
+  private TextField lastName = new TextField("Last Name", e -> customer.setLastName(e.getValue()));
+  private TextField company = new TextField("Company", e -> customer.setCompany(e.getValue()));
+  private ChoiceBox country = new ChoiceBox("Country",
       e -> customer.setCountry((Customer.Country) e.getSelectedItem().getKey()));
-  private Button submit = new Button("Enviar", ButtonTheme.PRIMARY, e -> submitCustomer());
-  private Button cancel = new Button("Cancelar", ButtonTheme.OUTLINED_PRIMARY, e -> navigateToMain());
+  private Button submit = new Button("Submit", ButtonTheme.PRIMARY, e -> submitCustomer());
+  private Button cancel = new Button("Cancel", ButtonTheme.OUTLINED_PRIMARY, e -> navigateToMain());
   private ColumnsLayout layout = new ColumnsLayout(
       firstName, lastName,
       company, country,
@@ -310,12 +319,13 @@ public class FormView extends Composite<Div> implements WillEnterObserver {
 ```
 
 </ExpandableCode>
+<!-- vale on -->
 
-## Navegando de `MainView` a `FormView` para editar clientes {#navigating-from-mainview-to-formview-to-edit-customers}
+## Navegar de `MainView` a `FormView` para editar clientes {#navigating-from-mainview-to-formview-to-edit-customers}
 
-Antes en este paso, usaste un `ParametersBag` existente para determinar el valor de un `id`. Crear un nuevo `ParametersBag` te permite navegar entre clases directamente con los parámetros de tu elección. Usar los datos en la `Table` es una opción viable para enviar usuarios a `FormView` con un `id` de cliente.
+Al principio de este paso, usaste un `ParametersBag` existente para determinar el valor de un `id`. Crear un `ParametersBag` nuevo te permite navegar entre clases directamente con los parámetros que elijas. Usar los datos de la `Table` es una opción viable para enviar a los usuarios a `FormView` con el `id` de un cliente.
 
-Similar al botón, vincular la navegación a una acción elegida por el usuario les permite decidir cuándo ir a `FormView`. Agregar un listener de eventos a la `Table` te permite enviar al usuario a `FormView` con un `ParametersBag`:
+Al igual que con un botón, asociar la navegación a una acción elegida por el usuario le permite decidir cuándo ir a `FormView`. Agregar un receptor de eventos a la `Table` te permite enviar al usuario a `FormView` con un `ParametersBag`:
 
 ```java
 table.addItemClickListener(this::editCustomer);
@@ -326,22 +336,22 @@ private void editCustomer(TableItemClickEvent<Customer> e) {
   }
 ```
 
-Sin embargo, la clave de los elementos de la `Table` se genera automáticamente por defecto. Puedes hacer explícito que cada clave se correlacione con el `id` de un cliente usando el método `setKeyProvider()`:
+Sin embargo, las claves de los elementos de `Table` se generan automáticamente de forma predeterminada. Puedes hacer que cada clave corresponda explícitamente al `id` de un cliente mediante el método `setKeyProvider()`:
 
 ```java
 table.setKeyProvider(Customer::getId);
 ```
 
-En `MainView`, agrega los métodos `addItemClickListener()` y `setKeyProvider()` a `buildTable()`, luego agrega el método que envía al usuario a `FormView` con un valor para el `id` en el `ParametersBag` basado en dónde en la tabla hizo clic el usuario:
+En `MainView`, agrega los métodos `addItemClickListener()` y `setKeyProvider()` a `buildTable()`. Luego, agrega el método que envía al usuario a `FormView` con un valor de `id` en `ParametersBag`, según el lugar de la tabla en el que haya hecho clic:
 
 ```java title="MainView.java" {30-31,34-37}
 @Route("/")
-@FrameTitle("Tabla de Clientes")
+@FrameTitle("Customer Table")
 public class MainView extends Composite<Div> {
   private final CustomerService customerService;
   private Div self = getBoundComponent();
   private Table<Customer> table = new Table<>();
-  private Button addCustomer = new Button("Agregar Cliente", ButtonTheme.PRIMARY,
+  private Button addCustomer = new Button("Add Customer", ButtonTheme.PRIMARY,
       e -> Router.getCurrent().navigate(FormView.class));
 
   public MainView(CustomerService customerService) {
@@ -356,10 +366,10 @@ public class MainView extends Composite<Div> {
   private void buildTable() {
     table.setSize("1000px", "294px");
     table.setMaxWidth("90vw");
-    table.addColumn("firstName", Customer::getFirstName).setLabel("Nombre");
-    table.addColumn("lastName", Customer::getLastName).setLabel("Apellido");
-    table.addColumn("company", Customer::getCompany).setLabel("Empresa");
-    table.addColumn("country", Customer::getCountry).setLabel("País");
+    table.addColumn("firstName", Customer::getFirstName).setLabel("First Name");
+    table.addColumn("lastName", Customer::getLastName).setLabel("Last Name");
+    table.addColumn("company", Customer::getCompany).setLabel("Company");
+    table.addColumn("country", Customer::getCountry).setLabel("Country");
     table.setColumnsToAutoFit();
     table.setColumnsToResizable(false);
     table.getColumns().forEach(column -> column.setSortable(true));
@@ -375,6 +385,6 @@ public class MainView extends Composite<Div> {
 }
 ```
 
-## Próximo paso {#next-step}
+## Siguiente paso {#next-step}
 
-Ahora que los usuarios pueden editar los datos del cliente directamente, tu aplicación debe validar los cambios antes de comprometerlos al repositorio. En [Validando y Vinculando Datos](/docs/introduction/tutorial/validating-and-binding-data), crearás reglas de validación y asociarás directamente el modelo de datos con la interfaz de usuario, permitiendo que los componentes muestren mensajes de error cuando los datos sean inválidos.
+Ahora que los usuarios pueden editar directamente los datos de los clientes, tu aplicación debería validar los cambios antes de confirmarlos en el repositorio. En [Validating and Binding Data](/docs/introduction/tutorial/validating-and-binding-data), crearás reglas de validación y asociarás directamente el modelo de datos con la interfaz de usuario, lo que permitirá que los componentes muestren mensajes de error cuando los datos no sean válidos.

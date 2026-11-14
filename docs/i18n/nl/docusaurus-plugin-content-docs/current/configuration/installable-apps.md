@@ -4,70 +4,66 @@ sidebar_position: 20
 description: >-
   Annotate a webforJ app with AppProfile to generate a Web App Manifest with
   icons, screenshots, and metadata for device installation.
-_i18n_hash: 60a6bf616536e9c202af684e9a505af6
+_i18n_hash: 9aa99cc9da864a6808d72602b6e5c572
 ---
 <DocChip chip='since' label='24.21' />
 <JavadocLink type="foundation" location="com/webforj/annotation/AppProfile" top='true'/>
 
-De `@AppProfile` annotatie in webforJ stelt je in staat om je app installeerbaar te maken op ondersteunde platforms.
+Met de annotatie `@AppProfile` in webforJ kun je je app installeerbaar maken op ondersteunde platforms.
 Installeerbare webapps integreren met het besturingssysteem van het apparaat.
-Wanneer geïnstalleerd, verschijnen ze op het startscherm of in het app-menu, vergelijkbaar met native apps.
-Om dit te bereiken, moeten bepaalde metadata zoals naam, beschrijving en iconen worden verstrekt.
-Deze details helpen het besturingssysteem om de app te identificeren en weer te geven.
+Na installatie verschijnen ze op het startscherm of in het appmenu, net als native apps.
+Hiervoor moet je bepaalde metadata opgeven, zoals de naam, beschrijving en pictogrammen.
+Aan de hand van deze gegevens kan het besturingssysteem de app herkennen en weergeven.
 
-:::info Vereiste Beveiligde Oorsprong
-Om een app installeerbaar te maken, moet deze worden aangeboden vanuit een beveiligde oorsprong, zoals `https`.
-Browsers wijzen installatiepogingen op onveilige oorsprongen af. Deze regel is echter niet van toepassing wanneer de app lokaal vanaf `localhost` tijdens de ontwikkeling wordt aangeboden.
+:::info Vereiste voor een beveiligde oorsprong
+Een app moet vanaf een beveiligde oorsprong, zoals `https`, worden aangeboden om installeerbaar te zijn.
+Browsers wijzen installatiepogingen vanaf onbeveiligde oorsprongen af. Deze regel geldt echter niet wanneer je de app tijdens de ontwikkeling lokaal aanbiedt via `localhost`.
 
 <!-- vale off -->
-Voor meer details over veilige contexten en hun belang, zie de [Secure Contexts MDN documentatie](https://developer.mozilla.org/en-US/docs/Web/Security/Secure_Contexts).
+Raadpleeg voor meer informatie over beveiligde contexten en het belang ervan de [MDN-documentatie over beveiligde contexten](https://developer.mozilla.org/en-US/docs/Web/Security/Secure_Contexts).
 <!-- vale on -->
 :::
 
-<div class="videos-container">
-  <video controls>
-    <source src="/video/install-chrome.mp4" type="video/mp4"/>
-  </video>
-</div>
+<VideoPlayer video="installable-apps/install-chrome" width={1908} height={1052} title="Install chrome" />
 
 ## Browserondersteuning {#browser-support}
 
-Ondersteuning voor het installeren van een webapp varieert per browser en per platform.
+Ondersteuning voor het installeren van een webapp verschilt per browser en platform.
 
 ### Desktop {#browser-support-desktop}
 
-- **Chromium-browsers** (Chrome, Edge, Opera, Brave en anderen) installeren elke app die een manifestbestand levert op alle ondersteunde desktopbesturingssystemen.
-- **Safari** ondersteunt **Bestand → Voeg toe aan Dock** op macOS Sonoma (Safari 17) en later. De flow werkt voor elke webapp, met of zonder manifestbestand.
-- **Firefox** ondersteunt het installeren van webapps vanuit een manifestbestand op desktop niet.
+- **Chromium-browsers** (Chrome, Edge, Opera, Brave en andere) kunnen op alle ondersteunde desktopbesturingssystemen elke app installeren die een manifestbestand bevat.
+- **Safari** ondersteunt **Archief → Voeg toe aan Dock** op macOS Sonoma (Safari 17) en hoger. Dit werkt voor elke webapp, met of zonder manifestbestand.
+- **Firefox** ondersteunt op desktop geen installatie van webapps vanuit een manifestbestand.
 
 ### Mobiel {#browser-support-mobile}
 
-- Op **Android** ondersteunen Chrome, Edge, Firefox, Opera en Samsung Internet allemaal het installeren van webapps.
-- Op **iOS 16.3 en eerder** kunnen webapps alleen vanuit Safari worden geïnstalleerd (**Delen → Voeg toe aan startscherm**).
-- Op **iOS 16.4 en later** kunnen webapps worden geïnstalleerd vanuit het Deelnemen-menu in Safari, Chrome, Edge, Firefox en Orion.
+- Op **Android** ondersteunen Chrome, Edge, Firefox, Opera en Samsung Internet allemaal de installatie van webapps.
+- Op **iOS 16.3 en ouder** kunnen webapps alleen vanuit Safari worden geïnstalleerd (**Deel → Voeg toe aan beginscherm**).
+- Op **iOS 16.4 en hoger** kunnen webapps worden geïnstalleerd via het Deel-menu in Safari, Chrome, Edge, Firefox en Orion.
 
-## `@AppProfile` annotatie {#appprofile-annotation}
+## De annotatie `@AppProfile` {#appprofile-annotation}
 
-De `@AppProfile` annotatie wordt toegepast op de hoofdapp-klasse en vereist minimale configuratie. Ten minste moet je het volgende opgeven:
+De annotatie `@AppProfile` wordt toegepast op de hoofdklasse van de app en vereist minimale configuratie. Je moet ten minste het volgende opgeven:
 
 - **name**: De volledige naam van de app.
-- **shortName**: Een beknopte versie van de naam voor gebruik in contexten met beperkte ruimte.
+- **shortName**: Een beknopte versie van de naam voor situaties waarin weinig ruimte beschikbaar is.
 
-Extra optionele eigenschappen stellen je in staat om het uiterlijk en gedrag van de app aan te passen.
+Met aanvullende optionele eigenschappen kun je het uiterlijk en gedrag van de app aanpassen.
 
-Wanneer de `@AppProfile` annotatie aanwezig is, zorgt webforJ voor:
+Wanneer de annotatie `@AppProfile` aanwezig is, doet webforJ het volgende:
 
-- Automatisch opzetten van de noodzakelijke meta-tags.
-- Genereert een [Web Application Manifest](https://developer.mozilla.org/en-US/docs/Web/Manifest).
-- Dien gerelateerde middelen zoals iconen en screenshots.
+- Stelt automatisch de benodigde metatags in.
+- Genereert een [webapp-manifest](https://developer.mozilla.org/en-US/docs/Web/Manifest).
+- Biedt gerelateerde resources aan, zoals pictogrammen en schermafbeeldingen.
 
-### Voorbeeld: Toepassen van `@AppProfile` {#example-applying-appprofile}
+### Voorbeeld: `@AppProfile` toepassen {#example-applying-appprofile}
 
 ```java
 @AppProfile(
   name = "Zyntric Bank",
   shortName = "ZBank",
-  description = "Zyntric Bank is een eenvoudige banktoepassing gebouwd met webforJ",
+  description = "Zyntric Bank is a simple banking application built with webforJ",
   screenshots = {
     @AppProfile.Screenshot(
       src = "ws://img/screenshots/s1.jpg",
@@ -79,35 +75,35 @@ public class Application extends App {
 }
 ```
 
-## `@AppProfile` eigenschappen {#appprofile-properties}
+## Eigenschappen van `@AppProfile` {#appprofile-properties}
 
-De volgende tabel geeft alle eigenschappen weer die door de `@AppProfile` annotatie worden ondersteund:
+In de volgende tabel staan alle eigenschappen die door de annotatie `@AppProfile` worden ondersteund:
 
-| **Eigenschap**     | **Type**                                           | **Beschrijving**                                                                                           | **Standaardwaarde**     |
-| ------------------ | -------------------------------------------------- | --------------------------------------------------------------------------------------------------------- | ------------------------ |
-| `name`             | `String`                                          | De volledige naam van de app, weergegeven in app-menu's en installatie-dialogen.                         | **Verplicht**            |
-| `shortName`        | `String`                                          | Een korte versie van de naam, gebruikt in contexten met beperkte ruimte. Mag niet meer dan 12 tekens bevatten. | **Verplicht**            |
-| `description`      | `String`                                          | Een beknopte beschrijving van de app, weergegeven tijdens de installatie en in app-instellingen.           | `""`                     |
-| `themeColor`       | `String`                                          | De themakleur voor de app, toegepast op de browserinterface wanneer de app wordt gestart.                 | `"#ffffff"`              |
-| `backgroundColor`  | `String`                                          | De initiële achtergrondkleur voor de app tijdens het laden.                                               | `"#f8fafc"`              |
-| `startUrl`         | `String`                                          | De URL die geopend moet worden wanneer de app wordt gestart.                                              | `"."`                    |
-| `display`          | `Display` **_Enum_**                             | De weergavemodus van de app (bijv. `FULLSCREEN`, `STANDALONE`, `BROWSER`).                                | `STANDALONE`             |
-| `orientation`      | `Orientation` **_Enum_**                         | De standaardoriëntatie van de app (bijv. `PORTRAIT`, `LANDSCAPE`, `NATURAL`).                            | `NATURAL`                |
-| `icons`            | [`Icon[]`](#appprofileicon-properties)           | Een array van iconen die de app op verschillende resoluties vertegenwoordigen.                            | `[]`                     |
-| `defaultIcon`      | [`DefaultIcon`](#appprofiledefaulticon-properties) | Geeft een standaardicoon voor de app op. Genereert automatisch pad naar iconen in meerdere formaten als dat is geconfigureerd. | `icons://icon.png`      |
-| `screenshots`      | [`Screenshot[]`](#appprofilescreenshot-properties) | Een array van screenshots voor de app, gebruikt in installatie-dialogen.                                  | `[]`                     |
-| `categories`       | `String[]`                                       | Categorieën om de app te classificeren (bijv. `Financiën`, `Winkelen`).                                 | `[]`                     |
+| **Eigenschap**     | **Type**                                           | **Beschrijving**                                                                                           | **Standaardwaarde** |
+| ----------------- | -------------------------------------------------- | --------------------------------------------------------------------------------------------------------- | --------------------- |
+| `name`            | `String`                                           | De volledige naam van de app, weergegeven in appmenu's en installatiedialogen.                            | **Verplicht**         |
+| `shortName`       | `String`                                           | Een korte versie van de naam, gebruikt wanneer weinig ruimte beschikbaar is. Mag niet langer zijn dan 12 tekens. | **Verplicht**         |
+| `description`     | `String`                                           | Een korte beschrijving van de app, weergegeven tijdens de installatie en in de appinstellingen.            | `""`                  |
+| `themeColor`      | `String`                                           | De themakleur van de app, toegepast op de browserinterface wanneer de app wordt gestart.                  | `"#ffffff"`           |
+| `backgroundColor` | `String`                                           | De aanvankelijke achtergrondkleur van de app tijdens het laden.                                           | `"#f8fafc"`           |
+| `startUrl`        | `String`                                           | De URL die wordt geopend wanneer de app wordt gestart.                                                    | `"."`                 |
+| `display`         | `Display` **_Enum_**                               | De weergavemodus van de app (bijv. `FULLSCREEN`, `STANDALONE`, `BROWSER`).                                | `STANDALONE`          |
+| `orientation`     | `Orientation` **_Enum_**                           | De standaardoriëntatie van de app (bijv. `PORTRAIT`, `LANDSCAPE`, `NATURAL`).                            | `NATURAL`             |
+| `icons`           | [`Icon[]`](#appprofileicon-properties)             | Een array met pictogrammen die de app bij verschillende resoluties vertegenwoordigen.                     | `[]`                  |
+| `defaultIcon`     | [`DefaultIcon`](#appprofiledefaulticon-properties) | Hiermee geef je een standaardpictogram voor de app op. Indien geconfigureerd, worden automatisch pictogrampaden in meerdere formaten gegenereerd. | `icons://icon.png` |
+| `screenshots`     | [`Screenshot[]`](#appprofilescreenshot-properties) | Een array met schermafbeeldingen van de app, gebruikt in installatiedialogen.                              | `[]`                  |
+| `categories`      | `String[]`                                         | Categorieën waarmee de app wordt ingedeeld (bijv. `Finance`, `Shopping`).                                 | `[]`                  |
 
-### `@AppProfile.Icon` eigenschappen {#appprofileicon-properties}
+### Eigenschappen van `@AppProfile.Icon` {#appprofileicon-properties}
 
-Iconen definiëren de visuele representatie van je app in menu's en startschermen. De `@AppProfile.Icon` annotatie ondersteunt de volgende eigenschappen:
+Pictogrammen geven de app visueel weer in menu's en op startschermen. De annotatie `@AppProfile.Icon` ondersteunt de volgende eigenschappen:
 
-| **Eigenschap**                                                                     | **Type** | **Beschrijving**                                                                                        | **Standaardwaarde** |
-| ---------------------------------------------------------------------------------- | -------- | ------------------------------------------------------------------------------------------------------ | -------------------- |
-| `src`                                                                             | `String` | Het pad naar het icoon. Dit kan een absolute URL zijn of een `ws://` pad.                             | **Verplicht**        |
-| `sizes`                                                                           | `String` | Een string die een of meer maten van de afbeelding specificeert in het formaat `BreedtexHoogte` (bijv. `512x512`). | **Verplicht**        |
-| `type`                                                                            | `String` | Het mediatype van het icoon (bijv. `image/png`, `image/jpeg`). Als niet opgegeven, wordt het gedetecteerd | `""`                 |
-| [`purpose`](https://developer.mozilla.org/en-US/docs/Web/Manifest/icons#purpose) | `String` | Het doel van het icoon (bijv. `any`, `maskable`, `monochrome`).                                       | `""`                 |
+| **Eigenschap**                                                                     | **Type** | **Beschrijving**                                                                                         | **Standaardwaarde** |
+| -------------------------------------------------------------------------------- | -------- | ------------------------------------------------------------------------------------------------------ | ----------------- |
+| `src`                                                                            | `String` | Het pad naar het pictogram. Dit kan een absolute URL of een `ws://`-pad zijn.                           | **Verplicht**     |
+| `sizes`                                                                          | `String` | Een tekenreeks die een of meer afbeeldingsformaten opgeeft in de vorm `WidthxHeight` (bijv. `512x512`). | **Verplicht**     |
+| `type`                                                                           | `String` | Het mediatype van het pictogram (bijv. `image/png`, `image/jpeg`). Als dit niet is opgegeven, wordt het automatisch gedetecteerd. | `""`              |
+| [`purpose`](https://developer.mozilla.org/en-US/docs/Web/Manifest/icons#purpose) | `String` | Het doel van het pictogram (bijv. `any`, `maskable`, `monochrome`).                                     | `""`              |
 
 ### Voorbeeld {#example}
 
@@ -119,41 +115,42 @@ Iconen definiëren de visuele representatie van je app in menu's en startscherme
 )
 ```
 
-### `@AppProfile.DefaultIcon` eigenschappen {#appprofiledefaulticon-properties}
+### Eigenschappen van `@AppProfile.DefaultIcon` {#appprofiledefaulticon-properties}
 
-De `DefaultIcon` annotatie vereenvoudigt de configuratie van app-iconen door meerdere formaatvarianten vanuit een basisicoon te genereren.
-Het produceert iconen op de resoluties die apparaten doorgaans aanvragen.
+Met de annotatie `DefaultIcon` kun je de configuratie van app-pictogrammen vereenvoudigen door vanuit één basispictogram meerdere formaten te genereren.
+De annotatie genereert pictogrammen met resoluties die vaak door apparaten worden aangevraagd.
 
-| **Eigenschap** | **Type** | **Beschrijving**                                                                 | **Standaardwaarde** |
-| -------------- | -------- | ------------------------------------------------------------------------------- | -------------------- |
-| `value`        | `String` | Het pad naar het basisicoonbestand. Dit kan een absolute URL zijn of een `ws://` pad. | **Verplicht**        |
-| `sizes`        | `int[]`  | Een array van maten die gegenereerd moeten worden, gespecificeerd als gehele getallen (bijv. `{144, 192, 512}`). | `{144, 192, 512}`   |
+| **Eigenschap** | **Type** | **Beschrijving**                                                             | **Standaardwaarde** |
+| ------------ | -------- | ------------------------------------------------------------------------------- | ----------------- |
+| `value`      | `String` | Het pad naar het basisbestand van het pictogram. Dit kan een absolute URL of een `ws://`-pad zijn. | **Verplicht**     |
+| `sizes`      | `int[]`  | Een array met te genereren formaten, opgegeven als gehele getallen (bijv. `{144, 192, 512}`). | `{144, 192, 512}` |
 
-:::info Vereisten voor Icoonbestanden
-Deze configuratie genereert de daadwerkelijke icoonbestanden voor de app niet automatisch. In plaats daarvan gebruikt het de `@AppProfile.DefaultIcon` annotatie om overeenkomstige [`@AppProfile.Icon`](#appprofileicon-properties) items voor elke opgegeven grootte te genereren.
+:::info Vereisten voor pictogrambestanden
+Deze configuratie genereert niet automatisch de daadwerkelijke pictogrambestanden voor de app. De annotatie `@AppProfile.DefaultIcon` genereert in plaats daarvan voor elk opgegeven formaat de bijbehorende vermeldingen van [`@AppProfile.Icon`](#appprofileicon-properties).
 
-#### Als je het [webserverprotocol](../managing-resources/assets-protocols#the-webserver-protocol) gebruikt {#if-using-the-webserver-protocol}
-- Je moet een basis `icon.png` bestand in de `static/icons` map bieden.
-- Je wordt verwacht om extra icoonvariaties op te nemen die `icon-144x144.png`, `icon-192x192.png` en `icon-512x512.png` worden genoemd.
-- Deze specifieke maten dekken de resoluties die apparaten doorgaans aanvragen.
+#### Bij gebruik van het [webserverprotocol](../managing-resources/assets-protocols#the-webserver-protocol) {#if-using-the-webserver-protocol}
+- Je moet een basisbestand `icon.png` in de map `static/icons` plaatsen.
+- Je moet ook aanvullende pictogramvarianten opnemen met de namen `icon-144x144.png`, `icon-192x192.png` en `icon-512x512.png`.
+- Deze specifieke formaten komen overeen met resoluties die vaak door apparaten worden aangevraagd.
 
-#### Als je het [iconenprotocol](../managing-resources/assets-protocols#the-icons-protocol) gebruikt {#if-using-the-icons-protocol}
-- Je wordt verwacht om een basis `icon.png` bestand in de `/icons` map te bieden.
-- Het `icons` eindpunt biedt dynamisch verschillende icoongroottes op aanvraag wanneer ze worden aangevraagd.
+#### Bij gebruik van het [icons-protocol](../managing-resources/assets-protocols#the-icons-protocol) {#if-using-the-icons-protocol}
+
+- Je moet een basisbestand `icon.png` in de map `/icons` plaatsen.
+- Het `icons`-eindpunt levert dynamisch verschillende pictogramformaten wanneer hierom wordt gevraagd.
 :::
 
-### `@AppProfile.Screenshot` eigenschappen {#appprofilescreenshot-properties}
+### Eigenschappen van `@AppProfile.Screenshot` {#appprofilescreenshot-properties}
 
-Screenshots bieden een preview van de app in installatie-dialogen of app stores. De `@AppProfile.Screenshot` annotatie ondersteunt de volgende eigenschappen:
+Schermafbeeldingen geven een voorbeeld van de app in installatiedialogen of appstores. De annotatie `@AppProfile.Screenshot` ondersteunt de volgende eigenschappen:
 
-| **Eigenschap**                                                                          | **Type** | **Beschrijving**                                                                                             | **Standaardwaarde** |
-| --------------------------------------------------------------------------------------- | -------- | ----------------------------------------------------------------------------------------------------------- | -------------------- |
-| `src`                                                                                   | `String` | Het pad naar de screenshot. Dit kan een absolute URL zijn of een `ws://` pad.                               | **Verplicht**        |
-| `sizes`                                                                                 | `String` | Een string die een of meer maten van de afbeelding specificeert in het formaat `BreedtexHoogte` (bijv. `1080x1920`). | **Verplicht**        |
-| `type`                                                                                  | `String` | Het mediatype van de screenshot (bijv. `image/png`, `image/jpeg`). Als niet opgegeven, wordt het gedetecteerd | `""`                 |
-| `label`                                                                                 | `String` | Een beschrijvende label voor de screenshot.                                                                   | `""`                 |
-| [`formFactor`](https://developer.mozilla.org/en-US/docs/Web/Manifest/screenshots#form_factor) | `String` | De vormfactor van de screenshot (bijv. `narrow`, `wide`).                                                   | `""`                 |
-| [`platform`](https://developer.mozilla.org/en-US/docs/Web/Manifest/screenshots#platform) | `String` | Het platform waarvoor de screenshot bedoeld is (bijv. `ios`, `android`).                                   | `""`                 |
+| **Eigenschap**                                                                                  | **Type** | **Beschrijving**                                                                                             | **Standaardwaarde** |
+| --------------------------------------------------------------------------------------------- | -------- | ----------------------------------------------------------------------------------------------------------- | ----------------- |
+| `src`                                                                                         | `String` | Het pad naar de schermafbeelding. Dit kan een absolute URL of een `ws://`-pad zijn.                         | **Verplicht**     |
+| `sizes`                                                                                       | `String` | Een tekenreeks die een of meer afbeeldingsformaten opgeeft in de vorm `WidthxHeight` (bijv. `1080x1920`).   | **Verplicht**     |
+| `type`                                                                                        | `String` | Het mediatype van de schermafbeelding (bijv. `image/png`, `image/jpeg`). Als dit niet is opgegeven, wordt het automatisch gedetecteerd. | `""`              |
+| `label`                                                                                       | `String` | Een beschrijvend label voor de schermafbeelding.                                                            | `""`              |
+| [`formFactor`](https://developer.mozilla.org/en-US/docs/Web/Manifest/screenshots#form_factor) | `String` | De vormfactor van de schermafbeelding (bijv. `narrow`, `wide`).                                             | `""`              |
+| [`platform`](https://developer.mozilla.org/en-US/docs/Web/Manifest/screenshots#platform)      | `String` | Het platform waarvoor de schermafbeelding bedoeld is (bijv. `ios`, `android`).                              | `""`              |
 
 ### Voorbeeld {#example-1}
 
@@ -164,8 +161,4 @@ Screenshots bieden een preview van de app in installatie-dialogen of app stores.
 )
 ```
 
-<div class="videos-container">
-  <video controls>
-    <source src="/video/install-android.mp4" type="video/mp4"/>
-  </video>
-</div>
+<VideoPlayer video="installable-apps/install-android" width={374} height={824} title="Install android" />

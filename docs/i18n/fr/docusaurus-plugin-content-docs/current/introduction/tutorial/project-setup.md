@@ -4,25 +4,27 @@ sidebar_position: 1
 description: >-
   Discover where to download the tutorial project, how to navigate it, and run
   the apps within.
-_i18n_hash: 8c9cc05d141898612beff7f1c3f73fae
+_i18n_hash: 95bc825bd041018765a732bf464d77b7
 ---
-Pour commencer ce tutoriel, vous avez besoin d'un emplacement pour votre projet où vous pouvez gérer vos classes et ressources. Les sections suivantes décrivent les différentes manières de créer votre projet webforJ pour ce tutoriel.
+Pour commencer ce tutoriel, vous avez besoin d’un emplacement pour votre projet, où vous pourrez gérer vos classes et vos ressources. Les sections suivantes décrivent les différentes façons de créer votre projet webforJ pour ce tutoriel.
 
-## Utilisation du code source {#using-source-code}
+## Utiliser le code source {#using-source-code}
 
-Le moyen le plus simple de suivre ce tutoriel est de se référer à son code source. Vous pouvez télécharger l'ensemble du projet ou le cloner depuis GitHub :
+Le moyen le plus simple de suivre ce tutoriel est de consulter son code source. Vous pouvez télécharger l’ensemble du projet ou le cloner depuis GitHub :
 
 <!-- vale off -->
-- Télécharger ZIP : [webforj-tutorial.zip](https://github.com/webforj/webforj-tutorial/archive/refs/heads/main.zip)
-- Dépôt GitHub : Cloner le projet [directement depuis GitHub](https://github.com/webforj/webforj-tutorial)
+- Télécharger le fichier ZIP : [webforj-tutorial.zip](https://github.com/webforj/webforj-tutorial/archive/refs/heads/main.zip)
+- Dépôt GitHub : cloner le projet [directement depuis GitHub](https://github.com/webforj/webforj-tutorial)
 <!-- vale on -->
 ```bash
 git clone https://github.com/webforj/webforj-tutorial.git
 ```
 
+<!-- <VideoPlayer video="tutorial/project-setup" width={1920} height={1080} title="Project setup" /> -->
+
 ### Structure du projet {#project-structure}
 
-Le projet possède six sous-répertoires, un pour chaque étape du tutoriel, et chacun contient une application exécutable. Suivre est une occasion de voir comment l'application progresse d'une configuration de base à un système complet de gestion des clients.
+Le projet comporte six sous-répertoires, un pour chaque étape du tutoriel, et chacun contient une application exécutable. En suivant les étapes, vous pourrez voir l’application évoluer, d’une configuration de base à un système de gestion des clients entièrement fonctionnel.
 
 ```
 webforj-tutorial
@@ -38,17 +40,19 @@ webforj-tutorial
 └───6-integrating-an-app-layout
 ```
 
-## Utilisation de startforJ {#using-startforj}
+<!-- vale off -->
+## Utiliser startforJ {#using-startforj}
+<!-- vale on -->
 
-Si vous préférez créer un nouveau projet, vous pouvez utiliser [startforJ](https://docs.webforj.com/startforj) pour générer un projet minimaliste de démarrage. Consultez [Getting Started](/docs/introduction/getting-started) pour des informations plus détaillées sur l'utilisation de startforJ.
+Si vous préférez créer un projet, vous pouvez utiliser [startforJ](https://docs.webforj.com/startforj) pour générer un projet de démarrage minimal. Consultez [Bien démarrer](/docs/introduction/getting-started) pour en savoir plus sur l’utilisation de startforJ.
 
 :::note Paramètres requis
-- Dans le menu déroulant **version de webforJ**, choisissez la version de webforJ **26.01 ou supérieure**.
-- Sous **Fonctionne sur**, choisissez **Spring Boot**.
+- Dans la liste déroulante **version de webforJ**, choisissez la version **26.01 ou ultérieure** de webforJ.
+- Sous **S’exécute sur**, choisissez **Spring Boot**.
 
-## Utilisation de la ligne de commande {#using-command-line}
+## Utiliser la ligne de commande {#using-command-line}
 
-Vous pouvez également générer un nouveau projet avec la commande suivante :
+Vous pouvez également générer un nouveau projet à l’aide de la commande suivante :
 
 <!-- vale off -->
 <Tabs>
@@ -76,7 +80,7 @@ mvn -B archetype:generate `
   -Dflavor="webforj-spring"
 ```
   </TabItem>
-  <TabItem value="cmd" label="Invite de commandes">
+  <TabItem value="cmd" label="Command Prompt">
 ```
 mvn -B archetype:generate ^
   -DarchetypeGroupId="com.webforj" ^
@@ -93,7 +97,7 @@ mvn -B archetype:generate ^
 
 ## Configurations {#configurations}
 
-Les deux manières de créer un nouveau projet utilisent les [archétypes](/docs/building-ui/archetypes/overview) de webforJ, qui ajoutent automatiquement les configurations nécessaires à votre projet. Cela inclut les [dépendances](/docs/integrations/spring/spring-boot) Spring, le plugin Maven webforJ qui construit et surveille les sources frontend, et les propriétés suivantes dans `src/main/resources/application.properties` :
+Les deux méthodes mentionnées pour créer un nouveau projet utilisent les [archétypes](/docs/building-ui/archetypes/overview) webforJ, qui ajoutent automatiquement à votre projet les configurations nécessaires. Cela comprend les [dépendances](/docs/integrations/spring/spring-boot) Spring, le plugin Maven webforJ qui compile et surveille les sources frontend, ainsi que les propriétés suivantes dans `src/main/resources/application.properties` :
 
 ```
 spring.application.name=CustomerApplication
@@ -102,17 +106,19 @@ webforj.entry = com.webforj.tutorial.Application
 webforj.debug=true
 ```
 
-## Exécution de l'application {#running-the-app}
+## Exécuter l’application {#running-the-app}
 
-Pour voir l'application en action au fur et à mesure de votre progression à travers le tutoriel :
+Pour voir l’application en action au fil des étapes du tutoriel :
 
-1. Naviguez dans le répertoire pour l'étape souhaitée. Cela devrait être le répertoire de niveau supérieur pour cette étape, contenant le `pom.xml`.
+1. Accédez au répertoire correspondant à l’étape souhaitée. Il s’agit du répertoire de premier niveau de cette étape, qui contient le fichier `pom.xml`.
 
-2. Utilisez la commande Maven suivante pour exécuter l'application Spring Boot localement :
+2. Utilisez la commande Maven suivante pour exécuter l’application Spring Boot localement :
     ```bash
     mvn
     ```
 
-   Le POM généré configure cette commande par défaut pour compiler l'application, démarrer le veilleur frontend de webforJ et exécuter Spring Boot.
+   Le POM généré configure cette commande par défaut pour compiler l’application, démarrer le processus de surveillance du frontend webforJ et exécuter Spring Boot.
 
-L'exécution de l'application ouvre automatiquement un nouveau navigateur à `http://localhost:8080`.
+<!-- vale Google.WordList = NO -->
+L’exécution de l’application ouvre automatiquement une nouvelle fenêtre de navigateur à l’adresse `http://localhost:8080`.
+<!-- vale Google.WordList = YES -->

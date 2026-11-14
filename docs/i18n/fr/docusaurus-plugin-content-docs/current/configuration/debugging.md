@@ -4,22 +4,18 @@ sidebar_position: 15
 description: >-
   Attach a remote Java debugger to a running webforJ app from Visual Studio
   Code, IntelliJ IDEA, or Eclipse using Jetty on port 8000.
-_i18n_hash: d3f71dbbc660b90f2f4c33fd071c9819
+_i18n_hash: 6e761f399c4a1f8d562acf85f92af615
 ---
 Le débogage est une étape essentielle du développement Java : il aide les développeurs à identifier et à corriger efficacement les problèmes. Ce guide explique comment configurer le débogage dans webforJ avec Visual Studio Code, IntelliJ IDEA et Eclipse.
 
 <Tabs>
 <TabItem value="vscode" label="Visual Studio Code">
 
-<div class="videos-container">
-      <video controls>
-        <source src="https://cdn.webforj.com/webforj-documentation/video/debug/vscode.mp4" type="video/mp4" />
-      </video>
-</div>
+<VideoPlayer video="debugging/vscode" width={1920} height={1080} title="VS Code" />
 
 1. Ouvrez votre projet webforJ dans VS Code.
 2. Appuyez sur <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>D</kbd> (ou <kbd>Cmd</kbd> + <kbd>Shift</kbd> + <kbd>D</kbd> sur Mac) pour ouvrir le panneau Exécuter et déboguer.
-3. Cliquez sur « create a launch.json file ».
+3. Cliquez sur « créer un fichier launch.json ».
 4. Sélectionnez Java comme environnement.
 5. Modifiez `launch.json` comme suit :
 
@@ -43,30 +39,22 @@ Le débogage est une étape essentielle du développement Java : il aide les dé
 </TabItem>
 <TabItem value="intellij" label="IntelliJ IDEA">
 
-<div class="videos-container">
-      <video controls>
-        <source src="https://cdn.webforj.com/webforj-documentation/video/debug/intellij.mp4" type="video/mp4" />
-      </video>
-</div>
+<VideoPlayer video="debugging/intellij" width={1920} height={1080} title="IntelliJ" />
 
 1. Ouvrez votre projet dans IntelliJ IDEA.
 2. Accédez à Exécuter → Modifier les configurations.
-3. Cliquez sur le bouton <kbd>+</kbd> et sélectionnez Débogage JVM à distance.
+3. Cliquez sur le bouton <kbd>+</kbd> et sélectionnez Débogage distant de la JVM.
 4. Définissez l’hôte sur `localhost` et le port sur `8000`.
 5. Enregistrez la configuration et cliquez sur Déboguer pour vous connecter à l’application en cours d’exécution.
 
 </TabItem>
 <TabItem value="eclipse" label="Eclipse">
 
-<div class="videos-container">
-      <video controls>
-        <source src="https://cdn.webforj.com/webforj-documentation/video/debug/eclipse.mp4" type="video/mp4" />
-      </video>
-</div>
+<VideoPlayer video="debugging/eclipse" width={1920} height={1080} title="Eclipse" />
 
 1. Ouvrez votre projet dans Eclipse.
 2. Accédez à Exécuter → Modifier les configurations.
-3. Sélectionnez Application Java à distance.
+3. Sélectionnez Application Java distante.
 4. Cliquez sur Nouvelle configuration et définissez :
    - Hôte : `localhost`
    - Port : `8000`
@@ -85,14 +73,14 @@ Une fois votre IDE configuré :
 
 :::tip Conseils de débogage
 1. Assurez-vous que le port 8000 est disponible et qu’aucun pare-feu ne le bloque.
-2. Si vous utilisez l’un des archétypes webforJ et que vous avez modifié le numéro de port dans le fichier pom.xml, vérifiez que le port utilisé pour le débogage correspond à la nouvelle valeur.
+2. Si vous utilisez l’un des archétypes webforJ et avez modifié le numéro de port dans le fichier pom.xml, veillez à ce que le port utilisé pour le débogage corresponde à la nouvelle valeur.
 :::
 
 ## Inspecter l’application en cours d’exécution {#inspecting-the-running-app}
 
-Un débogueur vous montre ce que fait votre code. [craftforJ](/docs/craftforj) vous montre l’application produite par ce code, notamment l’arborescence des composants créée par webforJ, les propriétés de chaque composant, la route active et les personnes autorisées à y accéder. Vous pouvez modifier une propriété, voir le résultat dans l’application en cours d’exécution et répercuter cette modification dans le code Java d’origine.
+Un débogueur vous montre ce que fait votre code. [craftforJ](/docs/craftforj) vous montre l’application produite par ce code, notamment l’arborescence des composants construite par webforJ, les propriétés de chaque composant, la route active et les personnes autorisées à y accéder. Vous pouvez modifier une propriété, observer le résultat dans l’application en cours d’exécution et répercuter cette modification dans le code Java d’origine.
 
-craftforJ est fourni avec webforJ et utilise le même mode de débogage que vous avez déjà activé, avec une propriété supplémentaire :
+craftforJ est fourni avec webforJ et utilise le même mode de débogage que celui que vous avez déjà activé, ainsi qu’une propriété supplémentaire :
 
 ```ini title="webforj.conf"
 webforj.debug = true

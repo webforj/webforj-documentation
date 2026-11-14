@@ -4,45 +4,41 @@ sidebar_position: 6
 description: >-
   Adjust the DWC design tokens of a running webforJ app, preview the result
   immediately, and save it into your stylesheet.
-_i18n_hash: c7dd349ebf7570b2e34953fce990173d
+_i18n_hash: fe089afe4f44e457a98622707bf995e5
 ---
-Het tabblad Thema laat je de uitstraling van je app aanpassen terwijl deze draait. Het werkt met de [DWC-ontwerptokens](/docs/styling/css-variables) die je app al gebruikt, zodat één enkele wijziging elke component bereikt die dat token leest in plaats van één regel tegelijk.
+Op het tabblad Theme kun je tijdens het uitvoeren aanpassen hoe je app eruitziet. Het werkt met de [DWC-ontwerptokens](/docs/styling/css-variables) die je app al gebruikt, zodat één wijziging van toepassing is op elk component dat die token gebruikt, in plaats van op één regel tegelijk.
 
-<div class="videos-container">
-  <video controls preload="metadata">
-    <source src="https://cdn.webforj.com/webforj-documentation/video/craftforJ/theme-knobs.mp4#t=0.5" type="video/mp4" />
-  </video>
-</div>
+<VideoPlayer video="craftforj/theme-knobs" width={1920} height={992} title="Theme knobs" />
 
 ## Een thema aanpassen {#adjusting-a-theme}
 
-De bedieningselementen zijn gegroepeerd op basis van wat ze beïnvloeden, en bestrijken het palet waaruit de app is opgebouwd, de oppervlakken daarachter, de vorm van de randen en hoeken, de typografie en de spatiëring. Elk bedieningselement legt uit wat het doet, aangezien sommige van hen de leesbaarheid van de app veranderen in plaats van alleen de uitstraling.
+De bedieningselementen zijn gegroepeerd op basis van hun effect. Ze omvatten het palet waarop de app is gebaseerd, de oppervlakken erachter, de vorm van de randen en hoeken, de typografie en de tussenruimte. Elk bedieningselement legt uit wat het doet, omdat sommige ervan de leesbaarheid van de app beïnvloeden en niet alleen het uiterlijk.
 
-Een thema heeft een lichte en een donkere kant. Je kunt een wijziging toepassen op beide of op één, en de app tussen hen omwisselen om de kant te zien waar je aan werkt. Een voorbeeld toont het palet, de oppervlakken, een typevoorbeeld en de statuskleuren samen, zodat je een combinatie kunt zien die op het ene scherm werkt maar op het andere niet, voordat je het opslaat.
+Een thema heeft een lichte en een donkere variant. Je kunt een wijziging op beide varianten toepassen of op één ervan, en de app tussen beide varianten schakelen om te zien aan welke variant je werkt. In een voorbeeldweergave zie je het palet, de oppervlakken, een typografievoorbeeld en de statuskleuren bij elkaar. Zo kun je zien of een combinatie op het ene scherm werkt, maar niet op het andere, voordat je het thema opslaat.
 
 ![De themabedieningselementen naast de voorbeeldweergave](/img/craftforj/theme/knob-rail.png#rounded-border)
 
 ## Een thema opslaan {#saving-a-theme}
 
-Een thema waarmee je werkt, wordt toegepast op de app, maar maakt nog geen deel uit van je project en het herladen van de pagina verworpen het. Opslaan schrijft het in de stylesheet van je app, waar het herstarts overleeft, verschijnt in je diff en met je app meegeleverd wordt.
+Een thema waaraan je werkt, is toegepast op de app, maar maakt nog geen deel uit van je project. Als je de pagina opnieuw laadt, gaat het verloren. Als je het opslaat, wordt het in de stylesheet van je app geschreven. Daar blijft het behouden na herstarts, verschijnt het in je diff en wordt het samen met je app meegeleverd.
 
-craftforJ schrijft naar een enkele stylesheet, die het zelf detecteert of die je benoemt in de instellingen van craftforJ. Als dat bestand al een thema bevat, vervangt opslaan het als geheel in plaats van er een tweede bovenop te leggen, en craftforJ vraagt eerst om bevestiging. Als het bestand is gewijzigd nadat craftforJ het heeft gelezen, wordt er niets geschreven en vraagt craftforJ je om opnieuw op te slaan.
+craftforJ schrijft naar één stylesheet. Het detecteert deze zelf, of je kunt de stylesheet opgeven in de instellingen van craftforJ. Als dat bestand al een thema bevat, wordt het bij het opslaan volledig vervangen in plaats van dat er een tweede thema bovenop wordt geplaatst. craftforJ vraagt je eerst om bevestiging. Als het bestand is gewijzigd nadat craftforJ het heeft gelezen, wordt er niets geschreven en vraagt craftforJ je om het opnieuw op te slaan.
 
 Je kunt een thema terugzetten naar de laatst opgeslagen staat, of het volledig uit de stylesheet verwijderen zonder iets anders in het bestand te beïnvloeden.
 
 ## Vooraf ingestelde thema's {#preset-themes}
 
-Naast de standaard uitstraling en gevoel heeft craftforJ verschillende thema-voorkeuren om uit te kiezen. Hieronder staat een vergelijking tussen de thema's App Standaard en Portico.
+Naast de standaarduitstraling heeft craftforJ verschillende vooraf ingestelde thema's waaruit je kunt kiezen. Hieronder zie je een vergelijking tussen de thema's App Default en Portico.
 
 <Tabs>
-  <TabItem value="app-default" label="App Standaard" default>
-    ![App met het App Standaard-thema](/img/craftforj/theme/theme-app-default.png#rounded-border)
+  <TabItem value="app-default" label="App Default" default>
+    ![App met het thema App Default](/img/craftforj/theme/theme-app-default.png#rounded-border)
   </TabItem>
   <TabItem value="portico" label="Portico">
-    ![App met het Portico-thema](/img/craftforj/theme/theme-portico.png#rounded-border)
+    ![App met het thema Portico](/img/craftforj/theme/theme-portico.png#rounded-border)
   </TabItem>
 </Tabs>
 
-## Uitzetten {#turning-it-off}
+## Uitschakelen {#turning-it-off}
 
-Je kunt het opslaan van stijlen voor een app uitschakelen in de instellingen van craftforJ, of het volledig verwijderen met de [`stylesheet-changes`](/docs/craftforj/configuration#feature-flags) eigenschap. Met een van beide uitgeschakeld, werkt het tabblad nog steeds en schildert het de draaiende app opnieuw, maar je kunt het resultaat niet opslaan.
+Je kunt het opslaan van stijlen voor een app uitschakelen in de instellingen van craftforJ, of de functie volledig verwijderen met de eigenschap [`stylesheet-changes`](/docs/craftforj/configuration#feature-flags). Als een van beide is uitgeschakeld, blijft het tabblad werken en wordt de actieve app nog steeds opnieuw weergegeven, maar kun je het resultaat niet opslaan.

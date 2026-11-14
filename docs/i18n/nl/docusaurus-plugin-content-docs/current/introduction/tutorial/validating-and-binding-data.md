@@ -1,39 +1,44 @@
 ---
-title: Data valideren en binden
+title: Gegevens valideren en binden
 sidebar_position: 6
 pagination_next: null
 description: Step 5 - Add validation checks and bind data to the UI.
-_i18n_hash: 5b2523a6cc740389f43f68bfd55a1675
+_i18n_hash: 97f423188eb353ac27b8e9179e93b224
 ---
-Je app van [Observers and Route Parameters](/docs/introduction/tutorial/observers-and-route-parameters) kan `FormView` gebruiken om bestaande klantgegevens te bewerken. Deze stap maakt gebruik van [Data binding](/docs/data-binding/overview), dat UI-componenten rechtstreeks verbindt met het gegevensmodel voor automatische waarde-synchronisatie. Dit vermindert boilerplate in je app en stelt je in staat om validatiecontroles toe te voegen aan de Spring-entiteit `Customer`, waardoor je gebruikers volledige en nauwkeurige informatie laat verstrekken bij het invullen van formulieren. Deze stap behandelt de volgende concepten:
+Je app uit [Observers and Route Parameters](/docs/introduction/tutorial/observers-and-route-parameters) kan `FormView` gebruiken om bestaande klantgegevens te bewerken. In deze stap gebruik je [Data binding](/docs/data-binding/overview), waarmee UI-componenten rechtstreeks met het datamodel worden verbonden, zodat waarden automatisch worden gesynchroniseerd. Hierdoor bevat je app minder boilerplate en kun je validatiecontroles toevoegen aan de Spring-entiteit `Customer`. Zo zorg je ervoor dat gebruikers volledige en juiste informatie invullen in formulieren. In deze stap komen de volgende concepten aan bod:
 
-- [Jakarta validatie](https://beanvalidation.org)
-- Het gebruik van de [`BindingContext`](https://javadoc.io/doc/com.webforj/webforj-data/latest/com/webforj/data/binding/BindingContext.html) klasse
+- [Jakarta-validatie](https://beanvalidation.org)
+- De klasse [`BindingContext`](https://javadoc.io/doc/com.webforj/webforj-data/latest/com/webforj/data/binding/BindingContext.html) gebruiken
 
-Het voltooien van deze stap creëert een versie van [5-validating-and-binding-data](https://github.com/webforj/webforj-tutorial/tree/main/5-validating-and-binding-data).
+Na afronding van deze stap heb je een versie van [5-validating-and-binding-data](https://github.com/webforj/webforj-tutorial/tree/main/5-validating-and-binding-data).
+
+<!-- <VideoPlayer video="tutorial/validating-and-binding-data" width={1920} height={1080} title="Validating and binding data" /> -->
 
 ## De app uitvoeren {#running-the-app}
 
-Tijdens het ontwikkelen van je app kun je [5-validating-and-binding-data](https://github.com/webforj/webforj-tutorial/tree/main/5-validating-and-binding-data) gebruiken als vergelijking. Om de app in actie te zien:
+Tijdens het ontwikkelen van je app kun je [5-validating-and-binding-data](https://github.com/webforj/webforj-tutorial/tree/main/5-validating-and-binding-data) als referentie gebruiken. Zo kun je de app uitvoeren:
 
-1. Navigeer naar de bovenliggende map die het `pom.xml`-bestand bevat, dit is `5-validating-and-binding-data` als je de versie op GitHub volgt.
+1. Ga naar de hoofdmap met het bestand `pom.xml`. Als je de versie op GitHub volgt, is dit `5-validating-and-binding-data`.
 
 2. Gebruik de volgende Maven-opdracht om de Spring Boot-app lokaal uit te voeren:
     ```bash
     mvn
     ```
 
-Het uitvoeren van de app opent automatisch een nieuwe browser op `http://localhost:8080`.
+Wanneer je de app uitvoert, wordt automatisch een nieuw browservenster geopend op `http://localhost:8080`.
 
 ## Validatieregels definiëren {#defining-validation-rules}
 
-Het ontwikkelen van een app met bewerkbare gegevens moet validatie omvatten. Validatiecontroles helpen om betekenisvolle en nauwkeurige door de gebruiker ingediende gegevens te behouden. Als dit niet gecontroleerd wordt, kan dit leiden tot problemen, dus het is belangrijk om de soorten fouten die gebruikers kunnen maken bij het invullen van een formulier in realtime op te vangen.
+Bij het ontwikkelen van een app met bewerkbare gegevens hoort ook validatie. Validatiecontroles helpen om betekenisvolle en juiste gegevens van gebruikers te behouden. Zonder controles kunnen er problemen ontstaan. Daarom is het belangrijk om mogelijke fouten van gebruikers direct op te sporen wanneer ze een formulier invullen.
 
-Aangezien wat als geldig wordt beschouwd kan verschillen tussen eigenschappen, moet je definiëren wat elke eigenschap geldig maakt en de gebruiker informeren als er iets ongeldig is. Gelukkig kun je dit gemakkelijk doen met [Jakarta Validatie](https://beanvalidation.org). Jakarta validatie stelt je in staat om beperkingen aan eigenschappen toe te voegen als annotaties.
+Omdat wat als geldig wordt beschouwd per eigenschap kan verschillen, moet je definiëren wanneer elke eigenschap geldig is en de gebruiker informeren als er iets niet klopt. Gelukkig kun je dit eenvoudig doen met [Jakarta Validation](https://beanvalidation.org). Met Jakarta Validation kun je beperkingen als annotaties aan eigenschappen toevoegen.
 
-Deze handleiding gebruikt twee Jakarta-annotaties, `@NotEmpty` en `@Pattern`. `@NotEmpty` controleert op null en lege strings, terwijl `@Pattern` controleert of de eigenschap overeenkomt met een reguliere expressie die je instelt. Beide annotaties stellen je in staat om een bericht toe te voegen dat weergegeven wordt wanneer de eigenschap ongeldig wordt.
+Deze tutorial gebruikt twee Jakarta-annotaties: `@NotEmpty` en `@Pattern`. `@NotEmpty` controleert op null-waarden en lege tekenreeksen, terwijl `@Pattern` controleert of de eigenschap overeenkomt met een reguliere expressie die je opgeeft. Met beide annotaties kun je een bericht instellen dat wordt weergegeven wanneer de eigenschap ongeldig is.
 
-Om te vereisen dat zowel voor- als achternaam verplicht zijn en alleen letters bevatten, terwijl de bedrijfsnaam optioneel is en letters, cijfers en spaties toestaat, pas je de volgende annotaties toe op de entiteit `Customer`:
+Gebruik de volgende annotaties voor de entiteit `Customer`, zodat zowel de voor- als achternaam verplicht zijn en alleen letters mogen bevatten, terwijl de bedrijfsnaam optioneel is en letters, cijfers en spaties mag bevatten:
+
+<!-- vale off -->
+<ExpandableCode title="Customer.java" language="java" startLine={8} endLine={28}>
 
 ```java
 @Entity
@@ -44,15 +49,20 @@ public class Customer {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
-  @NotEmpty(message = "Voornaam van klant is verplicht")
-  @Pattern(regexp = "[a-zA-Z]*", message = "Ongeldige tekens")
+// highlight-next-line
+  @NotEmpty(message = "Customer first name is required")
+// highlight-next-line
+  @Pattern(regexp = "[a-zA-Z]*", message = "Invalid characters")
   private String firstName = "";
 
-  @NotEmpty(message = "Achternaam van klant is verplicht")
-  @Pattern(regexp = "[a-zA-Z]*", message = "Ongeldige tekens")
+// highlight-next-line
+  @NotEmpty(message = "Customer last name is required")
+// highlight-next-line
+  @Pattern(regexp = "[a-zA-Z]*", message = "Invalid characters")
   private String lastName = "";
 
-  @Pattern(regexp = "[a-zA-Z0-9 ]*", message = "Ongeldige tekens")
+// highlight-next-line
+  @Pattern(regexp = "[a-zA-Z0-9 ]*", message = "Invalid characters")
   private String company = "";
 
   private Country country = Country.UNKNOWN;
@@ -122,33 +132,39 @@ public class Customer {
   public Long getId() {
     return id;
   }
+
 }
 ```
 
-Zie de [Jakarta Bean Validatie constraints referentie](https://jakarta.ee/specifications/bean-validation/3.0/apidocs/jakarta/validation/constraints/package-summary.html) voor een volledige lijst van validaties, of leer meer in het [webforJ Jakarta Validatie-artikel](/docs/data-binding/validation/jakarta-validation).
+</ExpandableCode>
+<!-- vale on -->
 
-## De velden koppelen {#binding-the-fields}
+Raadpleeg de [referentie voor Jakarta Bean Validation-beperkingen](https://jakarta.ee/specifications/bean-validation/3.0/apidocs/jakarta/validation/constraints/package-summary.html) voor een volledige lijst met validaties, of lees meer in het [artikel over Jakarta Validation in webforJ](/docs/data-binding/validation/jakarta-validation).
 
-Om de validatiecontroles in `Customer` voor de UI in `FormView` te gebruiken, maak je een `BindingContext` voor gegevensbinding. Voor gegevensbinding vereiste elk veld in `FormView` een gebeurtenisluisteraar om handmatig met een Spring-entiteit `Customer` te synchroniseren. Het creëren van een `BindingContext` in `FormView` koppelt en synchroniseert automatisch het `Customer`-gegevensmodel met de UI-componenten.
+## De velden binden {#binding-the-fields}
 
-### Een `BindingContext` maken {#creating-a-bindingcontext}
+Om de validatiecontroles van `Customer` te gebruiken in de UI van `FormView`, maak je een `BindingContext` voor databinding. Vóór databinding had elk veld in `FormView` een event listener nodig om handmatig te synchroniseren met een Spring-entiteit `Customer`. Door een `BindingContext` aan te maken in `FormView`, bind je het datamodel `Customer` aan de UI-componenten en worden deze automatisch gesynchroniseerd.
 
-Een instantie van `BindingContext` heeft de Spring-bean nodig waarmee de bindings gesynchroniseerd zijn. In `FormView`, declareer een `BindingContext` met de entiteit `Customer`:
+### Een `BindingContext` aanmaken {#creating-a-bindingcontext}
 
-```java
+Een instantie van `BindingContext` heeft de Spring-bean nodig waarmee de bindings worden gesynchroniseerd. Declareer in `FormView` een `BindingContext` met de entiteit `Customer`:
+
+```java title="FormView.java" {4}
 public class FormView extends Composite<Div> implements WillEnterObserver {
   private final CustomerService customerService;
+
   private BindingContext<Customer> context;
+
   Customer customer = new Customer();
 ```
 
-Gebruik vervolgens `BindingContext.of()` om UI-componenten automatisch aan bean-eigenschappen te koppelen op basis van hun namen, met de volgende parameters:
+Gebruik vervolgens `BindingContext.of()` met de volgende parameters om UI-componenten automatisch te binden aan bean-eigenschappen op basis van hun namen:
 
-- **`this`** : Eerder heb je `context` gedeclareerd als de `BindingContext`. De eerste parameter stelt in wat voor object de koppelbare componenten zich bevinden.
-- **`Customer.class`** : De tweede parameter is de klasse van de bean die gebruikt moet worden voor de binding.
-- **`true`** : De derde parameter schakelt Jakarta validatie in, waardoor de context de validaties kan gebruiken die je voor `Customer` hebt ingesteld. Dit zal de stijl van ongeldig componenten wijzigen en de ingestelde berichten weergeven.
+- **`this`**: Eerder heb je `context` gedeclareerd als de `BindingContext`. De eerste parameter geeft aan welk object de bindbare componenten bevat.
+- **`Customer.class`**: De tweede parameter is de klasse van de bean die voor de binding wordt gebruikt.
+- **`true`**: Met de derde parameter schakel je Jakarta-validatie in. Hierdoor kan de context de validaties gebruiken die je voor `Customer` hebt ingesteld. Ongeldige componenten krijgen hierdoor een andere stijl en de ingestelde berichten worden weergegeven.
 
-In totaal ziet de volgende regel code er als volgt uit:
+Samen ziet de regel code er als volgt uit:
 
 ```java
 context = BindingContext.of(this, Customer.class, true);
@@ -156,68 +172,71 @@ context = BindingContext.of(this, Customer.class, true);
 
 ### Het formulier responsief maken {#making-the-form-responsive}
 
-Met gegevensbinding voert je app nu automatisch validatiecontroles uit. Door een gebeurtenisluisteraar aan de controles toe te voegen, kun je voorkomen dat gebruikers een ongeldig formulier indienen. Voeg het volgende toe om de verzendknop alleen actief te maken wanneer het formulier geldig is:
+Met databinding voert je app nu automatisch validatiecontroles uit. Door een event listener aan de controles toe te voegen, kun je voorkomen dat gebruikers een ongeldig formulier verzenden. Voeg de volgende regel toe om de verzendknop alleen actief te maken wanneer het formulier geldig is:
 
-```java
+```java {2}
 context = BindingContext.of(this, Customer.class, true);
 context.onValidate(e -> submit.setEnabled(e.isValid()));
 ```
 
-### Gebeurtenisluisteraars voor componenten verwijderen {#removing-event-listeners-for-components}
+### Event listeners voor componenten verwijderen {#removing-event-listeners-for-components}
 
-Elke UI-wijziging is nu automatisch gesynchroniseerd met de `BindingContext`. Dit betekent dat je eenvoudig de gebeurtenisluisteraars voor elk veld kunt verwijderen:
+Elke wijziging in de UI wordt nu automatisch gesynchroniseerd met de `BindingContext`. Je kunt daarom de event listeners van de afzonderlijke velden verwijderen:
 
 **Voor**
-```java
-TextField firstName = new TextField("Voornaam", e -> customer.setFirstName(e.getValue()));
-TextField lastName = new TextField("Achternaam", e -> customer.setLastName(e.getValue()));
-TextField company = new TextField("Bedrijf", e -> customer.setCompany(e.getValue()));
-ChoiceBox country = new ChoiceBox("Land",
+```java title="FormView.java"
+// Without data binding
+TextField firstName = new TextField("First Name", e -> customer.setFirstName(e.getValue()));
+TextField lastName = new TextField("Last Name", e -> customer.setLastName(e.getValue()));
+TextField company = new TextField("Company", e -> customer.setCompany(e.getValue()));
+ChoiceBox country = new ChoiceBox("Country",
     e -> customer.setCountry(Country.valueOf(e.getSelectedItem().getText())));
 ```
 
 **Na**
-```java
-TextField firstName = new TextField("Voornaam");
-TextField lastName = new TextField("Achternaam");
-TextField company = new TextField("Bedrijf");
-ChoiceBox country = new ChoiceBox("Land");
+```java title="FormView.java"
+// With data binding
+TextField firstName = new TextField("First Name");
+TextField lastName = new TextField("Last Name");
+TextField company = new TextField("Company");
+ChoiceBox country = new ChoiceBox("Country");
 ```
 
 ### Binden op basis van eigenschapsnamen {#binding-by-property-names}
 
-Aangezien de naam van elke component overeenkomt met het gegevensmodel, is er [Automatische Binding](/docs/data-binding/automatic-binding) toegepast door webforJ. Als de namen niet overeenkomen, kun je de annotatie `@UseProperty` gebruiken om ze te koppelen.
+Omdat de naam van elke component overeenkomt met die van het datamodel, heeft webforJ [automatische binding](/docs/data-binding/automatic-binding) toegepast. Als de namen niet overeenkomen, kun je de annotatie `@UseProperty` gebruiken om ze aan elkaar te koppelen.
 
 ```java
 @UseProperty("firstName")
-TextField firstNameField = new TextField("Voornaam");
+TextField firstNameField = new TextField("First Name");
 ```
 
-### Gegevens lezen in de `fillForm()` methode {#reading-data-in-the-fillForm()-method}
+### Gegevens lezen in de methode `fillForm()` {#reading-data-in-the-fillForm()-method}
 
-Eerder initialiseerde je in de `fillForm()`-methode elke componentwaarde door handmatig de gegevens uit de `Customer`-kopie te halen. Maar nu, omdat je gebruikmaakt van een `BindingContext`, kun je de `read()`-methode gebruiken. Deze methode vult elke gekoppelde component met de bijbehorende eigenschap uit de gegevens in de `Customer`-kopie.
+Eerder initialiseerde je in de methode `fillForm()` de waarde van elke component door de gegevens handmatig op te halen uit de kopie van `Customer`. Omdat je nu een `BindingContext` gebruikt, kun je de methode `read()` gebruiken. Hiermee wordt elke gebonden component gevuld met de bijbehorende eigenschap uit de gegevens in de kopie van `Customer`.
 
-In de `fillForm()`-methode vervang je de `setValue()`-methoden door `read()`:
+Vervang in de methode `fillForm()` de methoden `setValue()` door `read()`:
 
-```java
+```java title="FormView.java" {6}
 public void fillForm(Long customerId) {
   customer = customerService.getCustomerByKey(customerId);
 
-  // Verwijder elke setValue() methode voor de UI-componenten
+  // Removed each setValue() method for the UI components
 
-  context.read(customer);
-}
+    context.read(customer);
+  }
 ```
 
 ### Validatie toevoegen aan `submitCustomer()` {#adding-validation-to-submitcustomer}
 
-De laatste wijziging in `FormView` voor deze stap is het toevoegen van een veiligheidsmaatregel aan de `submitCustomer()`-methode. Voordat wijzigingen in de H2-database worden doorgevoerd, voert de app een laatste validatie uit op de resultaten van de gebonden context met behulp van de `write()`-methode.
+De laatste wijziging voor deze stap in `FormView` is het toevoegen van een beveiliging aan de methode `submitCustomer()`. Voordat wijzigingen naar de H2-database worden geschreven, voert de app een laatste validatie uit op de resultaten van de gebonden context met de methode `write()`.
 
-De `write()`-methode werkt de eigenschappen van een bean bij met behulp van de gebonden UI-componenten in de `BindingContext` en retourneert een `ValidationResult`.
+De methode `write()` werkt de eigenschappen van een bean bij met behulp van de gebonden UI-componenten in de `BindingContext` en retourneert een `ValidationResult`.
 
-Gebruik de `write()`-methode om naar de `Customer`-kopie te schrijven met behulp van de gebonden componenten in `FormView`. Als het geretourneerde `ValidationResult` geldig is, werk je de H2-database bij met de geschreven gegevens.
+Gebruik de methode `write()` om de kopie van `Customer` bij te werken met de gebonden componenten in `FormView`. Als de geretourneerde `ValidationResult` geldig is, werk je de H2-database bij met de geschreven gegevens.
 
-```java
+
+```java title="FormView.java" {2-3}
 private void submitCustomer() {
   ValidationResult results = context.write(customer);
   if (results.isValid()) {
@@ -231,25 +250,28 @@ private void submitCustomer() {
 }
 ```
 
-### Voltooid `FormView` {#completed-formview}
+### Voltooide `FormView` {#completed-formview}
 
-Met deze wijzigingen ziet `FormView` er als volgt uit. De app ondersteunt nu gegevensbinding en validatie met behulp van Spring Boot en webforJ. Formuliervelden worden automatisch gesynchroniseerd met het model en gecontroleerd op validatieregels.
+Na deze wijzigingen ziet `FormView` er als volgt uit. De app ondersteunt nu databinding en validatie met Spring Boot en webforJ. Formulierinvoer wordt automatisch met het model gesynchroniseerd en aan de validatieregels getoetst.
+
+<!-- vale off -->
+<ExpandableCode title="FormView.java" language="java" startLine={1} endLine={15}>
 
 ```java
 @Route("customer/:id?<[0-9]+>")
-@FrameTitle("Klantformulier")
+@FrameTitle("Customer Form")
 public class FormView extends Composite<Div> implements WillEnterObserver {
   private final CustomerService customerService;
   private BindingContext<Customer> context;
   private Customer customer = new Customer();
   private Long customerId = 0L;
   private Div self = getBoundComponent();
-  private TextField firstName = new TextField("Voornaam");
-  private TextField lastName = new TextField("Achternaam");
-  private TextField company = new TextField("Bedrijf");
-  private ChoiceBox country = new ChoiceBox("Land");
-  private Button submit = new Button("Indienen", ButtonTheme.PRIMARY, e -> submitCustomer());
-  private Button cancel = new Button("Annuleren", ButtonTheme.OUTLINED_PRIMARY, e -> navigateToMain());
+  private TextField firstName = new TextField("First Name");
+  private TextField lastName = new TextField("Last Name");
+  private TextField company = new TextField("Company");
+  private ChoiceBox country = new ChoiceBox("Country");
+  private Button submit = new Button("Submit", ButtonTheme.PRIMARY, e -> submitCustomer());
+  private Button cancel = new Button("Cancel", ButtonTheme.OUTLINED_PRIMARY, e -> navigateToMain());
   private ColumnsLayout layout = new ColumnsLayout(
       firstName, lastName,
       company, country,
@@ -322,6 +344,9 @@ public class FormView extends Composite<Div> implements WillEnterObserver {
 }
 ```
 
+</ExpandableCode>
+<!-- vale on -->
+
 ## Volgende stap {#next-step}
 
-De volgende stap, [Integrating an App Layout](/docs/introduction/tutorial/integrating-an-app-layout), richt zich op het gebruik van een `AppLayout` om een zijmenu toe te voegen dat beschikbaar is voor gebruikers op zowel de klantentabel als de klantformulierpagina's. Je leert ook over een ander lay-out hulpmiddel, de `FlexLayout` component.
+De volgende stap, [Een app-layout integreren](/docs/introduction/tutorial/integrating-an-app-layout), gaat over het gebruik van een `AppLayout` om een zijmenu toe te voegen dat beschikbaar is op zowel de klantentabelpagina als de klantformulierpagina. Je leert ook een ander layoutcomponent kennen: `FlexLayout`.

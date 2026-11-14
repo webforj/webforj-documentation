@@ -4,40 +4,32 @@ sidebar_position: 5
 description: >-
   See every registered route in a running webforJ app, navigate to it from
   craftforJ, and change the access rules declared on it.
-_i18n_hash: b276ce8df35b91ed18f07c8a686fb688
+_i18n_hash: ec7a4521cd9c4328f9cd6550ebc9d90b
 ---
-Reitit-välilehti näyttää käynnissä olevan sovelluksen reititystaulun [hierarkiassa](/docs/routing/route-hierarchy/overview), jossa reitit, joiden aktiivinen reitti on merkitty. Dynaamisesti rekisteröidyt reitit [dynamically](/docs/routing/routes-registration) näkyvät rinnakkain merkittyjen reittien kanssa.
+Reitit-välilehti näyttää käynnissä olevan sovelluksen reititystaulukon siinä [hierarkiassa](/docs/routing/route-hierarchy/overview), jossa reititin säilyttää sen. Aktiivinen reitti on merkitty. [Dynaamisesti](/docs/routing/routes-registration) rekisteröidyt reitit näkyvät annotaatiolla määritettyjen reittien rinnalla.
 
-![Reitit, joissa aktiivinen reitti on merkitty](/img/craftforj/routes/tree.png#rounded-border)
+![Reittipuu, jossa aktiivinen reitti on merkitty](/img/craftforj/routes/tree.png#rounded-border)
 
-## Reititiedot {#route-details}
+## Reitin tiedot {#route-details}
 
-Reitin valitseminen näyttää, mitä reitittimellä on tiedossaan, mukaan lukien sen polku, sen taustalla oleva luokka, siihen liitetyt elinkaaren tarkkailijat sekä sen konfiguraatio. Voit avata tämän luokan lähdekatseluohjelmassa täältä.
+Kun valitset reitin, näet, mitä reititin siitä tietää: reitin polun, sen taustalla olevan luokan, siihen liitetyt elinkaaren tarkkailijat ja sen määritykset. Voit avata kyseisen luokan lähdekoodikatselimessa tästä.
 
 ## Navigointi craftforJ:stä {#navigating-from-craftforj}
 
-Voit navigoida suoraan mihin tahansa reittiin craftforJ:stä. Parametreja ottavat reitit tarjoavat kentän jokaista parametria varten ja tarkastavat polun, kun täytät kenttiä, jotta voit vahvistaa, mihin päädyt ennen etenemistä.
+Voit siirtyä suoraan mihin tahansa reittiin craftforJ:stä. Parametreja käyttävillä reiteillä on kenttä kutakin parametria varten, ja polku tarkentuu sitä mukaa kun täytät kenttiä. Näin voit varmistaa etukäteen, mihin päädyt.
 
-Tämäntyyppinen navigointi on todellista navigointia, joten sovelluksesi [elinkaaren tarkkailijat](/docs/routing/navigation-lifecycle/observers) suoritetaan aivan kuten käyttäjälle. Puu seuraa myös sovellusta, joten navigointi itse sovelluksessa siirtää merkkiä.
+Tämä on oikea navigointi, joten sovelluksesi [elinkaaren tarkkailijat](/docs/routing/navigation-lifecycle/observers) suoritetaan täsmälleen samalla tavalla kuin käyttäjän navigoidessa. Myös reittipuu seuraa sovellusta, joten sovelluksessa navigointi siirtää merkinnän uuteen kohtaan.
 
-<div class="videos-container">
-  <video controls preload="metadata">
-    <source src="https://cdn.webforj.com/webforj-documentation/video/craftforJ/route-navigate.mp4#t=0.5" type="video/mp4" />
-  </video>
-</div>
+<VideoPlayer video="craftforj/route-navigate" width={1920} height={1000} title="Route navigate" />
 
 ## Käyttöoikeussäännöt {#access-rules}
 
-Jokaisella reitillä on badge [turvallisuusmerkinnästä](/docs/security/annotations), joka on siihen julistettu, ja voit rajata puuta julkisiin tai suojattuihin reitteihin työkalupalkista.
+Jokaisella reitillä on siihen määritettyä [tietoturva-annotaatiota](/docs/security/annotations) kuvaava tunniste. Voit rajata reittipuun työkalupalkista julkisiin tai suojattuihin reitteihin.
 
-Vain `@RolesAllowed` ja `@DenyAll` lasketaan suojatuiksi. `@PermitAll` ei määritä rooleja ja vaatii vain, että joku on kirjautunut sisään, joten suodatin käsittelee sen julkisena. Pidä tämä mielessä tarkistaessasi, mitkä reitit rajoittavat käyttöoikeuksia roolin mukaan.
+Vain annotaatiot `@RolesAllowed` ja `@DenyAll` merkitsevät reitin suojatuksi. `@PermitAll` ei määritä rooleja, vaan edellyttää ainoastaan sisäänkirjautumista, joten suodatin käsittelee sen julkisena. Pidä tämä mielessä tarkistaessasi, mitkä reitit rajoittavat käyttöä roolin perusteella.
 
-![Reitit, joissa käyttöoikeusbadge on jokaisessa reitissä](/img/craftforj/routes/access-badge.png#rounded-border)
+![Reittipuu, jossa jokaisella reitillä on käyttöoikeustunniste](/img/craftforj/routes/access-badge.png#rounded-border)
 
-Voit myös muuttaa reitin käyttöoikeussääntöä craftforJ:stä. craftforJ kirjoittaa merkinnän reitin luokkaan ja sovellus käynnistyy uudelleen, joten muutos käy läpi saman tarkastuksen kuin mikä tahansa muu [lähdemuutos](/docs/craftforj/source-changes). Vaihtoehto ei ole käytettävissä, kun craftforJ:lle ei sallita Javaan kirjoittamista.
+Voit myös muuttaa reitin käyttöoikeussääntöä craftforJ:stä. craftforJ kirjoittaa annotaation reitin luokkaan ja käynnistää sovelluksen uudelleen, joten muutos käy läpi saman tarkistuksen kuin mikä tahansa muu [lähdekoodimuutos](/docs/craftforj/source-changes). Tämä toiminto ei ole käytettävissä, jos craftforJ:llä ei ole oikeutta kirjoittaa Java-koodia.
 
-<div class="videos-container">
-  <video controls preload="metadata">
-    <source src="https://cdn.webforj.com/webforj-documentation/video/craftforJ/route-security.mp4#t=0.5" type="video/mp4" />
-  </video>
-</div>
+<VideoPlayer video="craftforj/route-security" width={1920} height={1000} title="Route security" />

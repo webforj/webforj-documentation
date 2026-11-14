@@ -4,85 +4,81 @@ sidebar_position: 7
 description: >-
   A coding agent that works inside your running webforJ app, writes Java freely
   behind a compile gate, and applies changes with your approval.
-_i18n_hash: 716e267ebccf57080f5238335670d1b7
+_i18n_hash: e9d943043e52eae5368dfe4ba7795142
 ---
-craftforJ incluye un agente de codificación completo que funciona dentro de tu **aplicación en ejecución**. Escribe Java libremente, compila lo que escribió antes de que lo veas, aplica el cambio y continúa trabajando después de que tu aplicación se reinicie. Todo lo que hace, lo hace contra la aplicación que realmente está ejecutándose frente a ti, en lugar de contra una suposición hecha a partir de tu repositorio.
+craftforJ incluye un agente de programación completo que trabaja dentro de tu **aplicación en ejecución**. Escribe Java libremente, compila lo que ha escrito antes de que puedas verlo, aplica el cambio y sigue trabajando después de que se reinicie tu aplicación. Todo lo que hace, lo hace sobre la aplicación que está ejecutándose frente a ti, no sobre una suposición basada en tu repositorio.
 
-<div class="videos-container">
-  <video controls preload="metadata">
-    <source src="https://cdn.webforj.com/webforj-documentation/video/craftforJ/ai-conversation.mp4#t=0.5" type="video/mp4" />
-  </video>
-</div>
+<VideoPlayer video="craftforj/ai-conversation" width={1920} height={1000} title="AI conversation" />
 
 :::warning La IA aún puede cometer errores
-Trabajar contra la aplicación en ejecución y compilar su propia salida hace que el agente sea considerablemente más preciso que uno que trabaja a ciegas. Aún puede estar equivocado. Revisa lo que hizo antes de conservarlo.
+Trabajar sobre la aplicación en ejecución y compilar su propio código hace que el agente sea considerablemente más preciso que uno que escribe a ciegas. Aun así, puede equivocarse. Revisa lo que hizo antes de conservarlo.
 :::
 
 ## Escribe Java {#it-writes-java}
 
-El agente no está limitado a los cambios de propiedad que puedes hacer a mano. Describe un problema y escribe el código para ello, añadiendo métodos, cambiando la lógica y reestructurando una vista según lo requiera la tarea.
+El agente no se limita a los cambios de propiedades que puedes hacer manualmente. Describe un problema y escribirá el código para resolverlo, añadiendo métodos, cambiando la lógica y reestructurando una vista según lo requiera la tarea.
 
-Cada edición que escribe es escalonada en lugar de escrita en el disco. Las ediciones escalonadas van directamente a un compilador de Java real, y el agente lee los diagnósticos que regresan y corrige sus propios errores antes de que el cambio se te ofrezca. Lo que llega a tu revisión es código que ya se compila contra tu aplicación en ejecución.
+Cada edición que escribe se prepara en lugar de guardarse en el disco. Las ediciones preparadas se envían directamente a un compilador Java real; el agente lee los diagnósticos que recibe y corrige sus propios errores antes de que el cambio se te proponga. El código que llega a tu revisión ya compila con tu aplicación en ejecución.
 
-La validación completa necesita un JDK. En un JRE, craftforJ vuelve a analizar el código, marca la edición como no verificada e instruye al agente para que lo indique en lugar de presentarlo como verificado.
+La validación completa requiere un JDK. Con un JRE, craftforJ recurre al análisis sintáctico del código, marca la edición como no verificada e indica al agente que lo comunique en lugar de presentarla como validada.
 
-Aplicar un cambio reinicia tu aplicación. El agente espera el reinicio, se reconecta y retoma su plan desde donde lo dejó, por lo que una tarea que abarca varias ediciones y reinicios se completa.
+Al aplicar un cambio, tu aplicación se reinicia. El agente espera a que se reinicie, vuelve a conectarse y retoma el plan donde lo dejó, de modo que una tarea que abarque varias ediciones y reinicios se completa.
 
-## Funciona en pasos {#it-works-in-steps}
+## Trabaja por pasos {#it-works-in-steps}
 
-Le das al agente un objetivo, no un comando. Planea, inspecciona lo que necesita, actúa, verifica el resultado y se corrige a sí mismo, ejecutando muchos pasos en un solo turno sin que tú dirijas cada uno. Cada paso aparece en la transcripción a medida que ocurre, y puedes expandir cualquiera de ellos para ver exactamente qué llamó el agente y qué regresó.
+Le das al agente un objetivo, no una instrucción. Planifica, inspecciona lo que necesita, actúa, comprueba el resultado y se corrige; puede ejecutar muchos pasos en un solo turno sin que tengas que guiar cada uno. Cada paso aparece en la transcripción a medida que ocurre, y puedes expandir cualquiera para ver exactamente qué invocó el agente y qué respuesta recibió.
 
 ## A qué puede acceder {#what-it-can-reach}
 
-El agente tiene un amplio conjunto de herramientas que cubren todo lo que craftforJ sabe sobre tu aplicación, incluyendo:
+El agente cuenta con un amplio conjunto de herramientas que abarca todo lo que craftforJ sabe sobre tu aplicación, entre otras cosas:
 
-- **Tus componentes** - el árbol en vivo, los valores de propiedad reales y el Java que construyó cada uno. Puede cambiar propiedades, eliminar componentes y resaltar uno en la página.
-- **Tu fuente** - leer cualquier archivo bajo la raíz de tu proyecto, escalar ediciones, mostrar diferencias y aplicarlas.
-- **Tus rutas** - la tabla de enrutamiento, la ruta activa, navegar a cualquier lugar y cambiar las reglas de acceso declaradas en una ruta.
-- **Tu tema y estilos** - leer y establecer tokens de diseño, guardar un tema y buscar las fuentes y los íconos disponibles.
-- **La página misma** - inyectar CSS y JavaScript contra la página en vivo y tomar una captura de pantalla de un componente para examinarlo.
-- **La base de conocimientos de webforJ** - la misma documentación, superficie de estilo de componente y herramientas de token `--dwc-*` que el [servidor MCP de webforJ](/docs/ai-tooling/mcp) proporciona a tu editor. Está integrado y siempre disponible.
+- **Tus componentes**: el árbol en vivo, los valores reales de las propiedades y el código Java que creó cada componente. Puede cambiar propiedades, eliminar componentes y resaltar uno en la página.
+- **Tu código fuente**: puede leer cualquier archivo bajo la raíz de tu proyecto, preparar ediciones, mostrar diferencias y aplicarlas.
+- **Tus rutas**: puede consultar la tabla de rutas y la ruta activa, navegar a cualquier lugar y cambiar las reglas de acceso declaradas en una ruta.
+- **Tu tema y tus estilos**: puede leer y establecer tokens de diseño, guardar un tema y buscar las fuentes e iconos disponibles.
+- **La propia página**: puede inyectar CSS y JavaScript en la página en vivo y tomar una captura de pantalla de un componente para examinarlo.
+- **La base de conocimientos de webforJ**: incluye la misma documentación, la superficie de estilos de componentes y las herramientas de tokens `--dwc-*` que el [servidor MCP de webforJ](/docs/ai-tooling/mcp) pone a disposición de tu editor. Está integrado y siempre disponible.
 
-Debido a que accede a todo esto a través de craftforJ, trabaja con la misma información que tú. Lee valores reales, no los que tu fuente implica.
+Como accede a todo esto a través de craftforJ, trabaja con la misma información que tú. Lee valores reales, no los que sugiere tu código fuente.
 
 ## Aprobaciones {#approvals}
 
 Decides de antemano cuánto puede hacer el agente por su cuenta:
 
-- **Preguntar antes de actuar** - cada acción con un efecto se detiene para tu aprobación.
-- **Aplicar ediciones automáticamente** - el agente trabaja libremente pero aún pregunta antes de eliminar algo o ejecutar un script.
-- **Ejecutar de forma autónoma** - el agente trabaja sin detenerse.
+- **Preguntar antes de actuar**: cada acción con efectos se detiene para pedir tu aprobación.
+- **Aplicar ediciones automáticamente**: el agente trabaja libremente, pero sigue preguntando antes de eliminar algo o ejecutar un script.
+- **Ejecutar de forma autónoma**: el agente trabaja sin detenerse.
 
-Cuando el agente pregunta, la solicitud aparece en línea en la transcripción con la acción que quiere realizar, y puedes permitirlo una vez o para el resto de la conversación.
+Cuando el agente te pregunta, la solicitud aparece en línea en la transcripción junto con la acción que quiere realizar, y puedes permitirla una vez o durante el resto de la conversación.
 
-![El asistente preguntando antes de actuar, en línea en la transcripción](/img/craftforj/ai/approval-prompt.png#rounded-border)
+![El asistente pregunta antes de actuar, en línea en la transcripción](/img/craftforj/ai/approval-prompt.png#rounded-border)
 
-Si eres nuevo con el agente, comienza haciéndole preguntar por todo. Una vez que lo hayas visto trabajar, permitir que aplique sus propias ediciones elimina la mayoría de las interrupciones mientras mantiene las decisiones que importan contigo.
+Si estás empezando a usar el agente, haz que pregunte por todo. Cuando hayas visto cómo trabaja, permitirle aplicar sus propias ediciones reduce la mayoría de las interrupciones y te permite conservar el control de las decisiones importantes.
 
-## Trabajando con la aplicación en una conversación {#working-with-the-app-in-a-conversation}
+## Trabajar con la aplicación en una conversación {#working-with-the-app-in-a-conversation}
 
-El agente lee lo que necesita a medida que lo necesita, en lugar de recibir tu aplicación completa de antemano, y craftforJ te muestra lo que está adjunto a la conversación. Puedes entregarle un componente directamente del árbol o seleccionar uno de la página en medio de una conversación. Para preguntas sobre cómo se ve algo, el agente puede tomar una captura de pantalla de un componente. Esto requiere un modelo que acepte imágenes.
+El agente lee lo que necesita cuando lo necesita, en lugar de recibir toda tu aplicación de antemano, y craftforJ te muestra lo que se adjunta a la conversación. Puedes pasarle un componente directamente desde el árbol o seleccionar uno de la página en medio de una conversación. Si tienes preguntas sobre el aspecto de algo, el agente puede tomar una captura de pantalla de un componente. Para ello, se necesita un modelo que acepte imágenes.
 
-:::warning Las capturas de pantalla incluyen lo que esté en pantalla
-Una captura de pantalla lleva cualquier dato que tu aplicación esté mostrando en ese momento. Considera eso antes de señalar un modelo alojado en una aplicación que se ejecuta con datos reales.
+:::warning Las capturas de pantalla incluyen todo lo que aparece en pantalla
+Una captura de pantalla contiene cualquier dato que tu aplicación esté mostrando en ese momento. Tenlo en cuenta antes de usar un modelo alojado con una aplicación conectada a datos reales.
 :::
 
-## Configurando un modelo {#configuring-a-model}
+## Configurar un modelo {#configuring-a-model}
 
-craftforJ no envía un modelo propio, así que eliges el que lo ejecute. Agrega una clave API para uno de los proveedores soportados, o apunta a craftforJ a un modelo que se ejecute localmente. Tu clave se almacena en la máquina que ejecuta tu aplicación, y el asistente la mantiene en memoria solo mientras la página esté abierta, nunca en el almacenamiento del navegador. Se comunica con el proveedor que elegiste desde el navegador en lugar de a través de tu servidor, y con nadie más.
+craftforJ no incluye ningún modelo propio, así que tú eliges cuál lo ejecuta. Añade una clave de API de uno de los proveedores compatibles o conecta craftforJ a un modelo que se ejecute localmente. Tu clave se almacena en la máquina que ejecuta tu aplicación, y el asistente solo la mantiene en memoria mientras la página está abierta; nunca la guarda en el almacenamiento del navegador. Se comunica desde el navegador con el proveedor que hayas elegido, no a través de tu servidor, y no con ningún otro.
 
-El selector de modelos muestra qué distingue a un modelo de otro, incluyendo cuánto de tu aplicación y conversación cabe a la vez, cuánto cuesta una conversación y si el modelo acepta imágenes o razona antes de responder. Un modelo que no puede llamar a herramientas puede mantener una conversación, pero no puede inspeccionar ni cambiar nada.
+El selector de modelos muestra las diferencias entre los modelos: cuánto de tu aplicación y de la conversación cabe a la vez, cuánto cuesta una conversación y si el modelo acepta imágenes o razona antes de responder. Un modelo que no puede invocar herramientas puede mantener una conversación, pero no puede inspeccionar ni cambiar nada.
 
-![El selector de modelos mostrando qué distingue a los modelos disponibles](/img/craftforj/ai/model-picker.png#rounded-border)
+![El selector de modelos muestra las diferencias entre los modelos disponibles](/img/craftforj/ai/model-picker.png#rounded-border)
 
-Ejecutar un modelo localmente mantiene todo en tu máquina. Los modelos locales a menudo tienen un contexto pequeño por defecto, que una conversación sobre una aplicación real llena rápidamente, así que dale al modelo tanto contexto como tu máquina pueda soportar.
+Ejecutar un modelo localmente mantiene todo en tu máquina. Los modelos locales suelen tener una ventana de contexto pequeña de forma predeterminada, que se llena rápidamente en una conversación sobre una aplicación real, así que dale al modelo tanto contexto como pueda soportar tu máquina.
 
 ## Conversaciones {#conversations}
 
-Las conversaciones se mantienen por aplicación, y el agente puede mirar hacia atrás en conversaciones anteriores cuando una pregunta se refiere a un trabajo que hiciste antes. Cuando una conversación supera el contexto del modelo, craftforJ resume los mensajes más antiguos para que el trabajo continúe en lugar de fallar, y lo anota en el chat.
+Las conversaciones se guardan por aplicación, y el agente puede consultar las anteriores cuando una pregunta haga referencia a un trabajo que hayas realizado antes. Cuando una conversación supera el contexto del modelo, craftforJ resume los mensajes anteriores para que el trabajo continúe en lugar de fallar, e indica en el chat que lo ha hecho.
 
-Cuando el trabajo supera a craftforJ, puedes resumir la conversación y entregársela al asistente de tu editor. Ese asistente recoge el trabajo de manera más precisa con el [plugin de IA de webforJ](/docs/ai-tooling) instalado.
+Cuando el trabajo supera las capacidades de craftforJ, puedes resumir la conversación y pasársela al asistente de tu editor. Ese asistente retomará el trabajo con mayor precisión si está instalado el [complemento de IA de webforJ](/docs/ai-tooling).
 
-## Apagándolo {#turning-it-off}
+## Desactivarlo {#turning-it-off}
 
-La propiedad [`ai.enabled`](/docs/craftforj/configuration#feature-flags) elimina completamente al asistente de craftforJ. La propiedad [`ai.freeform-changes`](/docs/craftforj/configuration#feature-flags) mantiene al asistente pero detiene su capacidad de escribir Java por su cuenta.
+La propiedad [`ai.enabled`](/docs/craftforj/configuration#feature-flags) elimina por completo el asistente de craftforJ. La propiedad [`ai.freeform-changes`](/docs/craftforj/configuration#feature-flags) mantiene el asistente, pero impide que escriba Java por su cuenta.

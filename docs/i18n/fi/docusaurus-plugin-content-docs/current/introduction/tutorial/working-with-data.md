@@ -2,34 +2,37 @@
 title: Tietojen käsittely
 sidebar_position: 3
 description: Step 2 - Use Spring to work with data.
-_i18n_hash: d2e2ee90a1ad908c6884df92fb575c5b
+_i18n_hash: f1c000ec07cb278db9d60d5f90d71743
 ---
-Tässä vaiheessa opit luomaan tietomallin käyttäen Springiä ja näyttämään tiedot visuaalisesti. Tämän vaiheen loppuun mennessä aiemmin luotu sovellus, [Perus sovelluksen luominen](/docs/introduction/tutorial/creating-a-basic-app), sisältää taulukon, joka näyttää asiakasdataa. Seuraamalla mukana opit:
+Tässä vaiheessa opit luomaan tietomallin Springillä ja näyttämään tiedot visuaalisesti.
+Tämän vaiheen lopussa edellisessä vaiheessa luodussa sovelluksessa [Perussovelluksen luominen](/docs/introduction/tutorial/creating-a-basic-app) on taulukko, jossa näytetään asiakastietoja. Vaiheen aikana opit muun muassa:
 
 - Spring-annotaatioita
-- Datan hallintaa
-- webforJ `Table` -komponenttia
+- Tietojen hallintaa
+- webforJ:n `Table`-komponentin käyttöä
 
 Tämän vaiheen suorittaminen luo version [2-working-with-data](https://github.com/webforj/webforj-tutorial/tree/main/2-working-with-data).
 
-## Sovelluksen käynnistäminen {#running-the-app}
+<!-- <VideoPlayer video="tutorial/working-with-data" width={1920} height={1080} title="Working with data" /> -->
 
-Sovellusta kehitettäessä voit käyttää [2-working-with-data](https://github.com/webforj/webforj-tutorial/tree/main/2-working-with-data) vertailupohjana. Näet sovelluksen toiminnassa:
+## Sovelluksen suorittaminen {#running-the-app}
 
-1. Siirry ylimmälle tasolle hakemistoon, jossa `pom.xml`-tiedosto sijaitsee, tämä on `2-working-with-data`, jos seuraat GitHubin versiota.
+Voit verrata kehittämäsi sovellusta versioon [2-working-with-data](https://github.com/webforj/webforj-tutorial/tree/main/2-working-with-data). Näin näet sovelluksen toiminnassa:
 
-2. Suorita seuraava Maven-komento Spring Boot -sovelluksen ajamiseksi paikallisesti:
+1. Siirry ylimmän tason hakemistoon, jossa `pom.xml`-tiedosto sijaitsee. Jos käytät GitHubissa olevaa versiota, hakemisto on `2-working-with-data`.
+
+2. Suorita Spring Boot -sovellus paikallisesti seuraavalla Maven-komennolla:
     ```bash
     mvn
     ```
 
-Sovelluksen käynnistäminen avaa automaattisesti uuden selaimen osoitteeseen `http://localhost:8080`.
+Sovelluksen suorittaminen avaa automaattisesti uuden selainikkunan osoitteeseen `http://localhost:8080`.
 
-## Riippuvuudet ja konfiguraatiot {#dependencies-and-configurations}
+## Riippuvuudet ja määritykset {#dependencies-and-configurations}
 
-Tämä opas käyttää [H2-tietokantaa](https://www.h2database.com/html/main.html) ja tulevassa vaiheessa Jakarta Persistence API:ta (JPA) [Spring Data JPA:n](https://docs.spring.io/spring-data/jpa/reference/index.html) kautta. Tämä vaatii, että lisäät riippuvuuksia `pom.xml`-tiedostoon ja päivität `application.properties`. Tämä on viimeinen kerta, kun sinun tarvitsee muokata näitä kahta tiedostoa koko oppaan aikana.
+Tässä opetusohjelmassa käytetään [H2-tietokantaa](https://www.h2database.com/html/main.html), ja myöhemmässä vaiheessa Jakarta Persistence API:a (JPA) [Spring Data JPA:n](https://docs.spring.io/spring-data/jpa/reference/index.html) kautta. Tätä varten sinun on lisättävä riippuvuudet `pom.xml`-tiedostoon ja päivitettävä `application.properties`-tiedosto. Nämä ovat viimeiset muutokset, jotka sinun tarvitsee tehdä näihin kahteen tiedostoon tämän opetusohjelman aikana.
 
-Lisää pom-tiedostoon seuraavat riippuvuudet:
+Lisää POM-tiedostoon seuraavat riippuvuudet:
 
 ```xml
 <dependency>
@@ -42,33 +45,37 @@ Lisää pom-tiedostoon seuraavat riippuvuudet:
 </dependency>
 ```
 
-Lisää `application.properties`:iin, joka sijaitsee `src/main/resources`-hakemistossa, seuraavat:
+Lisää `src/main/resources`-hakemistossa olevaan `application.properties`-tiedostoon seuraavat rivit:
 
 ```
-# H2-tietokannan konfigurointi
+# H2 Database configuration
 spring.datasource.url=jdbc:h2:mem:testdb
 spring.datasource.driverClassName=org.h2.Driver
 spring.datasource.username=sa
 spring.datasource.password=
 
-# JPA-konfigurointi
+# JPA configuration
 spring.jpa.database-platform=org.hibernate.dialect.H2Dialect
 spring.jpa.hibernate.ddl-auto=update
 ```
 
-:::info Datan hankkiminen
-Tässä oppaassa käytetään muistissa olevaa tietokantaa ja oletustunnistetietoja datan hankkimiseen. Käy Springin [Datan käyttö](https://docs.spring.io/spring-boot/how-to/data-access.html) -dokumentaatiossa oppiaksesi tietyistä Spring Boot -konfigurointivaihtoehdoista.
+:::info Tietojen käyttäminen
+Tässä opetusohjelmassa käytetään muistinvaraista tietokantaa ja tietojen käytön oletustunnistetietoja. Lue Springin [Data Access](https://docs.spring.io/spring-boot/how-to/data-access.html) -dokumentaatiosta lisää Spring Bootin määritysasetuksista.
 :::
 
-## Springin beanit {#spring-beans}
+## Spring-beanit {#spring-beans}
 
-Yksi tärkeä osa Spring-kehyksen käyttöä on ymmärtää, mitä beanit ovat. Beanit ovat objekteja, joilla on määriteltyjä Spring-annotaatioita, jolloin Spring voi helpommin konfiguroida niitä tietäen luokan tarkoitetun tarkoituksen. Käy Springin [Beanin yleiskuvaus](https://docs.spring.io/spring-framework/reference/core/beans/definition.html) -dokumentaatiossa saadaksesi lisätietoja.
+Spring-kehyksen käytön kannalta on tärkeää ymmärtää, mitä beanit ovat. Beanit ovat objekteja, joihin on määritetty Spring-annotaatioita. Niiden avulla Spring voi määrittää objektit helpommin luokan käyttötarkoituksen perusteella. Lue lisää Springin [Bean Overview](https://docs.spring.io/spring-framework/reference/core/beans/definition.html) -dokumentaatiosta.
 
 ## Tietomallin luominen {#creating-a-data-model}
 
-Ennen kuin tiedot voidaan esittää visuaalisesti tai luoda ne, tässä oppaassa tarvitaan tapa edustaa jokaisen asiakkaan tietoja, mukaan lukien nimi, maa ja yritys. Springin avulla tämä tapahtuu luomalla luokka, joka sisältää `@Entity`-annotaation.
+Ennen tietojen näyttämistä tai luomista tarvitset tavan esittää kunkin asiakkaan tiedot, kuten nimen, maan ja yrityksen. Springissä tämä tehdään luokalla, jossa on `@Entity`-annotaatio.
 
-Luo luokka `src/main/java/com/webforj/tutorial/entity`-hakemistoon nimeltä `Customer.java`. Sen tulisi sisältää `@Entity`-annotaatio ja getter- ja setter-metodit asiakasarvoille, paitsi `id`:lle. `id`-arvojen luomismetodin sijasta käytä `@Id`- ja `@GeneratedValue`-annotaatioita varmistaaksesi, että jokaiselle asiakkaalle annetaan ainutlaatuinen `id`.
+Luo luokka hakemistoon `src/main/java/com/webforj/tutorial/entity` ja anna sille nimeksi `Customer.java`. Lisää luokkaan `@Entity`-annotaatio ja getter- ja setter-metodit asiakkaan arvoille `id`-arvoa lukuun ottamatta. Sen sijaan, että käyttäisit `id`-arvojen luontiin metodia, käytä `@Id`- ja `@GeneratedValue`-annotaatioita varmistaaksesi, että jokaisella asiakkaalla on yksilöllinen `id`.
+
+
+<!-- vale off -->
+<ExpandableCode title="Customer.java" language="java" startLine={1} endLine={15}>
 
 ```java
 @Entity
@@ -153,19 +160,22 @@ public class Customer {
 }
 ```
 
-Kun `Customer`-tietomalli on paikoillaan, voit nyt alkaa lisätä liiketoimintalogiikkaa sovellukseesi.
+</ExpandableCode>
+<!-- vale on -->
 
-## Datan hallinta {#managing-data}
+Kun `Customer`-tietomalli on valmis, voit lisätä sovellukseen liiketoimintalogiikkaa.
 
-Tietomallin luomisen jälkeen luot repositorion ja palvelun asiakasdatan hallitsemiseksi. Tällaiset luokat sovelluksessasi mahdollistavat toimintoja, kuten asiakkaiden tietojen lisäämistä, poistamista ja päivittämistä.
+## Tietojen hallinta {#managing-data}
+
+Tietomallin luomisen jälkeen luot repositorion ja palvelun asiakastietojen hallintaa varten. Näiden luokkien avulla voit lisätä, poistaa ja päivittää asiakastietueita sovelluksessasi.
 
 ### Repositorion luominen {#creating-a-repository}
 
-Repositorion luominen tekee entiteettien datasta saatavilla olevaa, jotta sovelluksesi voi sisältää useita asiakkaita. Tämän oppaan tavoitteena on tehdä datasta muokattava, lajitteltava ja validoitava. Määrität repositorion kyvyt käyttämällä Spring Data -repositorya.
+Repositorio tekee entiteettien tiedot käytettäviksi, jolloin sovelluksessasi voi olla useita asiakkaita. Tämän opetusohjelman tavoitteena on tehdä tiedoista muokattavia, lajiteltavia ja validoitavia. Repositorion ominaisuudet määräytyvät käyttämäsi Spring Data -repositorion mukaan.
 
-Tulevassa vaiheessa [Datan validointi ja sitominen](/docs/introduction/tutorial/validating-and-binding-data) tarvitset pääsyn Spring Data JPA:han asiakkaiden ominaisuuksien validoimiseksi. Siksi sopiva repository käyttää on `JpaRepository`.
+Myöhemmässä vaiheessa, [Tietojen validointi ja sidonta](/docs/introduction/tutorial/validating-and-binding-data), tarvitset Spring Data JPA:ta asiakasominaisuuksien validointiin. Siksi tähän tarkoitukseen sopiva repositorio on `JpaRepository`.
 
-Luo `src/main/java/com/webforj/tutorial/repository`-hakemistoon repositoryliittymä, jossa on Springin `@Repository`-annotaatio ja joka laajentaa `JpaRepository`:a. Sinun täytyy määrittää, minkä tyyppisiä entiteettejä tämä repository sisältää ja minkä tyyppinen objekti `id` on. Hyvänä käytäntönä laajenna myös `JpaSpecificationExecutor`:ia. Tämä lisäys mahdollistaa kehittyneiden suodatusvaihtoehtojen toteuttamisen myöhemmin, jos tarpeen.
+Luo hakemistoon `src/main/java/com/webforj/tutorial/repository` repositoriorajapinta, jossa on Springin `@Repository`-annotaatio ja joka laajentaa `JpaRepository`-rajapintaa. Määritä, minkä tyyppisiä entiteettejä repositorio sisältää ja minkä tyyppinen objekti `id` on. Laajenna lisäksi `JpaSpecificationExecutor`-rajapintaa. Näin voit tarvittaessa toteuttaa myöhemmin edistyneitä suodatusvaihtoehtoja.
 
 ```java title="CustomerRepository.java"
 @Repository
@@ -175,29 +185,30 @@ public interface CustomerRepository
 }
 ```
 
-Juuri luomasi `CustomerRepository` ei sisällä määriteltyjä metodeja. Datan hallintaan liittyvät (sovelluksen liiketoimintalogiikka) metodit asuvat palveluluokassa.
+Juuri luomassasi `CustomerRepository`-luokassa ei ole määritettyjä metodeja. Tietojen hallintaan käytettävät metodit eli sovelluksen liiketoimintalogiikka sijaitsevat palveluluokassa.
 
-:::info Spring-dokumentaatio-linkit
+:::info Linkkejä Spring-dokumentaatioon
 
-Tässä on neljä linkkiä Springin dokumentaatioon, jotka auttavat sinua ymmärtämään paremmin Spring-repositoryt:
+Seuraavat neljä linkkiä Springin dokumentaatioon auttavat ymmärtämään Spring-repositorioita paremmin:
 
-- [Työskentely Spring Data Repositories -ohjeiden](https://docs.spring.io/spring-data/commons/reference/repositories.html)
-- [Spring Data JPA -yleiskatsaus](https://docs.spring.io/spring-data/jpa/reference/index.html)
-- [Spring Data JPA -erityisominaisuudet](https://docs.spring.io/spring-data/jpa/reference/jpa/specifications.html)
+- [Working with Spring Data Repositories](https://docs.spring.io/spring-data/commons/reference/repositories.html)
+- [Spring Data JPA Overview](https://docs.spring.io/spring-data/jpa/reference/index.html)
+- [Spring Data JPA Specifications](https://docs.spring.io/spring-data/jpa/reference/jpa/specifications.html)
 - [`JpaRepository`](https://docs.spring.io/spring-data/jpa/docs/current/api/org/springframework/data/jpa/repository/JpaRepository.html)
 :::
 
 ### Palvelun luominen {#creating-a-service}
 
-Luo `src/main/java/com/webforj/tutorial/service`-hakemistoon `CustomerService`-luokka. Tämä palvelu sisältää metodeja asiakkaiden luomiseen, päivittämiseen, poistamiseen ja kyselyyn käyttämällä `CustomerRepository`:a.
+Luo `src/main/java/com/webforj/tutorial/service`-hakemistoon `CustomerService`-luokka. Tämä palvelu sisältää metodit asiakkaiden luomiseen, päivittämiseen, poistamiseen ja kyselyyn `CustomerRepository`-luokan avulla.
 
-Lisäksi tällä palvelulla on mekanismi yhdistää Spring Data repositories webforJ:n käyttöliittymäkomponentteihin. Käyttämällä `SpringDataRepository` webforJ-luokkaa voit luoda tämän sillan. Se yksinkertaistaa datan sitomista ja CRUD-toimintoja, jolloin webforJ-taulut ja -lomakkeet voivat toimia vapaasti Spring-hallittavan datakerroksesi kanssa. Lisätietoja webforJ:n Spring-integraatiosta löydät [Spring Data JPA](/docs/integrations/spring/spring-data-jpa) -artikkelista.
+Palvelu tarvitsee lisäksi mekanismin, jolla Spring Data -repositoriot yhdistetään webforJ:n käyttöliittymäkomponentteihin. webforJ:n `SpringDataRepository`-luokan avulla voit luoda tämän yhteyden. Se yksinkertaistaa tietojen sidontaa ja CRUD-toimintoja, koska webforJ:n taulukot ja lomakkeet voivat toimia suoraan Springin hallitseman tietokerroksen kanssa. Lue lisää webforJ:n Spring-integraatiosta [Spring Data JPA](/docs/integrations/spring/spring-data-jpa) -artikkelista.
 
-Tätä palveluluokkaa varten käytät kahta Spring-annotaatiota:
+Tässä palveluluokassa käytetään kahta Spring-annotaatiota:
 
-- **`@Service`** - Tämä merkitsee luokan palvelukomponentiksi Springissä, jolloin se havaitaan ja hallitaan automaattisesti beanina liiketoimintalogiikalle tai uudelleenkäytettäville toiminnoille.
+- **`@Service`** – Tämä merkitsee luokan Springin palvelukomponentiksi, jolloin se havaitaan ja sitä hallitaan automaattisesti beanina liiketoimintalogiikkaa tai uudelleenkäytettäviä toimintoja varten.
 
-- **`@Transactional`** - Tämä annotaatio kertoo Springille, että metodi tai luokka suoritetaan tietokantatransaktiossa, jolloin kaikki sisällä olevat toiminnot vahvistetaan tai peruutetaan yhdessä. Lisätietoja on Springin dokumentaatiossa, [Käyttämällä @Transactional](https://docs.spring.io/spring-framework/reference/data-access/transaction/declarative/annotations.html#page-title).
+- **`@Transactional`** – Tämä annotaatio ohjaa Springiä suorittamaan metodin tai luokan tietokantatapahtuman sisällä, jolloin kaikki sen sisältämät toiminnot vahvistetaan tai peruutetaan yhdessä. Lisätietoja on Springin dokumentaation kohdassa [Using @Transactional](https://docs.spring.io/spring-framework/reference/data-access/transaction/declarative/annotations.html#page-title).
+
 
 ```java title="CustomerService.java"
 @Service
@@ -215,14 +226,14 @@ public class CustomerService {
 
   public Customer updateCustomer(Customer customer) {
     if (!repository.existsById(customer.getId())) {
-      throw new IllegalArgumentException("Asiakasta ei löytynyt ID:llä: " + customer.getId());
+      throw new IllegalArgumentException("Customer not found with ID: " + customer.getId());
     }
     return repository.save(customer);
   }
 
   public void deleteCustomer(Long id) {
     if (!repository.existsById(id)) {
-      throw new IllegalArgumentException("Asiakasta ei löytynyt ID:llä: " + id);
+      throw new IllegalArgumentException("Customer not found with ID: " + id);
     }
     repository.deleteById(id);
   }
@@ -237,7 +248,7 @@ public class CustomerService {
 
   public Customer getCustomerByKey(Long id) {
     return repository.findById(id)
-        .orElseThrow(() -> new IllegalArgumentException("Asiakasta ei löytynyt ID:llä: " + id));
+        .orElseThrow(() -> new IllegalArgumentException("Customer not found with ID: " + id));
   }
 
   public boolean doesCustomerExist(Long id) {
@@ -247,9 +258,12 @@ public class CustomerService {
 }
 ```
 
-## Alustavan datan lataaminen {#loading-initial-data}
+## Alkutilan tietojen lataaminen {#loading-initial-data}
 
-Tässä oppaassa alustava asiakasdatan kokoelma tulee JSON-tiedostosta. Java-sovellus lataa tiedoston, ei selain, joten luo se `src/main/resources/data`-hakemistoon seuraavilla tiedoilla:
+Tässä opetusohjelmassa alkuperäiset asiakastiedot luetaan JSON-tiedostosta. Java-sovellus lataa tiedoston, ei selain, joten luo se hakemistoon `src/main/resources/data` seuraavilla tiedoilla:
+
+<!-- vale off -->
+<ExpandableCode title="customers.json" language="json" startLine={1} endLine={13}>
 
 ```json
 [
@@ -316,7 +330,10 @@ Tässä oppaassa alustava asiakasdatan kokoelma tulee JSON-tiedostosta. Java-sov
 ]
 ```
 
-Sitten sovellukselle tarvitaan tapa hakea tämä data käynnistyessään. Luo `src/main/java/com/webforj/tutorial/config`-hakemistoon `DataInitializer`-luokka. Nyt, kun sovellus toimii, jos asiakkaita ei havaita, se lataa asiakkaita JSON-tiedostosta ja lisää ne H2-tietokantaan:
+</ExpandableCode>
+<!-- vale on -->
+
+Sovellus tarvitsee sitten tavan noutaa nämä tiedot käynnistyessään. Luo `src/main/java/com/webforj/tutorial/config`-hakemistoon `DataInitializer`-luokka. Kun sovellus käynnistyy, se tarkistaa, onko asiakkaita olemassa. Jos niitä ei ole, se lataa asiakkaat JSON-tiedostosta ja tallentaa ne H2-tietokantaan:
 
 ```java title="DataInitializer.java"
 @Component
@@ -349,36 +366,36 @@ public class DataInitializer implements CommandLineRunner {
 }
 ```
 
-## Datan näyttäminen visuaalisesti {#displaying-data-visually}
+## Tietojen näyttäminen visuaalisesti {#displaying-data-visually}
 
-Tämän vaiheen viimeinen osa on käyttää [`Table`](/docs/components/table/overview) komponenttia ja yhdistää se Spring-dataan.
+Tämän vaiheen viimeisessä osassa käytetään [`Table`](/docs/components/table/overview)-komponenttia ja yhdistetään se Springin tietoihin.
 
-webforJ `Table`-instanssin on oltava tietotyyppi toimiakseen, ja se on aiemmin tässä vaiheessa luotu entiteettiluokka:
+webforJ:n `Table`-instanssi tarvitsee tietotyypin toimiakseen. Tässä tapauksessa se on aiemmin tässä vaiheessa luotu entiteettiluokka:
 
 ```java
 Table<Customer> table = new Table<>();
 ```
 
-Kun sinulla on `Table`, jokaisen asiakkaan ominaisuuden tulee saada oma sarake. Jokaiselle lisäämällesi sarakkeelle käytä ominaisuuden nimeä, sen getter-metodia `Customer`-entiteetissä ja `setLabel()`-metodia tietojen näyttämiseen haluamassasi järjestyksessä:
+Kun `Table` on luotu, jokaiselle asiakkaan ominaisuudelle lisätään oma sarake. Käytä jokaisessa lisäämässäsi sarakkeessa ominaisuuden nimeä, sen getter-metodia `Customer`-entiteetissä ja `setLabel()`-metodia tietojen näyttämiseen haluamassasi järjestyksessä:
 
 ```java
-table.addColumn("firstName", Customer::getFirstName).setLabel("Etunimi");
-table.addColumn("lastName", Customer::getLastName).setLabel("Sukunimi");
-table.addColumn("company", Customer::getCompany).setLabel("Yritys");
-table.addColumn("country", Customer::getCountry).setLabel("Maa");
+table.addColumn("firstName", Customer::getFirstName).setLabel("First Name");
+table.addColumn("lastName", Customer::getLastName).setLabel("Last Name");
+table.addColumn("company", Customer::getCompany).setLabel("Company");
+table.addColumn("country", Customer::getCountry).setLabel("Country");
 ```
 
-Sarakkeiden lisäämisen jälkeen sinun on määritettävä, mikä repository `Table`n tulisi käyttää datansa täyttämiseen. Tämä sovellus saa repositoryn `getRepositoryAdapter()`-metodista luodusta `CustomerService`:stä:
+Kun sarakkeet on lisätty, määritä, mitä repositoriota `Table` käyttää tietojen täyttämiseen. Tässä sovelluksessa repositorio saadaan luodun `CustomerService`-luokan `getRepositoryAdapter()`-metodista:
 
 ```java
 table.setRepository(customerService.getRepositoryAdapter());
 ```
 
-### Taulukon koko {#table-sizing}
+### Taulukon koon määrittäminen {#table-sizing}
 
-Taulukolle voit käyttää `setSize()`-metodia asettaaksesi sen koon pikseleinä tai muina [CSS-yksikköinä](https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Styling_basics/Values_and_units). Asettamalla maksimi-leveyden suhteessa näytön leveyteen autat sovellustasi olemaan mukautuvampi pienille näytöille.
+Voit määrittää taulukon koon pikseleinä tai muina [CSS-yksikköinä](https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Styling_basics/Values_and_units) käyttämällä `setSize()`-metodia. Määrittämällä enimmäisleveyden suhteessa näytön leveyteen teet sovelluksesta mukautuvamman pienemmillä näytöillä.
 
-Sarakkeille voit asettaa leveydet yksilöllisesti tai käyttää yhtä `Table`-metodia, kuten `setColumnsToAutoFit()`, jolloin webforJ hoitaa leveydet puolestasi:
+Voit määrittää sarakkeiden leveydet yksitellen tai antaa webforJ:n huolehtia niistä esimerkiksi `Table`-luokan `setColumnsToAutoFit()`-metodilla:
 
 ```java
 table.setSize("1000px", "294px");
@@ -386,25 +403,25 @@ table.setMaxWidth("90vw");
 table.setColumnsToAutoFit();
 ```
 
-### Käyttäjäinteraktiot {#user-interactions}
+### Käyttäjän vuorovaikutus {#user-interactions}
 
-`Table`-komponentilla on myös metodeja, joilla hallita, miten käyttäjät voivat vuorovaikuttaa sarakkeiden kanssa:
+`Table`-komponentissa on myös metodeja, joilla voit hallita käyttäjien vuorovaikutusta sarakkeiden kanssa:
 
 ```java
 table.setColumnsToResizable(false);
 table.getColumns().forEach(column -> column.setSortable(true));
 ```
 
-Korostetut osat `Application`-luokasta lisäävät `Table`-komponentin, määrittelevät sen sarakkeet ja käyttävät `CustomerService`-luokkaa repositoryn noutamiseen:
+`Application`-luokan korostetut osat lisäävät `Table`-komponentin, määrittävät sen sarakkeet ja käyttävät `CustomerService`-luokkaa repositorion noutamiseen:
 
 ```java title="Application.java" {7-12,24-25,30-40,46-47}
 @SpringBootApplication
 @BundleEntry("css/card.css")
 @AppTheme("system")
-@AppProfile(name = "Asiakassovellus", shortName = "CustomerApp")
+@AppProfile(name = "Customer Application", shortName = "CustomerApp")
 public class Application extends App {
 
-  // Lisää konstruktorin injektointi CustomerService:lle
+  //Add a constructor injection for CustomerService
   private final CustomerService customerService;
 
   public Application(CustomerService customerService) {
@@ -418,22 +435,22 @@ public class Application extends App {
   @Override
   public void run() throws WebforjException {
     Frame mainFrame = new Frame();
-    Paragraph tutorial = new Paragraph("Opastusohjelma!");
+    Paragraph tutorial = new Paragraph("Tutorial App!");
     Button btn = new Button("Info");
 
-    // Lisää Table-komponentti
+    //Add the Table component
     Table<Customer> table = new Table<>();
 
     mainFrame.setWidth("fit-content");
     mainFrame.addClassName("card");
 
-    // Muotoile Table-komponentti, aseta sarakkeet ja aseta repository
+    //Style the Table component, set the columns, and set the repository
     table.setSize("1000px", "294px");
     table.setMaxWidth("90vw");
-    table.addColumn("firstName", Customer::getFirstName).setLabel("Etunimi");
-    table.addColumn("lastName", Customer::getLastName).setLabel("Sukunimi");
-    table.addColumn("company", Customer::getCompany).setLabel("Yritys");
-    table.addColumn("country", Customer::getCountry).setLabel("Maa");
+    table.addColumn("firstName", Customer::getFirstName).setLabel("First Name");
+    table.addColumn("lastName", Customer::getLastName).setLabel("Last Name");
+    table.addColumn("company", Customer::getCompany).setLabel("Company");
+    table.addColumn("country", Customer::getCountry).setLabel("Country");
     table.setColumnsToAutoFit();
     table.setColumnsToResizable(false);
     table.getColumns().forEach(column -> column.setSortable(true));
@@ -441,9 +458,9 @@ public class Application extends App {
 
     btn.setTheme(ButtonTheme.PRIMARY)
         .setMaxWidth(200)
-        .addClickListener(e -> OptionDialog.showMessageDialog("Tämä on opastusohjelma!", "Info"));
+        .addClickListener(e -> OptionDialog.showMessageDialog("This is a tutorial!", "Info"));
 
-    // Lisää Table Frameen
+    //Add the Table to the Frame
     mainFrame.add(tutorial, btn, table);
   }
 
@@ -452,4 +469,4 @@ public class Application extends App {
 
 ## Seuraava vaihe {#next-step}
 
-Näiden muutosten myötä sovellus lataa asiakasdatan tietokantaan ja näyttää sen sitten `Table`-komponentissa. Seuraavassa vaiheessa, [Reititys ja komposiitit](/docs/introduction/tutorial/routing-and-composites), esitellään reititettäminen ja useita näkymiä uusien asiakkaiden lisäämistä varten.
+Näiden muutosten jälkeen sovellus lataa asiakastiedot tietokantaan ja näyttää ne `Table`-komponentissa. Seuraavassa vaiheessa [Reititys ja yhdistelmäkomponentit](/docs/introduction/tutorial/routing-and-composites) esitellään reititys ja useat näkymät uusien asiakkaiden lisäämistä varten.
