@@ -177,4 +177,9 @@ context
 1. `@NotNull`
 2. `@NotEmpty`
 3. `@NotBlank`
-4. `@Size`
+4. `@Size`*
+
+:::note Using `@Size` for a required binding <DocChip chip='since' label='26.10' />
+`@Size` only marks the bound component as required if it has a defined `min` value.
+In earlier versions, `@Size` always marks the bound component as required.
+:::

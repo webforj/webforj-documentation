@@ -24,3 +24,20 @@ Earlier versions treated a value wrapped in `<html>` and passed to `setText()` a
 The `<html>` wrapper is never displayed in either case.
 
 The first time an `<html>` wrapped value reaches `setText()`, a warning is logged that names the component and the call site, so the call can be moved to `setHtml()`.
+
+## Required binding using `@Size` {#required-binding-using-size-annotation}
+
+In versions earlier than 27.00, using the [Jakarta annotation](/docs/data-binding/validation/jakarta-validation) `@Size` automatically marks the bound component as required.
+Going forward, `@Size` only marks a bound component as required if it has a defined `min` value.
+
+```java
+// no longer marks the field as required
+@Size(max = 80, message = "Street must be shorter than 80 characters")
+private String street;
+```
+
+```java
+// marks the field as required
+@Size(min = 2, max = 80, message = "Street must be between 2 and 80 characters")
+private String street;
+```
