@@ -1,9 +1,9 @@
 ---
 title: "JavaFX vs Swing: which Java GUI framework to pick in 2026"
-description: "JavaFX vs Swing compared on installation, updates, platforms and threading, plus when a web UI written in Java with webforJ beats both. A clear pick for 2026."
+description: "JavaFX vs Swing compared on distribution, UI code, styling, data binding, threading and packaging, with a clear pick for 2026 and a path to the browser."
 slug: java-gui-frameworks-compared
 date: 2026-09-19
-authors: Hyyan Abo Fakher
+authors: webforJ
 tags: [insights, web development, modernization, webswing]
 image: https://cdn.webforj.com/webforj-documentation/blogs/2026-09-19-java-gui-frameworks-compared/cover.jpg
 hide_table_of_contents: false
@@ -11,130 +11,189 @@ hide_table_of_contents: false
 
 ![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-09-19-java-gui-frameworks-compared/cover.jpg)
 
-If you want to keep writing Java and you are picking a Java GUI framework today, webforJ is the option that gets you a browser-delivered UI without leaving the language. You build screens from Java classes, run them on the server, and users open a URL. Swing and JavaFX remain the choice when the app must work offline. If offline isn't a requirement, a webforJ app can be installed too, so it sits on the desktop, home screen or app menu like a native app.
+You are starting a Java desktop app and have to pick a toolkit. Or you own a Swing app and wonder whether JavaFX would have been the better bet. Both toolkits are maintained, both are plain Java, and the choice still shapes years of work.
 
-The decision is mostly about delivery. Swing and JavaFX put the UI on each user's machine. A web UI written in Java puts it on one server and shows it in a browser. This post compares the three on the questions that change the outcome, then shows what the same button handler looks like in Swing and in webforJ.
+JavaFX vs Swing in 2026 comes down to this. Swing ships inside the JDK and is the safe choice for a codebase that already uses it. JavaFX is the more modern toolkit, with CSS styling, FXML layouts, observable properties and built-in charts, and it is the stronger pick for a new desktop app. This post compares the two on the points that change the decision, with the same screen written in both. It ends with the case neither toolkit covers: users who need the app in a browser.
 
 <!-- truncate -->
 
-## Swing, JavaFX and web at a glance {#swing-vs-javafx-vs-web}
+## JavaFX vs Swing at a glance {#javafx-vs-swing-at-a-glance}
 
-| Question | Swing | JavaFX | Web UI in Java (webforJ) |
-| --- | --- | --- | --- |
-| Where the UI runs | On the user's machine | On the user's machine | On the server, rendered in a browser |
-| How users get it | An installer or a launcher | An installer or a launcher | A URL |
-| Updating | Redeploy to every machine | Redeploy to every machine | Deploy once |
-| Platforms | Desktop operating systems with a JVM | Desktop, with mobile and embedded targets | Any device with a browser |
-| Look and feel | Java toolkit components | Java toolkit components | HTML, CSS and web components |
-| UI thread | Event dispatch thread | FX thread | One server thread per session |
+| Question | Swing | JavaFX |
+| --- | --- | --- |
+| Ships with | The JDK, in the `java.desktop` module | A separate download, OpenJFX |
+| A screen is defined in | Java code | Java code or FXML markup |
+| Styling | Look and feel classes | CSS style sheets |
+| Data binding | Listeners you write | Observable properties and bindings |
+| UI thread | Event dispatch thread | FX thread |
+| Built in beyond forms | Tables, trees, text components | Tables, trees, charts, media, a web view |
+| Targets | Desktop | Desktop, mobile and embedded |
+| Releases | With each JDK | Every six months, as OpenJFX |
 
-The sections below take each row in turn.
+The sections below take the rows that matter most.
 
-## Distribution and installation {#distribution-and-installation}
+## Where each toolkit comes from {#where-each-comes-from}
 
-Swing ships in the JDK. The `java.desktop` module [defines the AWT and Swing toolkits](https://docs.oracle.com/en/java/javase/21/docs/api/java.desktop/module-summary.html), so a Swing app needs nothing beyond a Java runtime. JavaFX is distributed separately as [OpenJFX](https://openjfx.io/), through Maven modules or a standalone SDK.
+Swing is part of the JDK. The `java.desktop` module [defines the AWT and Swing toolkits](https://docs.oracle.com/en/java/javase/21/docs/api/java.desktop/module-summary.html), so a Swing app needs nothing beyond a Java runtime. Every JDK release includes it.
 
-Either way, you still have to get the program onto each machine. The JDK's [`jpackage`](https://docs.oracle.com/en/java/javase/21/jpackage/packaging-overview.html) tool builds native installers (`exe` and `msi` on Windows, `pkg` and `dmg` on macOS, `deb` and `rpm` on Linux) and bundles a runtime. Its documentation states that app packages must be built on the target platform, so supporting all three operating systems means running the packaging step on each.
+JavaFX used to ship with the Oracle JDK. It left with JDK 11 and is now developed as [OpenJFX](https://openjfx.io/), an open source project with its own releases. You add it through Maven or Gradle modules, or as a standalone SDK. OpenJFX follows the JDK's six-month rhythm: version 26 arrived in March 2026 and version 27 in September 2026.
 
-A webforJ app has no installer for end users. It is a Spring Boot JAR or a WAR, and users reach it by URL. If you want an icon on the home screen or desktop, `@AppProfile` generates a web app manifest so supporting browsers can [install the app](/docs/configuration/installable-apps), and the [installable apps post](/blog/installable-apps) shows the result.
+So neither toolkit is abandoned. Swing is in maintenance: each JDK release brings bug fixes to it, and new features are rare. JavaFX is where new desktop UI features land.
 
-## Updates {#updates}
+## The same screen in both {#same-screen}
 
-With a desktop client, every release is a rollout. You build installers, publish them, and wait for users to take the update. Versions drift, and support has to know which build each person runs.
-
-With a server-rendered UI, a release is a deployment. The next page load serves the new code to everyone, so the version on the server is the version in use. For internal business apps, where the people who need a fix are the same people filing the ticket, this is often the whole argument.
-
-## Platforms and mobile {#platforms-and-mobile}
-
-Swing targets the desktop. OpenJFX describes itself as a platform for [desktop, mobile and embedded systems](https://openjfx.io/), so JavaFX gives you a path to more form factors, though each target brings its own build and packaging work.
-
-A webforJ app reaches any device that has a modern browser. The same views serve a laptop and a phone. `ColumnsLayout` is responsive by design, calculating how many columns to show from the width of its container, and the [component catalog](/docs/components/overview) lists the rest.
-
-## Look and feel {#look-and-feel}
-
-Swing's own documentation says its components are lightweight and, to the maximum degree possible, [work the same on all platforms](https://docs.oracle.com/en/java/javase/21/docs/api/java.desktop/module-summary.html). That consistency is also why a Swing app reads as a Swing app. The module also exports `javax.swing.plaf`, the pluggable look-and-feel API, for changing it.
-
-A web UI uses the browser's rendering stack. webforJ components are web components, so theming is CSS custom properties and shadow parts. The framework ships `light`, `dark` and `dark-pure` themes and one `@AppTheme` annotation selects the default. Brand colors, spacing and typography are tokens you override, as the [themes documentation](/docs/styling/themes) describes. Your designer's CSS knowledge applies directly.
-
-## Threading model {#threading-model}
-
-Both desktop toolkits have a single UI thread you must respect. Oracle's Swing tutorial says that [Swing component methods other than those labeled thread safe must be invoked from the event dispatch thread](https://docs.oracle.com/javase/tutorial/uiswing/concurrency/dispatch.html), and background work reaches the UI through `invokeLater`. JavaFX has the same shape, with [`Platform.runLater`](https://openjfx.io/javadoc/21/javafx.graphics/javafx/application/Platform.html) posting a `Runnable` to the JavaFX UI thread.
-
-webforJ also enforces one UI thread, per user session. Events are processed sequentially on it, so handlers don't race each other. When a background task needs to update the UI, `Environment.runLater()` schedules the update back on that thread. It is documented as experimental, and the [asynchronous updates guide](/docs/advanced/asynchronous-updates) covers its use. The mental model is the one you already have from Swing, with the extra fact that the UI thread lives on the server.
-
-## What the same handler looks like {#same-handler}
+Here is a small screen in each toolkit: a text field, a button, and a greeting.
 
 Swing:
 
 ```java
-public class SwingSave {
-  private final JLabel status = new JLabel();
+public class GreetingPanel extends JPanel {
+  public GreetingPanel() {
+    JTextField name = new JTextField(20);
+    JButton greet = new JButton("Greet");
+    JLabel message = new JLabel();
 
-  public JButton build() {
-    JButton save = new JButton("Save");
-    save.addActionListener(e -> status.setText("Saved"));
-    return save;
+    greet.addActionListener(e -> message.setText("Hello, " + name.getText()));
+
+    setLayout(new FlowLayout());
+    add(name);
+    add(greet);
+    add(message);
   }
 }
 ```
 
-webforJ:
+JavaFX:
 
 ```java
-@Route("save")
-public class WebSave extends Composite<Div> {
-  private final Paragraph status = new Paragraph();
+public class GreetingPane extends HBox {
+  public GreetingPane() {
+    TextField name = new TextField();
+    Button greet = new Button("Greet");
+    Label message = new Label();
 
-  public WebSave() {
-    Button save = new Button("Save", ButtonTheme.PRIMARY);
-    save.onClick(e -> status.setText("Saved"));
-    getBoundComponent().add(save, status);
+    greet.setOnAction(e -> message.setText("Hello, " + name.getText()));
+
+    setSpacing(8);
+    getChildren().addAll(name, greet, message);
   }
 }
 ```
 
-The listener is the same lambda. The component is a Java object that you construct, then add to a container. The difference is that `@Route("save")` makes this class a page with its own URL.
+At this size the two are close. You create components, attach a listener, and add them to a container. Swing positions children with a layout manager set on the panel. JavaFX uses layout panes such as `HBox`, `VBox`, and `GridPane`, and every control is a node in a scene graph.
 
-## Which desktop skills carry over {#skills-that-carry-over}
+JavaFX also lets you move the layout out of Java. FXML is an XML format that describes the same tree of controls, and Scene Builder is a visual tool that edits FXML files. In Swing the screen lives in Java code.
 
-Most of what you know from Swing transfers.
+## Data binding {#data-binding}
 
-- Listener-based events become `onClick(...)` and the other `on` methods. See the [events guide](/docs/building-ui/events).
-- Layout managers become `FlexLayout`, `ColumnsLayout` and `AppLayout`.
-- Model objects stay as plain Java beans, and `BindingContext` plays the role a form-binding layer would. The [data binding docs](/docs/data-binding/overview) have the details.
-- A table over a collection becomes a `Table` bound to a `Repository`.
-- Your services, validation and domain classes stay as they are. Under Spring Boot they are injected into views through the constructor.
+This is the largest difference in daily work. Every JavaFX control exposes its state as observable properties, and one property can be bound to another:
 
-What you stop writing is the code that moves data between a client and a server. The [Spring Boot without a REST API post](/blog/java-ui-without-rest-api) explains why that layer drops out when both sides are Java.
+```java
+greet.disableProperty().bind(name.textProperty().isEmpty());
+message.textProperty().bind(Bindings.concat("Hello, ", name.textProperty()));
+```
 
-## Teams moving off Swing {#moving-off-swing}
+With those two lines the button stays disabled while the field is empty, and the greeting follows the text as the user types. No listener code is involved.
 
-webforJ fits teams that have a Swing app and need it on the web. You don't have to start with a rewrite. [Webswing](/docs/integrations/webswing/overview) runs Swing, JavaFX or SWT apps in a browser without modification, and the `WebswingConnector` component embeds that app inside a webforJ page. New screens are written in webforJ beside it, and old screens retire one at a time. The [Webswing modernization roadmap](/blog/webswing-and-webforj) lays out the stages, and the [modernization tutorial](/docs/integrations/webswing/tutorial) builds one on a Swing customer app.
+Swing has no binding layer in the JDK. The same behavior takes a `DocumentListener` on the field that updates the button and the label by hand. On a screen with many dependent fields, that listener code is where most Swing bugs hide.
 
-The same pattern applies to server-rendered legacy pages. The [JSP modernization post](/blog/jsp-modernization) shows how a JSP page becomes a component tree.
+## Styling {#styling}
 
-## Which Java GUI framework should you choose? {#choosing}
+Swing changes its appearance through look and feel classes. The JDK ships several, including Metal, Nimbus and one that follows the operating system, and `UIManager.setLookAndFeel` switches between them. Changing the look of one button usually means setting colors and fonts in Java.
 
-Choose Swing or JavaFX when the program must run offline or drive local hardware. Being installed is not a reason on its own, since [a webforJ app can be installed](/blog/web-app-vs-native-app-java) from the browser as well. Choose webforJ when users are on different devices, when you want one deployment instead of many installs, or when your app is a business system that people reach from a browser. You keep the language, your build tool, and your Spring services, and you add delivery to every device that has a browser.
+JavaFX is styled with CSS. Controls carry style classes, and a style sheet sets properties such as `-fx-background-color` and `-fx-text-fill`. A designer can restyle the app without touching Java, and one style sheet can change the whole product.
 
-To try it, generate a project with [startforJ](https://docs.webforj.com/startforj) or follow the [getting started guide](/docs/introduction/getting-started).
+## Threading {#threading}
 
-If the web is where you are heading, the next read is the comparison of [Java frontend frameworks](/blog/java-frontend-frameworks).
+Both toolkits have a single UI thread. Oracle's Swing tutorial says that [Swing component methods must be invoked from the event dispatch thread](https://docs.oracle.com/javase/tutorial/uiswing/concurrency/dispatch.html) unless they are labeled thread safe, and background work reaches the UI through `SwingUtilities.invokeLater`.
+
+JavaFX has the same rule under a different name. The UI belongs to the FX thread, and [`Platform.runLater`](https://openjfx.io/javadoc/21/javafx.graphics/javafx/application/Platform.html) posts a `Runnable` to it. If you know one model, you know the other.
+
+## What comes in the box {#in-the-box}
+
+Both toolkits cover forms, tables, and trees. Swing has `JTable` and `JTree`, and JavaFX has `TableView` and `TreeView`, which read their rows from observable lists.
+
+JavaFX includes more beyond that. Charts are built in, with line, bar, pie, and other chart types. There is a media player for audio and video, and a `WebView` control that renders web pages inside the app. In Swing, charts and media come from third-party libraries.
+
+Swing's advantage is age. Two decades of libraries, components and answers exist for it, and a team that knows it well is productive in it.
+
+## Using both in one app {#using-both}
+
+The choice isn't all or nothing. `JFXPanel` embeds JavaFX content in a Swing app, and `SwingNode` embeds Swing content in a JavaFX app.
+
+That matters for a team with a large Swing codebase. You can add one JavaFX chart or one new JavaFX screen to the existing app without rewriting the rest.
+
+## Packaging and updates {#packaging-and-updates}
+
+Here the two toolkits are the same. Either way the program has to reach each user's machine. The JDK's [`jpackage`](https://docs.oracle.com/en/java/javase/21/jpackage/packaging-overview.html) tool builds native installers for Windows, macOS, and Linux and bundles a runtime. App packages must be built on the target platform, so supporting all three means running the packaging step on each.
+
+Every release is then a rollout. You build installers, publish them and wait for users to take the update. Versions drift, and support has to know which build each person runs.
+
+## Which one to pick {#which-one-to-pick}
+
+**Pick JavaFX** for a new desktop app. Bindings remove a whole class of listener code, CSS makes the UI easier to style, and charts, media and the web view are included.
+
+**Pick Swing** when one of these is true:
+
+- The app must run on a plain JDK with no extra modules.
+- You have a working Swing codebase and a team that knows it.
+- You depend on Swing libraries that have no JavaFX counterpart.
+
+**Don't rewrite a working Swing app in JavaFX** just to modernize it. A rewrite touches every screen and the result is still a program you install on each machine. Embed JavaFX where you need it instead.
+
+**Pick neither** when your users need the app in a browser. That case has its own path.
+
+## When the app must reach a browser {#browser}
+
+Both toolkits put the UI on the user's machine. If people need to open the app from a URL, on any device, with one deployment instead of many installs, a desktop toolkit is the wrong layer to change.
+
+A team that owns a Swing or JavaFX app doesn't have to start over. [Webswing](/docs/integrations/webswing/overview) runs Swing, JavaFX and SWT apps in a browser without changes to their source, so users get a URL now. Webswing is a separate product from a separate company, with its own commercial licence.
+
+From there the screens move to the web one at a time with webforJ, a full-stack Java framework where the UI is still Java. This is the greeting screen as a webforJ view:
+
+```java
+@Route("greeting")
+public class GreetingView extends Composite<FlexLayout> {
+  public GreetingView() {
+    TextField name = new TextField("Name");
+    Button greet = new Button("Greet");
+    Paragraph message = new Paragraph();
+
+    greet.onClick(e -> message.setText("Hello, " + name.getValue()));
+
+    getBoundComponent().add(name, greet, message);
+  }
+}
+```
+
+The listener is the same lambda, and the class runs on the server, where it calls your existing Java services directly. The `WebswingConnector` component embeds the running desktop app inside a webforJ page, so old and new screens share one browser tab while the old ones retire. Webswing and webforJ are partners on this path, and the [Webswing and webforJ roadmap](/blog/webswing-and-webforj) lays out the stages.
+
+An AI coding assistant can draft each new screen from the Swing or JavaFX original. Connected through the [webforJ AI plugin](/docs/ai-tooling), it looks up the real webforJ API instead of guessing, and it can hand back a test with each screen, so every one arrives with a pass or a fail. That cycle is [the AI verification loop for Java](/blog/ai-verification-loop-java).
+
+The decision guides go further. [Java Swing to web migration](/blog/migrate-swing-app-to-web) compares the paths for a Swing app, and [JavaFX to web](/blog/javafx-to-web) maps stages, scenes and FXML to webforJ.
 
 ## Frequently asked questions {#faq}
 
-### Is Swing still used? {#faq-swing-still-used}
+### Should I use Java Swing or JavaFX? {#faq-swing-or-javafx}
 
-Yes. Swing is part of the JDK's `java.desktop` module, and many enterprise desktop apps still run on it. Teams that want those apps in a browser can keep them running through Webswing while they build new screens in webforJ.
+For a new desktop app, JavaFX. It has data binding, CSS styling and built-in charts. Stay with Swing when you already have a Swing codebase, or when the app must run on a plain JDK with no extra modules.
 
-### Is JavaFX better than Swing? {#faq-javafx-vs-swing}
+### Is JavaFX still used in 2026? {#faq-javafx-still-used}
 
-JavaFX is distributed as OpenJFX with a stated path to mobile and embedded targets, and Swing ships with the JDK. Neither removes the work of installing and updating a desktop client. A web UI removes that work.
+Yes. JavaFX is developed as the open source OpenJFX project and ships a new release every six months. Version 27 arrived in September 2026.
 
-### Can I build a web UI in Java without writing JavaScript? {#faq-no-javascript}
+### Is Java Swing deprecated? {#faq-swing-deprecated}
 
-Yes. In webforJ you build views from Java components, route them with `@Route`, and style them with CSS. When you need a third-party web component, `ElementComposite` wraps it as a Java class.
+No. Swing is part of the `java.desktop` module in current JDK releases. JDK 26 removed the Applet API, including `JApplet`, and the rest of Swing stays.
 
-### What replaces Swing for new Java applications? {#faq-what-replaces-swing}
+### Should I move a Swing app to JavaFX? {#faq-swing-to-javafx}
 
-It depends on delivery. For a desktop program that must work offline, JavaFX is the toolkit built for that. For an app that people open in a browser on any device, a web UI written in Java with webforJ keeps your team in Java.
+Only when the app has to stay a desktop program and Swing is holding it back. The move is a rewrite of every screen. `JFXPanel` lets you add JavaFX content to the Swing app instead. If the goal is to reach users in a browser, Webswing can run the Swing app there now while webforJ replaces its screens one at a time.
+
+### Can a Swing or JavaFX app run in a browser? {#faq-run-in-browser}
+
+Yes. Webswing runs Swing, JavaFX and SWT apps in a browser without changes to their source. It needs its own commercial licence for production use.
+
+## Plan your move to the browser {#plan-your-move}
+
+To see how the screen-by-screen path works for your own desktop app and talk it through with our team, start on the [Swing modernization page](/modernization).
