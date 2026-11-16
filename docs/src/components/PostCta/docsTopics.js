@@ -25,6 +25,7 @@ const DOCS_CTA = [
   { path: 'ai-tooling/', topic: 'ai', position: 'bottom' },
   // modernization: the overview is where teams decide, so the box comes early;
   // the tutorial and setup pages are hands-on, so it waits until the end
+  { path: 'introduction/coming-from-swing', topic: 'modernization', position: 'bottom' },
   { path: 'integrations/webswing/overview', topic: 'modernization', position: 'top' },
   { path: 'integrations/webswing', topic: 'modernization', position: 'bottom' },
   { path: 'integrations/spring', topic: 'spring', position: 'bottom' },
