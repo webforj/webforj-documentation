@@ -79,6 +79,13 @@ export const SWING_UPDATES = `private void setupWebswingListeners() {
   });
 }`;
 
+// The one line each side sends, taken from the two samples above.
+export const SWING_SENDS = `api.sendActionEvent(
+    "select-customer", gson.toJson(customer), null);`;
+
+export const WEB_SENDS = `connector.performAction(
+    "update-customer", gson.toJson(customer));`;
+
 // blog/2026-06-14-swing-web-communication, "Know when Swing is ready"
 export const LIFECYCLE = `connector.onInitialize(e -> status.setText("Connected"));
 connector.onStart(e -> status.setText("Swing app running"));`;
@@ -126,3 +133,10 @@ export function getPeople() {
     { name: 'Lauren Alamo', team: finance, city: 'Phoenix' },
   ];
 }
+
+// Public pages the partnership and customer proof point to.
+export const LINKS = {
+  webswingPartners: 'https://www.webswing.org/en/company/partners',
+  jointWebinar: 'https://webforj.com/webinars/webswing-webforj-041125/',
+  prodinStory: 'https://webforj.com/wp-content/uploads/2024/10/BASIS_SuccessStory_Prodin.pdf',
+};

@@ -1,21 +1,20 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import Layout from '@theme/Layout';
 import Link from '@docusaurus/Link';
 import CodeBlock from '@theme/CodeBlock';
 import Translate, { translate } from '@docusaurus/Translate';
-import { ArrowIcon } from '@site/src/components/pageKit/icons';
+import { ArrowIcon, ExternalIcon } from '@site/src/components/pageKit/icons';
+import usePauseOffscreen from '@site/src/components/pageKit/usePauseOffscreen';
+import { CONTACT_URL, CONTACT_EMAIL, TEAM_LANGUAGES } from '@site/src/components/connect/links';
 import {
   PHASE_CODE,
-  SWING_ANNOUNCES,
-  WEB_RECEIVES,
-  WEB_REPLIES,
-  SWING_UPDATES,
-  LIFECYCLE,
-  PERFORM,
+  SWING_SENDS,
+  WEB_SENDS,
   START_SCRIPTS,
   DEPENDENCY,
   OPTIONS,
   getPeople,
+  LINKS,
 } from './_content';
 import styles from './modernization.module.css';
 
@@ -428,7 +427,7 @@ function Browser({ address, tab, children }) {
   );
 }
 
-function SwingWindow({ selected, tag }) {
+function SwingWindow({ selected, tag, people = getPeople() }) {
   const mock = getMock();
   return (
     <div className={styles.swing}>
@@ -444,7 +443,7 @@ function SwingWindow({ selected, tag }) {
       </div>
       <div className={styles.swingTable}>
         <TableRow className={`${styles.swingRow} ${styles.swingHead}`} values={mock} />
-        {getPeople().map((person, i) => (
+        {people.map((person, i) => (
           <TableRow
             key={person.name}
             className={`${styles.swingRow} ${i === selected ? styles.swingSelected : ''}`}
@@ -563,34 +562,38 @@ function Hero() {
             </Translate>
           </p>
           <div className={styles.actions}>
-            <Link
+            <a
               className={`${styles.button} ${styles.buttonPrimary}`}
-              to="/docs/integrations/webswing/tutorial">
-              <Translate id="page.modernization.hero.cta">{'Follow the tutorial'}</Translate>
+              href={CONTACT_URL}
+              target="_blank"
+              rel="noopener noreferrer">
+              <Translate id="page.modernization.hero.talk">{'Talk to the team'}</Translate>
               <ArrowIcon className={styles.icon} />
-            </Link>
+            </a>
             <Link
               className={`${styles.button} ${styles.buttonSecondary}`}
-              to="/docs/integrations/webswing/setup">
-              <Translate id="page.modernization.hero.setup">{'Set up Webswing'}</Translate>
+              to="/docs/integrations/webswing/tutorial">
+              <Translate id="page.modernization.hero.cta">{'Follow the tutorial'}</Translate>
             </Link>
           </div>
           <dl className={styles.heroFacts}>
             <div>
               <dt>
-                <Translate id="page.modernization.hero.fact1">
-                  {'Desktop toolkits: Swing, JavaFX and SWT'}
+                <Translate id="page.modernization.hero.factProof">
+                  {'For Prodin to deliver a web version of its Swing ERP, reusing its Java code'}
                 </Translate>
               </dt>
-              <dd>3</dd>
+              <dd>
+                <Translate id="page.modernization.hero.factProofValue">{'4 months'}</Translate>
+              </dd>
             </div>
             <div>
               <dt>
-                <Translate id="page.modernization.hero.fact2">
-                  {'Source changes to run in a browser'}
+                <Translate id="page.modernization.hero.factSince">
+                  {'BASIS International, the company behind webforJ, has built development tools since 1985'}
                 </Translate>
               </dt>
-              <dd>0</dd>
+              <dd>1985</dd>
             </div>
           </dl>
         </div>
@@ -796,8 +799,58 @@ function Journey() {
   );
 }
 
-function Channel() {
+// The exchange, played on the two drawn screens: the Swing table announces
+// the customer, the webforJ dialog opens with it, and the save goes back.
+// It pauses while it is off screen and stands still for reduced motion.
+function TalkStage() {
   const mock = getMock();
+  const ref = useRef(null);
+  usePauseOffscreen(ref, styles.paused);
+  const swap = (className) => (
+    <span className={`${styles.swap} ${className}`}>
+      <span className={styles.swapOld}>Hamburg</span>
+      <span className={styles.swapNew}>Bremen</span>
+    </span>
+  );
+  const people = getPeople();
+  const inSwing = people.map((person, i) => (i === 2 ? { ...person, city: swap(styles.swapSwing) } : person));
+  return (
+    <figure className={styles.talkStage} ref={ref}>
+      <div aria-hidden="true">
+        <Browser address="localhost:8090" tab={mock.appTab}>
+          <Shell nav={getNavHybrid()} active="customers">
+            <div className={styles.overlayStage}>
+              <SwingWindow selected={2} tag={mock.swingStreamed} people={inSwing} />
+              <div className={styles.talkWire}>
+                <span className={`${styles.msg} ${styles.msgGo}`}>
+                  select-customer
+                  <ArrowIcon className={styles.icon} />
+                </span>
+                <span className={`${styles.msg} ${styles.msgBack}`}>
+                  <ArrowIcon className={styles.icon} direction="left" />
+                  update-customer
+                </span>
+              </div>
+              <div className={`${styles.overlay} ${styles.talkDialog}`}>
+                <WebForm person={{ ...people[2], city: swap(styles.swapForm) }} />
+                <span className={styles.webTag}>{mock.webDialog}</span>
+              </div>
+            </div>
+          </Shell>
+        </Browser>
+      </div>
+      <figcaption className={styles.heroCaption}>
+        <Translate id="page.modernization.talk.stageCaption">
+          {
+            'The Swing table runs inside the webforJ app. A double click sends select-customer and the webforJ dialog opens in the same tab. Saving sends update-customer back, and the Swing table shows the change.'
+          }
+        </Translate>
+      </figcaption>
+    </figure>
+  );
+}
+
+function Channel() {
   return (
     <section className={styles.talk} aria-labelledby="modernization-talk">
       <div className={styles.container}>
@@ -822,8 +875,11 @@ function Channel() {
             </Translate>
           </p>
         </div>
-        <ol className={styles.trip}>
-          <li className={styles.tripRow}>
+        <div className={styles.talkGrid}>
+          <TalkStage />
+          <div>
+        <ol className={styles.tripPair}>
+          <li className={styles.tripStep}>
             <div className={styles.tripLabel}>
               <span className={styles.tripNumber}>1</span>
               <div>
@@ -834,28 +890,18 @@ function Channel() {
                 </h3>
                 <p className={styles.tripText}>
                   <Translate
-                    id="page.modernization.talk.announce.text"
+                    id="page.modernization.talk.announce.textRow"
                     values={{ action: <code>select-customer</code> }}>
                     {
-                      'A double click sends {action} with the row as JSON. On the desktop the same click still opens the Swing dialog.'
+                      'A double click sends {action} with the selected row. On the desktop the same click still opens the Swing dialog.'
                     }
                   </Translate>
                 </p>
               </div>
             </div>
-            <div className={styles.lanes} aria-hidden="true">
-              <span className={styles.laneSwing}>{mock.laneSwing}</span>
-              <span className={styles.laneWeb}>{mock.laneWeb}</span>
-            </div>
-            <div className={styles.tripCode}>
-              <CodeWindow file="Application.java (Swing)">{SWING_ANNOUNCES}</CodeWindow>
-              <span className={styles.tripArrow} aria-hidden="true">
-                <ArrowIcon className={styles.icon} />
-              </span>
-              <CodeWindow file="CustomerBridgeView.java (webforJ)">{WEB_RECEIVES}</CodeWindow>
-            </div>
+            <CodeWindow file="Application.java (Swing)">{SWING_SENDS}</CodeWindow>
           </li>
-          <li className={styles.tripRow}>
+          <li className={styles.tripStep}>
             <div className={styles.tripLabel}>
               <span className={styles.tripNumber}>2</span>
               <div>
@@ -875,57 +921,14 @@ function Channel() {
                 </p>
               </div>
             </div>
-            <div className={styles.tripCode}>
-              <CodeWindow file="Application.java (Swing)">{SWING_UPDATES}</CodeWindow>
-              <span className={styles.tripArrow} aria-hidden="true">
-                <ArrowIcon className={styles.icon} direction="left" />
-              </span>
-              <CodeWindow file="CustomerTableView.java (webforJ)">{WEB_REPLIES}</CodeWindow>
-            </div>
+            <CodeWindow file="CustomerTableView.java (webforJ)">{WEB_SENDS}</CodeWindow>
           </li>
         </ol>
-        <div className={styles.extras}>
-          <div>
-            <h3 className={styles.extraTitle}>
-              <Translate id="page.modernization.talk.send.title">
-                {'Send commands into Swing'}
-              </Translate>
-            </h3>
-            <p className={styles.extraText}>
-              <Translate id="page.modernization.talk.send.text">
-                {
-                  'performAction() sends a name alone or a name with data. The Swing app decides what each name means.'
-                }
-              </Translate>
-            </p>
-            <CodeWindow
-              file={translate({
-                id: 'page.modernization.talk.send.file',
-                message: 'Sending actions',
-              })}>
-              {PERFORM}
-            </CodeWindow>
-          </div>
-          <div>
-            <h3 className={styles.extraTitle}>
-              <Translate id="page.modernization.talk.ready.title">
-                {'Know when Swing is ready'}
-              </Translate>
-            </h3>
-            <p className={styles.extraText}>
-              <Translate id="page.modernization.talk.ready.text">
-                {
-                  'onInitialize fires when the connection is ready. onStart fires when the Swing app has fully loaded. Send your first action from onStart.'
-                }
-              </Translate>
-            </p>
-            <CodeWindow
-              file={translate({
-                id: 'page.modernization.talk.ready.file',
-                message: 'Lifecycle events',
-              })}>
-              {LIFECYCLE}
-            </CodeWindow>
+        <p className={styles.talkMore}>
+          <Link className={styles.textLink} to="/docs/integrations/webswing/communication">
+            <Translate id="page.modernization.talk.docs">{'Read how the messages work'}</Translate>
+          </Link>
+        </p>
           </div>
         </div>
       </div>
@@ -1142,8 +1145,240 @@ function Start() {
   );
 }
 
+function getPartnerProof() {
+  return [
+    {
+      term: translate({ id: 'page.modernization.partner.proof.list.term', message: 'Partners page' }),
+      desc: translate({
+        id: 'page.modernization.partner.proof.list.desc',
+        message: 'Webswing lists webforJ on its partners page.',
+      }),
+      href: LINKS.webswingPartners,
+    },
+    {
+      term: translate({ id: 'page.modernization.partner.proof.release.term', message: 'Announced' }),
+      desc: translate({
+        id: 'page.modernization.partner.proof.release.desc',
+        message: 'webforJ announced the partnership with its 25.10 release, together with WebswingConnector.',
+      }),
+      to: '/blog/whats-new-v25.10#webswing-integration-for-progressive-modernization',
+    },
+    {
+      term: translate({ id: 'page.modernization.partner.proof.webinar.term', message: 'Joint webinar' }),
+      desc: translate({
+        id: 'page.modernization.partner.proof.webinar.desc',
+        message: 'Webswing and webforJ experts showed how to take a desktop Java app to the web in November 2025.',
+      }),
+      href: LINKS.jointWebinar,
+    },
+    {
+      term: translate({ id: 'page.modernization.partner.proof.events.term', message: 'Events together' }),
+      desc: translate({
+        id: 'page.modernization.partner.proof.events.desc',
+        message: 'The two teams appeared together at Java Forum Stuttgart 2025 and shared a booth at JavaOne 2026.',
+      }),
+    },
+  ];
+}
+
+function getGuides() {
+  return [
+    {
+      title: translate({ id: 'page.modernization.guides.desktop', message: 'Desktop apps' }),
+      links: [
+        { to: '/blog/migrate-swing-app-to-web', label: translate({ id: 'page.modernization.guides.migrateSwing', message: 'Java Swing to web migration: pick the right path' }) },
+        { to: '/blog/swing-to-web-migration', label: translate({ id: 'page.modernization.guides.swingMapping', message: 'Convert Swing to web: a Swing to webforJ mapping guide' }) },
+        { to: '/blog/strangler-fig-pattern-java-swing', label: translate({ id: 'page.modernization.guides.strangler', message: 'The strangler fig pattern for a Java Swing app' }) },
+        { to: '/blog/javafx-to-web', label: translate({ id: 'page.modernization.guides.javafx', message: 'JavaFX to web in Java' }) },
+      ],
+    },
+    {
+      title: translate({ id: 'page.modernization.guides.web', message: 'Struts, JSF and JSP' }),
+      links: [
+        { to: '/blog/apache-struts-alternative', label: translate({ id: 'page.modernization.guides.struts', message: 'Struts to Spring Boot migration with webforJ' }) },
+        { to: '/blog/jsf-alternative', label: translate({ id: 'page.modernization.guides.jsf', message: 'JSF to Spring Boot migration: Faces views in webforJ' }) },
+        { to: '/blog/jsp-modernization', label: translate({ id: 'page.modernization.guides.jsp', message: 'JSP modernization: a Java-native path forward' }) },
+      ],
+    },
+    {
+      title: translate({ id: 'page.modernization.guides.decide', message: 'For the decision' }),
+      links: [
+        { to: '/blog/swing-modernization-enterprise', label: translate({ id: 'page.modernization.guides.enterprise', message: 'Swing modernization for enterprises: a decision guide' }) },
+        { to: '/blog/legacy-java-modernization-strategy', label: translate({ id: 'page.modernization.guides.strategy', message: 'Legacy Java application modernization strategy' }) },
+      ],
+    },
+  ];
+}
+
+// The two companies behind the path: both logos on one line, joined by the
+// connector that links their products, each company's part under its logo.
+function Partnership() {
+  const proof = getPartnerProof();
+  return (
+    <section className={styles.partner} aria-labelledby="modernization-partner">
+      <div className={styles.container}>
+        <div className={styles.introRow}>
+          <div>
+            <SectionTitle
+              id="modernization-partner"
+              eyebrow={<Translate id="page.modernization.partner.eyebrow">{'Webswing and webforJ'}</Translate>}
+              title={<Translate id="page.modernization.partner.title1">{'Two companies,'}</Translate>}
+              accent={<Translate id="page.modernization.partner.title2">{'one path'}</Translate>}
+            />
+          </div>
+          <p className={styles.introLead}>
+            <Translate id="page.modernization.partner.lead">
+              {
+                'Webswing runs the Java desktop app you have in the browser today. webforJ carries it forward screen by screen, with a supported connector between the two.'
+              }
+            </Translate>
+          </p>
+        </div>
+        <div className={styles.pathCard}>
+          <div className={styles.pathRow}>
+            <span className={styles.pathLogo}>
+              <img src={WEBSWING_LOGO} width={1901} height={380} alt="Webswing" loading="lazy" decoding="async" />
+            </span>
+            <span className={styles.pathLogo}>
+              <img src="/img/webforj.svg" width={227} height={56} alt="webforJ" loading="lazy" decoding="async" />
+            </span>
+            <span className={styles.pathChip} aria-hidden="true">
+              WebswingConnector
+            </span>
+          </div>
+          <div className={styles.pathCols}>
+            <div className={styles.pathCol}>
+              <h3 className={styles.pathTitle}>
+                <Translate id="page.modernization.partner.webswing.title">{'Runs the app you have'}</Translate>
+              </h3>
+              <p className={styles.pathText}>
+                <Translate id="page.modernization.partner.webswing.text">
+                  {
+                    'Renders the Swing, JavaFX or SWT app on the server and streams its interface to the browser. Webswing is a product of its own company, under its own commercial licence.'
+                  }
+                </Translate>
+              </p>
+            </div>
+            <div className={styles.pathCol}>
+              <h3 className={styles.pathTitle}>
+                <Translate id="page.modernization.partner.webforj.title">{'Carries it forward'}</Translate>
+              </h3>
+              <p className={styles.pathText}>
+                <Translate id="page.modernization.partner.webforj.text">
+                  {
+                    'Embeds the running app in a webforJ view with WebswingConnector, available since webforJ 25.10, and is the framework every new screen is written in.'
+                  }
+                </Translate>
+              </p>
+            </div>
+          </div>
+        </div>
+        <dl className={styles.factRow}>
+          {proof.map((row) => (
+            <div key={row.term}>
+              <dt>{row.term}</dt>
+              <dd>
+                {row.to && (
+                  <Link className={styles.textLink} to={row.to}>
+                    {row.desc}
+                  </Link>
+                )}
+                {row.href && (
+                  <a className={styles.textLink} href={row.href} target="_blank" rel="noopener noreferrer">
+                    {row.desc}
+                    <ExternalIcon className={styles.iconSmall} />
+                  </a>
+                )}
+                {!row.to && !row.href && row.desc}
+              </dd>
+            </div>
+          ))}
+        </dl>
+      </div>
+    </section>
+  );
+}
+
+// The one thing the page asks a buyer to do.
+function TalkBand() {
+  return (
+    <section className={styles.band} aria-labelledby="modernization-band" id="talk-to-us">
+      <div className={styles.container}>
+        <figure className={styles.quote}>
+          <blockquote>
+            <p>
+              <Translate id="page.modernization.proof.prodinQuote">
+                {
+                  'webforJ enabled us to deliver a fully web-based version of our ERP in just four months, all while reusing our existing Java codebase. This saved us from a complete rewrite and significantly reduced both time and risk.'
+                }
+              </Translate>
+            </p>
+          </blockquote>
+          <figcaption>
+            <strong>Prodin Business Solutions</strong>
+            <span>
+              <Translate id="page.modernization.proof.prodinWho">
+                {'Dutch ERP software provider, whose ERP was built on Java Swing'}
+              </Translate>
+            </span>
+            <a className={styles.textLink} href={LINKS.prodinStory} target="_blank" rel="noopener noreferrer">
+              <Translate id="page.modernization.proof.prodinLink">{'Read the success story'}</Translate>
+              <ExternalIcon className={styles.iconSmall} />
+            </a>
+          </figcaption>
+        </figure>
+        <div className={styles.bandInner}>
+          <div>
+            <h2 id="modernization-band" className={styles.bandTitle}>
+              <Translate id="page.modernization.band.title">{'Talk to the team about your app'}</Translate>
+            </h2>
+            <p className={styles.bandText}>
+              <Translate id="page.modernization.band.text">
+                {
+                  'Bring the app, the stack it runs on and your timeline. The team that builds webforJ will walk you through the path from the first screen to the last.'
+                }
+              </Translate>
+            </p>
+          </div>
+          <div className={styles.bandSide}>
+            <a
+              className={`${styles.button} ${styles.buttonPrimary}`}
+              href={CONTACT_URL}
+              target="_blank"
+              rel="noopener noreferrer">
+              <Translate id="page.modernization.band.book">{'Book a call'}</Translate>
+              <ArrowIcon className={styles.icon} />
+            </a>
+            <p className={styles.bandMeta}>
+              <Translate
+                id="page.modernization.band.email"
+                values={{
+                  email: (
+                    <a className={styles.textLink} href={`mailto:${CONTACT_EMAIL}`}>
+                      {CONTACT_EMAIL}
+                    </a>
+                  ),
+                }}>
+                {'Or write to {email}'}
+              </Translate>
+            </p>
+            <p className={styles.bandMeta}>
+              <Translate
+                id="page.modernization.band.languages"
+                values={{ languages: TEAM_LANGUAGES.map((language) => language.name).join(', ') }}>
+                {'We speak {languages}'}
+              </Translate>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function Next() {
   const next = getNext();
+  const guides = getGuides();
   return (
     <section className={styles.next} aria-labelledby="modernization-next">
       <div className={styles.container}>
@@ -1174,6 +1409,24 @@ function Next() {
             </li>
           ))}
         </ul>
+        <h3 id="read-the-guides" className={styles.guidesTitle}>
+          <Translate id="page.modernization.guides.title">{'Read the guides'}</Translate>
+        </h3>
+        <ul className={styles.nextList}>
+          {guides.flatMap((group) =>
+            group.links.map((link) => (
+              <li key={link.to}>
+                <Link className={styles.nextLink} to={link.to}>
+                  <span className={styles.guideKind}>{group.title}</span>
+                  <span className={styles.nextTitle}>
+                    {link.label}
+                    <ArrowIcon className={styles.icon} />
+                  </span>
+                </Link>
+              </li>
+            )),
+          )}
+        </ul>
       </div>
     </section>
   );
@@ -1193,11 +1446,13 @@ export default function Modernization() {
       })}>
       <main className={styles.page}>
         <Hero />
+        <Partnership />
         <Stays />
         <Journey />
         <Channel />
         <AiPort />
         <Start />
+        <TalkBand />
         <Next />
       </main>
     </Layout>
