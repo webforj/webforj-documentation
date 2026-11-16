@@ -1,6 +1,6 @@
 ---
 title: "Java full stack framework: UI to database in one codebase"
-description: "webforJ is a Java full stack framework: UI, routing, forms, security and data in one Java codebase with Spring Boot, built and shipped as a single artifact."
+description: "webforJ is a Java full stack framework: UI, routing, forms, security and data in one codebase, standalone or on Spring Boot, built and shipped as a single artifact. See every piece with runnable code."
 slug: java-full-stack-framework
 date: 2026-09-08
 authors: Eric Handtke

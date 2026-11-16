@@ -1,6 +1,6 @@
 ---
 title: "The best Java UI framework for enterprise business apps in 2026"
-description: "How to pick the best Java UI framework for enterprise and internal business apps in 2026: Thymeleaf, Jakarta Faces, a JavaScript SPA, or webforJ, with working code for the Java-only route."
+description: "Picking a Java framework for an enterprise or internal business app in 2026? See Thymeleaf, Jakarta Faces and a JavaScript SPA next to webforJ, the full-stack Java option, with working code and a straight answer for each case."
 slug: best-java-ui-frameworks
 date: 2026-10-29
 authors: webforJ

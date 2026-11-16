@@ -1,6 +1,6 @@
 ---
-title: "Java framework for web applications: what to require"
-description: "A Java framework for web applications needs routing, forms, security, data, testing and upgrades. See how webforJ, the full-stack Java framework, covers each."
+title: "Java framework for web applications: the checklist"
+description: "A Java framework for web applications has to handle routing, forms, security, data, testing and upgrades. Here is the full checklist, and how webforJ covers every item in pure Java."
 slug: java-framework-for-web-applications
 date: 2026-11-07
 authors: webforJ
