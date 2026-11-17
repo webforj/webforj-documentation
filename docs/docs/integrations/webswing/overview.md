@@ -49,6 +49,10 @@ Combine modern web UI built with webforJ with specialized desktop functionality:
 - Leverage Swing for complex visualizations or specialized editors
 - Maintain a single integrated app experience
 
+:::tip Replacing Swing counterparts
+Refer to [Coming from Swing](/docs/introduction/coming-from-swing) for comparisons between Swing components and their webforJ equivalents. The comparisons include relevant references to help you use each webforJ equivalent feature.
+:::
+
 ## How it works {#how-it-works}
 
 The integration operates through three layers:
