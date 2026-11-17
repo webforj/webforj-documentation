@@ -5,11 +5,11 @@ slug: bind-java-bean-to-form
 date: 2026-09-02
 authors: Matthew Hawkins
 tags: [tutorial, annotations, mvc]
-image: https://cdn.webforj.com/webforj-documentation/blogs/2026-09-02-bind-java-bean-to-form/cover.jpg
+image: https://cdn.webforj.com/webforj-documentation/blogs/2026-09-02-bind-java-bean-to-form/cover-v3.jpg
 hide_table_of_contents: false
 ---
 
-![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-09-02-bind-java-bean-to-form/cover.jpg)
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-09-02-bind-java-bean-to-form/cover-v3.jpg)
 
 To bind a Java bean to form fields in webforJ, call `BindingContext.of` with the form, the bean class, and the bean. webforJ matches each field to a bean property by name, so a `TextField` named `name` fills the `name` property without any wiring code. In this tutorial you build a small hero form. You will bind fields automatically, map one field with an annotation, exclude a field that has no matching property, and save the bean only when the form is valid.
 

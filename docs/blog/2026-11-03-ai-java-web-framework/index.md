@@ -5,11 +5,11 @@ slug: ai-java-web-framework
 date: 2026-11-03T10:00:00Z
 authors: webforJ
 tags: [ai, mcp, spring]
-image: https://cdn.webforj.com/webforj-documentation/blogs/2026-11-03-ai-java-web-framework/cover.jpg
+image: https://cdn.webforj.com/webforj-documentation/blogs/2026-11-03-ai-java-web-framework/cover-v3.jpg
 hide_table_of_contents: false
 ---
 
-![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-11-03-ai-java-web-framework/cover.jpg)
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-11-03-ai-java-web-framework/cover-v3.jpg)
 
 webforJ, the [full-stack Java framework](/blog/java-full-stack-framework), is the AI Java web framework that covers both sides of the work. While you build, AI coding assistants get the real webforJ API through a plugin, an agent inside your running app writes Java that compiles before you see it, and browserless tests give every change a fast pass or fail. In the app you ship, AI hosts can open your views with MCP Apps, agents can use your UI with exactly the user's permissions, and your own AI features stream into Java components.
 

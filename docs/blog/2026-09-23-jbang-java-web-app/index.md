@@ -5,11 +5,11 @@ slug: jbang-java-web-app
 date: 2026-09-23
 authors: Matthew Hawkins
 tags: [integrations, spring]
-image: https://cdn.webforj.com/webforj-documentation/blogs/2026-09-23-jbang-java-web-app/cover.jpg
+image: https://cdn.webforj.com/webforj-documentation/blogs/2026-09-23-jbang-java-web-app/cover-v3.jpg
 hide_table_of_contents: false
 ---
 
-![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-09-23-jbang-java-web-app/cover.jpg)
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-09-23-jbang-java-web-app/cover-v3.jpg)
 
 Sometimes you want to try an idea in a browser without setting up a project first. No `pom.xml`, no folder layout, no build tool, just a file you can run, share in a chat, or throw away when you're done.
 

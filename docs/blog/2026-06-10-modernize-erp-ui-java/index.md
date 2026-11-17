@@ -5,11 +5,11 @@ slug: modernize-erp-ui-java
 date: 2026-06-10
 authors: webforJ
 tags: [insights, modernization, webswing]
-image: https://cdn.webforj.com/webforj-documentation/blogs/2026-06-10-modernize-erp-ui-java/cover.jpg
+image: https://cdn.webforj.com/webforj-documentation/blogs/2026-06-10-modernize-erp-ui-java/cover-v3.jpg
 hide_table_of_contents: false
 ---
 
-![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-06-10-modernize-erp-ui-java/cover.jpg)
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-06-10-modernize-erp-ui-java/cover-v3.jpg)
 
 Your ERP works. The accounting rules, the pricing logic and the warehouse flows took years to get right, and the Swing screens in front of them are what everyone wants to replace. To modernize an enterprise resource planning (ERP) UI in Java, keep the domain code, and move the screens in steps. webforJ, the full-stack Java framework, embeds the running desktop app in a web page through Webswing, so users can reach the app in a browser early, and your team then replaces each screen with a Java view.
 

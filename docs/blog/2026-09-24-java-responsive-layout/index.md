@@ -5,11 +5,11 @@ slug: java-responsive-layout
 date: 2026-09-24
 authors: Matthew Hawkins
 tags: [components, layout, responsive design]
-image: https://cdn.webforj.com/webforj-documentation/blogs/2026-09-24-java-responsive-layout/cover.jpg
+image: https://cdn.webforj.com/webforj-documentation/blogs/2026-09-24-java-responsive-layout/cover-v3.jpg
 hide_table_of_contents: false
 ---
 
-![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-09-24-java-responsive-layout/cover.jpg)
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-09-24-java-responsive-layout/cover-v3.jpg)
 
 The quickest way to build a responsive Java web app layout in webforJ is `AppLayout` for the shell, `AppNav` for the side navigation, and `ColumnsLayout` or `FlexLayout` for the content. `AppLayout` gives you a fixed header and footer plus a drawer that turns into a popover on narrow screens. Everything is plain Java and every view is a route.
 

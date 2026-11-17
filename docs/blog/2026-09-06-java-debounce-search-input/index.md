@@ -5,11 +5,11 @@ slug: java-debounce-search-input
 date: 2026-09-06
 authors: Matthew Hawkins
 tags: [tutorial, performance, events]
-image: https://cdn.webforj.com/webforj-documentation/blogs/2026-09-06-java-debounce-search-input/cover.jpg
+image: https://cdn.webforj.com/webforj-documentation/blogs/2026-09-06-java-debounce-search-input/cover-v3.jpg
 hide_table_of_contents: false
 ---
 
-![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-09-06-java-debounce-search-input/cover.jpg)
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-09-06-java-debounce-search-input/cover-v3.jpg)
 
 Type "Amsterdam" into a search box that queries a server, and the server sees nine searches, one for each letter, all the way to the full word. Only the last one matters, but every one of them costs a request, and the results flicker as each answer arrives.
 

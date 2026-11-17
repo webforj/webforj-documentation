@@ -5,11 +5,11 @@ slug: production-build-java-web-app
 date: 2026-07-03
 authors: Eric Handtke
 tags: [tutorial, performance, javascript]
-image: https://cdn.webforj.com/webforj-documentation/blogs/2026-07-03-production-build-java-web-app/cover.jpg
+image: https://cdn.webforj.com/webforj-documentation/blogs/2026-07-03-production-build-java-web-app/cover-v3.jpg
 hide_table_of_contents: false
 ---
 
-![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-07-03-production-build-java-web-app/cover.jpg)
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-07-03-production-build-java-web-app/cover-v3.jpg)
 
 Out of the box, a webforJ app needs no build tuning. The framework's own components and runtime ship ready for both development and production with no extra setup, so a plain webforJ app has nothing to minify and no build step to configure.
 

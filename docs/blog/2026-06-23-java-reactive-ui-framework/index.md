@@ -5,11 +5,11 @@ slug: java-reactive-ui-framework
 date: 2026-06-23
 authors: Matthew Hawkins
 tags: [insights, events, mvc]
-image: https://cdn.webforj.com/webforj-documentation/blogs/2026-06-23-java-reactive-ui-framework/cover.jpg
+image: https://cdn.webforj.com/webforj-documentation/blogs/2026-06-23-java-reactive-ui-framework/cover-v3.jpg
 hide_table_of_contents: false
 ---
 
-![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-06-23-java-reactive-ui-framework/cover.jpg)
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-06-23-java-reactive-ui-framework/cover-v3.jpg)
 
 You change a value somewhere in your Java code, and you want the screen to follow without hand-writing refresh calls for every label and every table. That is what most developers mean when they search for a Java reactive UI framework, and it rarely has anything to do with reactive streams.
 

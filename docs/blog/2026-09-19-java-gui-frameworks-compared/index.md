@@ -5,11 +5,11 @@ slug: java-gui-frameworks-compared
 date: 2026-09-19
 authors: webforJ
 tags: [insights, web development, modernization, webswing]
-image: https://cdn.webforj.com/webforj-documentation/blogs/2026-09-19-java-gui-frameworks-compared/cover.jpg
+image: https://cdn.webforj.com/webforj-documentation/blogs/2026-09-19-java-gui-frameworks-compared/cover-v3.jpg
 hide_table_of_contents: false
 ---
 
-![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-09-19-java-gui-frameworks-compared/cover.jpg)
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-09-19-java-gui-frameworks-compared/cover-v3.jpg)
 
 You are starting a Java desktop app and have to pick a toolkit. Or you own a Swing app and wonder whether JavaFX would have been the better bet. Both toolkits are maintained, both are plain Java, and the choice still shapes years of work.
 

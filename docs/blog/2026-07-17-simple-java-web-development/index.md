@@ -5,11 +5,11 @@ slug: simple-java-web-development
 date: 2026-07-17
 authors: webforJ
 tags: [insights, events]
-image: https://cdn.webforj.com/webforj-documentation/blogs/2026-07-17-simple-java-web-development/cover.jpg
+image: https://cdn.webforj.com/webforj-documentation/blogs/2026-07-17-simple-java-web-development/cover-v3.jpg
 hide_table_of_contents: false
 ---
 
-![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-07-17-simple-java-web-development/cover.jpg)
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-07-17-simple-java-web-development/cover-v3.jpg)
 
 Your team knows Java, the services are done, and now the app needs screens. Before anyone writes a button, the plan already includes a JavaScript framework, a package manager, a bundler, and a REST layer whose only job is to feed your own UI. It feels like a lot of machinery for a form and a table.
 

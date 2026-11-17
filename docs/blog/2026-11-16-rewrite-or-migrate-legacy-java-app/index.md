@@ -5,11 +5,11 @@ slug: rewrite-or-migrate-legacy-java-app
 date: 2026-11-16
 authors: webforJ
 tags: [insights, modernization]
-image: https://cdn.webforj.com/webforj-documentation/blogs/2026-11-16-rewrite-or-migrate-legacy-java-app/cover.jpg
+image: https://cdn.webforj.com/webforj-documentation/blogs/2026-11-16-rewrite-or-migrate-legacy-java-app/cover-v3.jpg
 hide_table_of_contents: false
 ---
 
-![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-11-16-rewrite-or-migrate-legacy-java-app/cover.jpg)
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-11-16-rewrite-or-migrate-legacy-java-app/cover-v3.jpg)
 
 Somewhere in your company there is a Java app that runs the business. It works, the rules inside it took years to get right, and the people who wrote most of it have moved on. Now it needs to reach the browser, and the meeting keeps circling back to one question. Do we start over, or do we move what we have?
 

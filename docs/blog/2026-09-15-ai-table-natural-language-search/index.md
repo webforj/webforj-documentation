@@ -5,11 +5,11 @@ slug: ai-table-natural-language-search
 date: 2026-09-15
 authors: Hyyan Abo Fakher
 tags: [ai, table, spring]
-image: https://cdn.webforj.com/webforj-documentation/blogs/2026-09-15-ai-table-natural-language-search/cover.jpg
+image: https://cdn.webforj.com/webforj-documentation/blogs/2026-09-15-ai-table-natural-language-search/cover-v3.jpg
 hide_table_of_contents: false
 ---
 
-![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-09-15-ai-table-natural-language-search/cover.jpg)
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-09-15-ai-table-natural-language-search/cover-v3.jpg)
 
 Your users know what they want from a table. They just don't think in dropdowns and price fields. They think "laptops under 1000 that are in stock," and the filter form makes them translate that into five separate controls.
 

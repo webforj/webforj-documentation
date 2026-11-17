@@ -5,11 +5,11 @@ slug: mcp-tool-update-ui
 date: 2026-10-12
 authors: Hyyan Abo Fakher
 tags: [ai, mcp, spring]
-image: https://cdn.webforj.com/webforj-documentation/blogs/2026-10-12-mcp-tool-update-ui/cover.jpg
+image: https://cdn.webforj.com/webforj-documentation/blogs/2026-10-12-mcp-tool-update-ui/cover-v3.jpg
 hide_table_of_contents: false
 ---
 
-![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-10-12-mcp-tool-update-ui/cover.jpg)
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-10-12-mcp-tool-update-ui/cover-v3.jpg)
 
 You ask an AI assistant to open a screen, and it does. Then you ask for a change, and a second copy of the screen appears under the first, because the assistant only knows how to open things. The view you're looking at never moves.
 

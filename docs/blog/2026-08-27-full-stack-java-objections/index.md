@@ -5,11 +5,11 @@ slug: full-stack-java-objections
 date: 2026-08-27
 authors: webforJ
 tags: [insights, performance, spring]
-image: https://cdn.webforj.com/webforj-documentation/blogs/2026-08-27-full-stack-java-objections/cover.jpg
+image: https://cdn.webforj.com/webforj-documentation/blogs/2026-08-27-full-stack-java-objections/cover-v3.jpg
 hide_table_of_contents: false
 ---
 
-![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-08-27-full-stack-java-objections/cover.jpg)
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-08-27-full-stack-java-objections/cover-v3.jpg)
 
 Suggest building the whole app in Java and someone on the team will push back. It adds latency, it shuts you out of the JavaScript ecosystem, it won't feel like a real app.
 

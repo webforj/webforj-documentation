@@ -5,11 +5,11 @@ slug: java-web-terminal
 date: 2026-06-16
 authors: Matthew Hawkins
 tags: [components, front end, events]
-image: https://cdn.webforj.com/webforj-documentation/blogs/2026-06-16-java-web-terminal/cover.jpg
+image: https://cdn.webforj.com/webforj-documentation/blogs/2026-06-16-java-web-terminal/cover-v3.jpg
 hide_table_of_contents: false
 ---
 
-![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-06-16-java-web-terminal/cover.jpg)
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-06-16-java-web-terminal/cover-v3.jpg)
 
 Some tools are easier to use with a prompt than with forms: an admin console, a log viewer, a way to run a quick command against a live server. Building one in the browser usually means a JavaScript terminal library and the code to wire it to your backend.
 

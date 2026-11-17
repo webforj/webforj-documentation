@@ -5,11 +5,11 @@ slug: openrewrite-java-framework-upgrade
 date: 2026-08-23
 authors: Matthew Hawkins
 tags: [tutorial, "web development", spring]
-image: https://cdn.webforj.com/webforj-documentation/blogs/2026-08-23-openrewrite-java-framework-upgrade/cover-v2.jpg
+image: https://cdn.webforj.com/webforj-documentation/blogs/2026-08-23-openrewrite-java-framework-upgrade/cover-v3.jpg
 hide_table_of_contents: false
 ---
 
-![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-08-23-openrewrite-java-framework-upgrade/cover-v2.jpg)
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-08-23-openrewrite-java-framework-upgrade/cover-v3.jpg)
 
 In this tutorial you will upgrade a webforJ app with OpenRewrite. A Java framework upgrade has a reputation for being unpredictable, and a major version can feel like a week of searching through your source tree. For webforJ it doesn't have to be. The `webforj-rewrite` module ships OpenRewrite recipes for each release, so the mechanical work is automated. You add one Maven plugin, preview the diff, apply the changes, and then clear the TODO comments that remain.
 

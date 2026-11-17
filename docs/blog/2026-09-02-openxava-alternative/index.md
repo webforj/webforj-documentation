@@ -5,11 +5,11 @@ slug: openxava-alternative
 date: 2026-09-02
 authors: webforJ
 tags: [insights, spring, layout]
-image: https://cdn.webforj.com/webforj-documentation/blogs/2026-09-02-openxava-alternative/cover.jpg
+image: https://cdn.webforj.com/webforj-documentation/blogs/2026-09-02-openxava-alternative/cover-v3.jpg
 hide_table_of_contents: false
 ---
 
-![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-09-02-openxava-alternative/cover.jpg)
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-09-02-openxava-alternative/cover-v3.jpg)
 
 You have a domain model, a deadline, and a business app to deliver. Someone suggests a tool that turns your entities into working screens, and someone else asks what happens when the first customer wants a screen that looks different from the rest.
 

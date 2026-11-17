@@ -5,11 +5,11 @@ slug: business-case-java-ui-framework
 date: 2026-11-11T12:00:00Z
 authors: webforJ
 tags: [insights, modernization, spring]
-image: https://cdn.webforj.com/webforj-documentation/blogs/2026-11-11-business-case-java-ui-framework/cover.jpg
+image: https://cdn.webforj.com/webforj-documentation/blogs/2026-11-11-business-case-java-ui-framework/cover-v3.jpg
 hide_table_of_contents: false
 ---
 
-![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-11-11-business-case-java-ui-framework/cover.jpg)
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-11-11-business-case-java-ui-framework/cover-v3.jpg)
 
 You have looked at webforJ and you like what you see. Now somebody with a budget or a veto wants to know why the team should adopt it, and "the developers prefer it" isn't an answer that survives a meeting.
 

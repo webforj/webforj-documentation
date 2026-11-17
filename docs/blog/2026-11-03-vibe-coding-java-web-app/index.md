@@ -5,11 +5,11 @@ slug: vibe-coding-java-web-app
 date: 2026-11-03
 authors: webforJ
 tags: [ai, mcp]
-image: https://cdn.webforj.com/webforj-documentation/blogs/2026-11-03-vibe-coding-java-web-app/cover.jpg
+image: https://cdn.webforj.com/webforj-documentation/blogs/2026-11-03-vibe-coding-java-web-app/cover-v3.jpg
 hide_table_of_contents: false
 ---
 
-![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-11-03-vibe-coding-java-web-app/cover.jpg)
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-11-03-vibe-coding-java-web-app/cover-v3.jpg)
 
 Your developers already describe screens to an AI assistant and judge what comes back. The first version appears fast. Whether it can ship is a separate question, and it is the one that matters when a team starts vibe coding a Java web app the business will depend on.
 

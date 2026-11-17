@@ -5,11 +5,11 @@ slug: java-swing-technical-debt
 date: 2026-05-04
 authors: webforJ
 tags: [insights, modernization, webswing]
-image: https://cdn.webforj.com/webforj-documentation/blogs/2026-05-04-java-swing-technical-debt/cover.jpg
+image: https://cdn.webforj.com/webforj-documentation/blogs/2026-05-04-java-swing-technical-debt/cover-v3.jpg
 hide_table_of_contents: false
 ---
 
-![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-05-04-java-swing-technical-debt/cover.jpg)
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-05-04-java-swing-technical-debt/cover-v3.jpg)
 
 Java Swing technical debt has little to do with a broken toolkit. Swing still ships in the JDK and still works. The debt is that a desktop-only UI cannot be reached from a browser, a phone or a shared link, and every request to change that lands on a codebase that was never built for it. webforJ pays that debt down without a big-bang rewrite: you embed the running Swing app in a webforJ page with `WebswingConnector`, then replace screens with webforJ components one at a time, all in Java.
 

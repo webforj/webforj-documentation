@@ -5,11 +5,11 @@ slug: ollama-java-web-app
 date: 2026-08-03
 authors: Matthew Hawkins
 tags: [ai, spring-ai, spring, chat]
-image: https://cdn.webforj.com/webforj-documentation/blogs/2026-08-03-ollama-java-web-app/cover.jpg
+image: https://cdn.webforj.com/webforj-documentation/blogs/2026-08-03-ollama-java-web-app/cover-v3.jpg
 hide_table_of_contents: false
 ---
 
-![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-08-03-ollama-java-web-app/cover.jpg)
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-08-03-ollama-java-web-app/cover-v3.jpg)
 
 Sending every prompt to a cloud model isn't always an option. Maybe the data can't leave the building, maybe you want to experiment without an API bill, or maybe you just want a chatbot that keeps working when the network doesn't.
 

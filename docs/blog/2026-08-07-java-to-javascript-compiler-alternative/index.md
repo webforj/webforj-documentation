@@ -5,11 +5,11 @@ slug: java-to-javascript-compiler-alternative
 date: 2026-08-07
 authors: webforJ
 tags: [insights, javascript]
-image: https://cdn.webforj.com/webforj-documentation/blogs/2026-08-07-java-to-javascript-compiler-alternative/cover.jpg
+image: https://cdn.webforj.com/webforj-documentation/blogs/2026-08-07-java-to-javascript-compiler-alternative/cover-v3.jpg
 hide_table_of_contents: false
 ---
 
-![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-08-07-java-to-javascript-compiler-alternative/cover.jpg)
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-08-07-java-to-javascript-compiler-alternative/cover-v3.jpg)
 
 You want your team to stay in Java, but the screen has to run in a browser, and the browser runs JavaScript. One answer is a compiler that turns your Java into JavaScript. The other is to keep your Java where it already runs and send the browser only what it needs to draw the screen. webforJ, the full-stack Java framework, takes the second path and is a Java to JavaScript compiler alternative for business web apps: your code runs on the JVM, so there is no compile-to-JavaScript step and no restricted subset of Java.
 

@@ -5,11 +5,11 @@ slug: java-dark-mode
 date: 2026-09-22
 authors: Eric Handtke
 tags: [styling, themes, web development]
-image: https://cdn.webforj.com/webforj-documentation/blogs/2026-09-22-java-dark-mode/cover.jpg
+image: https://cdn.webforj.com/webforj-documentation/blogs/2026-09-22-java-dark-mode/cover-v3.jpg
 hide_table_of_contents: false
 ---
 
-![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-09-22-java-dark-mode/cover.jpg)
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-09-22-java-dark-mode/cover-v3.jpg)
 
 To add dark mode in a Java web app with webforJ, put `@AppTheme("system")` on your `App` class and register a light and a dark theme with `@AppLightTheme` and `@AppDarkTheme`. The app then follows the operating system setting. To let users choose for themselves, call `App.setTheme()` from a control in your header and save the answer with `LocalStorage`.
 

@@ -5,11 +5,11 @@ slug: java-web-app-without-javascript
 date: 2026-05-27
 authors: Eric Handtke
 tags: [tutorial, routing, javascript]
-image: https://cdn.webforj.com/webforj-documentation/blogs/2026-05-27-java-web-app-without-javascript/cover.jpg
+image: https://cdn.webforj.com/webforj-documentation/blogs/2026-05-27-java-web-app-without-javascript/cover-v3.jpg
 hide_table_of_contents: false
 ---
 
-![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-05-27-java-web-app-without-javascript/cover.jpg)
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-05-27-java-web-app-without-javascript/cover-v3.jpg)
 
 You write Java for a living, and the next project needs a browser interface. Every guide you open tells you to learn a second language first, plus a package manager, a bundler and a framework that changes every few years. It is fair to ask whether you really need all of that.
 

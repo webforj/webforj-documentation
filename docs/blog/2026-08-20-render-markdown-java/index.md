@@ -5,11 +5,11 @@ slug: render-markdown-java
 date: 2026-08-20
 authors: Matthew Hawkins
 tags: [components, front end]
-image: https://cdn.webforj.com/webforj-documentation/blogs/2026-08-20-render-markdown-java/cover.jpg
+image: https://cdn.webforj.com/webforj-documentation/blogs/2026-08-20-render-markdown-java/cover-v3.jpg
 hide_table_of_contents: false
 ---
 
-![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-08-20-render-markdown-java/cover.jpg)
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-08-20-render-markdown-java/cover-v3.jpg)
 
 Release notes, help pages, chatbot answers: a lot of app content already exists as markdown. Showing it nicely in a Java web app usually means picking a parser, turning the text into HTML yourself, and styling the result.
 

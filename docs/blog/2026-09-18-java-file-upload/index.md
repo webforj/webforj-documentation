@@ -5,11 +5,11 @@ slug: java-file-upload
 date: 2026-09-18
 authors: Eric Handtke
 tags: [components, spring, back end]
-image: https://cdn.webforj.com/webforj-documentation/blogs/2026-09-18-java-file-upload/cover.jpg
+image: https://cdn.webforj.com/webforj-documentation/blogs/2026-09-18-java-file-upload/cover-v3.jpg
 hide_table_of_contents: false
 ---
 
-![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-09-18-java-file-upload/cover.jpg)
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-09-18-java-file-upload/cover-v3.jpg)
 
 For a Java file upload web UI, use the webforJ `Upload` component. Create an `Upload`, add filters and limits, listen for `onUpload`, and move each `UploadedFile` out of the temporary folder into your own storage. The component gives you the picker, the drop zone, the file list and progress reporting, and all of your handling code stays in Java.
 

@@ -5,11 +5,11 @@ slug: java-form-validation
 date: 2026-09-29
 authors: Matthew Hawkins
 tags: [tutorial]
-image: https://cdn.webforj.com/webforj-documentation/blogs/2026-09-29-java-form-validation/cover.jpg
+image: https://cdn.webforj.com/webforj-documentation/blogs/2026-09-29-java-form-validation/cover-v3.jpg
 hide_table_of_contents: false
 ---
 
-![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-09-29-java-form-validation/cover.jpg)
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-09-29-java-form-validation/cover-v3.jpg)
 
 Java form validation in webforJ comes down to one object: the `BindingContext`. You annotate a plain Java bean with Jakarta Validation constraints, bind your form fields to it by name, and the context validates every field as the user types, shows the error under the field, and writes to the bean only when everything passes.
 

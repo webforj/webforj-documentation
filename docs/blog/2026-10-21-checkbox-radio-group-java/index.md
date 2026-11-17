@@ -5,11 +5,11 @@ slug: checkbox-radio-group-java
 date: 2026-10-21
 authors: Eric Handtke
 tags: [tutorial, front end]
-image: https://cdn.webforj.com/webforj-documentation/blogs/2026-10-21-checkbox-radio-group-java/cover.jpg
+image: https://cdn.webforj.com/webforj-documentation/blogs/2026-10-21-checkbox-radio-group-java/cover-v3.jpg
 hide_table_of_contents: false
 ---
 
-![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-10-21-checkbox-radio-group-java/cover.jpg)
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-10-21-checkbox-radio-group-java/cover-v3.jpg)
 
 Settings pages, sign-up forms and filters all ask the same kinds of questions. Which of these do you want? Pick exactly one. Turn this on or off. Each question has a control that fits it, and picking the wrong one makes a form harder to use than it needs to be.
 

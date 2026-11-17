@@ -5,11 +5,11 @@ slug: webforj-release-cycle-upgrades
 date: 2026-10-29
 authors: webforJ
 tags: [insights, modernization]
-image: https://cdn.webforj.com/webforj-documentation/blogs/2026-10-29-webforj-release-cycle-upgrades/cover.jpg
+image: https://cdn.webforj.com/webforj-documentation/blogs/2026-10-29-webforj-release-cycle-upgrades/cover-v3.jpg
 hide_table_of_contents: false
 ---
 
-![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-10-29-webforj-release-cycle-upgrades/cover.jpg)
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-10-29-webforj-release-cycle-upgrades/cover-v3.jpg)
 
 An app you build today will still be running when the people who started it have moved on to other projects. So before you pick a framework for it, you want to know how the framework itself behaves over time: how often new versions land, what an upgrade costs you, and how quickly a security problem gets fixed.
 

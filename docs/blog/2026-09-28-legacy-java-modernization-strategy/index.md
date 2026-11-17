@@ -5,11 +5,11 @@ slug: legacy-java-modernization-strategy
 date: 2026-09-28
 authors: webforJ
 tags: [insights, modernization]
-image: https://cdn.webforj.com/webforj-documentation/blogs/2026-09-28-legacy-java-modernization-strategy/cover.jpg
+image: https://cdn.webforj.com/webforj-documentation/blogs/2026-09-28-legacy-java-modernization-strategy/cover-v3.jpg
 hide_table_of_contents: false
 ---
 
-![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-09-28-legacy-java-modernization-strategy/cover.jpg)
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-09-28-legacy-java-modernization-strategy/cover-v3.jpg)
 
 Most large Java shops do not have one aging app. They have a portfolio: a Swing client in finance, a JavaFX tool in the warehouse, JSP pages in operations, a JSF module nobody wants to change, and a Struts app that three people understand. Each one has its own budget fight, and the instinct is to give each its own plan.
 

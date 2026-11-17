@@ -5,11 +5,11 @@ slug: migrate-angular-react-to-java
 date: 2026-06-12
 authors: webforJ
 tags: [insights, spring, routing, modernization]
-image: https://cdn.webforj.com/webforj-documentation/blogs/2026-06-12-migrate-angular-react-to-java/cover.jpg
+image: https://cdn.webforj.com/webforj-documentation/blogs/2026-06-12-migrate-angular-react-to-java/cover-v3.jpg
 hide_table_of_contents: false
 ---
 
-![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-06-12-migrate-angular-react-to-java/cover.jpg)
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-06-12-migrate-angular-react-to-java/cover-v3.jpg)
 
 Many Java teams run a React or Angular front end that only exists to show what their Spring backend already knows. Every feature gets built twice, once on each side of a REST layer, by two sets of people with two toolchains.
 

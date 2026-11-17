@@ -5,11 +5,11 @@ slug: spring-boot-frontend
 date: 2026-10-06
 authors: webforJ
 tags: [integrations, spring, full-stack, web development]
-image: https://cdn.webforj.com/webforj-documentation/blogs/2026-10-06-spring-boot-frontend/cover.jpg
+image: https://cdn.webforj.com/webforj-documentation/blogs/2026-10-06-spring-boot-frontend/cover-v3.jpg
 hide_table_of_contents: false
 ---
 
-![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-10-06-spring-boot-frontend/cover.jpg)
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-10-06-spring-boot-frontend/cover-v3.jpg)
 
 For most Java teams the best Spring Boot frontend is webforJ, the [full-stack Java framework](/blog/java-full-stack-framework). You write the whole app, screens included, in Java, and it runs inside the same Spring Boot app as your services and gets its beans through constructor injection. There is no second language, no second build, and no HTTP contract between your screens and your data.
 

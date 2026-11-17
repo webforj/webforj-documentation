@@ -5,11 +5,11 @@ slug: low-code-to-pro-code-java
 date: 2026-09-03
 authors: webforJ
 tags: [insights]
-image: https://cdn.webforj.com/webforj-documentation/blogs/2026-09-03-low-code-to-pro-code-java/cover.jpg
+image: https://cdn.webforj.com/webforj-documentation/blogs/2026-09-03-low-code-to-pro-code-java/cover-v3.jpg
 hide_table_of_contents: false
 ---
 
-![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-09-03-low-code-to-pro-code-java/cover.jpg)
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-09-03-low-code-to-pro-code-java/cover-v3.jpg)
 
 The way to go from low code to pro code in Java without lock-in is to keep the Java as the only source of truth and let the visual tool write to it. That is how craftforJ works. It runs inside your webforJ app in development mode, lets you select components and change their properties on the live page, and writes the changes you keep into the Java file that created them. There is no separate model to export and no generated layer to fight with.
 

@@ -5,11 +5,11 @@ slug: java-single-page-application-framework
 date: 2026-06-04
 authors: webforJ
 tags: [insights, routing, performance]
-image: https://cdn.webforj.com/webforj-documentation/blogs/2026-06-04-java-single-page-application-framework/cover.jpg
+image: https://cdn.webforj.com/webforj-documentation/blogs/2026-06-04-java-single-page-application-framework/cover-v3.jpg
 hide_table_of_contents: false
 ---
 
-![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-06-04-java-single-page-application-framework/cover.jpg)
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-06-04-java-single-page-application-framework/cover-v3.jpg)
 
 You want an app that feels like a single page app: no white flash between screens, a working back button, links people can bookmark. You also want to keep your team in Java instead of adding a second codebase in JavaScript. A Java single page app framework has to cover three things: load the page once, change views in the browser without a reload, and keep the URL honest. webforJ does all three. Every webforJ app is a single page app, and the routes, parameters and navigation are written in Java.
 

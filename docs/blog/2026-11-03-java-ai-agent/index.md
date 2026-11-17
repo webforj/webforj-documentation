@@ -5,11 +5,11 @@ slug: java-ai-agent
 date: 2026-11-03T11:00:00Z
 authors: Hyyan Abo Fakher
 tags: [ai, spring-ai, spring]
-image: https://cdn.webforj.com/webforj-documentation/blogs/2026-11-03-java-ai-agent/cover.jpg
+image: https://cdn.webforj.com/webforj-documentation/blogs/2026-11-03-java-ai-agent/cover-v3.jpg
 hide_table_of_contents: false
 ---
 
-![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-11-03-java-ai-agent/cover.jpg)
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-11-03-java-ai-agent/cover-v3.jpg)
 
 To build an AI agent in Java that does real work in a web app, give it tools that use the app the way a person does. With Spring AI running the model and webforJ's automation layer as the tools, the agent reads the screen as text, finds a field by its label, types into it, picks from a list, and saves the form. The user watches every step happen in their own browser, and the agent can do nothing the user couldn't.
 

@@ -5,11 +5,11 @@ slug: lazy-load-tree-java
 date: 2026-10-14
 authors: Matthew Hawkins
 tags: [tutorial, performance]
-image: https://cdn.webforj.com/webforj-documentation/blogs/2026-10-14-lazy-load-tree-java/cover.jpg
+image: https://cdn.webforj.com/webforj-documentation/blogs/2026-10-14-lazy-load-tree-java/cover-v3.jpg
 hide_table_of_contents: false
 ---
 
-![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-10-14-lazy-load-tree-java/cover.jpg)
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-10-14-lazy-load-tree-java/cover-v3.jpg)
 
 A project browser with thousands of folders shouldn't make users wait while every branch loads up front. Most of those folders never get opened.
 

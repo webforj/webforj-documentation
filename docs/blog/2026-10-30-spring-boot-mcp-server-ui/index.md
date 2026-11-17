@@ -5,11 +5,11 @@ slug: spring-boot-mcp-server-ui
 date: 2026-10-30
 authors: Hyyan Abo Fakher
 tags: [ai, mcp, spring-ai, spring]
-image: https://cdn.webforj.com/webforj-documentation/blogs/2026-10-30-spring-boot-mcp-server-ui/cover.jpg
+image: https://cdn.webforj.com/webforj-documentation/blogs/2026-10-30-spring-boot-mcp-server-ui/cover-v3.jpg
 hide_table_of_contents: false
 ---
 
-![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-10-30-spring-boot-mcp-server-ui/cover.jpg)
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-10-30-spring-boot-mcp-server-ui/cover-v3.jpg)
 
 Ask an AI assistant how much a customer owes and a one-line answer is perfect. Ask it for every unpaid invoice due this month, so you can chase the overdue ones, and a paragraph of text stops being useful. You want the invoices in front of you.
 

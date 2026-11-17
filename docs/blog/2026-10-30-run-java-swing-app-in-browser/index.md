@@ -5,11 +5,11 @@ slug: run-java-swing-app-in-browser
 date: 2026-10-30
 authors: webforJ
 tags: [integrations, webswing, modernization]
-image: https://cdn.webforj.com/webforj-documentation/blogs/2026-10-30-run-java-swing-app-in-browser/cover.jpg
+image: https://cdn.webforj.com/webforj-documentation/blogs/2026-10-30-run-java-swing-app-in-browser/cover-v3.jpg
 hide_table_of_contents: false
 ---
 
-![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-10-30-run-java-swing-app-in-browser/cover.jpg)
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-10-30-run-java-swing-app-in-browser/cover-v3.jpg)
 
 <!-- vale Google.WordListCase = NO -->
 Your Swing app has run the business for years, and now people want it in a browser. Some work remotely, some have laptops without Java, and a rewrite would take months before anyone gets a result. So the real question is narrow: can you run a Java Swing application in the browser with the code you already have?

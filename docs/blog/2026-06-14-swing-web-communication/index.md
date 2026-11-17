@@ -5,11 +5,11 @@ slug: swing-web-communication
 date: 2026-06-14
 authors: Eric Handtke
 tags: [insights, webswing, modernization, events]
-image: https://cdn.webforj.com/webforj-documentation/blogs/2026-06-14-swing-web-communication/cover.jpg
+image: https://cdn.webforj.com/webforj-documentation/blogs/2026-06-14-swing-web-communication/cover-v3.jpg
 hide_table_of_contents: false
 ---
 
-![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-06-14-swing-web-communication/cover.jpg)
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-06-14-swing-web-communication/cover-v3.jpg)
 
 Webswing gets a Swing app into a browser tab in an afternoon. Then someone asks for the obvious next thing: when the user picks a customer in the Swing window, the web page around it should show that customer's orders. And the web page can't see anything that happens inside the Swing window.
 

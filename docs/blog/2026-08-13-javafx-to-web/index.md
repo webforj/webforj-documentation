@@ -5,11 +5,11 @@ slug: javafx-to-web
 date: 2026-08-13
 authors: Hyyan Abo Fakher
 tags: [insights, modernization, mcp]
-image: https://cdn.webforj.com/webforj-documentation/blogs/2026-08-13-javafx-to-web/cover.jpg
+image: https://cdn.webforj.com/webforj-documentation/blogs/2026-08-13-javafx-to-web/cover-v3.jpg
 hide_table_of_contents: false
 ---
 
-![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-08-13-javafx-to-web/cover.jpg)
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-08-13-javafx-to-web/cover-v3.jpg)
 
 Your JavaFX app works. Users like it, the domain logic took years to get right, and now someone wants it in a browser: no installer, no JRE on every laptop, access from a phone, or access from a customer site. Rewriting it in JavaScript would throw away the one thing you have plenty of, which is Java.
 

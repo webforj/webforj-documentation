@@ -5,11 +5,11 @@ slug: complete-java-web-platform
 date: 2026-10-09
 authors: webforJ
 tags: [insights, spring, security]
-image: https://cdn.webforj.com/webforj-documentation/blogs/2026-10-09-complete-java-web-platform/cover.jpg
+image: https://cdn.webforj.com/webforj-documentation/blogs/2026-10-09-complete-java-web-platform/cover-v3.jpg
 hide_table_of_contents: false
 ---
 
-![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-10-09-complete-java-web-platform/cover.jpg)
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-10-09-complete-java-web-platform/cover-v3.jpg)
 
 When a team picks a framework for a business app, the first screen is never the hard part. The hard part is everything that comes after it: navigation, a login, forms that validate, a table that holds real data, a second language, a test suite. A complete Java web app platform answers all of that before you ask. webforJ, the full-stack Java framework, covers it. It is a single framework, in a single language, that ships project setup, routing, a component library, data binding, security, Spring Boot integration, theming, translation, installable apps, and testing.
 

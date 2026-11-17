@@ -5,11 +5,11 @@ slug: multi-select-java-ui
 date: 2026-09-17
 authors: Matthew Hawkins
 tags: [tutorial, web development]
-image: https://cdn.webforj.com/webforj-documentation/blogs/2026-09-17-multi-select-java-ui/cover.jpg
+image: https://cdn.webforj.com/webforj-documentation/blogs/2026-09-17-multi-select-java-ui/cover-v3.jpg
 hide_table_of_contents: false
 ---
 
-![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-09-17-multi-select-java-ui/cover.jpg)
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-09-17-multi-select-java-ui/cover-v3.jpg)
 
 A multi-select Java UI in webforJ is a `ListBox` with its selection mode set to `MULTIPLE`. The user holds Shift, Control or Command to pick several items, and your Java code reads the chosen values with `getSelectedKeys()`. When the user should pick exactly one value from a fixed set, a `ChoiceBox` is the better fit. In this guide you build both, read and set the selection from Java, and learn when each component is the right one.
 

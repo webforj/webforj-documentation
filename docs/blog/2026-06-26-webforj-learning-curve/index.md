@@ -5,11 +5,11 @@ slug: webforj-learning-curve
 date: 2026-06-26
 authors: webforJ
 tags: [insights, routing]
-image: https://cdn.webforj.com/webforj-documentation/blogs/2026-06-26-webforj-learning-curve/cover.jpg
+image: https://cdn.webforj.com/webforj-documentation/blogs/2026-06-26-webforj-learning-curve/cover-v3.jpg
 hide_table_of_contents: false
 ---
 
-![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-06-26-webforj-learning-curve/cover.jpg)
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-06-26-webforj-learning-curve/cover-v3.jpg)
 
 You are weighing a Java web UI framework, and the question right after "does it do what we need" is "who will build with it?" A framework that few people list on a CV can look like a hiring risk, and a smaller community can look like a support risk.
 

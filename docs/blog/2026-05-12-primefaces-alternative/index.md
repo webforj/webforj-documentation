@@ -5,11 +5,11 @@ slug: primefaces-alternative
 date: 2026-05-12
 authors: webforJ
 tags: [insights, modernization, spring]
-image: https://cdn.webforj.com/webforj-documentation/blogs/2026-05-12-primefaces-alternative/cover.jpg
+image: https://cdn.webforj.com/webforj-documentation/blogs/2026-05-12-primefaces-alternative/cover-v3.jpg
 hide_table_of_contents: false
 ---
 
-![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-05-12-primefaces-alternative/cover.jpg)
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-05-12-primefaces-alternative/cover-v3.jpg)
 
 Your team has a JSF app with a rich component library on top. The data tables, dialogs and forms all work, but every screen means an XHTML file, a managed bean and a set of `update` attributes that decide which part of the page refreshes. Adding a screen feels heavier than it should, and nobody on the team wants to change the view layer more than necessary.
 

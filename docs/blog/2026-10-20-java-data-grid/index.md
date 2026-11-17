@@ -5,11 +5,11 @@ slug: java-data-grid
 date: 2026-10-20
 authors: webforJ
 tags: [components, table, performance, renderers]
-image: https://cdn.webforj.com/webforj-documentation/blogs/2026-10-20-java-data-grid/cover.jpg
+image: https://cdn.webforj.com/webforj-documentation/blogs/2026-10-20-java-data-grid/cover-v3.jpg
 hide_table_of_contents: false
 ---
 
-![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-10-20-java-data-grid/cover.jpg)
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-10-20-java-data-grid/cover-v3.jpg)
 
 The webforJ `Table` is a Java data grid for the browser. You define columns with method references, hand it a repository, and it gives you sorting, selection, pinned columns, cell renderers, and virtual scrolling. All of it is configured in Java, with no JavaScript grid library to wire up.
 

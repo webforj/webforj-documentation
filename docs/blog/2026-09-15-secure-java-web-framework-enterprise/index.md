@@ -5,11 +5,11 @@ slug: secure-java-web-framework-enterprise
 date: 2026-09-15
 authors: webforJ
 tags: [insights, security, spring]
-image: https://cdn.webforj.com/webforj-documentation/blogs/2026-09-15-secure-java-web-framework-enterprise/cover.jpg
+image: https://cdn.webforj.com/webforj-documentation/blogs/2026-09-15-secure-java-web-framework-enterprise/cover-v3.jpg
 hide_table_of_contents: false
 ---
 
-![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-09-15-secure-java-web-framework-enterprise/cover.jpg)
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-09-15-secure-java-web-framework-enterprise/cover-v3.jpg)
 
 When a security review lands on your desk, the first question is usually how much of the app an outsider can reach. A JavaScript front end plus a public REST API gives them a lot to work with. A secure Java web framework for enterprise use starts from the opposite end: keep state, business rules and access decisions on the server, and let the browser only render the interface.
 

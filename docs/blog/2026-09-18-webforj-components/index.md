@@ -5,11 +5,11 @@ slug: webforj-components
 date: 2026-09-18
 authors: webforJ
 tags: [components, web development, data visualization]
-image: https://cdn.webforj.com/webforj-documentation/blogs/2026-09-18-webforj-components/cover-v2.jpg
+image: https://cdn.webforj.com/webforj-documentation/blogs/2026-09-18-webforj-components/cover-v3.jpg
 hide_table_of_contents: false
 ---
 
-![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-09-18-webforj-components/cover-v2.jpg)
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-09-18-webforj-components/cover-v3.jpg)
 
 You are about to commit a team to a framework for a business app, and before the first screen exists you want to know whether the parts you need are already there. A data table, date entry, dialogs, a navigation shell, a chart. Gaps show up late, so ask early.
 

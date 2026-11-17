@@ -5,11 +5,11 @@ slug: cursor-spring-boot-ui
 date: 2026-11-09
 authors: Eric Handtke
 tags: [ai, spring, mcp]
-image: https://cdn.webforj.com/webforj-documentation/blogs/2026-11-09-cursor-spring-boot-ui/cover.jpg
+image: https://cdn.webforj.com/webforj-documentation/blogs/2026-11-09-cursor-spring-boot-ui/cover-v3.jpg
 hide_table_of_contents: false
 ---
 
-![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-11-09-cursor-spring-boot-ui/cover.jpg)
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-11-09-cursor-spring-boot-ui/cover-v3.jpg)
 
 You have a Spring Boot backend with services that work, and now it needs screens. Asking an AI assistant to write them is tempting, but a plain prompt in Cursor leaves the assistant guessing at your front end. For a Cursor Spring Boot UI that holds up, give the assistant the real webforJ API and let it write the views in Java. The webforJ AI plugin does that, and a short test confirms the result.
 

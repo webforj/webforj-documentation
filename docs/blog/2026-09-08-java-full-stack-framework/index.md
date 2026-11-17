@@ -5,11 +5,11 @@ slug: java-full-stack-framework
 date: 2026-09-08
 authors: Eric Handtke
 tags: [insights, full-stack, spring, back end]
-image: https://cdn.webforj.com/webforj-documentation/blogs/2026-09-08-java-full-stack-framework/cover.jpg
+image: https://cdn.webforj.com/webforj-documentation/blogs/2026-09-08-java-full-stack-framework/cover-v3.jpg
 hide_table_of_contents: false
 ---
 
-![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-09-08-java-full-stack-framework/cover.jpg)
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-09-08-java-full-stack-framework/cover-v3.jpg)
 
 Most Java teams know the split: the backend is Java, and the screens live in a second project with another language, another build, and an API between the two. A Java full stack framework removes that split. It's a framework where you build every layer of a web app in Java: the screens, the routing between them, the forms and their validation, the security rules and the data access, all in one project with one build.
 

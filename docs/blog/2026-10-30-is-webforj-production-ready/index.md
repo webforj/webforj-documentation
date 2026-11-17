@@ -5,11 +5,11 @@ slug: is-webforj-production-ready
 date: 2026-10-30
 authors: webforJ
 tags: [insights, web development, spring]
-image: https://cdn.webforj.com/webforj-documentation/blogs/2026-10-30-is-webforj-production-ready/cover.jpg
+image: https://cdn.webforj.com/webforj-documentation/blogs/2026-10-30-is-webforj-production-ready/cover-v3.jpg
 hide_table_of_contents: false
 ---
 
-![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-10-30-is-webforj-production-ready/cover.jpg)
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-10-30-is-webforj-production-ready/cover-v3.jpg)
 
 You are about to pick a UI framework for an app that has to run for ten years, and the name webforJ is one you only heard recently. Asking "is webforJ production ready" is the right question. Here are the published facts. webforJ, the [full-stack Java framework](/blog/java-full-stack-framework), is a Java API built by BASIS International, on top of BBj and the Dynamic Web Client (DWC), shipped through Maven Central with regular numbered releases and Spring Boot integration.
 

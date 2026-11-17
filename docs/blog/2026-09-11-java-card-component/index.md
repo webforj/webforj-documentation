@@ -5,13 +5,13 @@ slug: java-card-component
 date: 2026-09-11
 authors: Lauren Alamo
 tags: [components, layout, ui customization]
-image: https://cdn.webforj.com/webforj-documentation/blogs/2026-09-11-java-card-component/cover.jpg
+image: https://cdn.webforj.com/webforj-documentation/blogs/2026-09-11-java-card-component/cover-v3.jpg
 hide_table_of_contents: false
 ---
 
 <!-- vale Google.FirstPerson = NO -->
 
-![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-09-11-java-card-component/cover.jpg)
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-09-11-java-card-component/cover-v3.jpg)
 
 Dashboards live or die by their cards. When every tile has the same frame, the same spacing, and a clear title, the page reads at a glance. When each one is hand-built, the layout starts to drift.
 

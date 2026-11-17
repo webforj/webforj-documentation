@@ -5,11 +5,11 @@ slug: java-web-app-tutorial-beginners
 date: 2026-05-19
 authors: Eric Handtke
 tags: [tutorial, routing]
-image: https://cdn.webforj.com/webforj-documentation/blogs/2026-05-19-java-web-app-tutorial-beginners/cover.jpg
+image: https://cdn.webforj.com/webforj-documentation/blogs/2026-05-19-java-web-app-tutorial-beginners/cover-v3.jpg
 hide_table_of_contents: false
 ---
 
-![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-05-19-java-web-app-tutorial-beginners/cover.jpg)
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-05-19-java-web-app-tutorial-beginners/cover-v3.jpg)
 
 You know some Java, you have written console programs or a few classes, and now you want to see something running in a browser. Most guides at this point throw HTML, JavaScript, a template engine and a build pipeline at you before the first page shows up.
 

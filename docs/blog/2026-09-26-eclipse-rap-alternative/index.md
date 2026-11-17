@@ -5,11 +5,11 @@ slug: eclipse-rap-alternative
 date: 2026-09-26
 authors: webforJ
 tags: [insights, modernization, spring]
-image: https://cdn.webforj.com/webforj-documentation/blogs/2026-09-26-eclipse-rap-alternative/cover.jpg
+image: https://cdn.webforj.com/webforj-documentation/blogs/2026-09-26-eclipse-rap-alternative/cover-v3.jpg
 hide_table_of_contents: false
 ---
 
-![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-09-26-eclipse-rap-alternative/cover.jpg)
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-09-26-eclipse-rap-alternative/cover-v3.jpg)
 
 Your team has a business app that runs in the browser through Eclipse RAP. The screens are written with the SWT and JFace API, the developers who built it know Java well, and now someone is asking what comes next. If you are weighing an Eclipse RAP alternative, webforJ, the full-stack Java framework, keeps your team in Java: screens are Java objects with listeners, they render as modern web components, and the whole app can plug into your Spring Boot services.
 

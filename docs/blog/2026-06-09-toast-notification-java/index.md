@@ -5,11 +5,11 @@ slug: toast-notification-java
 date: 2026-06-09
 authors: Eric Handtke
 tags: [components, front end, ui customization]
-image: https://cdn.webforj.com/webforj-documentation/blogs/2026-06-09-toast-notification-java/cover.jpg
+image: https://cdn.webforj.com/webforj-documentation/blogs/2026-06-09-toast-notification-java/cover-v3.jpg
 hide_table_of_contents: false
 ---
 
-![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-06-09-toast-notification-java/cover.jpg)
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-06-09-toast-notification-java/cover-v3.jpg)
 
 A toast notification is a short message that appears on screen and then disappears by itself. In webforJ, you show one from any Java click handler with a single call: `Toast.show("Changes saved", Theme.SUCCESS)`. The `Toast` component has been part of webforJ since version 24.10. It handles timing, colors, and screen placement, so you don't write JavaScript for it.
 

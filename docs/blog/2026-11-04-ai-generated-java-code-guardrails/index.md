@@ -5,11 +5,11 @@ slug: ai-generated-java-code-guardrails
 date: 2026-11-04
 authors: webforJ
 tags: [ai, mcp]
-image: https://cdn.webforj.com/webforj-documentation/blogs/2026-11-04-ai-generated-java-code-guardrails/cover.jpg
+image: https://cdn.webforj.com/webforj-documentation/blogs/2026-11-04-ai-generated-java-code-guardrails/cover-v3.jpg
 hide_table_of_contents: false
 ---
 
-![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-11-04-ai-generated-java-code-guardrails/cover.jpg)
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-11-04-ai-generated-java-code-guardrails/cover-v3.jpg)
 
 An AI assistant can write a Java view in seconds. The slow part comes after: reading the diff, wondering whether that method really exists, and clicking through the screen to see if it behaves. If every change needs that, the speed is gone.
 

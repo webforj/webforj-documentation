@@ -5,11 +5,11 @@ slug: react-with-java-backend
 date: 2026-08-29
 authors: webforJ
 tags: [insights, spring, full-stack, web development]
-image: https://cdn.webforj.com/webforj-documentation/blogs/2026-08-29-react-with-java-backend/cover.jpg
+image: https://cdn.webforj.com/webforj-documentation/blogs/2026-08-29-react-with-java-backend/cover-v3.jpg
 hide_table_of_contents: false
 ---
 
-![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-08-29-react-with-java-backend/cover.jpg)
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-08-29-react-with-java-backend/cover-v3.jpg)
 
 You have a Java team, a Spring Boot backend and a screen to build. Everyone says the next step is React, so you search for how to use React with Java and find a long list of tutorials that start the same way: build a REST API first.
 

@@ -5,11 +5,11 @@ slug: ai-coding-assistant-java
 date: 2026-10-13
 authors: webforJ
 tags: [ai, mcp]
-image: https://cdn.webforj.com/webforj-documentation/blogs/2026-10-13-ai-coding-assistant-java/cover.jpg
+image: https://cdn.webforj.com/webforj-documentation/blogs/2026-10-13-ai-coding-assistant-java/cover-v3.jpg
 hide_table_of_contents: false
 ---
 
-![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-10-13-ai-coding-assistant-java/cover.jpg)
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-10-13-ai-coding-assistant-java/cover-v3.jpg)
 
 An AI coding assistant for Java web UIs works best when it is connected to the framework's own knowledge. For webforJ, that is the webforJ AI plugin. One install adds an MCP server and a set of Agent Skills to Claude Code, GitHub Copilot, VS Code, Gemini CLI, Codex, Cursor, and other clients. Your assistant then looks up real class names, scaffolds projects, generates themes and validates CSS tokens instead of guessing.
 

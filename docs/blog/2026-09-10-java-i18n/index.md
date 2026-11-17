@@ -5,11 +5,11 @@ slug: java-i18n
 date: 2026-09-10
 authors: Matthew Hawkins
 tags: [tutorial, spring, layout]
-image: https://cdn.webforj.com/webforj-documentation/blogs/2026-09-10-java-i18n/cover.jpg
+image: https://cdn.webforj.com/webforj-documentation/blogs/2026-09-10-java-i18n/cover-v3.jpg
 hide_table_of_contents: false
 ---
 
-![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-09-10-java-i18n/cover.jpg)
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-09-10-java-i18n/cover-v3.jpg)
 
 Java web app internationalization in webforJ takes three pieces: a `messages.properties` bundle per language, the `t()` method on your components, and a list of supported locales in your configuration. webforJ resolves keys with `BundleTranslationResolver`, can pick the user's language from the browser, and updates the UI at runtime when you call `App.setLocale()`.
 

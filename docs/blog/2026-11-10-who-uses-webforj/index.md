@@ -5,11 +5,11 @@ slug: who-uses-webforj
 date: 2026-11-10
 authors: webforJ
 tags: [insights, web development]
-image: https://cdn.webforj.com/webforj-documentation/blogs/2026-11-10-who-uses-webforj/cover.jpg
+image: https://cdn.webforj.com/webforj-documentation/blogs/2026-11-10-who-uses-webforj/cover-v3.jpg
 hide_table_of_contents: false
 ---
 
-![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-11-10-who-uses-webforj/cover.jpg)
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-11-10-who-uses-webforj/cover-v3.jpg)
 
 A team that is about to pick a framework wants to know who already runs it. Logos on a landing page don't help much. What helps is knowing which companies built what, how big the team was, and how long it took.
 

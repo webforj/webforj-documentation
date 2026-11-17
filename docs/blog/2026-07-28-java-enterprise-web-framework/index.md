@@ -5,11 +5,11 @@ slug: java-enterprise-web-framework
 date: 2026-07-28
 authors: webforJ
 tags: [insights, security, spring]
-image: https://cdn.webforj.com/webforj-documentation/blogs/2026-07-28-java-enterprise-web-framework/cover.jpg
+image: https://cdn.webforj.com/webforj-documentation/blogs/2026-07-28-java-enterprise-web-framework/cover-v3.jpg
 hide_table_of_contents: false
 ---
 
-![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-07-28-java-enterprise-web-framework/cover.jpg)
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-07-28-java-enterprise-web-framework/cover-v3.jpg)
 
 Picking a Java framework for a business app is a different decision from picking one for a side project. The app will outlive its first team, pass a security review, sit next to existing Spring services, and get upgraded for years.
 

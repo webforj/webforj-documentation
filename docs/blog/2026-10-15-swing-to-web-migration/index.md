@@ -5,11 +5,11 @@ slug: swing-to-web-migration
 date: 2026-10-15
 authors: webforJ
 tags: [integrations, modernization, webswing]
-image: https://cdn.webforj.com/webforj-documentation/blogs/2026-10-15-swing-to-web-migration/cover.jpg
+image: https://cdn.webforj.com/webforj-documentation/blogs/2026-10-15-swing-to-web-migration/cover-v3.jpg
 hide_table_of_contents: false
 ---
 
-![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-10-15-swing-to-web-migration/cover.jpg)
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-10-15-swing-to-web-migration/cover-v3.jpg)
 
 You know the app is moving to the browser. Now the work gets concrete: every `JFrame`, layout manager, `JTable` and `JOptionPane` needs a counterpart, and every `SwingWorker` needs a new home. This Swing to webforJ mapping guide shows how to convert Swing to web one screen at a time with webforJ, the [full-stack Java framework](/blog/java-full-stack-framework). You write each new screen in Java, so services, entities, and validation rules carry over unchanged, and only the code that touches Swing gets rewritten.
 

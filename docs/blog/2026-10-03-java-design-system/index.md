@@ -5,13 +5,13 @@ slug: java-design-system
 date: 2026-10-03
 authors: Lauren Alamo
 tags: [styling, themes]
-image: https://cdn.webforj.com/webforj-documentation/blogs/2026-10-03-java-design-system/cover.jpg
+image: https://cdn.webforj.com/webforj-documentation/blogs/2026-10-03-java-design-system/cover-v3.jpg
 hide_table_of_contents: false
 ---
 
 <!-- vale Google.FirstPerson = NO -->
 
-![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-10-03-java-design-system/cover.jpg)
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-10-03-java-design-system/cover-v3.jpg)
 
 If you've been wondering whether a Java design system is something your team has to build on top of the framework, I have good news. webforJ ships one called DWC: a set of CSS custom properties for color, typography, spacing, borders and shadows, three built-in themes, palettes generated from a seed color, and Shadow Parts for the places tokens don't reach. Override a few variables and the whole app takes on your brand.
 

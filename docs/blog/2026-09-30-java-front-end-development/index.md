@@ -5,11 +5,11 @@ slug: java-front-end-development
 date: 2026-09-30
 authors: webforJ
 tags: [insights, spring, layout, events]
-image: https://cdn.webforj.com/webforj-documentation/blogs/2026-09-30-java-front-end-development/cover.jpg
+image: https://cdn.webforj.com/webforj-documentation/blogs/2026-09-30-java-front-end-development/cover-v3.jpg
 hide_table_of_contents: false
 ---
 
-![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-09-30-java-front-end-development/cover.jpg)
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-09-30-java-front-end-development/cover-v3.jpg)
 
 Java for front end development works today, and webforJ makes it practical because it covers the whole app, screens included, in Java. You write views, layouts, forms, and event handlers in Java, the browser renders them, and you do not write a line of JavaScript or maintain a separate front end project. The same developers who own the back end own the screens.
 

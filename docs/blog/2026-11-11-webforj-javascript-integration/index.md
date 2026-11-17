@@ -5,11 +5,11 @@ slug: webforj-javascript-integration
 date: 2026-11-11
 authors: webforJ
 tags: [integrations, javascript, web development]
-image: https://cdn.webforj.com/webforj-documentation/blogs/2026-11-11-webforj-javascript-integration/cover.jpg
+image: https://cdn.webforj.com/webforj-documentation/blogs/2026-11-11-webforj-javascript-integration/cover-v3.jpg
 hide_table_of_contents: false
 ---
 
-![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-11-11-webforj-javascript-integration/cover.jpg)
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-11-11-webforj-javascript-integration/cover-v3.jpg)
 
 A Java framework that builds the whole screen in Java raises a fair worry for anyone choosing it: what happens the day you need a charting library, a date picker or a widget your team already owns, and it's written in JavaScript? Do you wait for the framework to ship its own version?
 

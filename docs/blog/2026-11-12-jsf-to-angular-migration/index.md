@@ -5,11 +5,11 @@ slug: jsf-to-angular-migration
 date: 2026-11-12
 authors: webforJ
 tags: [insights, modernization, front end, spring]
-image: https://cdn.webforj.com/webforj-documentation/blogs/2026-11-12-jsf-to-angular-migration/cover.jpg
+image: https://cdn.webforj.com/webforj-documentation/blogs/2026-11-12-jsf-to-angular-migration/cover-v3.jpg
 hide_table_of_contents: false
 ---
 
-![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-11-12-jsf-to-angular-migration/cover.jpg)
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-11-12-jsf-to-angular-migration/cover-v3.jpg)
 
 Your team runs a JSF app that does real work. The screens are dated, the component library is getting harder to upgrade, and someone has been asked for a plan. Most of the advice you find points to Angular or to React.
 

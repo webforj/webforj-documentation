@@ -5,11 +5,11 @@ slug: jsf-alternative
 date: 2026-10-10
 authors: Hyyan Abo Fakher
 tags: [tutorial, modernization, web development, spring]
-image: https://cdn.webforj.com/webforj-documentation/blogs/2026-10-10-jsf-alternative/cover.jpg
+image: https://cdn.webforj.com/webforj-documentation/blogs/2026-10-10-jsf-alternative/cover-v3.jpg
 hide_table_of_contents: false
 ---
 
-![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-10-10-jsf-alternative/cover.jpg)
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-10-10-jsf-alternative/cover-v3.jpg)
 
 If you maintain JSF or PrimeFaces screens and are planning a JSF to Spring Boot migration, webforJ is a direct fit, and a JSF alternative that stays in Java. It is a [full-stack Java framework](/blog/java-full-stack-framework): you build each screen as a Java component tree, route to it with an annotation, bind it to a bean, and validate with the same Jakarta constraints you already put on your model.
 

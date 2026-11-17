@@ -5,11 +5,11 @@ slug: best-java-ui-frameworks
 date: 2026-10-29
 authors: webforJ
 tags: [insights, web development, full-stack, spring, front end]
-image: https://cdn.webforj.com/webforj-documentation/blogs/2026-10-29-best-java-ui-frameworks/cover.jpg
+image: https://cdn.webforj.com/webforj-documentation/blogs/2026-10-29-best-java-ui-frameworks/cover-v3.jpg
 hide_table_of_contents: false
 ---
 
-![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-10-29-best-java-ui-frameworks/cover.jpg)
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-10-29-best-java-ui-frameworks/cover-v3.jpg)
 
 Picking a UI framework is a long bet for a Java team. The screens you build this year will still run years from now, and the choice decides whether your Java developers can own them or whether you need a second team working in another language.
 

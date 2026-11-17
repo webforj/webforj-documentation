@@ -5,11 +5,11 @@ slug: thymeleaf-alternative-spring-boot
 date: 2026-09-17
 authors: Eric Handtke
 tags: [insights, spring, web development]
-image: https://cdn.webforj.com/webforj-documentation/blogs/2026-09-17-thymeleaf-alternative-spring-boot/cover.jpg
+image: https://cdn.webforj.com/webforj-documentation/blogs/2026-09-17-thymeleaf-alternative-spring-boot/cover-v3.jpg
 hide_table_of_contents: false
 ---
 
-![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-09-17-thymeleaf-alternative-spring-boot/cover.jpg)
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-09-17-thymeleaf-alternative-spring-boot/cover-v3.jpg)
 
 Your Spring Boot app started with a few server-rendered pages and it worked well. Then the requests changed. A table that sorts and pages, a dialog that edits a row, a form that validates as you type. Each one adds a template, a fragment endpoint or a script file, and the screens start to feel heavier than the app behind them.
 

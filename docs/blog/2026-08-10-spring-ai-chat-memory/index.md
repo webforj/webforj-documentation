@@ -5,11 +5,11 @@ slug: spring-ai-chat-memory
 date: 2026-08-10
 authors: Matthew Hawkins
 tags: [ai, chat, spring]
-image: https://cdn.webforj.com/webforj-documentation/blogs/2026-08-10-spring-ai-chat-memory/cover.jpg
+image: https://cdn.webforj.com/webforj-documentation/blogs/2026-08-10-spring-ai-chat-memory/cover-v3.jpg
 hide_table_of_contents: false
 ---
 
-![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-08-10-spring-ai-chat-memory/cover.jpg)
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-08-10-spring-ai-chat-memory/cover-v3.jpg)
 
 You ask a chatbot about two plans, then follow up with "and what about the second one?" A good assistant knows what you mean. A forgetful one asks you to start over, because each request reached the model on its own, with nothing from the conversation before it.
 

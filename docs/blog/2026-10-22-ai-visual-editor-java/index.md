@@ -5,11 +5,11 @@ slug: ai-visual-editor-java
 date: 2026-10-22
 authors: Matthew Hawkins
 tags: [ai]
-image: https://cdn.webforj.com/webforj-documentation/blogs/2026-10-22-ai-visual-editor-java/cover.jpg
+image: https://cdn.webforj.com/webforj-documentation/blogs/2026-10-22-ai-visual-editor-java/cover-v3.jpg
 hide_table_of_contents: false
 ---
 
-![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-10-22-ai-visual-editor-java/cover.jpg)
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-10-22-ai-visual-editor-java/cover-v3.jpg)
 
 You can edit a running Java app with AI in webforJ by using the craftforJ AI assistant. The assistant works inside the app that is open in your browser. It writes the Java for a change, compiles that Java before you see it, and applies the change to your source once you approve it. You describe the change in plain language, and the assistant works from the live components rather than a guess made from your files.
 

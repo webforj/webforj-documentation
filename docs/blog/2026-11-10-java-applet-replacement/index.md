@@ -5,11 +5,11 @@ slug: java-applet-replacement
 date: 2026-11-10
 authors: webforJ
 tags: [insights, modernization, webswing]
-image: https://cdn.webforj.com/webforj-documentation/blogs/2026-11-10-java-applet-replacement/cover.jpg
+image: https://cdn.webforj.com/webforj-documentation/blogs/2026-11-10-java-applet-replacement/cover-v3.jpg
 hide_table_of_contents: false
 ---
 
-![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-11-10-java-applet-replacement/cover.jpg)
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-11-10-java-applet-replacement/cover-v3.jpg)
 
 Somewhere in your company an applet still does real work. Maybe it's the order entry screen a branch office opens in an old browser profile, or a planning tool that lives inside a locked-down virtual desktop because nothing else will start it. It kept running because nobody touched it. That grace period is over, and finding a Java applet replacement is no longer a job you can push to next year.
 

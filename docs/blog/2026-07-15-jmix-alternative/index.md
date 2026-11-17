@@ -5,11 +5,11 @@ slug: jmix-alternative
 date: 2026-07-15
 authors: webforJ
 tags: [insights, spring, security]
-image: https://cdn.webforj.com/webforj-documentation/blogs/2026-07-15-jmix-alternative/cover.jpg
+image: https://cdn.webforj.com/webforj-documentation/blogs/2026-07-15-jmix-alternative/cover-v3.jpg
 hide_table_of_contents: false
 ---
 
-![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-07-15-jmix-alternative/cover.jpg)
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-07-15-jmix-alternative/cover-v3.jpg)
 
 You are evaluating a business app platform for your next internal tool, or you run on a platform such as CUBA and are planning your next move. Either way the same question shows up in the planning meeting: do we adopt a platform with its own model for entities, screens and tooling, or do we write a normal Spring Boot app and add a UI to it?
 

@@ -5,11 +5,11 @@ slug: stream-llm-response-java
 date: 2026-06-29
 authors: Eric Handtke
 tags: [ai, spring-ai, chat]
-image: https://cdn.webforj.com/webforj-documentation/blogs/2026-06-29-stream-llm-response-java/cover.jpg
+image: https://cdn.webforj.com/webforj-documentation/blogs/2026-06-29-stream-llm-response-java/cover-v3.jpg
 hide_table_of_contents: false
 ---
 
-![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-06-29-stream-llm-response-java/cover.jpg)
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-06-29-stream-llm-response-java/cover-v3.jpg)
 
 To stream ChatGPT responses in a Java web app, send each chunk from the model into a webforJ `MarkdownViewer`. The component renders Markdown as it arrives, keeps the newest text in view, and gives you `stop()` and `whenRenderComplete()` for the moments when the user cancels or the answer ends. The model call stays in a plain service, and the view only appends text.
 

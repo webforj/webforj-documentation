@@ -5,11 +5,11 @@ slug: input-mask-java
 date: 2026-05-20
 authors: Eric Handtke
 tags: [tutorial]
-image: https://cdn.webforj.com/webforj-documentation/blogs/2026-05-20-input-mask-java/cover.jpg
+image: https://cdn.webforj.com/webforj-documentation/blogs/2026-05-20-input-mask-java/cover-v3.jpg
 hide_table_of_contents: false
 ---
 
-![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-05-20-input-mask-java/cover.jpg)
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-05-20-input-mask-java/cover-v3.jpg)
 
 Phone numbers arrive as `5551234567`, `555-123-4567` and `(555) 123 4567`. Prices come in with stray letters, and dates show up in three different orders. Every form that accepts free text ends up cleaning it afterwards.
 

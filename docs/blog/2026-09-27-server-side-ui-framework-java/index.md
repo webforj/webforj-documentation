@@ -5,11 +5,11 @@ slug: server-side-ui-framework-java
 date: 2026-09-27
 authors: Matthew Hawkins
 tags: [insights, web development, performance]
-image: https://cdn.webforj.com/webforj-documentation/blogs/2026-09-27-server-side-ui-framework-java/cover.jpg
+image: https://cdn.webforj.com/webforj-documentation/blogs/2026-09-27-server-side-ui-framework-java/cover-v3.jpg
 hide_table_of_contents: false
 ---
 
-![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-09-27-server-side-ui-framework-java/cover.jpg)
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-09-27-server-side-ui-framework-java/cover-v3.jpg)
 
 webforJ is a [full-stack Java framework](/blog/java-full-stack-framework), and its UI model is a server-side UI framework for Java. Your components are Java objects that run on the server, the browser renders them as web components, and user actions come back to your Java event handlers. There is no JavaScript app to write, no REST layer between the screen and your services, and your UI code never leaves the server.
 

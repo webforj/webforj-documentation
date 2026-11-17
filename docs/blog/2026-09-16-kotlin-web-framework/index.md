@@ -5,11 +5,11 @@ slug: kotlin-web-framework
 date: 2026-09-16
 authors: Hyyan Abo Fakher
 tags: [integrations, web development, spring]
-image: https://cdn.webforj.com/webforj-documentation/blogs/2026-09-16-kotlin-web-framework/cover.jpg
+image: https://cdn.webforj.com/webforj-documentation/blogs/2026-09-16-kotlin-web-framework/cover-v3.jpg
 hide_table_of_contents: false
 ---
 
-![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-09-16-kotlin-web-framework/cover.jpg)
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-09-16-kotlin-web-framework/cover-v3.jpg)
 
 If you want a Kotlin web framework that builds the whole UI in Kotlin, webforJ has one. Add the `webforj-kotlin` module and the Kotlin Maven plugin to a webforJ project, and you build web UIs with a type-safe Kotlin DSL: `flexLayout { button("Save") { onClick { save() } } }`. There is no HTML template and no JavaScript.
 

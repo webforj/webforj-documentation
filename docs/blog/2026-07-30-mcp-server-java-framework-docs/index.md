@@ -5,11 +5,11 @@ slug: mcp-server-java-framework-docs
 date: 2026-07-30
 authors: Matthew Hawkins
 tags: [ai, mcp]
-image: https://cdn.webforj.com/webforj-documentation/blogs/2026-07-30-mcp-server-java-framework-docs/cover.jpg
+image: https://cdn.webforj.com/webforj-documentation/blogs/2026-07-30-mcp-server-java-framework-docs/cover-v3.jpg
 hide_table_of_contents: false
 ---
 
-![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-07-30-mcp-server-java-framework-docs/cover.jpg)
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-07-30-mcp-server-java-framework-docs/cover-v3.jpg)
 
 Ask an AI assistant for a Java method and it will often hand you one that sounds right and does not exist. An MCP server for Java developers fixes that. The webforJ MCP server lets AI coding assistants look up webforJ documentation, APIs and design tokens while they write code, so the assistant asks the server instead of guessing a method name. You connect it once, and it works with Claude Code, VS Code, Gemini CLI and OpenAI Codex CLI. In this guide you connect Claude Code, check an API answer against the server, and see a prompt for each job the server does.
 

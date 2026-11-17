@@ -5,11 +5,11 @@ slug: spring-data-jpa-grid
 date: 2026-10-23
 authors: Eric Handtke
 tags: [integrations, spring, table, performance]
-image: https://cdn.webforj.com/webforj-documentation/blogs/2026-10-23-spring-data-jpa-grid/cover.jpg
+image: https://cdn.webforj.com/webforj-documentation/blogs/2026-10-23-spring-data-jpa-grid/cover-v3.jpg
 hide_table_of_contents: false
 ---
 
-![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-10-23-spring-data-jpa-grid/cover.jpg)
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-10-23-spring-data-jpa-grid/cover-v3.jpg)
 
 You already have the entity. You already have the repository. Now someone wants a screen where they can see the records, click a header to sort, narrow the list down, and move through thousands of rows without the page falling over.
 

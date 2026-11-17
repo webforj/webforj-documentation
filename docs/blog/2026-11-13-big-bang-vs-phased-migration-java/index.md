@@ -5,11 +5,11 @@ slug: big-bang-vs-phased-migration-java
 date: 2026-11-13
 authors: webforJ
 tags: [insights, modernization, webswing]
-image: https://cdn.webforj.com/webforj-documentation/blogs/2026-11-13-big-bang-vs-phased-migration-java/cover.jpg
+image: https://cdn.webforj.com/webforj-documentation/blogs/2026-11-13-big-bang-vs-phased-migration-java/cover-v3.jpg
 hide_table_of_contents: false
 ---
 
-![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-11-13-big-bang-vs-phased-migration-java/cover.jpg)
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-11-13-big-bang-vs-phased-migration-java/cover-v3.jpg)
 
 The decision to leave the desktop is made. The app runs orders, claims or payroll every day, the budget is approved, and now someone has to say how the switch happens: one date when every user flips to the new system, or a long series of small moves. That choice, big bang migration vs phased, shapes the risk of the project more than the target framework does.
 

@@ -5,11 +5,11 @@ slug: java-progressive-web-app
 date: 2026-10-24
 authors: Eric Handtke
 tags: [tutorial, annotations]
-image: https://cdn.webforj.com/webforj-documentation/blogs/2026-10-24-java-progressive-web-app/cover.jpg
+image: https://cdn.webforj.com/webforj-documentation/blogs/2026-10-24-java-progressive-web-app/cover-v3.jpg
 hide_table_of_contents: false
 ---
 
-![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-10-24-java-progressive-web-app/cover.jpg)
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-10-24-java-progressive-web-app/cover-v3.jpg)
 
 Users ask for your Spring Boot web app on their desktop or home screen, with its own icon, and no browser bar. A Spring Boot progressive web app needs a manifest, icons and HTTPS, and webforJ covers the first two for you. To turn a webforJ app into a Java progressive web app, add the `@AppProfile` annotation to your `App` class. webforJ generates the Web App Manifest, the meta tags, and the icon links, and browsers then offer to install the app on the desktop or the home screen. You write no JSON and no JavaScript.
 

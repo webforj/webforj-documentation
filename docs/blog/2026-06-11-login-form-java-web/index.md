@@ -5,11 +5,11 @@ slug: login-form-java-web
 date: 2026-06-11
 authors: Eric Handtke
 tags: [components, security, spring]
-image: https://cdn.webforj.com/webforj-documentation/blogs/2026-06-11-login-form-java-web/cover.jpg
+image: https://cdn.webforj.com/webforj-documentation/blogs/2026-06-11-login-form-java-web/cover-v3.jpg
 hide_table_of_contents: false
 ---
 
-![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-06-11-login-form-java-web/cover.jpg)
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-06-11-login-form-java-web/cover-v3.jpg)
 
 Almost every business app starts with the same screen: a username, a password, and a Sign in button. Building it by hand means a dialog, two required fields, an error message and a button that shouldn't be clicked twice, before you've checked a single credential.
 

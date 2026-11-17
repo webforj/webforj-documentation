@@ -5,11 +5,11 @@ slug: combobox-java-web
 date: 2026-06-08
 authors: Matthew Hawkins
 tags: [tutorial, web development]
-image: https://cdn.webforj.com/webforj-documentation/blogs/2026-06-08-combobox-java-web/cover.jpg
+image: https://cdn.webforj.com/webforj-documentation/blogs/2026-06-08-combobox-java-web/cover-v3.jpg
 hide_table_of_contents: false
 ---
 
-![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-06-08-combobox-java-web/cover.jpg)
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-06-08-combobox-java-web/cover-v3.jpg)
 
 A combo box in Java lets users pick an option from a list or type a value of their own. In webforJ, the `ComboBox` component handles both in one control, and you build it entirely in Java. This guide builds a country picker step by step. You will add preset items, set a placeholder, cap the dropdown height, turn custom input off for a field that needs a fixed answer, and read what the user chose.
 

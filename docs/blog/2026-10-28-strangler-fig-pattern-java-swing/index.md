@@ -5,11 +5,11 @@ slug: strangler-fig-pattern-java-swing
 date: 2026-10-28
 authors: webforJ
 tags: [insights, modernization, webswing]
-image: https://cdn.webforj.com/webforj-documentation/blogs/2026-10-28-strangler-fig-pattern-java-swing/cover.jpg
+image: https://cdn.webforj.com/webforj-documentation/blogs/2026-10-28-strangler-fig-pattern-java-swing/cover-v3.jpg
 hide_table_of_contents: false
 ---
 
-![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-10-28-strangler-fig-pattern-java-swing/cover.jpg)
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-10-28-strangler-fig-pattern-java-swing/cover-v3.jpg)
 
 You have a Swing app with years of business logic in it, and a full rewrite would stop everything else for as long as it takes. The strangler fig pattern for a Java Swing app is the usual way out: the new web app grows around the old one, and the old one is switched off only when nothing is left in it.
 

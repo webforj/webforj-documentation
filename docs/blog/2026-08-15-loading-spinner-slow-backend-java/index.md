@@ -5,11 +5,11 @@ slug: loading-spinner-slow-backend-java
 date: 2026-08-15
 authors: Eric Handtke
 tags: [tutorial, front end, performance]
-image: https://cdn.webforj.com/webforj-documentation/blogs/2026-08-15-loading-spinner-slow-backend-java/cover.jpg
+image: https://cdn.webforj.com/webforj-documentation/blogs/2026-08-15-loading-spinner-slow-backend-java/cover-v3.jpg
 hide_table_of_contents: false
 ---
 
-![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-08-15-loading-spinner-slow-backend-java/cover.jpg)
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-08-15-loading-spinner-slow-backend-java/cover-v3.jpg)
 
 A report that takes a few seconds to load feels broken when the screen just sits there. Users click again, or leave.
 

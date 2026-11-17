@@ -5,11 +5,11 @@ slug: java-visual-ui-designer
 date: 2026-10-08
 authors: webforJ
 tags: [tutorial, ui customization, web development]
-image: https://cdn.webforj.com/webforj-documentation/blogs/2026-10-08-java-visual-ui-designer/cover.jpg
+image: https://cdn.webforj.com/webforj-documentation/blogs/2026-10-08-java-visual-ui-designer/cover-v3.jpg
 hide_table_of_contents: false
 ---
 
-![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-10-08-java-visual-ui-designer/cover.jpg)
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-10-08-java-visual-ui-designer/cover-v3.jpg)
 
 craftforJ is the visual UI designer for Java that ships with webforJ, the [full-stack Java framework](/blog/java-full-stack-framework). It opens on top of your running app, shows the component tree your Java code built, lets you change properties and see the result at once, and writes the changes you keep back into the Java file that created each component.
 

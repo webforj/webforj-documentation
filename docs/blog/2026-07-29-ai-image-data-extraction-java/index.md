@@ -5,11 +5,11 @@ slug: ai-image-data-extraction-java
 date: 2026-07-29
 authors: Eric Handtke
 tags: [ai, spring-ai, spring]
-image: https://cdn.webforj.com/webforj-documentation/blogs/2026-07-29-ai-image-data-extraction-java/cover.jpg
+image: https://cdn.webforj.com/webforj-documentation/blogs/2026-07-29-ai-image-data-extraction-java/cover-v3.jpg
 hide_table_of_contents: false
 ---
 
-![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-07-29-ai-image-data-extraction-java/cover.jpg)
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-07-29-ai-image-data-extraction-java/cover-v3.jpg)
 
 To extract data from an image in Java, upload the file with the webforJ `Upload` component, send the bytes to a vision-capable model through Spring AI, and ask for a typed result. Spring AI maps the answer to a Java record, so your view gets the vendor, invoice number, date, and total as fields. You do not need a separate OCR library or a text parsing step.
 

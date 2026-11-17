@@ -5,11 +5,11 @@ slug: npm-packages-java-web-app
 date: 2026-07-31
 authors: Eric Handtke
 tags: [integrations, front end, web development]
-image: https://cdn.webforj.com/webforj-documentation/blogs/2026-07-31-npm-packages-java-web-app/cover-v2.jpg
+image: https://cdn.webforj.com/webforj-documentation/blogs/2026-07-31-npm-packages-java-web-app/cover-v3.jpg
 hide_table_of_contents: false
 ---
 
-![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-07-31-npm-packages-java-web-app/cover-v2.jpg)
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-07-31-npm-packages-java-web-app/cover-v3.jpg)
 
 You install an npm package in a webforJ app by declaring it on the view class. `@BundlePackage` names the package and its version range. `@BundleEntry` names the module you use. The build installs the package with Bun and compiles it into the app, so you don't set up a Node toolchain. This is the common way to bring a web component library into a Java web app. Your Java code then creates the component by its tag name and uses it like any other control.
 

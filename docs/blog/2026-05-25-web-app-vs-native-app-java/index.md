@@ -5,11 +5,11 @@ slug: web-app-vs-native-app-java
 date: 2026-05-25
 authors: webforJ
 tags: [insights, modernization]
-image: https://cdn.webforj.com/webforj-documentation/blogs/2026-05-25-web-app-vs-native-app-java/cover.jpg
+image: https://cdn.webforj.com/webforj-documentation/blogs/2026-05-25-web-app-vs-native-app-java/cover-v3.jpg
 hide_table_of_contents: false
 ---
 
-![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-05-25-web-app-vs-native-app-java/cover.jpg)
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-05-25-web-app-vs-native-app-java/cover-v3.jpg)
 
 Your users want an app with its own icon, and your team wants one codebase it can update in a single deploy. Those wishes usually set off the web app vs native app debate.
 

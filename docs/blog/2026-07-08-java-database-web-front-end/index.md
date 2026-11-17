@@ -5,11 +5,11 @@ slug: java-database-web-front-end
 date: 2026-07-08
 authors: Eric Handtke
 tags: [tutorial, spring, table, security]
-image: https://cdn.webforj.com/webforj-documentation/blogs/2026-07-08-java-database-web-front-end/cover.jpg
+image: https://cdn.webforj.com/webforj-documentation/blogs/2026-07-08-java-database-web-front-end/cover-v3.jpg
 hide_table_of_contents: false
 ---
 
-![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-07-08-java-database-web-front-end/cover.jpg)
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-07-08-java-database-web-front-end/cover-v3.jpg)
 
 You have a database that has been running for years. The tables are in good shape, a few Java services already read them, and now someone wants a screen where people can browse the rows, search them and fix a value without opening a SQL client.
 

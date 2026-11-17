@@ -5,14 +5,14 @@ slug: gwt-alternative
 date: 2026-09-04
 authors: webforJ
 tags: [insights, modernization, spring]
-image: https://cdn.webforj.com/webforj-documentation/blogs/2026-09-04-gwt-alternative/cover.jpg
+image: https://cdn.webforj.com/webforj-documentation/blogs/2026-09-04-gwt-alternative/cover-v3.jpg
 hide_table_of_contents: false
 ---
 
 <!-- vale Google.Acronyms = NO -->
 <!-- vale Google.Headings = NO -->
 
-![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-09-04-gwt-alternative/cover.jpg)
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-09-04-gwt-alternative/cover-v3.jpg)
 
 Many GWT teams want to keep writing their UI in Java but no longer want a Java-to-JavaScript compile step in the middle. For a GWT to Spring Boot migration, webforJ is a full-stack Java framework and a GWT alternative built for that. You build screens from Java components, they run on the server next to your Spring Boot services, and the browser renders them. There is no client-side code to compile and no RPC layer between the UI and your services.
 

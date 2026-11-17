@@ -5,7 +5,7 @@ slug: modernize-java-ui-without-javascript-talk
 date: 2026-11-08T12:00:00Z
 authors: webforJ
 tags: [community, modernization, webswing]
-image: https://cdn.webforj.com/webforj-documentation/blogs/2026-11-08-modernize-java-ui-without-javascript-talk/cover.jpg
+image: https://cdn.webforj.com/webforj-documentation/blogs/2026-11-08-modernize-java-ui-without-javascript-talk/cover-v3.jpg
 hide_table_of_contents: false
 ---
 
@@ -23,7 +23,7 @@ hide_table_of_contents: false
   })}</script>
 </Head>
 
-![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-11-08-modernize-java-ui-without-javascript-talk/cover.jpg)
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-11-08-modernize-java-ui-without-javascript-talk/cover-v3.jpg)
 
 Your Swing app works, your users know it, and the request on the table is to make it run in a browser. The usual answer is a rewrite with a JavaScript framework, a new API layer, and a second team. At JavaOne 2026, Stephan Wald, our Head of Development at BASIS International, showed how to modernize a Java Swing app without JavaScript instead: put the existing app in the browser first, then build everything that comes next in Java with webforJ, the full-stack Java framework.
 

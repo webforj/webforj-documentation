@@ -5,11 +5,11 @@ slug: wrap-react-component-java
 date: 2026-09-26
 authors: Lauren Alamo
 tags: [components, javascript, events]
-image: https://cdn.webforj.com/webforj-documentation/blogs/2026-09-26-wrap-react-component-java/cover-v2.jpg
+image: https://cdn.webforj.com/webforj-documentation/blogs/2026-09-26-wrap-react-component-java/cover-v3.jpg
 hide_table_of_contents: false
 ---
 
-![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-09-26-wrap-react-component-java/cover-v2.jpg)
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-09-26-wrap-react-component-java/cover-v3.jpg)
 
 Your team already has a React component it likes, a star rating, a date picker, a small chart. Now the app around it is moving to Java, and you'd rather not rebuild that widget or keep a second frontend just for it.
 

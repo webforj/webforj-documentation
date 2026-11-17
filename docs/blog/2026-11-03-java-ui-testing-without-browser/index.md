@@ -5,11 +5,11 @@ slug: java-ui-testing-without-browser
 date: 2026-11-03T09:00:00Z
 authors: Hyyan Abo Fakher
 tags: [tutorial, spring, annotations]
-image: https://cdn.webforj.com/webforj-documentation/blogs/2026-11-03-java-ui-testing-without-browser/cover.jpg
+image: https://cdn.webforj.com/webforj-documentation/blogs/2026-11-03-java-ui-testing-without-browser/cover-v3.jpg
 hide_table_of_contents: false
 ---
 
-![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-11-03-java-ui-testing-without-browser/cover.jpg)
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-11-03-java-ui-testing-without-browser/cover-v3.jpg)
 
 You can test a Java web UI without a browser by using the webforJ TestBed. It runs a view inside a plain JUnit test. It needs no browser and no server. The test finds components, types, and clicks the way a user does, and asserts on what the page shows, all from Java.
 

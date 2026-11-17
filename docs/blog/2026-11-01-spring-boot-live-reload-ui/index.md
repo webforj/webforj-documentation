@@ -5,11 +5,11 @@ slug: spring-boot-live-reload-ui
 date: 2026-11-01
 authors: Matthew Hawkins
 tags: [tutorial, spring, front end]
-image: https://cdn.webforj.com/webforj-documentation/blogs/2026-11-01-spring-boot-live-reload-ui/cover.jpg
+image: https://cdn.webforj.com/webforj-documentation/blogs/2026-11-01-spring-boot-live-reload-ui/cover-v3.jpg
 hide_table_of_contents: false
 ---
 
-![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-11-01-spring-boot-live-reload-ui/cover.jpg)
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-11-01-spring-boot-live-reload-ui/cover-v3.jpg)
 
 You change a label in your Java view, switch to the browser, and then wait. Stop the app, start it again, reload the page, click back to the screen you were on. Repeat that all day and a lot of development time quietly goes into waiting.
 

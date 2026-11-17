@@ -5,11 +5,11 @@ slug: java-admin-dashboard
 date: 2026-09-12
 authors: Eric Handtke
 tags: [tutorial, security]
-image: https://cdn.webforj.com/webforj-documentation/blogs/2026-09-12-java-admin-dashboard/cover.jpg
+image: https://cdn.webforj.com/webforj-documentation/blogs/2026-09-12-java-admin-dashboard/cover-v3.jpg
 hide_table_of_contents: false
 ---
 
-![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-09-12-java-admin-dashboard/cover.jpg)
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-09-12-java-admin-dashboard/cover-v3.jpg)
 
 You can build a Java admin dashboard in webforJ without writing HTML, JavaScript, or a REST layer. `AppLayout` gives you the header and the collapsible drawer, `AppNav` gives you the menu, each page is a routed Java class, and `Card`, `Table`, and `GoogleChart` fill the page. Access rules are annotations on the view classes.
 

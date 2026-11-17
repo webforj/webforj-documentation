@@ -5,11 +5,11 @@ slug: web-components-in-java
 date: 2026-09-14
 authors: Matthew Hawkins
 tags: [components, javascript, annotations]
-image: https://cdn.webforj.com/webforj-documentation/blogs/2026-09-14-web-components-in-java/cover.jpg
+image: https://cdn.webforj.com/webforj-documentation/blogs/2026-09-14-web-components-in-java/cover-v3.jpg
 hide_table_of_contents: false
 ---
 
-![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-09-14-web-components-in-java/cover.jpg)
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-09-14-web-components-in-java/cover-v3.jpg)
 
 To use web components in Java with webforJ, you write a class that extends `ElementComposite`, name the custom element with `@NodeName`, declare its properties as `PropertyDescriptor` fields, and expose typed Java methods and events. The result behaves like any other webforJ component, and you add it to a layout with `add()`.
 

@@ -5,11 +5,11 @@ slug: java-internal-tools
 date: 2026-07-20
 authors: webforJ
 tags: [insights, table, spring]
-image: https://cdn.webforj.com/webforj-documentation/blogs/2026-07-20-java-internal-tools/cover.jpg
+image: https://cdn.webforj.com/webforj-documentation/blogs/2026-07-20-java-internal-tools/cover-v3.jpg
 hide_table_of_contents: false
 ---
 
-![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-07-20-java-internal-tools/cover.jpg)
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-07-20-java-internal-tools/cover-v3.jpg)
 
 Someone on the team needs a screen where support can look up an account, fix a record, and see an audit trail. The data is already in your Java services, and the request is small. It still turns into a project once you add a second language, a build pipeline and an API layer just to draw a table.
 

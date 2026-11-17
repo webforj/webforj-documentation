@@ -5,11 +5,11 @@ slug: migrate-swing-app-to-web
 date: 2026-08-19
 authors: webforJ
 tags: [insights, modernization, webswing]
-image: https://cdn.webforj.com/webforj-documentation/blogs/2026-08-19-migrate-swing-app-to-web/cover.jpg
+image: https://cdn.webforj.com/webforj-documentation/blogs/2026-08-19-migrate-swing-app-to-web/cover-v3.jpg
 hide_table_of_contents: false
 ---
 
-![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-08-19-migrate-swing-app-to-web/cover.jpg)
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-08-19-migrate-swing-app-to-web/cover-v3.jpg)
 
 Your Swing app still works. Users depend on it, the business rules inside it took years to get right, and now someone wants it in the browser. That is where a Java Swing to web migration starts, and most answers you find online begin with a new JavaScript front end.
 

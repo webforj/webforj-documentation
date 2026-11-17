@@ -5,11 +5,11 @@ slug: cost-separate-frontend-backend-teams
 date: 2026-09-22
 authors: webforJ
 tags: [insights, full-stack]
-image: https://cdn.webforj.com/webforj-documentation/blogs/2026-09-22-cost-separate-frontend-backend-teams/cover.jpg
+image: https://cdn.webforj.com/webforj-documentation/blogs/2026-09-22-cost-separate-frontend-backend-teams/cover-v3.jpg
 hide_table_of_contents: false
 ---
 
-![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-09-22-cost-separate-frontend-backend-teams/cover.jpg)
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-09-22-cost-separate-frontend-backend-teams/cover-v3.jpg)
 
 Your budget review lists a Java backend team and a JavaScript frontend team, and the line items keep growing even when the product stays the same size. Part of that is the work. Part of it is the split itself.
 

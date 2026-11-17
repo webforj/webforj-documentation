@@ -5,11 +5,11 @@ slug: mcp-app-without-spring
 date: 2026-10-05
 authors: Hyyan Abo Fakher
 tags: [ai, mcp, spring]
-image: https://cdn.webforj.com/webforj-documentation/blogs/2026-10-05-mcp-app-without-spring/cover.jpg
+image: https://cdn.webforj.com/webforj-documentation/blogs/2026-10-05-mcp-app-without-spring/cover-v3.jpg
 hide_table_of_contents: false
 ---
 
-![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-10-05-mcp-app-without-spring/cover.jpg)
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-10-05-mcp-app-without-spring/cover-v3.jpg)
 
 Not every Java web app runs on Spring Boot, and adding a framework just to put one screen inside an AI chat would be the biggest change in the project. The good news is that you don't have to.
 

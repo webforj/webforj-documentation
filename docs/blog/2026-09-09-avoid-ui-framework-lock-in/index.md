@@ -5,11 +5,11 @@ slug: avoid-ui-framework-lock-in
 date: 2026-09-09
 authors: Hyyan Abo Fakher
 tags: [insights, spring]
-image: https://cdn.webforj.com/webforj-documentation/blogs/2026-09-09-avoid-ui-framework-lock-in/cover.jpg
+image: https://cdn.webforj.com/webforj-documentation/blogs/2026-09-09-avoid-ui-framework-lock-in/cover-v3.jpg
 hide_table_of_contents: false
 ---
 
-![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-09-09-avoid-ui-framework-lock-in/cover.jpg)
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-09-09-avoid-ui-framework-lock-in/cover-v3.jpg)
 
 Somebody on the team asks the question before the first screen gets built: if we pick this UI framework and it stops fitting in four years, what do we have to throw away? It is a fair question, and a vague answer is worth nothing.
 

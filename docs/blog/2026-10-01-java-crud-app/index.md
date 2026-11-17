@@ -5,11 +5,11 @@ slug: java-crud-app
 date: 2026-10-01
 authors: Hyyan Abo Fakher
 tags: [tutorial, spring, table]
-image: https://cdn.webforj.com/webforj-documentation/blogs/2026-10-01-java-crud-app/cover.jpg
+image: https://cdn.webforj.com/webforj-documentation/blogs/2026-10-01-java-crud-app/cover-v3.jpg
 hide_table_of_contents: false
 ---
 
-![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-10-01-java-crud-app/cover.jpg)
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-10-01-java-crud-app/cover-v3.jpg)
 
 A Java CRUD web app in webforJ is one Spring Data repository and one view class. A `Table` backed by `SpringDataRepository` lists and sorts the entities, a `BindingContext` with Jakarta validation drives the create and edit form, and a `ConfirmDialog` guards the delete. The whole screen is Java, so there is no REST layer to write, no JavaScript to wire up, and no template language to learn.
 

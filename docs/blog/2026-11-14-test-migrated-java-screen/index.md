@@ -5,11 +5,11 @@ slug: test-migrated-java-screen
 date: 2026-11-14
 authors: webforJ
 tags: [tutorial, modernization, webswing]
-image: https://cdn.webforj.com/webforj-documentation/blogs/2026-11-14-test-migrated-java-screen/cover.jpg
+image: https://cdn.webforj.com/webforj-documentation/blogs/2026-11-14-test-migrated-java-screen/cover-v3.jpg
 hide_table_of_contents: false
 ---
 
-![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-11-14-test-migrated-java-screen/cover.jpg)
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-11-14-test-migrated-java-screen/cover-v3.jpg)
 
 You have moved the first screen of an old Java app to the web, and it looks right. The next question is harder. Does it still behave the way the old screen did, and will it still behave that way after the next ten screens land? Nobody wants a user to be the one who finds out.
 

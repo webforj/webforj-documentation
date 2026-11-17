@@ -5,11 +5,11 @@ slug: ai-agent-skills-java
 date: 2026-08-04
 authors: webforJ
 tags: [ai, 'web development']
-image: https://cdn.webforj.com/webforj-documentation/blogs/2026-08-04-ai-agent-skills-java/cover.jpg
+image: https://cdn.webforj.com/webforj-documentation/blogs/2026-08-04-ai-agent-skills-java/cover-v3.jpg
 hide_table_of_contents: false
 ---
 
-![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-08-04-ai-agent-skills-java/cover.jpg)
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-08-04-ai-agent-skills-java/cover-v3.jpg)
 
 Ask a general AI assistant for a search field that waits until the user stops typing, and you'll often get a raw thread and a sleep call. It compiles, but it isn't how a webforJ app should do it, and you end up rewriting it by hand.
 

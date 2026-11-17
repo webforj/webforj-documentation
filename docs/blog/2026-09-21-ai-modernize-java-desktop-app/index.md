@@ -5,11 +5,11 @@ slug: ai-modernize-java-desktop-app
 date: 2026-09-21
 authors: webforJ
 tags: [ai, modernization, webswing, mcp]
-image: https://cdn.webforj.com/webforj-documentation/blogs/2026-09-21-ai-modernize-java-desktop-app/cover.jpg
+image: https://cdn.webforj.com/webforj-documentation/blogs/2026-09-21-ai-modernize-java-desktop-app/cover-v3.jpg
 hide_table_of_contents: false
 ---
 
-![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-09-21-ai-modernize-java-desktop-app/cover.jpg)
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-09-21-ai-modernize-java-desktop-app/cover-v3.jpg)
 
 Asking an AI assistant to convert a whole Swing app in one pass sounds fast. In practice you get thousands of lines nobody has reviewed, written against APIs the model half remembers, and a release date that keeps slipping.
 

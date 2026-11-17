@@ -5,11 +5,11 @@ slug: starting-new-java-project
 date: 2026-10-22
 authors: webforJ
 tags: [insights, web development, spring]
-image: https://cdn.webforj.com/webforj-documentation/blogs/2026-10-22-starting-new-java-project/cover.jpg
+image: https://cdn.webforj.com/webforj-documentation/blogs/2026-10-22-starting-new-java-project/cover-v3.jpg
 hide_table_of_contents: false
 ---
 
-![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-10-22-starting-new-java-project/cover.jpg)
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-10-22-starting-new-java-project/cover-v3.jpg)
 
 A blank repository feels like freedom for about a day. Then the questions arrive: where does the UI live, who owns the front end, how do users sign in, and what happens when the framework ships a new major version? Most teams answer these one at a time, and the answers add up to the stack.
 

@@ -5,11 +5,11 @@ slug: when-to-use-webforj
 date: 2026-10-31
 authors: webforJ
 tags: [insights, web development]
-image: https://cdn.webforj.com/webforj-documentation/blogs/2026-10-31-when-to-use-webforj/cover.jpg
+image: https://cdn.webforj.com/webforj-documentation/blogs/2026-10-31-when-to-use-webforj/cover-v3.jpg
 hide_table_of_contents: false
 ---
 
-![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-10-31-when-to-use-webforj/cover.jpg)
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-10-31-when-to-use-webforj/cover-v3.jpg)
 
 You have a project in front of you and one question: is this the kind of app webforJ was made for? Most framework pages answer with a feature list. A fit guide answers with a yes or a no for your project, and that is what this post does.
 

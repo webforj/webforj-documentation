@@ -5,11 +5,11 @@ slug: choosing-enterprise-web-framework
 date: 2026-09-19
 authors: webforJ
 tags: [insights, full-stack]
-image: https://cdn.webforj.com/webforj-documentation/blogs/2026-09-19-choosing-enterprise-web-framework/cover.jpg
+image: https://cdn.webforj.com/webforj-documentation/blogs/2026-09-19-choosing-enterprise-web-framework/cover-v3.jpg
 hide_table_of_contents: false
 ---
 
-![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-09-19-choosing-enterprise-web-framework/cover.jpg)
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-09-19-choosing-enterprise-web-framework/cover-v3.jpg)
 
 You have a budget line, a team that already knows Java, a list of systems the new app must talk to, and a board that will ask who owns the risk. The framework decision looks small next to all that, yet it sets your hiring, your security review and your upgrade bill for the next decade.
 

@@ -5,11 +5,11 @@ slug: claude-code-java-web-app
 date: 2026-11-07
 authors: Eric Handtke
 tags: [ai, mcp, full-stack]
-image: https://cdn.webforj.com/webforj-documentation/blogs/2026-11-07-claude-code-java-web-app/cover.jpg
+image: https://cdn.webforj.com/webforj-documentation/blogs/2026-11-07-claude-code-java-web-app/cover-v3.jpg
 hide_table_of_contents: false
 ---
 
-![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-11-07-claude-code-java-web-app/cover.jpg)
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-11-07-claude-code-java-web-app/cover-v3.jpg)
 
 You ask your coding agent for a Java screen and get back something that looks right. Then you build it. A method does not exist, a constructor takes other arguments, and the button you asked for has never been clicked by anything. The agent is fast. What you lack is a way to know the result is correct before you read every line.
 

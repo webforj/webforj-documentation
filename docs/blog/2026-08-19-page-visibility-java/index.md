@@ -5,11 +5,11 @@ slug: page-visibility-java
 date: 2026-08-19
 authors: Matthew Hawkins
 tags: [components, performance, front end]
-image: https://cdn.webforj.com/webforj-documentation/blogs/2026-08-19-page-visibility-java/cover.jpg
+image: https://cdn.webforj.com/webforj-documentation/blogs/2026-08-19-page-visibility-java/cover-v3.jpg
 hide_table_of_contents: false
 ---
 
-![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-08-19-page-visibility-java/cover.jpg)
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-08-19-page-visibility-java/cover-v3.jpg)
 
 A dashboard that refreshes every few seconds keeps working even when its tab sits behind ten others. Nobody sees those updates, yet the server still does the work.
 

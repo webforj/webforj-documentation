@@ -5,11 +5,11 @@ slug: java-web-app-security-best-practices
 date: 2026-05-08
 authors: webforJ
 tags: [tutorial, security, spring]
-image: https://cdn.webforj.com/webforj-documentation/blogs/2026-05-08-java-web-app-security-best-practices/cover.jpg
+image: https://cdn.webforj.com/webforj-documentation/blogs/2026-05-08-java-web-app-security-best-practices/cover-v3.jpg
 hide_table_of_contents: false
 ---
 
-![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-05-08-java-web-app-security-best-practices/cover.jpg)
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-05-08-java-web-app-security-best-practices/cover-v3.jpg)
 
 Java web app security best practices start with one choice: keep the interface logic on the server. webforJ does exactly that. Your views run in Java, the browser only renders them, and whole classes of attack never get a foothold. What remains is a short list of habits: gate every route, treat input as untrusted, cap uploads and requests, keep secrets out of the repo, and run over HTTPS. This post covers each one for a webforJ app.
 

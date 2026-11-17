@@ -5,11 +5,11 @@ slug: mcp-apps-java
 date: 2026-10-17
 authors: Matthew Hawkins
 tags: [ai, mcp, spring]
-image: https://cdn.webforj.com/webforj-documentation/blogs/2026-10-17-mcp-apps-java/cover.jpg
+image: https://cdn.webforj.com/webforj-documentation/blogs/2026-10-17-mcp-apps-java/cover-v3.jpg
 hide_table_of_contents: false
 ---
 
-![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-10-17-mcp-apps-java/cover.jpg)
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-10-17-mcp-apps-java/cover-v3.jpg)
 
 To build an MCP app in Java with webforJ, add `@McpApp` to a routed view and an MCP host such as Claude Desktop can open that view inside its conversation, with the same components, services, and state your app already has. The AI can pass input when it opens the view, call actions on it, and receive context from what the person clicks.
 

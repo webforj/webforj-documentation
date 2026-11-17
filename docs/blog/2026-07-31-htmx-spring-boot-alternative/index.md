@@ -5,11 +5,11 @@ slug: htmx-spring-boot-alternative
 date: 2026-07-31
 authors: webforJ
 tags: [insights, spring, web development, full-stack]
-image: https://cdn.webforj.com/webforj-documentation/blogs/2026-07-31-htmx-spring-boot-alternative/cover.jpg
+image: https://cdn.webforj.com/webforj-documentation/blogs/2026-07-31-htmx-spring-boot-alternative/cover-v3.jpg
 hide_table_of_contents: false
 ---
 
-![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-07-31-htmx-spring-boot-alternative/cover.jpg)
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-07-31-htmx-spring-boot-alternative/cover-v3.jpg)
 
 You have a Spring Boot app, a few server-rendered pages and a growing list of things that should react to the user without a full reload. Someone suggested htmx, and it is a fair suggestion. Then you count what each interaction needs, and the template files and fragment endpoints start to add up.
 

@@ -5,11 +5,11 @@ slug: google-charts-java
 date: 2026-07-19
 authors: Eric Handtke
 tags: [components, events]
-image: https://cdn.webforj.com/webforj-documentation/blogs/2026-07-19-google-charts-java/cover.jpg
+image: https://cdn.webforj.com/webforj-documentation/blogs/2026-07-19-google-charts-java/cover-v3.jpg
 hide_table_of_contents: false
 ---
 
-![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-07-19-google-charts-java/cover.jpg)
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-07-19-google-charts-java/cover-v3.jpg)
 
 Sooner or later, most business apps need a chart: revenue by month, orders by region, tickets by status. In a Java web app that often means a detour into JavaScript charting libraries, a second build, and code that passes data back and forth between the two.
 

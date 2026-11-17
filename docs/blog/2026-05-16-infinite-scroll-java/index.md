@@ -5,11 +5,11 @@ slug: infinite-scroll-java
 date: 2026-05-16
 authors: Eric Handtke
 tags: [tutorial, performance]
-image: https://cdn.webforj.com/webforj-documentation/blogs/2026-05-16-infinite-scroll-java/cover.jpg
+image: https://cdn.webforj.com/webforj-documentation/blogs/2026-05-16-infinite-scroll-java/cover-v3.jpg
 hide_table_of_contents: false
 ---
 
-![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-05-16-infinite-scroll-java/cover.jpg)
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-05-16-infinite-scroll-java/cover-v3.jpg)
 
 Your feed has thousands of rows, and a page of numbered buttons feels dated. Users expect to keep scrolling and see more appear, without waiting for the whole list to load up front.
 

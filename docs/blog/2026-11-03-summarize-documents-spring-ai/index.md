@@ -5,11 +5,11 @@ slug: summarize-documents-spring-ai
 date: 2026-11-03T13:00:00Z
 authors: Matthew Hawkins
 tags: [ai, spring]
-image: https://cdn.webforj.com/webforj-documentation/blogs/2026-11-03-summarize-documents-spring-ai/cover.jpg
+image: https://cdn.webforj.com/webforj-documentation/blogs/2026-11-03-summarize-documents-spring-ai/cover-v3.jpg
 hide_table_of_contents: false
 ---
 
-![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-11-03-summarize-documents-spring-ai/cover.jpg)
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-11-03-summarize-documents-spring-ai/cover-v3.jpg)
 
 You can summarize PDFs with AI in Java by letting the user upload the file in a webforJ view, extracting the text with Spring AI's Tika reader, and sending that text to a chat model. The summary runs on a background thread, so the page stays responsive while the model works. You will build the whole process in three Java files, with no REST controller and no JavaScript. The complete app, [Summarize](https://github.com/webforj/built-with-webforj/tree/main/webforj-summarize), is on GitHub and runs with your own Gemini API key.
 

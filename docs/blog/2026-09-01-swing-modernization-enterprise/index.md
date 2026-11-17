@@ -5,11 +5,11 @@ slug: swing-modernization-enterprise
 date: 2026-09-01
 authors: webforJ
 tags: [insights, modernization, webswing]
-image: https://cdn.webforj.com/webforj-documentation/blogs/2026-09-01-swing-modernization-enterprise/cover.jpg
+image: https://cdn.webforj.com/webforj-documentation/blogs/2026-09-01-swing-modernization-enterprise/cover-v3.jpg
 hide_table_of_contents: false
 ---
 
-![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-09-01-swing-modernization-enterprise/cover.jpg)
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-09-01-swing-modernization-enterprise/cover-v3.jpg)
 
 Somewhere in your portfolio there is a Java desktop app that people depend on every day. It carries years of business rules, nobody wants to change it, and the requests to put it in a browser keep coming. Swing modernization for enterprises is the work of moving that app to the web without stopping the business that runs on it.
 

@@ -5,11 +5,11 @@ slug: selenium-vs-playwright-java
 date: 2026-11-07
 authors: Matthew Hawkins
 tags: [tutorial, performance]
-image: https://cdn.webforj.com/webforj-documentation/blogs/2026-11-07-selenium-vs-playwright-java/cover.jpg
+image: https://cdn.webforj.com/webforj-documentation/blogs/2026-11-07-selenium-vs-playwright-java/cover-v3.jpg
 hide_table_of_contents: false
 ---
 
-![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-11-07-selenium-vs-playwright-java/cover.jpg)
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-11-07-selenium-vs-playwright-java/cover-v3.jpg)
 
 If you're about to write the first browser tests for a Java web app, the tool question comes up fast. One teammate swears by Selenium, another has heard Playwright is easier, and nobody wants to pick wrong and rewrite the suite later.
 

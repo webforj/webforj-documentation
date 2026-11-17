@@ -5,11 +5,11 @@ slug: java-real-time-ui-updates
 date: 2026-10-04
 authors: Hyyan Abo Fakher
 tags: [tutorial, performance, spring]
-image: https://cdn.webforj.com/webforj-documentation/blogs/2026-10-04-java-real-time-ui-updates/cover.jpg
+image: https://cdn.webforj.com/webforj-documentation/blogs/2026-10-04-java-real-time-ui-updates/cover-v3.jpg
 hide_table_of_contents: false
 ---
 
-![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-10-04-java-real-time-ui-updates/cover.jpg)
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-10-04-java-real-time-ui-updates/cover-v3.jpg)
 
 In webforJ you get real-time UI updates in Java by changing components from the server and letting the framework carry the change to the browser. For work that runs outside the UI thread, you wrap the change in `Environment.runLater()`. For recurring refreshes you use `Interval`, and for typing you use `Debouncer`. You write no WebSocket or server-sent events code.
 

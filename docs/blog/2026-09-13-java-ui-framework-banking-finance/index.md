@@ -5,11 +5,11 @@ slug: java-ui-framework-banking-finance
 date: 2026-09-13
 authors: webforJ
 tags: [insights, security, spring]
-image: https://cdn.webforj.com/webforj-documentation/blogs/2026-09-13-java-ui-framework-banking-finance/cover.jpg
+image: https://cdn.webforj.com/webforj-documentation/blogs/2026-09-13-java-ui-framework-banking-finance/cover-v3.jpg
 hide_table_of_contents: false
 ---
 
-![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-09-13-java-ui-framework-banking-finance/cover.jpg)
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-09-13-java-ui-framework-banking-finance/cover-v3.jpg)
 
 Your operations console, case management tool or onboarding screen will run for ten years or more, handle sensitive records every day, and be maintained by people who have not been hired yet. The framework you pick today has to survive that, and so does the review it will go through.
 

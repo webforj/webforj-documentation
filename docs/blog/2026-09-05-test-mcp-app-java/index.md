@@ -5,11 +5,11 @@ slug: test-mcp-app-java
 date: 2026-09-05
 authors: Eric Handtke
 tags: [ai, mcp, spring]
-image: https://cdn.webforj.com/webforj-documentation/blogs/2026-09-05-test-mcp-app-java/cover.jpg
+image: https://cdn.webforj.com/webforj-documentation/blogs/2026-09-05-test-mcp-app-java/cover-v3.jpg
 hide_table_of_contents: false
 ---
 
-![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-09-05-test-mcp-app-java/cover.jpg)
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-09-05-test-mcp-app-java/cover-v3.jpg)
 
 Building a tool for an AI app has an awkward test loop. You change the code, restart, open a chat, and phrase a request so the model decides to call your tool, then hope it passes the arguments you meant. When something looks wrong, you can't tell whether the bug is in your code or in the conversation.
 

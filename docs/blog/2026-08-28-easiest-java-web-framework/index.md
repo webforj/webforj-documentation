@@ -5,11 +5,11 @@ slug: easiest-java-web-framework
 date: 2026-08-28
 authors: webforJ
 tags: [insights, full-stack]
-image: https://cdn.webforj.com/webforj-documentation/blogs/2026-08-28-easiest-java-web-framework/cover.jpg
+image: https://cdn.webforj.com/webforj-documentation/blogs/2026-08-28-easiest-java-web-framework/cover-v3.jpg
 hide_table_of_contents: false
 ---
 
-![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-08-28-easiest-java-web-framework/cover.jpg)
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-08-28-easiest-java-web-framework/cover-v3.jpg)
 
 You know Java. You need a web app. Every "easy" framework you find promises the same thing, and none of them says what easy means, so you end up comparing adjectives instead of facts.
 
