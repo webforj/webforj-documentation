@@ -5589,5 +5589,137 @@
   },
   "page.craftforj.hero.videoLabel": {
     "message": "craftforJ ouvert par-dessus une application webforJ en cours d’exécution : inspection des composants, modification des propriétés, personnalisation du thème et questions à l’assistant IA"
+  },
+  "page.modernization.hero.talk": {
+    "message": "Parler à l’équipe"
+  },
+  "page.modernization.hero.factProof": {
+    "message": "Pour que Prodin puisse proposer une version web de son ERP Swing en réutilisant son code Java\n"
+  },
+  "page.modernization.hero.factProofValue": {
+    "message": "4 mois"
+  },
+  "page.modernization.hero.factSince": {
+    "message": "BASIS International, l’entreprise à l’origine de webforJ, conçoit des outils de développement depuis 1985."
+  },
+  "page.modernization.talk.stageCaption": {
+    "message": "Le tableau Swing s’exécute dans l’application webforJ. Un double-clic envoie select-customer et ouvre la boîte de dialogue webforJ dans le même onglet. L’enregistrement renvoie update-customer, et le tableau Swing affiche la modification."
+  },
+  "page.modernization.talk.announce.textRow": {
+    "message": "Un double-clic envoie {action} avec la ligne sélectionnée. Sur ordinateur, le même clic ouvre toujours la boîte de dialogue Swing."
+  },
+  "page.modernization.talk.docs": {
+    "message": "Découvrez comment fonctionnent les messages\n"
+  },
+  "page.modernization.partner.proof.list.term": {
+    "message": "Page des partenaires"
+  },
+  "page.modernization.partner.proof.list.desc": {
+    "message": "Webswing mentionne webforJ sur sa page partenaires."
+  },
+  "page.modernization.partner.proof.release.term": {
+    "message": "Annoncé"
+  },
+  "page.modernization.partner.proof.release.desc": {
+    "message": "webforJ a annoncé ce partenariat avec sa version 25.10, en même temps que WebswingConnector."
+  },
+  "page.modernization.partner.proof.webinar.term": {
+    "message": "Webinaire conjoint"
+  },
+  "page.modernization.partner.proof.webinar.desc": {
+    "message": "Les experts de Webswing et webforJ ont montré comment porter une application Java de bureau sur le Web en novembre 2025."
+  },
+  "page.modernization.partner.proof.events.term": {
+    "message": "Événements réunis"
+  },
+  "page.modernization.partner.proof.events.desc": {
+    "message": "Les deux équipes étaient présentes ensemble au Java Forum Stuttgart 2025 et ont partagé un stand à JavaOne 2026."
+  },
+  "page.modernization.guides.desktop": {
+    "message": "Applications de bureau"
+  },
+  "page.modernization.guides.migrateSwing": {
+    "message": "Migration de Java Swing vers le web : choisissez la bonne approche"
+  },
+  "page.modernization.guides.swingMapping": {
+    "message": "Convertir Swing en web : guide de correspondance Swing–webforJ"
+  },
+  "page.modernization.guides.strangler": {
+    "message": "Le strangler fig pattern pour une application Java Swing"
+  },
+  "page.modernization.guides.javafx": {
+    "message": "JavaFX vers le Web en Java"
+  },
+  "page.modernization.guides.web": {
+    "message": "Struts, JSF et JSP"
+  },
+  "page.modernization.guides.struts": {
+    "message": "Migration de Struts vers Spring Boot avec webforJ"
+  },
+  "page.modernization.guides.jsf": {
+    "message": "Migration de JSF vers Spring Boot : vues Faces dans webforJ"
+  },
+  "page.modernization.guides.jsp": {
+    "message": "Modernisation de JSP : une voie d’avenir native Java\n"
+  },
+  "page.modernization.guides.decide": {
+    "message": "Pour la décision"
+  },
+  "page.modernization.guides.enterprise": {
+    "message": "Modernisation de Swing pour les entreprises : guide de décision"
+  },
+  "page.modernization.guides.strategy": {
+    "message": "Stratégie de modernisation des applications Java existantes"
+  },
+  "page.modernization.partner.eyebrow": {
+    "message": "Webswing et webforJ"
+  },
+  "page.modernization.partner.title1": {
+    "message": "Deux entreprises,"
+  },
+  "page.modernization.partner.title2": {
+    "message": "un chemin"
+  },
+  "page.modernization.partner.lead": {
+    "message": "Webswing exécute aujourd’hui votre application Java de bureau dans le navigateur. webforJ la fait évoluer écran par écran, grâce à un connecteur pris en charge entre les deux."
+  },
+  "page.modernization.partner.webswing.title": {
+    "message": "Lance l’application dont vous disposez\n"
+  },
+  "page.modernization.partner.webswing.text": {
+    "message": "Exécute l’application Swing, JavaFX ou SWT sur le serveur et diffuse son interface dans le navigateur. Webswing est un produit de sa propre société, soumis à sa propre licence commerciale."
+  },
+  "page.modernization.partner.webforj.title": {
+    "message": "Le reporte"
+  },
+  "page.modernization.partner.webforj.text": {
+    "message": "Intègre l’application en cours d’exécution dans une vue webforJ avec WebswingConnector, disponible depuis webforJ 25.10, et constitue le framework dans lequel chaque nouvel écran est développé."
+  },
+  "page.modernization.proof.prodinQuote": {
+    "message": "webforJ nous a permis de livrer une version entièrement web de notre ERP en seulement quatre mois, tout en réutilisant notre base de code Java existante. Nous avons ainsi évité une réécriture complète et considérablement réduit les délais et les risques."
+  },
+  "page.modernization.proof.prodinWho": {
+    "message": "Éditeur néerlandais de logiciels ERP, dont l’ERP a été développé avec Java Swing\n"
+  },
+  "page.modernization.proof.prodinLink": {
+    "message": "Lire l’histoire de réussite"
+  },
+  "page.modernization.band.title": {
+    "message": "Parlez à l’équipe de votre application\n"
+  },
+  "page.modernization.band.text": {
+    "message": "Venez avec votre application, la pile technologique sur laquelle elle repose et votre calendrier. L’équipe qui développe webforJ vous guidera du premier écran au dernier."
+  },
+  "page.modernization.band.book": {
+    "message": "Planifier un appel"
+  },
+  "page.modernization.band.email": {
+    "message": "Ou écrivez à {email}"
+  },
+  "page.modernization.band.languages": {
+    "message": "Nous parlons {languages}"
+  },
+  "page.modernization.guides.title": {
+    "message": "Lire les guides"
   }
 }

@@ -5589,5 +5589,137 @@
   },
   "page.craftforj.hero.videoLabel": {
     "message": "craftforJ käynnissä olevan webforJ-sovelluksen päällä: komponenttien tarkastelu, ominaisuuksien muokkaus, teeman mukauttaminen ja tekoälyavustajan käyttö"
+  },
+  "page.modernization.hero.talk": {
+    "message": "Ota yhteyttä tiimiin"
+  },
+  "page.modernization.hero.factProof": {
+    "message": "Jotta Prodin voi tarjota Swing-ERP-järjestelmästään verkkoversion Java-koodiaan hyödyntäen"
+  },
+  "page.modernization.hero.factProofValue": {
+    "message": "4 kuukautta"
+  },
+  "page.modernization.hero.factSince": {
+    "message": "BASIS International, webforJ:n taustayhtiö, on kehittänyt kehitystyökaluja vuodesta 1985."
+  },
+  "page.modernization.talk.stageCaption": {
+    "message": "Swing-taulukko toimii webforJ-sovelluksessa. Kaksoisnapsautus lähettää select-customer-viestin, ja webforJ-valintaikkuna avautuu samassa välilehdessä. Tallennus lähettää update-customer-viestin takaisin, ja muutos näkyy Swing-taulukossa."
+  },
+  "page.modernization.talk.announce.textRow": {
+    "message": "Kaksoisnapsautus lähettää {action}-toiminnon valitun rivin kanssa. Työpöytäversiossa sama napsautus avaa edelleen Swing-valintaikkunan."
+  },
+  "page.modernization.talk.docs": {
+    "message": "Lue, miten viestit toimivat."
+  },
+  "page.modernization.partner.proof.list.term": {
+    "message": "Kumppanisivu"
+  },
+  "page.modernization.partner.proof.list.desc": {
+    "message": "Webswing listaa webforJ:n kumppanisivullaan."
+  },
+  "page.modernization.partner.proof.release.term": {
+    "message": "Ilmoitettu"
+  },
+  "page.modernization.partner.proof.release.desc": {
+    "message": "webforJ ilmoitti kumppanuudesta WebswingConnectorin kanssa 25.10-julkaisussaan."
+  },
+  "page.modernization.partner.proof.webinar.term": {
+    "message": "Yhteiswebinaari"
+  },
+  "page.modernization.partner.proof.webinar.desc": {
+    "message": "Webswing- ja webforJ-asiantuntijat näyttivät marraskuussa 2025, miten Java-työpöytäsovellus siirretään verkkoon."
+  },
+  "page.modernization.partner.proof.events.term": {
+    "message": "Tapahtumat yhdessä"
+  },
+  "page.modernization.partner.proof.events.desc": {
+    "message": "Molemmat tiimit esiintyivät yhdessä Java Forum Stuttgart 2025 -tapahtumassa ja jakoivat messuosaston JavaOne 2026 -tapahtumassa."
+  },
+  "page.modernization.guides.desktop": {
+    "message": "Työpöytäsovellukset"
+  },
+  "page.modernization.guides.migrateSwing": {
+    "message": "Java Swing -sovellusten siirto verkkoon: valitse oikea tapa"
+  },
+  "page.modernization.guides.swingMapping": {
+    "message": "Swingistä verkkoon: Swing–webforJ-vastaavuusopas"
+  },
+  "page.modernization.guides.strangler": {
+    "message": "Strangler Fig -malli Java Swing -sovellukselle"
+  },
+  "page.modernization.guides.javafx": {
+    "message": "JavaFX:stä verkkoon Javalla"
+  },
+  "page.modernization.guides.web": {
+    "message": "Struts, JSF ja JSP"
+  },
+  "page.modernization.guides.struts": {
+    "message": "Strutsista Spring Bootiin siirtyminen webforJ:llä"
+  },
+  "page.modernization.guides.jsf": {
+    "message": "JSF:stä Spring Bootiin siirtyminen: Faces-näkymät webforJ:ssä"
+  },
+  "page.modernization.guides.jsp": {
+    "message": "JSP:n modernisointi: Java-natiivi polku eteenpäin"
+  },
+  "page.modernization.guides.decide": {
+    "message": "Päätöstä varten"
+  },
+  "page.modernization.guides.enterprise": {
+    "message": "Swingin modernisointi yrityksille: päätösopas"
+  },
+  "page.modernization.guides.strategy": {
+    "message": "Vanhan Java-sovelluksen modernisointistrategia"
+  },
+  "page.modernization.partner.eyebrow": {
+    "message": "Webswing ja webforJ"
+  },
+  "page.modernization.partner.title1": {
+    "message": "Kaksi yritystä,"
+  },
+  "page.modernization.partner.title2": {
+    "message": "yksi polku"
+  },
+  "page.modernization.partner.lead": {
+    "message": "Webswing suorittaa Java-työpöytäsovellustasi selaimessa jo tänään. webforJ vie sitä eteenpäin näkymä kerrallaan, ja niiden välillä on tuettu liitin."
+  },
+  "page.modernization.partner.webswing.title": {
+    "message": "Käynnistää sovelluksesi"
+  },
+  "page.modernization.partner.webswing.text": {
+    "message": "Renderöi Swing-, JavaFX- tai SWT-sovelluksen palvelimella ja suoratoistaa sen käyttöliittymän selaimeen. Webswing on erillisen yrityksen tuote, jolla on oma kaupallinen lisenssinsä."
+  },
+  "page.modernization.partner.webforj.title": {
+    "message": "Vie sen eteenpäin"
+  },
+  "page.modernization.partner.webforj.text": {
+    "message": "Upottaa käynnissä olevan sovelluksen webforJ-näkymään WebswingConnectorilla, joka on ollut saatavilla webforJ 25.10:stä lähtien. Kaikki uudet näytöt toteutetaan tällä kehyksellä."
+  },
+  "page.modernization.proof.prodinQuote": {
+    "message": "webforJ:n avulla pystyimme toimittamaan täysin verkkopohjaisen version ERP-järjestelmästämme vain neljässä kuukaudessa ja hyödyntämään samalla olemassa olevaa Java-koodikantaamme. Näin vältyimme täydelliseltä uudelleenkirjoitukselta ja vähensimme merkittävästi sekä ajankäyttöä että riskejä."
+  },
+  "page.modernization.proof.prodinWho": {
+    "message": "Alankomaalainen ERP-ohjelmistotoimittaja, jonka ERP-järjestelmä on rakennettu Java Swingillä\n"
+  },
+  "page.modernization.proof.prodinLink": {
+    "message": "Lue menestystarina"
+  },
+  "page.modernization.band.title": {
+    "message": "Keskustele tiimin kanssa sovelluksestasi"
+  },
+  "page.modernization.band.text": {
+    "message": "Tuo sovelluksesi, sen teknologiapino ja aikataulusi. webforJ:n kehittäjätiimi opastaa sinut ensimmäisestä näytöstä viimeiseen."
+  },
+  "page.modernization.band.book": {
+    "message": "Varaa puhelu"
+  },
+  "page.modernization.band.email": {
+    "message": "Tai kirjoita osoitteeseen {email}"
+  },
+  "page.modernization.band.languages": {
+    "message": "Puhumme {languages}"
+  },
+  "page.modernization.guides.title": {
+    "message": "Lue oppaat"
   }
 }

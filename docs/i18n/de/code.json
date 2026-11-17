@@ -5589,5 +5589,137 @@
   },
   "page.craftforj.hero.videoLabel": {
     "message": "craftforJ über einer laufenden webforJ-App öffnen: Komponenten inspizieren, Eigenschaften bearbeiten, Design anpassen und den KI-Assistenten fragen"
+  },
+  "page.modernization.hero.talk": {
+    "message": "Mit dem Team sprechen"
+  },
+  "page.modernization.hero.factProof": {
+    "message": "Damit Prodin eine Webversion seines Swing-ERP bereitstellen und seinen Java-Code wiederverwenden kann"
+  },
+  "page.modernization.hero.factProofValue": {
+    "message": "4 Monate"
+  },
+  "page.modernization.hero.factSince": {
+    "message": "BASIS International, das Unternehmen hinter webforJ, entwickelt seit 1985 Tools für die Softwareentwicklung."
+  },
+  "page.modernization.talk.stageCaption": {
+    "message": "Die Swing-Tabelle läuft in der webforJ-App. Ein Doppelklick sendet select-customer und öffnet den webforJ-Dialog im selben Tab. Beim Speichern wird update-customer zurückgesendet und die Swing-Tabelle zeigt die Änderung an."
+  },
+  "page.modernization.talk.announce.textRow": {
+    "message": "Ein Doppelklick sendet {action} mit der ausgewählten Zeile. Auf dem Desktop öffnet derselbe Klick weiterhin den Swing-Dialog."
+  },
+  "page.modernization.talk.docs": {
+    "message": "Erfahren Sie, wie Nachrichten funktionieren."
+  },
+  "page.modernization.partner.proof.list.term": {
+    "message": "Partnerseite"
+  },
+  "page.modernization.partner.proof.list.desc": {
+    "message": "Webswing führt webforJ auf seiner Partnerseite auf."
+  },
+  "page.modernization.partner.proof.release.term": {
+    "message": "Angekündigt"
+  },
+  "page.modernization.partner.proof.release.desc": {
+    "message": "webforJ gab die Partnerschaft mit der Version 25.10 gemeinsam mit WebswingConnector bekannt."
+  },
+  "page.modernization.partner.proof.webinar.term": {
+    "message": "Gemeinsames Webinar"
+  },
+  "page.modernization.partner.proof.webinar.desc": {
+    "message": "Webswing- und webforJ-Experten zeigten im November 2025, wie sich eine Java-Desktop-App ins Web bringen lässt."
+  },
+  "page.modernization.partner.proof.events.term": {
+    "message": "Events gemeinsam"
+  },
+  "page.modernization.partner.proof.events.desc": {
+    "message": "Die beiden Teams traten 2025 gemeinsam beim Java Forum Stuttgart auf und teilten sich 2026 einen Stand auf der JavaOne."
+  },
+  "page.modernization.guides.desktop": {
+    "message": "Desktop-Apps"
+  },
+  "page.modernization.guides.migrateSwing": {
+    "message": "Migration von Java Swing ins Web: den richtigen Weg wählen"
+  },
+  "page.modernization.guides.swingMapping": {
+    "message": "Swing in Web umwandeln: Ein Mapping-Leitfaden von Swing zu webforJ"
+  },
+  "page.modernization.guides.strangler": {
+    "message": "Das Strangler-Fig-Pattern für eine Java-Swing-App"
+  },
+  "page.modernization.guides.javafx": {
+    "message": "Von JavaFX zum Web mit Java"
+  },
+  "page.modernization.guides.web": {
+    "message": "Struts, JSF und JSP"
+  },
+  "page.modernization.guides.struts": {
+    "message": "Migration von Struts zu Spring Boot mit webforJ"
+  },
+  "page.modernization.guides.jsf": {
+    "message": "Migration von JSF zu Spring Boot: Faces-Ansichten in webforJ"
+  },
+  "page.modernization.guides.jsp": {
+    "message": "JSP-Modernisierung: Ein Java-nativer Weg in die Zukunft"
+  },
+  "page.modernization.guides.decide": {
+    "message": "Für die Entscheidung"
+  },
+  "page.modernization.guides.enterprise": {
+    "message": "Swing-Modernisierung für Unternehmen: ein Entscheidungsleitfaden"
+  },
+  "page.modernization.guides.strategy": {
+    "message": "Modernisierungsstrategie für Legacy-Java-Anwendungen"
+  },
+  "page.modernization.partner.eyebrow": {
+    "message": "Webswing und webforJ"
+  },
+  "page.modernization.partner.title1": {
+    "message": "Zwei Unternehmen,"
+  },
+  "page.modernization.partner.title2": {
+    "message": "Ein Pfad"
+  },
+  "page.modernization.partner.lead": {
+    "message": "Webswing führt heute die Java-Desktop-App in Ihrem Browser aus. webforJ führt sie Bildschirm für Bildschirm weiter – mit einem unterstützten Connector zwischen beiden."
+  },
+  "page.modernization.partner.webswing.title": {
+    "message": "Startet Ihre vorhandene App\n"
+  },
+  "page.modernization.partner.webswing.text": {
+    "message": "Rendert die Swing-, JavaFX- oder SWT-Anwendung auf dem Server und überträgt ihre Benutzeroberfläche in den Browser. Webswing ist ein Produkt eines eigenständigen Unternehmens und unterliegt einer eigenen kommerziellen Lizenz."
+  },
+  "page.modernization.partner.webforj.title": {
+    "message": "Führt es fort\n"
+  },
+  "page.modernization.partner.webforj.text": {
+    "message": "Bettet die laufende App mit WebswingConnector in eine webforJ-Ansicht ein, verfügbar seit webforJ 25.10, und ist das Framework, in dem jeder neue Bildschirm geschrieben wird."
+  },
+  "page.modernization.proof.prodinQuote": {
+    "message": "Mit webforJ konnten wir in nur vier Monaten eine vollständig webbasierte Version unseres ERP-Systems bereitstellen und dabei unsere bestehende Java-Codebasis weiterverwenden. So blieb uns eine vollständige Neuentwicklung erspart und wir konnten Zeitaufwand und Risiko deutlich reduzieren."
+  },
+  "page.modernization.proof.prodinWho": {
+    "message": "Niederländischer ERP-Softwareanbieter, dessen ERP auf Java Swing basiert\n"
+  },
+  "page.modernization.proof.prodinLink": {
+    "message": "Erfolgsgeschichte lesen"
+  },
+  "page.modernization.band.title": {
+    "message": "Sprich mit dem Team über deine App\n"
+  },
+  "page.modernization.band.text": {
+    "message": "Bring die App, den Stack, auf dem sie läuft, und deinen Zeitplan mit. Das Team hinter webforJ begleitet dich vom ersten bis zum letzten Bildschirm."
+  },
+  "page.modernization.band.book": {
+    "message": "Gespräch vereinbaren"
+  },
+  "page.modernization.band.email": {
+    "message": "Oder schreiben Sie an {email}"
+  },
+  "page.modernization.band.languages": {
+    "message": "Wir sprechen {languages}"
+  },
+  "page.modernization.guides.title": {
+    "message": "Anleitungen lesen"
   }
 }

@@ -5589,5 +5589,137 @@
   },
   "page.craftforj.hero.videoLabel": {
     "message": "在运行中的 webforJ 应用上打开 craftforJ：检查组件、编辑属性、设置主题并向 AI 助手提问"
+  },
+  "page.modernization.hero.talk": {
+    "message": "联系团队"
+  },
+  "page.modernization.hero.factProof": {
+    "message": "为了让 Prodin 复用 Java 代码，推出其 Swing ERP 的 Web 版本\n"
+  },
+  "page.modernization.hero.factProofValue": {
+    "message": "4个月"
+  },
+  "page.modernization.hero.factSince": {
+    "message": "自 1985 年以来，webforJ 背后的 BASIS International 一直致力于打造开发工具。"
+  },
+  "page.modernization.talk.stageCaption": {
+    "message": "Swing 表格在 webforJ 应用中运行。双击会发送 select-customer，并在同一标签页中打开 webforJ 对话框。保存后会发送 update-customer，Swing 表格随即显示更改。"
+  },
+  "page.modernization.talk.announce.textRow": {
+    "message": "双击会连同所选行一起发送 {action}。在桌面端，同样的点击操作仍会打开 Swing 对话框。"
+  },
+  "page.modernization.talk.docs": {
+    "message": "了解消息的工作原理"
+  },
+  "page.modernization.partner.proof.list.term": {
+    "message": "合作伙伴页面"
+  },
+  "page.modernization.partner.proof.list.desc": {
+    "message": "Webswing 在其合作伙伴页面列出了 webforJ。"
+  },
+  "page.modernization.partner.proof.release.term": {
+    "message": "已公布"
+  },
+  "page.modernization.partner.proof.release.desc": {
+    "message": "webforJ 随 25.10 版本发布宣布了与 WebswingConnector 的合作。"
+  },
+  "page.modernization.partner.proof.webinar.term": {
+    "message": "联合网络研讨会"
+  },
+  "page.modernization.partner.proof.webinar.desc": {
+    "message": "Webswing 和 webforJ 专家于 2025 年 11 月展示了如何将桌面 Java 应用迁移到 Web。"
+  },
+  "page.modernization.partner.proof.events.term": {
+    "message": "集中显示事件"
+  },
+  "page.modernization.partner.proof.events.desc": {
+    "message": "两支团队曾共同亮相 Java Forum Stuttgart 2025，并在 JavaOne 2026 共用一个展位。"
+  },
+  "page.modernization.guides.desktop": {
+    "message": "桌面应用\n"
+  },
+  "page.modernization.guides.migrateSwing": {
+    "message": "Java Swing 迁移到 Web：选择正确路径"
+  },
+  "page.modernization.guides.swingMapping": {
+    "message": "将 Swing 转换为 Web：Swing 到 webforJ 的映射指南"
+  },
+  "page.modernization.guides.strangler": {
+    "message": "Java Swing 应用的绞杀者模式"
+  },
+  "page.modernization.guides.javafx": {
+    "message": "使用 Java 将 JavaFX 转换为 Web"
+  },
+  "page.modernization.guides.web": {
+    "message": "Struts、JSF 和 JSP"
+  },
+  "page.modernization.guides.struts": {
+    "message": "使用 webforJ 将 Struts 迁移到 Spring Boot\n"
+  },
+  "page.modernization.guides.jsf": {
+    "message": "从 JSF 迁移到 Spring Boot：webforJ 中的 Faces 视图"
+  },
+  "page.modernization.guides.jsp": {
+    "message": "JSP 现代化：Java 原生的未来发展路径"
+  },
+  "page.modernization.guides.decide": {
+    "message": "用于决策"
+  },
+  "page.modernization.guides.enterprise": {
+    "message": "企业级 Swing 现代化：决策指南"
+  },
+  "page.modernization.guides.strategy": {
+    "message": "遗留 Java 应用现代化策略"
+  },
+  "page.modernization.partner.eyebrow": {
+    "message": "Webswing 和 webforJ"
+  },
+  "page.modernization.partner.title1": {
+    "message": "两家公司，"
+  },
+  "page.modernization.partner.title2": {
+    "message": "一条路径"
+  },
+  "page.modernization.partner.lead": {
+    "message": "Webswing 让你现在就能在浏览器中运行 Java 桌面应用。webforJ 借助受支持的连接器，逐屏延续这一体验。"
+  },
+  "page.modernization.partner.webswing.title": {
+    "message": "运行现有应用"
+  },
+  "page.modernization.partner.webswing.text": {
+    "message": "在服务器上渲染 Swing、JavaFX 或 SWT 应用，并将其界面流式传输到浏览器。Webswing 是独立公司的产品，采用其自有商业许可证。"
+  },
+  "page.modernization.partner.webforj.title": {
+    "message": "将其延续下去"
+  },
+  "page.modernization.partner.webforj.text": {
+    "message": "使用 WebswingConnector 将正在运行的应用嵌入 webforJ 视图中；自 webforJ 25.10 起可用，也是所有新屏幕的编写框架。"
+  },
+  "page.modernization.proof.prodinQuote": {
+    "message": "webforJ 让我们仅用四个月就交付了完全基于 Web 的 ERP 版本，同时复用了现有的 Java 代码库。这避免了彻底重写，并大幅降低了时间成本和风险。"
+  },
+  "page.modernization.proof.prodinWho": {
+    "message": "一家基于 Java Swing 构建 ERP 软件的荷兰供应商"
+  },
+  "page.modernization.proof.prodinLink": {
+    "message": "阅读成功案例"
+  },
+  "page.modernization.band.title": {
+    "message": "与团队聊聊您的应用"
+  },
+  "page.modernization.band.text": {
+    "message": "带上你的应用、运行它的技术栈，以及你的时间安排。构建 webforJ 的团队将带你走完整个流程，从第一个界面到最后一个。"
+  },
+  "page.modernization.band.book": {
+    "message": "预约通话"
+  },
+  "page.modernization.band.email": {
+    "message": "或发送邮件至 {email}"
+  },
+  "page.modernization.band.languages": {
+    "message": "我们说 {languages}"
+  },
+  "page.modernization.guides.title": {
+    "message": "阅读指南"
   }
 }

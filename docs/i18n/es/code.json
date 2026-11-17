@@ -5589,5 +5589,137 @@
   },
   "page.craftforj.hero.videoLabel": {
     "message": "craftforJ abierto sobre una app webforJ en ejecución: inspecciona componentes, edita propiedades, aplica temas y consulta al asistente de IA\n"
+  },
+  "page.modernization.hero.talk": {
+    "message": "Habla con el equipo"
+  },
+  "page.modernization.hero.factProof": {
+    "message": "Para que Prodin ofrezca una versión web de su ERP Swing, reutilizando su código Java"
+  },
+  "page.modernization.hero.factProofValue": {
+    "message": "4 meses"
+  },
+  "page.modernization.hero.factSince": {
+    "message": "BASIS International, la empresa detrás de webforJ, crea herramientas para desarrolladores desde 1985."
+  },
+  "page.modernization.talk.stageCaption": {
+    "message": "La tabla de Swing se ejecuta dentro de la aplicación webforJ. Al hacer doble clic, se envía select-customer y el diálogo de webforJ se abre en la misma pestaña. Al guardar, se envía update-customer y la tabla de Swing muestra el cambio."
+  },
+  "page.modernization.talk.announce.textRow": {
+    "message": "Un doble clic envía {action} con la fila seleccionada. En escritorio, el mismo clic sigue abriendo el diálogo de Swing."
+  },
+  "page.modernization.talk.docs": {
+    "message": "Lee cómo funcionan los mensajes"
+  },
+  "page.modernization.partner.proof.list.term": {
+    "message": "Página de socios"
+  },
+  "page.modernization.partner.proof.list.desc": {
+    "message": "Webswing incluye a webforJ en su página de socios."
+  },
+  "page.modernization.partner.proof.release.term": {
+    "message": "Anunciado"
+  },
+  "page.modernization.partner.proof.release.desc": {
+    "message": "webforJ anunció la alianza con el lanzamiento de su versión 25.10, junto con WebswingConnector."
+  },
+  "page.modernization.partner.proof.webinar.term": {
+    "message": "Seminario web conjunto"
+  },
+  "page.modernization.partner.proof.webinar.desc": {
+    "message": "Los expertos en Webswing y webforJ mostraron cómo llevar una aplicación Java de escritorio a la web en noviembre de 2025."
+  },
+  "page.modernization.partner.proof.events.term": {
+    "message": "Eventos en conjunto"
+  },
+  "page.modernization.partner.proof.events.desc": {
+    "message": "Los dos equipos aparecieron juntos en Java Forum Stuttgart 2025 y compartieron un stand en JavaOne 2026."
+  },
+  "page.modernization.guides.desktop": {
+    "message": "Aplicaciones de escritorio"
+  },
+  "page.modernization.guides.migrateSwing": {
+    "message": "Migración de Java Swing a la web: elige el camino adecuado\n"
+  },
+  "page.modernization.guides.swingMapping": {
+    "message": "Convertir Swing a web: guía de mapeo de Swing a webforJ"
+  },
+  "page.modernization.guides.strangler": {
+    "message": "El patrón strangler fig para una aplicación Java Swing"
+  },
+  "page.modernization.guides.javafx": {
+    "message": "De JavaFX a la web en Java"
+  },
+  "page.modernization.guides.web": {
+    "message": "Struts, JSF y JSP"
+  },
+  "page.modernization.guides.struts": {
+    "message": "Migración de Struts a Spring Boot con webforJ"
+  },
+  "page.modernization.guides.jsf": {
+    "message": "Migración de JSF a Spring Boot: vistas de Faces en webforJ"
+  },
+  "page.modernization.guides.jsp": {
+    "message": "Modernización de JSP: una vía nativa de Java hacia el futuro"
+  },
+  "page.modernization.guides.decide": {
+    "message": "Para la decisión"
+  },
+  "page.modernization.guides.enterprise": {
+    "message": "Modernización de Swing para empresas: guía de decisión"
+  },
+  "page.modernization.guides.strategy": {
+    "message": "Estrategia de modernización de aplicaciones Java heredadas"
+  },
+  "page.modernization.partner.eyebrow": {
+    "message": "Webswing y webforJ"
+  },
+  "page.modernization.partner.title1": {
+    "message": "Dos empresas,"
+  },
+  "page.modernization.partner.title2": {
+    "message": "una ruta"
+  },
+  "page.modernization.partner.lead": {
+    "message": "Webswing ejecuta hoy tu aplicación de escritorio Java en el navegador. webforJ la moderniza pantalla a pantalla con un conector compatible entre ambos."
+  },
+  "page.modernization.partner.webswing.title": {
+    "message": "Ejecuta la aplicación que tienes"
+  },
+  "page.modernization.partner.webswing.text": {
+    "message": "Renderiza la aplicación Swing, JavaFX o SWT en el servidor y transmite su interfaz al navegador. Webswing es un producto de su propia empresa y cuenta con una licencia comercial propia."
+  },
+  "page.modernization.partner.webforj.title": {
+    "message": "Lo lleva adelante"
+  },
+  "page.modernization.partner.webforj.text": {
+    "message": "Incrusta la aplicación en ejecución en una vista de webforJ con WebswingConnector, disponible desde webforJ 25.10, y es el framework en el que se desarrolla cada nueva pantalla."
+  },
+  "page.modernization.proof.prodinQuote": {
+    "message": "webforJ nos permitió ofrecer una versión totalmente web de nuestro ERP en solo cuatro meses, reutilizando nuestra base de código Java existente. Así evitamos una reescritura completa y redujimos significativamente tanto el tiempo como el riesgo."
+  },
+  "page.modernization.proof.prodinWho": {
+    "message": "Proveedor neerlandés de software ERP cuyo ERP se desarrolló con Java Swing"
+  },
+  "page.modernization.proof.prodinLink": {
+    "message": "Lee la historia de éxito"
+  },
+  "page.modernization.band.title": {
+    "message": "Habla con el equipo sobre tu app"
+  },
+  "page.modernization.band.text": {
+    "message": "Trae la aplicación, la pila tecnológica en la que se ejecuta y tu cronograma. El equipo que desarrolla webforJ te guiará desde la primera pantalla hasta la última."
+  },
+  "page.modernization.band.book": {
+    "message": "Agenda una llamada"
+  },
+  "page.modernization.band.email": {
+    "message": "O escribe a {email}"
+  },
+  "page.modernization.band.languages": {
+    "message": "Hablamos {languages}"
+  },
+  "page.modernization.guides.title": {
+    "message": "Consulta las guías"
   }
 }

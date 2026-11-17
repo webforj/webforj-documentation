@@ -5589,5 +5589,137 @@
   },
   "page.craftforj.hero.videoLabel": {
     "message": "craftforJ openen bovenop een actieve webforJ-app: componenten inspecteren, eigenschappen bewerken, thema's aanpassen en de AI-assistent vragen stellen"
+  },
+  "page.modernization.hero.talk": {
+    "message": "Praat met het team"
+  },
+  "page.modernization.hero.factProof": {
+    "message": "Om Prodin een webversie van zijn Swing-ERP te laten leveren met hergebruik van de Java-code"
+  },
+  "page.modernization.hero.factProofValue": {
+    "message": "4 maanden"
+  },
+  "page.modernization.hero.factSince": {
+    "message": "BASIS International, het bedrijf achter webforJ, ontwikkelt al sinds 1985 ontwikkeltools."
+  },
+  "page.modernization.talk.stageCaption": {
+    "message": "De Swing-tabel draait binnen de webforJ-app. Bij dubbelklikken wordt select-customer verzonden en opent het webforJ-dialoogvenster in hetzelfde tabblad. Na opslaan wordt update-customer teruggestuurd en toont de Swing-tabel de wijziging."
+  },
+  "page.modernization.talk.announce.textRow": {
+    "message": "Een dubbelklik verzendt {action} met de geselecteerde rij. Op desktop opent dezelfde klik nog steeds het Swing-dialoogvenster."
+  },
+  "page.modernization.talk.docs": {
+    "message": "Lees hoe berichten werken"
+  },
+  "page.modernization.partner.proof.list.term": {
+    "message": "Partnerpagina"
+  },
+  "page.modernization.partner.proof.list.desc": {
+    "message": "Webswing vermeldt webforJ op de partnerpagina."
+  },
+  "page.modernization.partner.proof.release.term": {
+    "message": "Aangekondigd"
+  },
+  "page.modernization.partner.proof.release.desc": {
+    "message": "webforJ kondigde de samenwerking aan in de 25.10-release, samen met WebswingConnector."
+  },
+  "page.modernization.partner.proof.webinar.term": {
+    "message": "Gezamenlijk webinar"
+  },
+  "page.modernization.partner.proof.webinar.desc": {
+    "message": "Webswing- en webforJ-experts lieten in november 2025 zien hoe je een desktop-Java-app naar het web brengt."
+  },
+  "page.modernization.partner.proof.events.term": {
+    "message": "Evenementen samen"
+  },
+  "page.modernization.partner.proof.events.desc": {
+    "message": "De twee teams waren samen aanwezig op Java Forum Stuttgart 2025 en deelden een stand op JavaOne 2026."
+  },
+  "page.modernization.guides.desktop": {
+    "message": "Desktopapps"
+  },
+  "page.modernization.guides.migrateSwing": {
+    "message": "Migratie van Java Swing naar het web: kies de juiste route\n"
+  },
+  "page.modernization.guides.swingMapping": {
+    "message": "Swing naar web converteren: een mappinggids van Swing naar webforJ"
+  },
+  "page.modernization.guides.strangler": {
+    "message": "Het strangler fig-patroon voor een Java Swing-app"
+  },
+  "page.modernization.guides.javafx": {
+    "message": "JavaFX naar web in Java"
+  },
+  "page.modernization.guides.web": {
+    "message": "Struts, JSF en JSP"
+  },
+  "page.modernization.guides.struts": {
+    "message": "Migratie van Struts naar Spring Boot met webforJ"
+  },
+  "page.modernization.guides.jsf": {
+    "message": "Migratie van JSF naar Spring Boot: Faces-weergaven in webforJ"
+  },
+  "page.modernization.guides.jsp": {
+    "message": "JSP-modernisering: een toekomstbestendige weg vooruit in Java"
+  },
+  "page.modernization.guides.decide": {
+    "message": "Voor de beslissing"
+  },
+  "page.modernization.guides.enterprise": {
+    "message": "Swing-modernisering voor ondernemingen: een beslisgids"
+  },
+  "page.modernization.guides.strategy": {
+    "message": "Moderniseringsstrategie voor legacy Java-applicaties"
+  },
+  "page.modernization.partner.eyebrow": {
+    "message": "Webswing en webforJ"
+  },
+  "page.modernization.partner.title1": {
+    "message": "Twee bedrijven,"
+  },
+  "page.modernization.partner.title2": {
+    "message": "één pad"
+  },
+  "page.modernization.partner.lead": {
+    "message": "Webswing draait je Java-desktopapp vandaag al in de browser. webforJ bouwt daar scherm voor scherm op voort, met een ondersteunde connector tussen beide."
+  },
+  "page.modernization.partner.webswing.title": {
+    "message": "Voert je app uit."
+  },
+  "page.modernization.partner.webswing.text": {
+    "message": "Rendert de Swing-, JavaFX- of SWT-app op de server en streamt de interface naar de browser. Webswing is een product van een onafhankelijk bedrijf met een eigen commerciële licentie."
+  },
+  "page.modernization.partner.webforj.title": {
+    "message": "Neemt het mee"
+  },
+  "page.modernization.partner.webforj.text": {
+    "message": "Sluit de actieve app in een webforJ-weergave in met WebswingConnector, beschikbaar sinds webforJ 25.10, en is het framework waarin elk nieuw scherm wordt geschreven."
+  },
+  "page.modernization.proof.prodinQuote": {
+    "message": "Met webforJ konden we in slechts vier maanden een volledig webgebaseerde versie van ons ERP opleveren, met hergebruik van onze bestaande Java-codebase. Zo hoefden we niet alles opnieuw te bouwen en verminderden we zowel de doorlooptijd als de risico’s aanzienlijk."
+  },
+  "page.modernization.proof.prodinWho": {
+    "message": "Nederlandse ERP-softwareleverancier waarvan het ERP-systeem is gebouwd met Java Swing\n"
+  },
+  "page.modernization.proof.prodinLink": {
+    "message": "Lees het succesverhaal"
+  },
+  "page.modernization.band.title": {
+    "message": "Bespreek je app met het team"
+  },
+  "page.modernization.band.text": {
+    "message": "Neem je app, de stack waarop die draait en je tijdlijn mee. Het team achter webforJ neemt je mee van het eerste tot het laatste scherm."
+  },
+  "page.modernization.band.book": {
+    "message": "Plan een gesprek"
+  },
+  "page.modernization.band.email": {
+    "message": "Of neem contact op via {email}"
+  },
+  "page.modernization.band.languages": {
+    "message": "We spreken {languages}"
+  },
+  "page.modernization.guides.title": {
+    "message": "Lees de handleidingen"
   }
 }
