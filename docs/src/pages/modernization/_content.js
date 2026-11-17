@@ -134,9 +134,8 @@ export function getPeople() {
   ];
 }
 
-// Public pages the partnership and customer proof point to.
+// Public pages the partnership points to.
 export const LINKS = {
   webswingPartners: 'https://www.webswing.org/en/company/partners',
   jointWebinar: 'https://webforj.com/webinars/webswing-webforj-041125/',
-  prodinStory: 'https://webforj.com/wp-content/uploads/2024/10/BASIS_SuccessStory_Prodin.pdf',
 };

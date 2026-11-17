@@ -117,7 +117,7 @@ Governance for a program like this fits on one page.
 2. **Measure.** Agree on what counts as success before the pilot: delivery time per screen, defects found in review, user feedback, and how many existing team members contributed. Use your own baselines.
 3. **Scale.** Reuse the same team, the same conventions and the same AI setup on the next app. Move to the high value, high risk quadrant only after the pilot has produced data.
 
-Prodin is a useful reference point. [Prodin](https://webforj.com/wp-content/uploads/2024/10/BASIS_SuccessStory_Prodin.pdf) assembled a six-member Java development team, including junior and mid-level developers, to assist in the migration. Within four months, Prodin delivered their first web-based modules to customers.
+Prodin's move from a Swing ERP to webforJ is a useful reference point. [Prodin](https://webforj.com/wp-content/uploads/2024/10/BASIS_SuccessStory_Prodin.pdf) assembled a six-member Java development team, including junior and mid-level developers, to assist in the migration. Within four months, Prodin delivered their first web-based modules to customers.
 
 ## Pilot one high-value screen {#pilot-one-screen}
 

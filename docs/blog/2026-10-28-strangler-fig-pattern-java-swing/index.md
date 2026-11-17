@@ -105,7 +105,7 @@ When the last Swing screen has a webforJ replacement, the connector view has not
 
 ## How long does it take? {#how-long}
 
-Within four months, Prodin delivered their first web-based modules to customers. The details are in the [Prodin success story](https://webforj.com/wp-content/uploads/2024/10/BASIS_SuccessStory_Prodin.pdf). That is one customer's timeline. Yours depends on how many screens the app has and how tangled they are with the logic.
+That depends on how many screens the app has and how tangled they are with the logic, so no single number fits every app. The pattern does change when your users see results. The app is in the browser after step 1, and every replaced screen ships on its own, so you measure progress in screens moved instead of waiting for a cutover date.
 
 ## AI on each strangled screen {#ai-port}
 
@@ -131,7 +131,7 @@ Embed the app with `WebswingConnector`, build new screens in webforJ around it, 
 
 ### How long does a gradual Swing migration take? {#faq-how-long}
 
-Within four months, Prodin delivered their first web-based modules to customers. The details are in the [Prodin success story](https://webforj.com/wp-content/uploads/2024/10/BASIS_SuccessStory_Prodin.pdf). That is one customer's timeline. Yours depends on how many screens the app has and how tangled they are with the logic.
+It depends on how many screens the app has and how tangled they are with the logic. The app is available in the browser as soon as it runs under Webswing, and each replaced screen ships on its own.
 
 ## Embed your Swing app in one view {#start}
 

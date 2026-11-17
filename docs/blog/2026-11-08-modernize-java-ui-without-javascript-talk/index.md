@@ -122,7 +122,7 @@ What changes is the layout, and it changes for the better. New screens can use r
 
 ## A customer example {#customer-example}
 
-The talk backs the approach with Prodin, one of our customers, and its published [success story](https://webforj.com/wp-content/uploads/2024/10/BASIS_SuccessStory_Prodin.pdf). Prodin assembled a six-member Java development team, including junior and mid-level developers, to assist in the migration. Within four months, Prodin delivered their first web-based modules to customers.
+The talk also shows Prodin, one of our customers, which moved its Swing-based ERP to the web with webforJ and reused its existing Java code. The published [success story](https://webforj.com/wp-content/uploads/2024/10/BASIS_SuccessStory_Prodin.pdf) has the details. Prodin assembled a six-member Java development team, including junior and mid-level developers, to assist in the migration. Within four months, Prodin delivered their first web-based modules to customers.
 
 ## One stack for the long run {#one-stack}
 

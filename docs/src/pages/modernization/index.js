@@ -579,21 +579,21 @@ function Hero() {
           <dl className={styles.heroFacts}>
             <div>
               <dt>
-                <Translate id="page.modernization.hero.factProof">
-                  {'For Prodin to deliver a web version of its Swing ERP, reusing its Java code'}
-                </Translate>
-              </dt>
-              <dd>
-                <Translate id="page.modernization.hero.factProofValue">{'4 months'}</Translate>
-              </dd>
-            </div>
-            <div>
-              <dt>
                 <Translate id="page.modernization.hero.factSince">
                   {'BASIS International, the company behind webforJ, has built development tools since 1985'}
                 </Translate>
               </dt>
               <dd>1985</dd>
+            </div>
+            <div>
+              <dt>
+                <Translate id="page.modernization.hero.factJava">
+                  {'BASIS International has 20+ years of delivering technology built on Java'}
+                </Translate>
+              </dt>
+              <dd>
+                <Translate id="page.modernization.hero.factJavaValue">{'20+ years'}</Translate>
+              </dd>
             </div>
           </dl>
         </div>
@@ -1304,29 +1304,6 @@ function TalkBand() {
   return (
     <section className={styles.band} aria-labelledby="modernization-band" id="talk-to-us">
       <div className={styles.container}>
-        <figure className={styles.quote}>
-          <blockquote>
-            <p>
-              <Translate id="page.modernization.proof.prodinQuote">
-                {
-                  'webforJ enabled us to deliver a fully web-based version of our ERP in just four months, all while reusing our existing Java codebase. This saved us from a complete rewrite and significantly reduced both time and risk.'
-                }
-              </Translate>
-            </p>
-          </blockquote>
-          <figcaption>
-            <strong>Prodin Business Solutions</strong>
-            <span>
-              <Translate id="page.modernization.proof.prodinWho">
-                {'Dutch ERP software provider, whose ERP was built on Java Swing'}
-              </Translate>
-            </span>
-            <a className={styles.textLink} href={LINKS.prodinStory} target="_blank" rel="noopener noreferrer">
-              <Translate id="page.modernization.proof.prodinLink">{'Read the success story'}</Translate>
-              <ExternalIcon className={styles.iconSmall} />
-            </a>
-          </figcaption>
-        </figure>
         <div className={styles.bandInner}>
           <div>
             <h2 id="modernization-band" className={styles.bandTitle}>

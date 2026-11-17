@@ -62,7 +62,7 @@ So the move is a series of small releases, not one big cutover. How to pick the 
 
 Whichever category you pick, an AI coding assistant will likely write part of the new screens. When the target is webforJ, the assistant can look up the real webforJ API through the MCP server, every edit goes through the Java compiler, and a test for each new screen comes back as a pass or a fail before you review it, as [the AI verification loop for Java](/blog/ai-verification-loop-java) shows. Your team still decides what each screen does and reviews it against the Swing original.
 
-## Who has done it? {#who}
+## Who moved from Swing to webforJ? {#who}
 
 Prodin, a Dutch enterprise resource planning provider, had a Java Swing system and chose webforJ. It assembled a six-member Java development team to assist in the migration alongside its existing staff, reused its existing Java code, and delivered its first web-based modules within four months. The details are in [Who uses webforJ](/blog/who-uses-webforj).
 

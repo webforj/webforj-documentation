@@ -78,7 +78,7 @@ The point is not the size of the example. It's that the gap grows with the app. 
 
 ## A customer that switched {#customer}
 
-The webinar then turns to Prodin, a customer in the Netherlands with a Swing-based ERP system. In the words of its [success story](https://webforj.com/wp-content/uploads/2024/10/BASIS_SuccessStory_Prodin.pdf): "After exploring various options, including Low Code platforms and a Java backend combined with front-end frameworks like Angular and React, Prodin ultimately chose webforJ." Prodin assembled a six-member Java development team, including junior and mid-level developers, to assist in the migration. Within four months, Prodin delivered their first web-based modules to customers.
+The webinar then turns to Prodin, a customer in the Netherlands with a Swing-based ERP system. After exploring low-code platforms and a Java backend combined with front-end frameworks like Angular and React, Prodin chose webforJ. The [success story](https://webforj.com/wp-content/uploads/2024/10/BASIS_SuccessStory_Prodin.pdf) has the details. Prodin assembled a six-member Java development team, including junior and mid-level developers, to assist in the migration. Within four months, Prodin delivered their first web-based modules to customers.
 
 Matthew adds a long-term argument. Java evolves in a stable, backward-compatible way, while front-end frameworks churn every few years. Keeping the app in Java lets the business logic stay intact while the interface modernizes around it.
 
