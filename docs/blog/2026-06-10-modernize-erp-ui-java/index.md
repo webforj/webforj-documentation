@@ -15,7 +15,7 @@ Your ERP works. The accounting rules, the pricing logic and the warehouse flows 
 
 <!-- truncate -->
 
-If you are looking for a Java framework for ERP software, the question is rarely which framework looks best in a demo. It is which one lets a Java team keep the working system, keep shipping new screens without stopping the business. That is the job webforJ is meant to help with. [BASIS](https://webforj.com/company) software and software tools have been used to develop business solutions for both large international corporations and SMEs for almost 40 years, with 20+ years of delivering technology built on Java.
+If you are looking for a Java framework for ERP software, the question is rarely which framework looks best in a demo. It is which one lets a Java team keep the working system and keep shipping new screens without stopping the business. That is the job webforJ is meant to help with. [BASIS](https://basis.cloud/about/), the company behind webforJ, has built development tools since 1985, with 20+ years of delivering technology built on Java.
 
 This post goes through the myths that keep legacy business app web UI projects stuck, and how webforJ answers each one.
 
@@ -81,18 +81,9 @@ A practical order for an internal tool:
 
 The [earlier roadmap post on Webswing and webforJ](/blog/webswing-and-webforj) goes further into planning that sequence. For teams still weighing where else a Swing app can go, [Swing alternatives for business apps](/blog/java-swing-alternatives) compares the options.
 
-## Let an AI assistant move the screens {#ai-assistant}
+## AI for the many look-alike screens {#ai-assistant}
 
-Screen-by-screen work is repetitive, which makes it a good fit for an AI coding agent. Point the agent at one legacy screen, describe what it does, and let it build the webforJ view. Because you move one screen at a time, every result is small enough to review and run before the next one starts.
-
-The [webforJ AI plugin](/docs/ai-tooling) is what keeps that port correct. One install adds two pieces to Claude Code, Copilot, Cursor, Gemini and Codex:
-
-- The [MCP server](/docs/ai-tooling/mcp) lets the agent look things up in the real webforJ docs and APIs instead of guessing method names.
-- The [Agent Skills](/docs/ai-tooling/agent-skills) give it structured workflows for building forms and components, so the agent builds against the real APIs.
-
-Review and test what the agent writes, as you would for any teammate. Your Java developers stay in charge of the decisions, and the agent does the typing.
-
-The agent can also check its own work. Ask it for a test with every screen it ports, so each one comes back with a pass or a fail before you review it. That write, check, review cycle is [the AI verification loop for Java](/blog/ai-verification-loop-java), and it fits a migration well, because every screen you move is a small, testable unit.
+An ERP has many list and entry screens over the same customers, orders and stock, and those are where an AI coding assistant can save your team a lot of typing. It writes each new webforJ screen against the services the ERP already has, while the Swing screens keep running in Webswing and stay untouched. The [webforJ AI plugin](/docs/ai-tooling) gives it the real webforJ API to check against, and a test for each new screen shows a pass or a fail before anyone approves it. That write, check, review cycle is [the AI verification loop for Java](/blog/ai-verification-loop-java). Your developers still review every screen and decide what ships.
 
 ## Myth: no shared login {#myth-login}
 
@@ -116,19 +107,23 @@ The same approach fits any business system. A claims platform, a warehouse conso
 
 Pick the screen your users complain about most, host it in Webswing and render it in a webforJ route using the preceding snippet. Follow [Getting started](/docs/introduction/getting-started) to create the webforJ project, or generate one at [startforJ](https://docs.webforj.com/startforj). Then build the next feature next to it, in Java.
 
+## Map the path for your ERP {#plan-your-move}
+
+To plan which ERP screens move first while the business keeps running, see the [modernization path](/modernization) and talk to our team about your system.
+
 ## Frequently asked questions {#faq}
 
 ### How to modernize an ERP UI in Java? {#faq-modernize}
 
 Embed the existing desktop app in a webforJ page with `WebswingConnector`, then replace screens with webforJ views one at a time. The domain code stays in Java throughout, and users get browser access at the first step.
 
-### What is the best Java framework for ERP software? {#faq-best-framework}
+### Which Java framework fits ERP software? {#faq-best-framework}
 
 webforJ is the full-stack Java framework for business web apps, built by BASIS International. It gives you routing, forms, tables, route security and Spring Boot integration in one language, plus a Webswing path for the desktop screens you already have.
 
 ### Can a legacy business app get a web UI without source changes? {#faq-no-source-change}
 
-Yes for Swing, JavaFX and SWT apps. Webswing runs them in the browser without modifications to the original source, and webforJ embeds the result in your web app.
+Yes for Swing, JavaFX and SWT apps. Webswing runs them in the browser without modifications to the original source, and webforJ embeds the result in your web app. Two-way messaging between the web app and the desktop app needs a small addition on the desktop side through the Webswing Java API.
 
 ### Is a Java ERP front end in webforJ written in JavaScript? {#faq-javascript}
 

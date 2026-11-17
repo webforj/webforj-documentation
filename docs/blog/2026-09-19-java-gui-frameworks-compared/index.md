@@ -105,7 +105,7 @@ JavaFX is styled with CSS. Controls carry style classes, and a style sheet sets 
 
 ## Threading {#threading}
 
-Both toolkits have a single UI thread. Oracle's Swing tutorial says that [Swing component methods must be invoked from the event dispatch thread](https://docs.oracle.com/javase/tutorial/uiswing/concurrency/dispatch.html) unless they are labeled thread safe, and background work reaches the UI through `SwingUtilities.invokeLater`.
+Both toolkits have a single UI thread. [Swing component methods must be invoked from the event dispatch thread](https://docs.oracle.com/javase/tutorial/uiswing/concurrency/dispatch.html) unless they are labeled thread safe, and background work reaches the UI through `SwingUtilities.invokeLater`.
 
 JavaFX has the same rule under a different name. The UI belongs to the FX thread, and [`Platform.runLater`](https://openjfx.io/javadoc/21/javafx.graphics/javafx/application/Platform.html) posts a `Runnable` to it. If you know one model, you know the other.
 
@@ -147,7 +147,7 @@ Every release is then a rollout. You build installers, publish them and wait for
 
 Both toolkits put the UI on the user's machine. If people need to open the app from a URL, on any device, with one deployment instead of many installs, a desktop toolkit is the wrong layer to change.
 
-A team that owns a Swing or JavaFX app doesn't have to start over. [Webswing](/docs/integrations/webswing/overview) runs Swing, JavaFX and SWT apps in a browser without changes to their source, so users get a URL now. Webswing is a separate product from a separate company, with its own commercial licence.
+A team that owns a Swing or JavaFX app doesn't have to start over. [Webswing](/docs/integrations/webswing/overview) runs Swing, JavaFX and SWT apps in a browser without changes to their source, so users get a URL now.
 
 From there the screens move to the web one at a time with webforJ, a full-stack Java framework where the UI is still Java. This is the greeting screen as a webforJ view:
 
@@ -166,7 +166,7 @@ public class GreetingView extends Composite<FlexLayout> {
 }
 ```
 
-The listener is the same lambda, and the class runs on the server, where it calls your existing Java services directly. The `WebswingConnector` component embeds the running desktop app inside a webforJ page, so old and new screens share one browser tab while the old ones retire. Webswing and webforJ are partners on this path, and the [Webswing and webforJ roadmap](/blog/webswing-and-webforj) lays out the stages.
+The listener is the same kind of lambda, and the class runs on the server, where it calls your existing Java services directly. The `WebswingConnector` component embeds the running desktop app inside a webforJ page, so old and new screens share one browser tab while the old ones retire. Webswing and webforJ are partners on this path, and the [Webswing and webforJ roadmap](/blog/webswing-and-webforj) lays out the stages.
 
 An AI coding assistant can draft each new screen from the Swing or JavaFX original. Connected through the [webforJ AI plugin](/docs/ai-tooling), it looks up the real webforJ API instead of guessing, and it can hand back a test with each screen, so every one arrives with a pass or a fail. That cycle is [the AI verification loop for Java](/blog/ai-verification-loop-java).
 
@@ -192,7 +192,7 @@ Only when the app has to stay a desktop program and Swing is holding it back. Th
 
 ### Can a Swing or JavaFX app run in a browser? {#faq-run-in-browser}
 
-Yes. Webswing runs Swing, JavaFX and SWT apps in a browser without changes to their source. It needs its own commercial licence for production use.
+Yes. Webswing runs Swing, JavaFX and SWT apps in a browser without changes to their source.
 
 ## Plan your move to the browser {#plan-your-move}
 

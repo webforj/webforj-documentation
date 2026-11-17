@@ -1,6 +1,6 @@
 ---
 title: "The Business Case for a Java UI Framework: What Your Boss Will Ask"
-description: "The business case for a Java UI framework, in the questions a manager or architecture board asks: who is behind it, upgrades, fit, lock-in, testing and a pilot."
+description: "The business case for a Java UI framework, plus a legacy system risk assessment for a Java app: the risks a board weighs and how a phased path reduces each."
 slug: business-case-java-ui-framework
 date: 2026-11-11T12:00:00Z
 authors: webforJ
@@ -13,13 +13,13 @@ hide_table_of_contents: false
 
 You have looked at webforJ and you like what you see. Now somebody with a budget or a veto wants to know why the team should adopt it, and "the developers prefer it" isn't an answer that survives a meeting.
 
-This post is the business case for a Java UI framework, written as the questions a decision-maker asks, with a plain answer to each. webforJ is the full-stack Java framework for business web apps: you build the whole app, screens included, in Java. Each answer below links the page you can hand to your manager.
+This post is the business case for a Java UI framework, written as the questions a decision-maker asks, with a plain answer to each. webforJ is the full-stack Java framework for business web apps: you build the whole app, screens included, in Java. Each answer below links the page you can hand to your manager. If the framework is meant to replace an old Java app, the post also works as a legacy system risk assessment: the risks of staying, the risks of moving, and how a phased path reduces each one.
 
 <!-- truncate -->
 
 ## Who is behind the framework? {#who-is-behind}
 
-webforJ is built by BASIS International. The company is privately owned and operated, and BASIS software and software tools have been used to develop business solutions for both large international corporations and SMEs for almost 40 years, with 20+ years of delivering technology built on Java.
+webforJ is built by BASIS International, which has built development tools [since 1985](https://basis.cloud/about/). The company is privately owned and operated.
 
 BASIS operates its own sites in North America and Europe and works with partners in more than 30 countries. For the maturity question in full, read [Is webforJ production ready](/blog/is-webforj-production-ready), and for the customers, [Who uses webforJ](/blog/who-uses-webforj).
 
@@ -35,7 +35,7 @@ Judge it against the risks the board will name, not against a feature list. Most
 
 ## What risks will the architecture board ask about? {#what-risks}
 
-The vendor, the upgrade path and the fit with your app come first, followed by existing code, lock-in and testing. The sections below answer each one.
+The vendor, the upgrade path and the fit with your app come first, followed by existing code, lock-in and testing. The sections below answer each one. If webforJ is meant to replace a legacy Java app, the [risk assessment](#legacy-risk-assessment) adds the risks of the move itself.
 
 ## How often does it ship, and how do upgrades work? {#releases-and-upgrades}
 
@@ -67,6 +67,29 @@ With the tools your team already uses. Unit tests run in JUnit, and end-to-end t
 
 That matters to a manager for a plain reason: the app goes through the same build and the same CI checks as the rest of your Java code. Nothing about the UI needs a separate quality process.
 
+## Legacy Java risk assessment {#legacy-risk-assessment}
+
+When the new framework is meant to replace an old Java app, the board's question changes from "is this framework safe" to "is the move safe." A legacy system risk assessment answers it in two lists: what you risk by staying, and what you risk by moving. Rate each risk high, medium or low for your own app, with the business owner and the engineering lead in the same room. Leave out any figure you can't source.
+
+### The risks of staying {#risks-of-staying}
+
+- **The platform runs out.** Old runtimes and frameworks stop receiving fixes, and the app can't move until its dependencies do. A phased path takes the most-used screens off the old platform first, so exposure shrinks with each release instead of all at once at the end.
+- **The knowledge leaves.** The people who know why the app behaves as it does move on, and the code becomes the only record. Each rebuilt screen turns part of that knowledge into current Java code with a test, while those people are still around to review it.
+- **Audit findings pile up.** Installed desktop clients and unsupported frameworks come back in every security review. For a desktop app, running it in the browser through Webswing replaces many installed clients with one server-side deployment. New screens get route security from the framework.
+- **Hiring gets harder.** Fewer developers want to work on an old view technology. New screens are written in current Java, so the job ad stays a Java job ad.
+
+### The risks of moving {#risks-of-moving}
+
+- **The rewrite fails.** This is the risk most boards remember. A phased path has no single cutover. Each screen is a small deliverable, and the program can stop after any phase with something gained.
+- **The business stops.** The old app keeps running and shipping while screens move. A desktop app runs in the browser through Webswing, and a web app keeps its old pages until each replacement is accepted.
+- **Users lose their workflow.** Users keep the screens they know until the new one is ready, and you choose the order, so the screens with the most to gain go first.
+- **Business rules change by accident.** The Java services stay and the new views call them directly, so the rules aren't re-implemented. A TestBed test checks each new screen in plain JUnit before it ships.
+- **AI-written code is wrong.** An assistant can draft new webforJ screens, but drafts need proof. [The AI verification loop for Java](/blog/ai-verification-loop-java) checks the API, compiles each edit and tests the screen, and a person still reviews it. No tool converts the old screens for you.
+- **The supplier stalls.** Releases follow a published cadence, OpenRewrite recipes handle most of a major upgrade from webforJ 26 on and leave TODO comments where no direct replacement exists, and keeping webforJ in the views limits what you would redo if you left.
+- **The budget runs out midway.** Each phase stands on its own, so a cut budget leaves you with fewer moved screens, not with half an app.
+
+None of this removes risk. It turns one large bet into a series of small ones, each with a result the board can see before it funds the next.
+
 ## How do I run a pilot? {#run-a-pilot}
 
 Pick one real screen, not a demo. Choose a screen from your own app that people use and that a manager recognizes, such as a customer search, an order form, or a status dashboard. A screen from the app, rather than a todo list, makes the result easy to judge.
@@ -93,7 +116,11 @@ Answer the risks the board will name: vendor, release cadence, fit, existing cod
 
 ### What risks will the architecture board ask about? {#faq-risks}
 
-Usually the vendor, upgrades, lock-in, hiring, and quality. BASIS has almost 40 years behind it, releases follow a published cadence, and the framework fits into a normal Java build.
+Usually the vendor, upgrades, lock-in, hiring, and quality. BASIS has built development tools since 1985, releases follow a published cadence, and the framework fits into a normal Java build.
+
+### How do you assess the risk of a legacy Java system? {#faq-legacy-risk}
+
+List the risks of staying, such as an ending platform, lost knowledge, and audit findings, next to the risks of moving, such as a failed rewrite, a stopped business, and changed rules. Rate each for your app, then check how a phased path reduces it.
 
 ### How do I run a pilot? {#faq-pilot}
 
@@ -102,3 +129,7 @@ Choose one real screen, set a time box, build it against your existing services 
 ## Pick the pilot screen this week {#pick-the-pilot}
 
 Write down one screen from your own app that a manager would recognize, agree a time box, and ask for approval for that screen alone. A single working screen answers more questions in a meeting than any slide.
+
+## Talk through your app with us {#talk-with-us}
+
+When the pilot screen is picked, the [modernization page](/modernization) shows the path for the whole app and how to talk to us about it.

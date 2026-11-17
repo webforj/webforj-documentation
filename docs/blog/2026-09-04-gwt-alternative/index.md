@@ -16,19 +16,19 @@ hide_table_of_contents: false
 
 Many GWT teams want to keep writing their UI in Java but no longer want a Java-to-JavaScript compile step in the middle. For a GWT to Spring Boot migration, webforJ is a full-stack Java framework and a GWT alternative built for that. You build screens from Java components, they run on the server next to your Spring Boot services, and the browser renders them. There is no client-side code to compile and no RPC layer between the UI and your services.
 
-This post compares the two models, maps GWT concepts to their webforJ counterparts, and shows how a team can move an existing GWT app one screen at a time.
+If you plan to migrate from GWT and the options on the table are a GWT to Angular or React migration, this path keeps you in Java. You rebuild the UI in Java, keep the Java backend and the Java team, and move one screen at a time. This post compares the two models, maps GWT concepts to their webforJ counterparts, and shows how that move works on an existing GWT app.
 
 <!-- truncate -->
 
 ## What GWT does and where it stands {#what-gwt-does}
 
-The GWT project describes itself as [a development toolkit for browser-based applications](https://www.gwtproject.org/overview.html). Its compiler turns your Java source into JavaScript: "GWT compiles your Java source code into optimized, stand-alone JavaScript files." You write client-side applications in Java and deploy them as JavaScript.
+The GWT project describes itself as [a development toolkit for browser-based applications](https://www.gwtproject.org/overview.html). Its compiler turns your Java source into JavaScript: "GWT compiles your Java source code into optimized, stand-alone JavaScript files that automatically run on all major browsers." You write client-side applications in Java and deploy them as JavaScript.
 
 The project is still releasing. The [GWT versions page](https://www.gwtproject.org/versions.html) lists 2.13.0 from February 2026 and 2.13.1 from June 2026. If your GWT app works today, nothing forces a move. The reason teams look at a GWT alternative is usually the shape of the architecture, and that's where webforJ differs.
 
 ## Client-side Java versus server-side Java {#client-vs-server}
 
-In GWT, UI code runs in the browser after translation to JavaScript. Server code is ordinary Java and, in the words of the GWT RPC guide, it ["doesn't need to be translatable, so you're free to use any Java library you find useful"](https://www.gwtproject.org/doc/latest/DevGuideServerCommunication.html). The client is a separate program with its own rules about which Java it can use.
+In GWT, UI code runs in the browser after translation to JavaScript. Server code is ordinary Java. It [doesn't need to be translated](https://www.gwtproject.org/doc/latest/DevGuideServerCommunication.html), so any Java library can be used there. The client is a separate program with its own rules about which Java it can use.
 
 In webforJ, UI code is ordinary Java running on the server, in the same process as your services. The browser renders the components and sends events back. The whole app, UI included, uses the full JDK and any library on the classpath.
 
@@ -43,7 +43,7 @@ In webforJ, UI code is ordinary Java running on the server, in the same process 
 
 ## What happens to RPC? {#rpc}
 
-A GWT RPC call needs several pieces. According to the [GWT documentation](https://www.gwtproject.org/doc/latest/DevGuideServerCommunication.html), you define a service interface that extends `RemoteService`, a matching `Async` interface with an `AsyncCallback` parameter on each method, and a servlet that extends `RemoteServiceServlet`. The client creates a proxy with `GWT.create()` and handles the result in a callback. Parameters and return values must follow GWT's serialization rules.
+A GWT RPC call needs several pieces. In [GWT RPC](https://www.gwtproject.org/doc/latest/DevGuideServerCommunication.html), you define a service interface that extends `RemoteService`, a matching `Async` interface with an `AsyncCallback` parameter on each method, and a servlet that extends `RemoteServiceServlet`. The client creates a proxy with `GWT.create()` and handles the result in a callback. Parameters and return values must follow GWT's serialization rules.
 
 In webforJ that layer has no reason to exist, because the view and the service live in the same JVM. A view receives the service through its constructor and calls it like any other Java object. There is no `Async` twin of the interface, no callback and no data transfer class created only to cross the wire. The [Spring Boot integration guide](/docs/integrations/spring/spring-boot) shows constructor injection into views.
 
@@ -142,9 +142,7 @@ Treat the move as a screen-by-screen rewrite of the UI layer, while the service 
 
 Services that already sit behind RPC are the easy part. Their implementation classes are plain Java, and in webforJ you inject them instead of exposing them through a servlet. The same screen-by-screen approach applies to [moving SWT screens off Eclipse RAP](/blog/eclipse-rap-alternative).
 
-:::tip Let an AI assistant port the screens
-Install the [webforJ AI plugin](/docs/ai-tooling) in Claude Code, GitHub Copilot, Cursor, Gemini CLI or Codex. The [MCP server](/docs/ai-tooling/mcp) gives the assistant the current webforJ documentation and API, so it writes against the real framework instead of guessing, and the [Agent Skills](/docs/ai-tooling/agent-skills) guide it through tasks such as building forms and creating components. Hand it a `ui.xml` file with its view class, ask for the webforJ screen that calls the same services, and review the result before you merge it.
-:::
+An AI coding assistant can speed up the UiBinder-to-Java part, as long as each screen it drafts gets checked. That means real webforJ API lookups instead of guesses, a compile on every edit, and a test that runs the screen against your services. [The AI verification loop for Java](/blog/ai-verification-loop-java) walks through those checks, and your team reviews each screen before it replaces the GWT one.
 
 ## Is webforJ right for your team? {#choosing}
 
@@ -169,3 +167,7 @@ Direct method calls. A view gets a Spring service through its constructor and ca
 ### Do I have to rewrite everything at once? {#faq-rewrite}
 
 No. Services stay as plain Java, and you can rebuild the UI one screen at a time while both apps run. Each migrated screen lets you delete its RPC code.
+
+## Plan your GWT migration with us {#plan-your-migration}
+
+To scope the move for the whole app, [see how webforJ takes Java apps to the web](/modernization) and talk to us about your GWT screens.

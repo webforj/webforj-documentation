@@ -15,15 +15,20 @@ Java Swing technical debt has little to do with a broken toolkit. Swing still sh
 
 <!-- truncate -->
 
-:::tip Migrate with an AI assistant
-webforJ now has an [AI plugin](/docs/ai-tooling) for Claude Code, Copilot, Cursor, and other assistants. It gives them the webforJ docs and project tools, so they can help you port Swing screens to webforJ one at a time.
-:::
-
 ## Is Swing dead? {#is-swing-dead}
 
 No. Swing is part of the `java.desktop` module of the JDK and your existing apps keep compiling and running. What has changed is the ground around it. Browser plug-ins are gone, which is why the Applet API, including `javax.swing.JApplet`, was [deprecated for removal in JDK 17](https://openjdk.org/jeps/398). The old path of "Swing in the browser through an applet" is closed for good.
 
 So "is Swing dead" is the wrong question. The useful question is what it costs to keep a Swing app as the only way users reach your business logic. That cost is the debt, and it shows up in places you can name.
+
+## The deadlines around a Swing app {#deadlines}
+
+Swing has no removal date, but the ways Java desktop apps used to reach users do, and some estates still depend on them.
+
+- **Java Web Start.** The deployment stack that applets and Web Start apps needed was deprecated in JDK 9 and [removed in JDK 11](https://www.oracle.com/java/technologies/javase/11-relnote-issues.html). Apps launched through JNLP files need another way to reach users.
+- **Applets.** [JEP 504](https://openjdk.org/jeps/504) removes the Applet API in JDK 26, so JDK 25 is the last release that still ships it.
+
+If your Swing client or its launcher sits on either path, the debt has a date attached. That is often what turns "we should modernize" into a project with a budget.
 
 ## Where Swing debt shows up {#where-swing-debt-shows-up}
 
@@ -42,7 +47,7 @@ None of these needs a rewrite on its own. Together they explain why teams start 
 | Option | What changes | Main cost | Main risk |
 |---|---|---|---|
 | Stay on desktop | Nothing | Debt keeps growing | Every new web request is refused |
-| Remote desktop wrapper | Users reach the same UI remotely | Still a desktop UI, rendered remotely | Users reach the same desktop UI remotely |
+| Remote desktop wrapper | Users reach the same UI remotely | Still a desktop UI, rendered remotely | The UI debt stays where it was |
 | Full rewrite | Everything | Months of parallel work | Business logic recreated and re-broken |
 | Embed, then replace with webforJ | One screen at a time | Planned, incremental work | Two UIs coexist for a while |
 
@@ -54,17 +59,11 @@ Years of Swing code hold rules nobody wrote down anywhere else: validation quirk
 
 The better plan keeps the old app alive while the new one grows around it. You do not choose between the old UI and the new one on day one. You move users across screen by screen.
 
-## Java Swing to the web, step by step {#java-swing-to-the-web}
+## The first payment is small {#java-swing-to-the-web}
 
-webforJ is the full-stack Java framework where you build the whole app, screens included, in Java and run it on the server, so your team keeps its language, its build tools, and its domain code. The path looks like this:
+webforJ is the full-stack Java framework where you build the whole app, screens included, in Java and run it on the server, so your team keeps its language, its build tools, and its domain code. The full path, from browser access to the last replaced screen, is laid out in the [Java Swing to web migration guide](/blog/migrate-swing-app-to-web). The first step against the debt is small.
 
-1. **Host the Swing app on a Webswing server.** [Webswing](https://www.webswing.org) runs your Swing, JavaFX or SWT app unchanged on the server and streams its interface to the browser. It is a separate server from your webforJ app, so the two need different ports and a CORS setting. The [setup guide](/docs/integrations/webswing/setup) covers both.
-2. **Add the integration module.** The `webforj-webswing` artifact provides `WebswingConnector` and is available since webforJ 25.10.
-3. **Embed the app in a webforJ route.** The connector renders the Swing UI inside a normal webforJ view.
-4. **Build new features in webforJ.** New screens use webforJ components and sit next to the embedded app, inside the same navigation and layout.
-5. **Replace screens until none are left.** Retire each Swing screen when its webforJ replacement is ready.
-
-The dependency is one block in your `pom.xml`:
+[Webswing](https://www.webswing.org) runs your Swing, JavaFX or SWT app unchanged on the server and streams its interface to the browser. The `webforj-webswing` artifact, available since webforJ 25.10, provides `WebswingConnector`, which embeds that app in a normal webforJ view. The dependency is one block in your `pom.xml`:
 
 ```xml
 <dependency>
@@ -117,6 +116,8 @@ Use these questions to pick your starting point.
 - **Is the team about to lose the one person who knows the Swing code?** Start now. Embedding is a small first step that buys time.
 - **Is the app being retired within a year?** Stay put. Modernizing something with an end date is not a good use of effort.
 
+Losing the people who knew the Swing code is debt no tool pays back. An AI coding assistant can't tell you why a rule exists. Once your team knows what a screen must do, though, the assistant can draft the webforJ version and return it with a test that passes or fails, as [the AI verification loop for Java](/blog/ai-verification-loop-java) describes. The assistant does the typing, and the decisions stay with your team.
+
 ## Start with one screen {#start-with-one-screen}
 
 Pick the Swing screen that gets the most requests from people who cannot run the desktop client. Host it on Webswing, embed it with `WebswingConnector`, and put it behind a webforJ route. If you are new to webforJ, [getting started](/docs/introduction/getting-started) creates a running project in minutes, and [startforJ](https://docs.webforj.com/startforj) generates one with the dependencies you choose.
@@ -125,7 +126,7 @@ Pick the Swing screen that gets the most requests from people who cannot run the
 
 ### Is Swing dead? {#faq-is-swing-dead}
 
-No. Swing is still part of the JDK's `java.desktop` module and existing apps keep running. What is gone is the browser plug-in route, since the Applet API was deprecated for removal in JDK 17. The real issue is that a desktop-only UI cannot meet browser-first requirements.
+No. Swing is still part of the JDK's `java.desktop` module and existing apps keep running. What is gone is the browser plug-in route. The Applet API was deprecated for removal in JDK 17 and is removed in JDK 26. The real issue is that a desktop-only UI cannot meet browser-first requirements.
 
 ### Is Java Swing end of life? {#faq-java-swing-end-of-life}
 
@@ -134,3 +135,7 @@ Swing has not been removed from the JDK, so it has no end-of-life date we can po
 ### Why modernize a Swing app? {#faq-why-modernize-swing}
 
 Modernize when users need browser access, when client deployment becomes a burden, or when your Swing expertise is concentrated in a few people. With webforJ you can do it gradually: embed the Swing app first, then replace screens with Java-based webforJ components while the app stays in production.
+
+## Put a plan against the debt {#plan-your-move}
+
+To turn this list into a plan for your own Swing app and discuss it with us, go to the [Swing modernization page](/modernization).

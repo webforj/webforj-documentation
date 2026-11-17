@@ -13,7 +13,7 @@ hide_table_of_contents: false
 
 You have a Java app that has been in production for years, a deadline that keeps moving, and a long list of AI tools that all claim they can help. Comparing them by brand does not get you far, because a migration is not one task. It is five or six different jobs, and each one needs a different kind of help.
 
-The best AI tools for Java migration are coding assistants such as Claude Code, GitHub Copilot, Cursor, Gemini CLI and Codex, matched to the job at hand and grounded in the real documentation of the framework you are moving to. That last part decides most of the outcome. With webforJ, the [full-stack Java framework](/blog/java-full-stack-framework), one AI plugin gives those assistants the real docs, project scaffolding and ready-made workflows, so the code they write for your new screens targets APIs that exist.
+The best AI tools for Java migration are coding assistants such as Claude Code, GitHub Copilot, Cursor, Gemini CLI and Codex, matched to the job at hand and grounded in the real documentation of the framework you are moving to. That last part decides most of the outcome. With webforJ, the [full-stack Java framework](/blog/java-full-stack-framework), one AI plugin gives those assistants the real docs, project scaffolding and ready-made workflows, so the code they write for your new screens can be checked against APIs that exist.
 
 <!-- truncate -->
 
@@ -67,7 +67,11 @@ What grounds this job is the recipe, not the model. Use the assistant to run it,
 
 This is the job people mean when they ask about AI Java code migration, and it is the one with the biggest gap between a good and a bad result. The source is a Swing frame, a JSP page, a JSF view, or a Struts action. The target is a screen in a web UI built in Java.
 
-An assistant can read the old screen, identify its fields, tables, buttons and event handlers, and write the equivalent in the new framework. Whether that code is right depends on whether the assistant knows the target. We cover the screen-by-screen method for desktop apps in [Swing to web migration](/blog/swing-to-web-migration) and the decision between rebuilding and embedding in [how to migrate a Java desktop app with AI](/blog/ai-modernize-java-desktop-app). The short version is to keep the domain layer and move one screen at a time. For Swing, [Webswing integration](/docs/integrations/webswing/overview) runs the existing app in the browser so users are not waiting for the last screen to be ported.
+An assistant can read the old screen, identify its fields, tables, buttons and event handlers, and write the equivalent in the new framework. Whether that code is right depends on whether the assistant knows the target. We cover the screen-by-screen method for desktop apps in [Swing to web migration](/blog/swing-to-web-migration) and the decision between rebuilding and embedding in [how to migrate a Java desktop app with AI](/blog/ai-modernize-java-desktop-app).
+
+The short version is to keep the domain layer and move one screen at a time. For Swing, [Webswing integration](/docs/integrations/webswing/overview) runs the existing app in the browser so users are not waiting for the last screen to be ported. JSP, JSF and Struts screens have no such bridge, so the UI is rebuilt in Java while the Java backend and the team stay.
+
+No tool on this list converts a screen automatically. The assistant writes a new screen, and the quality of that screen comes from what it can check.
 
 What grounds this job is the target framework's documentation, and that is where webforJ is built to help, which the next section covers.
 
@@ -103,9 +107,9 @@ The webforJ [AI plugin](/docs/ai-tooling) installs into Claude Code, GitHub Copi
 
 The [MCP server](/docs/ai-tooling/mcp) lets the assistant look things up in the webforJ knowledge base instead of recalling them. It can also scaffold a Maven project from the official archetypes. When the assistant ports a JTable to a webforJ `Table`, it can ask what the `Table` API actually offers.
 
-The [Agent Skills](/docs/ai-tooling/agent-skills) tell the assistant when to use those tools and in what order. There are skills for building forms with data binding and validation, securing routes, localizing apps, handling timers and background work, styling, wrapping components, and upgrading versions.
+The Agent Skills tell the assistant when to use those tools and in what order. There are skills for building forms with data binding and validation, securing routes, localizing apps, handling timers and background work, styling, wrapping components, and upgrading versions. None of them ports a legacy screen. They shape the webforJ code the assistant writes for the new one.
 
-Then there is the compiler. A webforJ view is Java, so a wrong method name fails the build and the error tells the assistant what to fix. Add TestBed and the assistant can prove behavior without a browser. The pieces fit into a loop: look up the API, write the code, compile it, run the test, and hand a person a diff that has already passed the compiler and the tests.
+Then there is the compiler. A webforJ view is Java, so a wrong method name fails the build and the error tells the assistant what to fix. Inside a running app, the craftforJ assistant goes a step further: it stages each edit and sends it to a real Java compiler before the change reaches your review. Add TestBed and the assistant can prove behavior without a browser. The pieces fit into a loop: look up the API, write the code, compile it, run the test, and hand a person a diff that has already passed the compiler and the tests.
 
 We are careful about what that loop promises. It raises the odds that the code you review is correct. It does not replace the review, and even with the plugin installed an assistant can still produce wrong code in complex cases. Read the diff, run the tests and keep the change small enough to understand.
 
@@ -115,6 +119,10 @@ Lookup, compile, and test together make up [the AI verification loop for Java](/
 
 If you are not sure where to begin, begin with Job 1 and Job 2, because they are contained and teach your team how the assistant behaves on your code. Ask it for a screen inventory of your app. Then, once you are on webforJ, pick one project, add the OpenRewrite plugin on a branch, run `mvn rewrite:dryRun` and read the patch. When you are ready to port a screen, generate a project with [startforJ](https://docs.webforj.com/startforj), install the plugin and follow the [getting started guide](/docs/introduction/getting-started) for the first view.
 
+## Match the tools to your migration {#plan-your-move}
+
+To see where each of these jobs falls in a move from a running Java app to the web, and to talk to our team about yours, visit the [modernization path](/modernization).
+
 ## Frequently asked questions {#faq}
 
 ### What are the best AI tools for Java migration? {#faq-best-tools}
@@ -123,7 +131,7 @@ Coding assistants such as Claude Code, GitHub Copilot, Cursor, Gemini CLI and Co
 
 ### Can AI migrate legacy Java code by itself? {#faq-migrate-alone}
 
-AI can help with the reading, porting and test writing, but a person should review every change. Work screen by screen, keep the business logic, and run tests after each step so mistakes show up early.
+No. AI can help with the reading, porting and test writing, but a person should review every change. Work screen by screen, keep the business logic, and run tests after each step so mistakes show up early.
 
 ### What is the best AI tool for Java programming? {#faq-java-programming}
 

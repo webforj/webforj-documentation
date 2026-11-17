@@ -62,7 +62,7 @@ JEP 504 points out that where the `Applet` class only serves as a user interface
 
 Webswing documents applets as a supported launcher type. In the [Webswing applet configuration](https://www.webswing.org/docs/26.2/configure/applet), you set up the applet much like a Swing app, choose `Applet` as the launcher type, and name the applet class that extends `java.applet.Applet`, plus any applet parameters. The same page lists embedding into your web page and a Java to JavaScript interface. Webswing runs the app on the server and shows its interface in the browser, so users get a URL instead of a plug-in.
 
-Two facts keep this option honest. The applet class still extends `java.applet.Applet`, so the Java runtime that runs it on the server has to be one that still ships the Applet API, which means JDK 25 or older. The [Webswing documentation](https://www.webswing.org/docs/26.2/) lists Java 8, 11, 17, 21 and 25 as supported, so the versions it runs on still include that API. And Webswing is a separate commercial product: its [licensing page](https://www.webswing.org/en/licensing) states that using it in production requires a commercial license. It buys time without touching the applet's source. It doesn't remove the dependency on the Applet API.
+One fact keeps this option honest. The applet class still extends `java.applet.Applet`, so the Java runtime that runs it on the server has to be one that still ships the Applet API, which means JDK 25 or older. The [Webswing documentation](https://www.webswing.org/docs/26.2/) lists Java 8, 11, 17, 21 and 25 as supported, so the versions it runs on still include that API. It buys time without touching the applet's source. It doesn't remove the dependency on the Applet API.
 
 Webswing and webforJ are partners. Webswing keeps the old app reachable today, and webforJ carries it forward.
 
@@ -85,7 +85,7 @@ The last row is where many applet teams save the most work. If your applet loade
 
 Your developers keep the mental model they already have. They build screens without writing JavaScript, and they don't need to hire for a second stack. The [Swing to webforJ mapping guide](/blog/swing-to-web-migration) shows the same idea in more depth, since a `JApplet` is a Swing container inside a browser page.
 
-The new screens also come with tooling that keeps the rebuild safe. The [webforJ AI plugin](/docs/ai-tooling) gives your coding assistant the real webforJ API, so it writes against the framework instead of guessing.
+The new screens also come with tooling that checks the rebuild as it goes. The [webforJ AI plugin](/docs/ai-tooling) gives your coding assistant the real webforJ API, so it writes against the framework instead of guessing.
 
 Ask it for a [TestBed](/docs/testing/testbed/overview) test with every screen it rebuilds. The TestBed runs the view in a plain JUnit test with no browser and no server, so each screen comes back with a pass or a fail before you review it. That's the [AI verification loop](/blog/ai-verification-loop-java). These tools work on the webforJ screens you build, not on the old applet.
 

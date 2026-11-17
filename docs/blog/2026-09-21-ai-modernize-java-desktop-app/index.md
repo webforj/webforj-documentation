@@ -13,7 +13,7 @@ hide_table_of_contents: false
 
 Asking an AI assistant to convert a whole Swing app in one pass sounds fast. In practice you get thousands of lines nobody has reviewed, written against APIs the model half remembers, and a release date that keeps slipping.
 
-There is a better way to migrate a Java desktop app to the web with AI: move it one screen at a time. Some screens are worth rebuilding in webforJ with an assistant connected to the webforJ MCP server. Others keep running as they are, embedded in the web app through `WebswingConnector`, until their turn comes. Your business logic stays in Java, and users get a web app from the first release.
+There is a better way to migrate a Java desktop app to the web with AI: move it one screen at a time. Some screens are worth rebuilding in webforJ with an assistant connected to the webforJ MCP server. Others keep running as they are, embedded in the web app through `WebswingConnector`, until their turn comes. Your business logic stays in Java, and users get a web app from the first release. That is AI legacy modernization that holds up in review: AI builds and checks each new webforJ screen, and it does not convert Swing for you.
 
 <!-- truncate -->
 
@@ -23,7 +23,24 @@ The hard part is deciding which screen goes which way. This guide gives you a si
 
 A prompt like "convert this Swing app to a web app" produces code that looks plausible and fails in ways you find late. A desktop app holds years of event wiring, modal dialogs, and state that lives in widgets. A general-purpose model has no map of the web framework you are targeting, so it guesses at class names, and you spend the saved time fixing guesses.
 
-Two things change that. First, the target has to be a framework where the UI is written in Java, so the assistant maps Swing concepts to Java concepts instead of crossing into HTML, CSS, and a second language. webforJ builds every screen from Java components, which keeps a migrated screen close to the original structure. Second, the assistant needs live access to the real API surface. That is the job of the [webforJ MCP server](/docs/ai-tooling/mcp), which lets the assistant search the webforJ knowledge base, scaffold projects, and validate class names instead of recalling them from training data.
+Old architectures, undocumented dependencies and tightly coupled logic make automatic transformation of a legacy Swing app unreliable. Nothing in the webforJ tooling converts Swing screens, and no Agent Skill ports a screen.
+
+Two things change the result for the screens you rebuild. First, the target has to be a framework where the UI is written in Java, so the assistant maps Swing concepts to Java concepts instead of crossing into HTML, CSS, and a second language. webforJ builds every screen from Java components, which keeps a migrated screen close to the original structure. Second, the assistant needs live access to the real API surface. That is the job of the [webforJ MCP server](/docs/ai-tooling/mcp), which lets the assistant search the webforJ knowledge base, scaffold projects, and validate class names instead of recalling them from training data.
+
+## What AI does in legacy modernization {#ai-legacy-modernization}
+
+<!-- vale Google.WordListCase = NO -->
+Legacy application modernization using AI works when each task is small and has a check at the end. For a Java desktop app, the work splits cleanly:
+<!-- vale Google.WordListCase = YES -->
+
+| AI does well | AI does not do |
+| --- | --- |
+| Read the Swing code and list screens, services and rules | Transform the Swing app into a web app in one pass |
+| Write one new webforJ view from a narrow brief | Decide which screens move first and in what order |
+| Write a test for the new view and fix what fails | Change or test the Swing screens running inside Webswing |
+| Fix compile errors in the code it wrote | Replace your review |
+
+The left column is where the time goes in a migration, and every item ends in something a person can check: an inventory, a diff, a test run, a build.
 
 ## Three ways to migrate {#three-ways}
 
@@ -66,7 +83,7 @@ public class LegacyOrdersView extends Composite<Div> {
 
 The connector is bidirectional. `performAction` sends a command to the Swing app, and `onAction` receives the actions the Swing app sends back. The action names and data formats are defined by your Swing code through the Webswing Java API, which is covered in [Communication](/docs/integrations/webswing/communication). That channel is how a new webforJ toolbar can drive a legacy screen, and how a legacy selection can update a new web panel next to it.
 
-One practical rule from the setup docs: Webswing and webforJ need different ports, and cross-origin embedding needs the allowed origins configured in the Webswing admin console. Do this on day one, because it is the first thing that blocks a demo.
+One practical rule: Webswing and webforJ need different ports, and cross-origin embedding needs the allowed origins configured in the Webswing admin console. Do this on day one, because it is the first thing that blocks a demo.
 
 ## Rebuild with AI: the brief {#rebuild-with-ai}
 
@@ -80,10 +97,22 @@ For each screen, give the assistant a narrow brief:
 2. The route the new view should live on.
 3. A rule that the view calls the existing services and does not copy their logic.
 4. A request to verify every webforJ class against the MCP server before finishing.
+5. A test for the new view that runs before the assistant hands it back.
 
 Then review the result like any pull request. Because the output is plain Java in the same language as your services, your existing code review, static analysis, and unit tests apply unchanged.
 
 The webforJ AI plugin also installs in Claude Code and several other assistants. The [MCP server page](/docs/ai-tooling/mcp) lists the clients and the exact commands. The guide to [AI tools for Java migration](/blog/ai-tools-java-migration) compares tools by the job they do.
+
+## How each new screen gets checked {#check-each-screen}
+
+The brief produces a draft. Four checks stand between that draft and your merge, and all four act on the new webforJ code, not on the Swing app inside Webswing.
+
+1. **Lookup.** The MCP server answers what a webforJ class offers, so the draft uses methods that exist.
+2. **Workflow.** Agent Skills tell the assistant how webforJ expects a form, a component or a secured route to be built. They shape the new view, they do not read or translate the Swing one.
+3. **Compiler.** A webforJ view is Java, so every edit goes through the Java compiler. A wrong method name fails the build, and the error tells the assistant what to fix.
+4. **Test.** A test for the new view runs before anyone reviews it, so the screen's behavior comes back as a pass or a fail.
+
+Together these make up [the AI verification loop for Java](/blog/ai-verification-loop-java). The loop raises the odds that the screen you review is right. Your team still reads the diff and owns the merge.
 
 ## Keep the logic, swap the shell {#keep-the-logic}
 
@@ -106,11 +135,23 @@ The embed-then-rebuild order keeps the app releasable the whole way through. Eac
 
 Rebuilt apps need to stay current once they exist. For webforJ-to-webforJ version changes, the project ships OpenRewrite recipes that update dependencies, rename methods, and leave `TODO` comments where a manual fix is needed. You run `mvn rewrite:dryRun` to preview a patch and `mvn rewrite:run` to apply it. The recipes cover webforJ upgrades, not Swing migration, so treat them as the maintenance tool for the app you are about to build. Details are on the [automated upgrades page](/docs/upgrading/automated-upgrades).
 
-## Next step {#next-step}
+## Rebuild your simplest form first {#next-step}
 
-Start with one screen. Install the AI plugin from the [AI tooling docs](/docs/ai-tooling), generate a project through [startforJ](https://docs.webforj.com/startforj), and embed your running Swing app with the [Webswing setup guide](/docs/integrations/webswing/setup). Rebuild the simplest form first, so the team sees the full loop before you plan the rest.
+Start with one screen. Install the AI plugin, generate a project through [startforJ](https://docs.webforj.com/startforj), and embed your running Swing app with the [Webswing setup guide](/docs/integrations/webswing/setup). Rebuild the simplest form first, so the team sees the full loop before you plan the rest.
+
+## Plan the move for your desktop app {#plan-your-move}
+
+To map the whole path for your own app, from running it in the browser to retiring the desktop client, see the [modernization path](/modernization) and talk to our team about it.
 
 ## Frequently asked questions {#faq}
+
+### What is AI legacy modernization for a Java desktop app? {#faq-ai-legacy-modernization}
+
+It means using an AI coding assistant to read the old app and build its replacement screens one at a time, with each new screen checked against the real API, the compiler and a test before a person reviews it. The desktop app keeps running in the browser through Webswing while that happens.
+
+### Can AI convert a Swing app to the web automatically? {#faq-ai-convert}
+
+No. Automatic transformation of a legacy Swing app is unreliable, and webforJ ships no converter. AI writes new webforJ screens from a brief, and the Swing screens you have not rebuilt yet stay embedded until their turn.
 
 ### Can AI rebuild a Swing app as a web app? {#faq-rebuild-swing}
 

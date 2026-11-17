@@ -13,19 +13,15 @@ hide_table_of_contents: false
 
 If your team has built with Apache Wicket, you already like the idea that a page is a tree of Java components and that the server owns the state. What you may want to change is keeping every Java class paired with an HTML file next to it. webforJ, the [full-stack Java framework](/blog/java-full-stack-framework), is an Apache Wicket alternative that keeps the component tree and the server side Java, and removes the markup files: the whole screen is Java, with modern web components, annotation based routing, Spring Boot integration and data binding.
 
-This post covers what carries over from Wicket, what disappears, and how to move one screen at a time.
+If you plan to migrate from Apache Wicket, the work is narrower than a rewrite. You rebuild the UI in Java, keep the Java backend and the Java team, and move one page at a time. This post covers what carries over from Wicket, what disappears, and the order that keeps both apps running.
 
 <!-- truncate -->
 
-:::tip See data binding in an app
-The [webforj-databinding](https://github.com/webforj/built-with-webforj/tree/main/webforj-databinding) app in built-with-webforj shows one form bound to an employee record with nested address and emergency contact details, and validation that checks the whole record. It runs with Java and Maven.
-:::
-
 ## What Wicket teams already know {#what-wicket-teams-know}
 
-The Apache Wicket project describes itself as [a component-oriented Java web framework](https://wicket.apache.org/). A page is a tree of components, state lives on the server, and each component keeps its markup in an HTML file that mirrors the tree. That model has real strengths: reusable pieces, server side state, and a clear place for behavior.
+The Apache Wicket project describes itself as [a component-oriented Java web framework](https://wicket.apache.org/). A page is a tree of components, state lives on the server, and each page and panel keeps its markup in an HTML file that mirrors the tree. That model has real strengths: reusable pieces, server side state, and a clear place for behavior.
 
-The trade-off is the pairing. Each component has a Java class and a markup file, and the two have to agree on nesting and ids. If that pairing is the part that slows reviews and refactors, a component based Java web framework without templates is the natural next step. The [best Java web framework in 2026](/blog/java-web-frameworks-2026) depends on the job, and our guide goes through them.
+The trade-off is the pairing. Each page and panel has a Java class and a markup file, and the two have to agree on nesting and ids. If that pairing is the part that slows reviews and refactors, a component based Java web framework without templates is the natural next step. The [best Java web framework in 2026](/blog/java-web-frameworks-2026) depends on the job, and our guide goes through them.
 
 ## What stays the same {#what-stays-the-same}
 
@@ -92,13 +88,9 @@ You do not need a rewrite on day one. Because shared panels are what most Wicket
 
 Porting a panel once means every page that uses it benefits. It also keeps the first migrated pages small, because they mostly assemble components that already exist. Avoid porting a page and its panels in the same step, since two moving parts make a review harder.
 
-## Let an AI assistant do the port {#ai-port}
+## Reviewing AI-drafted panels {#ai-port}
 
-A Wicket page is a Java class plus an HTML file, which is a tidy unit for an AI coding assistant to read. Hand it one page and ask for the webforJ view.
-
-The webforJ AI plugin keeps the result honest. It connects your assistant to the [MCP server](/docs/ai-tooling/mcp) for real class and method signatures, and to the [Agent Skills](/docs/ai-tooling/agent-skills) that guide forms, components, and styling. The [AI plugin overview](/docs/ai-tooling) covers installation. You still review the output, but the draft is far more likely to compile.
-
-The assistant can also check its own work. Ask it for a test with every screen it ports, so each one comes back with a pass or a fail before you review it. That write, check, review cycle is [the AI verification loop for Java](/blog/ai-verification-loop-java), and it fits a migration well, because every screen you move is a small, testable unit.
+Some teams let an AI coding assistant draft the `Composite` for each panel. That only helps when the draft is checked against the framework it targets: webforJ API lookups from the real docs, a compiler on each edit, and a test that renders the panel. [The AI verification loop for Java](/blog/ai-verification-loop-java) explains those checks. The review of each panel stays with your team.
 
 ## Is webforJ right for your team? {#choosing}
 
@@ -110,7 +102,7 @@ webforJ fits when:
 
 Staying put can be right when the app is stable and no screen is changing soon. Moving one screen at a time lets you test the fit before committing to more.
 
-## Next step {#next-step}
+## Rebuild one small page {#next-step}
 
 Generate a Spring Boot project with [startforJ](https://docs.webforj.com/startforj), or follow [getting started](/docs/introduction/getting-started), then rebuild one small page as a `Composite` view.
 
@@ -127,3 +119,7 @@ No. Move one screen at a time, keep your existing Spring services, and retire ol
 ### How do components link up without markup ids? {#faq-ids}
 
 You create a component, keep it in a field, and add it to a layout. The compiler checks that link, so there is no id to mismatch.
+
+## Plan your Wicket migration with us {#plan-your-migration}
+
+Once a page or two runs in webforJ, [see how webforJ moves Java apps to the web](/modernization) and talk to us about the rest of your Wicket app.

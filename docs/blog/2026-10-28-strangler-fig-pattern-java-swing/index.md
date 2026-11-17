@@ -36,7 +36,7 @@ You put the Swing app inside a web app and replace its screens one at a time. In
 3. Gradually replace Swing screens with webforJ equivalents.
 4. Phase out the legacy app entirely.
 
-Your Java team and your domain code stay in place the whole time. The sections below take the stages in order. The same path applied to an ERP is described in [modernizing an ERP UI one screen at a time](/blog/modernize-erp-ui-java).
+Your Java team and your domain code stay in place the whole time. The sections below take the stages in order. If you haven't settled on this path yet, the [Java Swing to web migration guide](/blog/migrate-swing-app-to-web) compares it with the alternatives. The same path applied to an ERP is described in [modernizing an ERP UI one screen at a time](/blog/modernize-erp-ui-java).
 
 ## Step 1: run Swing in the browser {#step-one}
 
@@ -105,15 +105,11 @@ When the last Swing screen has a webforJ replacement, the connector view has not
 
 ## How long does it take? {#how-long}
 
-Within four months, Prodin delivered their first web-based modules to customers. The details are in the [Prodin success story](https://webforj.com/wp-content/uploads/2024/10/BASIS_SuccessStory_Prodin.pdf).
+Within four months, Prodin delivered their first web-based modules to customers. The details are in the [Prodin success story](https://webforj.com/wp-content/uploads/2024/10/BASIS_SuccessStory_Prodin.pdf). That is one customer's timeline. Yours depends on how many screens the app has and how tangled they are with the logic.
 
-## Let an AI agent do the port {#ai-port}
+## AI on each strangled screen {#ai-port}
 
-Replacing a screen is repetitive work: read the Swing screen, map its components, bind the data, and wire the actions through the connector. A coding agent can do each port, and the [webforJ AI plugin](/docs/ai-tooling) connects it to webforJ. One install adds the [MCP server](/docs/ai-tooling/mcp), which gives the agent live access to webforJ documentation and API checks, and the [Agent Skills](/docs/ai-tooling/agent-skills), which give it task-specific workflows for building forms, styling apps, and creating components.
-
-With them the agent looks up each API in the real framework before writing it, and you review one finished screen at a time.
-
-The agent can also check its own work. Ask it for a test with every screen it ports, so each one comes back with a pass or a fail before you review it. That write, check, review cycle is [the AI verification loop for Java](/blog/ai-verification-loop-java), and it fits a migration well, because every screen you move is a small, testable unit.
+The pattern hands you work in small pieces, and a small piece is what an AI coding assistant handles well. For each replaced screen, it can draft the webforJ form that answers a connector action, and return it with a test that passes or fails before anyone reviews it. [The AI verification loop for Java](/blog/ai-verification-loop-java) covers how those checks run. The Swing side of each action stays with your team, because it lives in the Swing app and uses the Webswing Java API.
 
 ## Frequently asked questions {#faq}
 
@@ -135,8 +131,12 @@ Embed the app with `WebswingConnector`, build new screens in webforJ around it, 
 
 ### How long does a gradual Swing migration take? {#faq-how-long}
 
-Within four months, Prodin delivered their first web-based modules to customers. The details are in the [Prodin success story](https://webforj.com/wp-content/uploads/2024/10/BASIS_SuccessStory_Prodin.pdf).
+Within four months, Prodin delivered their first web-based modules to customers. The details are in the [Prodin success story](https://webforj.com/wp-content/uploads/2024/10/BASIS_SuccessStory_Prodin.pdf). That is one customer's timeline. Yours depends on how many screens the app has and how tangled they are with the logic.
 
 ## Embed your Swing app in one view {#start}
 
 Start with the [Webswing setup](/docs/integrations/webswing/setup): register your Swing app on a Webswing server, add the `webforj-webswing` dependency, and put `WebswingConnector` in one view. Then pick the dialog your users open most and replace it with a webforJ form.
+
+## Plan your strangler fig with us {#plan-your-move}
+
+To map the four stages onto your own Swing app and talk through the order with our team, visit the [Swing modernization page](/modernization).

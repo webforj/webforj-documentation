@@ -13,6 +13,8 @@ hide_table_of_contents: false
 
 Your team maintains an app built around action classes, JSP views, and a mapping file. It works, the business rules inside it are valuable, and every new screen still means touching three or four files in different places. If you are planning a Struts to Spring Boot migration, or weighing an Apache Struts alternative, the short answer is webforJ, the full-stack Java framework, with your Spring Boot services plugged in: each action and JSP pair becomes one Java view with a route, the markup and tag libraries become Java components, form beans become validated data binding, and your services carry over unchanged.
 
+That is the plan for a Struts estate. You rebuild the UI in Java, keep the Java backend and the Java team that knows it, and migrate Struts to Spring Boot one screen at a time while the old app keeps serving everything you have not moved yet.
+
 <!-- truncate -->
 
 ## The problem with action and JSP pairs {#the-problem}
@@ -20,6 +22,8 @@ Your team maintains an app built around action classes, JSP views, and a mapping
 A classic Struts screen is spread over several artifacts. An action class handles the request, a mapping in `struts.xml` or an annotation connects a URL to that action, a form bean carries the submitted values, and a JSP renders the page with tag libraries. Following one user flow means opening all of them.
 
 That structure fits request and response page rendering. It gets expensive when the UI has to feel interactive. Validation rules live in one place and error display in another, and a table that sorts and filters without a page reload usually needs JavaScript on top. The people who know the business logic are Java developers, and the UI work lands on them anyway.
+
+Which Struts you run matters. Apache Struts is maintained, and its 6.x and 7.x lines get regular releases and security fixes. Struts 1 is the exception. It reached end of life in 2013, and its last release, 1.3.10, came out in December 2008. Often the people who wrote the original actions have moved on as well, which makes a slow, readable migration safer than a big rewrite.
 
 A migration therefore has two goals. Keep the Java code that encodes the business, and replace the layers around it with something a Java developer can read top to bottom.
 
@@ -47,7 +51,7 @@ public class UserProfileView extends Composite<Div> {
 }
 ```
 
-The [defining routes](/docs/routing/defining-routes) page covers patterns, aliases, and nested layouts. Where an action used to forward to a JSP, the view now builds its own components, and navigation between views is a method call rather than a result mapping. Our post on [routing in 10 minutes](/blog/master-webforj-routing-in-10-minutes) is a quick walk through the basics.
+The [defining routes](/docs/routing/defining-routes) page covers patterns and aliases. Where an action used to forward to a JSP, the view now builds its own components, and navigation between views is a method call rather than a result mapping. Our post on [routing in 10 minutes](/blog/master-webforj-routing-in-10-minutes) is a quick walk through the basics.
 
 ## Form beans become bound beans {#form-beans}
 
@@ -77,15 +81,11 @@ While both UIs exist, other systems may still call URLs that the old app served.
 
 Each migrated screen is a small, reviewable change, and your users see improvements as they land instead of waiting for a big release.
 
-## Let an AI assistant do the port {#ai-port}
+## AI help with the new views {#ai-port}
 
-Mechanical translation suits an AI coding assistant. Give it one action, its mapping, its JSP and its form bean, and ask for the matching view. The webforJ AI plugin makes the result reliable. It connects the assistant to the [webforJ MCP server](/docs/ai-tooling/mcp), so class and method names come from the framework's documentation rather than from guesswork, and to [Agent Skills](/docs/ai-tooling/agent-skills) that describe how to build forms, secure routes and style apps the way webforJ expects. Setup is on the [AI plugin page](/docs/ai-tooling).
+An AI coding assistant can draft each new view while your team keeps the old action and JSP open beside it. The draft earns trust through checks, not confidence: the assistant looks up webforJ classes in the real documentation, and every draft is tested and reviewed before it ships. [The AI verification loop for Java](/blog/ai-verification-loop-java) shows how those checks fit together. Your developers still read and approve every screen.
 
-Review and test every generated screen like any other change.
-
-The assistant can also check its own work. Ask it for a test with every screen it ports, so each one comes back with a pass or a fail before you review it. That write, check, review cycle is [the AI verification loop for Java](/blog/ai-verification-loop-java), and it fits a migration well, because every screen you move is a small, testable unit.
-
-## Your next step {#next-step}
+## Port your first Struts screen {#next-step}
 
 Generate a Spring Boot project with [startforJ](https://docs.webforj.com/startforj), move one service into it, and port the simplest screen you have. The [getting started guide](/docs/introduction/getting-started) walks through the first run.
 
@@ -102,3 +102,7 @@ Yes. webforJ integrates with Spring Boot, so the migration also gives you an emb
 ### Do I need to learn JavaScript for the new UI? {#faq-javascript}
 
 No. Screens are written in Java with components, routes and data binding, and the framework handles the browser side. Your team keeps working in the language and tools it already uses.
+
+## Plan your migration with us {#plan-your-migration}
+
+When you are ready to plan the whole estate, [see how webforJ moves Java apps to the web](/modernization) one screen at a time and talk to us about your Struts app.

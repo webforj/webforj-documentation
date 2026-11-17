@@ -13,11 +13,9 @@ hide_table_of_contents: false
 
 Your team has a ZK app that works. Screens are written in ZUL, the logic sits in composers or view models, and a change to one form means opening more than one file. If you are searching for a ZK framework alternative that keeps the server side model but drops the markup layer, webforJ, the [full-stack Java framework](/blog/java-full-stack-framework), is built for that. Every screen is a Java class, with no ZUL and no XML, and you can move over one screen at a time.
 
-<!-- truncate -->
+Moving from ZK to a Spring Boot app this way is not a rewrite of the whole system. You rebuild the UI in Java, keep the Java backend and the Java team, and let the ZK app serve every screen you have not ported yet.
 
-:::tip Run a data binding app first
-The [webforj-databinding](https://github.com/webforj/built-with-webforj/tree/main/webforj-databinding) app in the built-with-webforj repository binds one form to an employee record with nested address and contact details, plus validation. It runs with Java and Maven, so you can see the workflow in a few minutes.
-:::
+<!-- truncate -->
 
 ## Why look at a ZK alternative? {#why-look}
 
@@ -92,13 +90,9 @@ Run both apps against the same services and database, and port in this order:
 
 Each ported screen can ship on its own while users move between old and new. Starting with the model pays off because validation rules are the part teams most want to keep identical. Once a bean binds and validates the same way in both apps, the layout work that remains is mechanical.
 
-## Prompting an AI assistant to port {#ai-port}
+## Keeping AI drafts honest {#ai-port}
 
-This migration suits an AI coding assistant. The input is a ZUL file plus its composer or view model, and the output is one Java class and a route. The assistant converts a screen while you review the diff.
-
-The [webforJ AI plugin](/docs/ai-tooling) reduces guessing. It installs the [MCP server](/docs/ai-tooling/mcp) so the assistant can look up real classes and methods, plus the [Agent Skills](/docs/ai-tooling/agent-skills) with workflows for forms and components. A good prompt names one ZUL file, its view model, the target package, and the route. Do one screen per session and run the app after each.
-
-The assistant can also check its own work. Ask it for a test with every screen it ports, so each one comes back with a pass or a fail before you review it. That write, check, review cycle is [the AI verification loop for Java](/blog/ai-verification-loop-java), and it fits a migration well, because every screen you move is a small, testable unit.
+A ZUL file and its view model make a clear input if your team asks an AI coding assistant for a first draft of the Java view. Treat that draft as unproven until it passes three checks: class and method names confirmed against the webforJ docs, a compile on every edit, and a test that binds the bean and submits the form. [The AI verification loop for Java](/blog/ai-verification-loop-java) sets those checks up. One screen per session keeps each review small.
 
 ## Is webforJ the right fit? {#choosing}
 
@@ -106,7 +100,7 @@ Choose webforJ when you want to stay on the server and in Java, remove the marku
 
 If part of your interface is custom client side scripting with no Java counterpart, wrap the library as a web component and call it from Java, or leave that screen where it is for now.
 
-## Take the first step {#next-step}
+## Port one small ZK screen {#next-step}
 
 Generate a project with [startforJ](https://docs.webforj.com/startforj) or follow [getting started](/docs/introduction/getting-started), then port one small screen.
 
@@ -114,7 +108,7 @@ Generate a project with [startforJ](https://docs.webforj.com/startforj) or follo
 
 ### Is there a drop-in replacement that reads ZUL files? {#faq-zul}
 
-No. webforJ does not read ZUL files. You rebuild each screen as a Java class, one screen at a time, and your bean and service code stays as it is. An AI coding agent does that conversion quickly, and the [webforJ AI tooling](/docs/ai-tooling) keeps it correct: the MCP server checks every API against the real webforJ docs, and the Agent Skills give the agent webforJ's own patterns to follow.
+No. webforJ does not read ZUL files. You rebuild each screen as a Java class, one screen at a time, and your bean and service code stays as it is. If an AI coding assistant helps with the rebuild, the [webforJ AI tooling](/docs/ai-tooling) gives it the real webforJ API to work against, and your team still reviews each screen.
 
 ### Can I keep my view models? {#faq-viewmodels}
 
@@ -123,3 +117,7 @@ Mostly. The bean, its validation rules, and your service calls carry over. You r
 ### Do I have to migrate everything at once? {#faq-rewrite}
 
 No. Run the webforJ app beside the existing one, share the back end, and port screens in any order.
+
+## Plan your ZK migration with us {#plan-your-migration}
+
+For the screens beyond the first one, [see how webforJ moves Java apps to the web](/modernization) and talk to us about your ZK app.

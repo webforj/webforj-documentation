@@ -113,7 +113,7 @@ export const DEPENDENCY = `<dependency>
 export const OPTIONS = `WebswingConnector connector = new WebswingConnector("http://localhost:8080/myapp/");
 
 WebswingOptions options = new WebswingOptions()
-  .setDisableLogout(true);  // Hide the logout button
+  .setAutoStart(false);
 
 connector.setOptions(options);`;
 

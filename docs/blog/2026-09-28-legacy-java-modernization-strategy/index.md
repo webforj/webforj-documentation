@@ -1,6 +1,6 @@
 ---
 title: "Legacy Java application modernization strategy for enterprises"
-description: "A legacy Java application modernization strategy for portfolios of Swing, JSP, JSF and Struts apps: triage by value and risk, keep services, move screens."
+description: "Legacy Java application modernization for Swing, JavaFX, SWT, Struts, JSF and JSP portfolios: triage by risk, keep the Java backend, move screens in phases."
 slug: legacy-java-modernization-strategy
 date: 2026-09-28
 authors: webforJ
@@ -11,9 +11,13 @@ hide_table_of_contents: false
 
 ![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-09-28-legacy-java-modernization-strategy/cover.jpg)
 
-Most large Java shops do not have one aging app. They have a portfolio: a Swing client in finance, JSP pages in operations, a JSF module nobody wants to change, and a Struts app that three people understand. Each one has its own budget fight, and the instinct is to give each its own plan.
+Most large Java shops do not have one aging app. They have a portfolio: a Swing client in finance, a JavaFX tool in the warehouse, JSP pages in operations, a JSF module nobody wants to change, and a Struts app that three people understand. Each one has its own budget fight, and the instinct is to give each its own plan.
 
-The legacy Java app modernization strategy that holds up is simpler. Triage every app by business value and technical risk, keep the services and data that already work, and move the screens to one target: webforJ, the [full-stack Java framework](/blog/java-full-stack-framework). One framework for the whole portfolio can mean one skill set, one security model and one hiring profile, whether the starting point was Swing, JSP, JSF, or Struts.
+<!-- vale Google.WordListCase = NO -->
+
+The legacy Java application modernization strategy that holds up is simpler. To modernize a legacy Java application without betting the business on a rewrite, triage every app by business value and technical risk, keep the services and data that already work, and move the screens to one target: webforJ, the [full-stack Java framework](/blog/java-full-stack-framework). Keep the app running and move it to the web one screen at a time, with your own Java team. One framework for the whole portfolio can mean one skill set, one security model and one hiring profile, whether the starting point was Swing, JavaFX, SWT, JSP, JSF, or Struts.
+
+<!-- vale Google.WordListCase = YES -->
 
 <!-- truncate -->
 
@@ -21,9 +25,22 @@ The legacy Java app modernization strategy that holds up is simpler. Triage ever
 
 Every extra framework in a modernization program adds a second team, a second upgrade cycle and a second set of security reviews. A plan that picks a new technology per legacy app replaces old fragmentation with new fragmentation. If you are still choosing that target, see the [best Java web framework in 2026](/blog/java-web-frameworks-2026).
 
-webforJ lets you build the whole app, screens included, in Java. Your team already writes Java, so the people who know the domain are the people who write the new screens. The same framework also runs standalone or integrates with a Spring Boot backend through its [Spring integration](/docs/integrations/spring/overview), so services you already run stay where they are.
+webforJ lets you build the whole app, screens included, in Java. Your team already writes Java, so the people who know the domain are the people who write the new screens. Components are Java objects, events are listeners, and layouts are composed in Java, so the mental model is one a Swing developer already has, and a Struts developer keeps writing plain Java. The same framework also runs standalone or integrates with a Spring Boot backend through its [Spring integration](/docs/integrations/spring/overview), so services you already run stay where they are.
 
-BASIS International is the company behind webforJ. [BASIS](https://webforj.com/company) software and software tools have been used to develop business solutions for both large international corporations and SMEs for almost 40 years, with 20+ years of delivering technology built on Java. Operating its own sites in North America and Europe and working with partners in more than 30 countries, BASIS is well positioned on the international stage.
+BASIS International is the company behind webforJ. [BASIS](https://basis.cloud/about/) has built development tools since 1985. For a program that runs for years, that track record matters.
+
+## Why big-bang rewrites stall {#why-rewrites-stall}
+
+If the last attempt to replace a legacy Java app ran for years while the old app kept changing underneath it, and was shelved before it reached the users, that history is why the next proposal gets a cold reception.
+
+The causes repeat across portfolios:
+
+- **The business cannot stop.** A rewrite that freezes features for its whole duration loses the argument with sales and operations before it starts.
+- **The knowledge has left.** The people who wrote the rules have moved on, and the code is now the only full record of what the app does.
+- **The team knows Java.** A rewrite into a JavaScript stack asks the people who understand the domain to become a different team, or asks you to hire one.
+- **Some platforms have run out.** Current Struts is maintained, but [Struts 1 has reached end of life](https://struts.apache.org/struts1eol-announcement.html), and its last release, 1.3.10, shipped in December 2008.
+
+A phased path answers all four. The old app stays in service, the rules stay in the Java code that already holds them, the same team does the work, and each screen that moves takes one more dependency off the old platform.
 
 ## Why the screens are the bottleneck {#screens-bottleneck}
 
@@ -43,7 +60,7 @@ Score each app on two questions. How much does the business depend on it? How ri
 
 | | Low technical risk | High technical risk |
 |---|---|---|
-| **High business value** | Migrate first. Use one of these as the pilot. | Migrate next, with a safety net. Run the old screens in the browser while new ones replace them. |
+| **High business value** | Migrate first. Use one of these as the pilot. | Migrate next, with a safety net. Keep the old screens in service while new ones replace them. |
 | **Low business value** | Leave alone or retire. Do not spend modernization budget here. | Contain. Make it reachable and stop investing. |
 
 What to do in each quadrant:
@@ -51,7 +68,7 @@ What to do in each quadrant:
 - **High value, low risk.** These are your pilots. Clean boundaries and a team that knows the code mean the first web screens ship quickly and prove the approach to everyone watching.
 - **High value, high risk.** The business cannot lose these and nobody wants to change them. Do not attempt a rewrite. Move one screen at a time and keep the old app running until each replacement is accepted.
 - **Low value, low risk.** Aging but harmless. Retire when the process behind them goes away.
-- **Low value, high risk.** Fragile and rarely used. For Swing apps, running them in the browser is often enough. Spend nothing on rewrites.
+- **Low value, high risk.** Fragile and rarely used. For Swing, JavaFX and SWT apps, running them in the browser is often enough. Spend nothing on rewrites.
 
 Keep the scoring honest and short. A one-page score per app, agreed by the business owner and the engineering lead, beats a month of assessment workshops.
 
@@ -62,23 +79,27 @@ The target is the same. The first step depends on where you start. For Swing est
 | Legacy technology | First step | Then |
 |---|---|---|
 | Swing | Run the existing app in the browser with the [Webswing integration](/docs/integrations/webswing/overview) | Replace screens one at a time in webforJ |
+| JavaFX | Run the existing app in the browser through Webswing | Replace screens one at a time in webforJ |
+| SWT | Run the existing app in the browser through Webswing | Replace screens one at a time in webforJ |
 | JSP | Rebuild one page as a webforJ view that calls the same services | Continue page by page |
 | JSF | Rebuild one view as a webforJ view, reusing the backing bean logic | Continue view by view |
 | Struts | Rebuild one action and its page as a webforJ view | Continue action by action |
 
-For Swing, Webswing runs Java desktop apps in a web browser, and the webforJ integration embeds them inside a webforJ app. Users get a browser entry point without waiting for a rewrite. Swing and web screens can exchange data while both exist, which is covered in the [communication docs](/docs/integrations/webswing/communication). Our earlier post on [Webswing and webforJ](/blog/webswing-and-webforj) lays out that roadmap.
+### Swing, JavaFX and SWT desktop apps {#desktop-apps}
 
-For JSP, JSF and Struts there is no bridge to run, and none is needed. These apps already run in a browser. You rebuild the pages in Java, one at a time, against the same services, and retire the old pages as each replacement goes live. The [JSP modernization post](/blog/jsp-modernization) shows what a Java-native path looks like for that case.
+Webswing runs Java desktop apps built with Swing, JavaFX or SWT in a web browser without changes to their source, and the webforJ integration embeds them inside a webforJ app. Users get a browser entry point without waiting for a rewrite. Swing and web screens can exchange data while both exist, through the [documented communication model](/docs/integrations/webswing/communication). That two-way messaging needs a small addition on the desktop side, where the app calls the Webswing API.
 
-## Let AI agents do the repetitive port {#ai-agents}
+This is two companies, one path. Webswing runs the existing app in the browser today, and webforJ carries it forward screen by screen, with a connector between them. Our post on [Webswing and webforJ](/blog/webswing-and-webforj) lays out that roadmap. The connector tutorial uses a Swing app, so plan a short proof run for a JavaFX or SWT app before you commit a schedule.
 
-Screen migration is repetitive by nature: read a page, identify the service calls, produce the equivalent view. That is the kind of work an AI coding agent does quickly, and it changes the economics of the whole program.
+### Legacy Java web apps {#web-apps}
 
-The risk with an agent is code that looks right and does not compile against the real framework. The [webforJ AI plugin](/docs/ai-tooling) addresses that. It installs the [MCP server](/docs/ai-tooling/mcp), which lets the assistant look up the real webforJ documentation and API instead of guessing, together with [Agent Skills](/docs/ai-tooling/agent-skills), which give it structured webforJ workflows. It works with Claude Code, Copilot, Cursor, Gemini, and Codex.
+For JSP, JSF and Struts there is no bridge to run, and none is needed. These apps already run in a browser. Here, avoiding a full rewrite means rebuilding only the UI, in Java, while the Java backend and the Java team stay. You rebuild the pages one at a time against the same services, and retire the old pages as each replacement goes live.
 
-A reviewer still reads every change, and we recommend exactly that. What changes is that the reviewer spends time on business behavior instead of on invented method names.
+That is a different choice from the usual advice to rewrite the front end in Angular or React. The services, the transactions and the people stay in Java. The [JSP modernization post](/blog/jsp-modernization) shows what a Java-native path looks like for that case.
 
-The agent can also check its own work. Ask it for a test with every screen it ports, so each one comes back with a pass or a fail before you review it. That write, check, review cycle is [the AI verification loop for Java](/blog/ai-verification-loop-java), and it fits a migration well, because every screen you move is a small, testable unit.
+## Where AI helps the program {#ai-agents}
+
+AI assistants earn their place on the new webforJ screens, not on the old ones. When your team builds a replacement view, an assistant grounded in the real webforJ API drafts it, a compiler checks each edit, and a browserless test checks the screen before anyone reviews it. That chain is [the AI verification loop for Java](/blog/ai-verification-loop-java). It does not convert Swing, JSF or JSP screens for you, and your reviewers still decide what each screen must do.
 
 ## Keeping the upgrade path cheap {#upgrade-path}
 
@@ -100,22 +121,38 @@ Prodin is a useful reference point. [Prodin](https://webforj.com/wp-content/uplo
 
 ## Pilot one high-value screen {#pilot-one-screen}
 
-Pick the one app in your portfolio that sits in the high value, low risk quadrant. Choose a single screen from it. Install the [webforJ AI plugin](/docs/ai-tooling), have an assistant port that screen against your existing service, and put the result in front of its users. The [getting started guide](/docs/introduction/getting-started) covers project setup. One screen in production tells you more about your portfolio than another assessment document.
+Pick the one app in your portfolio that sits in the high value, low risk quadrant. Choose a single screen from it, build that screen in webforJ against your existing service, and put the result in front of its users. The [getting started guide](/docs/introduction/getting-started) covers project setup. One screen in production tells you more about your portfolio than another assessment document.
 
 ## Frequently asked questions {#faq}
+
+<!-- vale Google.WordListCase = NO -->
+
+### What is legacy Java application modernization? {#faq-what-is-it}
+
+It is the work of moving an old Java business app, such as a Swing, JavaFX or SWT desktop client or a Struts, JSF or JSP web app, onto a current platform while the business keeps using it. The strategy in this post keeps the Java services and data and replaces the screens in phases.
 
 ### What is a good legacy Java app modernization strategy? {#faq-best-strategy}
 
 Triage each app by business value and technical risk, keep the services and data that work, and move the screens to one target framework one screen at a time. Start with a high value, low risk pilot and expand once you have measured results.
 
+### How do you modernize a legacy Java application without a rewrite? {#faq-without-rewrite}
+
+For a desktop app, run it in the browser through Webswing first, then replace its screens in webforJ while the rest keeps working. For a Struts, JSF or JSP app, rebuild only the UI in Java, page by page, against the same backend.
+
+<!-- vale Google.WordListCase = YES -->
+
 ### Should we rewrite everything or modernize in steps? {#faq-rewrite-or-steps}
 
 Steps. A full rewrite means rediscovering business rules that the current code already holds correctly. Moving screens one at a time keeps those rules and keeps the old app available until each replacement is accepted.
 
-### Can one framework replace all four legacy stacks? {#faq-one-framework}
+### Can one framework replace all six legacy stacks? {#faq-one-framework}
 
-webforJ lets you build the screens for all of them in Java. Swing apps can run in the browser through Webswing during the move, and JSP, JSF and Struts apps are rebuilt page by page against the same services.
+webforJ lets you build the screens for all of them in Java. Swing, JavaFX and SWT apps can run in the browser through Webswing during the move, and JSP, JSF and Struts apps are rebuilt page by page against the same services.
 
 ### How do AI agents fit into a modernization roadmap? {#faq-ai-agents}
 
-They do the repetitive part of screen migration. The webforJ AI plugin gives the agent the real documentation and API through the MCP server and structured workflows through Agent Skills, and your developers review the result before it ships.
+They help build and check the new webforJ screens. They do not convert the legacy screens for you. Your developers decide what each screen does and review the result before it ships.
+
+## Plan your portfolio move with us {#plan-with-us}
+
+Bring your app list to the [modernization page](/modernization), which lays out the path from the first screen to the retired client and how to talk to us about your portfolio.

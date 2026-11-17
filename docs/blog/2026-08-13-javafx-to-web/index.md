@@ -17,10 +17,6 @@ JavaFX to web does not need a second language. With webforJ, a full-stack Java f
 
 <!-- truncate -->
 
-:::tip See a finished app first
-The [webforj-crud](https://github.com/webforj/built-with-webforj/tree/main/webforj-crud) app in the built-with-webforj repository shows a table, a search field, an add and edit dialog, validation and data binding on Spring Boot. It runs with Java and Maven, so you can read a real webforJ screen before you plan yours.
-:::
-
 ## Why a rewrite in JavaScript hurts {#why-not-rewrite}
 
 A desktop UI and a browser UI differ in where code runs. In JavaFX, everything lives in one JVM on the user's machine. In a browser app, the UI renders on the client while your Java runs on the server. Teams that hear this often conclude they need a JavaScript front end, a REST layer, and a second skill set to maintain.
@@ -97,22 +93,9 @@ Do not port the app in one pass. Pick an order and ship in slices.
 
 A specialized screen with heavy custom drawing, such as a canvas editor or a charting surface, is the hard case. You do not have to port it first. webforJ can embed a running desktop app through Webswing, which supports JavaFX, so a hard screen can ship as is while the rest moves. The [Webswing integration docs](/docs/integrations/webswing/overview) cover the setup, and the [Webswing and webforJ roadmap](/blog/webswing-and-webforj) explains the incremental path.
 
-## Let an AI assistant do the port {#ai-port}
+## Where AI fits in a JavaFX move {#ai-port}
 
-Screen-by-screen porting is repetitive, which makes it a good job for an AI coding assistant. The risk is that a general model guesses at framework classes. The webforJ AI plugin closes that gap.
-
-The plugin bundles the [MCP server](/docs/ai-tooling/mcp), which lets the assistant look up classes in the webforJ knowledge base instead of recalling them, with the [Agent Skills](/docs/ai-tooling/agent-skills) that give it a workflow for building forms, styling, and creating components. The full setup is on the [AI tooling page](/docs/ai-tooling).
-
-Give the assistant a narrow brief for each screen:
-
-1. The JavaFX view and controller, plus the service classes it calls.
-2. The route the new view should use.
-3. A rule that the view calls existing services and does not copy their logic.
-4. A request to look up every webforJ class through the MCP server before it finishes.
-
-Review the output like any pull request. The result is plain Java next to your services, so your normal review and tests apply.
-
-The assistant can also check its own work. Ask it for a test with every screen it ports, so each one comes back with a pass or a fail before you review it. That write, check, review cycle is [the AI verification loop for Java](/blog/ai-verification-loop-java), and it fits a migration well, because every screen you move is a small, testable unit.
+An FXML file and its controller already describe one screen in a regular shape, which makes them a clear brief for an AI coding assistant. It reads the pair and writes a new webforJ view that calls your services. It does not translate the JavaFX project for you. With the [webforJ AI plugin](/docs/ai-tooling) it checks webforJ classes against the real API instead of recalling them, and a test for each new view comes back as a pass or a fail before you review it. That cycle is [the AI verification loop for Java](/blog/ai-verification-loop-java).
 
 ## When JavaFX should stay {#when-javafx-stays}
 
@@ -123,11 +106,15 @@ Not every app belongs in a browser. Keep JavaFX when:
 - It renders heavy real-time graphics that need the user's own GPU.
 - Only a handful of users run it, they are happy, and nobody asks for web access.
 
-If your reasons for moving are distribution, access from anywhere, central updates or one shared deployment, the browser is the better home. You can also mix: the embedded path from the previous section lets a JavaFX screen live inside a web app until its time comes.
+If your reasons for moving are distribution, access from anywhere, central updates or one shared deployment, the browser is the better home. You can also mix: the embedded path from the screen-by-screen plan lets a JavaFX screen live inside a web app until its time comes.
 
-## Next step {#next-step}
+## Port your simplest form screen {#next-step}
 
 Pick your simplest form screen. Generate a project with [startforJ](https://docs.webforj.com/startforj) or follow the [getting started guide](/docs/introduction/getting-started), connect the AI plugin, and port that one screen against your existing services. One finished screen shows you the full loop and makes the rest of the plan concrete.
+
+## Plan the rest of your JavaFX app {#plan-your-move}
+
+To decide which JavaFX screens to rebuild first and which to keep running in the browser through Webswing, see the [modernization path](/modernization) and talk to our team about your app.
 
 ## Frequently asked questions {#faq}
 

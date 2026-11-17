@@ -1129,9 +1129,9 @@ function Start() {
               </Translate>
             </h3>
             <p className={styles.stepText}>
-              <Translate id="page.modernization.start.step4.text">
+              <Translate id="page.modernization.start.step4.textAutoStart">
                 {
-                  'Add a WebswingConnector to a view, as in phase 1. WebswingOptions changes its behavior, for example hiding the logout button when your webforJ app handles sign in.'
+                  'Add a WebswingConnector to a view, as in phase 1. WebswingOptions changes its behavior, for example turning off auto start so your app decides when the connection opens.'
                 }
               </Translate>
             </p>
@@ -1227,9 +1227,9 @@ function Partnership() {
             />
           </div>
           <p className={styles.introLead}>
-            <Translate id="page.modernization.partner.lead">
+            <Translate id="page.modernization.partner.leadConnector">
               {
-                'Webswing runs the Java desktop app you have in the browser today. webforJ carries it forward screen by screen, with a supported connector between the two.'
+                'Webswing runs the Java desktop app you have in the browser today. webforJ carries it forward screen by screen through the WebswingConnector.'
               }
             </Translate>
           </p>
@@ -1252,9 +1252,9 @@ function Partnership() {
                 <Translate id="page.modernization.partner.webswing.title">{'Runs the app you have'}</Translate>
               </h3>
               <p className={styles.pathText}>
-                <Translate id="page.modernization.partner.webswing.text">
+                <Translate id="page.modernization.partner.webswing.textPlain">
                   {
-                    'Renders the Swing, JavaFX or SWT app on the server and streams its interface to the browser. Webswing is a product of its own company, under its own commercial licence.'
+                    'Renders the Swing, JavaFX or SWT app on the server and streams its interface to the browser.'
                   }
                 </Translate>
               </p>

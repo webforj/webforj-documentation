@@ -11,17 +11,13 @@ hide_table_of_contents: false
 
 ![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-10-15-swing-to-web-migration/cover.jpg)
 
-You know the app is moving to the browser. Now the work gets concrete: every `JFrame`, layout manager, `JTable` and `JOptionPane` needs a counterpart, and every `SwingWorker` needs a new home. This guide shows how to convert Swing to web one screen at a time with webforJ, the [full-stack Java framework](/blog/java-full-stack-framework). You write each new screen in Java, so services, entities, and validation rules carry over unchanged, and only the code that touches Swing gets rewritten.
+You know the app is moving to the browser. Now the work gets concrete: every `JFrame`, layout manager, `JTable` and `JOptionPane` needs a counterpart, and every `SwingWorker` needs a new home. This Swing to webforJ mapping guide shows how to convert Swing to web one screen at a time with webforJ, the [full-stack Java framework](/blog/java-full-stack-framework). You write each new screen in Java, so services, entities, and validation rules carry over unchanged, and only the code that touches Swing gets rewritten.
 
 Below you get the Swing to webforJ component mapping, before and after code for a real screen, and an order of work that keeps shipping. If you are still choosing between a JavaScript rewrite, Webswing and a rebuild in Java, start with the [Java Swing to web migration guide](/blog/migrate-swing-app-to-web), then come back here for the screen work. While you migrate, Webswing can keep the old app running in the browser next to the new screens.
 
 <!-- truncate -->
 
-:::tip Let an AI assistant do the screen-by-screen work
-Install the [webforJ AI plugin](/docs/ai-tooling) in Claude Code, GitHub Copilot, Cursor, Gemini CLI or Codex. The [MCP server](/docs/ai-tooling/mcp) gives your assistant the current webforJ documentation and API, so it writes against the real framework instead of guessing. The [Agent Skills](/docs/ai-tooling/agent-skills) walk it through webforJ tasks such as building forms, creating components, and styling. Point it at one Swing screen, ask for the webforJ version that calls the same services, and review the result before you ship it.
-:::
-
-## Why a Swing to web migration fails as a full rewrite {#why-rewrites-fail}
+## Why a full rewrite of a Swing app stalls {#why-rewrites-fail}
 
 Java desktop to web projects stall on the same problem. A Swing app that has run for ten years holds business rules that nobody fully remembers. Rewriting it in another language means rediscovering those rules the hard way. Rewriting only the screens in Java means you keep them. Our post on [Swing vs JavaFX vs web](/blog/java-gui-frameworks-compared) compares the options for the screens. A JavaFX desktop UI follows a similar path, as [moving a JavaFX UI to the browser](/blog/javafx-to-web) shows.
 
@@ -29,19 +25,16 @@ Event handlers in Swing mix presentation with calls into services, and table mod
 
 webforJ suits this because both sides are plain Java. You don't write a REST layer, a JSON contract, or a separate frontend project. A view is a Java class that calls your existing services directly. For the reasoning behind that choice, see [Your Spring Boot app doesn't need a REST API for the UI](/blog/java-ui-without-rest-api).
 
-## A migration strategy that works screen by screen {#migration-strategy}
+## Prepare the code before you map it {#migration-strategy}
 
-Follow this order and each step ships something usable.
+Two steps make every screen easier to map.
 
 1. **Draw the line around the domain layer.** List the classes that don't import `javax.swing` or `java.awt`. Those stay. Move them into their own module if they aren't already, so both the old and new UI can depend on it.
 2. **Find the seams in the UI code.** Pick one screen and separate what it displays from what it computes. Anything computed belongs in a service. An `ActionListener` that runs a query, formats the result and updates three labels becomes a service call plus a few lines of presentation.
-3. **Put the old app in the browser.** Run it under Webswing and embed it in a webforJ app. Users get web access on day one and you get a shell to migrate into.
-4. **Replace screens in order of pain.** Start with screens users complain about or screens that gain the most from being on the web, such as search, dashboards and forms. Leave rarely used admin windows for later.
-5. **Retire the bridge.** When the last screen has a webforJ replacement, remove the Webswing connector and the Swing code.
 
-Each replaced screen gets its own route, so users move between old and new screens inside one web app.
+After that, screens move one at a time, starting with the ones users complain about most. Each replaced screen gets its own route, so users move between old and new screens inside one web app. How the old app stays reachable during that time, and when to retire it, is the subject of the [migration paths guide](/blog/migrate-swing-app-to-web).
 
-A coding assistant can do much of that screen-by-screen work, and it can check its own work too. Ask it for a test with every screen it ports, so each one comes back with a pass or a fail before you review it. That write, check, review cycle is [the AI verification loop for Java](/blog/ai-verification-loop-java).
+The mapping table below also makes a good brief for an AI coding assistant. Hand it one Swing screen and the rows that apply, and ask for a test with the webforJ version, so the screen comes back with a pass or a fail before you compare it with the original. [The AI verification loop for Java](/blog/ai-verification-loop-java) shows the checks behind that.
 
 ## How Swing concepts map to webforJ {#swing-to-webforj-mapping}
 
@@ -213,11 +206,11 @@ public class ReportView extends Composite<FlexLayout> {
 }
 ```
 
-The `doInBackground` body becomes the supplier, and `done` becomes the `Environment.runLater` block. Start the background work from an event handler or a view. Threads started there inherit the `Environment` context and can call `runLater`, while threads created elsewhere can't.
+The `doInBackground` body becomes the supplier, and `done` becomes the `Environment.runLater` block. Read `Environment.getCurrent()` in an event handler or a view, where it returns the session's `Environment`, and pass it to `runLater`. On a background thread `getCurrent()` returns `null`, so capture the target before the work starts.
 
-## Run the Swing app in the browser while you migrate {#webswing-bridge}
+## Map a single dialog with `WebswingConnector` {#webswing-bridge}
 
-You don't need to wait for the last screen before users get web access. Webswing is a server that runs an unmodified Swing, JavaFX or SWT app and streams its interface to the browser. webforJ includes a `WebswingConnector` component that embeds that stream inside a webforJ view, so old and new screens live in one app. The [Webswing integration docs](/docs/integrations/webswing/overview) cover the architecture, and the [setup guide](/docs/integrations/webswing/setup) walks through installing the server and configuring CORS.
+Sometimes the unit you map is smaller than a screen. Webswing runs an unmodified Swing, JavaFX or SWT app and streams its interface to the browser. webforJ includes a `WebswingConnector` component that embeds that stream inside a webforJ view, so old and new screens live in one app. The [setup guide](/docs/integrations/webswing/setup) walks through installing the server and configuring CORS.
 
 ```java title="LegacyScreenView.java"
 @Route("/legacy")
@@ -241,9 +234,9 @@ public class LegacyScreenView extends Composite<Div> {
 }
 ```
 
-The connector is two-way. The Swing app can send named actions to webforJ, which the example handles with `onAction`, and webforJ can call back with `performAction`. That lets you replace one dialog at a time. The old table stays in Swing, and a double click opens a webforJ form instead of the Swing dialog. The [modernization tutorial](/docs/integrations/webswing/tutorial) builds this scenario with a customer table, and [Webswing and webforJ](/blog/webswing-and-webforj) gives a shorter overview.
+The connector is two-way. The Swing app can send named actions to webforJ, which the example handles with `onAction`, and webforJ can call back with `performAction`. Sending those actions takes a small addition to the Swing app that uses the Webswing Java API. That lets you replace one dialog at a time. The old table stays in Swing, and a double click opens a webforJ form instead of the Swing dialog. The [modernization tutorial](/docs/integrations/webswing/tutorial) builds this scenario with a customer table.
 
-A bridge isn't free. Webswing renders on the server and streams to the browser, so each active user session holds a running Swing instance. Treat it as scaffolding that you remove as screens move over.
+A bridge uses server resources. Webswing renders on the server and streams to the browser, so each active user session holds a running Swing instance. Treat it as scaffolding that you remove as screens move over.
 
 ## Which screens to migrate first {#what-to-migrate-first}
 
@@ -270,3 +263,7 @@ The `Table` component replaces `JTable`, and a `Repository` replaces the `TableM
 ### What replaces SwingWorker? {#faq-swingworker}
 
 Run the slow work on a background thread, for example with `CompletableFuture`, and call `Environment.runLater` to update components when it finishes. That keeps all UI changes on the UI thread.
+
+## Map your first screen with us {#plan-your-move}
+
+To work out which of your Swing screens map cleanly and which stay embedded for now, talk it through with us on the [Swing modernization page](/modernization).

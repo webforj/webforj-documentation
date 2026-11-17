@@ -53,17 +53,11 @@ From here you have a webforJ app with one view that holds the old app. You can a
 
 The two sides talk through the connector, as the [communication guide](/docs/integrations/webswing/communication) shows. The webforJ app calls `performAction()` to send a named action, with optional data, to the Swing app. In the other direction, the connector fires an initialize event when the connection is ready, a start event when the Swing app has fully loaded, and action events for the custom actions the Swing app sends through the Webswing Java API.
 
-That channel lets web screens take over one at a time. In the [modernization tutorial](/docs/integrations/webswing/tutorial), a Swing customer table stays in place, but double-clicking a row opens a webforJ form instead of the old Swing dialog. When the user saves, webforJ sends the updated customer back and the Swing table refreshes. Next come webforJ navigation and menus around the embedded app, then a webforJ table in place of the Swing one, until no Swing components are left.
+That channel is what later lets web screens take over one at a time, and nothing forces that step on a schedule. The original Swing app stays functional the whole time, so you can fall back to desktop deployment and move users over gradually. How the new app grows around the old one until it can be retired is the subject of the [strangler fig pattern for Swing](/blog/strangler-fig-pattern-java-swing). The same path applies to a [legacy enterprise user interface](/blog/modernize-erp-ui-java), replaced one screen at a time with Java web views.
 
-The original Swing app stays functional the whole time, so you can fall back to desktop deployment and move users over gradually. The same path applies to a [legacy enterprise user interface](/blog/modernize-erp-ui-java), replaced one screen at a time with Java web views.
+## What AI can and can't reach here {#ai-port}
 
-For the full migration, the [Swing to web migration guide](/blog/swing-to-web-migration) maps Swing concepts to webforJ screen by screen, and the [strangler fig pattern for Swing](/blog/strangler-fig-pattern-java-swing) shows how the new app grows around the old one until it can be retired.
-
-## Let an AI assistant port the screens {#ai-port}
-
-Once the app runs inside webforJ, each Swing screen you replace is a small, separate job. A coding agent can do that port, and the [webforJ AI plugin](/docs/ai-tooling) connects it to the framework. One install adds the MCP server, which gives the agent live access to webforJ documentation and API checks, and the Agent Skills, which give it task-specific workflows for building forms and components.
-
-Ask the agent for a test with every screen it ports, so each one comes back with a pass or a fail before you review it. That write, check, review cycle is [the AI verification loop for Java](/blog/ai-verification-loop-java), and it suits this path well, because the Swing app keeps running while each new screen is checked on its own.
+Inside Webswing the Swing app reaches the browser as a canvas stream, so an AI assistant has nothing there to read or edit. Where an assistant helps is the step after this one: drafting the new webforJ screens that sit around the embedded app, each returned with a test that passes or fails. [The AI verification loop for Java](/blog/ai-verification-loop-java) explains those checks, and they apply to the webforJ code, not to the streamed Swing UI.
 
 ## Frequently asked questions {#faq}
 
@@ -78,3 +72,7 @@ If you are still choosing a direction, [how to migrate a Swing app to the web](/
 ## Register your Swing app on Webswing {#start}
 
 Install the Webswing server, register your Swing app in the admin console and open it in a browser. Then follow the [Webswing setup](/docs/integrations/webswing/setup) to add the `webforj-webswing` dependency and put `WebswingConnector` in one view, and pick the dialog your users open most as the first screen to replace.
+
+## Talk to us about your app {#plan-your-move}
+
+When the app runs in the browser and you want to plan what comes after it with our team, start on the [Swing modernization page](/modernization).

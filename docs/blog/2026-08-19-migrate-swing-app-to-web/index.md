@@ -42,7 +42,7 @@ Choose it only if your organization has already decided on a JavaScript front en
 
 If you need to **run a Swing app in the browser** this quarter, Webswing is the direct answer. [Webswing](/docs/integrations/webswing/overview) is a web server technology that runs Java desktop apps (Swing, JavaFX, SWT) in a browser without changes to the original source code. The desktop app renders on the server and the interface streams to the browser using HTML5 canvas, with user input handled transparently.
 
-Because the source stays untouched, it is the lowest-change first step. It also has a limit worth being honest about: you still have a Swing UI, rendered on the server and streamed to the browser as canvas output. Webswing gets you onto the web. It does not get you off Swing. Webswing is a separate product from a separate company, and production use needs its own commercial licence.
+Because the source stays untouched, it is the lowest-change first step. It also has a limit worth being honest about: you still have a Swing UI, rendered on the server and streamed to the browser as canvas output. Webswing gets you onto the web. It does not get you off Swing.
 
 Choose it when the deadline is "users in a browser soon" and the UI itself is not what you are trying to fix.
 
@@ -125,7 +125,7 @@ This guide is where you choose a path. Each post below takes one part of the mov
 - **Make the case to move.** [Java Swing technical debt](/blog/java-swing-technical-debt) names what staying costs and the Java platform deadlines that force the question.
 - **Get users into the browser now.** [Run a Java Swing app in the browser](/blog/run-java-swing-app-in-browser) covers the Webswing step on its own, with no source changes.
 - **Plan the order of work.** The [strangler fig pattern for a Swing app](/blog/strangler-fig-pattern-java-swing) shows how the new app grows around the old one until the old one can be retired.
-- **Know who stands behind each part.** [Webswing and webforJ](/blog/webswing-and-webforj) explains the partnership: two companies, one path.
+- **See how the two products fit.** [Webswing and webforJ](/blog/webswing-and-webforj) explains the partnership: two companies, one path.
 
 ## Where an AI assistant fits {#ai-port}
 

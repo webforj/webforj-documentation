@@ -65,7 +65,7 @@ Put these to the team and the business owner before anyone estimates anything.
 2. **Can the business stop shipping features?** If not, any plan that needs a long freeze is a plan on paper.
 3. **Who still understands the app?** If the answer is one or two people, a rewrite depends on them for its whole length. An incremental move uses their time one screen at a time.
 4. **What does your team know?** A Java team asked to rebuild in a new language and a new stack is learning while it rewrites. Two kinds of risk at once.
-5. **Is a deadline forcing the move?** [Struts 1 reached end of life](https://struts.apache.org/struts1eol-announcement.html) with its last release in 2008. Java Web Start left the JDK with Java 11, and JEP 504 [removes the Applet API](https://openjdk.org/jeps/504) after JDK 25. A deadline forces you to move. It does not force you to rewrite.
+5. **Is a deadline forcing the move?** [Struts 1 reached end of life](https://struts.apache.org/struts1eol-announcement.html) with its last release in 2008, while current Struts 6 and 7 are maintained. Java Web Start left the JDK with Java 11, and JEP 504 [removes the Applet API](https://openjdk.org/jeps/504) after JDK 25. A deadline forces you to move. It does not force you to rewrite.
 
 If most answers point to "the logic is fine, the business cannot stop, and the team knows Java", you already have your answer.
 
@@ -86,7 +86,7 @@ Incremental is not free. You run old and new side by side for a while, and each 
 
 webforJ is a full-stack Java framework for business web apps. It gives the incremental path a concrete shape.
 
-**For Swing, JavaFX and SWT desktop apps,** Webswing runs Java desktop apps in a web browser [without any modifications to the original source code](/docs/integrations/webswing/overview). webforJ embeds that running app in a webforJ view with the `WebswingConnector`, available since webforJ 25.10. Users open a URL instead of installing a client, and the old app keeps working the way they know it. Webswing is a separate product from a separate company, with its own commercial licence. The two companies are partners: Webswing runs the app today, and webforJ carries it forward.
+**For Swing, JavaFX and SWT desktop apps,** Webswing runs Java desktop apps in a web browser [without any modifications to the original source code](/docs/integrations/webswing/overview). webforJ embeds that running app in a webforJ view with the `WebswingConnector`, available since webforJ 25.10. Users open a URL instead of installing a client, and the old app keeps working the way they know it. Webswing and webforJ are partners: Webswing runs the app today, and webforJ carries it forward.
 
 New screens are built in webforJ next to the embedded app, in the same browser tab. The two sides can exchange data both ways. That part needs a small addition on the Swing side using the Webswing Java API, which the [communication docs](/docs/integrations/webswing/communication) cover. Screen by screen, the webforJ side grows and the Swing side shrinks until it can be retired.
 
@@ -108,7 +108,7 @@ Prodin, an ERP vendor, kept its Java business logic when it moved to the web wit
 
 AI can do much of the porting, and each step stays easy to review. The [webforJ AI plugin](/docs/ai-tooling) connects your assistant to the webforJ documentation and API through the MCP server and Agent Skills, so it looks up methods instead of guessing them.
 
-With every screen it ports, the agent also writes a [TestBed](/docs/testing/testbed/overview) test. The TestBed runs the view in a plain JUnit test, with no browser and no server, so the agent gets a pass or a fail on each change before a developer looks at it. That is the [AI verification loop](/blog/ai-verification-loop-java): write against the real API, then prove the behavior with a test. A developer still reviews every change. These tools work on the new webforJ screens, not on the Swing screens running inside Webswing.
+Ask the agent for a [TestBed](/docs/testing/testbed/overview) test with every screen it ports. The TestBed runs the view in a plain JUnit test, with no browser and no server, so the agent gets a pass or a fail on each change before a developer looks at it. That is the [AI verification loop](/blog/ai-verification-loop-java): write against the real API, then prove the behavior with a test. A developer still reviews every change. These tools work on the new webforJ screens, not on the Swing screens running inside Webswing.
 
 Behind the framework is BASIS International, which has built tools for business software since 1985. For a budget holder, that means a vendor with a long record in exactly this kind of app.
 

@@ -41,17 +41,13 @@ For a Swing team the price is the second codebase. The screens are rewritten in 
 
 This is the category where the team and the language stay the same. The screens become Java classes that run in the browser, so a developer who writes services can also write the user interface. Routing, forms, tables, security and translation come from the same framework, so there is no second stack to add.
 
-That is the idea behind webforJ, and it is why we think it is the strongest pick for a Java team with a Swing business app. The rest of the case is about the move itself.
+That is the idea behind webforJ, and it is the category we recommend for a Java team with a Swing business app. The rest of the case is about the move itself.
 
 ## Keep the app running while you move {#keep-running}
 
-The risk in any rewrite is the long stretch where the old app is frozen and the new one isn't ready. webforJ avoids it with two features working together.
+The risk in any rewrite is the long stretch where the old app is frozen and the new one isn't ready. With webforJ you can avoid it. [Webswing](/docs/integrations/webswing/overview) runs the existing Swing, JavaFX or SWT app in the browser without changes to its source, and webforJ's `WebswingConnector` embeds it, so new Java screens replace old ones while users keep working.
 
-The [Webswing integration](/docs/integrations/webswing/overview) runs your Swing app in a browser without changes to the source code. The desktop app is rendered on the server and streamed to the browser, so users can reach the existing app on the web now. The same integration works for JavaFX and SWT apps.
-
-The `WebswingConnector` component then embeds that app inside a webforJ app. Your team builds new screens in Java around it, replaces old screens one at a time, and phases out the legacy app when the last screen has moved. Meanwhile the two sides stay connected: the [communication layer](/docs/integrations/webswing/communication) lets the webforJ app send actions to the Swing app and receive its events.
-
-So the move is a series of small releases, not one big cutover. Our guides to [Swing to web migration](/blog/swing-to-web-migration) and the [strangler fig pattern for Java Swing](/blog/strangler-fig-pattern-java-swing) walk through the order of work.
+So the move is a series of small releases, not one big cutover. How to pick the path and the order of work is laid out in the [Java Swing to web migration guide](/blog/migrate-swing-app-to-web).
 
 ## Compare the categories {#compare}
 
@@ -62,11 +58,9 @@ So the move is a series of small releases, not one big cutover. Our guides to [S
 | Existing Swing code | Screens rewritten for the new toolkit | Screens rewritten in JavaScript | Runs as is through Webswing, then moves screen by screen |
 | How users get updates | Updates delivered to each machine | Deployed to a server | Deployed to a server |
 
-## Let AI do the port {#ai-port}
+## AI help depends on the target {#ai-port}
 
-Porting screens is repetitive work, which suits an AI coding assistant. The risk is an assistant that guesses at APIs. The [webforJ AI plugin](/docs/ai-tooling) addresses that with two parts: an MCP server that gives the assistant live access to the webforJ knowledge base, and Agent Skills that teach it the right workflows.
-
-The assistant can also check its own work. With every ported screen, the assistant writes a test and gets a pass or a fail, so you review screens that already work. We describe the loop in [the AI verification loop for Java](/blog/ai-verification-loop-java).
+Whichever category you pick, an AI coding assistant will likely write part of the new screens. When the target is webforJ, the assistant can look up the real webforJ API through the MCP server, every edit goes through the Java compiler, and a test for each new screen comes back as a pass or a fail before you review it, as [the AI verification loop for Java](/blog/ai-verification-loop-java) shows. Your team still decides what each screen does and reviews it against the Swing original.
 
 ## Who has done it? {#who}
 
@@ -78,13 +72,13 @@ webforJ is built for apps that run in the browser. If your app must run offline 
 
 ## Frequently asked questions {#faq}
 
-### What is the best alternative to Java Swing? {#faq-best}
+### Which Java Swing alternative fits a business app? {#faq-best}
 
-It depends on where the app has to run. For business apps that move to the browser, with a Java team that wants to keep its code and its language, the best alternative is a full-stack Java framework such as webforJ. For an app that must stay on the desktop, JavaFX or SWT fits better.
+It depends on where the app has to run. For business apps that move to the browser, with a Java team that wants to keep its code and its language, the alternative that fits is a full-stack Java framework such as webforJ. For an app that must stay on the desktop, JavaFX or SWT fits better.
 
 ### Can I keep my Swing app and move to the web? {#faq-keep}
 
-Yes. The Webswing integration runs your Swing app in a web browser without changes to the source code, and `WebswingConnector` embeds it in a webforJ app. You then replace screens one at a time while old and new screens communicate.
+Yes. Webswing runs your Swing app in a web browser without changes to the source code, and `WebswingConnector` embeds it in a webforJ app. You then replace screens one at a time while old and new screens communicate.
 
 ### Do I have to rewrite the Java logic? {#faq-logic}
 
@@ -93,3 +87,7 @@ No. With webforJ the team and the Java stay. The screens become Java classes, an
 ## Plan your first screen {#first-screen}
 
 Pick the one Swing screen your users open most, read the [Webswing integration](/docs/integrations/webswing/overview), and embed your existing app in a webforJ project. Then rebuild that screen in Java as the first step of the move.
+
+## Weigh your options with our team {#plan-your-move}
+
+If the category is settled and you want to talk through what moving your own Swing app would take, reach us through the [Swing modernization page](/modernization).

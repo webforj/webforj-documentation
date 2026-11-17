@@ -15,11 +15,9 @@ Your team has a JSF app with a rich component library on top. The data tables, d
 
 If you are searching for a **PrimeFaces alternative** that keeps the rich component idea and drops the XHTML, webforJ, the full-stack Java framework, is our answer. You build every screen as plain Java classes with a ready set of components (Table, Dialog, Drawer, form fields with data binding), route to them with an annotation, and plug the result into Spring Boot when you have it.
 
-<!-- truncate -->
+You are not rewriting the app. You rebuild the UI in Java, keep the Java backend and the Java team that knows it, and replace one PrimeFaces screen at a time while the rest of the app keeps running.
 
-:::tip See a table with a dialog form
-The [webforj-crud](https://github.com/webforj/built-with-webforj/tree/main/webforj-crud) app in built-with-webforj shows a music artist table with search, a dialog that adds, edits and deletes entries, data binding and validation on Spring Boot. It runs with Java and Maven.
-:::
+<!-- truncate -->
 
 ## Why teams look for a replacement {#why-teams-look}
 
@@ -36,7 +34,7 @@ webforJ ships components you would otherwise pull from a component library. The 
 
 - A [Table](/docs/components/table/overview) with sorting, filtering, row selection, custom cell renderers and large data handling.
 - Dialog and Drawer components, plus option dialogs for message, confirm and input prompts.
-- Form fields, a ComboBox, a DateField, checkboxes, radio groups and an upload component.
+- Form fields, a ComboBox, a DateField, checkboxes, radio groups and a file upload dialog.
 - Layouts such as FlexLayout, columns layout, tabbed pane and an app layout with a header, footer and drawer.
 - Toasts, alerts, a tree and a toolbar for the pieces that make an app feel finished.
 
@@ -107,13 +105,9 @@ You do not need a big-bang rewrite. A workable order:
 
 A first screen gives your team the pattern, and every later screen goes faster because the concept map in the preceding section does not change.
 
-## Let an AI assistant do the port {#ai-port}
+## Checking AI-drafted screens {#ai-port}
 
-Porting screens is repetitive work that an AI coding assistant handles screen by screen. Give it one XHTML page and its bean and ask for the webforJ view. How reliable the result is depends on what the assistant knows about the framework.
-
-The [AI plugin](/docs/ai-tooling) connects the assistant to the current webforJ documentation, API signatures and code samples through an [MCP server](/docs/ai-tooling/mcp), and ships [Agent Skills](/docs/ai-tooling/agent-skills) for tasks such as building forms with data binding. With those in place the assistant looks up real class names and method signatures instead of guessing them. You still review each ported screen.
-
-The assistant can also check its own work. Ask it for a test with every screen it ports, so each one comes back with a pass or a fail before you review it. That write, check, review cycle is [the AI verification loop for Java](/blog/ai-verification-loop-java), and it fits a migration well, because every screen you move is a small, testable unit.
+If your team drafts the new views with an AI coding assistant, hold each draft to the same bar as hand-written code. Ground the assistant in the real webforJ API, and test the table and the dialog before review. [The AI verification loop for Java](/blog/ai-verification-loop-java) covers that setup, and a person still signs off on each screen.
 
 ## Decision guide {#decision-guide}
 
@@ -144,3 +138,7 @@ Yes. Each screen maps to one webforJ view with its own route, so you can port th
 ### Is there a modern PrimeFaces replacement that works with Spring Boot? {#faq-spring-boot}
 
 webforJ integrates with Spring Boot and takes Spring beans through constructor injection. A PrimeFaces replacement built with it lets your repositories and services keep their current shape while the UI moves to Java.
+
+## Plan the move off PrimeFaces {#plan-your-migration}
+
+When one screen has convinced you, [see how webforJ moves Java apps to the web](/modernization) and talk to us about the rest of your JSF estate.

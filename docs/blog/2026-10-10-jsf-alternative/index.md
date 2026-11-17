@@ -13,6 +13,8 @@ hide_table_of_contents: false
 
 If you maintain JSF or PrimeFaces screens and are planning a JSF to Spring Boot migration, webforJ is a direct fit, and a JSF alternative that stays in Java. It is a [full-stack Java framework](/blog/java-full-stack-framework): you build each screen as a Java component tree, route to it with an annotation, bind it to a bean, and validate with the same Jakarta constraints you already put on your model.
 
+Most advice on moving JSF to a modern framework points to an Angular or React rewrite, with a second language, a second build, and often a second team. This path is different. You rebuild only the Faces views in Java, keep the Java backend and the Java team that knows it, and move one screen at a time.
+
 A migration is mostly a translation exercise. Most JSF concepts have a direct counterpart, and most of them get smaller. This post maps the concepts one by one and then converts a real form, so you can judge the effort on your own views before committing to anything.
 
 <!-- truncate -->
@@ -154,7 +156,7 @@ public class CustomerFormView extends Composite<FlexLayout> {
 
 ## Custom validators and edit routes {#validators-and-routes}
 
-A JSF custom validator is a class registered with the framework and referenced from a tag. The webforJ equivalent is a plain class implementing `Validator<T>`, attached to a single binding:
+A JSF custom validator is a class registered with the framework and referenced from a tag. The webforJ equivalent is a plain class implementing `Validator<T>`, attached to a single field with `@UseValidator`:
 
 ```java
 public class NoTestAccountValidator implements Validator<String> {
@@ -167,10 +169,9 @@ public class NoTestAccountValidator implements Validator<String> {
   }
 }
 
-// Attach it to the email binding
-context.bind(email, "email")
-    .useValidator(new NoTestAccountValidator())
-    .add();
+// Attach it to the email field in CustomerFormView
+@UseValidator(NoTestAccountValidator.class)
+private final TextField email = new TextField("Email");
 ```
 
 The same applies to loading an existing record. Where a JSF page receives an `id` through a view parameter, a webforJ route declares the parameter in its pattern and reads it before the view appears:
@@ -201,7 +202,11 @@ Component libraries for JSF exist because the base tag set is small. webforJ shi
 
 ## Migration order from JSF to Spring Boot {#migration-order}
 
-Start with leaf screens, such as a single form or report, and leave the screens with the heaviest Facelets templating for last. Port the model constraints and services unchanged, since they have no UI dependency. Build the layout route once, then move views behind it one at a time.
+Start with leaf screens, such as a single form or report, and leave the screens with the heaviest Facelets templating for last. Port the model constraints and services unchanged, since they have no UI dependency. Build the layout route once, then move views behind it one at a time, while the JSF app keeps serving every screen you have not moved yet.
+
+## AI help with the new views {#ai-port}
+
+An AI coding assistant can draft each webforJ view from a Faces page and its backing bean. The [webforJ AI plugin](/docs/ai-tooling) lets it look up the real webforJ API instead of guessing, and a test with each view gives a pass or a fail before review. That cycle is [the AI verification loop for Java](/blog/ai-verification-loop-java). Your team still reviews every screen.
 
 ## Frequently asked questions {#faq}
 
@@ -211,7 +216,7 @@ For teams that want to keep writing the UI in Java, webforJ is a strong choice. 
 
 ### Is the Faces standard deprecated? {#faq-deprecated}
 
-No. Jakarta Faces is an active Jakarta EE specification, and the [specification page](https://jakarta.ee/specifications/faces/) lists version 4.1 as current for Jakarta EE 11. Teams move for developer experience, not because the standard is gone.
+No. Jakarta Faces is an active Jakarta EE specification, and the [specification page](https://jakarta.ee/specifications/faces/) lists version 4.1 for Jakarta EE 11 and version 5.0 under development for Jakarta EE 12. Teams move for developer experience, not because the standard is gone.
 
 ### Can I keep my model constraints? {#faq-validation}
 
@@ -220,3 +225,7 @@ Yes. Annotated model classes work as they are. Create the `BindingContext` with 
 ### Does webforJ work with Spring Boot? {#faq-spring}
 
 Yes. With Spring Boot on the classpath, services are injected into view constructors. See [Spring Boot integration](/docs/integrations/spring/spring-boot) for project setup.
+
+## Plan your JSF migration with us {#plan-your-migration}
+
+To map the rest of your Faces estate, [see how webforJ takes Java apps to the web](/modernization) and talk to us about the screens you have.

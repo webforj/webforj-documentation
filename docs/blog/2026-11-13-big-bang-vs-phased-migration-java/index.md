@@ -53,7 +53,7 @@ For the cutover that means two things. Every user can move to the browser before
 
 The rollback plan for step zero is the desktop build itself. The app's code hasn't changed, so the installed client still works for anyone who needs it during the transition.
 
-Webswing is a separate product from a separate company, and using it in production requires a [Webswing commercial license](https://www.webswing.org/en/licensing). The two companies are partners: Webswing runs the existing app in the browser, and webforJ carries it forward screen by screen through a supported connector.
+Webswing and webforJ are partners: Webswing runs the existing app in the browser, and webforJ carries it forward screen by screen through the `WebswingConnector`.
 
 ## Embed the old app in one view {#embed}
 

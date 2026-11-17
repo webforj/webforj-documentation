@@ -11,19 +11,15 @@ hide_table_of_contents: false
 
 ![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-09-26-eclipse-rap-alternative/cover.jpg)
 
-Your team has a business app that runs in the browser through Eclipse RAP. The screens are written with the SWT and JFace API, the developers who built it know Java well, and now someone is asking what comes next. If you are weighing an Eclipse RAP alternative, webforJ, the full-stack Java framework, is the one that keeps your team in Java: screens are Java objects with listeners, they render as modern web components, and the whole app can plug into your Spring Boot services.
+Your team has a business app that runs in the browser through Eclipse RAP. The screens are written with the SWT and JFace API, the developers who built it know Java well, and now someone is asking what comes next. If you are weighing an Eclipse RAP alternative, webforJ, the full-stack Java framework, keeps your team in Java: screens are Java objects with listeners, they render as modern web components, and the whole app can plug into your Spring Boot services.
 
 This guide helps you decide whether to stay or move, maps the concepts you already know to their webforJ counterparts, and lays out a plan to migrate an Eclipse RAP app one screen at a time.
 
 <!-- truncate -->
 
-:::tip
-The [webforj-crud](https://github.com/webforj/built-with-webforj/tree/main/webforj-crud) app shows the kind of screen most teams move first: a table, a search field and a dialog with validation for adding, editing, and deleting entries. It is a Spring Boot app that runs with Java and Maven.
-:::
-
 ## What RAP gives you today {#what-rap-is}
 
-The Eclipse RAP site describes RAP as enabling modular business apps for desktop, browser and mobile, and says you can write your app entirely in Java. You build the UI with the SWT API, and JFace viewers simplify access to complex data models.
+RAP is built for modular business apps on desktop, browser and mobile, and you can write the whole app in Java. You build the UI with the SWT API, and JFace viewers simplify access to complex data models.
 
 The part of RAP that does the browser work is RWT. RWT largely implements the same API as the Standard Widget Toolkit (SWT), so code that compiles against it generally works, and it ships more than 40 widgets with their events and layout managers. Appearance is controlled with CSS theming. RAP runs on any JEE servlet container, integrates with OSGi and can also be used stand-alone.
 
@@ -76,11 +72,11 @@ The names change and the shape stays recognizable. This table is a starting poin
 | A modal dialog | [`Dialog`](/docs/components/dialog) and the [option dialogs](/docs/components/option-dialogs/overview) |
 | CSS theming | [webforJ styling](/docs/styling/overview) with CSS variables |
 
-One difference deserves attention. The RAP guide notes that in JEE compatibility mode dialogs do not block execution, and you read the result through the RWT-only `open(DialogCallback)` method. In webforJ, the [option dialogs](/docs/components/option-dialogs/overview) are modal and the server stops processing further requests until the dialog is dismissed or returns a value. If your code was reshaped around callbacks, that code can often become straight-line Java again.
+One difference deserves attention. In RAP's JEE compatibility mode, dialogs do not block execution, and you read the result through the RWT-only `open(DialogCallback)` method. In webforJ, the [option dialogs](/docs/components/option-dialogs/overview) are modal and the server stops processing further requests until the dialog is dismissed or returns a value. If your code was reshaped around callbacks, that code can often become straight-line Java again.
 
 ## What a screen looks like {#screen}
 
-Listeners work the way an SWT developer expects. This snippet comes from the events guide:
+Listeners work the way an SWT developer expects:
 
 ```java
 Button button = new Button("Save");
@@ -103,25 +99,25 @@ Treat the move as a screen-by-screen rewrite of the UI while the business logic 
 
 A team that tries the first screen this way learns more in a day than a long comparison document would tell it.
 
-## Let an AI assistant port the screens {#ai}
+## Where AI helps rebuild a screen {#ai}
 
-An AI coding assistant is a fast way to port screens, because an SWT screen has a regular shape: widgets, layout, listeners. The risk is that an assistant guesses at framework APIs. The [webforJ AI plugin](/docs/ai-tooling) removes the guessing. Its [MCP server](/docs/ai-tooling/mcp) gives the assistant the current webforJ documentation and API, so it writes against the real framework, and the [Agent Skills](/docs/ai-tooling/agent-skills) guide it through tasks such as building forms and creating components. It works with Claude Code, GitHub Copilot, Cursor, Gemini CLI and Codex.
-
-Hand the assistant one RAP screen and the service it calls, ask for the webforJ version, and review the result before you merge it.
-
-The assistant can also check its own work. Ask it for a test with every screen it ports, so each one comes back with a pass or a fail before you review it. That write, check, review cycle is [the AI verification loop for Java](/blog/ai-verification-loop-java), and it fits a migration well, because every screen you move is a small, testable unit.
+Converting listeners one for one is the most mechanical part of the plan, and an SWT screen has a regular shape: widgets, layout, listeners. That makes it a good brief for an AI coding assistant, as long as you hand it one RAP screen and the service it calls and review what comes back. The assistant writes a new webforJ screen, and the [webforJ AI plugin](/docs/ai-tooling) lets it check each class against the real webforJ API instead of guessing. Ask for a test with each screen as well, so it arrives with a pass or a fail. That cycle is [the AI verification loop for Java](/blog/ai-verification-loop-java).
 
 ## Which path fits your team {#choosing}
 
-Stay on RAP if you still ship the same code to an RCP desktop client, or if the app is stable and the team has no pressure to change it. Move to webforJ if you want one Java language and one Maven build from the database to the browser, a UI that calls Spring services directly, and a migration you can do a screen at a time. If your team has already looked at moving Java desktop UIs to the browser, the [GWT alternative post](/blog/gwt-alternative) walks through the same decision for another Java UI toolkit.
+Stay on RAP if you still ship the same code to an RCP desktop client, or if the app is stable and the team has no pressure to change it. Move to webforJ if you want one Java language and one Maven build from the database to the browser, a UI that calls Spring services directly, and a migration you can do a screen at a time. If your team also maintains a GWT app, the [GWT alternative post](/blog/gwt-alternative) walks through the same decision for another Java web UI toolkit.
 
 To try it, generate a project with [startforJ](https://docs.webforj.com/startforj) or follow the [getting started guide](/docs/introduction/getting-started). Then rebuild one list screen from your RAP app and compare the two.
+
+## Plan the move off RAP {#plan-your-move}
+
+To plan the screen order for your RAP app and talk to our team about it, see the [modernization path](/modernization).
 
 ## Frequently asked questions {#faq}
 
 ### What is the best Eclipse RAP alternative for a Java team? {#faq-best}
 
-For a team that wants to keep writing the whole app in Java, webforJ is the full-stack Java framework to evaluate. Screens are Java classes with listeners, they render as web components, and the app integrates with Spring Boot.
+For a team that wants to keep writing the whole app in Java, webforJ is a full-stack Java framework worth evaluating. Screens are Java classes with listeners, they render as web components, and the app integrates with Spring Boot.
 
 ### Is webforJ an SWT web UI alternative? {#faq-swt}
 
