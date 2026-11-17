@@ -218,7 +218,7 @@ Router.getCurrent().navigate(NewCustomerView.class);
 
 ## Moving screen by screen {#moving-screen-by-screen}
 
-The Swing app doesn't have to be rewritten in one pass. Webswing runs an existing Swing, JavaFX, or SWT app in the browser without changes to its source, and the `WebswingConnector` component embeds it inside a webforJ view. Only two-way messages need a small addition to the Swing app, described below. Old and new screens then live in one app while screens move over one at a time. Webswing is a separate product with its own [licensing](https://www.webswing.org/en/licensing).
+The Swing app doesn't have to be rewritten in one pass. Webswing runs an existing Swing, JavaFX, or SWT app in the browser without changes to its source, and the `WebswingConnector` component embeds it inside a webforJ view. Only two-way messages need a small addition to the Swing app, described below. Old and new screens then live in one app while screens move over one at a time.
 
 The connector is two-way. `performAction` sends actions from webforJ to the Swing app, and `onAction` receives actions the Swing app sends through the Webswing Java API. Sending actions back requires adding that API to the Swing app.
 
