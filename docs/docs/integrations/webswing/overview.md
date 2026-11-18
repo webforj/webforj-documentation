@@ -1,8 +1,8 @@
 ---
-title: Webswing
+title: "Webswing with webforJ: modernize a Swing app step by step"
 hide_table_of_contents: true
 hide_giscus_comments: true
-description: Embed legacy Swing, JavaFX, or SWT desktop apps inside a webforJ UI through Webswing for progressive modernization and hybrid experiences.
+description: Use Webswing to run a Swing, JavaFX, or SWT app in the browser, embed it in a webforJ app, and replace it with web screens one at a time.
 ---
 
 # Webswing <DocChip chip='since' label='25.10' />
@@ -15,7 +15,11 @@ description: Embed legacy Swing, JavaFX, or SWT desktop apps inside a webforJ UI
   `}</style>
 </Head>
 
-Webswing is a web server technology that allows Java desktop applications (Swing, JavaFX, SWT) to run in a web browser without any modifications to the original source code. It renders the desktop app on the server and streams the interface to the browser using HTML5 canvas, handling all user interactions transparently.
+Webswing runs a Swing, JavaFX, or SWT app in the browser without source code changes. With webforJ, you embed that app in a web app and replace it one screen at a time. For the two to exchange messages, you add the Webswing API to the Swing app.
+
+Webswing is a web server technology. It renders the desktop app on the server and streams the interface to the browser using HTML5 canvas, handling all user interactions transparently.
+
+For an overview of the whole path, from running the desktop app in the browser to retiring it, see [Swing modernization](/modernization).
 
 ## What Webswing solves {#what-webswing-solves}
 
@@ -24,9 +28,9 @@ Many organizations have substantial investments in Java desktop applications tha
 - Complex domain logic that would be risky to recreate
 - Integration with desktop-specific libraries or hardware
 - Time and cost constraints of a full rewrite
-- Need to maintain feature parity with existing functionality
+- Need to maintain feature parity with the existing app
 
-Webswing allows these applications to be web-accessible without modification, preserving their original functionality and appearance.
+Webswing allows these applications to be web-accessible without modification. They keep their original features and appearance.
 
 ## Integration with webforJ {#integration-with-webforj}
 
@@ -43,10 +47,10 @@ Instead of an all-or-nothing rewrite, you can:
 
 ### Hybrid applications {#hybrid-applications}
 
-Combine modern web UI built with webforJ with specialized desktop functionality:
+Combine modern web UI built with webforJ with specialized desktop features:
 
 - Use webforJ for user-facing interfaces, dashboards, and reports
-- Leverage Swing for complex visualizations or specialized editors
+- Keep Swing for complex visualizations or specialized editors
 - Maintain a single integrated app experience
 
 :::tip Replacing Swing counterparts
