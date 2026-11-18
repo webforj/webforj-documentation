@@ -127,7 +127,15 @@ To see where each of these jobs falls in a move from a running Java app to the w
 
 ### What are the best AI tools for Java migration? {#faq-best-tools}
 
-Coding assistants such as Claude Code, GitHub Copilot, Cursor, Gemini CLI and Codex handle the reading, writing and testing jobs, and OpenRewrite recipes handle mechanical version upgrades. Choose by job, and connect the assistant to your target framework's documentation so it does not guess.
+Coding assistants such as Claude Code, GitHub Copilot, Cursor, Gemini CLI and Codex handle the reading, writing and testing jobs, and OpenRewrite recipes handle mechanical version upgrades. Choose by job, and connect the assistant to your target framework's documentation so it does not guess. When the target is webforJ, the webforJ AI plugin makes that connection: its MCP server lets the assistant look up the real API while it writes each new screen.
+
+<!-- vale Google.WordListCase = NO -->
+
+### How can AI help migrate Java applications? {#faq-how-ai-helps}
+
+<!-- vale Google.WordListCase = YES -->
+
+In five jobs: reading the legacy code, upgrading versions, writing the new screens, writing tests for them, and keeping the result maintainable. A coding assistant can read the old code with nothing but your repository, and a recipe engine such as OpenRewrite does the mechanical upgrades. For the new screens and their tests, the assistant's output improves when it can check its work against the target framework's docs, the compiler, and a test run. It doesn't convert an old screen into a new one by itself.
 
 ### Can AI migrate legacy Java code by itself? {#faq-migrate-alone}
 
