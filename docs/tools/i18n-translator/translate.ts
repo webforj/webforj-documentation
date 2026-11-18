@@ -96,6 +96,44 @@ Return ONLY the title (translated or unchanged), nothing else.`;
   };
 }
 
+export async function translateDescription(description: string, targetLanguage: string) {
+  const descriptionPrompt = `You are translating ONLY a page's meta description (from YAML front matter) to ${targetLanguage}. Search engines show it under the page title in results.
+
+📋 RULES:
+1. Return ONLY the translated description, one line
+2. NO explanations, NO quotes, NO YAML formatting, NO "description:" prefix
+3. Keep Java class, method, annotation, property and file names exactly as given (Button, BindingContext, @Route, setValue(), webforj.conf)
+4. Keep web component tags, CSS variables and shadow part names exactly as given (<dwc-button>, --dwc-color-primary)
+5. Keep brand and product names exactly as given: webforJ, DWC, BASIS, startforJ, HueCraft, Spring Boot, Maven, Jakarta, Webswing
+6. Translate everything else naturally, as a native technical writer would, not word for word
+7. Keep the meaning and keep it about as long as the source, at most 160 characters
+
+Return ONLY the description, nothing else.`;
+
+  const chatCompletion = await client.chat.completions.create({
+    messages: [
+      {
+        role: 'system',
+        content: descriptionPrompt,
+      },
+      { role: 'user', content: description },
+    ],
+    model: options.model,
+  });
+
+  // A meta description is a single line; an empty answer must fail so the
+  // caller leaves the description untranslated and retries on the next run
+  const translatedText = chatCompletion.choices[0].message.content?.replace(/\s+/g, ' ').trim();
+  if (!translatedText) {
+    throw new Error('Empty description translation');
+  }
+
+  return {
+    translatedText,
+    usage: chatCompletion.usage,
+  };
+}
+
 export async function translate(content: string, targetLanguage: string, isUIString: boolean = false) {
   const systemPrompt = isUIString 
     ? `You are a UI translator. Translate the following short UI text to ${targetLanguage}. 

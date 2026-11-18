@@ -83,6 +83,9 @@ jobs:
         uses: actions/checkout@v4
         with:
           token: ${{ secrets.ACTOR_TOKEN }}
+          # Full history: for a translation that has no stored hash yet, the
+          # translator reads from git whether it's older than its source.
+          fetch-depth: 0
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
@@ -144,11 +147,12 @@ jobs:
           # results together — either producing changes means we need to
           # rebuild and commit.
           #
-          # translate:titles is what keeps sidebar labels consistent: the normal
-          # translate flow only fires when a source file's content hash changes,
-          # so docs whose bodies are stable would otherwise keep their English
-          # frontmatter titles forever. titles-only walks every existing
-          # translated file and translates the title if it still equals source.
+          # translate:titles keeps the front matter of every translated file up
+          # to date: the normal translate flow only fires when the body of a
+          # source file changes. Each translated field (title, sidebar label,
+          # description) stores a hash of its English source and is translated
+          # again only when that changes. All other fields follow the source.
+          # A run with nothing to update makes no translation calls.
           changed=false
 
           for script in translate translate:titles; do

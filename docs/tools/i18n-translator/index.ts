@@ -1,5 +1,6 @@
 import dotenv from 'dotenv';
 import path from 'path';
+import { execFileSync } from 'child_process';
 
 // Load environment variables from docs/.env
 dotenv.config({ path: path.resolve(process.cwd(), '.env') });
@@ -10,7 +11,7 @@ import fg from 'fast-glob';
 import matter from 'gray-matter';
 import fs from 'fs-extra';
 import md5 from 'md5';
-import { translateBatch, translateTitle, TranslationResult, TranslationTask } from './translate';
+import { translateBatch, translateDescription, translateTitle, TranslationResult, TranslationTask } from './translate';
 import { validateTranslatedMdx } from './validate';
 
 const siteDir = options.project;
@@ -29,7 +30,7 @@ if (forceTranslate) {
 }
 
 if (titlesOnly) {
-  console.log('Titles-only mode enabled - translating only frontmatter titles\n');
+  console.log('Titles-only mode enabled - updating only the front matter of translated files\n');
 }
 
 // Track if any translations were made across all locales
@@ -165,6 +166,142 @@ async function main() {
   process.exit(0); // Exit with code 0 when changes were made
 }
 
+// Front matter fields that are translated. Each one stores a hash of its
+// English source next to it and is translated again only when that changes.
+const TRANSLATED_FIELDS = ['title', 'sidebar_label', 'description'] as const;
+type TranslatedField = (typeof TRANSLATED_FIELDS)[number];
+const fieldHashKey = (field: TranslatedField) => `_i18n_${field}_hash`;
+// Stored instead of a hash when a translation failed, so the next run retries
+const PENDING_HASH = 'pending';
+
+function git(args: string[]): string {
+  try {
+    return execFileSync('git', args, {
+      cwd: siteDir,
+      encoding: 'utf-8',
+      stdio: ['ignore', 'pipe', 'ignore'],
+    }).trim();
+  } catch {
+    return '';
+  }
+}
+
+let fullHistory: boolean | undefined;
+
+function hasFullHistory(): boolean {
+  if (fullHistory === undefined) {
+    fullHistory = git(['rev-parse', '--is-shallow-repository']) === 'false';
+    if (!fullHistory) {
+      console.log('  No full git history available: fields without a stored hash are translated again.');
+    }
+  }
+  return fullHistory;
+}
+
+const commitTimes = new Map<string, number>();
+
+function lastCommitTime(args: string[]): number {
+  const key = args.join(' ');
+  let time = commitTimes.get(key);
+  if (time === undefined) {
+    time = parseInt(git(['log', '-1', '--format=%ct', ...args]), 10) || 0;
+    commitTimes.set(key, time);
+  }
+  return time;
+}
+
+/**
+ * Decides whether a translation made before hashes were stored is still
+ * current: the translated file must have been written after the last change
+ * of that field in the English source. Without full history, or with an
+ * uncommitted change of the field, it counts as outdated.
+ */
+function isCurrentByHistory(field: TranslatedField, sourcePath: string, translatedPath: string): boolean {
+  if (!hasFullHistory()) {
+    return false;
+  }
+  const fieldLine = `^${field}:`;
+  if (git(['diff', 'HEAD', '--name-only', '-G', fieldLine, '--', sourcePath])) {
+    return false;
+  }
+  const fieldChanged = lastCommitTime(['-G', fieldLine, '--', sourcePath]);
+  const translated = lastCommitTime(['--', translatedPath]);
+  return fieldChanged > 0 && translated >= fieldChanged;
+}
+
+/**
+ * Builds the front matter of a translated file. Fields that aren't translated
+ * always follow the English source. A translated field keeps its translation
+ * while its source is unchanged, and is translated otherwise.
+ */
+async function buildFrontmatter(
+  file: string,
+  locale: string,
+  sourceFrontmatter: Record<string, any>,
+  previousFrontmatter: Record<string, any> | null,
+  sourcePath: string,
+  translatedPath: string
+): Promise<{ frontmatter: Record<string, any>; tokens: number }> {
+  const frontmatter: Record<string, any> = { ...sourceFrontmatter };
+  let tokens = 0;
+
+  for (const field of TRANSLATED_FIELDS) {
+    const source = sourceFrontmatter[field];
+    if (typeof source !== 'string' || !source.trim()) {
+      continue;
+    }
+
+    const hashKey = fieldHashKey(field);
+    const hash = md5(source.trim());
+    const translated = previousFrontmatter?.[field];
+    const storedHash = previousFrontmatter?.[hashKey];
+    const hasTranslation = typeof translated === 'string' && translated.trim() !== '';
+
+    if (hasTranslation && !forceTranslate) {
+      // Descriptions were never translated before hashes existed, so one
+      // without a hash is still English
+      const current =
+        storedHash === hash ||
+        (storedHash === undefined &&
+          field !== 'description' &&
+          isCurrentByHistory(field, sourcePath, translatedPath));
+      if (current) {
+        frontmatter[field] = translated;
+        frontmatter[hashKey] = hash;
+        continue;
+      }
+    }
+
+    try {
+      console.log(`  Translating ${field} for: ${file}`);
+      const result = field === 'description'
+        ? await translateDescription(source, locale)
+        : await translateTitle(source, locale);
+      if (!result.translatedText) {
+        throw new Error('Empty translation');
+      }
+      frontmatter[field] = result.translatedText;
+      frontmatter[hashKey] = hash;
+      tokens += result.usage?.total_tokens ?? 0;
+    } catch (error) {
+      // Keep what the page had and store no valid hash, so the next run retries
+      console.warn(`  Failed to translate ${field} for ${file}: ${error}`);
+      if (hasTranslation) {
+        frontmatter[field] = translated;
+      }
+      frontmatter[hashKey] = PENDING_HASH;
+      if (process.env.SKIPPED_REPORT) {
+        fs.appendFileSync(
+          process.env.SKIPPED_REPORT,
+          `${locale}/${file} (${field}): ${String(error).replace(/\s+/g, ' ')}\n`
+        );
+      }
+    }
+  }
+
+  return { frontmatter, tokens };
+}
+
 async function translateDocs(locale: string) {
   const docsDir = path.resolve(siteDir, './docs');
   const files = await fg(['**/*.md', '**/*.mdx'], {
@@ -245,22 +382,18 @@ async function translateDocs(locale: string) {
     if (result.file) {
       const fileInfo = fileInfoMap.get(result.file);
       if (fileInfo) {
-        // Start with original frontmatter
-        const updatedFrontmatter: Record<string, any> = { ...fileInfo.frontmatter };
-
-        // Translate the title if it exists
-        if (fileInfo.frontmatter.title && typeof fileInfo.frontmatter.title === 'string') {
-          try {
-            const titleResult = await translateTitle(fileInfo.frontmatter.title, locale);
-            updatedFrontmatter.title = titleResult.translatedText;
-            if (titleResult.usage?.total_tokens) {
-              totalTokens += titleResult.usage.total_tokens;
-            }
-          } catch (error) {
-            console.warn(`  Failed to translate title for ${result.file}: ${error}`);
-            // Keep original title on error
-          }
-        }
+        const previousFrontmatter = fs.existsSync(fileInfo.targetPath)
+          ? matter(fs.readFileSync(fileInfo.targetPath, 'utf-8')).data
+          : null;
+        const { frontmatter: updatedFrontmatter, tokens } = await buildFrontmatter(
+          result.file,
+          locale,
+          fileInfo.frontmatter,
+          previousFrontmatter,
+          fileInfo.filePath,
+          fileInfo.targetPath
+        );
+        totalTokens += tokens;
 
         // Add the hash
         updatedFrontmatter._i18n_hash = fileInfo.hash;
@@ -297,7 +430,7 @@ async function translateDocsTitlesOnly(locale: string) {
   let updatedCount = 0;
   let totalTokens = 0;
 
-  console.log(`  Processing ${translatedFiles.length} files for title translation...`);
+  console.log(`  Checking the front matter of ${translatedFiles.length} files...`);
 
   for (const file of translatedFiles) {
     const translatedPath = path.resolve(translatedDocsDir, file);
@@ -316,47 +449,37 @@ async function translateDocsTitlesOnly(locale: string) {
     const translatedContent = fs.readFileSync(translatedPath, 'utf-8');
     const { data: translatedFrontmatter, content: translatedBody } = matter(translatedContent);
 
-    // Check if source has a title and it needs translation
-    if (!sourceFrontmatter.title || typeof sourceFrontmatter.title !== 'string') {
+    const { frontmatter, tokens } = await buildFrontmatter(
+      file,
+      locale,
+      sourceFrontmatter,
+      translatedFrontmatter,
+      sourcePath,
+      translatedPath
+    );
+    totalTokens += tokens;
+
+    // The body is untouched here, so its hash stays as it was
+    if (translatedFrontmatter._i18n_hash !== undefined) {
+      frontmatter._i18n_hash = translatedFrontmatter._i18n_hash;
+    }
+
+    const updatedFileContent = matter.stringify(translatedBody, frontmatter).replace(/\r\n/g, '\n');
+    if (updatedFileContent === translatedContent) {
       continue;
     }
 
-    // Check if the title has already been translated (not the same as source)
-    if (translatedFrontmatter.title && translatedFrontmatter.title !== sourceFrontmatter.title) {
-      // Title already translated, skip
-      continue;
-    }
-
-    // Translate the title
-    try {
-      console.log(`  Translating title for: ${file}`);
-      const titleResult = await translateTitle(sourceFrontmatter.title, locale);
-
-      // Update frontmatter with new title
-      const updatedFrontmatter = { ...translatedFrontmatter, title: titleResult.translatedText };
-
-      // Write back the file with updated title but same content and hash
-      const updatedFileContent = matter.stringify(translatedBody, updatedFrontmatter);
-      const normalizedContent = updatedFileContent.replace(/\r\n/g, '\n');
-      fs.writeFileSync(translatedPath, normalizedContent);
-
-      updatedCount++;
-      if (titleResult.usage?.total_tokens) {
-        totalTokens += titleResult.usage.total_tokens;
-      }
-    } catch (error) {
-      console.warn(`  Failed to translate title for ${file}: ${error}`);
-    }
+    fs.writeFileSync(translatedPath, updatedFileContent);
+    updatedCount++;
   }
 
   if (updatedCount > 0) {
     hasChanges = true;
-    console.log(`  Completed title translation for ${updatedCount} files. Total token usage: ${totalTokens}`);
+    console.log(`  Updated the front matter of ${updatedCount} files. Total token usage: ${totalTokens}`);
   } else {
-    console.log(`  No titles needed translation.`);
+    console.log(`  All front matter is up to date.`);
   }
 }
-
 
 async function translateJSON(
   locale: string,
@@ -408,6 +531,12 @@ async function translateJSON(
     }
 
     if (whitelist.includes(englishMessage)) {
+      continue;
+    }
+
+    // A blank string has nothing to translate, and a key the target file
+    // doesn't have has no place to store a translation
+    if (!englishMessage.trim() || !targetJson[key]) {
       continue;
     }
 
@@ -547,6 +676,12 @@ async function translateCodeJSON(locale: string) {
 
     // Skip if in whitelist (technical terms that shouldn't be translated)
     if (whitelist.includes(englishMessage)) {
+      continue;
+    }
+
+    // A blank string has nothing to translate, and a key the target file
+    // doesn't have has no place to store a translation
+    if (!englishMessage.trim() || !targetJson[key]) {
       continue;
     }
 
