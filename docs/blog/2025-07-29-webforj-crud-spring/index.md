@@ -1,6 +1,6 @@
 ---
 title: My First Foray into Full-Stack with webforJ
-description: My first foray into full-stack development with webforJ
+description: "A UI-minded developer builds a music artist manager with Spring Boot and webforJ, from the back end to renderers and form binding, and gives an honest verdict."
 slug: Full-stack development with webforJ
 date: 2025-07-29
 authors: Matthew Hawkins

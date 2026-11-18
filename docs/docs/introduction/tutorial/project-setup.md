@@ -1,7 +1,7 @@
 ---
 title: Project Setup
 sidebar_position: 1
-description: Discover where to download the tutorial project, how to navigate it, and run the apps within.
+description: "Get the webforJ tutorial project from its source code, startforJ or the command line, learn how it's structured and configured, and run each step's app."
 ---
 
 To begin this tutorial, you need a location for your project where you can manage your classes and resources. The following sections describe the different ways you can create your webforJ project for this tutorial.

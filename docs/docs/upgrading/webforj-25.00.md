@@ -1,6 +1,6 @@
 ---
 title: Upgrade to 25.00
-description: Upgrade from 24.00 to 25.00
+description: "Upgrade a webforJ app from 24.00 to 25.00: Jetty 12 and POM changes, App class API changes, table sorting, HTML rendering in components and other changes."
 sidebar_position: 30
 ---
 

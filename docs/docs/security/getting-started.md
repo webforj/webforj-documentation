@@ -1,5 +1,6 @@
 ---
-title: Getting Started
+title: "Getting started with Spring Security"
+sidebar_label: "Getting Started"
 sidebar_position: 2
 description: Integrate Spring Security with webforJ to handle authentication, login views, password encoding, and protected routes.
 ---

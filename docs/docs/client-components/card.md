@@ -2,7 +2,7 @@
 title: <dwc-card>
 sidebar_class_name: sidebar--item__hidden
 slug: card
-description: Style the dwc-card client component with CSS variables, shadow parts, and slots for theming.
+description: "Style the dwc-card client component, which webforJ components are built from, with its CSS variables, shadow parts and slots to match your theme."
 ---
 
 <DocChip chip='shadow' />

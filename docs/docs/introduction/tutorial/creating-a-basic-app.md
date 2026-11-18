@@ -1,7 +1,7 @@
 ---
 title: Creating a Basic App
 sidebar_position: 2
-description: Step 1 - Add components to an app.
+description: "Tutorial step 1: create the main class of a webforJ and Spring Boot app, add interactive webforJ and HTML element components, and style them with CSS."
 ---
 
 In [Project Setup](/docs/introduction/tutorial/project-setup), you generated a webforJ project. Now it’s time to create the main class for the project and add an interactive interface using webforJ components. In this step, you’ll learn about:

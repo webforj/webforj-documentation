@@ -1,6 +1,6 @@
 ---
 title: "Transform Your webforJ App with Professional Theming"
-description: "Learn webforJ's theming system from built-in themes to custom color palettes and dark mode. "
+description: "Theme a webforJ app from built-in themes to your own palettes: follow system preferences, switch themes at runtime, keep dark mode consistent, theme components."
 slug: guide-webforj-themes
 date: 2025-09-25
 authors: Lauren Alamo

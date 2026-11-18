@@ -1,6 +1,7 @@
 ---
 sidebar_position: 5
-title: Snapshots
+title: "Snapshot testing"
+sidebar_label: "Snapshots"
 description: Compare everything a view shows with a stored text description of it, read that description, and add the state of your own components to it.
 ---
 

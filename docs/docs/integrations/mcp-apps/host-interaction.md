@@ -1,7 +1,7 @@
 ---
 title: Work with the MCP client
 sidebar_position: 25
-description: Connect a rendered webforJ view to its MCP client.
+description: "Let a rendered webforJ MCP App work with its client: send messages to the conversation, keep the model informed, leave the embedded view and follow changes."
 ---
 
 An MCP App doesn't have to keep every interaction inside its embedded view. It can send information to the conversation, keep the model informed as the user changes the UI, or ask the client to handle something outside the frame.

@@ -2,7 +2,7 @@
 title: Validating and Binding Data
 sidebar_position: 6
 pagination_next: null
-description: Step 5 - Add validation checks and bind data to the UI.
+description: "Tutorial step 5: bind the form to the Customer entity with webforJ data binding and add validation checks so users enter complete and accurate data."
 ---
 
 Your app from [Observers and Route Parameters](/docs/introduction/tutorial/observers-and-route-parameters) can use `FormView` to edit existing customer data. This step uses [Data binding](/docs/data-binding/overview), which connects UI components directly to the data model for automatic value synchronization. This reduces boilerplate in your app and lets you add validation checks to the Spring entity `Customer`, making your users provide complete and accurate information when filling out forms. This step covers the following concepts:

@@ -1,7 +1,7 @@
 ---
 sidebar_position: 38
 title: App badges
-description: Paint notification badges onto the operating system app icon and the browser tab favicon.
+description: "Paint notification badges on the operating system app icon with App.setBadge and on the browser tab favicon with Page.setIconBadge, and see what each needs."
 ---
 
 # App badges <DocChip chip='since' label='26.01' />

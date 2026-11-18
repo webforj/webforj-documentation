@@ -1,7 +1,7 @@
 ---
 title: App Info
 sidebar_position: 10
-description: Read the versions, Java runtime, and project root of the app craftforJ is attached to.
+description: "craftforJ App Info shows what your app really runs with: the webforJ and BBj Services versions, the Java runtime, the operating system and the project root."
 ---
 
 App info reports what your app is actually running with, which isn't always what your `pom.xml` says it should be running with. Alongside the webforJ and BBj Services versions, it covers the Java runtime, the operating system, and where the app is rooted on disk.

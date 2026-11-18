@@ -1,6 +1,6 @@
 ---
 title: "Countdown Timer Component"
-description: "A custom component that creates a countdown timer for events."
+description: "Build a countdown timer component in webforJ for deadlines, sales or other timed events, as a Composite that counts down days, hours, minutes and seconds."
 tags: [components]
 components: []
 difficulty: intermediate

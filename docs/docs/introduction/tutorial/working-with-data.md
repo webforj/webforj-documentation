@@ -1,7 +1,7 @@
 ---
 title: Working with Data
 sidebar_position: 3
-description: Step 2 - Use Spring to work with data.
+description: "Tutorial step 2: create a customer data model with Spring annotations, manage the data, and show it in the webforJ Table component."
 ---
 
 In this step, you’ll learn how to create a data model using Spring and display that data visually.

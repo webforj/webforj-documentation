@@ -1,7 +1,7 @@
 ---
 title: Routing and Composites
 sidebar_position: 4
-description: Step 3 - Make your app navigable.
+description: "Tutorial step 3: move the UI to its own page, add a page for new customers, and connect them with routing, composite components and ColumnsLayout."
 ---
 
 Up until now, this tutorial has only been a single-page app. This step changes that.

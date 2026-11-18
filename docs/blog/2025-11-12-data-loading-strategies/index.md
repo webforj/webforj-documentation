@@ -1,6 +1,6 @@
 ---
 title: Loading Data from REST APIs in webforJ
-description: Learn when to use different webforJ Repository types for optimally loading data
+description: "Load REST API data in webforJ the right way: when to fetch everything with CollectionRepository and when to load on demand with DelegatingRepository."
 slug: data-loading-strategies-rest-apis
 date: 2025-11-12
 authors: Matthew Hawkins

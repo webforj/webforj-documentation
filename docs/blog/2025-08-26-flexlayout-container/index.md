@@ -1,6 +1,6 @@
 ---
 title: FlexWrap your mind around webforJ's FlexLayout
-description: A guide to configuring and using webforJ's FlexLayout
+description: "Build responsive layouts in Java with webforJ's FlexLayout: translate CSS Flexbox, set direction and wrapping, and align items on the main and cross axes."
 date: 2025-08-26
 authors: Garrison Osteen
 tags: [components, layout, responsive design, front end]

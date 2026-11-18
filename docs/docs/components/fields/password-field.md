@@ -2,7 +2,7 @@
 sidebar_position: 30
 title: PasswordField
 slug: passwordfield
-description: A single-line input component for securely entering and masking password data.
+description: "Let users enter a password securely with the webforJ PasswordField: masked input, a visibility toggle, pattern matching, and minimum and maximum length."
 ---
 
 <DocChip chip='shadow' />

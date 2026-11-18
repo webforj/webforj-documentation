@@ -1,7 +1,7 @@
 ---
 title: Running with BBjServices
 hide_table_of_contents: true
-description: Set up and deploy webforJ apps that run on BBjServices using Docker or a local BBj installation.
+description: "The deprecated webforJ install plugin for running apps on BBjServices. Start new projects with BBjShip, and move existing ones with the changes listed here."
 ---
 
 :::danger Deprecated and will be removed

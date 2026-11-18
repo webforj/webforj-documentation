@@ -1,7 +1,7 @@
 ---
 title: Observers and Route Parameters
 sidebar_position: 5
-description: Step 4 - Use route parameters to control what content loads.
+description: "Tutorial step 4: let users edit existing customers with route patterns, parameter values passed through the URL, and lifecycle observers."
 ---
 
 The app from [Routing and Composites](/docs/introduction/tutorial/routing-and-composites) can only add new customers to the database. Using the following concepts, you’ll give users the ability to also edit the data of existing customers:

@@ -1,6 +1,6 @@
 ---
 title: "Center content in a FlexLayout"
-description: "Use the FlexLayout component to center components horizontally and vertically"
+description: "Center components horizontally and vertically in a webforJ FlexLayout with setJustifyContent and setAlignment, alone or as the bound component of a Composite."
 tags: [layout]
 components: [FlexLayout]
 difficulty: beginner

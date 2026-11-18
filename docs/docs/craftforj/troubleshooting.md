@@ -1,5 +1,6 @@
 ---
-title: Troubleshooting
+title: "craftforJ troubleshooting"
+sidebar_label: "Troubleshooting"
 sidebar_position: 11
 description: Fix the common cases where craftforJ doesn't appear, a feature is unavailable, or the assistant doesn't answer.
 ---

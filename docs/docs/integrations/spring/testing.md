@@ -1,6 +1,7 @@
 ---
 sidebar_position: 30
-title: Testing
+title: "Testing with Spring Boot"
+sidebar_label: "Testing"
 description: Test a webforJ Spring Boot app without a browser with @SpringBootTest and @WebforjTest, with injected beans and Spring Security on routes.
 sidebar_class_name: new-content
 ---

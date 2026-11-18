@@ -1,5 +1,6 @@
 ---
-title: Troubleshooting
+title: "BBjShip troubleshooting"
+sidebar_label: "Troubleshooting"
 sidebar_position: 8
 description: What the messages of the BBjShip goals and the bbjship command line mean, and what to do about each, for setup, deploys, development runs, the command line and Windows.
 ---

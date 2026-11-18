@@ -1,6 +1,6 @@
 ---
 title: "Navigate to another view programmatically"
-description: "Trigger programmatic navigation to a view class using Router.getCurrent().navigate()."
+description: "Navigate to another webforJ view from Java code, such as a button click, with Router.getCurrent().navigate() and the view class instead of a URL string."
 tags: [routing, navigation]
 components: []
 difficulty: beginner

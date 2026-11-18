@@ -1,5 +1,6 @@
 ---
-title: Spring Boot
+title: "Live reload with Spring Boot"
+sidebar_label: "Spring Boot"
 sidebar_position: 30
 description: Set up live reload in a Spring Boot webforJ app, with the development tools delivered by the webforJ build plugin.
 ---

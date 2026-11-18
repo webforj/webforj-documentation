@@ -1,7 +1,7 @@
 ---
 title: Open a view with input
 sidebar_position: 15
-description: Accept structured opening input in a routed MCP App and choose its requested display mode.
+description: "Accept structured opening input in a routed MCP App so the AI picks the initial state of the view, and choose the display mode the client uses to show it."
 ---
 
 Opening input lets the AI choose the initial state of a view. For example, an inventory app can accept a warehouse code when the client opens it and apply that value after the route renders.

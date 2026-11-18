@@ -1,6 +1,6 @@
 ---
 title: "webforJ, meet Claude"
-description: Setting up the webforJ MCP server in Claude Code
+description: "Set up the webforJ MCP server in Claude Code, set its tool permissions, and use it to generate projects, create themes and search the webforJ knowledge base."
 slug: mcp
 date: 2026-04-01
 authors: Garrison Osteen

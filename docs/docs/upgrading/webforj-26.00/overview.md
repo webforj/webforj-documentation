@@ -1,6 +1,6 @@
 ---
 title: Upgrade to 26.00
-description: Upgrade from 25.00 to 26.00
+description: "Upgrade a webforJ app from 25.00 to 26.00: Java 21 or 25, the new Maven repository URL, Spring Boot, Table and Repository API changes and DWC 26."
 slug: /upgrading/webforj-26.00
 pagination_next: null
 sidebar_position: 1

@@ -1,7 +1,8 @@
 ---
-title: Configuration
+title: "craftforJ configuration"
+sidebar_label: "Configuration"
 sidebar_position: 8
-description: Every craftforJ configuration property, its default, and what turning each feature off changes.
+description: "Every craftforJ property for webforj.conf or application.properties, with its type and default, and what changes when you turn each feature off."
 ---
 
 craftforJ is configured in `webforj.conf`. The property names are the same on [Spring](/docs/integrations/spring/overview), so set them in `application.properties` if that's where your configuration lives.

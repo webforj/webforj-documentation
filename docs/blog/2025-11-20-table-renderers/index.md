@@ -1,6 +1,6 @@
 ---
 title: Making Data Display Less Boring in webforJ
-description: Learn how to use custom renderers to display rich, formatted content in webforJ tables
+description: "Show rich, formatted content in webforJ Table cells with custom renderers, built step by step for a cryptocurrency dashboard, plus the built-in renderers."
 slug: table-renderers-custom-cells
 date: 2025-11-25
 authors: Matthew Hawkins

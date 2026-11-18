@@ -2,7 +2,7 @@
 title: <dwc-format-text>
 sidebar_class_name: sidebar--item__hidden
 slug: format-text
-description: Style the dwc-format-text client component with CSS variables, shadow parts, and slots for theming.
+description: "Style the dwc-format-text client component, which webforJ components are built from, with its CSS variables, shadow parts and slots to match your theme."
 ---
 
 :::info CLIENT COMPONENT

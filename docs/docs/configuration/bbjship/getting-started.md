@@ -1,5 +1,6 @@
 ---
-title: Getting Started
+title: "Getting started with BBjShip"
+sidebar_label: "Getting Started"
 sidebar_position: 2
 description: Create a webforJ app that runs with BBjServices from startforJ or the Maven archetypes, run it on your local BBj and deploy it with BBjShip.
 ---

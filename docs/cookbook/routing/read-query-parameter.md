@@ -1,6 +1,6 @@
 ---
 title: "Read a query parameter from a route"
-description: "Access URL query parameters inside a webforJ view using DidEnterObserver and ParametersBag."
+description: "Read URL query parameters in a webforJ view with DidEnterObserver and ParametersBag, using get for single values and getList for repeated parameters."
 tags: [routing, parameters]
 components: []
 difficulty: beginner

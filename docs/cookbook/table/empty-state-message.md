@@ -1,6 +1,6 @@
 ---
 title: "Show an empty-state message when a Table has no rows"
-description: "Toggle a placeholder message whenever the repository backing a Table becomes empty."
+description: "Show an empty-state message whenever the repository behind a webforJ Table has no rows, and hide it when rows return, using the repository commit listener."
 tags: [table]
 components: [Table]
 difficulty: beginner

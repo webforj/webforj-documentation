@@ -1,6 +1,6 @@
 ---
 title: "Open a route in a new browser tab"
-description: "Construct a route URL with the router and open it via Page.open so paths aren't hard-coded."
+description: "Open a webforJ route in a new browser tab: get its URL from the router with getUri and pass it to Page.open, so paths are never hard-coded."
 tags: [routing, navigation]
 components: []
 difficulty: beginner

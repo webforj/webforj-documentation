@@ -1,5 +1,6 @@
 ---
-title: Routing
+title: "Routing with Spring"
+sidebar_label: "Routing"
 sidebar_position: 15
 description: Inject Spring services and repositories into webforJ @Route classes through constructor injection while keeping a fresh instance per navigation.
 ---

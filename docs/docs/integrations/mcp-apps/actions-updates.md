@@ -1,7 +1,7 @@
 ---
 title: Add tools for an open view
 sidebar_position: 20
-description: Add tools that work with an MCP App already open in the current conversation.
+description: "Publish more tools for an MCP App that is already open in the conversation, as actions with their own input or as an update tool that reuses the opening input."
 ---
 
 An MCP App can publish tools in addition to the tool that opens its view. Use an action for a distinct operation with its own input. Implement the update observer when the app needs one `inventory_update` tool with the same input as its opening tool.

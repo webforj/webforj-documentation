@@ -1,6 +1,6 @@
 ---
 title: "Block navigation when a form has unsaved changes"
-description: "Implement WillLeaveObserver to prompt the user with a confirm dialog before discarding edits."
+description: "Stop users from leaving a form with unsaved changes: implement WillLeaveObserver and ask with a confirm dialog before webforJ navigates away."
 tags: [routing, forms]
 components: []
 difficulty: intermediate

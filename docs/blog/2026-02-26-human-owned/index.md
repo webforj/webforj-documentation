@@ -1,6 +1,6 @@
 ---
 title: "webforJ: AI-assisted, human-owned"
-description: An overview of the effect of AI on code quality, and webforJ's relationship with AI
+description: "How AI coding tools affect code quality, maintainability, security and performance, where AI helps most, and webforJ's policy: AI-assisted, human-owned."
 slug: webforj-human-owned
 date: 2026-02-26
 authors: Garrison Osteen

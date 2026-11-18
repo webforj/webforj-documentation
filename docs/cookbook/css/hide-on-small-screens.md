@@ -1,6 +1,6 @@
 ---
 title: "Hide a component on small screens with a media query"
-description: "Use a sidecar CSS file with a media query to hide a region of the UI below a breakpoint."
+description: "Hide part of a webforJ UI below a breakpoint with a CSS class and a media query in a sidecar style sheet, with no resize listeners or JavaScript glue."
 tags: [css, layout]
 components: []
 difficulty: beginner

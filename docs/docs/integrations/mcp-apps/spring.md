@@ -1,7 +1,7 @@
 ---
 title: Spring Boot MCP Apps
 sidebar_position: 5
-description: Build and publish a routed webforJ view as an MCP App with Spring Boot and Spring AI.
+description: "Publish a routed webforJ view as an MCP App through a Spring AI MCP server in a Spring Boot app, so AI clients can open it as an interactive view."
 ---
 
 The Spring Boot integration publishes routed webforJ views through a Spring AI MCP server. Use it when a Spring Boot app needs to expose an interactive view to an MCP client, the AI app that connects to the server.

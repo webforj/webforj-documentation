@@ -1,6 +1,6 @@
 ---
 title: "Add a toggle for the app's theme"
-description: "Have a toggle component that switches the app's theme between a light and a dark mode."
+description: "Add a button that switches a webforJ app between the light and dark themes, built as a Composite with an IconButton that reads and sets the app theme."
 tags: [styling, components, theme]
 components: [IconButton]
 difficulty: beginner

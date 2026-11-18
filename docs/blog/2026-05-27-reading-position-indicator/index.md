@@ -1,6 +1,6 @@
 ---
 title: "Creating a webforJ Reading Position Indicator"
-description: A short walkthrough of creating a reading position indicator using webforJ.
+description: "Build a reading position indicator in webforJ: a ProgressBar in a persistent Toolbar that fills as the reader scrolls, built as a Composite component."
 slug: reading-position-indicator
 date: 2026-05-27
 authors: Ben Brennan

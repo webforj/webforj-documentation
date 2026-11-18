@@ -1,6 +1,6 @@
 ---
 title: "Build a reusable card with title, body, and action slots"
-description: "Create a Composite card component with header, body, and footer regions you fill from any view."
+description: "Build a reusable card as a webforJ Composite with header, body and footer regions that any view fills through addToHeader, addToBody and addToFooter."
 tags: [components, layout, styling]
 components: []
 difficulty: beginner

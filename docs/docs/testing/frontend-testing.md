@@ -1,7 +1,7 @@
 ---
 title: Frontend testing
 sidebar_position: 5
-description: Write tests for the frontend sources of a webforJ app with the Bun test runner.
+description: "Test the TypeScript sources and client logic of a webforJ app with the Bun test runner: where test files live next to the frontend sources and how to run them."
 ---
 
 # Frontend testing <DocChip chip='since' label='26.01' /> {#frontend-testing}

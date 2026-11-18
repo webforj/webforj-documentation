@@ -2,7 +2,7 @@
 sidebar_position: 35
 title: TextField
 slug: textfield
-description: A single-line input component for entering and editing text data.
+description: "Let users enter and edit one line of text with the webforJ TextField, with email, telephone, URL and search types, patterns, placeholders and length limits."
 ---
 
 <DocChip chip='shadow' />

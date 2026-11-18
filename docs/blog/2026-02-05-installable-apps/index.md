@@ -1,6 +1,6 @@
 ---
 title: Your Web App Deserves a Spot on the Home Screen
-description: Learn how to turn your webforJ app into an installable, home-screen-ready experience.
+description: "Make a webforJ app installable with one annotation: set its colors, launch experience, display mode and icons so it gets its own spot on the home screen."
 slug: installable-apps
 date: 2026-02-05
 authors: Lauren Alamo

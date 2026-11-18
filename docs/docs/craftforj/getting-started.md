@@ -1,5 +1,6 @@
 ---
-title: Getting Started
+title: "Getting started with craftforJ"
+sidebar_label: "Getting Started"
 sidebar_position: 2
 description: Add the devtools dependency, enable craftforJ in your configuration, and open craftforJ over a running webforJ app.
 ---

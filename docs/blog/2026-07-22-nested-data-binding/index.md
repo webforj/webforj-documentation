@@ -1,6 +1,6 @@
 ---
 title: The Data Binding Feature Past Matthew Really Needed
-description: Using webforJ's automatic data binding to wire forms to nested Java beans without the boilerplate
+description: "Bind a webforJ form to nested Java beans with one BindingContext and automatic data binding, with validation included and none of the wiring boilerplate."
 slug: nested-data-binding-webforj
 date: 2026-07-22
 authors: Matthew Hawkins

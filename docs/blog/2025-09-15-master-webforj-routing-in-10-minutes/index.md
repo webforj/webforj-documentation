@@ -1,6 +1,6 @@
 ---
 title: Master webforJ routing in 10 minutes
-description: Everything you need to know about routing with webforJ in a quick breakdown
+description: "Learn webforJ routing in 10 minutes: the @Route annotation, parameters, aliases and nested routes, history, page titles and 404 pages, compared with React."
 slug: master-webforj-routing-in-10-minutes
 date: 2025-09-15
 authors: Eric Handtke

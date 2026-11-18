@@ -1,6 +1,6 @@
 ---
 title: "Building a Todo App with MVC Pattern in webforJ"
-description: "Building a function todo app with the model-view-controller pattern in webforJ"
+description: "Build a working todo app in webforJ with the model-view-controller pattern: a model in the back end, a view in Java, and a controller that connects them."
 slug: webforj-mvc
 date: 2025-10-03
 authors: Matthew Hawkins

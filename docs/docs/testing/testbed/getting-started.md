@@ -1,7 +1,7 @@
 ---
 sidebar_position: 1
 title: Getting started
-description: Add the TestBed dependency, write a first test that adds a view and acts on it, and run the test.
+description: "Add the webforJ TestBed dependency, write a first browserless JUnit test that adds a view and acts on it with ComponentLocator and UserInteraction, and run it."
 ---
 
 # Getting started <DocChip chip='since' label='26.03' />
