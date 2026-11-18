@@ -22,9 +22,12 @@ JavaFX vs Swing in 2026 comes down to this. Swing ships inside the JDK and is th
 | Question | Swing | JavaFX |
 | --- | --- | --- |
 | Ships with | The JDK, in the `java.desktop` module | A separate download, OpenJFX |
+| Built on | AWT | Its own windowing layer and scene graph |
 | A screen is defined in | Java code | Java code or FXML markup |
 | Styling | Look and feel classes | CSS style sheets |
 | Data binding | Listeners you write | Observable properties and bindings |
+| Drawing | Each component paints itself with Java 2D | The toolkit draws a scene graph |
+| Animation and 3D | A timer and your own painting code, no 3D classes | Animation classes and 3D shapes included |
 | UI thread | Event dispatch thread | FX thread |
 | Built in beyond forms | Tables, trees, text components | Tables, trees, charts, media, a web view |
 | Targets | Desktop | Desktop, mobile and embedded |
@@ -39,6 +42,14 @@ Swing is part of the JDK. The `java.desktop` module [defines the AWT and Swing t
 JavaFX used to ship with the Oracle JDK. It left with JDK 11 and is now developed as [OpenJFX](https://openjfx.io/), an open source project with its own releases. You add it through Maven or Gradle modules, or as a standalone SDK. OpenJFX follows the JDK's six-month rhythm: version 26 arrived in March 2026 and version 27 in September 2026.
 
 So neither toolkit is abandoned. Swing is in maintenance: each JDK release brings bug fixes to it, and new features are rare. JavaFX is where new desktop UI features land.
+
+## The toolkit under Swing {#where-awt-fits}
+
+The Abstract Window Toolkit (AWT) is the oldest of the three, and every Swing app still uses it. AWT's own controls are heavyweight, which means [each one is associated with a native window](https://docs.oracle.com/en/java/javase/25/docs/api/java.desktop/java/awt/Component.html) of the operating system. Swing components are lightweight. They're written and painted in Java, so they don't depend on native widgets.
+
+Swing was built on top of AWT and didn't replace it. [`JComponent` extends the AWT class `Container`](https://docs.oracle.com/en/java/javase/25/docs/api/java.desktop/javax/swing/JComponent.html), and the `FlowLayout` and the action listener in the Swing sample below come from AWT packages.
+
+JavaFX controls don't build on AWT. The toolkit has its own windowing layer and its own scene graph. So the choice today is between Swing and JavaFX. Plain AWT matters as the foundation under Swing, not as a third option for a new app.
 
 ## The same screen in both {#same-screen}
 
@@ -102,6 +113,16 @@ Swing has no binding layer in the JDK. The same behavior takes a `DocumentListen
 Swing changes its appearance through look and feel classes. The JDK ships several, including Metal, Nimbus and one that follows the operating system, and `UIManager.setLookAndFeel` switches between them. Changing the look of one button usually means setting colors and fonts in Java.
 
 JavaFX is styled with CSS. Controls carry style classes, and a style sheet sets properties such as `-fx-background-color` and `-fx-text-fill`. A designer can restyle the app without touching Java, and one style sheet can change the whole product.
+
+## Graphics and performance {#graphics-and-performance}
+
+The two toolkits draw in different ways. A Swing component paints itself. The toolkit calls its [`paintComponent` method](https://docs.oracle.com/javase/tutorial/uiswing/painting/closer.html), and custom drawing is Java 2D code you write there. To animate something you start a `javax.swing.Timer`, change some state on each tick and repaint.
+
+JavaFX keeps a scene graph, a tree of nodes that the toolkit draws for you. Its rendering pipeline [uses the graphics hardware when it's available](https://docs.oracle.com/javase/8/javafx/get-started-tutorial/jfx-architecture.htm) and falls back to software rendering when it isn't. Animation is part of the toolkit: the [`javafx.animation` package](https://openjfx.io/javadoc/25/javafx.graphics/javafx/animation/package-summary.html) has timelines and ready-made transitions that fade, move, rotate, and scale a node.
+
+JavaFX also has 3D shapes such as `Box`, `Sphere` and `Cylinder`. [3D is a conditional feature](https://openjfx.io/javadoc/25/javafx.graphics/javafx/scene/shape/Shape3D.html), so check that your target platform supports it. Swing has no 3D classes of its own.
+
+Don't read these differences as Swing being slow. Java 2D, which Swing paints with, has hardware pipelines too, such as [the Metal pipeline on macOS](https://openjdk.org/jeps/382). The practical difference is how much you write yourself. JavaFX includes animation, effects and 3D, and in Swing that work is your own painting code or a separate library.
 
 ## Threading {#threading}
 
@@ -181,6 +202,10 @@ For a new desktop app, JavaFX. It has data binding, CSS styling and built-in cha
 ### Is JavaFX still used in 2026? {#faq-javafx-still-used}
 
 Yes. JavaFX is developed as the open source OpenJFX project and ships a new release every six months. Version 27 arrived in September 2026.
+
+### Is Java Swing still used in 2026? {#faq-swing-still-used}
+
+Yes. Swing ships in the `java.desktop` module of the JDK, and software such as IntelliJ IDEA runs on it: the [IntelliJ Platform builds its UI from Swing components](https://plugins.jetbrains.com/docs/intellij/user-interface-components.html). Swing isn't obsolete. Each JDK release still ships and maintains it.
 
 ### Is Java Swing deprecated? {#faq-swing-deprecated}
 
