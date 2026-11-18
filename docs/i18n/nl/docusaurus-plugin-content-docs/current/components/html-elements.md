@@ -2,8 +2,10 @@
 sidebar_position: 52
 title: HTML Componenten
 description: >-
-  Compose pages with typed Java wrappers for standard HTML elements like Div,
-  Anchor, Paragraph, Img, headings, and semantic containers.
+  Bouw pagina's op met getypeerde Java-wrappers voor standaard HTML-elementen
+  zoals Div, Anchor, Paragraph, Img, koppen en semantische containers.
+_i18n_title_hash: 5108cbe4b9d8de5912e5861ed524a8b9
+_i18n_description_hash: 993358240d21cf5f8876182600d49f70
 _i18n_hash: b8c2cd3c3c48b561e6796ef23aa73fe7
 ---
 webforJ biedt een set componenten die rechtstreeks overeenkomen met standaard HTML-elementen, waardoor je een getypeerde Java API krijgt voor de meest voorkomende bouwstenen van webpagina's. Voor een uitgebreide referentie van elk onderliggend HTML-element, zie de [MDN HTML-elementreferentie](https://developer.mozilla.org/en-US/docs/Web/HTML/Element).

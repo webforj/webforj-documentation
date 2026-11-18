@@ -1,9 +1,9 @@
 ---
 sidebar_position: 3
 title: 使用组件
-description: >-
-  Configure webforJ components in Java by setting text, attributes, IDs, inline
-  styles, and CSS classes that drive appearance and behavior.
+description: 通过在 Java 中设置文本、属性、ID、内联样式和 CSS 类来配置 webforJ 组件，从而控制其外观和行为。
+_i18n_title_hash: 2a657decd3a2960a86642a7b6819b98e
+_i18n_description_hash: f52d178dc9a5840dc7042e66c878e9c7
 _i18n_hash: df0f3d5a956eda1abd755f646899a7cc
 ---
 <JavadocLink type="foundation" location="com/webforj/component/Component" top='true'/>

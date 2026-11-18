@@ -2,6 +2,12 @@
 sidebar_position: 1
 title: Cycle de vie de la navigation
 hide_giscus_comments: true
+description: >-
+  Coordonnez la validation, le chargement des données et le nettoyage lors des
+  transitions entre routes grâce aux événements du cycle de navigation de
+  webforJ.
+_i18n_title_hash: eb500610c9232241433128cf033c935e
+_i18n_description_hash: 668e0d0d2db135f709ccc33ea1076d0d
 _i18n_hash: 14d81d1a9ff86af17370e0a7eb50608b
 ---
 Naviguer à travers différentes vues dans une application web implique plusieurs étapes, offrant des opportunités d'effectuer des actions avant, pendant ou après une transition. Le cycle de navigation fournit un système basé sur des événements qui permet aux développeurs de gérer les aspects clés de la navigation, tels que la validation des données, le contrôle d'accès, la mise à jour de l'interface utilisateur et la gestion des tâches de nettoyage.

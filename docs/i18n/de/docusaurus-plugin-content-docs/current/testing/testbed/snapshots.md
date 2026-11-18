@@ -1,9 +1,14 @@
 ---
 sidebar_position: 5
-title: Momentaufnahmen
+title: Snapshot-Tests
+sidebar_label: Momentaufnahmen
 description: >-
-  Compare everything a view shows with a stored text description of it, read
-  that description, and add the state of your own components to it.
+  Vergleichen Sie alle Inhalte einer Ansicht mit einer gespeicherten
+  Textbeschreibung, lesen Sie diese und ergänzen Sie sie um den Zustand Ihrer
+  eigenen Komponenten.
+_i18n_title_hash: 9580d9202c32b5f9ce00a7486a475362
+_i18n_sidebar_label_hash: 9147e5e61a7b9260dec09f3a6eb3e5be
+_i18n_description_hash: 10901f96edea7329f873be1b33f4a845
 _i18n_hash: 2f709890e8d1fd70a61debc1de3ae63f
 ---
 Eine Ansicht Punkt für Punkt zu prüfen, erfordert eine Assertion für jedes Label, jeden Button und jedes Feld. Ein Snapshot prüft alles auf einmal. Er hält fest, was ein Benutzer in der Ansicht sehen würde: eine Zeile pro Komponente. Diese Beschreibung wird zusammen mit dem Test gespeichert. Bei jedem späteren Lauf wird die Ansicht erneut beschrieben und mit dem gespeicherten Snapshot verglichen. Jede Änderung an der sichtbaren Seite lässt den Test fehlschlagen und wird als einfacher Text-Diff im Code-Review angezeigt.

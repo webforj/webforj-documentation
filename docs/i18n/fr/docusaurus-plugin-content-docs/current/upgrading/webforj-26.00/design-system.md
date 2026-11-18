@@ -1,9 +1,12 @@
 ---
 title: Migration vers le design system v26
 description: >-
-  Reference for the design-system updates in DWC 26 - color engine, dark mode,
-  surfaces, shadows, typography, radius, focus ring, and interaction feedback.
+  Référence des mises à jour du système de design de DWC 26 : moteur de
+  couleurs, mode sombre, surfaces, ombres, typographie, arrondis, anneau de
+  focus et retours d’interaction.
 sidebar_position: 2
+_i18n_title_hash: 57e2329747857ca19fa1eeb35d2edbff
+_i18n_description_hash: 37139541cdfaad3dc0113cbcd3ba034e
 _i18n_hash: 8a36bc047ecfc90874412da4d39643fb
 ---
 DWC 26 introduit un système de design rafraîchi. La mise à jour est incrémentale plutôt qu'une réécriture complète : la plupart des variables CSS de la v25 restent disponibles, l'API publique du moteur de thème est préservée et les personnalisations existantes continuent de fonctionner sans modifications.

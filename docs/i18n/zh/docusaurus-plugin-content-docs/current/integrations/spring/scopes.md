@@ -2,8 +2,10 @@
 title: 作用域
 sidebar_position: 16
 description: >-
-  Use WebforjSessionScope, EnvironmentScope, and RouteScope to control bean
-  lifetimes across sessions, browser tabs, and route hierarchies.
+  使用 WebforjSessionScope、EnvironmentScope 和 RouteScope 控制 Bean
+  在不同会话、浏览器标签页和路由层级中的生命周期。
+_i18n_title_hash: 48b26d57c14af0500090800c2cdd0d58
+_i18n_description_hash: 8e90d0731ec08a67c2a3910b5bed33fb
 _i18n_hash: ea33564c3dec0bc26426440f3b448c53
 ---
 # 范围 <DocChip chip='since' label='25.03' />

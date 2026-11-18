@@ -3,8 +3,10 @@ sidebar_position: 30
 title: Bewerken en vernieuwen
 slug: refreshing
 description: >-
-  Edit Table rows by mutating the bound Repository and call commit to refresh
-  the UI through RepositoryCommitEvent.
+  Bewerk tabelrijen door de gebonden Repository aan te passen en roep commit aan
+  om de UI via RepositoryCommitEvent te vernieuwen.
+_i18n_title_hash: f4de95cd7a20c3ab229fb8c9596e84c7
+_i18n_description_hash: 40fec4995f2fa08bfe24c02da26aa209
 _i18n_hash: 84dec48293e6fa794713881310b6f303
 ---
 Het bewerken van gegevens in de `Table` gebeurt via interactie met de `Repository` die de gegevens voor de `Table` bevat. De `Repository` vormt een brug tussen de `Table` en de onderliggende dataset en biedt methoden voor het ophalen, wijzigen en vernieuwen van gegevens. Hieronder staat een voorbeeld dat gedrag implementeert voor het bewerken van de "Title" van een gewenste rij.

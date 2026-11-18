@@ -2,8 +2,10 @@
 title: 调试
 sidebar_position: 15
 description: >-
-  Attach a remote Java debugger to a running webforJ app from Visual Studio
-  Code, IntelliJ IDEA, or Eclipse using Jetty on port 8000.
+  使用 Visual Studio Code、IntelliJ IDEA 或 Eclipse，通过 Jetty 在 8000 端口连接正在运行的
+  webforJ 应用并进行远程 Java 调试。
+_i18n_title_hash: da7d763aac39b294c7453c77c10d8239
+_i18n_description_hash: a9b597788ed11cee25324e4c220963a8
 _i18n_hash: 6e761f399c4a1f8d562acf85f92af615
 ---
 调试是 Java 开发中不可或缺的一部分，可以帮助开发者高效地发现并修复问题。本指南介绍如何在 Visual Studio Code、IntelliJ IDEA 和 Eclipse 中配置 webforJ 调试。

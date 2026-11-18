@@ -1,7 +1,13 @@
 ---
 title: Création d'UI
+description: >-
+  Créez des interfaces utilisateur webforJ en Java en combinant composants,
+  mises en page, événements et composites, ou en encapsulant des composants web
+  dans des éléments.
 hide_table_of_contents: true
 hide_giscus_comments: true
+_i18n_title_hash: 0d3ce6a09df60e0534d40471e24ed451
+_i18n_description_hash: 7f89f28edaae2a6e06448ab680fdd8c2
 _i18n_hash: 8c83e4aa27d8794fc93f3046c79c332d
 ---
 <Head>

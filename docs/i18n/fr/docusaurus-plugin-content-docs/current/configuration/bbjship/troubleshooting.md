@@ -1,10 +1,14 @@
 ---
-title: Dépannage
+title: Dépannage de BBjShip
+sidebar_label: Dépannage
 sidebar_position: 8
 description: >-
-  What the messages of the BBjShip goals and the bbjship command line mean, and
-  what to do about each, for setup, deploys, development runs, the command line
-  and Windows.
+  Messages des objectifs BBjShip et de bbjship : quoi faire pour la
+  configuration, les déploiements, les lancements en développement, la ligne de
+  commande et Windows.
+_i18n_title_hash: 52c9251472c6e4be4f062c74ef5eb4c1
+_i18n_sidebar_label_hash: 231cf4c70d866b616c21baddaeed0696
+_i18n_description_hash: 852b1b5490bda6adf0358b6bffca4f23
 _i18n_hash: 2db5dad70f56c06a6aab75752a9c260f
 ---
 # Dépannage <DocChip chip='since' label='26.03' /> {#troubleshooting}

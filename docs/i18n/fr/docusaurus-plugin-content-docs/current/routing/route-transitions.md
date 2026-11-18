@@ -1,6 +1,13 @@
 ---
+sidebar_class_name: experimental-content
 sidebar_position: 12
 title: Transitions de route
+description: >-
+  Animez les changements de route avec l’annotation @RouteTransition, grâce à
+  des fondus, des glissements et des zooms rendus possibles par l’API View
+  Transitions.
+_i18n_title_hash: 46bff1a9c2d84b64bff08216ce3d5374
+_i18n_description_hash: 927840bad917d8e80f032c1d11618827
 _i18n_hash: 98050ac6a061f4dc3728af3888aa44b0
 ---
 <JavadocLink type="foundation" location="com/webforj/router/annotation/RouteTransition" top='true'/>

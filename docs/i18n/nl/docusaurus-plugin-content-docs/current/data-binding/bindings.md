@@ -1,10 +1,11 @@
 ---
 sidebar_position: 2
 title: Bindingen
-sidebar_class_name: updated-content
 description: >-
-  Link Java Bean properties to webforJ UI components through BindingContext to
-  synchronize reads and writes between model and view.
+  Koppel Java Bean-eigenschappen via BindingContext aan webforJ UI-componenten
+  om lees- en schrijfbewerkingen tussen model en weergave te synchroniseren.
+_i18n_title_hash: 7f6d3619d9855ce68f747dbc829eb7c1
+_i18n_description_hash: 4f8f35d7dc178f4e8971bdd0f46f32e5
 _i18n_hash: 9a4b6da2f5a3bd524a0b3cf6a1eb86e1
 ---
 Een binding in webforJ verbindt een specifieke eigenschap van een Java Bean met een UI-component. Deze koppeling maakt automatische updates mogelijk tussen de UI en het backendmodel. Elke binding kan omgaan met datasynchronisatie, validatie, transformatie en het beheer van gebeurtenissen.

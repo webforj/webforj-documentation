@@ -2,8 +2,11 @@
 sidebar_position: 6
 title: Sovellusten testaaminen
 description: >-
-  Start a TestBed test with the routes or the whole app, navigate, test secured
-  routes, answer dialogs, control timers, and answer for the browser.
+  Käynnistä TestBed-testi reiteillä tai koko sovelluksella, navigoi, testaa
+  suojattuja reittejä, vastaa valintaikkunoihin, hallitse ajastimia ja vastaa
+  selaimen puolesta.
+_i18n_title_hash: 2b27784755b2277a897d0e090935069a
+_i18n_description_hash: 86e54866c6ec66c419b5c8aafddfe5db
 _i18n_hash: 4194d4d355b0e26f86b8c3c53ea353c9
 ---
 Näkymä toimii harvoin yksinään. Reitti johtaa siihen, reitin käyttöoikeustarkistus voi suojata sitä, se kysyy käyttäjältä dialogien kautta, päivittää itsensä ajastimella ja pyytää vastauksia selaimelta. Käynnissä olevassa sovelluksessa palvelin, käyttäjä, kello ja selain osallistuvat kukin omalla tavallaan. TestBed-testissä testitapaus hoitaa kaikkien roolit: se päättää, kuinka suuri osa sovelluksesta käynnistetään, navigoi osoiterivin tavoin, vastaa dialogeihin käyttäjän puolesta, päättää ajan kulumisesta ja vastaa selaimen puolesta.

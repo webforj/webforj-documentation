@@ -3,8 +3,10 @@ title: Plugin de compilation webforJ
 sidebar_position: 5
 sidebar_class_name: updated-content
 description: >-
-  Add the webforJ Maven or Gradle plugin to your build, the goals it binds to
-  each phase, and the options it accepts.
+  Ajoutez le plug-in Maven ou Gradle de webforJ à votre build, ses objectifs
+  associés à chaque phase et les options qu’il accepte.
+_i18n_title_hash: 50ce0f1efe7b3f0b86651cff03a97405
+_i18n_description_hash: 47cd84eed127c59bdd7f33eb2e6ec0f1
 _i18n_hash: 70642cf4584ff6eb218a11d53cd33a89
 ---
 # Plugin de construction webforJ <DocChip chip='since' label='26.01' /> {#webforj-build-plugin}

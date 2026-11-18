@@ -2,8 +2,10 @@
 sidebar_position: 3
 title: Navigationsablauf
 description: >-
-  Trace how RouteSecurityObserver intercepts navigation, runs evaluators, and
-  redirects users before any view renders.
+  Verfolgen Sie, wie RouteSecurityObserver die Navigation abfängt, Evaluatoren
+  ausführt und Nutzer weiterleitet, bevor eine Ansicht gerendert wird.
+_i18n_title_hash: 6badde74c2e26d4f0486f2b4b491745a
+_i18n_description_hash: b801bb30c1fa7b39e5cc2ec5cb3f60bd
 _i18n_hash: bf6b927b675a5784340999a5e268581c
 ---
 Die Durchsetzung der Sicherheit erfolgt in webforJ automatisch während der Navigation. Wenn ein Benutzer auf einen Link klickt oder zu einer Route navigiert, fängt das Sicherheitssystem die Navigation ab, wertet die Zugriffsregeln aus und lässt die Navigation entweder fortsetzen oder leitet den Benutzer zu einer geeigneten Seite weiter. Dieses Abfangen ist für Benutzer unsichtbar und erfordert keine manuellen Sicherheitsprüfungen im Code Ihrer Komponenten.

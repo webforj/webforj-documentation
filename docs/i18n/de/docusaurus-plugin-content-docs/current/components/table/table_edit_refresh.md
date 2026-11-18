@@ -3,8 +3,10 @@ sidebar_position: 30
 title: Bearbeiten und Aktualisieren
 slug: refreshing
 description: >-
-  Edit Table rows by mutating the bound Repository and call commit to refresh
-  the UI through RepositoryCommitEvent.
+  Bearbeiten Sie Tabellenzeilen, indem Sie das gebundene Repository ändern, und
+  rufen Sie commit auf, um die UI über RepositoryCommitEvent zu aktualisieren.
+_i18n_title_hash: f4de95cd7a20c3ab229fb8c9596e84c7
+_i18n_description_hash: 40fec4995f2fa08bfe24c02da26aa209
 _i18n_hash: 84dec48293e6fa794713881310b6f303
 ---
 Das Bearbeiten von Daten in der `Table` erfolgt durch Interaktion mit dem `Repository`, das die Daten für die `Table` enthält. Das `Repository` dient als Schnittstelle zwischen der `Table` und dem zugrunde liegenden Datensatz und stellt Methoden zum Abrufen, Ändern und Aktualisieren von Daten bereit. Das folgende Beispiel implementiert das Bearbeiten des „Titels“ einer gewünschten Zeile.

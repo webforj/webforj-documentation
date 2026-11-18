@@ -2,7 +2,9 @@
 title: 数据验证与绑定
 sidebar_position: 6
 pagination_next: null
-description: Step 5 - Add validation checks and bind data to the UI.
+description: 教程第 5 步：使用 webforJ 数据绑定将表单绑定到 Customer 实体，并添加验证检查，确保用户输入完整准确的数据。
+_i18n_title_hash: 1b39fb4dd349eb66fe08e936754d96dd
+_i18n_description_hash: 8e9a4e957d28ea020d323e4584e497b2
 _i18n_hash: 97f423188eb353ac27b8e9179e93b224
 ---
 你的应用可以使用 `FormView` 编辑现有客户数据，相关内容请参阅[观察器和路由参数](/docs/introduction/tutorial/observers-and-route-parameters)。本步骤将使用[数据绑定](/docs/data-binding/overview)，将 UI 组件直接连接到数据模型，以自动同步值。这样可以减少应用中的样板代码，并让你为 Spring 实体 `Customer` 添加验证检查，确保用户填写表单时提供完整且准确的信息。本步骤涵盖以下概念：

@@ -2,8 +2,11 @@
 sidebar_position: 6
 title: Tester des applications
 description: >-
-  Start a TestBed test with the routes or the whole app, navigate, test secured
-  routes, answer dialogs, control timers, and answer for the browser.
+  Lancez un test TestBed avec les routes ou l’application entière, naviguez,
+  testez les routes sécurisées, répondez aux boîtes de dialogue, contrôlez les
+  minuteurs et répondez aux invites du navigateur.
+_i18n_title_hash: 2b27784755b2277a897d0e090935069a
+_i18n_description_hash: 86e54866c6ec66c419b5c8aafddfe5db
 _i18n_hash: 4194d4d355b0e26f86b8c3c53ea353c9
 ---
 Une vue existe rarement de façon isolée. Une route y mène, la sécurité des routes peut la protéger, elle sollicite l’utilisateur au moyen de boîtes de dialogue, se met à jour à intervalles réguliers et demande des informations au navigateur. Dans une application en cours d’exécution, le serveur, l’utilisateur, l’horloge et le navigateur jouent chacun leur rôle. Dans un test TestBed, c’est le test qui joue tous ces rôles : il décide quelle partie de l’application s’exécute, navigue comme le ferait la barre d’adresse, répond aux boîtes de dialogue à la place de l’utilisateur, décide quand le temps passe et répond à la place du navigateur.

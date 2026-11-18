@@ -1,6 +1,11 @@
 ---
 title: Viesti
 sidebar_position: 30
+description: >-
+  Näytä suoritusta estävä MessageDialog, jossa on OK-painike sekä määritettävät
+  viestityypit, tasaus, sumennus ja aikakatkaisu.
+_i18n_title_hash: 4c2a8fe7eaf24721cc7a9f0175115bd4
+_i18n_description_hash: ac7c6261e4ef79ecfd41ab04576792c9
 _i18n_hash: b90d101884ed5ce8f6be2604ec637aee
 ---
 <DocChip chip='shadow' />

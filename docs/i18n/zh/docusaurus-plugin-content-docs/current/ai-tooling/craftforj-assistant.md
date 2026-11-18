@@ -1,10 +1,9 @@
 ---
 title: craftforJ 助手
 sidebar_position: 2
-sidebar_class_name: new-content
-description: >-
-  A coding agent inside your running webforJ app that writes Java freely,
-  compiles it, and applies it with your approval.
+description: 在运行中的 webforJ 应用内自由编写 Java、编译并应用代码的编程代理，应用前由你批准。
+_i18n_title_hash: e162e407d974aae33c2366767c2cbe96
+_i18n_description_hash: cc5da810e30e992ab9f2ca659b440b19
 _i18n_hash: 2c2a04b29b7b6de57e5689628cd659d0
 ---
 craftforJ助手是一个在您的**运行应用**中工作的编码代理。它自由地编写Java，在您看到之前编译所写的代码，应用更改，并在您的应用重启后继续工作。它与webforJ一起提供，作为[craftforJ](/docs/craftforj)的一部分，这是一个开发环境，让您在应用运行时获得组件树、路由、实时属性和主题。

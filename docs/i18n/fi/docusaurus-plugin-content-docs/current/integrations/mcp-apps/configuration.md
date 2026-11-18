@@ -2,8 +2,11 @@
 title: MCP-sovelluksen määrittäminen
 sidebar_position: 30
 description: >-
-  Configure the public app origin, allowed embedding clients, and external
-  browser domains.
+  Määritä MCP App tiedostossa application.properties tai webforj.conf:
+  sovelluksen julkinen alkuperä, upottamiseen sallitut asiakkaat ja ulkoiset
+  selainverkkotunnukset.
+_i18n_title_hash: 336a154a443ab7f5a3d3ae8d2a9379d6
+_i18n_description_hash: 21bb9e473a744985ccab201f743c7c52
 _i18n_hash: 6d6d861d57b9a398007bd9a792e9ec1f
 ---
 Lisää MCP-sovelluksen asetukset `application.properties`-tiedostoon tai `webforj.conf`-tiedostoon käytettäessä standardia webforJ-asetusta. Määritä osoite, josta asiakas voi käyttää sovellusta, ja lisää sitten vain ne asiakas- ja selaimen alkuperät, joita käyttöönotto vaatii.

@@ -2,9 +2,9 @@
 title: BBjShip
 sidebar_position: 1
 hide_table_of_contents: true
-description: >-
-  Deploy webforJ apps to BBjServices with BBjShip and the webforJ Maven plugin,
-  and run them on your local BBj during development.
+description: 使用 BBjShip 和 webforJ Maven 插件将 webforJ 应用部署到 BBjServices，并在开发期间通过本地 BBj 运行应用。
+_i18n_title_hash: 0b34423ccfcf9108102a5cc3a918b8c7
+_i18n_description_hash: dfe86a884c4eb5b9e47079077f14b6c8
 _i18n_hash: c2a89de1c4f3ad8b0f4bc5d364b27a67
 ---
 # BBjShip <DocChip chip='since' label='26.03' />

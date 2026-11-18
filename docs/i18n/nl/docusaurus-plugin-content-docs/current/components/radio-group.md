@@ -3,8 +3,10 @@ title: RadioButtonGroup
 slug: radiobuttongroup
 sidebar_position: 100
 description: >-
-  Coordinate mutually exclusive RadioButton selections with RadioButtonGroup,
-  including nested containers and dynamic membership.
+  Coördineer elkaar uitsluitende RadioButton-selecties met RadioButtonGroup, ook
+  in geneste containers en bij dynamische groepswijzigingen.
+_i18n_title_hash: d4e90d249152f51ce89856d949334c00
+_i18n_description_hash: 3a2bef7377e56a348f463bba872ed0c8
 _i18n_hash: a616c60faaf0d58f9d9a1e778318880a
 ---
 <DocChip chip='since' label='23.01' />

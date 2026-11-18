@@ -1,9 +1,9 @@
 ---
 title: 项目设置
 sidebar_position: 1
-description: >-
-  Discover where to download the tutorial project, how to navigate it, and run
-  the apps within.
+description: 从源代码、startforJ 或命令行获取 webforJ 教程项目，了解其结构和配置，并运行每个步骤中的应用。
+_i18n_title_hash: 2876afc7fdfa9650513dfc9a2ffb3a93
+_i18n_description_hash: 1312c307fa70e0fe0e9d0e304f1a9f9c
 _i18n_hash: 95bc825bd041018765a732bf464d77b7
 ---
 要开始本教程，你需要为项目准备一个位置，以便管理类和资源。以下各部分介绍了创建本教程所需的 webforJ 项目的不同方式。

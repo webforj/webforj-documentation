@@ -2,6 +2,9 @@
 sidebar_position: 35
 title: 选项对话框
 hide_giscus_comments: true
+description: 在 webforJ 中构建模态对话框，在用户响应前阻止服务器执行，沿用 Swing 的 JOptionPane 模式。
+_i18n_title_hash: bb95c24008fccb9eb46dea4c70a999a2
+_i18n_description_hash: d36986b2075fb59a2ebf060fbc0e743d
 _i18n_hash: 4d818d70f6238be10dc8913d19ed47b7
 ---
 <!-- vale off -->

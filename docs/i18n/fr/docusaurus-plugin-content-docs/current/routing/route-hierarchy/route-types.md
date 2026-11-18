@@ -1,6 +1,12 @@
 ---
 sidebar_position: 1
 title: Types de route
+description: >-
+  Distinguez les routes de vue webforJ, associées à des segments d’URL, des
+  routes de mise en page, qui enveloppent une interface partagée sans modifier
+  le chemin.
+_i18n_title_hash: 97e64bd13d93989b694c20c44f94956a
+_i18n_description_hash: 6d7aa8ee37d01c55048daa3c9bc555c3
 _i18n_hash: 75cb67715544b94ca99fc81c736ebcc7
 ---
 Les routes sont classées en deux types principaux, **Routes de Vue** et **Routes de Mise en Page**. Le choix du type de route détermine comment les composants sont mappés aux URL et comment ils interagissent avec d'autres parties de votre application.

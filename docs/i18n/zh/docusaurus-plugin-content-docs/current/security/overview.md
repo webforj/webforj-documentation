@@ -3,9 +3,9 @@ sidebar_position: 1
 title: 安全
 hide_table_of_contents: true
 hide_giscus_comments: true
-description: >-
-  Protect webforJ routes with declarative annotations and centralized
-  authentication and authorization enforcement.
+description: 使用声明式注解，并通过集中机制实施身份验证和授权，保护 webforJ 路由。
+_i18n_title_hash: 2fae32629d4ef4fc6341f1751b405e45
+_i18n_description_hash: 5855846fb4326aa1d89572e2dc7f8c38
 _i18n_hash: 850b9636996cb17a07a7aff25ac3cd0e
 ---
 <Head>

@@ -2,9 +2,12 @@
 title: Configuration des propriétés
 sidebar_position: 1
 description: >-
-  Set webforJ entry points, debug mode, locales, file upload limits, and servlet
-  mappings through webforj.conf and web.xml.
+  Configurez les points d’entrée webforJ, le mode débogage, les paramètres
+  régionaux, les limites d’envoi de fichiers et les mappages de servlets via
+  webforj.conf et web.xml.
 sidebar_class_name: updated-content
+_i18n_title_hash: cb9dd723d3b323d636ee3ba8fd9a7d65
+_i18n_description_hash: 449b0eb801dd7bbb704adde8c17ce13b
 _i18n_hash: fd84f72aa62a993485d33fe9a94ab0d1
 ---
 # Configuration des propriétés webforJ

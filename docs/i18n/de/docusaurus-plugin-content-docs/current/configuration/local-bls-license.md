@@ -1,10 +1,12 @@
 ---
 title: Lokale BLS-Lizenz
-sidebar_class_name: new-content
 sidebar_position: 25
 description: >-
-  Configure a webforJ project to use a locally installed BLS certificate and
-  client configuration.
+  Richten Sie ein webforJ-Projekt so ein, dass es seine Lizenz beim lokalen
+  BASIS License Service anfordert – mit den blsclient-Dateien, Ihrer
+  Seriennummer und Autorisierungsnummer.
+_i18n_title_hash: e0df507559b37b2389f67cc3b3430cb6
+_i18n_description_hash: 21b562397b74eb2b72812fa17410e1cc
 _i18n_hash: 981d7333984cb25b65a90d27775eab9f
 ---
 Ein lokaler BASIS License Service (BLS) ermöglicht es einer webforJ-App, eine Lizenz von einem Dienst anzufordern, der auf Ihrem Entwicklungsrechner oder internen Netzwerk läuft. Dieses Setup ist nützlich, wenn Sie eine Seriennummer und eine Autorisierungsnummer haben und möchten, dass das Projekt die generierten lokalen Lizenzdateien anstelle der standardmäßigen Lizenzkonfiguration verwendet.

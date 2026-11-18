@@ -2,6 +2,9 @@
 sidebar_position: 1
 title: 导航生命周期
 hide_giscus_comments: true
+description: 借助 webforJ 导航生命周期事件，协调路由切换期间的验证、数据加载和清理工作。
+_i18n_title_hash: eb500610c9232241433128cf033c935e
+_i18n_description_hash: 668e0d0d2db135f709ccc33ea1076d0d
 _i18n_hash: 14d81d1a9ff86af17370e0a7eb50608b
 ---
 在网络应用中导航通过不同视图涉及多个阶段，提供在过渡之前、期间或之后执行操作的机会。导航生命周期提供了一个事件驱动的系统，允许开发者管理导航的关键方面，例如验证数据、控制访问、更新UI和处理清理。

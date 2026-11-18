@@ -1,6 +1,13 @@
 ---
-title: Prise en main
+title: Premiers pas avec Spring Security
+sidebar_label: Premiers pas
 sidebar_position: 2
+description: >-
+  Intégrez Spring Security à webforJ pour gérer l’authentification, les vues de
+  connexion, l’encodage des mots de passe et les routes protégées.
+_i18n_title_hash: 174e79dceb9c617044b2f3ac62f533d1
+_i18n_sidebar_label_hash: bf647454e36069fd16f1a7a35cf6a865
+_i18n_description_hash: c361082463837d6abd392de61e86bbff
 _i18n_hash: becd2e7bd488a077c08ef5a64dbe0f61
 ---
 Spring Security fournit une authentification et une autorisation pour les applications Spring Boot. Lorsqu'il est intégré avec webforJ, il protège les routes à l'aide d'annotations pendant que Spring gère la gestion des utilisateurs et des sessions.

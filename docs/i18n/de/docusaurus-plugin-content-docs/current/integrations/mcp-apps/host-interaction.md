@@ -1,7 +1,12 @@
 ---
 title: Mit dem MCP-Client arbeiten
 sidebar_position: 25
-description: Connect a rendered webforJ view to its MCP client.
+description: >-
+  Verbinden Sie eine gerenderte webforJ-MCP-App mit ihrem Client: Nachrichten
+  senden, das Modell informieren, die eingebettete Ansicht verlassen und
+  Änderungen verfolgen.
+_i18n_title_hash: 24fff6ea770815c5a817375183dc0393
+_i18n_description_hash: 7ff04cf57c5225b03eb08145cc9eafb3
 _i18n_hash: 082797b568bd8f308b625306c524d7ef
 ---
 Eine MCP-App muss nicht jede Interaktion innerhalb ihrer eingebetteten Ansicht halten. Sie kann Informationen an das Gespräch senden, das Modell informieren, während der Benutzer die UI ändert, oder den Client bitten, etwas außerhalb des Rahmens zu bearbeiten.

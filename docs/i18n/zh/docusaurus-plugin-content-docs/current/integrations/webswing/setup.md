@@ -1,6 +1,11 @@
 ---
 title: 安装与配置
 sidebar_position: 2
+description: >-
+  安装 Webswing 服务器，在管理控制台注册 Swing 应用，并配置 CORS，以便 webforJ 使用 WebswingConnector
+  嵌入应用。
+_i18n_title_hash: 6220432d4a9990aa961b3e368edaafdd
+_i18n_description_hash: d662aa6a75a899b4c2df885526b3fa0f
 _i18n_hash: d948bababbedcfe831d4af62f8b6b088
 ---
 将Webswing与webforJ集成涉及两个组件：托管您的Swing应用程序的Webswing服务器，以及您在webforJ应用程序中嵌入的`WebswingConnector`组件。

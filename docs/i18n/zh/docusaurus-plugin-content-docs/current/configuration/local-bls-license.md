@@ -1,10 +1,9 @@
 ---
 title: 本地 BLS 许可证
-sidebar_class_name: new-content
 sidebar_position: 25
-description: >-
-  Configure a webforJ project to use a locally installed BLS certificate and
-  client configuration.
+description: 使用 blsclient 文件、序列号和授权号，将 webforJ 项目配置为从本地 BASIS 许可证服务请求许可证。
+_i18n_title_hash: e0df507559b37b2389f67cc3b3430cb6
+_i18n_description_hash: 21b562397b74eb2b72812fa17410e1cc
 _i18n_hash: 981d7333984cb25b65a90d27775eab9f
 ---
 本地 BASIS 许可证服务 (BLS) 允许 webforJ 应用从运行在开发机器或内部网络上的服务请求许可证。当您拥有序列号和授权号码，并希望项目使用生成的本地许可证文件而不是默认许可证配置时，此设置非常有用。

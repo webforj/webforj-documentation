@@ -2,8 +2,10 @@
 title: JBang
 sidebar_position: 15
 description: >-
-  Run webforJ apps as single-file JBang scripts with no Maven, Gradle, or
-  project structure for rapid prototyping and demos.
+  Ejecuta aplicaciones webforJ como scripts JBang de un solo archivo, sin Maven,
+  Gradle ni estructura de proyecto, para crear prototipos y demos rápidamente.
+_i18n_title_hash: 2447157c0aaf3e6cc88df8314f66e3ea
+_i18n_description_hash: fd973a101de8d1599220ad16a6053019
 _i18n_hash: a7af803fa3e58cb86e0c18289f8fbb40
 ---
 # JBang <DocChip chip='since' label='25.11' />

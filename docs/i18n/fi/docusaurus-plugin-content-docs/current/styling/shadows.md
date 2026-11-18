@@ -1,6 +1,11 @@
 ---
 sidebar_position: 7
 title: Varjot
+description: >-
+  Luo elementeille kerroksellisuutta DWC:n box-shadow-asteikolla xs:stä 2xl:ään.
+  Varjot mukautuvat automaattisesti vaaleaan ja tummaan tilaan.
+_i18n_title_hash: dde98fa66ef8081029ffb8f24d643c89
+_i18n_description_hash: 7df2812ce68443fa138e9f5942ad4039
 _i18n_hash: 423494230ee54caa83fec778e905871b
 ---
 Varjostusominaisuudet lisäävät varjotehosteita elementin kehän ympärille. Varjostukset merkitsevät käyttöliittymässä päällekkäin olevia kohteita.

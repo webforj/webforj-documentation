@@ -1,6 +1,11 @@
 ---
 sidebar_position: 3
 title: Tiedostojen lataaminen
+description: >-
+  Käynnistä selaimessa tapahtuvat lataukset webforJ:n Page-latausmetodeilla,
+  jotka hyväksyvät syötevirtoja, tavutaulukoita, tiedostoja tai resurssipolkuja.
+_i18n_title_hash: 333738631384ca07eb5b6c1647d48255
+_i18n_description_hash: 818049041c516aae899204589b855bac
 _i18n_hash: 013e64888b44110c108f80adf492be10
 ---
 webforJ tarjoaa menetelmiä tiedostojen lataamisen käynnistämiseen, mikä helpottaa tiedostojen tarjoamista käyttäjille selaimen kautta. <JavadocLink type="foundation" location="com/webforj/Page" code='true'>Page</JavadocLink> -luokka tarjoaa useita tapoja ladata tiedostoja, olivatpa ne sitten syötevirroista, tavutaulukosta, fyysisistä tiedostoista tai resursseista.

@@ -2,8 +2,11 @@
 sidebar_position: 6
 title: Évaluateurs personnalisés
 description: >-
-  Write custom RouteSecurityEvaluators for context-aware checks like ownership
-  verification beyond role-based permissions.
+  Créez des RouteSecurityEvaluators personnalisés pour des contrôles
+  contextuels, comme la vérification de propriété, au-delà des autorisations
+  fondées sur les rôles.
+_i18n_title_hash: bc2b1c2e298d9f03eab4245d1e096b93
+_i18n_description_hash: 2141a4f92c449ecd3c92743e87cd1a95
 _i18n_hash: d1edb7260efb2928e988a2cdf313f380
 ---
 Les évaluateurs personnalisés étendent le système de sécurité de webforJ avec une logique de contrôle d'accès spécialisée allant au-delà de l'authentification de base et des vérifications de rôle. Utilisez-les lorsque vous devez vérifier des conditions dynamiques qui dépendent du contexte de la requête, et pas seulement des autorisations de l'utilisateur.

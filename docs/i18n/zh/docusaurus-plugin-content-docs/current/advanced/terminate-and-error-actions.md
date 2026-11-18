@@ -1,6 +1,11 @@
 ---
 title: 终止与错误操作
-sidebar_position: 40
+sidebar_position: 25
+description: >-
+  使用 MessageAction、RedirectAction 和 NoneAction 等 AppCloseAction
+  实现，自定义应用关闭和错误处理行为。
+_i18n_title_hash: ef23b0432ca9c389aeba4722efde47ec
+_i18n_description_hash: eb1e2f323874493825cdd2c58d8951af
 _i18n_hash: 1a250a51020b32c8b3471ae75ea8f750
 ---
 <!-- vale off -->

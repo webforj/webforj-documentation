@@ -1,7 +1,9 @@
 ---
 title: 路由与 Composites
 sidebar_position: 4
-description: Step 3 - Make your app navigable.
+description: 教程第 3 步：将 UI 移至独立页面，为新客户添加页面，并使用路由、复合组件和 ColumnsLayout 将它们连接起来。
+_i18n_title_hash: 83bb9e48a7d161810744afd1d7db2dd3
+_i18n_description_hash: 97c35f7eb7cca920ea9c9222e8c36397
 _i18n_hash: f32a8552d85a9c85b565fe6f026c93bb
 ---
 到目前为止，本教程只有一个单页应用程序。这一步将改变这一点。  

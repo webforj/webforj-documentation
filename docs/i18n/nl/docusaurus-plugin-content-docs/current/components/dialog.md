@@ -2,8 +2,10 @@
 title: Dialog
 sidebar_position: 30
 description: >-
-  Open modal popups with the Dialog component, including header, content, and
-  footer sections, backdrop blur, and configurable close behavior.
+  Open modale pop-ups met de Dialog-component, inclusief kop-, inhouds- en
+  voettekstsecties, achtergrondvervaging en configureerbaar sluitgedrag.
+_i18n_title_hash: d2ab42830caa7a02b36d96a46dd44b8d
+_i18n_description_hash: d1e271fd0769d139404b027c9bc57553
 _i18n_hash: 8f78bdc280006c73955232e7f52ed365
 ---
 <DocChip chip='shadow' />

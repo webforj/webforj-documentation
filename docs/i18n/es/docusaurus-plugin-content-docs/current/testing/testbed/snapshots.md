@@ -1,9 +1,13 @@
 ---
 sidebar_position: 5
-title: Instantáneas
+title: Pruebas de instantáneas
+sidebar_label: Instantáneas
 description: >-
-  Compare everything a view shows with a stored text description of it, read
-  that description, and add the state of your own components to it.
+  Compara todo lo que muestra una vista con una descripción textual almacenada,
+  léela y añade el estado de tus propios componentes.
+_i18n_title_hash: 9580d9202c32b5f9ce00a7486a475362
+_i18n_sidebar_label_hash: 9147e5e61a7b9260dec09f3a6eb3e5be
+_i18n_description_hash: 10901f96edea7329f873be1b33f4a845
 _i18n_hash: 2f709890e8d1fd70a61debc1de3ae63f
 ---
 Comprobar una vista hecho por hecho requiere una aserción por cada etiqueta, botón y campo. Una instantánea lo comprueba todo a la vez. Registra todo lo que vería un usuario en la vista, una línea por componente, y guarda esa descripción junto a la prueba. En cada ejecución posterior, vuelve a describir la vista y la compara, por lo que cualquier cambio en lo que muestra la página hace que falle la prueba y aparece como una diferencia de texto sin formato en la revisión del código.

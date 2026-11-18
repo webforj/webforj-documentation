@@ -1,6 +1,11 @@
 ---
 sidebar_position: 5
 title: Trigger
+description: >-
+  Legen Sie fest, wann webforJ Bindings validiert: automatische Validierung ein-
+  oder ausschalten, ValueChangeMode verwenden oder manuell erneut validieren.
+_i18n_title_hash: 84ff23e034dfdf2b03ed32a46c01b3a1
+_i18n_description_hash: b2ae28f54011b30985d64a98dd939423
 _i18n_hash: 97f59b66c18e6a2d02174c1ba99f88f1
 ---
 Importe Tabs de '@theme/Tabs';  

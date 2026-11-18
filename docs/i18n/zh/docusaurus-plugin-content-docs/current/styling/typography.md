@@ -1,6 +1,9 @@
 ---
 sidebar_position: 4
 title: 字体排印
+description: 借助 DWC 排版 CSS 自定义属性，统一调整 webforJ 应用的字体、字号、字重和行高。
+_i18n_title_hash: 603850e072131401265c4fc01027db93
+_i18n_description_hash: d3d0f2dd8584ca8d89a71da697864551
 _i18n_hash: 7c5f036abf897a890cad14af0a64c6bd
 ---
 排版令牌用于在您的应用程序中保持一致的字体样式集。

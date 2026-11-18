@@ -2,9 +2,9 @@
 sidebar_position: 40
 title: 交互性
 slug: Interactivity
-description: >-
-  Reference the keyboard shortcuts that move focus, select rows, and navigate
-  cells in the Table component.
+description: 查看 Table 组件中用于移动焦点、选择行和浏览单元格的键盘快捷键。
+_i18n_title_hash: fcbe6546766fcb51d1197a3d75a7a7f4
+_i18n_description_hash: 84575804ecb073661d379d81f9143b66
 _i18n_hash: 49377400524e9e1c3a25dd35cfb7750c
 ---
 `Table` 组件会响应用户的各种键盘输入，以支持更精细的交互。以下列表说明了按下指定按键时的行为：

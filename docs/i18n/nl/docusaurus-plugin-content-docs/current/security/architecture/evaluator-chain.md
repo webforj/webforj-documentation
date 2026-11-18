@@ -1,6 +1,11 @@
 ---
 sidebar_position: 4
 title: Evaluatorketen
+description: >-
+  Beoordeel de toegang tot routes met een op prioriteit gesorteerde keten van
+  evaluators volgens het chain-of-responsibilitypatroon.
+_i18n_title_hash: 98d72d3934038a7ee7ef067eee69dbc3
+_i18n_description_hash: 2ae51d5a0da5489be4b483fff2637312
 _i18n_hash: 5055a72d450daf8b98bdb995380a2e13
 ---
 De evaluator-keten is het hart van het beveiligingssysteem van webforJ. Het is een prioriteitsgeordende reeks evaluatoren die routes onderzoeken en toegang beslissingen nemen met behulp van het chain of responsibility ontwerppatroon. Door te begrijpen hoe de keten werkt, kun je aangepaste evaluatoren maken en onverwachte toegang weigeringen oplossen.

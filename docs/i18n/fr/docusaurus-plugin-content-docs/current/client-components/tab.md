@@ -3,8 +3,10 @@ title: <dwc-tab>
 sidebar_class_name: sidebar--item__hidden
 slug: tab
 description: >-
-  Style the dwc-tab label, icon, and indicator with CSS variables and shadow
-  parts for active, hover, and disabled states.
+  Personnalisez le libellé, l’icône et l’indicateur de dwc-tab avec des
+  variables CSS et des shadow parts pour les états actif, survolé et désactivé.
+_i18n_title_hash: 81d4981539ec233ab7d9dbff40928157
+_i18n_description_hash: 82486ef79f4c3da6c33bf386ee18f194
 _i18n_hash: 6d38ebe937a0e605dabb0b8abe17cf37
 ---
 <DocChip chip='shadow' />

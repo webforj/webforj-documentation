@@ -1,7 +1,9 @@
 ---
 title: 路由注册提供程序
 sidebar_position: 60
-sidebar_class_name: new-content
+description: 使用自定义 SPI 提供程序覆盖默认路由扫描，将 Spring、CDI、OSGi 或 GraalVM 类加载器与 webforJ 路由集成。
+_i18n_title_hash: 547b4c801c5dfa92a205fc30c6d5e854
+_i18n_description_hash: 34e09a697be4ca5d2693de78b1cdf5a6
 _i18n_hash: 03f86cbc79737ca141cc9d2e1ad2e28f
 ---
 <!-- vale Google.Headings = NO -->

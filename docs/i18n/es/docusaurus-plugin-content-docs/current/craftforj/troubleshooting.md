@@ -1,9 +1,13 @@
 ---
-title: Solución de problemas
+title: Solución de problemas de craftforJ
+sidebar_label: Solución de problemas
 sidebar_position: 11
 description: >-
-  Fix the common cases where craftforJ doesn't appear, a feature is unavailable,
-  or the assistant doesn't answer.
+  Soluciona los casos habituales en los que craftforJ no aparece, una función no
+  está disponible o el asistente no responde.
+_i18n_title_hash: 5248f325d5eaedcad7508902e9c3fbd1
+_i18n_sidebar_label_hash: 231cf4c70d866b616c21baddaeed0696
+_i18n_description_hash: d975be1703ebe4d63fc0114af99cdc51
 _i18n_hash: fcc5f7188c92523c0fb500bfc7b0ce58
 ---
 ### Nada aparece en la página {#nothing-appears-on-the-page}

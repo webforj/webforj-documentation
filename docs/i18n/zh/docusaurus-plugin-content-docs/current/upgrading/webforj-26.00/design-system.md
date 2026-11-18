@@ -1,9 +1,9 @@
 ---
 title: 升级到 v26 设计系统
-description: >-
-  Reference for the design-system updates in DWC 26 - color engine, dark mode,
-  surfaces, shadows, typography, radius, focus ring, and interaction feedback.
+description: DWC 26 设计系统更新参考，涵盖颜色引擎、深色模式、表面、阴影、排版、圆角、焦点环和交互反馈。
 sidebar_position: 2
+_i18n_title_hash: 57e2329747857ca19fa1eeb35d2edbff
+_i18n_description_hash: 37139541cdfaad3dc0113cbcd3ba034e
 _i18n_hash: 8a36bc047ecfc90874412da4d39643fb
 ---
 DWC 26 引入了全新的设计系统。此次更新是增量式的，而非完全重写：大多数 v25 的 CSS 变量仍然可用，主题引擎的公共 API 保持不变，现有的自定义设置无需更改即可继续使用。

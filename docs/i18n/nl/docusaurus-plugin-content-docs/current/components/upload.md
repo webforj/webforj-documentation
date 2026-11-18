@@ -2,8 +2,11 @@
 title: Upload
 sidebar_position: 160
 description: >-
-  Select and upload one or more files from the local machine with the Upload
-  component using drag-and-drop, filters, and per-file or batch event tracking.
+  Selecteer en upload een of meer bestanden vanaf je computer met de
+  Upload-component, met slepen en neerzetten, filters en eventtracking per
+  bestand of batch.
+_i18n_title_hash: 91412465ea9169dfd901dd5e7c96dd99
+_i18n_description_hash: 89be01dd11d5fba2888cb41b8a3fe9ca
 _i18n_hash: df26b1e4b51f3ba6ece7602ca1a1f33f
 ---
 <DocChip chip="shadow" />

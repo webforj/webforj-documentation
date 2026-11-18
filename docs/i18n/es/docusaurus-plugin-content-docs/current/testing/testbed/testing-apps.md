@@ -2,8 +2,11 @@
 sidebar_position: 6
 title: Pruebas de aplicaciones
 description: >-
-  Start a TestBed test with the routes or the whole app, navigate, test secured
-  routes, answer dialogs, control timers, and answer for the browser.
+  Inicia una prueba de TestBed con las rutas o toda la aplicación, navega,
+  prueba rutas protegidas, responde a diálogos, controla temporizadores e
+  interactúa con el navegador.
+_i18n_title_hash: 2b27784755b2277a897d0e090935069a
+_i18n_description_hash: 86e54866c6ec66c419b5c8aafddfe5db
 _i18n_hash: 4194d4d355b0e26f86b8c3c53ea353c9
 ---
 Una vista rara vez está aislada. Una ruta lleva a ella, la seguridad de rutas puede protegerla, solicita información al usuario mediante diálogos, se actualiza con un temporizador y pide respuestas al navegador. En una aplicación en ejecución, el servidor, el usuario, el reloj y el navegador desempeñan cada uno su función. En una prueba de TestBed, la prueba desempeña todas esas funciones: decide qué parte de la aplicación se ejecuta, navega como lo haría la barra de direcciones, responde a los diálogos en nombre del usuario, decide cuándo pasa el tiempo y responde en nombre del navegador.

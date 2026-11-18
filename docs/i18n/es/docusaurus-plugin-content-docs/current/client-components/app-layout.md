@@ -3,8 +3,11 @@ title: <dwc-app-layout>
 sidebar_class_name: sidebar--item__hidden
 slug: app-layout
 description: >-
-  Style the dwc-app-layout client component via CSS variables and shadow parts
-  to theme header, drawer, footer, and content regions.
+  Personaliza el componente cliente dwc-app-layout con variables CSS y partes
+  shadow para dar estilo al encabezado, el cajón, el pie de página y las áreas
+  de contenido.
+_i18n_title_hash: 054d94d35ef704d71a493de0020d4f4c
+_i18n_description_hash: 72b68185dbaa3cb0027d7a3e5eaeb6a3
 _i18n_hash: 374d292941ead79d004a233a865a547a
 ---
 <DocChip chip='shadow' />

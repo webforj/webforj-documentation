@@ -2,8 +2,11 @@
 title: Laden
 sidebar_position: 65
 description: >-
-  Overlay a parent container with the Loading component to block interaction
-  during async tasks, with backdrop and spinner customization.
+  Überlagern Sie einen übergeordneten Container mit der Loading-Komponente, um
+  Interaktionen während asynchroner Aufgaben zu blockieren und Hintergrund sowie
+  Spinner anzupassen.
+_i18n_title_hash: 16bfbf9c462762cf1cba4134ec53c504
+_i18n_description_hash: 3153465ac2b1548f475a4d7a7b420ad0
 _i18n_hash: 6e4493f64eb29033ed8a5d594accdb33
 ---
 <DocChip chip="shadow" />

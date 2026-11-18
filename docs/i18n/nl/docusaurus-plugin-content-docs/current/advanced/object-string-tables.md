@@ -1,6 +1,11 @@
 ---
 title: Object- en string-tabellen
 sidebar_position: 45
+description: >-
+  Sla gedeelde Java-objecten en tekenreekswaarden app-breed of per HTTP-sessie
+  op met ObjectTable, SessionObjectTable en StringTable.
+_i18n_title_hash: 37132a5869c490e9daef74f8ebef0b39
+_i18n_description_hash: f5444ec2a09c6cfddf6b4f34b0db888f
 _i18n_hash: 2ec33737ccaf06670b4c1cd16369d858
 ---
 De `ObjectTable`, `SessionObjectTable` en `StringTable` bieden statische toegang tot gedeelde gegevens in een webforJ-omgeving. Ze zijn overal in je app toegankelijk en dienen verschillende doeleinden:

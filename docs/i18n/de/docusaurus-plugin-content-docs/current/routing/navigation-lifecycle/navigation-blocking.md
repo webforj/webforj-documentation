@@ -2,8 +2,10 @@
 sidebar_position: 3
 title: Navigationsblockierung
 description: >-
-  Intercept navigation with WillLeaveObserver veto handlers and the beforeunload
-  event to guard unsaved changes.
+  Fangen Sie Navigationen mit WillLeaveObserver-Veto-Handlern und dem
+  beforeunload-Ereignis ab, um vor ungespeicherten Änderungen zu schützen.
+_i18n_title_hash: f77bf38ee81cebb7c3385d40529ae2b4
+_i18n_description_hash: 8f209d7ebac58484a6ef0ce3f318daf6
 _i18n_hash: 0deeb3e0583fdd425fe2a604ee1e9164
 ---
 Die Navigationseinschränkung fügt der gesamten zugrunde liegenden Router-API eine oder mehrere Kontrollstufen hinzu. Wenn Einschränkungsbehandler vorhanden sind, wird die Navigation wie folgt verhindert:

@@ -1,6 +1,11 @@
 ---
 title: Nachricht
 sidebar_position: 30
+description: >-
+  Zeigen Sie einen blockierenden MessageDialog mit OK-Schaltfläche,
+  konfigurierbaren Nachrichtentypen, Ausrichtung, Unschärfe und Timeout.
+_i18n_title_hash: 4c2a8fe7eaf24721cc7a9f0175115bd4
+_i18n_description_hash: ac7c6261e4ef79ecfd41ab04576792c9
 _i18n_hash: b90d101884ed5ce8f6be2604ec637aee
 ---
 <DocChip chip='shadow' />

@@ -1,6 +1,9 @@
 ---
 sidebar_position: 3
 title: 下载文件
+description: 使用 webforJ 的 Page 下载方法触发客户端侧下载，支持输入流、字节数组、文件或资源路径。
+_i18n_title_hash: 333738631384ca07eb5b6c1647d48255
+_i18n_description_hash: 818049041c516aae899204589b855bac
 _i18n_hash: 013e64888b44110c108f80adf492be10
 ---
 webforJ 提供了启用文件下载的方法，使得通过浏览器向用户交付文件变得简单。<JavadocLink type="foundation" location="com/webforj/Page" code='true'>Page</JavadocLink> 类提供了多种下载文件的方式，无论文件来自输入流、字节数组、物理文件还是资源。

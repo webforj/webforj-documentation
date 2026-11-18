@@ -1,7 +1,11 @@
 ---
 title: Tools toevoegen voor een geopende view
 sidebar_position: 20
-description: Add tools that work with an MCP App already open in the current conversation.
+description: >-
+  Publiceer meer tools voor een MCP App die al in het gesprek is geopend, als
+  acties met eigen invoer of als updatetool die de openingsinvoer hergebruikt.
+_i18n_title_hash: 746613a404d066e995f128f4f9a8206f
+_i18n_description_hash: 54c5c413a0ad07b7ef50cfc7fcce051a
 _i18n_hash: 0ad6819ba9550e2ffd2372c09b91a746
 ---
 Een MCP-app kan tools publiceren naast het tool dat zijn weergave opent. Gebruik een actie voor een aparte operatie met zijn eigen invoer. Implementeer de update-observer wanneer de app één `inventory_update` tool nodig heeft met dezelfde invoer als zijn openingsgereedschap.

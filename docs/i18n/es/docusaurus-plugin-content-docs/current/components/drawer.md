@@ -2,8 +2,11 @@
 title: Drawer
 sidebar_position: 35
 description: >-
-  Slide panels in from any screen edge with the Drawer component, ideal for side
-  navigation, filter menus, settings, and stackable popovers.
+  Desliza paneles desde cualquier borde de la pantalla con el componente Drawer,
+  ideal para navegación lateral, menús de filtros, ajustes y ventanas emergentes
+  apilables.
+_i18n_title_hash: 9b1ed2cbe56f7a315f0a365d2b97cb59
+_i18n_description_hash: fc75a6f36c6e353c8e95c2bfccbdec37
 _i18n_hash: c04ddb6b8576656535eb1fa09ea587e3
 ---
 <DocChip chip="shadow" />

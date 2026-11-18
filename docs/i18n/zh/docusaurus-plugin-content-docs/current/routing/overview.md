@@ -3,6 +3,10 @@ sidebar_position: 1
 title: 路由
 hide_table_of_contents: true
 hide_giscus_comments: true
+description: 通过基于 URL 的组件映射和深度链接，在 webforJ 中实现客户端导航，并在视图间保留应用状态。
+sidebar_class_name: has-new-content
+_i18n_title_hash: 786c4135070aa1910d2f4ac8b2253235
+_i18n_description_hash: 9e0d0414e6955f49982188cd8ec3079b
 _i18n_hash: ca4837305e1ca2ca2b6a4a244c8103f1
 ---
 <Head>

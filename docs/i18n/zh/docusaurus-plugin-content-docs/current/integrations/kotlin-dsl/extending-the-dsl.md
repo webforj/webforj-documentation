@@ -1,6 +1,9 @@
 ---
 title: 扩展 DSL
 sidebar_position: 20
+description: 使用 HasComponents 扩展函数和 init 辅助函数，将自定义组件和复合小部件添加到 webforJ Kotlin DSL 中。
+_i18n_title_hash: 014c4cceda14f1687856a5a58adbbeaf
+_i18n_description_hash: 57d3ef483b81236e4197e2e67ca7b5de
 _i18n_hash: d9b9528f9a0fb3489ff11391012158f5
 ---
 Kotlin DSL 是可扩展的，允许为自定义组件或第三方库添加 DSL 函数。您可以构建在内部使用 DSL 的复合组件。

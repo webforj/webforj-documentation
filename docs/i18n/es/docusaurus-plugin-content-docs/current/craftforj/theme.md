@@ -2,8 +2,10 @@
 title: Tema
 sidebar_position: 6
 description: >-
-  Adjust the DWC design tokens of a running webforJ app, preview the result
-  immediately, and save it into your stylesheet.
+  Ajusta los tokens de diseño de DWC en una app webforJ en ejecución,
+  previsualiza el resultado al instante y guárdalo en tu hoja de estilos.
+_i18n_title_hash: d721757161f7f70c5b0949fdb6ec2c30
+_i18n_description_hash: a8284dc3eaa8e204246a898c1e69582b
 _i18n_hash: fe089afe4f44e457a98622707bf995e5
 ---
 La pestaña Tema te permite cambiar el aspecto de tu aplicación mientras se ejecuta. Funciona con los [tokens de diseño de DWC](/docs/styling/css-variables) que ya usa tu aplicación, así que un solo cambio llega a todos los componentes que leen ese token, en lugar de tener que cambiar una regla a la vez.

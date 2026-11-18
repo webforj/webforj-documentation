@@ -1,6 +1,11 @@
 ---
 sidebar_position: 6
 title: Rand
+description: >-
+  Bepaal de randbreedte, stijl, kleur en afrondingsschaal van componenten via de
+  aangepaste DWC CSS-eigenschappen voor randen.
+_i18n_title_hash: 070554647306343cbea29ebfdd278ba8
+_i18n_description_hash: 17bf5d9150820aa1fb0756cc188ef746
 _i18n_hash: aec4d011f38db8c5a7a6c324eb76d724
 ---
 De rand-eigenschappen worden gebruikt om de randstijl en -breedte van de component te beheersen. Zie [beschikbare randstijlen](https://developer.mozilla.org/en-US/docs/Web/CSS/border-style).

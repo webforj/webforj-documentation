@@ -1,7 +1,12 @@
 ---
 sidebar_position: 2
 title: Validateurs
-sidebar_class_name: updated-content
+description: >-
+  Associez des validateurs aux liaisons avec useValidator, créez des classes
+  Validator réutilisables et personnalisez les messages pour chaque champ de
+  l’interface.
+_i18n_title_hash: 6c49f2cccba7312f02f0aa5a99b1a338
+_i18n_description_hash: a060e816eff9d9a63037f2fbac2e9f6a
 _i18n_hash: 996b617e97e439660bbe69f15d6355b9
 ---
 Les validateurs valident les données au sein de vos composants UI par rapport à des contraintes définies avant de les engager dans le modèle de données. Vous pouvez appliquer des validateurs pour vérifier que les données répondent à certains critères, tels que se situer dans une plage spécifiée, correspondre à un motif ou ne pas être vides.

@@ -1,6 +1,12 @@
 ---
 sidebar_position: 5
 title: Déclencheurs
+description: >-
+  Contrôlez quand webforJ valide les liaisons en activant ou désactivant la
+  validation automatique, en utilisant ValueChangeMode et en déclenchant
+  manuellement une nouvelle validation.
+_i18n_title_hash: 84ff23e034dfdf2b03ed32a46c01b3a1
+_i18n_description_hash: b2ae28f54011b30985d64a98dd939423
 _i18n_hash: 97f59b66c18e6a2d02174c1ba99f88f1
 ---
 import Tabs from '@theme/Tabs';

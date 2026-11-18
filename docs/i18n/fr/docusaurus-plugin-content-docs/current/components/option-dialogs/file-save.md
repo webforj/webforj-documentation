@@ -2,8 +2,11 @@
 title: Enregistrement de fichier
 sidebar_position: 15
 description: >-
-  Prompt users for a save location with the FileSaveDialog, configuring initial
-  path, default filename, and overwrite behavior.
+  Proposez aux utilisateurs de choisir un emplacement d’enregistrement avec
+  FileSaveDialog, en configurant le chemin initial, le nom de fichier par défaut
+  et le comportement en cas d’écrasement.
+_i18n_title_hash: a6ed317bd67229e42bb06f70e8df0215
+_i18n_description_hash: 25e5b1972d65043e5a269ecf40d7ef55
 _i18n_hash: 861257322ca233cfa9e0eed5e4d3aa95
 ---
 <DocChip chip='shadow' />

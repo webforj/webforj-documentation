@@ -1,9 +1,9 @@
 ---
 sidebar_position: 10
 title: 生命周期监听器
-description: >-
-  Hook into webforJ app startup and shutdown phases with AppLifecycleListener to
-  initialize services, modify config, or clean up resources.
+description: 使用 AppLifecycleListener 介入 webforJ 应用的启动和关闭阶段，以初始化服务、修改配置或清理资源。
+_i18n_title_hash: 834dcdd360648c5c2408cad0b4aedfb8
+_i18n_description_hash: d4a68cf021a9a227cf77109e1f92af1d
 _i18n_hash: 3ef33ca5104ef421c38d3db16c9fa453
 ---
 <!-- vale off -->

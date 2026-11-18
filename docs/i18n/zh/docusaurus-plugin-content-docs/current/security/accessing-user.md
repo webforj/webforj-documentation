@@ -1,6 +1,9 @@
 ---
 title: 访问用户
 sidebar_position: 4
+description: 在 webforJ 视图中，从 Spring Security 的 SecurityContextHolder 读取当前用户、角色和权限。
+_i18n_title_hash: 0f0e722ca6ee385a8194f6269374b2fa
+_i18n_description_hash: 4b344fafeed2e9752cecd34bc69c30ec
 _i18n_hash: 5a29cabdc472de49bcc1db895b982485
 ---
 Spring Security 将经过身份验证的用户信息存储在 `SecurityContextHolder` 中，通过它可以在应用程序中访问用户名、角色和权限。 本节将介绍如何在 webforJ 视图和组件中检索和使用这些信息。

@@ -1,6 +1,11 @@
 ---
 title: Zugriff auf den Benutzer
 sidebar_position: 4
+description: >-
+  Lesen Sie den aktuellen Benutzer, Rollen und Berechtigungen in
+  webforJ-Ansichten aus dem SecurityContextHolder von Spring Security aus.
+_i18n_title_hash: 0f0e722ca6ee385a8194f6269374b2fa
+_i18n_description_hash: 4b344fafeed2e9752cecd34bc69c30ec
 _i18n_hash: 5a29cabdc472de49bcc1db895b982485
 ---
 Spring Security speichert Informationen über authentifizierte Benutzer im `SecurityContextHolder` und bietet Zugriff auf Benutzernamen, Rollen und Berechtigungen in Ihrer gesamten App. In diesem Abschnitt wird gezeigt, wie Sie diese Informationen in webforJ-Ansichten und -Komponenten abrufen und verwenden können.

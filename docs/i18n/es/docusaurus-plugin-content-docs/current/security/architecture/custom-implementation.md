@@ -2,8 +2,10 @@
 sidebar_position: 6
 title: Ejemplo de implementación personalizada
 description: >-
-  Build a session-based security stack by implementing SecurityConfiguration,
-  SecurityContext, SecurityManager, and SecurityRegistrar.
+  Implementa una capa de seguridad basada en sesiones con SecurityConfiguration,
+  SecurityContext, SecurityManager y SecurityRegistrar.
+_i18n_title_hash: 3b3fc3ebbcefc179b89d2cb0776ad553
+_i18n_description_hash: d15bc6f7e55fb744acf1719ea673317d
 _i18n_hash: d9c19543624a63acab79e429e6289133
 ---
 Esta guía detalla cómo construir una implementación de seguridad personalizada completa utilizando autenticación basada en sesiones. Aprenderás cómo las cuatro interfaces principales trabajan juntas al implementarlas desde cero.

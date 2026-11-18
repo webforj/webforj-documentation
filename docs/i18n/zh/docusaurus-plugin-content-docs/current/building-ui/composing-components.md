@@ -1,9 +1,9 @@
 ---
 sidebar_position: 4
 title: 组件组合
-description: >-
-  Combine webforJ components into reusable units by extending Composite,
-  configuring the bound component, and overriding initBoundComponent.
+description: 通过扩展 Composite、配置绑定组件并重写 initBoundComponent，将 webforJ 组件组合成可复用单元。
+_i18n_title_hash: e43adba83fbf856801fd348335a61ee0
+_i18n_description_hash: ac4550149d05f69c40cd7170844c0e80
 _i18n_hash: 7ca404aa73a9fd445ce7cd3da09b8155
 ---
 <JavadocLink type="foundation" location="com/webforj/component/Composite" top='true'/>

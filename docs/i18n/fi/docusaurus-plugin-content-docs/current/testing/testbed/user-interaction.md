@@ -2,8 +2,10 @@
 sidebar_position: 3
 title: Käyttäjän vuorovaikutus
 description: >-
-  Act on the components of a TestBed test through the same gestures a user
-  makes, and get the same events a user causes.
+  Käytä TestBed-testin komponentteja samoilla eleillä kuin käyttäjä ja
+  vastaanota samat käyttäjän aiheuttamat tapahtumat.
+_i18n_title_hash: b379ae9cadefbfa19b3cb284b2a4f17f
+_i18n_description_hash: 245b62a7ddafa9e115c0f775c7d15ccd
 _i18n_hash: 1abb4d1f79dc5eb1556e58df714dfac7
 ---
 Koodisi voi kutsua minkä tahansa komponentin `setValue`- tai `setEnabled`-metodia, mutta käyttäjä ei voi. Käyttäjä kirjoittaa näkyvissä olevaan kenttään ja napsauttaa käytössä olevaa painiketta. TestBed-testi toimii kuten käyttäjä `UserInteraction`-luokan kautta. Sen jokainen verbi tarkistaa, että käyttäjä voisi tehdä kyseisen toiminnon, tekee sen ja antaa komponentin ilmoittaa siitä kuuntelijoilleen samalla tavalla kuin käyttäjän toimiessa selaimessa.

@@ -1,9 +1,9 @@
 ---
 sidebar_position: 2
 title: 查找组件
-description: >-
-  Describe the components a TestBed test acts on the way a user picks them out
-  on the page, by type, text, label and what they contain.
+description: 描述 TestBed 测试如何像用户在页面上识别组件一样，通过类型、文本、标签及其包含的内容来定位组件。
+_i18n_title_hash: 08dd64ab65d0d7702d38cfa6f6f84c53
+_i18n_description_hash: 25fffbd57fce100bd5499727357275bb
 _i18n_hash: 3e31c9bc7b51ebd2ebaf1a5e44c6e94f
 ---
 用户点击按钮之前，会先在页面上找到它：**Save** 按钮，或者标有电子邮件地址的字段。TestBed 测试也以同样的方式查找组件，使用 `ComponentLocator`。定位器通过组件的类型以及用户在组件上看到的内容来描述组件，并在测试请求结果时搜索页面。

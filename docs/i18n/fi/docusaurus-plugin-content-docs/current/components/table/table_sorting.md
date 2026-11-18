@@ -3,8 +3,10 @@ sidebar_position: 15
 title: Lajittelu
 slug: sorting
 description: >-
-  Enable per-column sorting on the Table, configure multi-column sorting, and
-  set sort priority programmatically.
+  Ota käyttöön sarakekohtainen lajittelu Table-komponentissa, määritä usean
+  sarakkeen lajittelu ja aseta lajittelun prioriteetti ohjelmallisesti.
+_i18n_title_hash: 2808a34767e19b842d906ab8ab6264c6
+_i18n_description_hash: 0982ea0da914bca56402ae5c96dd9ed8
 _i18n_hash: 7a910f5bdcaa8a9e053bcda6706808c2
 ---
 Lajittelun avulla käyttäjät voivat järjestää sarakkeiden tietoja, mikä helpottaa tietojen lukemista ja analysointia. Tästä on hyötyä, kun käyttäjien on löydettävä nopeasti tietyn sarakkeen suurimmat tai pienimmät arvot.

@@ -1,6 +1,11 @@
 ---
 sidebar_position: 4
 title: Evaluator-Kette
+description: >-
+  Prüfen Sie den Routenzugriff mithilfe einer nach Priorität geordneten Kette
+  von Evaluatoren nach dem Chain-of-Responsibility-Muster.
+_i18n_title_hash: 98d72d3934038a7ee7ef067eee69dbc3
+_i18n_description_hash: 2ae51d5a0da5489be4b483fff2637312
 _i18n_hash: 5055a72d450daf8b98bdb995380a2e13
 ---
 Die Evaluator-Kette ist das Herzstück des Sicherheitssystems von webforJ. Sie ist eine prioritätsgeordnete Sequenz von Evaluatoren, die Routen überprüfen und Zugangsentscheidungen anhand des Entwurfsmusters der Verantwortungskette treffen. Zu verstehen, wie die Kette funktioniert, hilft Ihnen, benutzerdefinierte Evaluatoren zu erstellen und unerwartete Zugriffverweigerungen zu beheben.

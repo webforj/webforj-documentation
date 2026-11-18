@@ -2,8 +2,11 @@
 title: Licenties en watermerk
 sidebar_position: 45
 description: >-
-  Request a webforJ trial certificate and place certificate.bls in the resources
-  directory to remove the unlicensed runtime watermark.
+  Vraag een webforJ-proefcertificaat aan en plaats certificate.bls in de
+  resources-map om het runtimewatermerk voor niet-gelicentieerde software te
+  verwijderen.
+_i18n_title_hash: b4d1a3762b461a3aec9573e2aecf656b
+_i18n_description_hash: 0e0d9d060bfe3ebbd3d3a2c1a290746c
 _i18n_hash: 98575d4533b0e62a9c8a701b40622a52
 ---
 Standaard kunnen webforJ-projecten worden uitgevoerd, maar hebben ze geen licentiecertificaat eraan gekoppeld. Wanneer een niet-gelicentieerd project wordt uitgevoerd, wordt er een watermerk weergegeven op de gebruikersinterface van de draaiende app totdat een geldig licentie is ingevoerd.

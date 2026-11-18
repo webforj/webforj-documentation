@@ -1,6 +1,12 @@
 ---
+sidebar_class_name: experimental-content
 sidebar_position: 12
 title: Reittisiirtymät
+description: >-
+  Animoi reittien vaihtumista @RouteTransition-annotaatiolla häivytyksillä,
+  liu’utuksilla ja zoomauksilla View Transitions API:n avulla.
+_i18n_title_hash: 46bff1a9c2d84b64bff08216ce3d5374
+_i18n_description_hash: 927840bad917d8e80f032c1d11618827
 _i18n_hash: 98050ac6a061f4dc3728af3888aa44b0
 ---
 <JavadocLink type="foundation" location="com/webforj/router/annotation/RouteTransition" top='true'/>

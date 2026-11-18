@@ -1,6 +1,12 @@
 ---
 title: Communicatie
 sidebar_position: 3
+description: >-
+  Wissel acties en gebeurtenissen uit tussen een webforJ-app en een ingebedde
+  Swing-app via de levenscyclus van WebswingConnector en aangepaste
+  actiehandlers.
+_i18n_title_hash: 07a3dd247ad6bec7fe401aa11619959f
+_i18n_description_hash: ff71369ed4c59b3d245fa7a9333cba81
 _i18n_hash: 06bf57e08ee82a4970539b73215c1540
 ---
 De `WebswingConnector` biedt bidirectionele communicatie tussen uw webforJ-app en de ingesloten Swing-app. Dit stelt u in staat om commando's naar de Swing-app te verzenden en meldingen te ontvangen wanneer er gebeurtenissen binnen de app plaatsvinden.

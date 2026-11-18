@@ -2,8 +2,10 @@
 title: MaskedTimeField
 sidebar_position: 20
 description: >-
-  Capture time input with the MaskedTimeField, applying 12 or 24-hour masks,
-  format indicators, locale-aware parsing, and validation.
+  Saisissez une heure avec MaskedTimeField : masques sur 12 ou 24 heures,
+  indicateurs de format, analyse selon la locale et validation.
+_i18n_title_hash: e310d2f9f441e31018dd92e2fef572b8
+_i18n_description_hash: c26f345cb73299c8efef0a0f50c59795
 _i18n_hash: 07256952a84572a67b1fe2b66dd5b5a5
 ---
 <DocChip chip='shadow' />

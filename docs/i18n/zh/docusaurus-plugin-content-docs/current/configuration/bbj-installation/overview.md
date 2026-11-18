@@ -1,9 +1,9 @@
 ---
 title: 使用 BBjServices 运行
 hide_table_of_contents: true
-description: >-
-  Set up and deploy webforJ apps that run on BBjServices using Docker or a local
-  BBj installation.
+description: 已弃用的 webforJ 安装插件，用于在 BBjServices 上运行应用。新项目请使用 BBjShip，并根据此处列出的更改迁移现有项目。
+_i18n_title_hash: a654f5d85c6402c6c70a268c252da9a4
+_i18n_description_hash: 7d9a4e1496813b1dce45056be5b382c4
 _i18n_hash: 00d63ab44a4e2ffbd22cadec8e6e8d16
 ---
 :::danger 已弃用并将被移除

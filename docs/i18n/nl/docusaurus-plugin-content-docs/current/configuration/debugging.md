@@ -2,8 +2,10 @@
 title: Foutopsporing
 sidebar_position: 15
 description: >-
-  Attach a remote Java debugger to a running webforJ app from Visual Studio
-  Code, IntelliJ IDEA, or Eclipse using Jetty on port 8000.
+  Koppel vanuit Visual Studio Code, IntelliJ IDEA of Eclipse een externe
+  Java-debugger aan een draaiende webforJ-app via Jetty op poort 8000.
+_i18n_title_hash: da7d763aac39b294c7453c77c10d8239
+_i18n_description_hash: a9b597788ed11cee25324e4c220963a8
 _i18n_hash: 6e761f399c4a1f8d562acf85f92af615
 ---
 Debuggen is een essentieel onderdeel van Java-ontwikkeling en helpt ontwikkelaars problemen efficiënt te vinden en op te lossen. In deze handleiding wordt uitgelegd hoe je debuggen configureert in webforJ voor Visual Studio Code, IntelliJ IDEA en Eclipse.

@@ -3,8 +3,11 @@ title: <dwc-popupmenu>
 sidebar_class_name: sidebar--item__hidden
 slug: popupmenu
 description: >-
-  Style the dwc-popupmenu floating surface with CSS variables and shadow parts
-  for elevation, padding, and item appearance.
+  Personaliza la superficie flotante de dwc-popupmenu con variables CSS y shadow
+  parts para ajustar la elevación, el espaciado y la apariencia de los
+  elementos.
+_i18n_title_hash: d168933501af7d749255a7b90c9b8074
+_i18n_description_hash: c9658a91c0d90261eb9092eaa5842fc1
 _i18n_hash: 1044819eb276fc9e23f74af953f33965
 ---
 <DocChip chip='shadow' />

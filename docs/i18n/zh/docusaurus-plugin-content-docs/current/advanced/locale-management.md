@@ -1,7 +1,9 @@
 ---
 sidebar_position: 11
 title: 区域设置管理
-sidebar_class_name: new-content
+description: 配置应用区域设置、自动检测浏览器语言，并通过 LocaleObserver 接口响应运行时语言切换。
+_i18n_title_hash: 92a9c50e6080bdb01af2f1a8df1a3070
+_i18n_description_hash: 4ab8ba1da1bbbadc79c0b423a2553e6d
 _i18n_hash: d3dcb4b1ded50923232cb33225364239
 ---
 # 区域管理 <DocChip chip='since' label='25.10' />

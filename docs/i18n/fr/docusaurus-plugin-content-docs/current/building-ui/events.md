@@ -2,10 +2,12 @@
 sidebar_position: 7
 title: Événements
 description: >-
-  Listen for component events, read the event payload, configure element events,
-  and dispatch your own custom events with the EventDispatcher.
+  Écoutez les événements des composants, consultez leurs données, configurez les
+  événements des éléments et déclenchez vos propres événements personnalisés
+  avec EventDispatcher.
 slug: events
-sidebar_class_name: new-content
+_i18n_title_hash: 87f9f735a1d36793ceaecd4e47124b63
+_i18n_description_hash: c757c297f3646dabdf0f4be584b6432d
 _i18n_hash: 5ceda90a316ff6a1528a686565011f88
 ---
 Les composants, qu'ils soient personnalisés ou faisant partie du framework, prennent en charge la gestion des événements. Vous pouvez ajouter des écouteurs d'événements pour capturer divers types d'événements, tels que les interactions des utilisateurs, les changements d'état ou les événements que vous définissez vous-même. Ces écouteurs vous permettent de déclencher un comportement spécifique en réponse à ce qui se passe dans votre application.

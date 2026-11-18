@@ -1,10 +1,9 @@
 ---
 title: 前端测试
 sidebar_position: 5
-sidebar_class_name: new-content
-description: >-
-  Write tests for the frontend sources of a webforJ app with the Bun test
-  runner.
+description: 使用 Bun 测试运行器测试 webforJ 应用的 TypeScript 源码和客户端逻辑，了解如何将测试文件放在前端源码旁边以及如何运行测试。
+_i18n_title_hash: 68de7033809511e9c6c5947b06b149d6
+_i18n_description_hash: 8ec21415ae4edbce4bd1b9ddc70295c3
 _i18n_hash: 31f4ee87c13ac75eb209408feef510fb
 ---
 # 前端测试 <DocChip chip='since' label='26.01' /> {#frontend-testing}

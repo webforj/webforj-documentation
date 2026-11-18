@@ -1,10 +1,12 @@
 ---
 sidebar_position: 38
-sidebar_class_name: new-content
 title: Insignias de la app
 description: >-
-  Paint notification badges onto the operating system app icon and the browser
-  tab favicon.
+  Configura insignias de notificación en el icono de la app del sistema con
+  App.setBadge y en el favicon de la pestaña con Page.setIconBadge; descubre qué
+  requiere cada uno.
+_i18n_title_hash: 3c0f7d310eca6067a9eef6de9145ea90
+_i18n_description_hash: 1b09a1435cd022425bc03df97e5b5353
 _i18n_hash: ff5a388432db849aa6d7b7ac1f48aa89
 ---
 # Insignias de la aplicación <DocChip chip='since' label='26.01' />

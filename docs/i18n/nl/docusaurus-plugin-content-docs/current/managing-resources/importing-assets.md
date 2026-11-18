@@ -2,8 +2,10 @@
 sidebar_position: 1
 title: Assets importeren
 description: >-
-  Attach JavaScript and CSS to webforJ components or the app using JavaScript,
-  InlineJavaScript, StyleSheet, and InlineStyleSheet annotations.
+  Koppel JavaScript en CSS aan webforJ-componenten of de app met de annotaties
+  JavaScript, InlineJavaScript, StyleSheet en InlineStyleSheet.
+_i18n_title_hash: 2bb279247129f48aae96ef9448e7937b
+_i18n_description_hash: 536f6365a8d660553f582f17e63ae286
 _i18n_hash: 4343173cf0cbef440f24c05cf9ee3fbd
 ---
 Annotaties voor activa bieden een declaratieve benadering om externe en inline bronnen zoals JavaScript en CSS statisch binnen een app in te voegen. Deze annotaties stroomlijnen het resourcebeheer door ervoor te zorgen dat afhankelijkheden worden geladen in de juiste uitvoeringsfase, waardoor handmatige configuratie wordt verminderd en de onderhoudbaarheid wordt verbeterd.

@@ -2,8 +2,10 @@
 sidebar_position: 2
 title: Trouver des composants
 description: >-
-  Describe the components a TestBed test acts on the way a user picks them out
-  on the page, by type, text, label and what they contain.
+  Décrivez les composants ciblés par un test TestBed comme un utilisateur les
+  identifierait sur la page : par type, texte, libellé et contenu.
+_i18n_title_hash: 08dd64ab65d0d7702d38cfa6f6f84c53
+_i18n_description_hash: 25fffbd57fce100bd5499727357275bb
 _i18n_hash: 3e31c9bc7b51ebd2ebaf1a5e44c6e94f
 ---
 Avant qu’un utilisateur clique sur un bouton, il le repère sur la page : le bouton **Save** ou le champ associé à l’adresse e-mail. Un test TestBed repère les composants de la même façon, avec `ComponentLocator`. Un localisateur décrit un composant par son type et par ce que l’utilisateur y lit, puis recherche le résultat sur la page lorsque le test le demande.

@@ -1,6 +1,11 @@
 ---
-title: 入门
+title: Spring Security 入门
+sidebar_label: 入门
 sidebar_position: 2
+description: 将 Spring Security 与 webforJ 集成，处理身份验证、登录视图、密码编码和受保护的路由。
+_i18n_title_hash: 174e79dceb9c617044b2f3ac62f533d1
+_i18n_sidebar_label_hash: bf647454e36069fd16f1a7a35cf6a865
+_i18n_description_hash: c361082463837d6abd392de61e86bbff
 _i18n_hash: becd2e7bd488a077c08ef5a64dbe0f61
 ---
 Spring Security 为 Spring Boot 应用程序提供身份验证和授权。当与 webforJ 集成时，它通过注释保护路由，而 Spring 处理用户管理和会话。

@@ -2,8 +2,11 @@
 title: Navigator
 sidebar_position: 75
 description: >-
-  Add pagination controls with the Navigator component, binding to a Paginator
-  or Repository to drive page size, navigation, and labels.
+  Añade controles de paginación con el componente Navigator, vinculado a un
+  Paginator o Repository para gestionar el tamaño de página, la navegación y las
+  etiquetas.
+_i18n_title_hash: 7392e5a07cc56647b45a9598ce4d646d
+_i18n_description_hash: 0caccc073d291bb84986236707b9ec4e
 _i18n_hash: 1223e167b76000411cd73c4bbbbda3d5
 ---
 <DocChip chip='shadow' />

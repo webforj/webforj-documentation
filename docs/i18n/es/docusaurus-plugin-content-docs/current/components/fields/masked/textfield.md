@@ -2,8 +2,11 @@
 title: MaskedTextField
 sidebar_position: 15
 description: >-
-  Enforce formatted text entry with the MaskedTextField, supporting mask
-  characters for digits, letters, and literals for IDs and codes.
+  Restringe la entrada de texto con formato mediante MaskedTextField, que admite
+  caracteres de máscara para dígitos, letras y literales en identificadores y
+  códigos.
+_i18n_title_hash: becdf9941b786b1e09ef5895bfe6ce35
+_i18n_description_hash: 9d2495be51d8c64d3388759babaf0cc8
 _i18n_hash: 9ee372191dc17b2510f020bc908f0060
 ---
 <DocChip chip='shadow' />

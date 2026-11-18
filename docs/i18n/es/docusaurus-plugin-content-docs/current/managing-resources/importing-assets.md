@@ -2,8 +2,11 @@
 sidebar_position: 1
 title: Importar recursos
 description: >-
-  Attach JavaScript and CSS to webforJ components or the app using JavaScript,
-  InlineJavaScript, StyleSheet, and InlineStyleSheet annotations.
+  Adjunta JavaScript y CSS a los componentes de webforJ o a la aplicación
+  mediante las anotaciones JavaScript, InlineJavaScript, StyleSheet e
+  InlineStyleSheet.
+_i18n_title_hash: 2bb279247129f48aae96ef9448e7937b
+_i18n_description_hash: 536f6365a8d660553f582f17e63ae286
 _i18n_hash: 4343173cf0cbef440f24c05cf9ee3fbd
 ---
 Las anotaciones de activos proporcionan un enfoque declarativo para incrustar recursos externos e internos como JavaScript y CSS dentro de una aplicación de manera estática. Estas anotaciones agilizan la gestión de recursos al asegurar que las dependencias se carguen en la fase de ejecución adecuada, reduciendo la configuración manual y mejorando la mantenibilidad.

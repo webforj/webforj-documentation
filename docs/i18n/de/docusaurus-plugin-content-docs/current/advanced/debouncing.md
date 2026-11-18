@@ -3,8 +3,11 @@ sidebar_position: 21
 title: Entprellung
 slug: debouncing
 description: >-
-  Delay actions until activity settles using the Debouncer class for
-  search-as-you-type, autosave, and other rate-limited UI work.
+  Verzögern Sie Aktionen, bis sich die Aktivität beruhigt hat – mit der Klasse
+  Debouncer für Suche während der Eingabe, automatisches Speichern und andere
+  gedrosselte UI-Aufgaben.
+_i18n_title_hash: 20e7f92910587581e04225888f0594df
+_i18n_description_hash: 110fb7142cdd2c1c1fa3a00b11a8357c
 _i18n_hash: fd81dccbd2aeb6e50922c2d09de536de
 ---
 <DocChip chip='since' label='25.11' />

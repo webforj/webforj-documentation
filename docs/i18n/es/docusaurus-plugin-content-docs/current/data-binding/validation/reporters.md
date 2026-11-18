@@ -2,8 +2,11 @@
 sidebar_position: 3
 title: Reporteros
 description: >-
-  Surface validation outcomes through the DefaultBindingReporter or attach
-  custom reporters to bindings with the useReporter callback.
+  Muestra los resultados de validación con DefaultBindingReporter o añade
+  reporteros personalizados a las vinculaciones mediante el callback
+  useReporter.
+_i18n_title_hash: 33224a43ff84f1a2547d0b6b171715c0
+_i18n_description_hash: 95a0ed8a06d35ed608b37f9fbee9f328
 _i18n_hash: e642fa150e90534cdaef8bb0955d4ff0
 ---
 Los reporteros de validación se utilizan para proporcionar retroalimentación sobre el proceso de validación a la interfaz de usuario. Esta característica es esencial para informar a los usuarios sobre los resultados de la validación de su entrada, particularmente en formularios complejos o aplicaciones intensivas en datos.

@@ -3,8 +3,10 @@ title: <dwc-format-datetime>
 sidebar_class_name: sidebar--item__hidden
 slug: format-datetime
 description: >-
-  Style the dwc-format-datetime client component with CSS variables, shadow
-  parts, and slots for theming.
+  Personaliza el estilo del componente cliente dwc-format-datetime con variables
+  CSS, partes shadow y slots.
+_i18n_title_hash: c03d16c16bbc215ae6a75de6993e5970
+_i18n_description_hash: cc2732106bb8af8163aa76063ed9c823
 _i18n_hash: ec1b8ab963afc63f16855f5548f340a9
 ---
 :::info COMPONENTE DEL CLIENTE

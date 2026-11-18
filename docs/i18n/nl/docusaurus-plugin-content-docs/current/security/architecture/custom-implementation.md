@@ -2,8 +2,10 @@
 sidebar_position: 6
 title: Voorbeeld van aangepaste implementatie
 description: >-
-  Build a session-based security stack by implementing SecurityConfiguration,
-  SecurityContext, SecurityManager, and SecurityRegistrar.
+  Bouw een sessiegebaseerde beveiligingsstack door SecurityConfiguration,
+  SecurityContext, SecurityManager en SecurityRegistrar te implementeren.
+_i18n_title_hash: 3b3fc3ebbcefc179b89d2cb0776ad553
+_i18n_description_hash: d15bc6f7e55fb744acf1719ea673317d
 _i18n_hash: d9c19543624a63acab79e429e6289133
 ---
 Deze gids doorloopt het bouwen van een complete aangepaste beveiligingsimplementatie met behulp van sessie-gebaseerde authenticatie. Je leert hoe de vier kerninterfaces samenwerken door ze vanaf nul te implementeren.

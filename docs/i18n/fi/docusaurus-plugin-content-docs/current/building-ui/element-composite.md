@@ -2,9 +2,11 @@
 sidebar_position: 6
 title: Elementtiyhdistelmä
 description: >-
-  Wrap a custom HTML element or third-party web component in Java with
-  ElementComposite, exposing its properties, attributes, and events through the
-  Java API.
+  Tuo mukautetun HTML-elementin tai kolmannen osapuolen web-komponentin
+  ominaisuudet, attribuutit ja tapahtumat Java-rajapintaan
+  ElementComposite-luokalla.
+_i18n_title_hash: 678ca786e2364c33002d8da56ab268ee
+_i18n_description_hash: b5504bc3cc2278317ba964435ed2c4eb
 _i18n_hash: 277c6e7e84197ab515cae210cd8207b0
 ---
 <JavadocLink type="foundation" location="com/webforj/component/element/ElementComposite" top='true'/>

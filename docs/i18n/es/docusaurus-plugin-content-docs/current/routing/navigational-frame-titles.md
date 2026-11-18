@@ -2,8 +2,10 @@
 sidebar_position: 10
 title: Títulos de marco de navegación
 description: >-
-  Set browser frame titles per route with the @FrameTitle annotation or generate
-  them dynamically using HasFrameTitle.
+  Configura los títulos del marco del navegador por ruta con la anotación
+  @FrameTitle o genéralos dinámicamente con HasFrameTitle.
+_i18n_title_hash: 8aa2c696e6ad4b2612b85b0a8b89e517
+_i18n_description_hash: abcdb6bc334f7fe8c0b777c908af1333
 _i18n_hash: 7b190f89d8eeb58df6d8a25ce863cc5e
 ---
 En webforJ, todas las rutas se renderizan dentro de un Frame, que sirve como un contenedor de nivel superior responsable de mostrar el contenido de la ruta actual. A medida que los usuarios navegan entre diferentes rutas, el Título del Frame se actualiza dinámicamente para reflejar la vista activa, ayudando a proporcionar un contexto claro sobre la ubicación actual del usuario dentro de la aplicación.

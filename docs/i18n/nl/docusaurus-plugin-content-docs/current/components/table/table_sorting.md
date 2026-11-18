@@ -3,8 +3,10 @@ sidebar_position: 15
 title: Sorteren
 slug: sorting
 description: >-
-  Enable per-column sorting on the Table, configure multi-column sorting, and
-  set sort priority programmatically.
+  Schakel sorteren per kolom in voor Table, configureer sortering op meerdere
+  kolommen en stel de sorteerprioriteit programmatisch in.
+_i18n_title_hash: 2808a34767e19b842d906ab8ab6264c6
+_i18n_description_hash: 0982ea0da914bca56402ae5c96dd9ed8
 _i18n_hash: 7a910f5bdcaa8a9e053bcda6706808c2
 ---
 Sorteren laat gebruikers gegevens in kolommen ordenen, waardoor informatie makkelijker te lezen en te analyseren is. Dit is handig wanneer gebruikers snel de hoogste of laagste waarden in een bepaalde kolom willen vinden.

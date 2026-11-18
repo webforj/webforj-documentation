@@ -2,8 +2,10 @@
 sidebar_position: 2
 title: Reititettävät sovellukset
 description: >-
-  Enable webforJ routing with the @Routify annotation to scan packages, manage
-  frames, and control browser history.
+  Ota webforJ-reititys käyttöön @Routify-annotaatiolla pakettien skannaamiseen,
+  kehysten hallintaan ja selaimen historian ohjaamiseen.
+_i18n_title_hash: afbbb0ecce6720c310b7f377107a8c4b
+_i18n_description_hash: 706242abdbb1742879ab084137767921
 _i18n_hash: bea0848523a00ddfff8d79265ea699ac
 ---
 Routing in webforJ on ominainen työkalu. Kehittäjät voivat valita webforJ:n reititysratkaisun tai perinteisen mallin, jossa käytetään `Frame`-manipulaatiota ilman syvää linkittämistä. Reitityksen mahdollistamiseksi **`@Routify`**-annotation on sovellettava `App`-luokan tasolla. Tämä antaa webforJ:lle oikeuden hallita selaimen historiaa, reagoida navigointitapahtumiin ja renderöidä sovelluksen komponentteja URL-osoitteen perusteella.

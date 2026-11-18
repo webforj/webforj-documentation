@@ -3,6 +3,11 @@ sidebar_position: 1
 title: Suojausarkkitehtuuri
 hide_table_of_contents: true
 hide_giscus_comments: true
+description: >-
+  Tutustu perusrajapintoihin ja malleihin, joiden avulla voit rakentaa
+  mukautettuja tietoturvaratkaisuja Spring Securityn lisäksi.
+_i18n_title_hash: 09162aa1970c16d1328b5f8a48519a7c
+_i18n_description_hash: 092cebbbf60e6e8126b5fd46782d9512
 _i18n_hash: df2f795c6b65edc60adb39b549cb780b
 ---
 <Head>

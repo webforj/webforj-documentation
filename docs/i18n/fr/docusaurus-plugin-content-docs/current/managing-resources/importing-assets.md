@@ -2,8 +2,11 @@
 sidebar_position: 1
 title: Importer des ressources
 description: >-
-  Attach JavaScript and CSS to webforJ components or the app using JavaScript,
-  InlineJavaScript, StyleSheet, and InlineStyleSheet annotations.
+  Ajoutez du JavaScript et du CSS aux composants webforJ ou à l’application à
+  l’aide des annotations JavaScript, InlineJavaScript, StyleSheet et
+  InlineStyleSheet.
+_i18n_title_hash: 2bb279247129f48aae96ef9448e7937b
+_i18n_description_hash: 536f6365a8d660553f582f17e63ae286
 _i18n_hash: 4343173cf0cbef440f24c05cf9ee3fbd
 ---
 Les annotations des ressources fournissent une approche déclarative pour l'intégration de ressources externes et internes telles que JavaScript et CSS dans une application de manière statique. Ces annotations simplifient la gestion des ressources en s'assurant que les dépendances sont chargées au bon moment d'exécution, réduisant ainsi la configuration manuelle et améliorant la maintenabilité.

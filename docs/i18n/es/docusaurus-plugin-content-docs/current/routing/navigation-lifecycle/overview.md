@@ -2,6 +2,12 @@
 sidebar_position: 1
 title: Ciclo de vida de la navegación
 hide_giscus_comments: true
+description: >-
+  Coordina la validación, la carga de datos y la limpieza durante las
+  transiciones de rutas mediante los eventos del ciclo de vida de navegación de
+  webforJ.
+_i18n_title_hash: eb500610c9232241433128cf033c935e
+_i18n_description_hash: 668e0d0d2db135f709ccc33ea1076d0d
 _i18n_hash: 14d81d1a9ff86af17370e0a7eb50608b
 ---
 import DocCardList from '@theme/DocCardList';

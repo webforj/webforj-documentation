@@ -1,9 +1,9 @@
 ---
 title: 代理技能
 sidebar_position: 10
-description: >-
-  Install Agent Skills so AI coding assistants follow webforJ workflows for
-  building forms, adding servlets, styling apps, and creating components.
+description: 安装 Agent Skills，让 AI 编码助手遵循 webforJ 工作流，构建表单、添加 Servlet、为应用设置样式并创建组件。
+_i18n_title_hash: 29708548a94fe2952a0598dca6411701
+_i18n_description_hash: f6940bfd9278345accf64644193c7381
 _i18n_hash: 6dc21bfd21fb27f2e71cb2265f6cde8c
 ---
 代理技能教AI编码助手如何使用正确的API、设计令牌和组件模式来构建webforJ应用程序。助手不再依赖于猜测框架约定，而是加载一个技能并遵循结构化的工作流程，以便在第一次尝试时生成可编译的代码，并遵循最佳实践。

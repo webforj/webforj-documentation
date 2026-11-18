@@ -2,8 +2,10 @@
 title: TextArea
 sidebar_position: 130
 description: >-
-  Capture multi-line input with the TextArea component, including paragraph
-  management, character limits, wrapping, and validation.
+  Erfassen Sie mehrzeilige Eingaben mit der TextArea-Komponente – inklusive
+  Absatzverwaltung, Zeichenbegrenzungen, Zeilenumbruch und Validierung.
+_i18n_title_hash: 24f61a4979dc619f0818897243ddb6c6
+_i18n_description_hash: eafec56f8e7f603c54bc237436643d13
 _i18n_hash: f9863352a124e1af3575a849204b97ed
 ---
 <DocChip chip="shadow" />

@@ -2,8 +2,11 @@
 sidebar_position: 25
 title: Lisä-servlettien käyttöönotto
 description: >-
-  Host REST endpoints and third-party servlets alongside a webforJ app by
-  remapping WebforjServlet or proxying through webforj.conf.
+  Tarjoa REST-päätepisteitä ja kolmannen osapuolen servlettejä
+  webforJ-sovelluksen rinnalla reitittämällä WebforjServlet uudelleen tai proxyn
+  kautta webforj.confissa.
+_i18n_title_hash: 6b6a566a6c2fa1966d70dccd62ec96ff
+_i18n_description_hash: 0d3e008f5e2018c0056685b5408e5137
 _i18n_hash: 1e25ddc6c7e56063c26b9f911c0be5d2
 ---
 <!-- vale off -->

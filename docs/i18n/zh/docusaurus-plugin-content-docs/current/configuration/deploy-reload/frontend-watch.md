@@ -1,9 +1,9 @@
 ---
 title: 前端监听
 sidebar_position: 20
-description: >-
-  Rebuild the sources under src/main/frontend while a webforJ app runs, applying
-  stylesheet and image output in place and reloading the view for script output.
+description: 在 webforJ 应用运行期间重新构建 src/main/frontend 下的源文件：样式表和图像输出会就地应用，脚本输出则会重新加载视图。
+_i18n_title_hash: 87d66a6e5b9e657405313f309833cd07
+_i18n_description_hash: d5b96b8ea22c6930a214e543b2de01da
 _i18n_hash: 065e4f5ad8868a6758e682f38e2dd3b9
 ---
 前端监视器在应用程序运行时重新构建 `src/main/frontend` 下的源代码，并将输出发送到浏览器。这是 [前端打包器](/docs/managing-resources/bundler/overview) 的开发部分，需要将 `webforj.devtools.livereload.enabled` 设置为开启，请参阅 [设置](/docs/configuration/deploy-reload/overview#settings)。

@@ -1,9 +1,11 @@
 ---
 title: Sovelluksen perusteet
 description: >-
-  Walk through the Application and HomeView classes of the hello-world archetype
-  to see how routing, annotations, and views shape a webforJ app.
+  Tutustu hello-world-arkkityypin Application- ja HomeView-luokkiin ja katso,
+  miten reititys, annotaatiot ja näkymät muovaavat webforJ-sovellusta.
 sidebar_position: 3
+_i18n_title_hash: e48edafdc7bcfdffa196d313ed92facc
+_i18n_description_hash: d1fd89c71b0a465e14d96c833f078c57
 _i18n_hash: 2ebddfe300802013e4376681bc2ccf04
 ---
 Kun webforJ ja sen riippuvuudet on määritetty projektissasi, olet valmis luomaan sovellusrakenteen. Tämä artikkeli käy läpi keskeiset elementit yksinkertaisessa webforJ-sovelluksessa, erityisesti keskittyen `Application`- ja `HomeView`-luokkiin, jotka ovat perustavia luokkia `webforj-archetype-hello-world`-aloitushankkeessa.

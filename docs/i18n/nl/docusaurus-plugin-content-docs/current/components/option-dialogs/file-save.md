@@ -2,8 +2,10 @@
 title: File Opslaan
 sidebar_position: 15
 description: >-
-  Prompt users for a save location with the FileSaveDialog, configuring initial
-  path, default filename, and overwrite behavior.
+  Vraag gebruikers met FileSaveDialog om een opslaglocatie en stel het beginpad,
+  de standaardbestandsnaam en het gedrag bij overschrijven in.
+_i18n_title_hash: a6ed317bd67229e42bb06f70e8df0215
+_i18n_description_hash: 25e5b1972d65043e5a269ecf40d7ef55
 _i18n_hash: 861257322ca233cfa9e0eed5e4d3aa95
 ---
 <DocChip chip='shadow' />

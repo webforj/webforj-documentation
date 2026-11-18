@@ -1,7 +1,11 @@
 ---
 title: Een eenvoudige app maken
 sidebar_position: 2
-description: Step 1 - Add components to an app.
+description: >-
+  Tutorialstap 1: maak de hoofdklasse van een webforJ- en Spring Boot-app, voeg
+  interactieve webforJ- en HTML-elementcomponenten toe en stijl ze met CSS.
+_i18n_title_hash: 77334ced5b31edd07d2f1ff1963a042a
+_i18n_description_hash: 605dd7412a18f918843f8ca34a104fc4
 _i18n_hash: d7385c22706cf76508b7e1971186f88d
 ---
 In [Project Setup](/docs/introduction/tutorial/project-setup) heb je een webforJ-project gegenereerd. Nu is het tijd om de hoofdklasse voor het project te creëren en een interactieve interface toe te voegen met behulp van webforJ-componenten. In deze stap leer je over:

@@ -2,9 +2,9 @@
 title: 检查组件
 sidebar_position: 3
 sidebar_class_name: new-content
-description: >-
-  Browse the component tree webforJ built, select components from the page, and
-  change their properties while the app runs.
+description: 浏览 webforJ 构建的组件树，从页面中选择组件，并在应用运行时更改其属性。
+_i18n_title_hash: 87bf9b08d5c7be91ce3029548b39c6de
+_i18n_description_hash: 74d957c09316753cbcd12bc0e7a38ea0
 _i18n_hash: 91fbaf620dc8967a50c4a5ce6b455841
 ---
 Inspector 会显示 Java 代码构建的组件树。`Composite` 会显示为你编写的类，并按 webforJ 保存子组件的顺序包含你添加的子组件，因此 craftforJ 中的结构与你源代码中的结构一致。

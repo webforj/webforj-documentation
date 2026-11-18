@@ -1,7 +1,12 @@
 ---
 title: Routing en Composites
 sidebar_position: 4
-description: Step 3 - Make your app navigable.
+description: >-
+  Tutorialstap 3: verplaats de UI naar een eigen pagina, voeg een pagina voor
+  nieuwe klanten toe en koppel beide met routing, composietcomponenten en
+  ColumnsLayout.
+_i18n_title_hash: 83bb9e48a7d161810744afd1d7db2dd3
+_i18n_description_hash: 97c35f7eb7cca920ea9c9222e8c36397
 _i18n_hash: f32a8552d85a9c85b565fe6f026c93bb
 ---
 Tot nu toe was deze tutorial alleen een single-page app. Deze stap verandert dat.

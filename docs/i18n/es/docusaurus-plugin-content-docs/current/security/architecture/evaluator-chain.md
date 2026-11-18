@@ -1,6 +1,11 @@
 ---
 sidebar_position: 4
 title: Cadena de evaluadores
+description: >-
+  Evalúa el acceso a rutas mediante una cadena de evaluadores ordenada por
+  prioridad, siguiendo el patrón de cadena de responsabilidad.
+_i18n_title_hash: 98d72d3934038a7ee7ef067eee69dbc3
+_i18n_description_hash: 2ae51d5a0da5489be4b483fff2637312
 _i18n_hash: 5055a72d450daf8b98bdb995380a2e13
 ---
 La cadena de evaluadores es el corazón del sistema de seguridad de webforJ. Es una secuencia de evaluadores ordenados por prioridad que examinan rutas y toman decisiones de acceso utilizando el patrón de diseño de cadena de responsabilidad. Entender cómo funciona la cadena te ayuda a crear evaluadores personalizados y solucionar denegaciones de acceso inesperadas.

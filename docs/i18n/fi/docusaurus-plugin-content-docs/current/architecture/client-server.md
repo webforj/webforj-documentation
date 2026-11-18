@@ -2,8 +2,11 @@
 sidebar_position: 5
 title: Asiakas/palvelin-vuorovaikutus
 description: >-
-  Understand how webforJ batches server-to-client calls, avoids costly round
-  trips, and uses caching and on-demand chunks for performance.
+  Tutustu siihen, miten webforJ niputtaa palvelimen ja asiakkaan välisiä
+  kutsuja, välttää kalliit edestakaiset verkkopyynnöt ja hyödyntää välimuistia
+  sekä tarvittaessa ladattavia osia.
+_i18n_title_hash: 18b6a0908dc2b5b419e1f773895f2f39
+_i18n_description_hash: 8d46450d38cfc270f0bbb62a8e8941a2
 _i18n_hash: 893b34ce2601ff273d03ba4091b7bc51
 ---
 Seuraavassa osiossa käsitellään erilaisia suorituskykyominaisuuksia ja parhaimpia käytäntöjä webforJ:lle sekä toteutustietoja kehyksestä.

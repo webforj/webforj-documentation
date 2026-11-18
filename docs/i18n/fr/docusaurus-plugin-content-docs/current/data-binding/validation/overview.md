@@ -3,7 +3,12 @@ sidebar_position: 1
 title: Validation
 hide_giscus_comments: true
 hide_table_of_contents: true
-sidebar_class_name: has-new-content
+description: >-
+  Appliquez les règles métier aux liaisons de données webforJ avec des
+  validateurs, des déclencheurs, des rapporteurs, Jakarta Validation et des
+  résultats de contexte.
+_i18n_title_hash: 13148717f8faa9037f37d28971dfc219
+_i18n_description_hash: c1f7ff196e37e740cf97abc455888c0d
 _i18n_hash: f64d390319483797294e2ceff76c12f8
 ---
 <Head>

@@ -2,8 +2,10 @@
 sidebar_position: 2
 title: Testen met Playwright
 description: >-
-  Drive a webforJ app from JUnit using the Playwright Java bindings to fill
-  fields, click buttons, and assert rendered output in the browser.
+  Bestuur een webforJ-app vanuit JUnit met de Playwright Java-bindings: vul
+  velden in, klik op knoppen en controleer de weergegeven uitvoer in de browser.
+_i18n_title_hash: 6b355ed94d5f4b1a4211e99bfe614c33
+_i18n_description_hash: 49e66412882675c3d803c3bab0ff78e6
 _i18n_hash: 3f815af0ad7916fdd5a53d6178846c6d
 ---
 Deze documentatie beschrijft het proces voor het testen van webforJ-applicaties met Playwright, met specifieke aandacht voor `HelloWorldView` uit `webforj-archetype-hello-world`.

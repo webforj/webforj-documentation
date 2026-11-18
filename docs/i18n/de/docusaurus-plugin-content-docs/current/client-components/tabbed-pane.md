@@ -3,8 +3,10 @@ title: <dwc-tabbed-pane>
 sidebar_class_name: sidebar--item__hidden
 slug: tabbed-pane
 description: >-
-  Theme the dwc-tabbed-pane container, tab strip, and active indicator through
-  CSS variables and shadow parts.
+  Passen Sie den Container, die Tab-Leiste und den aktiven Indikator von
+  dwc-tabbed-pane über CSS-Variablen und Shadow Parts an.
+_i18n_title_hash: 80cfabf3fa272fee9a7d653a56f3c483
+_i18n_description_hash: de06eda5472a2bd02fccb2625c7365f8
 _i18n_hash: c07d907c4576f67b116639672ed5a046
 ---
 <DocChip chip='shadow' />

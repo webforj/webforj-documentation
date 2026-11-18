@@ -3,8 +3,10 @@ title: <dwc-button>
 sidebar_class_name: sidebar--item__hidden
 slug: button
 description: >-
-  Style the dwc-button client component with CSS variables, shadow parts, and
-  slots for color, padding, expanse, and icon placement.
+  Personaliza el componente cliente dwc-button con variables CSS, partes shadow
+  y slots para el color, el relleno, la expansión y la posición del icono.
+_i18n_title_hash: 83faf82af12b125698addaec02bac30d
+_i18n_description_hash: 3c277a92750ededbf9a9b836fb06df21
 _i18n_hash: d1e22c25605028dc7bf8f100e181d120
 ---
 <DocChip chip='shadow' />

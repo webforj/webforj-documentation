@@ -4,8 +4,11 @@ sidebar_position: 0
 hide_table_of_contents: true
 hide_giscus_comments: true
 description: >-
-  Expose routed webforJ views as interactive MCP applications that an MCP host
-  can open and use inside its own interface.
+  Maak gerouteerde webforJ-weergaven beschikbaar als interactieve
+  MCP-applicaties die een MCP-host in zijn eigen interface kan openen en
+  gebruiken.
+_i18n_title_hash: 7e54d2d2941e9bd5a3793e87f245cbc4
+_i18n_description_hash: b6f045cf57cc4cbac608c37f99b5d18b
 _i18n_hash: c654b2ac1c5344132602148ba19216b3
 ---
 <Head>

@@ -1,9 +1,14 @@
 ---
 title: Päivitys versioon 26.00
-description: Upgrade from 25.00 to 26.00
+description: >-
+  Päivitä webforJ-sovellus versiosta 25.00 versioon 26.00: Java 21 tai 25, uusi
+  Maven-repository-URL, Spring Boot, Table- ja Repository API -muutokset sekä
+  DWC 26.
 slug: /upgrading/webforj-26.00
 pagination_next: null
 sidebar_position: 1
+_i18n_title_hash: 35a959230718667d6e2ffd94f999c317
+_i18n_description_hash: 79e9f8c965681706044b4ee4aba2a992
 _i18n_hash: 3b9827a67a81e207508d7db72a650b64
 ---
 Tämä dokumentaatio toimii oppaana webforJ-sovellusten päivitykselle versioon 25.00–26.00. Tässä ovat muutokset, jotka on tarpeen tehdä nykyisille sovelluksille, jotta ne voivat jatkaa toimintaansa sujuvasti. Kuten aina, katso [GitHubin julkaisun yhteenveto](https://github.com/webforj/webforj/releases) saadaksesi kattavamman listan muutoksista julkaisujen välillä.

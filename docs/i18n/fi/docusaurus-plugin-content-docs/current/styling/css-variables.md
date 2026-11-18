@@ -2,8 +2,10 @@
 sidebar_position: 1
 title: CSS-muuttujat
 description: >-
-  Define, scope, and consume CSS custom properties to control webforJ component
-  styling at runtime without preprocessors.
+  Määritä, rajaa ja hyödynnä CSS:n mukautettuja ominaisuuksia
+  webforJ-komponenttien tyylien ohjaamiseen ajon aikana ilman esikäsittelijöitä.
+_i18n_title_hash: 2d7e2edeeba349ead8ed25e6c5760a7d
+_i18n_description_hash: 036f57c7d8da4b9c825604c84a4db45e
 _i18n_hash: 8e09f9776dc8bb74a1d37e6ba2bdceb0
 ---
 CSS-muuttujat ovat keskiroolissa webforJ-komponenttien ulkoasun mukauttamisessa. Nämä muuttujat tallentavat uudelleenkäytettäviä arvoja, kuten värejä, fonttikokoja ja välistystä, joita voidaan soveltaa johdonmukaisesti sovelluksessasi.

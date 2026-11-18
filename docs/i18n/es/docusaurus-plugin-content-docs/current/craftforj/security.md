@@ -1,9 +1,13 @@
 ---
-title: Seguridad
+title: Seguridad de craftforJ
+sidebar_label: Seguridad
 sidebar_position: 9
 description: >-
-  What craftforJ can reach in your project, how it restricts access, and how to
-  confirm it's disabled in production.
+  Qué puede hacer craftforJ en tu proyecto, cómo restringe el acceso y cómo
+  confirmar que está deshabilitado en producción.
+_i18n_title_hash: d40b4a25cf76dc9bd5b7c249aa2e9549
+_i18n_sidebar_label_hash: 2fae32629d4ef4fc6341f1751b405e45
+_i18n_description_hash: 23c50b68d765e1e0ea555dbf3206b44a
 _i18n_hash: 5ffbc5b5c6e6cfcf64143712a21944d5
 ---
 craftforJ lee y escribe el origen del proyecto al que está adjunto. Esta página describe los límites alrededor de eso y cómo confirmar que craftforJ está desactivado en las compilaciones que despliegas.

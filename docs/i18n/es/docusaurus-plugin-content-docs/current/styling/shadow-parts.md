@@ -1,6 +1,11 @@
 ---
 sidebar_position: 2
 title: Partes de sombra
+description: >-
+  Accede al Shadow DOM de los componentes de webforJ con el selector CSS
+  ::part() para dar estilo a elementos internos sin perder la encapsulación.
+_i18n_title_hash: 31662a0c4a4442424487da769c5b3950
+_i18n_description_hash: 99f09e929e55f230ab49324e4bac39bd
 _i18n_hash: bad90a86a29eaf34485d5ee9150aacb3
 ---
 CSS **Partes de Sombra** le dan a los desarrolladores una forma de estilizar elementos dentro del shadow DOM de un componente desde el exterior, mientras se preserva la encapsulación.

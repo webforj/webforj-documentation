@@ -1,6 +1,9 @@
 ---
 sidebar_position: 3
 title: 颜色
+description: 通过色相和饱和度种子配置 DWC 调色板，为主色、状态色和中性色生成协调一致的深浅色阶。
+_i18n_title_hash: 5d50889672f6f860d14f502de3de1957
+_i18n_description_hash: ca4b83cfb72b17ff6d45c7160386764c
 _i18n_hash: cc233e97e4b7333262eb47b14bfe572a
 ---
 webforJ 提供了一个基于 CSS 自定义属性的颜色系统。这些颜色变量能够保持应用程序的视觉风格一致，同时让您能够根据设计需求完全控制调色板的自定义。

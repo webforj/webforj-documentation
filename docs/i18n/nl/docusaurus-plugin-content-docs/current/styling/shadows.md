@@ -1,6 +1,11 @@
 ---
 sidebar_position: 7
 title: Schaduwen
+description: >-
+  Breng lagen aan op elementen met de DWC box-shadow-schaal van xs tot 2xl, met
+  schaduwen die zich automatisch aanpassen aan lichte en donkere modus.
+_i18n_title_hash: dde98fa66ef8081029ffb8f24d643c89
+_i18n_description_hash: 7df2812ce68443fa138e9f5942ad4039
 _i18n_hash: 423494230ee54caa83fec778e905871b
 ---
 De schaduweigenschappen voegen schaduweffecten toe rond het frame van een element. Schaduwen duiden op items die in de gebruikersinterface bovenop elkaar zijn gestapeld.

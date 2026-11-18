@@ -2,8 +2,11 @@
 title: Uitvoeren met BBjServices
 hide_table_of_contents: true
 description: >-
-  Set up and deploy webforJ apps that run on BBjServices using Docker or a local
-  BBj installation.
+  De verouderde webforJ-installatieplugin voor het uitvoeren van apps op
+  BBjServices. Start nieuwe projecten met BBjShip en migreer bestaande met de
+  hier vermelde wijzigingen.
+_i18n_title_hash: a654f5d85c6402c6c70a268c252da9a4
+_i18n_description_hash: 7d9a4e1496813b1dce45056be5b382c4
 _i18n_hash: 00d63ab44a4e2ffbd22cadec8e6e8d16
 ---
 :::danger Verouderd en zal worden verwijderd

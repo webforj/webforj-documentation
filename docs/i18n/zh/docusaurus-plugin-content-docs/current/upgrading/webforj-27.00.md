@@ -1,9 +1,11 @@
 ---
 title: 升级到 27.00
-description: Upgrade from 26.00 to 27.00
+description: 从 26.00 升级到 27.00
 sidebar_position: 10
 sidebar_class_name: new-content
 draft: true
+_i18n_title_hash: f521441c4a5da00c1bc05ae7307c3644
+_i18n_description_hash: 2ca050c7f4bc5f02fb7c8680550799a3
 _i18n_hash: 85416371e550d0aedae0a0771aff67be
 ---
 本文件作为将 webforJ 应用程序从 26.00 升级到 27.00 的指南。

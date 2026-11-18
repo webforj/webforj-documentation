@@ -2,8 +2,10 @@
 sidebar_position: 4
 title: Väitteet
 description: >-
-  Check what the user would see on a component with verifyThat, and read
-  failures that name the component and both values.
+  Tarkista verifyThat-menetelmällä, mitä käyttäjä näkisi komponentissa, ja lue
+  virheet, joissa mainitaan komponentti ja molemmat arvot.
+_i18n_title_hash: c2835ffac5b588bf228fce7aff4d3432
+_i18n_description_hash: 6573b8db1f12ca8529bf287ae6684bb6
 _i18n_hash: 6414e2fab20d3bf7828413494af79b74
 ---
 Testin tehtyä toiminnon se tarkistaa, mitä käyttäjä näkisi: painikkeen tekstin, voiko kenttää muokata ja mikä luettelon kohde näkyy valittuna. `verifyThat(component)` ilmaisee odotukset samoilla sanoilla, kuten `isReadOnly()` tai `hasText("Save")`. Jokainen tarkistus lukee komponentin tilan eli saman tilan, jonka selain näyttää. Epäonnistunut tarkistus ilmoittaa komponentin ja molemmat arvot.

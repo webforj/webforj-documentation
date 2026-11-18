@@ -1,7 +1,11 @@
 ---
 title: Waarnemers en routeparameters
 sidebar_position: 5
-description: Step 4 - Use route parameters to control what content loads.
+description: >-
+  Tutorialstap 4: laat gebruikers bestaande klanten bewerken met routepatronen,
+  parameterwaarden via de URL en lifecycle-observers.
+_i18n_title_hash: cc11d3794ca0b21249d2ee8bf7f95fe0
+_i18n_description_hash: 7262b0d443eca71f63496442376c761c
 _i18n_hash: 413e52a1a6601beef4ece9b9e7a1757e
 ---
 De app uit [Routing en composieten](/docs/introduction/tutorial/routing-and-composites) kan alleen nieuwe klanten aan de database toevoegen. Met de volgende concepten geef je gebruikers ook de mogelijkheid om de gegevens van bestaande klanten te bewerken:

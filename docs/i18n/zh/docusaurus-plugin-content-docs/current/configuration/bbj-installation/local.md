@@ -1,8 +1,7 @@
 ---
 sidebar_position: 4
-description: >-
-  Install BBj locally and use the Plugin Manager to configure the webforJ plugin
-  for running apps against a local BBjServices instance.
+description: 在本地安装 BBj，并使用插件管理器配置 webforJ 插件，以便应用连接本地 BBjServices 实例运行。
+_i18n_description_hash: e66215e66c69da295722149782c9611b
 _i18n_hash: 5fbe602fa83b6147a07c4e2ad8ac3230
 ---
 # 本地安装

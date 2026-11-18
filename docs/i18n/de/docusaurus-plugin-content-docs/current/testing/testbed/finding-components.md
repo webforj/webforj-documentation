@@ -2,8 +2,10 @@
 sidebar_position: 2
 title: Komponenten finden
 description: >-
-  Describe the components a TestBed test acts on the way a user picks them out
-  on the page, by type, text, label and what they contain.
+  Beschreibt Komponenten, mit denen ein TestBed-Test interagiert, so wie Nutzer
+  sie auf der Seite anhand von Typ, Text, Beschriftung und Inhalt auswählen.
+_i18n_title_hash: 08dd64ab65d0d7702d38cfa6f6f84c53
+_i18n_description_hash: 25fffbd57fce100bd5499727357275bb
 _i18n_hash: 3e31c9bc7b51ebd2ebaf1a5e44c6e94f
 ---
 Bevor ein Benutzer auf eine Schaltfläche klickt, sucht er sie auf der Seite: die Schaltfläche **Save** oder das Feld mit der Beschriftung für die E-Mail-Adresse. Ein TestBed-Test findet Komponenten auf dieselbe Weise – mit `ComponentLocator`. Ein Locator beschreibt eine Komponente anhand ihres Typs und anhand dessen, was der Benutzer darauf liest. Wenn der Test das Ergebnis anfordert, durchsucht der Locator die Seite.

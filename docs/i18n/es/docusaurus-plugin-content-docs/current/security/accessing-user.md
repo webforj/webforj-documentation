@@ -1,6 +1,11 @@
 ---
 title: Acceso al usuario
 sidebar_position: 4
+description: >-
+  Lee el usuario actual, los roles y las autoridades desde el
+  SecurityContextHolder de Spring Security en las vistas de webforJ.
+_i18n_title_hash: 0f0e722ca6ee385a8194f6269374b2fa
+_i18n_description_hash: 4b344fafeed2e9752cecd34bc69c30ec
 _i18n_hash: 5a29cabdc472de49bcc1db895b982485
 ---
 Spring Security almacena la información del usuario autenticado en el `SecurityContextHolder`, proporcionando acceso al nombre de usuario, roles y autoridades a lo largo de tu aplicación. Esta sección muestra cómo recuperar y utilizar esta información en las vistas y componentes de webforJ.

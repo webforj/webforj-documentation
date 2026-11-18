@@ -1,6 +1,11 @@
 ---
 sidebar_position: 2
 title: Rutas anidadas
+description: >-
+  Crea jerarquías de rutas padre-hijo con el parámetro outlet de @Route para
+  compartir diseños y reutilizar la interfaz entre vistas.
+_i18n_title_hash: e2119c007b50b2af6331785f9f03b752
+_i18n_description_hash: 9f67baa4b0a157ea25104063e0c0df64
 _i18n_hash: 5324d20d84c35f52067d0ba6d6448b71
 ---
 Las rutas anidadas permiten que las rutas secundarias se representen dentro de las rutas principales, creando una interfaz de usuario modular y reutilizable. Las rutas principales definen componentes compartidos, mientras que las rutas secundarias se inyectan en salidas específicas dentro de estos componentes principales.

@@ -2,8 +2,10 @@
 sidebar_position: 1
 title: CSS-variabelen
 description: >-
-  Define, scope, and consume CSS custom properties to control webforJ component
-  styling at runtime without preprocessors.
+  Definieer, baken af en gebruik CSS-customproperties om de styling van
+  webforJ-componenten tijdens runtime zonder preprocessors te beheren.
+_i18n_title_hash: 2d7e2edeeba349ead8ed25e6c5760a7d
+_i18n_description_hash: 036f57c7d8da4b9c825604c84a4db45e
 _i18n_hash: 8e09f9776dc8bb74a1d37e6ba2bdceb0
 ---
 CSS-variabelen spelen een centrale rol bij het aanpassen van het uiterlijk van webforJ-componenten. Deze variabelen slaan herbruikbare waarden op, zoals kleuren, lettergroottes en spacing, die consistent in je app kunnen worden toegepast.

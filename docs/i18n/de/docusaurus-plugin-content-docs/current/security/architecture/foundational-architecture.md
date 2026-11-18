@@ -1,6 +1,11 @@
 ---
 sidebar_position: 2
 title: Grundlegende Architektur
+description: >-
+  Verstehen Sie die zentralen Schnittstellen RouteSecurityManager, Context,
+  Configuration und Evaluator, die die Zugriffskontrolle in webforJ ermöglichen.
+_i18n_title_hash: b6aaffd5f07403b7f17fe59120ce4bc7
+_i18n_description_hash: bfc7489b37a66f03a3b1f78bdf34407f
 _i18n_hash: 0506f859c3bd22ddca70550b6f3e368a
 ---
 Das webforJ-Sicherheitssystem basiert auf einer Grundlage von Kernschnittstellen, die zusammenarbeiten, um eine Zugriffskontrolle auf Routenebene bereitzustellen. Diese Schnittstellen definieren die Verträge für das Sicherheitsverhalten und ermöglichen es verschiedenen Implementierungen, ob sitzungsbasiert, auf JSON Web Tokens (JWT) basierend, LDAP-integriert oder datenbankgestützt, dasselbe zugrunde liegende Framework zu verwenden.

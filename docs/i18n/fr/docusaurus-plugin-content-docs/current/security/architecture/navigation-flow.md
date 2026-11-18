@@ -2,8 +2,10 @@
 sidebar_position: 3
 title: Flux de navigation
 description: >-
-  Trace how RouteSecurityObserver intercepts navigation, runs evaluators, and
-  redirects users before any view renders.
+  Découvrez comment RouteSecurityObserver intercepte la navigation, exécute les
+  évaluateurs et redirige les utilisateurs avant l’affichage de toute vue.
+_i18n_title_hash: 6badde74c2e26d4f0486f2b4b491745a
+_i18n_description_hash: b801bb30c1fa7b39e5cc2ec5cb3f60bd
 _i18n_hash: bf6b927b675a5784340999a5e268581c
 ---
 L’application de la sécurité dans webforJ se fait automatiquement pendant la navigation. Lorsqu’un utilisateur clique sur un lien ou accède à une route, le système de sécurité intercepte la navigation, évalue les règles d’accès, puis autorise la navigation ou redirige l’utilisateur vers une page appropriée. Cette interception est invisible pour les utilisateurs et ne nécessite aucun contrôle de sécurité manuel dans le code de vos composants.

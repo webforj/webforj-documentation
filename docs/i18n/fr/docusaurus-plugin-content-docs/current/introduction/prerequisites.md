@@ -1,9 +1,11 @@
 ---
 title: Prérequis
 description: >-
-  What a webforJ development environment needs, a Java 21 or higher JDK, Maven
-  or Gradle, and an editor with Java support.
+  Ce qu’il faut pour un environnement de développement webforJ : un JDK Java 21
+  ou ultérieur, Maven ou Gradle, et un éditeur compatible avec Java.
 sidebar_position: 1
+_i18n_title_hash: ee68e5b99222bbc29a480fcb0d1d6ee2
+_i18n_description_hash: f47ef53eb5070fb49f6ccd2d5e28ee5e
 _i18n_hash: 038e0cf692852d650329b263c25aaf55
 ---
 Commencer avec webforJ est simple, car il n'y a que quelques prérequis. Utilisez ce guide pour configurer votre environnement de développement avec les outils essentiels dont vous aurez besoin pour démarrer avec webforJ.

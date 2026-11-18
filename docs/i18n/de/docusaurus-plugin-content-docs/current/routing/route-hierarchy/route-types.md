@@ -1,6 +1,12 @@
 ---
 sidebar_position: 1
 title: Routen-Typen
+description: >-
+  Unterscheiden Sie in webforJ Ansichts-Routen, die URL-Segmenten zugeordnet
+  sind, von Layout-Routen, die gemeinsame UI umschließen, ohne den Pfad zu
+  verändern.
+_i18n_title_hash: 97e64bd13d93989b694c20c44f94956a
+_i18n_description_hash: 6d7aa8ee37d01c55048daa3c9bc555c3
 _i18n_hash: 75cb67715544b94ca99fc81c736ebcc7
 ---
 Routen werden in zwei Haupttypen unterteilt: **Ansichts-Routen** und **Layout-Routen**. Die Wahl des Routentyps bestimmt, wie Komponenten den URLs zugeordnet werden und wie sie mit anderen Teilen Ihrer App interagieren.

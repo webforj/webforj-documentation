@@ -1,6 +1,9 @@
 ---
 sidebar_position: 1
 title: 路由类型
+description: 区分映射到 URL 路径段的 webforJ 视图路由，以及包装共享 UI 且不影响路径的布局路由。
+_i18n_title_hash: 97e64bd13d93989b694c20c44f94956a
+_i18n_description_hash: 6d7aa8ee37d01c55048daa3c9bc555c3
 _i18n_hash: 75cb67715544b94ca99fc81c736ebcc7
 ---
 路由分为两种主要类型，**视图路由**和**布局路由**。路由类型的选择决定了组件如何映射到 URL 以及它们如何与应用程序的其他部分交互。

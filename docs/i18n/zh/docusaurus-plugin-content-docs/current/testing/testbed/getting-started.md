@@ -2,8 +2,10 @@
 sidebar_position: 1
 title: 入门
 description: >-
-  Add the TestBed dependency, write a first test that adds a view and acts on
-  it, and run the test.
+  添加 webforJ TestBed 依赖，编写首个无浏览器 JUnit 测试，通过 ComponentLocator 和 UserInteraction
+  添加视图并与之交互，然后运行测试。
+_i18n_title_hash: cb59b87e00d11222bfd9159d0d23836f
+_i18n_description_hash: 0b45a75e164520026074ae23f4e6a428
 _i18n_hash: 8a5fde986acda527dbefeadc4e0dc329
 ---
 # 入门 <DocChip chip='since' label='26.03' />

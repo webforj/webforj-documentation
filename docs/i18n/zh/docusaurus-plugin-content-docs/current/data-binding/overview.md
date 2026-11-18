@@ -3,9 +3,9 @@ sidebar_position: 1
 title: 数据绑定
 hide_table_of_contents: true
 hide_giscus_comments: true
-description: >-
-  Connect webforJ UI components to Java backend models with two-way
-  synchronization, validation, and transformation through BindingContext.
+description: 通过 BindingContext 将 webforJ UI 组件与 Java 后端模型连接起来，实现双向同步、验证和转换。
+_i18n_title_hash: e6823146440d01364375e13d56daf0fb
+_i18n_description_hash: 5b11f79b578884709b0cec6e700dcc79
 _i18n_hash: 75d09e2278ebe54cb17f4dbc69444449
 ---
 <Head>

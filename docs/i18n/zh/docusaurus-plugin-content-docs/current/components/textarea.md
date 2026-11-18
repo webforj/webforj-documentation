@@ -1,9 +1,9 @@
 ---
 title: TextArea
 sidebar_position: 130
-description: >-
-  Capture multi-line input with the TextArea component, including paragraph
-  management, character limits, wrapping, and validation.
+description: 通过 TextArea 组件处理多行输入，支持段落管理、字符数限制、自动换行和验证。
+_i18n_title_hash: 24f61a4979dc619f0818897243ddb6c6
+_i18n_description_hash: eafec56f8e7f603c54bc237436643d13
 _i18n_hash: f9863352a124e1af3575a849204b97ed
 ---
 <DocChip chip="shadow" />

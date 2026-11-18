@@ -1,9 +1,9 @@
 ---
 sidebar_position: 3
 title: 报告器
-description: >-
-  Surface validation outcomes through the DefaultBindingReporter or attach
-  custom reporters to bindings with the useReporter callback.
+description: 通过 DefaultBindingReporter 展示验证结果，或使用 useReporter 回调为绑定附加自定义报告器。
+_i18n_title_hash: 33224a43ff84f1a2547d0b6b171715c0
+_i18n_description_hash: 95a0ed8a06d35ed608b37f9fbee9f328
 _i18n_hash: e642fa150e90534cdaef8bb0955d4ff0
 ---
 验证报告器用于向用户界面提供有关验证过程的反馈。此功能对于通知用户其输入验证结果至关重要，特别是在复杂的表单或数据密集型应用程序中。

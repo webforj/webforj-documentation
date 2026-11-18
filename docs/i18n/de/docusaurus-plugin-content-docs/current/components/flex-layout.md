@@ -2,8 +2,10 @@
 title: FlexLayout
 sidebar_position: 45
 description: >-
-  Arrange children in rows or columns with the FlexLayout component, controlling
-  direction, justification, alignment, wrapping, and growth.
+  Ordnen Sie Elemente mit der FlexLayout-Komponente in Zeilen oder Spalten an
+  und steuern Sie Richtung, Verteilung, Ausrichtung, Umbruch und Wachstum.
+_i18n_title_hash: 8493a6c812bf04a03ee2b8d1b7d7aa90
+_i18n_description_hash: ab53c5c7ac9638ad61fce62a43764d7a
 _i18n_hash: cd16392e244062d863d403e50cc56ddd
 ---
 <JavadocLink type="flexlayout" location="com/webforj/component/layout/flexlayout/FlexLayout" top='true'/>

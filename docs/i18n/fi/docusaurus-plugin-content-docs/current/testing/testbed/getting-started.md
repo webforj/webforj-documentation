@@ -2,8 +2,11 @@
 sidebar_position: 1
 title: Aloittaminen
 description: >-
-  Add the TestBed dependency, write a first test that adds a view and acts on
-  it, and run the test.
+  Lisää webforJ TestBed -riippuvuus ja kirjoita sekä suorita ensimmäinen
+  selaimeton JUnit-testi, joka lisää näkymän ja käyttää sitä
+  ComponentLocatorilla ja UserInteractionilla.
+_i18n_title_hash: cb59b87e00d11222bfd9159d0d23836f
+_i18n_description_hash: 0b45a75e164520026074ae23f4e6a428
 _i18n_hash: 8a5fde986acda527dbefeadc4e0dc329
 ---
 # Aloittaminen <DocChip chip='since' label='26.03' />

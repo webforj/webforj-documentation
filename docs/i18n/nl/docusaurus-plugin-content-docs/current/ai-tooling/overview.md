@@ -3,8 +3,10 @@ title: webforJ AI-plug-in
 sidebar_position: 1
 slug: /ai-tooling
 description: >-
-  Install the webforJ AI plugin to add the MCP server and Agent Skills to Claude
-  Code, Copilot, Cursor, Gemini, and Codex in one step.
+  Installeer de webforJ AI-plug-in om in één stap de MCP-server en Agent Skills
+  toe te voegen aan Claude Code, Copilot, Cursor, Gemini en Codex.
+_i18n_title_hash: 406450d3519ed7bb39cb30e5813be747
+_i18n_description_hash: 1e404a8b90cee36bd52c39dcfb70f837
 _i18n_hash: 44bdaad98af3599ab5fcf57c6a4756c1
 ---
 De **webforJ AI-plugin** is de aanbevolen manier om je AI-coderingsassistent te verbinden met webforJ. Eén installatie geeft je assistent de volledige toolkit: live toegang tot webforJ-documentatie, projectopzet, thema-generatie, validatie van ontwerptokens en gestructureerde workflows die het leren aan hoe het alles correct te gebruiken.

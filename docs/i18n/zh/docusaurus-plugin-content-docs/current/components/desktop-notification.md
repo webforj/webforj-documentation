@@ -1,10 +1,10 @@
 ---
+sidebar_class_name: experimental-content
 title: DesktopNotification
 sidebar_position: 29
-description: >-
-  Send native OS notifications outside the browser window with the
-  DesktopNotification component for real-time messages, alerts, and status
-  changes.
+description: 使用 DesktopNotification 组件在浏览器窗口之外发送原生操作系统通知，实时推送消息、提醒和状态变更。
+_i18n_title_hash: cbf58d282ae9b23fc615bf55aa495e9a
+_i18n_description_hash: f9aa11e0057be75ab9e3e5c16450c3c2
 _i18n_hash: 529ae2fce596f744b423574be0a95dc0
 ---
 <DocChip chip='since' label='25.00' />

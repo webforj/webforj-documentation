@@ -1,7 +1,12 @@
 ---
 title: Ajouter des outils pour une vue ouverte
 sidebar_position: 20
-description: Add tools that work with an MCP App already open in the current conversation.
+description: >-
+  Publiez d’autres outils pour une MCP App déjà ouverte dans la conversation,
+  sous forme d’actions avec leurs propres paramètres ou d’un outil de mise à
+  jour réutilisant les paramètres fournis à l’ouverture.
+_i18n_title_hash: 746613a404d066e995f128f4f9a8206f
+_i18n_description_hash: 54c5c413a0ad07b7ef50cfc7fcce051a
 _i18n_hash: 0ad6819ba9550e2ffd2372c09b91a746
 ---
 Une application MCP peut publier des outils en plus de l'outil qui ouvre sa vue. Utilisez une action pour une opération distincte avec sa propre entrée. Implémentez l'observateur de mise à jour lorsque l'application a besoin d'un outil `inventory_update` avec la même entrée que son outil d'ouverture.

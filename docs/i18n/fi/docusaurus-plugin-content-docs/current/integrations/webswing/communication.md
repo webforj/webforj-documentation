@@ -1,6 +1,12 @@
 ---
 title: Viestintä
 sidebar_position: 3
+description: >-
+  Välitä toimintoja ja tapahtumia webforJ-sovelluksen ja upotetun
+  Swing-sovelluksen välillä WebswingConnectorin elinkaaren ja mukautettujen
+  toimintokäsittelijöiden avulla.
+_i18n_title_hash: 07a3dd247ad6bec7fe401aa11619959f
+_i18n_description_hash: ff71369ed4c59b3d245fa7a9333cba81
 _i18n_hash: 06bf57e08ee82a4970539b73215c1540
 ---
 `WebswingConnector` tarjoaa kaksisuuntaisen viestinnän webforJ-sovelluksesi ja upotetun Swing-sovelluksen välillä. Tämä mahdollistaa komentojen lähettämisen Swing-sovellukseen ja ilmoitusten vastaanottamisen sen sisällä tapahtuvista tapahtumista.

@@ -1,6 +1,9 @@
 ---
 sidebar_position: 4
 title: 评估器链
+description: 使用责任链模式，通过按优先级排序的评估器链评估路由访问权限。
+_i18n_title_hash: 98d72d3934038a7ee7ef067eee69dbc3
+_i18n_description_hash: 2ae51d5a0da5489be4b483fff2637312
 _i18n_hash: 5055a72d450daf8b98bdb995380a2e13
 ---
 评估器链是webforJ安全系统的核心。它是一个按优先级顺序排列的评估器序列，负责检查路由并利用责任链设计模式做出访问决策。理解这个链条的工作原理有助于您创建自定义评估器和排除意外的访问拒绝问题。

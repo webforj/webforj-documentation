@@ -3,8 +3,11 @@ title: RadioButton
 slug: radiobutton
 sidebar_position: 95
 description: >-
-  Add a single-choice RadioButton with text positioning, activation modes, and
-  grouping for mutually exclusive selections.
+  Lisää yksivalintainen RadioButton, jossa voit määrittää tekstin sijainnin ja
+  aktivointitavan sekä ryhmitellä vaihtoehdot niin, että vain yksi voidaan
+  valita.
+_i18n_title_hash: ccf0503df958552a245a3593e1063cd8
+_i18n_description_hash: dfda0c846bb4ec6add70fa9673bd1c6a
 _i18n_hash: b261deb2944ba67d2e9ae8cbbb8b26eb
 ---
 <DocChip chip='shadow' />

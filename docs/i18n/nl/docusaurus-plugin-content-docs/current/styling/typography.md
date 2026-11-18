@@ -1,6 +1,11 @@
 ---
 sidebar_position: 4
 title: Typografie
+description: >-
+  Stem de lettertypefamilie, -grootte, -dikte en regelhoogte af in webforJ-apps
+  met de CSS-custom properties voor typografie van DWC.
+_i18n_title_hash: 603850e072131401265c4fc01027db93
+_i18n_description_hash: d3d0f2dd8584ca8d89a71da697864551
 _i18n_hash: 7c5f036abf897a890cad14af0a64c6bd
 ---
 Typografie tokens worden gebruikt om een consistente set van letterstijlletjes door je app heen te handhaven.

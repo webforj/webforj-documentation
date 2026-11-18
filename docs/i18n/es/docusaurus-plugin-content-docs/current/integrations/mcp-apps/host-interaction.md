@@ -1,7 +1,12 @@
 ---
 title: Trabajar con el cliente MCP
 sidebar_position: 25
-description: Connect a rendered webforJ view to its MCP client.
+description: >-
+  Permite que una aplicación webforJ MCP renderizada interactúe con su cliente:
+  envía mensajes a la conversación, mantiene informado al modelo, sale de la
+  vista incrustada y sigue los cambios.
+_i18n_title_hash: 24fff6ea770815c5a817375183dc0393
+_i18n_description_hash: 7ff04cf57c5225b03eb08145cc9eafb3
 _i18n_hash: 082797b568bd8f308b625306c524d7ef
 ---
 Una aplicación MCP no tiene que mantener cada interacción dentro de su vista incrustada. Puede enviar información a la conversación, mantener al modelo informado a medida que el usuario cambia la interfaz de usuario o pedir al cliente que maneje algo fuera del marco.

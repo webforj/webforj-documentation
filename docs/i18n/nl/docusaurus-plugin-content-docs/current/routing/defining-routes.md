@@ -1,6 +1,11 @@
 ---
 sidebar_position: 3
 title: Routes definiëren
+description: >-
+  Koppel URL's aan webforJ-componenten met de @Route-annotatie en definieer
+  meerdere paden voor dezelfde weergave met @RouteAlias.
+_i18n_title_hash: 2d0483918fc7d51246d68af1677b6b67
+_i18n_description_hash: 7b8fcb2501a652a3bec3f747bc28428b
 _i18n_hash: 4f7189d5ef27386506e9ecf950f145ed
 ---
 Definiëren van routes is essentieel voor het koppelen van URL's aan specifieke componenten. Dit stelt je in staat om te bepalen hoe verschillende onderdelen van je UI worden weergegeven op basis van de URL-structuur. Het framework gebruikt de `@Route` annotatie om dit proces declaratief en eenvoudig te maken, waardoor de behoefte aan handmatige configuratie wordt verminderd.

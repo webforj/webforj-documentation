@@ -1,9 +1,9 @@
 ---
 sidebar_position: 2
 title: 可路由应用
-description: >-
-  Enable webforJ routing with the @Routify annotation to scan packages, manage
-  frames, and control browser history.
+description: 使用 @Routify 注解启用 webforJ 路由，扫描软件包、管理框架并控制浏览器历史记录。
+_i18n_title_hash: afbbb0ecce6720c310b7f377107a8c4b
+_i18n_description_hash: 706242abdbb1742879ab084137767921
 _i18n_hash: bea0848523a00ddfff8d79265ea699ac
 ---
 在 webforJ 中，路由是一个可选工具。开发人员可以选择使用 webforJ 路由解决方案或使用传统模型进行 `Frame` 操作而不进行深度链接。要启用路由，必须在实现 `App` 的类级别应用 **`@Routify`** 注解。这授予 webforJ 管理浏览器历史记录的权限，响应导航事件，并根据 URL 渲染应用的组件。

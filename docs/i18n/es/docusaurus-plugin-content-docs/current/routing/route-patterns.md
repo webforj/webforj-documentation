@@ -2,8 +2,11 @@
 sidebar_position: 5
 title: Patrones de ruta
 description: >-
-  Define dynamic URL segments, optional parameters, wildcards, and regex
-  constraints to match webforJ routes precisely.
+  Define segmentos dinámicos de URL, parámetros opcionales, comodines y
+  restricciones de expresiones regulares para hacer coincidir las rutas de
+  webforJ con precisión.
+_i18n_title_hash: e852c1a8c41ae5c7177d4e3e08d466fc
+_i18n_description_hash: 7fd2fcf7b040e6d79a1b6cd69fcfe610
 _i18n_hash: a6c1267e034c1562652cc01d0f336640
 ---
 **Los patrones de ruta** se utilizan para definir cómo las URL se mapean a vistas específicas, incluyendo segmentos dinámicos y opcionales, expresiones regulares y comodines. Los patrones de ruta permiten al marco coincidir con las URL, extraer parámetros y generar URL de forma dinámica. Juegan un papel crítico en la estructuración de la navegación y el renderizado de componentes de una aplicación según la ubicación del navegador.

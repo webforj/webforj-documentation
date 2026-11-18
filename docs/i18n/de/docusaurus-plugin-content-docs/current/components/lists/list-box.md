@@ -3,8 +3,10 @@ sidebar_position: 15
 title: ListBox
 slug: listbox
 description: >-
-  Show a scrollable, always-visible list with the ListBox component, supporting
-  single or multiple selection and keyboard navigation.
+  Zeigen Sie mit der ListBox-Komponente eine scrollbare, stets sichtbare Liste
+  mit Einzel- oder Mehrfachauswahl und Tastaturnavigation.
+_i18n_title_hash: a0270328c25f151f4e3eda791d349a1e
+_i18n_description_hash: 5b93fd0731f5f71f59b72739bf1563b5
 _i18n_hash: 0a9d307607ef33fdebb557f190abd7cf
 ---
 <DocChip chip='shadow' />

@@ -3,8 +3,11 @@ title: <dwc-color-chooser>
 sidebar_class_name: sidebar--item__hidden
 slug: color-chooser
 description: >-
-  Customize the dwc-color-chooser client component using CSS variables and
-  shadow parts to theme swatches, sliders, and preview surfaces.
+  Personaliza el componente cliente dwc-color-chooser con variables CSS y partes
+  shadow para aplicar estilos a muestras de color, controles deslizantes y
+  superficies de vista previa.
+_i18n_title_hash: 5a3167de9d934c1f7952376000454bbe
+_i18n_description_hash: bcae9856f9ecf63c9a5951802cd257a0
 _i18n_hash: f2efd807302baa806dbc6c492d0b283a
 ---
 <DocChip chip='scoped' />

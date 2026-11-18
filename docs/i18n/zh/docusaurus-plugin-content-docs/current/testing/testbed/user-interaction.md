@@ -1,9 +1,9 @@
 ---
 sidebar_position: 3
 title: 用户交互
-description: >-
-  Act on the components of a TestBed test through the same gestures a user
-  makes, and get the same events a user causes.
+description: 像用户一样通过手势操作 TestBed 测试中的组件，并获取用户触发的相同事件。
+_i18n_title_hash: b379ae9cadefbfa19b3cb284b2a4f17f
+_i18n_description_hash: 245b62a7ddafa9e115c0f775c7d15ccd
 _i18n_hash: 1abb4d1f79dc5eb1556e58df714dfac7
 ---
 你的代码可以对任何组件调用 `setValue` 或 `setEnabled`，但用户不行。用户会在看得见的字段中输入内容，并点击已启用的按钮。TestBed 测试则通过 `UserInteraction`，以用户的方式执行操作。它的每个动词都会检查用户是否能够做出该操作，然后执行操作，并让组件像用户在浏览器中操作时那样，将操作报告给监听器。

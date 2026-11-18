@@ -1,6 +1,11 @@
 ---
 sidebar_position: 4
 title: Typografie
+description: >-
+  Passen Sie Schriftfamilie, -größe, -stärke und Zeilenhöhe in webforJ-Apps mit
+  den CSS-Custom-Properties für Typografie von DWC an.
+_i18n_title_hash: 603850e072131401265c4fc01027db93
+_i18n_description_hash: d3d0f2dd8584ca8d89a71da697864551
 _i18n_hash: 7c5f036abf897a890cad14af0a64c6bd
 ---
 Typografietokens werden verwendet, um einen konsistenten Satz von Schriftstilen in Ihrer Anwendung beizubehalten.

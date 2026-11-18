@@ -2,9 +2,9 @@
 title: <dwc-timefield>
 sidebar_class_name: sidebar--item__hidden
 slug: timefield
-description: >-
-  Theme the dwc-timefield input through CSS variables and shadow parts for
-  label, border, segments, and picker affordance.
+description: 使用 CSS 变量和 shadow parts 为 dwc-timefield 输入框设置主题，涵盖标签、边框、各段内容和选择器触发控件。
+_i18n_title_hash: 83d887c34328fe4e510bd28606087b52
+_i18n_description_hash: 6a5f70c31a32a86bdd535e6c2baf5b60
 _i18n_hash: 30716c7843d2e5bdf6aa0fef558be81b
 ---
 <DocChip chip='shadow' />

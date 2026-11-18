@@ -2,8 +2,11 @@
 title: Manejo de errores
 sidebar_position: 5
 description: >-
-  Register custom ErrorHandler implementations through the Java Service Provider
-  Interface to respond to specific exceptions in webforJ apps.
+  Registra implementaciones personalizadas de ErrorHandler mediante la interfaz
+  Service Provider de Java para responder a excepciones específicas en
+  aplicaciones webforJ.
+_i18n_title_hash: ef43236673ca0bb606b14091061ac271
+_i18n_description_hash: b4ab779dfe355bf022be822e2fe09c15
 _i18n_hash: 55731ba6ae9454377d363fa461c817bc
 ---
 Manejar errores es un aspecto crucial en el desarrollo de aplicaciones web confiables. En webforJ, el manejo de errores está diseñado para ser flexible y personalizable, lo que permite a los desarrolladores gestionar excepciones de una manera que se ajuste mejor a las necesidades de su aplicación.

@@ -1,7 +1,9 @@
 ---
 title: 集成 AppLayout
 sidebar_position: 7
-description: Step 6 - Using the AppLayout and FlexLayout components.
+description: 教程第 6 步：使用 AppLayout、AppNav、FlexLayout 和路由出口将应用整合到一个布局中，打造接近 SideMenu 原型的结构。
+_i18n_title_hash: 1cf9808e378c413d31028f2590a4a1fe
+_i18n_description_hash: c1e6536f85e8d9aeb2a1089add85015d
 _i18n_hash: 3a2148bdfb680284a597a17c263609da
 ---
 在此步骤中，您将把应用的所有部分组合成一个连贯的应用布局。在此步骤结束时，您的应用结构将与 [SideMenu 原型](/docs/building-ui/archetypes/sidemenu) 非常相似，并且您将更好地理解以下组件和概念是如何工作的：

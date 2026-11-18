@@ -1,10 +1,12 @@
 ---
-title: 快照
+title: 快照构建
+sidebar_label: 快照
 sidebar_position: 30
 hide_table_of_contents: true
-description: >-
-  Locate the latest webforJ snapshot version and add the Central Portal
-  Snapshots repository to consume pre-release builds.
+description: 查找最新的 webforJ 快照版本，并添加 Central Portal Snapshots 仓库以使用预发布版本。
+_i18n_title_hash: 238a8ee47141de7ec8f9f2d01140e4f0
+_i18n_sidebar_label_hash: 9147e5e61a7b9260dec09f3a6eb3e5be
+_i18n_description_hash: 31020bb400212b1ecae391863dbb2742
 _i18n_hash: 646ace835d5ba39ed182935e8d7f33fb
 ---
 <Head>

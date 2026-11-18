@@ -2,9 +2,9 @@
 sidebar_class_name: experimental-content
 sidebar_position: 55
 title: 异步更新
-description: >-
-  Run background work off the UI thread and push updates back to webforJ
-  components safely with Environment.runLater and PendingResult.
+description: 在 UI 线程之外运行后台任务，并使用 Environment.runLater 和 PendingResult 安全地将更新推送回 webforJ 组件。
+_i18n_title_hash: 589533c21ad25ddb1775c794c511ee80
+_i18n_description_hash: 8c7c3d8f064c7a419a71b23d335ec740
 _i18n_hash: 7fedd93e44d699bba0a959504c7bb40c
 ---
 <DocChip chip='since' label='25.02' />

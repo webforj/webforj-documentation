@@ -2,9 +2,10 @@
 title: 从 Swing 转来
 sidebar_position: 5
 description: >-
-  Map Java Swing concepts such as JFrame, layout managers, listeners, the event
-  dispatch thread, table models, JOptionPane, and CardLayout to their webforJ
-  counterparts.
+  将 Java Swing 概念（如 JFrame、布局管理器、监听器、事件分发线程、表格模型、JOptionPane 和 CardLayout）映射到
+  webforJ 中的对应实现。
+_i18n_title_hash: 4334c9ef532372ad4ec7040646346991
+_i18n_description_hash: bb61f39a493a0bd89b7e48af68c639d2
 _i18n_hash: a55f88307cad0553b509d1cbb9c3a3f3
 ---
 本页将 Java Swing 桌面应用的概念与其在 webforJ 中的对应概念进行映射。在这两种框架中，UI 都是纯 Java：组件是 Java 对象，事件由监听器处理，布局通过代码组合而成。webforJ 在服务器上运行，框架会让浏览器与组件状态保持同步。有关其工作原理，请参阅[组件架构](/docs/architecture/controls-components)。

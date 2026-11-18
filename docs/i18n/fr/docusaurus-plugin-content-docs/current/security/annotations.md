@@ -1,6 +1,11 @@
 ---
 sidebar_position: 3
 title: Annotations de sécurité
+description: >-
+  Restreignez les routes webforJ de manière déclarative à l’aide des annotations
+  @AnonymousAccess, @PermitAll, @RolesAllowed et @DenyAll.
+_i18n_title_hash: ac394acb99ded5e96ab7288396076139
+_i18n_description_hash: 939afd4f65e19372829c31d69d178393
 _i18n_hash: 564a7d991d26edb972bc2c7c99366f37
 ---
 Les annotations de sécurité fournissent un moyen déclaratif de contrôler l'accès aux routes dans votre application webforJ. En ajoutant des annotations à vos composants de route, vous définissez qui peut accéder à chaque vue sans écrire de vérifications de permission manuelles. Le système de sécurité applique automatiquement ces règles avant que tout composant ne soit rendu.

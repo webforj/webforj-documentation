@@ -2,9 +2,12 @@
 sidebar_position: 5
 title: Elementit
 description: >-
-  Integrate raw HTML tags and custom web components in webforJ using the Element
-  class to add children, set content, and call JavaScript functions.
+  Integroi raakaa HTML:ää ja mukautettuja verkkokomponentteja webforJ:ssä
+  Element-luokan avulla: lisää lapsielementtejä, aseta sisältöä ja kutsu
+  JavaScript-funktioita.
 slug: element
+_i18n_title_hash: aa56a2e65d8106aef3c61e4f6bf94fdb
+_i18n_description_hash: 7198daecc02e269ec73afea1289bfe54
 _i18n_hash: dff3b1c4df821aad3c4c7a4c66cfff65
 ---
 <JavadocLink type="foundation" location="com/webforj/component/element/Element" top='true'/>

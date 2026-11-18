@@ -2,8 +2,10 @@
 sidebar_position: 2
 title: Apps enrutables
 description: >-
-  Enable webforJ routing with the @Routify annotation to scan packages, manage
-  frames, and control browser history.
+  Activa el enrutamiento de webforJ con la anotación @Routify para explorar
+  paquetes, gestionar marcos y controlar el historial del navegador.
+_i18n_title_hash: afbbb0ecce6720c310b7f377107a8c4b
+_i18n_description_hash: 706242abdbb1742879ab084137767921
 _i18n_hash: bea0848523a00ddfff8d79265ea699ac
 ---
 El enrutamiento en webforJ es una herramienta opcional. Los desarrolladores pueden elegir entre la solución de enrutamiento de webforJ o un modelo tradicional con manipulación de `Frame` y sin enlaces profundos. Para habilitar el enrutamiento, la anotación **`@Routify`** debe aplicarse a nivel de una clase que implemente `App`. Esto otorga a webforJ la autoridad para gestionar el historial del navegador, responder a eventos de navegación y renderizar los componentes de la aplicación en función de la URL.

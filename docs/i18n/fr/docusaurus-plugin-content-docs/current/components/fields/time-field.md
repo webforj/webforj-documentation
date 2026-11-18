@@ -3,8 +3,10 @@ sidebar_position: 40
 title: TimeField
 slug: timefield
 description: >-
-  A component that provides a default browser-based time picker for selecting a
-  time value through an input field.
+  Un composant qui fournit le sélecteur d’heure par défaut du navigateur pour
+  choisir une heure dans un champ de saisie.
+_i18n_title_hash: e52d5976aa9cd812d7f53c66d52ddc57
+_i18n_description_hash: d97d10efacdafc613bcf4925d66d5d75
 _i18n_hash: 9b4c187f1c86207e13b38812f0eb7e6c
 ---
 <DocChip chip='shadow' />

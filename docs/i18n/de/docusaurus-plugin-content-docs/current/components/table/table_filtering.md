@@ -3,8 +3,10 @@ sidebar_position: 35
 title: Filterung
 slug: filtering
 description: >-
-  Narrow Table rows by applying a Predicate through the bound Repository,
-  refreshing results on commit.
+  Filtern Sie Tabellenzeilen, indem Sie über das gebundene Repository ein
+  Predicate anwenden und die Ergebnisse beim Commit aktualisieren.
+_i18n_title_hash: 9a588db8471730dbfebac65cd5467ad8
+_i18n_description_hash: 16cf6eedec1585c3016bf61678214883
 _i18n_hash: 4e0709a55b763f553eeb8ddb8a3abb32
 ---
 Die `Table`-Komponente ermöglicht es Ihnen, Filterungen zu implementieren, um die angezeigten Daten basierend auf spezifischen Kriterien zu verfeinern. Filterung kann erreicht werden, indem ein Filterkriterium mit der Methode `setFilter(Predicate<T> filter)` definiert wird, die von dem mit der Tabelle verbundenen `Repository` bereitgestellt wird.

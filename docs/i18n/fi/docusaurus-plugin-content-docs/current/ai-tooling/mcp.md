@@ -2,8 +2,11 @@
 title: MCP-palvelin
 sidebar_position: 5
 description: >-
-  Connect AI assistants to the webforJ MCP server for live documentation lookup,
-  project scaffolding, theme generation, and token validation.
+  Yhdistä tekoälyavustajat webforJ MCP -palvelimeen dokumentaation
+  reaaliaikaista hakua, projektipohjien luontia, teemojen luontia ja tokenien
+  validointia varten.
+_i18n_title_hash: 38cf1e6288c629901954d1984d7f75f7
+_i18n_description_hash: fa9667b2f24a99a40648510f5e1ab53f
 _i18n_hash: e51aa2e6a5a0f6c37a18c404c1104684
 ---
 WebforJ Model Context Protocol (MCP) -palvelin liittää AI-koodin avustajat webforJ:n dokumentaatioon, API:hin, suunnittelutokeneihin ja rakennustyökaluihin. Sen sijaan, että avustaja arvailee kehyskonventioita, se kysyy palvelimelta ja saa vastauksia, jotka perustuvat todelliseen webforJ:iin.

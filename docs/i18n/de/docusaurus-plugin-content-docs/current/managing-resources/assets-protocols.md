@@ -2,8 +2,10 @@
 sidebar_position: 2
 title: Asset-Protokolle
 description: >-
-  Reference app resources with the webforJ ws, context, and icons protocols to
-  load static files, classpath content, and dynamic icons.
+  Referenzieren Sie App-Ressourcen über die webforJ-Protokolle ws, context und
+  icons, um statische Dateien, Classpath-Inhalte und dynamische Icons zu laden.
+_i18n_title_hash: ad36a9c9968f20e18457ef67e30389e5
+_i18n_description_hash: 9f72c9bf3d65820741fcad1244cdb710
 _i18n_hash: 3928ba255cb9887c80c20f904baf62b8
 ---
 webforJ unterstützt benutzerdefinierte Asset-Protokolle, die einen strukturierten und effizienten Zugriff auf Ressourcen ermöglichen. Diese Protokolle abstrahieren die Komplexitäten der statischen und dynamischen Ressourcenabfrage und gewährleisten, dass Assets nahtlos innerhalb der App abgerufen und integriert werden.

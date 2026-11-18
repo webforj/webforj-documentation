@@ -1,6 +1,11 @@
 ---
 sidebar_position: 3
 title: Värit
+description: >-
+  Määritä DWC:n väripaletit sävyn ja kylläisyyden lähtöarvoilla, jotka tuottavat
+  yhtenäiset sävyt pää-, tila- ja neutraaliväreille.
+_i18n_title_hash: 5d50889672f6f860d14f502de3de1957
+_i18n_description_hash: ca4b83cfb72b17ff6d45c7160386764c
 _i18n_hash: cc233e97e4b7333262eb47b14bfe572a
 ---
 webforJ tarjoaa värijärjestelmän, joka perustuu CSS:n mukautettaviin ominaisuuksiin. Nämä väri muuttujat säilyttävät johdonmukaisen visuaalisen tyylin sovelluksessasi, samalla kun annat täyden hallinnan mukauttaa väripaletteja suunnittelutarpeidesi mukaan.

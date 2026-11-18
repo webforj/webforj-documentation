@@ -2,8 +2,11 @@
 title: Projekteinrichtung
 sidebar_position: 1
 description: >-
-  Discover where to download the tutorial project, how to navigate it, and run
-  the apps within.
+  Holen Sie das webforJ-Tutorialprojekt per Quellcode, startforJ oder
+  Befehlszeile, lernen Sie Aufbau und Konfiguration kennen und starten Sie die
+  App jedes Schritts.
+_i18n_title_hash: 2876afc7fdfa9650513dfc9a2ffb3a93
+_i18n_description_hash: 1312c307fa70e0fe0e9d0e304f1a9f9c
 _i18n_hash: 95bc825bd041018765a732bf464d77b7
 ---
 Um mit diesem Tutorial zu beginnen, benötigen Sie einen Speicherort für Ihr Projekt, an dem Sie Ihre Klassen und Ressourcen verwalten können. In den folgenden Abschnitten werden die verschiedenen Möglichkeiten beschrieben, wie Sie Ihr webforJ-Projekt für dieses Tutorial erstellen können.

@@ -2,8 +2,10 @@
 sidebar_position: 6
 title: Exemple d'implémentation personnalisée
 description: >-
-  Build a session-based security stack by implementing SecurityConfiguration,
-  SecurityContext, SecurityManager, and SecurityRegistrar.
+  Mettez en place une pile de sécurité basée sur les sessions en implémentant
+  SecurityConfiguration, SecurityContext, SecurityManager et SecurityRegistrar.
+_i18n_title_hash: 3b3fc3ebbcefc179b89d2cb0776ad553
+_i18n_description_hash: d15bc6f7e55fb744acf1719ea673317d
 _i18n_hash: d9c19543624a63acab79e429e6289133
 ---
 Ce guide vous accompagne dans la construction d'une implémentation de sécurité personnalisée complète utilisant l'authentification basée sur les sessions. Vous apprendrez comment les quatre interfaces principales fonctionnent ensemble en les mettant en œuvre à partir de zéro.

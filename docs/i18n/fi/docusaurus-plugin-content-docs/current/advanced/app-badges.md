@@ -1,10 +1,12 @@
 ---
 sidebar_position: 38
-sidebar_class_name: new-content
 title: Sovelluksen merkit
 description: >-
-  Paint notification badges onto the operating system app icon and the browser
-  tab favicon.
+  Aseta ilmoitusmerkit käyttöjärjestelmän sovelluskuvakkeeseen App.setBadge- ja
+  selaimen välilehden favicon-kuvakkeeseen Page.setIconBadge-menetelmillä ja
+  selvitä, mitä kumpikin edellyttää.
+_i18n_title_hash: 3c0f7d310eca6067a9eef6de9145ea90
+_i18n_description_hash: 1b09a1435cd022425bc03df97e5b5353
 _i18n_hash: ff5a388432db849aa6d7b7ac1f48aa89
 ---
 # Sovelluksen merkinnät <DocChip chip='since' label='26.01' />

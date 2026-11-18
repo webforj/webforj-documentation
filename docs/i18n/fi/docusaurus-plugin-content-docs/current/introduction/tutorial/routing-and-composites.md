@@ -1,7 +1,12 @@
 ---
 title: Reititys ja Composites
 sidebar_position: 4
-description: Step 3 - Make your app navigable.
+description: >-
+  Tutoriaalin vaihe 3: siirrä käyttöliittymä omalle sivulleen, lisää sivu
+  uusille asiakkaille ja yhdistä sivut reitityksen, yhdistelmäkomponenttien ja
+  ColumnsLayout-asettelun avulla.
+_i18n_title_hash: 83bb9e48a7d161810744afd1d7db2dd3
+_i18n_description_hash: 97c35f7eb7cca920ea9c9222e8c36397
 _i18n_hash: f32a8552d85a9c85b565fe6f026c93bb
 ---
 Tähän asti tämä opetusohjelma on ollut vain yhden sivun sovellus. Tämä vaihe muuttaa sen. Siirrä käyttöliittymä, jonka loit [Työskentely datan kanssa](/docs/introduction/tutorial/working-with-data), omalle sivulleen ja luo toinen sivu uusien asiakkaiden lisäämiselle. Sitten yhdistät nämä sivut, jotta sovelluksesi pystyy navigoimaan niiden välillä soveltamalla näitä käsitteitä:

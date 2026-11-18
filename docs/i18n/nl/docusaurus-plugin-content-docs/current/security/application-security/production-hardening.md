@@ -2,8 +2,11 @@
 sidebar_position: 3
 title: Productie-hardening
 description: >-
-  Practical steps for running a webforJ app safely in production, from transport
-  encryption and dependency upkeep to server-side checks and disclosure.
+  Praktische stappen om een webforJ-app veilig in productie te draaien: van
+  transportversleuteling en bijgewerkte afhankelijkheden tot servercontroles en
+  openbaarmaking.
+_i18n_title_hash: 09f8f90702830845e3d1367de3eca29d
+_i18n_description_hash: 0b6b251e53807e5d480d50424a6d2568
 _i18n_hash: 62e3e574855705f8b97295f4ebe5169b
 ---
 webforJ's [server-driven model](/docs/architecture/client-server) en ingebouwde beveiligingen tegen [gebruikelijke bedreigingen](/docs/security/application-security/common-threats) dekken veel, maar een veilige implementatie hangt nog steeds af van hoe je de app opereert. De onderstaande stappen ronden het geheel af.

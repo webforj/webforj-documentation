@@ -1,6 +1,12 @@
 ---
 sidebar_position: 4
 title: Typographie
+description: >-
+  Ajustez la famille, la taille et le poids des polices, ainsi que la hauteur de
+  ligne dans vos applications webforJ grâce aux propriétés CSS personnalisées de
+  typographie DWC.
+_i18n_title_hash: 603850e072131401265c4fc01027db93
+_i18n_description_hash: d3d0f2dd8584ca8d89a71da697864551
 _i18n_hash: 7c5f036abf897a890cad14af0a64c6bd
 ---
 Les tokens typographiques sont utilisés pour maintenir un ensemble cohérent de styles de police dans toute votre application.

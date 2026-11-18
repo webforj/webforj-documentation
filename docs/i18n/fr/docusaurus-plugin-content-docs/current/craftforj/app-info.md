@@ -2,8 +2,11 @@
 title: Informations sur l'app
 sidebar_position: 10
 description: >-
-  Read the versions, Java runtime, and project root of the app craftforJ is
-  attached to.
+  craftforJ App Info révèle ce qui fait réellement tourner votre application :
+  versions de webforJ et BBj Services, environnement Java, système
+  d’exploitation et racine du projet.
+_i18n_title_hash: a98b1ca473ce24658a6b0d7e3da0ce51
+_i18n_description_hash: 2e5f0241dcd8b09393fd3e5ddeca035c
 _i18n_hash: c2bd1fec7e37fa34291d3ca88047dc04
 ---
 Les informations sur l'application rapportent ce que votre application exécute réellement, ce qui n'est pas toujours ce que votre `pom.xml` indique qu'elle devrait exécuter. En plus des versions webforJ et BBj Services, cela couvre l'exécution Java, le système d'exploitation et l'emplacement de l'application sur le disque.

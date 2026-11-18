@@ -2,8 +2,11 @@
 title: Eine Ansicht mit Eingabe öffnen
 sidebar_position: 15
 description: >-
-  Accept structured opening input in a routed MCP App and choose its requested
-  display mode.
+  Akzeptieren Sie strukturierte Eingaben beim Öffnen in einer gerouteten
+  MCP-App, damit die KI den Anfangszustand der Ansicht festlegt, und wählen Sie
+  den Anzeigemodus des Clients.
+_i18n_title_hash: 641ce292c434e6351081c2192b2fb20c
+_i18n_description_hash: 40ec8695fabff2edf283828b501926b8
 _i18n_hash: 158831b08974dd001c1322c38213e331
 ---
 Das Öffnen von Eingaben ermöglicht es der KI, den Anfangszustand einer Ansicht auszuwählen. Zum Beispiel kann eine Inventaranwendung einen Lagercode akzeptieren, wenn der Kunde sie öffnet, und diesen Wert anwenden, nachdem die Route gerendert wurde.

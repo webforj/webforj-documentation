@@ -2,8 +2,10 @@
 sidebar_position: 3
 title: Bloqueo de navegación
 description: >-
-  Intercept navigation with WillLeaveObserver veto handlers and the beforeunload
-  event to guard unsaved changes.
+  Intercepta la navegación con los manejadores de veto de WillLeaveObserver y el
+  evento beforeunload para proteger los cambios sin guardar.
+_i18n_title_hash: f77bf38ee81cebb7c3385d40529ae2b4
+_i18n_description_hash: 8f209d7ebac58484a6ef0ce3f318daf6
 _i18n_hash: 0deeb3e0583fdd425fe2a604ee1e9164
 ---
 La bloqueación de navegación agrega una o más capas de control a toda la API de enrutador subyacente. Si están presentes manejadores de bloqueo, la navegación será impedida de la siguiente manera:

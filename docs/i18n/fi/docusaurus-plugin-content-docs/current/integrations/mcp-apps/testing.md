@@ -2,8 +2,10 @@
 title: MCP-sovelluksen testaus
 sidebar_position: 10
 description: >-
-  Test a webforJ MCP App with an MCP Apps-capable host, including the Codex app,
-  Claude Desktop, and MCPJam.
+  Testaa webforJ MCP -sovellusta MCP Apps -yhteensopivassa isännässä, kuten
+  Codex-sovelluksessa, Claude Desktopissa ja MCPJamissa.
+_i18n_title_hash: 7f71eea7469350732da92cb8dbb4e4b6
+_i18n_description_hash: e20e4fdfb07d14a8402f4ac41e313b47
 _i18n_hash: fb9683202651a3aca86843cf27c0626e
 ---
 webforJ MCP-sovellukset voivat toimia missä tahansa MCP-sovelluksia tukeva isäntä. Ohjeet kattavat Codex-sovelluksen ja Claude Desktopin, jotka toimivat saavutettavan HTTPS-päätteen kautta, ja MCPJam:in localhostin kautta. Miniminen ei-tulo `inventory`-työkalu [Spring Boot -asetuksen](./spring) avulla riittää vahvistamaan, että isäntä voi löytää työkalun ja renderoida Inventory-näkymän.

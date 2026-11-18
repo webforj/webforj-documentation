@@ -2,8 +2,11 @@
 sidebar_position: 2
 title: Resurssien protokollat
 description: >-
-  Reference app resources with the webforJ ws, context, and icons protocols to
-  load static files, classpath content, and dynamic icons.
+  Viittaa sovelluksen resursseihin webforJ:n ws-, context- ja
+  icons-protokollilla ladataksesi staattisia tiedostoja, luokkapolun sisältöä ja
+  dynaamisia kuvakkeita.
+_i18n_title_hash: ad36a9c9968f20e18457ef67e30389e5
+_i18n_description_hash: 9f72c9bf3d65820741fcad1244cdb710
 _i18n_hash: 3928ba255cb9887c80c20f904baf62b8
 ---
 webforJ tukee mukautettuja resurssiprotokollia, jotka mahdollistavat rakenteellisen ja tehokkaan resurssien käytön. Nämä protokollat abstrahoivat staattisten ja dynaamisten resurssien noutamisen monimutkaisuudet, varmistaen, että varat haetaan ja integroidaan saumattomasti sovellukseen.

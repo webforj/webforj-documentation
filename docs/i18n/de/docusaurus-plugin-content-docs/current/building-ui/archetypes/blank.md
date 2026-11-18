@@ -1,7 +1,12 @@
 ---
 title: Leer
+description: >-
+  Erstelle mit dem Blank-Archetyp ein minimales webforJ-Projekt, um deine
+  App-Struktur ohne vordefinierte Komponenten von Grund auf aufzubauen.
 sidebar_position: 1
 hide_table_of_contents: true
+_i18n_title_hash: e4ef81cce7e4e10033ebb10962dfdd5e
+_i18n_description_hash: 9acc11cb921b6a3a65eadcda892c5772
 _i18n_hash: 3a773ecf2bc104d51d0cc7aff13cb7b9
 ---
 <Head>

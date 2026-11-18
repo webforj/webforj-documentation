@@ -3,8 +3,11 @@ title: Plugin installieren
 sidebar_position: 3
 displayed_sidebar: documentationSidebar
 description: >-
-  Configure the webforJ install Maven plugin with deploy URL, class name,
-  publish name, and debug flags for BBjServices deployments.
+  Konfigurieren Sie das webforJ-Maven-Installations-Plugin mit Deployment-URL,
+  Klassenname, Veröffentlichungsname und Debug-Flags für
+  BBjServices-Deployments.
+_i18n_title_hash: 3bacc5e229c5c7fd1c3a148923c99ad8
+_i18n_description_hash: b25aa4767e03c8d85843475f4120b6ac
 _i18n_hash: 1019285125db3439621951fe22047837
 ---
 :::danger Abgelehnt und wird entfernt

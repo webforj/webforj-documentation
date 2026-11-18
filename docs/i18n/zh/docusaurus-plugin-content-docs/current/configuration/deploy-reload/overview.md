@@ -2,9 +2,9 @@
 title: 重新部署与实时重载
 hide_table_of_contents: false
 hide_giscus_comments: true
-description: >-
-  Apply code changes to a running webforJ app during development, on the server
-  through hotswap or a restart, and in the browser through live reload.
+description: 开发期间将代码更改应用到正在运行的 webforJ 应用：服务器端通过热替换或重启，浏览器端通过实时重载。
+_i18n_title_hash: d038da25eadd3fa2b020437d8aac733d
+_i18n_description_hash: bf2e7ce0710fa98ee70bdafb74ac57eb
 _i18n_hash: 243a55fe41bec8aeb4dfc9f70561d80c
 ---
 在开发过程中，webforJ 将保存的更改应用于正在运行的应用程序并更新浏览器。类更改通过 [hotswap 工具](/docs/configuration/deploy-reload/hotswap) 或通过重启应用到达应用程序。无论使用哪种方式，实时重载都会在之后更新浏览器。

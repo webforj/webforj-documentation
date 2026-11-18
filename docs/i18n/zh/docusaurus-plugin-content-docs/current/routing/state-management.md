@@ -1,6 +1,9 @@
 ---
 sidebar_position: 7
 title: 状态管理
+description: 通过 BrowserHistory 的 pushState 和 replaceState 将应用状态反映到 URL，支持书签保存和浏览器后退导航。
+_i18n_title_hash: deff2cd7bbe8bd2c81e03c21664ae7d1
+_i18n_description_hash: c11e5ea3c10d7f872927b1be08d3a688
 _i18n_hash: 0766f2c08642792af2fe62e832b4fa1a
 ---
 创建无缝的动态用户体验通常需要将您的 web 应用的状态反映在 URL 中，并在浏览器导航事件之间保留该状态。您可以利用 URL 参数更新和浏览器历史状态管理而无需重新加载页面来实现这一点。这确保用户可以共享、书签或返回特定视图，同时应用程序完全了解他们之前的交互。

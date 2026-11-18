@@ -2,8 +2,11 @@
 sidebar_position: 1
 title: Primeros pasos
 description: >-
-  Add the TestBed dependency, write a first test that adds a view and acts on
-  it, and run the test.
+  Añade la dependencia de webforJ TestBed, escribe una primera prueba JUnit sin
+  navegador que agregue una vista e interactúe con ella mediante
+  ComponentLocator y UserInteraction, y ejecútala.
+_i18n_title_hash: cb59b87e00d11222bfd9159d0d23836f
+_i18n_description_hash: 0b45a75e164520026074ae23f4e6a428
 _i18n_hash: 8a5fde986acda527dbefeadc4e0dc329
 ---
 # Primeros pasos <DocChip chip='since' label='26.03' />

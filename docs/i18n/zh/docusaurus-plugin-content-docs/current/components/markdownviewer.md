@@ -1,9 +1,9 @@
 ---
 title: MarkdownViewer
 sidebar_position: 74
-description: >-
-  Render markdown as HTML with the MarkdownViewer component, supporting append,
-  auto-scroll, and progressive typewriter rendering.
+description: 使用 MarkdownViewer 组件将 Markdown 渲染为 HTML，并支持追加内容、自动滚动和渐进式打字机效果。
+_i18n_title_hash: 0ec1906d4d7506b75ef06d6be10e0aca
+_i18n_description_hash: f95538f595dac0ea43af8e323ff53f32
 _i18n_hash: fbd31d2317bf5de95c282a1319f35cf6
 ---
 <DocChip chip='shadow' />

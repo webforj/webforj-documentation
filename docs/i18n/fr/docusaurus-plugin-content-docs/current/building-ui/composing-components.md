@@ -2,8 +2,10 @@
 sidebar_position: 4
 title: Composer des Composants
 description: >-
-  Combine webforJ components into reusable units by extending Composite,
-  configuring the bound component, and overriding initBoundComponent.
+  Combinez les composants webforJ en unités réutilisables en étendant Composite,
+  en configurant le composant associé et en redéfinissant initBoundComponent.
+_i18n_title_hash: e43adba83fbf856801fd348335a61ee0
+_i18n_description_hash: ac4550149d05f69c40cd7170844c0e80
 _i18n_hash: 7ca404aa73a9fd445ce7cd3da09b8155
 ---
 <JavadocLink type="foundation" location="com/webforj/component/Composite" top='true'/>

@@ -2,7 +2,12 @@
 title: Daten validieren und binden
 sidebar_position: 6
 pagination_next: null
-description: Step 5 - Add validation checks and bind data to the UI.
+description: >-
+  Tutorial Schritt 5: Binden Sie das Formular mit der webforJ-Datenbindung an
+  die Customer-Entität und ergänzen Sie Validierungen, damit Nutzer vollständige
+  und korrekte Daten eingeben.
+_i18n_title_hash: 1b39fb4dd349eb66fe08e936754d96dd
+_i18n_description_hash: 8e9a4e957d28ea020d323e4584e497b2
 _i18n_hash: 97f423188eb353ac27b8e9179e93b224
 ---
 Ihre App aus [Beobachter und Routenparameter](/docs/introduction/tutorial/observers-and-route-parameters) kann `FormView` verwenden, um vorhandene Kundendaten zu bearbeiten. In diesem Schritt kommt [Datenbindung](/docs/data-binding/overview) zum Einsatz. Sie verbindet UI-Komponenten direkt mit dem Datenmodell und synchronisiert Werte automatisch. Dadurch benötigt Ihre App weniger Boilerplate-Code. Außerdem können Sie der Spring-Entität `Customer` Validierungsprüfungen hinzufügen, sodass Ihre Benutzer beim Ausfüllen von Formularen vollständige und korrekte Angaben machen. In diesem Schritt lernen Sie die folgenden Konzepte kennen:

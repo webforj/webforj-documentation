@@ -1,10 +1,10 @@
 ---
 title: 属性配置
 sidebar_position: 1
-description: >-
-  Set webforJ entry points, debug mode, locales, file upload limits, and servlet
-  mappings through webforj.conf and web.xml.
+description: 通过 webforj.conf 和 web.xml 配置 webforJ 入口点、调试模式、本地化设置、文件上传限制和 Servlet 映射。
 sidebar_class_name: updated-content
+_i18n_title_hash: cb9dd723d3b323d636ee3ba8fd9a7d65
+_i18n_description_hash: 449b0eb801dd7bbb704adde8c17ce13b
 _i18n_hash: fd84f72aa62a993485d33fe9a94ab0d1
 ---
 # 配置 webforJ 属性

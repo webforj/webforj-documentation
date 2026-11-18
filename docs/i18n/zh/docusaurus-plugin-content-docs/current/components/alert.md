@@ -1,9 +1,9 @@
 ---
 title: Alert
 sidebar_position: 5
-description: >-
-  Display contextual feedback messages with the Alert component, including
-  themes, expanses, dismissible close events, and rich content.
+description: 使用 Alert 组件显示上下文反馈消息，涵盖主题、尺寸、可关闭状态与关闭事件，以及丰富内容。
+_i18n_title_hash: b92071d61c88498171928745ca53078b
+_i18n_description_hash: 8782dad2d0339ec66d647f9aeb5be54d
 _i18n_hash: 1008b6fbbcfab4361660689ceb08135c
 ---
 <DocChip chip='shadow' />

@@ -2,8 +2,10 @@
 sidebar_position: 4
 title: Secrets beheren
 description: >-
-  Keep database passwords, API keys, and other secrets out of your webforJ
-  source tree and configuration files by resolving them at runtime.
+  Houd databasewachtwoorden, API-sleutels en andere geheimen buiten je
+  webforJ-broncode en configuratiebestanden door ze tijdens runtime op te halen.
+_i18n_title_hash: 5b750c6625464d4376d77d8495173d45
+_i18n_description_hash: 8d59287c4a268f383d320a083ca67267
 _i18n_hash: 3c20f1e66f7fb00f96c26f0b00d46f07
 ---
 De regel achter elk geheim, een databasewachtwoord, een API-sleutel, een ondertekeningssleutel, is dat de werkelijke waarde nooit in je code, je `webforj.conf` of je repository leeft. Los het in plaats daarvan tijdens runtime op, zodat dezelfde build in elke omgeving draait en een gelekte repository niets prijsgeeft.

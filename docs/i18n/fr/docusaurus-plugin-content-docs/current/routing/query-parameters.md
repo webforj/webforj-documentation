@@ -1,6 +1,11 @@
 ---
 sidebar_position: 6
 title: Paramètres de requête
+description: >-
+  Lisez, convertissez et parcourez les valeurs des paramètres de requête URL
+  dans les vues webforJ avec les API ParametersBag et Location.
+_i18n_title_hash: 42bb3c16fb1e5d71306e769416df7852
+_i18n_description_hash: 80ce375665ca668e1ebac1e2f993818e
 _i18n_hash: 5a8313b16d83bfbef6e8d43589430f90
 ---
 Les paramètres de requête vous permettent de passer des données supplémentaires via les URL, en utilisant le format `?key1=value1&key2=value2`. Alors que les paramètres de route sont utilisés pour passer des données requises dans le chemin de l'URL, les paramètres de requête fournissent un mécanisme flexible pour passer des données optionnelles ou supplémentaires. Ils sont particulièrement utiles lors du filtrage de contenu, du tri ou de la gestion de plusieurs valeurs pour la même clé.

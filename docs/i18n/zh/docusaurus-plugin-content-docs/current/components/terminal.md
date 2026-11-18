@@ -1,9 +1,9 @@
 ---
 title: Terminal
 sidebar_position: 126
-description: >-
-  Embed an interactive terminal emulator with the Terminal component for shells,
-  dashboards, debug consoles, and remote access tools.
+description: 使用 Terminal 组件嵌入交互式终端模拟器，适用于 Shell、仪表板、调试控制台和远程访问工具。
+_i18n_title_hash: 514d8a494f087c0d549b9536c2ef3bd9
+_i18n_description_hash: dfc70e8cc93b57d86753ad3e8497a97e
 _i18n_hash: 231986360b04eb43ad3b6fecc9f02816
 ---
 <DocChip chip="shadow" />

@@ -2,8 +2,10 @@
 title: Teema
 sidebar_position: 6
 description: >-
-  Adjust the DWC design tokens of a running webforJ app, preview the result
-  immediately, and save it into your stylesheet.
+  Muokkaa käynnissä olevan webforJ-sovelluksen DWC-design-tokeneita, esikatsele
+  tulosta heti ja tallenna se tyylitiedostoosi.
+_i18n_title_hash: d721757161f7f70c5b0949fdb6ec2c30
+_i18n_description_hash: a8284dc3eaa8e204246a898c1e69582b
 _i18n_hash: fe089afe4f44e457a98622707bf995e5
 ---
 Teema-välilehdellä voit muuttaa sovelluksesi ulkoasua sen ollessa käynnissä. Se toimii sovelluksesi jo käyttämien [DWC-suunnittelutunnisteiden](/docs/styling/css-variables) kanssa, joten yksittäinen muutos vaikuttaa kaikkiin kyseistä tunnistetta käyttäviin komponentteihin sen sijaan, että muuttaisit sääntöjä yksi kerrallaan.

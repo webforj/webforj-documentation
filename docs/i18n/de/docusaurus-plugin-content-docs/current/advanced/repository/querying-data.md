@@ -2,8 +2,11 @@
 title: Daten abfragen
 sidebar_position: 3
 description: >-
-  Build typed filters, sorting, and pagination with QueryableRepository and
-  RepositoryCriteria for in-memory collections or external sources.
+  Implementiere typisierte Filter, Sortierung und Paginierung mit
+  QueryableRepository und RepositoryCriteria für In-Memory-Sammlungen oder
+  externe Quellen.
+_i18n_title_hash: 7c9ca50a0502b5634e20a005ccaa3f46
+_i18n_description_hash: d95a49eefec2422f8abf7ca3f675507b
 _i18n_hash: 4bb2af4f510fd31035042c2f1e3a24c7
 ---
 <!-- vale off -->

@@ -1,6 +1,11 @@
 ---
 sidebar_position: 2
 title: Perusarkkitehtuuri
+description: >-
+  Tutustu webforJ:n käyttöoikeuksien hallintaa ohjaaviin keskeisiin
+  rajapintoihin: RouteSecurityManager, Context, Configuration ja Evaluator.
+_i18n_title_hash: b6aaffd5f07403b7f17fe59120ce4bc7
+_i18n_description_hash: bfc7489b37a66f03a3b1f78bdf34407f
 _i18n_hash: 0506f859c3bd22ddca70550b6f3e368a
 ---
 webforJ -turvajärjestelmä perustuu ydinliittymien perusrakenteeseen, joka toimii yhdessä tarjotakseen reittikohtaista pääsynvalvontaa. Nämä liittymät määrittelevät turvallisuuskäyttäytymiseen liittyvät sopimukset, jolloin erilaiset toteutukset, olivatpa ne istuntopohjaisia, JSON Web Tokeneihin (JWT) perustuvia, LDAP-integroituja tai tietokantapohjaisia, voivat liittää samaan perustavaan kehykseen.

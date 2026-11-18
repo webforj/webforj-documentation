@@ -2,8 +2,10 @@
 title: Fehlersuche
 sidebar_position: 15
 description: >-
-  Attach a remote Java debugger to a running webforJ app from Visual Studio
-  Code, IntelliJ IDEA, or Eclipse using Jetty on port 8000.
+  Verbinden Sie einen Remote-Java-Debugger über Jetty auf Port 8000 mit einer
+  laufenden webforJ-App in Visual Studio Code, IntelliJ IDEA oder Eclipse.
+_i18n_title_hash: da7d763aac39b294c7453c77c10d8239
+_i18n_description_hash: a9b597788ed11cee25324e4c220963a8
 _i18n_hash: 6e761f399c4a1f8d562acf85f92af615
 ---
 Debugging ist ein wesentlicher Bestandteil der Java-Entwicklung und hilft Entwicklerinnen und Entwicklern, Probleme effizient zu erkennen und zu beheben. Diese Anleitung erklärt, wie Sie das Debugging in webforJ für Visual Studio Code, IntelliJ IDEA und Eclipse konfigurieren.

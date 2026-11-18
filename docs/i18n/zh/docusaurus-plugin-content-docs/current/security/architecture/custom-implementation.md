@@ -2,8 +2,10 @@
 sidebar_position: 6
 title: 自定义实现示例
 description: >-
-  Build a session-based security stack by implementing SecurityConfiguration,
-  SecurityContext, SecurityManager, and SecurityRegistrar.
+  通过实现 SecurityConfiguration、SecurityContext、SecurityManager 和
+  SecurityRegistrar，构建基于会话的安全体系。
+_i18n_title_hash: 3b3fc3ebbcefc179b89d2cb0776ad553
+_i18n_description_hash: d15bc6f7e55fb744acf1719ea673317d
 _i18n_hash: d9c19543624a63acab79e429e6289133
 ---
 本指南介绍如何通过基于会话的身份验证构建完整的自定义安全实现。您将通过从头开始实现这四个核心接口，了解它们是如何协同工作的。

@@ -2,8 +2,10 @@
 sidebar_position: 6
 title: Apps testen
 description: >-
-  Start a TestBed test with the routes or the whole app, navigate, test secured
-  routes, answer dialogs, control timers, and answer for the browser.
+  Start een TestBed-test met routes of de hele app, navigeer, test beveiligde
+  routes, beantwoord dialogen, beheer timers en handel browserprompts af.
+_i18n_title_hash: 2b27784755b2277a897d0e090935069a
+_i18n_description_hash: 86e54866c6ec66c419b5c8aafddfe5db
 _i18n_hash: 4194d4d355b0e26f86b8c3c53ea353c9
 ---
 Een view staat zelden op zichzelf. Een route leidt ernaartoe, routebeveiliging kan de toegang bewaken, de view vraagt de gebruiker om input via dialogen, werkt zichzelf bij op een timer en vraagt de browser om antwoorden. In een actieve app speelt een server, een gebruiker, de klok en de browser elk hun rol. In een TestBed-test speelt de test al die rollen: de test bepaalt welk deel van de app wordt uitgevoerd, navigeert zoals de adresbalk dat doet, beantwoordt dialogen namens de gebruiker, bepaalt wanneer er tijd verstrijkt en geeft antwoorden namens de browser.

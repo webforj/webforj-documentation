@@ -2,9 +2,10 @@
 sidebar_position: 10
 title: Siirtymät ja easing
 description: >-
-  Animate UI changes with consistent DWC duration tokens and cubic-bezier easing
-  curves for natural-feeling transitions.
-sidebar_class_name: updated-content
+  Animoi käyttöliittymän muutokset yhdenmukaisilla DWC-kestotunnuksilla ja
+  cubic-bezier-hidastuskäyrillä, jotta siirtymät tuntuvat luonnollisilta.
+_i18n_title_hash: 69a0b34a7d2c7891737bf58cf112d3c3
+_i18n_description_hash: 1ac2b00435c458a52a4b623472fb3b34
 _i18n_hash: d99ffb6e3feed9642c483aab7b42d227
 ---
 Siirtymämismuutujia käytetään tarjoamaan johdonmukaisia animaatioiden kestoja sovelluksessasi. Ne ohjaavat kuinka kauan animaatio kestää suorittaa.

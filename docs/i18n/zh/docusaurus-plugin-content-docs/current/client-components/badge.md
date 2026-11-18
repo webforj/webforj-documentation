@@ -2,9 +2,9 @@
 title: <dwc-badge>
 sidebar_class_name: sidebar--item__hidden
 slug: badge
-description: >-
-  Customize the dwc-badge client component via CSS variables and shadow parts to
-  theme color, size, radius, and label placement.
+description: 通过 CSS 变量和 shadow parts 自定义 dwc-badge 客户端组件，调整主题颜色、尺寸、圆角和标签位置。
+_i18n_title_hash: e9ded2812c523d59035b99b779158fe0
+_i18n_description_hash: e2268a07d371c9f1e01e1f5d324e4ad9
 _i18n_hash: 21ac358b665a1c7ca7329c3cdda64d94
 ---
 <DocChip chip='shadow' />

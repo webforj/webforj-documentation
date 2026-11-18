@@ -1,6 +1,11 @@
 ---
 sidebar_position: 4
 title: Contextresultaten
+description: >-
+  Controleer ValidationResult na een schrijfactie van BindingContext, reageer op
+  BindingContextValidateEvent en focus automatisch op de eerste validatiefout.
+_i18n_title_hash: e7d8a9375af19d900fa8a28d7b45dd54
+_i18n_description_hash: 529756d0434ff4cbcebbf992f81dc7fe
 _i18n_hash: b86bc425ad8c1537e99a44fa34a93b3a
 ---
 Wanneer je gegevens van de gebruikersinterface naar het model schrijft, activeert de `write`-methode van de `BindingContext` de validaties. De validatieresultaten bepalen of de gegevens acceptabel zijn.

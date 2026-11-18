@@ -1,6 +1,11 @@
 ---
 title: Tablas de objetos y cadenas
 sidebar_position: 45
+description: >-
+  Almacena objetos Java compartidos y valores de cadena en toda la aplicación o
+  por sesión HTTP con ObjectTable, SessionObjectTable y StringTable.
+_i18n_title_hash: 37132a5869c490e9daef74f8ebef0b39
+_i18n_description_hash: f5444ec2a09c6cfddf6b4f34b0db888f
 _i18n_hash: 2ec33737ccaf06670b4c1cd16369d858
 ---
 La `ObjectTable`, `SessionObjectTable` y `StringTable` proporcionan acceso estático a datos compartidos en un entorno webforJ. Todos son accesibles desde cualquier parte de su aplicación y sirven diferentes propósitos:

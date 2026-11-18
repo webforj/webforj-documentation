@@ -1,6 +1,12 @@
 ---
 title: Die DSL erweitern
 sidebar_position: 20
+description: >-
+  Erweitern Sie die webforJ-Kotlin-DSL um benutzerdefinierte Komponenten und
+  zusammengesetzte Widgets mit HasComponents-Erweiterungsfunktionen und dem
+  init-Helfer.
+_i18n_title_hash: 014c4cceda14f1687856a5a58adbbeaf
+_i18n_description_hash: 57d3ef483b81236e4197e2e67ca7b5de
 _i18n_hash: d9b9528f9a0fb3489ff11391012158f5
 ---
 Die Kotlin DSL ist erweiterbar und ermöglicht das Hinzufügen von DSL-Funktionen für benutzerdefinierte Komponenten oder Bibliotheken von Drittanbietern. Sie können zusammengesetzte Komponenten erstellen, die die DSL intern verwenden.

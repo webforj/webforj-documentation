@@ -1,6 +1,11 @@
 ---
 sidebar_position: 5
 title: Koot ja välit
+description: >-
+  Sovella asetteluissa yhdenmukaista komponenttien koko- ja välitysskaalaa DWC:n
+  rem-pohjaisilla koko- ja välimuuttujilla.
+_i18n_title_hash: c90e72ac432a0d05b25985d0532144c9
+_i18n_description_hash: ce424529b081c0661f49736ded38b9d4
 _i18n_hash: 05261a33707bc38ade5e855f5ae5ce47
 ---
 Spacing and sizing tokens are used to provide consistent spacing and sizing in your app. All sizing and spacing properties are defined in `rem`.

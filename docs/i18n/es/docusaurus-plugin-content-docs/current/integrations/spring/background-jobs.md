@@ -2,8 +2,10 @@
 title: Tareas en segundo plano
 sidebar_position: 25
 description: >-
-  Run Spring @Async services from webforJ views and marshal progress and results
-  back to the UI thread with Environment.runLater.
+  Ejecuta servicios Spring @Async desde vistas de webforJ y devuelve el progreso
+  y los resultados al hilo de la interfaz con Environment.runLater.
+_i18n_title_hash: dab970e99be91f87ed9529a337f3f1e7
+_i18n_description_hash: 6f8f6d2a9b85f45bdc3c544bff6f892a
 _i18n_hash: 2760d6db6a7b7045e7612ca359d04a28
 ---
 Cuando los usuarios hacen clic en un botón para generar un informe o procesar datos, esperan que la interfaz siga respondiendo. Las barras de progreso deberían animarse, los botones deberían reaccionar al pasar el cursor y la aplicación no debería congelarse. La anotación `@Async` de Spring lo hace posible al trasladar las operaciones de larga duración a subprocesos en segundo plano.

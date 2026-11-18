@@ -1,10 +1,11 @@
 ---
 title: Styling-talen
 sidebar_position: 11
-sidebar_class_name: new-content
 description: >-
-  Author your styles in CSS, compile them from Sass or Less, or generate them
-  with Tailwind, and load the result into a webforJ app.
+  Schrijf je stijlen in CSS, compileer ze vanuit Sass of Less, of genereer ze
+  met Tailwind, en laad het resultaat in een webforJ-app.
+_i18n_title_hash: ef323f16958e1b8b7e2d2e9e170f4717
+_i18n_description_hash: c218c1194810a334b7f6b55f9094ee85
 _i18n_hash: 98eca77023e33bac367a1a250da900d7
 ---
 Je stijlen bereiken de pagina als CSS, maar je hoeft ze niet als CSS te schrijven. webforJ laadt een stylesheet die je hebt geschreven, compileert er één vanuit een preprocessor zoals Sass of Less, of genereert er één vanuit Tailwind, en het resultaat stijlt je weergaven op dezelfde manier, ongeacht waar het vandaan komt. De DWC-tokens, [CSS aangepaste eigenschappen](/docs/styling/css-variables), en [schaduw onderdelen](/docs/styling/shadow-parts) die in de rest van deze sectie worden besproken, zijn van toepassing binnen elk van hen.

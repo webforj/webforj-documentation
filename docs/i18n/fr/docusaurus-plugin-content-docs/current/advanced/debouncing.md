@@ -3,8 +3,11 @@ sidebar_position: 21
 title: Anti-rebond
 slug: debouncing
 description: >-
-  Delay actions until activity settles using the Debouncer class for
-  search-as-you-type, autosave, and other rate-limited UI work.
+  Différez les actions jusqu’à ce que l’activité se stabilise avec la classe
+  Debouncer, pour la recherche au fil de la saisie, la sauvegarde automatique et
+  les autres tâches d’interface limitées en fréquence.
+_i18n_title_hash: 20e7f92910587581e04225888f0594df
+_i18n_description_hash: 110fb7142cdd2c1c1fa3a00b11a8357c
 _i18n_hash: fd81dccbd2aeb6e50922c2d09de536de
 ---
 <DocChip chip='since' label='25.11' />

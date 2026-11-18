@@ -1,6 +1,11 @@
 ---
 sidebar_position: 2
 title: Schaduwonderdelen
+description: >-
+  Benader de shadow DOM van webforJ-componenten met de CSS-selector ::part() om
+  interne elementen te stylen en encapsulatie te behouden.
+_i18n_title_hash: 31662a0c4a4442424487da769c5b3950
+_i18n_description_hash: 99f09e929e55f230ab49324e4bac39bd
 _i18n_hash: bad90a86a29eaf34485d5ee9150aacb3
 ---
 CSS **Schaduw Onderdelen** geven ontwikkelaars een manier om elementen binnen de schaduw DOM van een component van buitenaf te stylen, terwijl de encapsulatie behouden blijft.

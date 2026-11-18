@@ -1,10 +1,11 @@
 ---
 sidebar_position: 38
-sidebar_class_name: new-content
 title: App-Badges
 description: >-
-  Paint notification badges onto the operating system app icon and the browser
-  tab favicon.
+  Badges mit App.setBadge am Betriebssystem-App-Symbol und Page.setIconBadge am
+  Browser-Tab-Favicon anzeigen – samt nötigen Voraussetzungen.
+_i18n_title_hash: 3c0f7d310eca6067a9eef6de9145ea90
+_i18n_description_hash: 1b09a1435cd022425bc03df97e5b5353
 _i18n_hash: ff5a388432db849aa6d7b7ac1f48aa89
 ---
 # App-Abzeichen <DocChip chip='since' label='26.01' />

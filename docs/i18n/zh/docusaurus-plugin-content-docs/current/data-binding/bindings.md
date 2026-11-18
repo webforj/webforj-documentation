@@ -1,10 +1,9 @@
 ---
 sidebar_position: 2
 title: 绑定
-sidebar_class_name: updated-content
-description: >-
-  Link Java Bean properties to webforJ UI components through BindingContext to
-  synchronize reads and writes between model and view.
+description: 通过 BindingContext 将 Java Bean 属性绑定到 webforJ UI 组件，实现模型与视图之间的读写同步。
+_i18n_title_hash: 7f6d3619d9855ce68f747dbc829eb7c1
+_i18n_description_hash: 4f8f35d7dc178f4e8971bdd0f46f32e5
 _i18n_hash: 9a4b6da2f5a3bd524a0b3cf6a1eb86e1
 ---
 在 webforJ 中，绑定将 Java Bean 的特定属性链接到 UI 组件。这种链接可以实现 UI 和后端模型之间的自动更新。每个绑定都可以处理数据同步、验证、转换和事件管理。

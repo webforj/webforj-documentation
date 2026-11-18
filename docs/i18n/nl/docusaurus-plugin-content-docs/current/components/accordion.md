@@ -2,8 +2,10 @@
 sidebar_position: 1
 title: Accordion
 description: >-
-  Group collapsible panels with the Accordion and AccordionPanel components to
-  toggle visibility and coordinate expand or collapse behavior.
+  Groepeer inklapbare panelen met de Accordion- en AccordionPanel-componenten om
+  de zichtbaarheid te schakelen en uit- of inklapgedrag af te stemmen.
+_i18n_title_hash: 4d5aae0b218a0bb62ff4513b66fc34d0
+_i18n_description_hash: 3410360c5b0af762c8a47e18ace42629
 _i18n_hash: 6537c2d24bfc99dd866f27277ed4f197
 ---
 <DocChip chip='shadow' />

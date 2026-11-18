@@ -1,10 +1,10 @@
 ---
 sidebar_position: 4
 title: 路由导航
-description: >-
-  Trigger client-side navigation programmatically with Router.navigate, pass
-  parameters, and switch views without reloads.
+description: 使用 Router.navigate 以编程方式触发客户端导航、传递参数，并在不重新加载页面的情况下切换视图。
 sidebar_class_name: updated-content
+_i18n_title_hash: c5ea3746fbe3df3509bcb240f3fb6699
+_i18n_description_hash: e889bdb63426de32d6804643d04818ef
 _i18n_hash: 0284f2481f307d68da728d81f4b3a6a2
 ---
 在webforJ中，在路由之间导航是根据用户操作或URL更改切换视图和组件的核心机制。导航允许用户在应用程序的不同部分之间无缝移动，而无需刷新页面。这种客户端导航使应用程序保持响应和流畅，同时保留应用程序的状态。

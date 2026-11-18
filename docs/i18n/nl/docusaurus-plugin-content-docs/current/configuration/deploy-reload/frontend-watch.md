@@ -2,8 +2,11 @@
 title: Frontend bewaken
 sidebar_position: 20
 description: >-
-  Rebuild the sources under src/main/frontend while a webforJ app runs, applying
-  stylesheet and image output in place and reloading the view for script output.
+  Bouw de bronnen onder src/main/frontend opnieuw op terwijl een webforJ-app
+  actief is, pas stylesheet- en afbeeldingsuitvoer direct toe en herlaad de
+  weergave voor scriptuitvoer.
+_i18n_title_hash: 87d66a6e5b9e657405313f309833cd07
+_i18n_description_hash: d5b96b8ea22c6930a214e543b2de01da
 _i18n_hash: 065e4f5ad8868a6758e682f38e2dd3b9
 ---
 De frontend watch rebuildt de bronnen onder `src/main/frontend` terwijl de app draait en stuurt de output naar de browser. Het is de ontwikkelingszijde van de [frontend bundler](/docs/managing-resources/bundler/overview) en vereist dat `webforj.devtools.livereload.enabled` aan staat, zie de [instellingen](/docs/configuration/deploy-reload/overview#settings).

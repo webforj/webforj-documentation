@@ -4,8 +4,10 @@ hide_table_of_contents: true
 hide_giscus_comments: true
 sidebar_class_name: has-new-content
 description: >-
-  Combine webforJ with Spring Boot, Spring Data, Kotlin DSL, Webswing, JBang,
-  and AI tooling while keeping your backend stack independent.
+  Combina webforJ con Spring Boot, Spring Data, Kotlin DSL, Webswing, JBang y
+  herramientas de IA sin acoplar tu stack de backend.
+_i18n_title_hash: e01aecb528730f3bfe10f9d57f1317bf
+_i18n_description_hash: 7852312ad863b9413ed92d7f27e590d1
 _i18n_hash: 2272fe4265260266e667c1b22703a3b6
 ---
 <Head>

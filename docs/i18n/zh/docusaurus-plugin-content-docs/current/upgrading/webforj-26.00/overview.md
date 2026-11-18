@@ -1,9 +1,13 @@
 ---
 title: 升级到 26.00
-description: Upgrade from 25.00 to 26.00
+description: >-
+  将 webforJ 应用从 25.00 升级到 26.00：Java 21 或 25、新 Maven 仓库 URL、Spring Boot、Table 和
+  Repository API 变更，以及 DWC 26。
 slug: /upgrading/webforj-26.00
 pagination_next: null
 sidebar_position: 1
+_i18n_title_hash: 35a959230718667d6e2ffd94f999c317
+_i18n_description_hash: 79e9f8c965681706044b4ee4aba2a992
 _i18n_hash: 3b9827a67a81e207508d7db72a650b64
 ---
 此文档作为将webforJ应用程序从25.00升级到26.00的指南。

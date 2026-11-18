@@ -1,9 +1,9 @@
 ---
 title: Dialog
 sidebar_position: 30
-description: >-
-  Open modal popups with the Dialog component, including header, content, and
-  footer sections, backdrop blur, and configurable close behavior.
+description: 使用 Dialog 组件打开模态弹窗，包含标题、内容和页脚区域、背景模糊效果及可配置的关闭行为。
+_i18n_title_hash: d2ab42830caa7a02b36d96a46dd44b8d
+_i18n_description_hash: d1e271fd0769d139404b027c9bc57553
 _i18n_hash: 8f78bdc280006c73955232e7f52ed365
 ---
 <DocChip chip='shadow' />

@@ -2,9 +2,11 @@
 title: Eigenschap Configuratie
 sidebar_position: 1
 description: >-
-  Set webforJ entry points, debug mode, locales, file upload limits, and servlet
-  mappings through webforj.conf and web.xml.
+  Configureer toegangspunten, debugmodus, landinstellingen, limieten voor
+  bestanduploads en servletkoppelingen voor webforJ via webforj.conf en web.xml.
 sidebar_class_name: updated-content
+_i18n_title_hash: cb9dd723d3b323d636ee3ba8fd9a7d65
+_i18n_description_hash: 449b0eb801dd7bbb704adde8c17ce13b
 _i18n_hash: fd84f72aa62a993485d33fe9a94ab0d1
 ---
 # Configureren van webforJ-eigenschappen

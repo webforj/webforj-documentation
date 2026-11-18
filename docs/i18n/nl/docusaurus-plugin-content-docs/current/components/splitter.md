@@ -2,8 +2,11 @@
 title: Splitter
 sidebar_position: 115
 description: >-
-  Divide a layout into resizable master and detail panels with the Splitter
-  component, with min and max sizes and orientation control.
+  Verdeel een lay-out in verstelbare hoofd- en detailpanelen met de
+  Splitter-component, met minimale en maximale afmetingen en instelbare
+  oriëntatie.
+_i18n_title_hash: 41cb9b797ebc6f6f6314e3ded935f4cf
+_i18n_description_hash: 075f2623075198f5026c957924617adf
 _i18n_hash: c700d01058105b5b752ecfa560224fb5
 ---
 <DocChip chip='shadow' />

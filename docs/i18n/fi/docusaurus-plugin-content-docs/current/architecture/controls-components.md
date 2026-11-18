@@ -2,8 +2,11 @@
 sidebar_position: 10
 title: Komponenttiarkkitehtuuri
 description: >-
-  See how webforJ components are built on the DwcComponent base class, why
-  component classes are final, and why composition replaces inheritance.
+  Tutustu siihen, miten webforJ-komponentit rakentuvat DwcComponent-perusluokan
+  varaan, miksi komponenttiluokat ovat final ja miksi kompositio korvaa
+  perinnän.
+_i18n_title_hash: 7a4630c005d8b0818b5638516ad4d213
+_i18n_description_hash: a6deb81b80d301647bdea62a37649387
 _i18n_hash: 13c29b780cb00a918fe6e0a98c5e783a
 ---
 webforJ tarjoaa Java-rajapinnan verkkokomponenttikirjastoon ja hallinnoi jokaista komponenttia palvelimelta käsin. Tällä sivulla kerrotaan, miten komponentit on jäsennelty ja miten niitä voi laajentaa.

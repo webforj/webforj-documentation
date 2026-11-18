@@ -1,7 +1,11 @@
 ---
 sidebar_position: 11
 title: Locale-beheer
-sidebar_class_name: new-content
+description: >-
+  Configureer de app-locale, detecteer deze automatisch via de browser en
+  reageer op taalschakelingen tijdens runtime via de LocaleObserver-interface.
+_i18n_title_hash: 92a9c50e6080bdb01af2f1a8df1a3070
+_i18n_description_hash: 4ab8ba1da1bbbadc79c0b423a2553e6d
 _i18n_hash: d3dcb4b1ded50923232cb33225364239
 ---
 # Locatiebeheer <DocChip chip='since' label='25.10' />

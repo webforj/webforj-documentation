@@ -1,6 +1,11 @@
 ---
 sidebar_position: 2
 title: Geneste routes
+description: >-
+  Stel hiërarchieën van ouder-kindroutes samen met de outletparameter van @Route
+  om lay-outs te delen en UI in verschillende weergaven te hergebruiken.
+_i18n_title_hash: e2119c007b50b2af6331785f9f03b752
+_i18n_description_hash: 9f67baa4b0a157ea25104063e0c0df64
 _i18n_hash: 5324d20d84c35f52067d0ba6d6448b71
 ---
 Geneste routes stellen het mogelijk om child routes te renderen binnen parent routes, waardoor een modulaire en herbruikbare UI ontstaat. Parent routes definiëren gedeelde componenten, terwijl child routes worden geïnjecteerd in specifieke uitgangen binnen deze parent componenten.

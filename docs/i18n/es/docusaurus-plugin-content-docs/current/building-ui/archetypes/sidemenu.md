@@ -1,7 +1,12 @@
 ---
 title: SideMenu
+description: >-
+  Genera una aplicación multipágina de webforJ a partir del arquetipo SideMenu,
+  con navegación lateral y un área de contenido con rutas.
 sidebar_position: 3
 hide_table_of_contents: true
+_i18n_title_hash: e4e66895677ea3ae16fd61b90150788e
+_i18n_description_hash: c37d5764a23ecbe44c75040d3e64c74d
 _i18n_hash: a8150cceeca3327741d5f44c557df167
 ---
 <Head>

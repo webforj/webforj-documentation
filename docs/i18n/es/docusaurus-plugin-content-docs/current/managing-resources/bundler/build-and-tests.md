@@ -1,10 +1,12 @@
 ---
 title: Compilación y pruebas
 sidebar_position: 40
-sidebar_class_name: new-content
 description: >-
-  What the bundler does across the build, the development watch, running
-  frontend tests, tuning a compiler, and producing a minified production bundle.
+  Qué hace el empaquetador durante la compilación, el modo de vigilancia en
+  desarrollo, las pruebas del frontend, el ajuste del compilador y la creación
+  de un paquete de producción minificado.
+_i18n_title_hash: 7ebb84344b819b0bf4de3f1294d8256d
+_i18n_description_hash: d69abb2df92bcb04ffb6b0b0ae136fc7
 _i18n_hash: 0fe6e8ed747a106be1fedf5a2506f803
 ---
 import Tabs from '@theme/Tabs';

@@ -3,8 +3,10 @@ sidebar_position: 40
 title: Interactiviteit
 slug: Interactivity
 description: >-
-  Reference the keyboard shortcuts that move focus, select rows, and navigate
-  cells in the Table component.
+  Raadpleeg de sneltoetsen om de focus te verplaatsen, rijen te selecteren en
+  door cellen in de Table-component te navigeren.
+_i18n_title_hash: fcbe6546766fcb51d1197a3d75a7a7f4
+_i18n_description_hash: 84575804ecb073661d379d81f9143b66
 _i18n_hash: 49377400524e9e1c3a25dd35cfb7750c
 ---
 Het `Table`-component reageert op verschillende toetsenbordinvoer van gebruikers, zodat ze er nauwkeuriger mee kunnen werken. In de volgende lijst staan de verschillende gedragingen wanneer de aangegeven toets wordt ingedrukt:

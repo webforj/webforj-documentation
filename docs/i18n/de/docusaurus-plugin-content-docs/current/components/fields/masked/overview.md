@@ -3,6 +3,11 @@ sidebar_position: 1
 title: Maskierte Felder
 hide_table_of_contents: true
 hide_giscus_comments: true
+description: >-
+  Sorgen Sie mit maskierten Feldkomponenten und gemeinsamen Formatierungsregeln
+  für strukturierte Eingaben von Datumsangaben, Uhrzeiten, Zahlen und Kennungen.
+_i18n_title_hash: dc1cc70e0c06aa95e082fe86cf858a37
+_i18n_description_hash: b30f619ed3eba334cafe0f0df1161da9
 _i18n_hash: f613888a848d8f0b2da31066485b9bfc
 ---
 <Head>

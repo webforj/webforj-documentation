@@ -2,8 +2,11 @@
 title: Project instellen
 sidebar_position: 1
 description: >-
-  Discover where to download the tutorial project, how to navigate it, and run
-  the apps within.
+  Haal het webforJ-tutorialproject op via de broncode, startforJ of de
+  opdrachtregel, ontdek hoe het is opgebouwd en geconfigureerd en voer de app
+  van elke stap uit.
+_i18n_title_hash: 2876afc7fdfa9650513dfc9a2ffb3a93
+_i18n_description_hash: 1312c307fa70e0fe0e9d0e304f1a9f9c
 _i18n_hash: 95bc825bd041018765a732bf464d77b7
 ---
 Om met deze tutorial te beginnen, heb je een locatie voor je project nodig waar je je klassen en resources kunt beheren. In de volgende secties worden de verschillende manieren beschreven waarop je je webforJ-project voor deze tutorial kunt maken.

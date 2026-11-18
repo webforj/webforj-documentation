@@ -1,10 +1,12 @@
 ---
 sidebar_position: 2
 title: Enlaces
-sidebar_class_name: updated-content
 description: >-
-  Link Java Bean properties to webforJ UI components through BindingContext to
-  synchronize reads and writes between model and view.
+  Vincula las propiedades de Java Bean con componentes de interfaz de usuario de
+  webforJ mediante BindingContext para sincronizar lecturas y escrituras entre
+  el modelo y la vista.
+_i18n_title_hash: 7f6d3619d9855ce68f747dbc829eb7c1
+_i18n_description_hash: 4f8f35d7dc178f4e8971bdd0f46f32e5
 _i18n_hash: 9a4b6da2f5a3bd524a0b3cf6a1eb86e1
 ---
 Un enlace en webforJ conecta una propiedad específica de un Java Bean a un componente de UI. Este vínculo permite actualizaciones automáticas entre la UI y el modelo del backend. Cada enlace puede manejar la sincronización de datos, validación, transformación y gestión de eventos.

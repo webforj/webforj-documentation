@@ -3,8 +3,10 @@ sidebar_position: 10
 title: Selección
 slug: selection
 description: >-
-  Configure single, multi, or no-selection modes on the Table and respond to row
-  selection events with appropriate listeners.
+  Configura los modos de selección única, múltiple o sin selección en Table y
+  responde a los eventos de selección de filas con los listeners adecuados.
+_i18n_title_hash: 6ff9dd0d34f65181173c1e4bc39939de
+_i18n_description_hash: 5234b547d33af3354beaed6b39f2abf8
 _i18n_hash: 47f6b24c0a0621d810e5e2975a0b4749
 ---
 El componente `Table` ofrece diversas capacidades de selección. Hay métodos para seleccionar un solo elemento, múltiples elementos o gestionar selecciones de manera programática.

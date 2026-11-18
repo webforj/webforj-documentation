@@ -1,9 +1,11 @@
 ---
 title: App-basis
 description: >-
-  Walk through the Application and HomeView classes of the hello-world archetype
-  to see how routing, annotations, and views shape a webforJ app.
+  Bekijk de klassen Application en HomeView van de hello-world-archetype en
+  ontdek hoe routing, annotaties en views een webforJ-app vormgeven.
 sidebar_position: 3
+_i18n_title_hash: e48edafdc7bcfdffa196d313ed92facc
+_i18n_description_hash: d1fd89c71b0a465e14d96c833f078c57
 _i18n_hash: 2ebddfe300802013e4376681bc2ccf04
 ---
 Zodra webforJ en zijn afhankelijkheden zijn ingesteld in uw project, bent u klaar om de app-structuur te maken. Dit artikel behandelt de belangrijkste elementen van een basis webforJ-app, met specifieke focus op de `Application` en `HomeView` klassen, die de basis klassen zijn in het `webforj-archetype-hello-world` starterproject.

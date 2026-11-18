@@ -2,8 +2,10 @@
 title: Spinner
 sidebar_position: 110
 description: >-
-  Indicate background activity with the Spinner component, configuring theme,
-  expanse, rotation speed, and pause or resume.
+  Ilmaise taustatoiminta Spinner-komponentilla määrittämällä teema, laajuus,
+  pyörimisnopeus sekä keskeyttäminen tai jatkaminen.
+_i18n_title_hash: 9b2c85dd7af17d4528bd7489e72c59c5
+_i18n_description_hash: b1645e51ce0cd1c1d3fa1956a515ee94
 _i18n_hash: 6a667297edb572a6990b58bee72c8b1b
 ---
 <DocChip chip="shadow" />

@@ -3,8 +3,10 @@ title: BBjServices
 sidebar_position: 45
 sidebar_class_name: new-content
 description: >-
-  Set up live reload and hotswap for a webforJ app that runs in the BBjServices
-  of your own machine through BBjShip.
+  Määritä live reload ja hotswap webforJ-sovellukselle, joka toimii oman koneesi
+  BBjServices-palveluissa BBjShipin kautta.
+_i18n_title_hash: eb97b1db9b06f14a61c4bc40bbf5417c
+_i18n_description_hash: a9c8628ad4d7e7f1ab55604d48f7b1e8
 _i18n_hash: 46a42789a4b05b258a057e9acae1ef12
 ---
 BBjServicesissä rakentaminen ei aloita omaa palvelinta. `mvn compile webforj:watch` käynnistää sovelluksen oman koneen BBjServicesissä suoraan projektilta. BBj-makuinen arkkityyppiprojekti asettaa tämän oletus Maven-tavoitteeksi, joten `mvn` ilman argumentteja kääntää sovelluksen, käynnistää [frontend watch](/docs/configuration/deploy-reload/frontend-watch) -tapahtuman ja suorittaa sovelluksen.

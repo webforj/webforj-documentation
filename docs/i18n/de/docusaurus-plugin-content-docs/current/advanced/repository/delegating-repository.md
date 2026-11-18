@@ -2,8 +2,11 @@
 title: Benutzerdefinierte Datenquellen
 sidebar_position: 4
 description: >-
-  Wire REST APIs, databases, or external services to webforJ components by
-  supplying find, count, and key-lookup functions to DelegatingRepository.
+  Verbinden Sie REST-APIs, Datenbanken oder externe Dienste mit
+  webforJ-Komponenten, indem Sie DelegatingRepository Funktionen für find, count
+  und Schlüsselabfragen bereitstellen.
+_i18n_title_hash: fef40af7c35e0f087a78842487f49e67
+_i18n_description_hash: ee4b7c98567805ee16c713e4d2fce688
 _i18n_hash: 7d203b803816c64e9ca77d8b49bf34ed
 ---
 <!-- vale off -->

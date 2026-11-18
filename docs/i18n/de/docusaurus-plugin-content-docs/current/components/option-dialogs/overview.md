@@ -2,6 +2,11 @@
 sidebar_position: 35
 title: Options-Dialoge
 hide_giscus_comments: true
+description: >-
+  Erstellen Sie modale Dialoge in webforJ, die die Serverausführung blockieren,
+  bis der Nutzer antwortet – nach dem JOptionPane-Muster von Swing.
+_i18n_title_hash: bb95c24008fccb9eb46dea4c70a999a2
+_i18n_description_hash: d36986b2075fb59a2ebf060fbc0e743d
 _i18n_hash: 4d818d70f6238be10dc8913d19ed47b7
 ---
 <!-- vale off -->

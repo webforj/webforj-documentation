@@ -1,10 +1,11 @@
 ---
 sidebar_position: 2
 title: Thèmes
-sidebar_class_name: updated-content
 description: >-
-  Apply built-in light, dark, and dark-pure themes with @AppTheme or define
-  custom themes through data-app-theme selectors.
+  Appliquez les thèmes intégrés clair, sombre et sombre pur avec @AppTheme, ou
+  définissez des thèmes personnalisés à l’aide des sélecteurs data-app-theme.
+_i18n_title_hash: 83915d1254927f41241e8630890bec6e
+_i18n_description_hash: 1368c75dc54022ae158f6ea3e7ffd22e
 _i18n_hash: 91e1a18f11aadea66df804dbaa4917d9
 ---
 Un thème dans webforJ est un ensemble nommé de propriétés CSS personnalisées (jetons de conception) qui contrôlent l'apparence de chaque composant. Changer de thème recalculera instantanément les couleurs, les ombres, les surfaces et les bordures dans l'ensemble de l'application, sans reconstruction.

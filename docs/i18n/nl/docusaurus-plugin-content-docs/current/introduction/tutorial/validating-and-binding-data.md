@@ -2,7 +2,12 @@
 title: Gegevens valideren en binden
 sidebar_position: 6
 pagination_next: null
-description: Step 5 - Add validation checks and bind data to the UI.
+description: >-
+  Tutorial stap 5: koppel het formulier aan de Customer-entiteit met
+  webforJ-databinding en voeg validatiecontroles toe, zodat gebruikers volledige
+  en nauwkeurige gegevens invoeren.
+_i18n_title_hash: 1b39fb4dd349eb66fe08e936754d96dd
+_i18n_description_hash: 8e9a4e957d28ea020d323e4584e497b2
 _i18n_hash: 97f423188eb353ac27b8e9179e93b224
 ---
 Je app uit [Observers and Route Parameters](/docs/introduction/tutorial/observers-and-route-parameters) kan `FormView` gebruiken om bestaande klantgegevens te bewerken. In deze stap gebruik je [Data binding](/docs/data-binding/overview), waarmee UI-componenten rechtstreeks met het datamodel worden verbonden, zodat waarden automatisch worden gesynchroniseerd. Hierdoor bevat je app minder boilerplate en kun je validatiecontroles toevoegen aan de Spring-entiteit `Customer`. Zo zorg je ervoor dat gebruikers volledige en juiste informatie invullen in formulieren. In deze stap komen de volgende concepten aan bod:

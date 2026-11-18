@@ -1,6 +1,9 @@
 ---
 sidebar_position: 6
 title: 查询参数
+description: 在 webforJ 视图中，使用 ParametersBag 和 Location API 读取、转换类型并遍历 URL 查询字符串值。
+_i18n_title_hash: 42bb3c16fb1e5d71306e769416df7852
+_i18n_description_hash: 80ce375665ca668e1ebac1e2f993818e
 _i18n_hash: 5a8313b16d83bfbef6e8d43589430f90
 ---
 查询参数允许您通过 URL 传递附加数据，使用格式 `?key1=value1&key2=value2`。而路由参数用于在 URL 路径中传递必需的数据，查询参数则提供了一种灵活的机制来传递可选或附加数据。当过滤内容、排序或处理同一键的多个值时，它们特别有用。

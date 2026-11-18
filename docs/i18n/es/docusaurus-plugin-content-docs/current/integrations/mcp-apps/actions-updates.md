@@ -1,7 +1,12 @@
 ---
 title: Agregar herramientas para una vista abierta
 sidebar_position: 20
-description: Add tools that work with an MCP App already open in the current conversation.
+description: >-
+  Publica más herramientas para una aplicación MCP ya abierta en la
+  conversación, como acciones con entradas propias o una herramienta de
+  actualización que reutiliza la entrada inicial.
+_i18n_title_hash: 746613a404d066e995f128f4f9a8206f
+_i18n_description_hash: 54c5c413a0ad07b7ef50cfc7fcce051a
 _i18n_hash: 0ad6819ba9550e2ffd2372c09b91a746
 ---
 Una aplicación MCP puede publicar herramientas además de la herramienta que abre su vista. Usa una acción para una operación distinta con su propia entrada. Implementa el observador de actualizaciones cuando la aplicación necesite una herramienta `inventory_update` con la misma entrada que su herramienta de apertura.

@@ -1,6 +1,12 @@
 ---
 title: Communication
 sidebar_position: 3
+description: >-
+  Échangez des actions et des événements entre une application webforJ et une
+  application Swing intégrée grâce au cycle de vie de WebswingConnector et à des
+  gestionnaires d’actions personnalisés.
+_i18n_title_hash: 07a3dd247ad6bec7fe401aa11619959f
+_i18n_description_hash: ff71369ed4c59b3d245fa7a9333cba81
 _i18n_hash: 06bf57e08ee82a4970539b73215c1540
 ---
 Le `WebswingConnector` fournit une communication bidirectionnelle entre votre application webforJ et l'application Swing intégrée. Cela vous permet d'envoyer des commandes à l'application Swing et de recevoir des notifications lorsque des événements se produisent à l'intérieur.

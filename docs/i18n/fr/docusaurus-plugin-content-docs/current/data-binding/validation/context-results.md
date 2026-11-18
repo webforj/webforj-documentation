@@ -1,6 +1,12 @@
 ---
 sidebar_position: 4
 title: Résultats de contexte
+description: >-
+  Inspectez ValidationResult après une écriture dans BindingContext, réagissez à
+  BindingContextValidateEvent et donnez automatiquement le focus à la première
+  violation.
+_i18n_title_hash: e7d8a9375af19d900fa8a28d7b45dd54
+_i18n_description_hash: 529756d0434ff4cbcebbf992f81dc7fe
 _i18n_hash: b86bc425ad8c1537e99a44fa34a93b3a
 ---
 Lorsque vous écrivez des données de l'UI vers le modèle, la méthode `write` du `BindingContext` déclenche les validations. Les résultats de validation déterminent si les données sont acceptables.

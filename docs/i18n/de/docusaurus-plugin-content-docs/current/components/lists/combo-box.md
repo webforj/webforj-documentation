@@ -3,8 +3,11 @@ sidebar_position: 10
 title: ComboBox
 slug: combobox
 description: >-
-  Combine a dropdown list with a text input in the ComboBox to let users select
-  preset items or type custom values with placeholder support.
+  Die ComboBox kombiniert Dropdown-Liste und Texteingabe, sodass Nutzer
+  vordefinierte Einträge auswählen oder eigene Werte eingeben können – mit
+  Platzhalter.
+_i18n_title_hash: fd249a0c28275ebf9d4c8464ca2225cf
+_i18n_description_hash: bd993c0717d59d21c084b125bd8e2cb5
 _i18n_hash: 9e5c0f54f07f604ee91a84210189ca30
 ---
 <DocChip chip='shadow' />

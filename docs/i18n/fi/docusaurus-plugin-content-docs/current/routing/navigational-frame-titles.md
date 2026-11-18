@@ -2,8 +2,10 @@
 sidebar_position: 10
 title: Navigointikehyksen otsikot
 description: >-
-  Set browser frame titles per route with the @FrameTitle annotation or generate
-  them dynamically using HasFrameTitle.
+  Määritä selaimen kehyksen otsikot reittikohtaisesti @FrameTitle-annotaatiolla
+  tai luo ne dynaamisesti HasFrameTitle-rajapinnan avulla.
+_i18n_title_hash: 8aa2c696e6ad4b2612b85b0a8b89e517
+_i18n_description_hash: abcdb6bc334f7fe8c0b777c908af1333
 _i18n_hash: 7b190f89d8eeb58df6d8a25ce863cc5e
 ---
 In webforJ, kaikki reitit renderöidään Frame-kontainerissa, joka toimii yläpään säilönä nykyisen reitin sisällön näyttämiseksi. Kun käyttäjät navigoivat eri reittien välillä, Frame-otsikko päivitetään dynaamisesti heijastamaan aktiivista näkymää, mikä auttaa tarjoamaan selkeää kontekstia käyttäjän nykyisestä sijainnista sovelluksessa.

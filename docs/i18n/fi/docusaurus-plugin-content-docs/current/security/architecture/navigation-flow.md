@@ -2,8 +2,10 @@
 sidebar_position: 3
 title: Navigointivirta
 description: >-
-  Trace how RouteSecurityObserver intercepts navigation, runs evaluators, and
-  redirects users before any view renders.
+  Seuraa, miten RouteSecurityObserver sieppaa navigoinnin, ajaa arvioijat ja
+  ohjaa käyttäjät uudelleen ennen näkymän renderöintiä.
+_i18n_title_hash: 6badde74c2e26d4f0486f2b4b491745a
+_i18n_description_hash: b801bb30c1fa7b39e5cc2ec5cb3f60bd
 _i18n_hash: bf6b927b675a5784340999a5e268581c
 ---
 webforJ:n tietoturvan valvonta tapahtuu automaattisesti navigoinnin aikana. Kun käyttäjä napsauttaa linkkiä tai siirtyy reitille, tietoturvajärjestelmä sieppaa navigoinnin, arvioi käyttöoikeussäännöt ja joko sallii navigoinnin jatkua tai ohjaa käyttäjän sopivalle sivulle. Käyttäjät eivät huomaa tätä sieppausta, eikä komponenttikoodiin tarvitse lisätä manuaalisia tietoturvatarkistuksia.

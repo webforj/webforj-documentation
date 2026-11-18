@@ -2,9 +2,9 @@
 title: 应用更改
 sidebar_position: 4
 sidebar_class_name: new-content
-description: >-
-  Review the changes you made in craftforJ as a diff, choose where each one is
-  written, and apply them to your Java source.
+description: 以差异形式查看你在 craftforJ 中所做的更改，选择每项更改的写入位置，并将其应用到 Java 源代码中。
+_i18n_title_hash: 1d4bdf08028cc5435b587d169fcbcca6
+_i18n_description_hash: 94b3ce8de0f856395c768daf8badda83
 _i18n_hash: c421d594499c29fdae8dd88ca6e35e3d
 ---
 在 craftforJ 中更改属性会立即影响正在运行的应用，除此之外不会做任何更改。若要保留更改，请先检查，再将其写入对应的 Java 文件。本页将介绍这一步骤。

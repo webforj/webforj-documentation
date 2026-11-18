@@ -1,10 +1,15 @@
 ---
 sidebar_position: 30
-title: Tests
+title: Tester avec Spring Boot
+sidebar_label: Tests
 description: >-
-  Test a webforJ Spring Boot app without a browser with @SpringBootTest and
-  @WebforjTest, with injected beans and Spring Security on routes.
+  Testez une application webforJ avec Spring Boot sans navigateur grâce à
+  @SpringBootTest et @WebforjTest, avec des beans injectés et Spring Security
+  appliqué aux routes.
 sidebar_class_name: new-content
+_i18n_title_hash: 8d82a1e400f9e685fcd681c82650d41b
+_i18n_sidebar_label_hash: fa6a5a3224d7da66d9e0bdec25f62cf0
+_i18n_description_hash: 72fe3d7eea930520dd90cffc7ac44227
 _i18n_hash: be6b059b304f8b957535c4ce318ac31c
 ---
 # Tests <DocChip chip='since' label='26.03' />

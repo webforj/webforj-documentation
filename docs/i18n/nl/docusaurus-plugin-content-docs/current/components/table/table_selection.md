@@ -3,8 +3,10 @@ sidebar_position: 10
 title: Selectie
 slug: selection
 description: >-
-  Configure single, multi, or no-selection modes on the Table and respond to row
-  selection events with appropriate listeners.
+  Stel enkelvoudige, meervoudige of geen selectiemodus in voor de Table en
+  reageer op rijselectiegebeurtenissen met de juiste listeners.
+_i18n_title_hash: 6ff9dd0d34f65181173c1e4bc39939de
+_i18n_description_hash: 5234b547d33af3354beaed6b39f2abf8
 _i18n_hash: 47f6b24c0a0621d810e5e2975a0b4749
 ---
 De `Table`-component biedt verschillende selectiemogelijkheden. Er zijn methoden voor het selecteren van een enkel item, meerdere items of het programmatically beheren van selecties.

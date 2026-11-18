@@ -1,6 +1,11 @@
 ---
 sidebar_position: 11
 title: Route-registratie
+description: >-
+  Registreer, werk bij en verwijder routes tijdens runtime via de RouteRegistry
+  API voor dynamische, rolbewuste navigatie.
+_i18n_title_hash: 8a7bc298f8cb539f9cf61da9a122766e
+_i18n_description_hash: 272079001ee3337284a48bdd42c714e1
 _i18n_hash: def139d3db58322c269afef10acdf5fd
 ---
 In aanvulling op [het registreren van routes met de `@Route` annotaties](./defining-routes), is het mogelijk om routes dynamisch te registreren, bij te werken of te verwijderen tijdens runtime op basis van app-logica, gebruikersrollen of andere voorwaarden. Deze flexibiliteit stelt je in staat om de navigatie dynamischer te beheren, in plaats van routes statisch te definiëren op compilatietijd.

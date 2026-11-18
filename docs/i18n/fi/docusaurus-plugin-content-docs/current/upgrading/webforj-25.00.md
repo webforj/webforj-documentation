@@ -1,7 +1,12 @@
 ---
 title: Päivitys versioon 25.00
-description: Upgrade from 24.00 to 25.00
+description: >-
+  Päivitä webforJ-sovellus versiosta 24.00 versioon 25.00: Jetty 12 ja
+  POM-muutokset, App-luokan API-muutokset, taulukon lajittelu, HTML-renderöinti
+  komponenteissa ja muuta.
 sidebar_position: 30
+_i18n_title_hash: 5e4c3fc942b0f770a90f302fb5aa57a0
+_i18n_description_hash: a05a20a3fa1be8daab4f33898d23e1b9
 _i18n_hash: 6fdaf15e67e0015f7319572200ccc353
 ---
 Tämä dokumentaatio toimii oppaana webforJ-sovellusten päivittämiseksi versiosta 24.00 versioon 25.00. Tässä ovat vaatimukset olemassa oleville sovelluksille, jotta ne voivat jatkaa sujuvaa toimintaa. Kuten aina, katso [GitHubin julkaisu-yhteenveto](https://github.com/webforj/webforj/releases) saadaksesi kattavamman listan muutoksista versioiden välillä.

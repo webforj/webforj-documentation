@@ -2,9 +2,10 @@
 sidebar_position: 2
 title: Menaces courantes
 description: >-
-  How common web threats such as cross-site scripting (XSS), cross-site request
-  forgery (CSRF), and SQL injection apply to a webforJ app, what the framework
-  handles, and where you stay responsible.
+  Menaces web courantes (XSS, CSRF, injection SQL) dans webforJ : ce que le
+  framework prend en charge et ce qui reste de votre responsabilité.
+_i18n_title_hash: 8b4d1efc268346c8ba8112962bcc171f
+_i18n_description_hash: 2c7e5b606d702abcaeca6493759538d7
 _i18n_hash: f19a2bbb311243417c723fe49ad7d72f
 ---
 Parce qu'une application webforJ s'exécute en Java sur le serveur et que le navigateur ne rend que l'interface (voir l'article [Interaction Client/Serveur](/docs/architecture/client-server)), plusieurs classes d'attaques sont contenues par conception. D'autres dépendent encore de la façon dont vous écrivez votre code. Cette page passe en revue les menaces qui comptent le plus et trace une ligne claire entre ce que webforJ gère et ce qui vous incombe.

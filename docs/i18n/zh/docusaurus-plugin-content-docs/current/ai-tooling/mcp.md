@@ -1,9 +1,9 @@
 ---
 title: MCP 服务器
 sidebar_position: 5
-description: >-
-  Connect AI assistants to the webforJ MCP server for live documentation lookup,
-  project scaffolding, theme generation, and token validation.
+description: 将 AI 助手连接到 webforJ MCP 服务器，实时查询文档、搭建项目、生成主题并验证令牌。
+_i18n_title_hash: 38cf1e6288c629901954d1984d7f75f7
+_i18n_description_hash: fa9667b2f24a99a40648510f5e1ab53f
 _i18n_hash: e51aa2e6a5a0f6c37a18c404c1104684
 ---
 webforJ模型上下文协议（MCP）服务器将AI编码助手集成到webforJ的文档、API、设计令牌和脚手架工具中。助手可以向服务器询问，而不是猜测框架约定，从而获得基于真实webforJ的答案。

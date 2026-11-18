@@ -5,7 +5,7 @@
       "slug": "components/card-with-slots",
       "url": "/cookbook/components/card-with-slots",
       "title": "Build a reusable card with title, body, and action slots",
-      "description": "Create a Composite card component with header, body, and footer regions you fill from any view.",
+      "description": "Build a reusable card as a webforJ Composite with header, body and footer regions that any view fills through addToHeader, addToBody and addToFooter.",
       "tags": [
         "components",
         "layout",
@@ -18,7 +18,7 @@
       "slug": "components/countdown-timer",
       "url": "/cookbook/components/countdown-timer",
       "title": "Countdown Timer Component",
-      "description": "A custom component that creates a countdown timer for events.",
+      "description": "Build a countdown timer component in webforJ for deadlines, sales or other timed events, as a Composite that counts down days, hours, minutes and seconds.",
       "tags": [
         "components"
       ],
@@ -65,7 +65,7 @@
       "slug": "css/hide-on-small-screens",
       "url": "/cookbook/css/hide-on-small-screens",
       "title": "Hide a component on small screens with a media query",
-      "description": "Use a sidecar CSS file with a media query to hide a region of the UI below a breakpoint.",
+      "description": "Hide part of a webforJ UI below a breakpoint with a CSS class and a media query in a sidecar style sheet, with no resize listeners or JavaScript glue.",
       "tags": [
         "css",
         "layout"
@@ -142,7 +142,7 @@
       "slug": "layout/centered-layout",
       "url": "/cookbook/layout/centered-layout",
       "title": "Center content in a FlexLayout",
-      "description": "Use the FlexLayout component to center components horizontally and vertically",
+      "description": "Center components horizontally and vertically in a webforJ FlexLayout with setJustifyContent and setAlignment, alone or as the bound component of a Composite.",
       "tags": [
         "layout"
       ],
@@ -155,7 +155,7 @@
       "slug": "routing/block-navigation-unsaved-changes",
       "url": "/cookbook/routing/block-navigation-unsaved-changes",
       "title": "Block navigation when a form has unsaved changes",
-      "description": "Implement WillLeaveObserver to prompt the user with a confirm dialog before discarding edits.",
+      "description": "Stop users from leaving a form with unsaved changes: implement WillLeaveObserver and ask with a confirm dialog before webforJ navigates away.",
       "tags": [
         "routing",
         "forms"
@@ -178,7 +178,7 @@
       "slug": "routing/navigate-programmatically",
       "url": "/cookbook/routing/navigate-programmatically",
       "title": "Navigate to another view programmatically",
-      "description": "Trigger programmatic navigation to a view class using Router.getCurrent().navigate().",
+      "description": "Navigate to another webforJ view from Java code, such as a button click, with Router.getCurrent().navigate() and the view class instead of a URL string.",
       "tags": [
         "routing",
         "navigation"
@@ -190,7 +190,7 @@
       "slug": "routing/open-in-new-tab",
       "url": "/cookbook/routing/open-in-new-tab",
       "title": "Open a route in a new browser tab",
-      "description": "Construct a route URL with the router and open it via Page.open so paths aren't hard-coded.",
+      "description": "Open a webforJ route in a new browser tab: get its URL from the router with getUri and pass it to Page.open, so paths are never hard-coded.",
       "tags": [
         "routing",
         "navigation"
@@ -202,7 +202,7 @@
       "slug": "routing/read-query-parameter",
       "url": "/cookbook/routing/read-query-parameter",
       "title": "Read a query parameter from a route",
-      "description": "Access URL query parameters inside a webforJ view using DidEnterObserver and ParametersBag.",
+      "description": "Read URL query parameters in a webforJ view with DidEnterObserver and ParametersBag, using get for single values and getList for repeated parameters.",
       "tags": [
         "routing",
         "parameters"
@@ -228,7 +228,7 @@
       "slug": "table/empty-state-message",
       "url": "/cookbook/table/empty-state-message",
       "title": "Show an empty-state message when a Table has no rows",
-      "description": "Toggle a placeholder message whenever the repository backing a Table becomes empty.",
+      "description": "Show an empty-state message whenever the repository behind a webforJ Table has no rows, and hide it when rows return, using the repository commit listener.",
       "tags": [
         "table"
       ],
@@ -241,7 +241,7 @@
       "slug": "theme/app-theme-toggle",
       "url": "/cookbook/theme/app-theme-toggle",
       "title": "Add a toggle for the app's theme",
-      "description": "Have a toggle component that switches the app's theme between a light and a dark mode.",
+      "description": "Add a button that switches a webforJ app between the light and dark themes, built as a Composite with an IconButton that reads and sets the app theme.",
       "tags": [
         "styling",
         "components",

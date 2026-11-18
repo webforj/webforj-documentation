@@ -5,9 +5,12 @@ slug: /craftforj
 hide_table_of_contents: true
 hide_giscus_comments: true
 description: >-
-  Inspect the component tree of a running webforJ app, change components live,
-  and write the changes you keep back into your Java source.
+  Tarkastele käynnissä olevan webforJ-sovelluksen komponenttipuuta, muuta
+  komponentteja lennossa ja kirjoita säilyttämäsi muutokset takaisin
+  Java-lähdekoodiisi.
 sidebar_class_name: new-content
+_i18n_title_hash: 78d248a391ae1639021f58f05250a844
+_i18n_description_hash: b470796007a6fc2d4cdbf89f09d3e78f
 _i18n_hash: 771ef18b5a680d5b9260f06a2704f877
 ---
 <Head>

@@ -1,9 +1,13 @@
 ---
-title: 配置
+title: craftforJ 配置
+sidebar_label: 配置
 sidebar_position: 8
 description: >-
-  Every craftforJ configuration property, its default, and what turning each
-  feature off changes.
+  craftforJ 在 webforj.conf 或 application.properties
+  中的所有配置项，包括类型、默认值，以及关闭各项功能后的变化。
+_i18n_title_hash: 3eb5573b52d619504004137849515e97
+_i18n_sidebar_label_hash: 254f642527b45bc260048e30704edb39
+_i18n_description_hash: d219fb062890ca792008bd020a275a94
 _i18n_hash: f7e73354e4d9548e79122405c21ae275
 ---
 craftforJ 在 `webforj.conf` 中进行配置。属性名称在 [Spring](/docs/integrations/spring/overview) 中是相同的，因此如果你的配置存放在 `application.properties` 中，请在那里设置它们。

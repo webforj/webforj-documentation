@@ -2,8 +2,11 @@
 title: MCP-Server
 sidebar_position: 5
 description: >-
-  Connect AI assistants to the webforJ MCP server for live documentation lookup,
-  project scaffolding, theme generation, and token validation.
+  Verbinden Sie KI-Assistenten mit dem webforJ MCP-Server für
+  Live-Dokumentationssuche, Projekterstellung, Theme-Generierung und
+  Token-Validierung.
+_i18n_title_hash: 38cf1e6288c629901954d1984d7f75f7
+_i18n_description_hash: fa9667b2f24a99a40648510f5e1ab53f
 _i18n_hash: e51aa2e6a5a0f6c37a18c404c1104684
 ---
 Der webforJ Model Context Protocol (MCP) Server integriert KI-Coding-Assistenten in die Dokumentation, APIs, Design-Tokens und Scaffold-Tools von webforJ. Anstatt zu raten, was Konventionen im Framework sind, fragt der Assistent den Server und erhält Antworten, die auf dem echten webforJ basieren.

@@ -1,9 +1,9 @@
 ---
 sidebar_position: 6
 title: 测试应用程序
-description: >-
-  Start a TestBed test with the routes or the whole app, navigate, test secured
-  routes, answer dialogs, control timers, and answer for the browser.
+description: 使用路由或整个应用启动 TestBed 测试，执行导航、测试受保护路由、响应对话框、控制计时器，并模拟浏览器响应。
+_i18n_title_hash: 2b27784755b2277a897d0e090935069a
+_i18n_description_hash: 86e54866c6ec66c419b5c8aafddfe5db
 _i18n_hash: 4194d4d355b0e26f86b8c3c53ea353c9
 ---
 视图很少独立存在。路由会带用户进入视图，路由安全机制可能会保护它，视图会通过对话框询问用户，会按计时器更新自己，也会向浏览器请求结果。在运行中的应用里，服务器、用户、时钟和浏览器各司其职。在 TestBed 测试中，这些角色都由测试扮演：测试决定运行多少应用代码，像地址栏一样导航，代替用户回答对话框，决定时间何时流逝，并代替浏览器提供结果。

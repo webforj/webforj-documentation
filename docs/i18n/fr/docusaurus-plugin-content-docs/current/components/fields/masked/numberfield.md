@@ -2,8 +2,11 @@
 title: MaskedNumberField
 sidebar_position: 10
 description: >-
-  Format numeric input with the MaskedNumberField using configurable mask
-  characters, grouping, decimal separators, and locale settings.
+  Formatez les saisies numériques avec MaskedNumberField grâce à des caractères
+  de masque configurables, aux séparateurs de milliers et décimaux et aux
+  paramètres régionaux.
+_i18n_title_hash: a910f8bc330026c21477f8ab205b5c2e
+_i18n_description_hash: 4b50748dc0f8822460de904547956b95
 _i18n_hash: f247d28107239e0db4a24823c8a1ef60
 ---
 <DocChip chip='shadow' />

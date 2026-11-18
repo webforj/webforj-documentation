@@ -2,8 +2,11 @@
 title: Frontendin seuranta
 sidebar_position: 20
 description: >-
-  Rebuild the sources under src/main/frontend while a webforJ app runs, applying
-  stylesheet and image output in place and reloading the view for script output.
+  Rakenna src/main/frontend-kansion lähteet uudelleen webforJ-sovelluksen
+  käydessä: tyylit ja kuvat päivittyvät suoraan, skriptit lataavat näkymän
+  uudelleen.
+_i18n_title_hash: 87d66a6e5b9e657405313f309833cd07
+_i18n_description_hash: d5b96b8ea22c6930a214e543b2de01da
 _i18n_hash: 065e4f5ad8868a6758e682f38e2dd3b9
 ---
 Frontend-watch rakennuslähteet `src/main/frontend`-kansiossa, kun sovellus on käynnissä, ja lähettää ulostuloa selaimeen. Se on [frontend-bundlerin](/docs/managing-resources/bundler/overview) kehityspuoli ja vaatii `webforj.devtools.livereload.enabled`-asetuksen olevan päällä, katso [asetukset](/docs/configuration/deploy-reload/overview#settings).

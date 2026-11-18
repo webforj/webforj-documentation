@@ -2,8 +2,10 @@
 sidebar_position: 3
 title: Navigoinnin estäminen
 description: >-
-  Intercept navigation with WillLeaveObserver veto handlers and the beforeunload
-  event to guard unsaved changes.
+  Sieppaa navigointi WillLeaveObserverin estokäsittelijöillä ja
+  beforeunload-tapahtumalla suojataksesi tallentamattomat muutokset.
+_i18n_title_hash: f77bf38ee81cebb7c3385d40529ae2b4
+_i18n_description_hash: 8f209d7ebac58484a6ef0ce3f318daf6
 _i18n_hash: 0deeb3e0583fdd425fe2a604ee1e9164
 ---
 Navigoinnin estäminen lisää yhden tai useamman hallintakerroksen koko taustalla olevaan reititin-API:in. Jos estäviä käsittelijöitä on läsnä, navigointi estetään seuraavasti:

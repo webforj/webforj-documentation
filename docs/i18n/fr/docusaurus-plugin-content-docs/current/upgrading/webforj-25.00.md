@@ -1,7 +1,12 @@
 ---
 title: Mise à niveau vers 25.00
-description: Upgrade from 24.00 to 25.00
+description: >-
+  Mettez à niveau votre app webforJ de 24.00 à 25.00 : Jetty 12, changements du
+  POM et de l’API de la classe App, tri des tableaux et rendu HTML dans les
+  composants.
 sidebar_position: 30
+_i18n_title_hash: 5e4c3fc942b0f770a90f302fb5aa57a0
+_i18n_description_hash: a05a20a3fa1be8daab4f33898d23e1b9
 _i18n_hash: 6fdaf15e67e0015f7319572200ccc353
 ---
 Cette documentation sert de guide pour mettre à niveau les applications webforJ de la version 24.00 à 25.00. Voici les changements nécessaires pour que les applications existantes continuent de fonctionner sans problème. Comme toujours, consultez [l'aperçu des versions sur GitHub](https://github.com/webforj/webforj/releases) pour une liste plus complète des changements entre les versions.

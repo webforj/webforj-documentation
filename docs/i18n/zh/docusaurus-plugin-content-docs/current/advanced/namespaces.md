@@ -1,9 +1,9 @@
 ---
 title: 命名空间
 sidebar_position: 40
-description: >-
-  Share thread-safe key-value state across sessions, thread groups, or the
-  entire JVM using Private, Group, and Global namespaces.
+description: 使用 Private、Group 和 Global 命名空间，在会话、线程组或整个 JVM 范围内共享线程安全的键值状态。
+_i18n_title_hash: 13d28e8dfc702e3456e0767dff9a128a
+_i18n_description_hash: ec54a556d3e544a7d8720bf8b6e77b59
 _i18n_hash: f932a175d81df4147cae1335991db3d5
 ---
 <DocChip chip='since' label='24.22' />

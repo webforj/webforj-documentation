@@ -2,10 +2,12 @@
 sidebar_position: 7
 title: Gebeurtenissen
 description: >-
-  Listen for component events, read the event payload, configure element events,
-  and dispatch your own custom events with the EventDispatcher.
+  Luister naar componentgebeurtenissen, lees de eventpayload, configureer
+  elementgebeurtenissen en verstuur je eigen aangepaste gebeurtenissen met de
+  EventDispatcher.
 slug: events
-sidebar_class_name: new-content
+_i18n_title_hash: 87f9f735a1d36793ceaecd4e47124b63
+_i18n_description_hash: c757c297f3646dabdf0f4be584b6432d
 _i18n_hash: 5ceda90a316ff6a1528a686565011f88
 ---
 Componenten, of ze nu op maat gemaakt zijn of deel uitmaken van het framework, ondersteunen evenementenhandelingen. Je kunt evenementenluisteraars toevoegen om verschillende soorten evenementen op te vangen, zoals gebruikersinteracties, veranderingen in de toestand, of evenementen die je zelf definieert. Deze luisteraars stellen je in staat om specifieke acties te activeren als reactie op wat er in je app gebeurt.

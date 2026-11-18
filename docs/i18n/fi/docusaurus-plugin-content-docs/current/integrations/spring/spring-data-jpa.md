@@ -2,8 +2,11 @@
 title: Spring Data JPA
 sidebar_position: 20
 description: >-
-  Adapt Spring Data JPA repositories to webforJ Table and Repository components
-  with SpringDataRepository, pagination, sorting, and Specifications.
+  Yhdistä Spring Data JPA -repositoryt webforJ:n Table- ja
+  Repository-komponentteihin SpringDataRepositoryn, sivutuksen, lajittelun ja
+  Specifications-toiminnon avulla.
+_i18n_title_hash: 810bf4be9fd3907b3e5cff790716a958
+_i18n_description_hash: 7f0f559ffd7aba1cfabc95bf06ef6def
 _i18n_hash: 04bda665f576fabc5db3284e9ec201e9
 ---
 Spring Data JPA on de facto -standardi tietojen käsittelyssä Spring-sovelluksissa, tarjoten varastointiabstraktioita, kyselymenetelmiä ja spesifikaatioita monimutkaisille kyselyille. webforJ:n `SpringDataRepository` -sovitin yhdistää Spring Data -varastot webforJ:n käyttöliittymäkomponentteihin, mahdollistaen JPA-entiteettien sitomisen suoraan käyttöliittymäkomponentteihin, dynaamisen suodatuksen toteuttamisen JPA-spesifikaatioiden avulla ja sivutuksen käsittelemisen.

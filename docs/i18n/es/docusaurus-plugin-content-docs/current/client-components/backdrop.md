@@ -3,8 +3,11 @@ title: <dwc-backdrop>
 sidebar_class_name: sidebar--item__hidden
 slug: backdrop
 description: >-
-  Style the dwc-backdrop client component with CSS variables to control overlay
-  color, opacity, blur, and transition timing.
+  Estiliza el componente cliente dwc-backdrop con variables CSS para controlar
+  el color de la superposición, la opacidad, el desenfoque y la duración de la
+  transición.
+_i18n_title_hash: 2f72006cb14ce292daabad55490ead2d
+_i18n_description_hash: 9782e0c952cabf32f6d78fc203c84ba1
 _i18n_hash: 74d82049a807f207902d886bb9a6a2a3
 ---
 <DocChip chip='shadow' />

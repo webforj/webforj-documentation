@@ -1,11 +1,12 @@
 ---
 title: Pakete und Assets
 sidebar_position: 30
-sidebar_class_name: new-content
 description: >-
-  Declare npm packages, load a module straight from one, install build-only
-  dependencies, rely on tree shaking, and import CSS and assets from a
-  component's entry.
+  npm-Pakete deklarieren, Module daraus laden, Build-Abhängigkeiten
+  installieren, Tree Shaking nutzen und CSS sowie Assets am Komponenteneinstieg
+  importieren.
+_i18n_title_hash: cac008272dedd4c9bdc7860f88782b1e
+_i18n_description_hash: c5b4b96ca397aad0a739c7025891df15
 _i18n_hash: 3b538e3785ee74397f156dd38ef8506a
 ---
 Ein Eintrag greift auf mehr als seine eigene Quelle zu. Er importiert Pakete von npm, lädt ein Modul direkt von einem, bindet ein Stylesheet oder ein Bild ein und kann aus einer Klasse stammen, die du erweiterst oder von einer Bibliothek, auf die du angewiesen bist. Diese Seite behandelt, wie diese Komponenten in den Build gelangen.

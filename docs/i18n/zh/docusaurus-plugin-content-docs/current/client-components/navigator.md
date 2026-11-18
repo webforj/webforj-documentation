@@ -2,9 +2,9 @@
 title: <dwc-navigator>
 sidebar_class_name: sidebar--item__hidden
 slug: navigator
-description: >-
-  Customize the dwc-navigator component appearance with CSS variables and shadow
-  parts for paging controls and indicators.
+description: 使用 CSS 变量和 shadow parts 自定义 dwc-navigator 组件中分页控件和指示器的外观。
+_i18n_title_hash: fb812d1b9c3f309902f558aaa29b77a2
+_i18n_description_hash: 85ed29fdd775da466cfdc760e7198984
 _i18n_hash: 45e75134730d87fa5f383a196dc930f4
 ---
 <DocChip chip='shadow' />

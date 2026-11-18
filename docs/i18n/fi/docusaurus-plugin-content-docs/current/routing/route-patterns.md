@@ -2,8 +2,10 @@
 sidebar_position: 5
 title: Reittimallit
 description: >-
-  Define dynamic URL segments, optional parameters, wildcards, and regex
-  constraints to match webforJ routes precisely.
+  Määritä dynaamiset URL-segmentit, valinnaiset parametrit, jokerimerkit ja
+  säännöllisten lausekkeiden ehdot webforJ-reittien tarkkaan täsmäytykseen.
+_i18n_title_hash: e852c1a8c41ae5c7177d4e3e08d466fc
+_i18n_description_hash: 7fd2fcf7b040e6d79a1b6cd69fcfe610
 _i18n_hash: a6c1267e034c1562652cc01d0f336640
 ---
 **Reittimallit** määrittävät, kuinka URL-osoitteet vastaavat tiettyjä näkymiä, mukaan lukien dynaamiset ja valinnaiset segmentit, säännönmukaiset lausekkeet ja wildcardit. Reittimallit mahdollistavat kehyksen ottavan URL-osoitteita huomioon, parametreja erottavan ja URL-osoitteiden dynaamisen luomisen. Ne ovat keskeisessä roolissa sovelluksen navigoinnin ja komponenttien renderöinnin jäsentelyssä selaimen sijainnin mukaan.

@@ -1,9 +1,9 @@
 ---
 title: 应用信息
 sidebar_position: 10
-description: >-
-  Read the versions, Java runtime, and project root of the app craftforJ is
-  attached to.
+description: craftforJ App Info 展示应用的实际运行环境：webforJ 和 BBj Services 版本、Java 运行时、操作系统及项目根目录。
+_i18n_title_hash: a98b1ca473ce24658a6b0d7e3da0ce51
+_i18n_description_hash: 2e5f0241dcd8b09393fd3e5ddeca035c
 _i18n_hash: c2bd1fec7e37fa34291d3ca88047dc04
 ---
 应用信息报告了您的应用程序实际运行的内容，这并不总是与您的 `pom.xml` 文件中所说的内容一致。除了 webforJ 和 BBj 服务版本，它还涵盖了 Java 运行时、操作系统以及应用程序在磁盘上的根位置。

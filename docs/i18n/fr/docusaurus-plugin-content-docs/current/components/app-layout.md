@@ -2,8 +2,11 @@
 title: AppLayout
 sidebar_position: 5
 description: >-
-  Build dashboards and admin shells with the AppLayout component, providing a
-  fixed header, footer, sliding drawer, and scrollable content area.
+  Créez des tableaux de bord et interfaces d’administration avec le composant
+  AppLayout : en-tête fixe, pied de page, tiroir coulissant et zone de contenu
+  défilante.
+_i18n_title_hash: caed3df6bafd644c975ededf83077718
+_i18n_description_hash: de954b10c7e9285b462a860ddfe1e04a
 _i18n_hash: 4e36be1fd55d6c17c810ace6ef3f1fd8
 ---
 <DocChip chip='shadow' />

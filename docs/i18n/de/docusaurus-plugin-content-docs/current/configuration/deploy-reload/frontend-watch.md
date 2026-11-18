@@ -2,8 +2,11 @@
 title: Frontend-Überwachung
 sidebar_position: 20
 description: >-
-  Rebuild the sources under src/main/frontend while a webforJ app runs, applying
-  stylesheet and image output in place and reloading the view for script output.
+  Erstellen Sie die Quellen unter src/main/frontend während des Betriebs einer
+  webforJ-App neu: Stylesheets und Bilder werden direkt übernommen, bei Skripten
+  wird die Ansicht neu geladen.
+_i18n_title_hash: 87d66a6e5b9e657405313f309833cd07
+_i18n_description_hash: d5b96b8ea22c6930a214e543b2de01da
 _i18n_hash: 065e4f5ad8868a6758e682f38e2dd3b9
 ---
 Der Frontend-Watch baut die Quellen unter `src/main/frontend` neu auf, während die App läuft, und sendet die Ausgabe an den Browser. Es ist die Entwicklungsseite des [Frontend-Bundlers](/docs/managing-resources/bundler/overview) und erfordert, dass `webforj.devtools.livereload.enabled` aktiviert ist, siehe die [Einstellungen](/docs/configuration/deploy-reload/overview#settings).

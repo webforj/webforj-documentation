@@ -2,8 +2,10 @@
 title: Virheiden käsittely
 sidebar_position: 5
 description: >-
-  Register custom ErrorHandler implementations through the Java Service Provider
-  Interface to respond to specific exceptions in webforJ apps.
+  Rekisteröi mukautetut ErrorHandler-toteutukset Java Service Provider Interface
+  -mekanismin avulla käsitelläksesi tiettyjä poikkeuksia webforJ-sovelluksissa.
+_i18n_title_hash: ef43236673ca0bb606b14091061ac271
+_i18n_description_hash: b4ab779dfe355bf022be822e2fe09c15
 _i18n_hash: 55731ba6ae9454377d363fa461c817bc
 ---
 Virheiden käsittely on keskeinen osa luotettavien verkkosovellusten kehittämistä. webforJ:ssä virheiden käsittely on suunniteltu joustavaksi ja mukautettavaksi, mikä mahdollistaa kehittäjien käsitellä poikkeuksia tavalla, joka parhaiten vastaa sovelluksen tarpeita.

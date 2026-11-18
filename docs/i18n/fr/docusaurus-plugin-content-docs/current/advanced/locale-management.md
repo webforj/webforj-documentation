@@ -1,7 +1,12 @@
 ---
 sidebar_position: 11
 title: Gestion des paramètres régionaux
-sidebar_class_name: new-content
+description: >-
+  Configurez la locale de l’application, détectez-la depuis le navigateur et
+  réagissez aux changements de langue à l’exécution via l’interface
+  LocaleObserver.
+_i18n_title_hash: 92a9c50e6080bdb01af2f1a8df1a3070
+_i18n_description_hash: 4ab8ba1da1bbbadc79c0b423a2553e6d
 _i18n_hash: d3dcb4b1ded50923232cb33225364239
 ---
 # Gestion des locales <DocChip chip='since' label='25.10' />

@@ -2,8 +2,10 @@
 title: Tutorial de modernización
 sidebar_position: 4
 description: >-
-  Modernize a Swing customer management app step by step by embedding it with
-  WebswingConnector and layering in webforJ dialogs and forms.
+  Moderniza paso a paso una aplicación Swing de gestión de clientes, intégrala
+  con WebswingConnector y añade diálogos y formularios de webforJ.
+_i18n_title_hash: ce2c1617b227110c5e8667caef525848
+_i18n_description_hash: c6f587d9b49fcf1a740fbe0384b94c7e
 _i18n_hash: ded3a5a3abe3905086532c58861652f8
 ---
 Este tutorial explica cómo modernizar una aplicación Java Swing existente integrándola con webforJ mediante `WebswingConnector`. Aprenderás a hacer que una aplicación de escritorio tradicional sea accesible desde la web y a añadir gradualmente funciones web modernas, como cuadros de diálogo web y formularios interactivos que utilizan componentes de webforJ.

@@ -1,6 +1,11 @@
 ---
 sidebar_position: 11
 title: Enregistrement des routes
+description: >-
+  Enregistrez, mettez à jour et supprimez des routes à l’exécution via l’API
+  RouteRegistry pour une navigation dynamique adaptée aux rôles.
+_i18n_title_hash: 8a7bc298f8cb539f9cf61da9a122766e
+_i18n_description_hash: 272079001ee3337284a48bdd42c714e1
 _i18n_hash: def139d3db58322c269afef10acdf5fd
 ---
 En plus de [l'enregistrement des routes à l'aide des annotations `@Route`](./defining-routes), il est possible d'enregistrer, de mettre à jour ou de supprimer des routes de manière dynamique à l'exécution en fonction de la logique de l'application, des rôles des utilisateurs ou d'autres conditions. Cette flexibilité permet de gérer la navigation de manière plus dynamique, plutôt que de définir statiquement les routes au moment de la compilation.

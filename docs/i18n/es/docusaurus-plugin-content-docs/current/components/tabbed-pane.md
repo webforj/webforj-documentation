@@ -3,8 +3,11 @@ title: TabbedPane
 slug: tabbedpane
 sidebar_position: 125
 description: >-
-  Organize content into switchable Tab sections with the TabbedPane component,
-  supporting icons and customizable tab properties.
+  Organiza el contenido en secciones de pestañas intercambiables con el
+  componente TabbedPane, compatible con iconos y propiedades de pestaña
+  personalizables.
+_i18n_title_hash: 6068724d2eea4300b874e7a1070b4ebe
+_i18n_description_hash: 63b0b8458fb29952353981a0f2c2415f
 _i18n_hash: 2d2e78638206283a7423cea736e3bf2c
 ---
 <DocChip chip='shadow' />

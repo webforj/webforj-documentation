@@ -2,8 +2,11 @@
 title: Boîte de dialogue de saisie
 sidebar_position: 25
 description: >-
-  Prompt users for text, numbers, dates, colors, or other typed values with the
-  modal InputDialog and message-type styling.
+  Demandez aux utilisateurs de saisir du texte, des nombres, des dates, des
+  couleurs ou d’autres valeurs typées avec la boîte de dialogue modale
+  InputDialog et un style selon le type de message.
+_i18n_title_hash: d867ebf3ebffb0f9cf6b9a02eca2d859
+_i18n_description_hash: 3ca91f0b236ce679f2e58ba8c3ab0026
 _i18n_hash: b797a58a2e413b1be6d2cfd814d74efa
 ---
 <DocChip chip='shadow' />

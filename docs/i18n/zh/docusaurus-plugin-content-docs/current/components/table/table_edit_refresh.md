@@ -2,9 +2,9 @@
 sidebar_position: 30
 title: 编辑与刷新
 slug: refreshing
-description: >-
-  Edit Table rows by mutating the bound Repository and call commit to refresh
-  the UI through RepositoryCommitEvent.
+description: 通过修改绑定的 Repository 编辑 Table 行，并调用 commit 通过 RepositoryCommitEvent 刷新 UI。
+_i18n_title_hash: f4de95cd7a20c3ab229fb8c9596e84c7
+_i18n_description_hash: 40fec4995f2fa08bfe24c02da26aa209
 _i18n_hash: 84dec48293e6fa794713881310b6f303
 ---
 通过与包含 `Table` 数据的 `Repository` 交互，可以编辑 `Table` 中的数据。`Repository` 充当 `Table` 与底层数据集之间的桥梁，提供数据检索、修改和刷新方法。下面的示例实现了根据所选行编辑“标题”的功能。

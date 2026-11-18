@@ -2,7 +2,12 @@
 sidebar_position: 30
 title: PasswordField
 slug: passwordfield
-description: A single-line input component for securely entering and masking password data.
+description: >-
+  Laat gebruikers veilig een wachtwoord invoeren met de webforJ PasswordField:
+  gemaskeerde invoer, een zichtbaarheidsschakelaar, patrooncontrole en een
+  minimale en maximale lengte.
+_i18n_title_hash: 71fe89f5d1e17886e1113e75eb35855e
+_i18n_description_hash: 653b29f029314ddf9748a8489db5edde
 _i18n_hash: b0641475acf187af7c45d6786506010d
 ---
 <DocChip chip='shadow' />

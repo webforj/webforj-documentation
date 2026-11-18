@@ -2,8 +2,11 @@
 title: Connexion
 sidebar_position: 70
 description: >-
-  Display an authentication dialog with the Login component, handling
-  submission, validation, custom fields, and form action URLs.
+  Affichez une boîte de dialogue d’authentification avec le composant Login, en
+  gérant la soumission, la validation, les champs personnalisés et les URL
+  d’action du formulaire.
+_i18n_title_hash: 99dea78007133396a7b8ed70578ac6ae
+_i18n_description_hash: 57996d096b30aae681f8cbaeb7f2d222
 _i18n_hash: 5016fc4d15ba24b16c61eed8e6e272ee
 ---
 <DocChip chip='shadow' />

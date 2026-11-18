@@ -1,6 +1,11 @@
 ---
 title: Installatie en configuratie
 sidebar_position: 2
+description: >-
+  Installeer de Webswing-server, registreer een Swing-app in de beheerconsole en
+  configureer CORS zodat webforJ deze kan insluiten met WebswingConnector.
+_i18n_title_hash: 6220432d4a9990aa961b3e368edaafdd
+_i18n_description_hash: d662aa6a75a899b4c2df885526b3fa0f
 _i18n_hash: d948bababbedcfe831d4af62f8b6b088
 ---
 Integratie van Webswing met webforJ omvat twee componenten: de Webswing-server die jouw Swing-app host, en de `WebswingConnector` component in jouw webforJ-app die deze embed.

@@ -3,8 +3,11 @@ title: <dwc-refresher>
 sidebar_class_name: sidebar--item__hidden
 slug: refresher
 description: >-
-  Customize the dwc-refresher pull-to-refresh indicator with CSS variables and
-  shadow parts for spinner, icon, and text.
+  Personnalisez l’indicateur d’actualisation par glissement de dwc-refresher
+  avec des variables CSS et des parties shadow pour le spinner, l’icône et le
+  texte.
+_i18n_title_hash: 834a7a473b43af8f7de90bc7e0450f46
+_i18n_description_hash: 5efc0ceeca0069ea64e77519adcfe1a3
 _i18n_hash: a52bd8ee60f995d74268692b9694e963
 ---
 <DocChip chip='shadow' />

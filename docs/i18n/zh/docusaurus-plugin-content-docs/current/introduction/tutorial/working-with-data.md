@@ -1,7 +1,9 @@
 ---
 title: 使用数据
 sidebar_position: 3
-description: Step 2 - Use Spring to work with data.
+description: 教程第 2 步：使用 Spring 注解创建客户数据模型、管理数据，并在 webforJ Table 组件中展示。
+_i18n_title_hash: 3ffdb1797f04c23a215070b004733b13
+_i18n_description_hash: 5a06171b41a1ff325265e66fd007c8c6
 _i18n_hash: f1c000ec07cb278db9d60d5f90d71743
 ---
 在此步骤中，你将学习如何使用 Spring 创建数据模型，并以可视化方式显示数据。

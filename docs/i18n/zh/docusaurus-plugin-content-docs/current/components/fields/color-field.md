@@ -2,9 +2,9 @@
 sidebar_position: 5
 title: ColorField
 slug: colorfield
-description: >-
-  A component that provides a default browser-based color picker, allowing users
-  to select a color from an input field.
+description: 提供浏览器默认颜色选择器的组件，允许用户通过输入字段选择颜色。
+_i18n_title_hash: 60d529aefd9dd4631e2611d1e2420ab9
+_i18n_description_hash: 1663b82e0808c588ccca40a27655b742
 _i18n_hash: d3392930b787f31c30ac78526b8e12d9
 ---
 <DocChip chip='shadow' />

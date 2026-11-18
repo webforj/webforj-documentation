@@ -1,9 +1,9 @@
 ---
 title: 事件与更新
 sidebar_position: 5
-description: >-
-  React to repository commits with RepositoryCommitEvent listeners, choose
-  single-entity or bulk updates, and manage listener registrations.
+description: 通过 RepositoryCommitEvent 监听器响应仓库提交，选择单实体或批量更新，并管理监听器注册。
+_i18n_title_hash: 24390d42536d1e902ce18deff9a6b0eb
+_i18n_description_hash: 01d7fd625682f2feaed67959fa5fd7eb
 _i18n_hash: 9ce2e7d25b38cd0d04acd30c80edffb3
 ---
 <!-- vale off -->

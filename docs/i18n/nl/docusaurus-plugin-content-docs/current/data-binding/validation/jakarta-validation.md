@@ -1,10 +1,12 @@
 ---
 sidebar_position: 6
 title: Jakarta-validatie
-sidebar_class_name: updated-content
 description: >-
-  Apply Jakarta Bean Validation annotations to bean properties and activate
-  JakartaValidator on a BindingContext with locale-aware messages.
+  Pas Jakarta Bean Validation-annotaties toe op bean-eigenschappen en activeer
+  JakartaValidator op een BindingContext met berichten die rekening houden met
+  de landinstelling.
+_i18n_title_hash: 36ea03377557b994fec1a0ac70cda40f
+_i18n_description_hash: 848a9052587766f0916885ebae918f7f
 _i18n_hash: e5b90cd31ee5ca5eab453a1c087967da
 ---
 [Java Bean Validation](https://beanvalidation.org/) wordt algemeen erkend als de standaard voor het integreren van validatielogica in Java-toepassingen. Het gebruikt een uniforme benadering voor validatie door ontwikkelaars in staat te stellen domeinmodel-eigenschappen te annoteren met declaratieve validatieconstraints. Deze constraints worden tijdens runtime gehandhaafd, met opties voor zowel ingebouwde als op maat gedefinieerde regels.

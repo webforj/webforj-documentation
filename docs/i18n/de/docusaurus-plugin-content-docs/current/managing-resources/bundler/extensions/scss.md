@@ -1,10 +1,12 @@
 ---
 title: SCSS und Sass
 sidebar_position: 30
-sidebar_class_name: new-content
 description: >-
-  Compile SCSS or Sass to CSS with the webforj-scss extension, bind a class to
-  the stylesheet, and set a load path through bun.config.ts.
+  Kompilieren Sie SCSS oder Sass mit der webforj-scss-Erweiterung zu CSS, binden
+  Sie eine Klasse an das Stylesheet und legen Sie über bun.config.ts einen
+  Suchpfad fest.
+_i18n_title_hash: 9bd51327ee5db5248d9c4d0c207c9650
+_i18n_description_hash: 241a3d6fadb39e11156b12f9a5d54e15
 _i18n_hash: b278152eaf94d853a152b4d605c71981
 ---
 [Sass](https://sass-lang.com/) ist eine Stylesheet-Sprache, die Variablen, Verschachtelung und Funktionen zu CSS hinzufügt, und SCSS ist ihre CSS-ähnliche Syntax. Die SCSS-Erweiterung wird aktiviert, wenn eine `.scss` oder `.sass` Quelle vorhanden ist, kompiliert sie zu CSS und lädt sie als Styles. Eine Klasse bindet an das kompilierte Stylesheet, genau wie sie an ein Skript bindet.

@@ -1,9 +1,9 @@
 ---
 sidebar_position: 10
 title: 组件架构
-description: >-
-  See how webforJ components are built on the DwcComponent base class, why
-  component classes are final, and why composition replaces inheritance.
+description: 了解 webforJ 组件如何基于 DwcComponent 基类构建、组件类为何声明为 final，以及为何组合取代继承。
+_i18n_title_hash: 7a4630c005d8b0818b5638516ad4d213
+_i18n_description_hash: a6deb81b80d301647bdea62a37649387
 _i18n_hash: 13c29b780cb00a918fe6e0a98c5e783a
 ---
 webforJ 为你提供一个用于组件库的 Java API，并在服务器端管理每个组件。本页将介绍组件的结构以及如何扩展组件。

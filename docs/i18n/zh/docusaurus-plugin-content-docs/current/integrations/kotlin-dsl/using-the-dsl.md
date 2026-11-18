@@ -1,6 +1,9 @@
 ---
 title: 使用 DSL
 sidebar_position: 10
+description: 使用 Kotlin DSL 组合 webforJ 组件，通过 camelCase 构建函数、嵌套代码块和接收者作用域配置。
+_i18n_title_hash: 19889ee2d799cdb3e9247afdc3b75822
+_i18n_description_hash: 29d3ff24a869a59903766ffe3ed5690a
 _i18n_hash: 05d1319dd97f2d32392408b2e4ae9058
 ---
 Kotlin DSL 提供了用于 webforJ 组件的构建器函数。每个函数创建一个组件，将其添加到父容器中，并运行一个配置块。本文涵盖了在使用 DSL 构建 UI 时的模式和约定。

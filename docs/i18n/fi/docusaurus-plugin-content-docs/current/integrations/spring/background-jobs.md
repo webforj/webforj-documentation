@@ -2,8 +2,10 @@
 title: Taustatyöt
 sidebar_position: 25
 description: >-
-  Run Spring @Async services from webforJ views and marshal progress and results
-  back to the UI thread with Environment.runLater.
+  Suorita Spring @Async-palveluita webforJ-näkymistä ja välitä edistyminen ja
+  tulokset takaisin käyttöliittymäsäikeeseen Environment.runLater-kutsulla.
+_i18n_title_hash: dab970e99be91f87ed9529a337f3f1e7
+_i18n_description_hash: 6f8f6d2a9b85f45bdc3c544bff6f892a
 _i18n_hash: 2760d6db6a7b7045e7612ca359d04a28
 ---
 Kun käyttäjät napsauttavat painiketta raportin luomiseksi tai tietojen käsittelemiseksi, he odottavat käyttöliittymän pysyvän responsiivisena. Edistymispalkkien pitäisi animoitua, painikkeiden reagoida osoittimen viemiseen niiden päälle, eikä sovelluksen pitäisi jumiutua. Springin `@Async`-annotaatio mahdollistaa tämän siirtämällä pitkäkestoiset toiminnot taustasäikeisiin.

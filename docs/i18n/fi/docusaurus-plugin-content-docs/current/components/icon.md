@@ -2,8 +2,11 @@
 title: Icon
 sidebar_position: 55
 description: >-
-  Render scalable SVG icons with the Icon component from Tabler, Feather, Font
-  Awesome, or custom pools loaded on demand from a CDN.
+  Renderöi skaalautuvia SVG-kuvakkeita Icon-komponentilla Tabler-, Feather- ja
+  Font Awesome -kirjastoista tai mukautetuista kokoelmista, jotka ladataan
+  tarvittaessa CDN:stä.
+_i18n_title_hash: 817434295a673aed431435658b65d9a7
+_i18n_description_hash: 0869be782d149632b9e3da70664d3417
 _i18n_hash: f1572fcb6d1396a20fac32bfa282c091
 ---
 <DocChip chip="shadow" />

@@ -1,9 +1,9 @@
 ---
 title: 许可与水印
 sidebar_position: 45
-description: >-
-  Request a webforJ trial certificate and place certificate.bls in the resources
-  directory to remove the unlicensed runtime watermark.
+description: 申请 webforJ 试用证书，并将 certificate.bls 放入 resources 目录以移除未授权运行时水印。
+_i18n_title_hash: b4d1a3762b461a3aec9573e2aecf656b
+_i18n_description_hash: 0e0d9d060bfe3ebbd3d3a2c1a290746c
 _i18n_hash: 98575d4533b0e62a9c8a701b40622a52
 ---
 默认情况下，webforJ 项目可以运行，但它们不会与许可证证书关联。当运行未授权的项目时，水印将显示在运行应用程序的用户界面上，直到输入有效的许可证。

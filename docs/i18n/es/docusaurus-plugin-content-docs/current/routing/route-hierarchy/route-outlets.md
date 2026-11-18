@@ -1,6 +1,11 @@
 ---
 sidebar_position: 3
 title: Salidas de ruta
+description: >-
+  Renderiza rutas hijas dentro de contenedores principales mediante outlets
+  HasComponents, frames y la interfaz RouteOutlet.
+_i18n_title_hash: d56ab21a3ee2335468187aa95009f477
+_i18n_description_hash: d16eb4f7cd58ebe5849ed9566df13ad4
 _i18n_hash: 8a64cd917fe9f1de3f37ee01254e80e7
 ---
 Un **outlet** es un componente designado, ya sea un [layout de ruta](./route-types#layout-routes) o una [vista de ruta](./route-types#view-routes), donde se renderizan dinámicamente las rutas secundarias. Define dónde aparecerá el contenido de la ruta secundaria dentro de la ruta principal. Los outlets son fundamentales para crear interfaces de usuario modulares y anidadas, así como estructuras de navegación flexibles.

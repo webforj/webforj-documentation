@@ -1,6 +1,12 @@
 ---
 sidebar_position: 4
 title: Tipografía
+description: >-
+  Ajusta la familia, el tamaño y el grosor de la fuente, así como la altura de
+  línea, en tus aplicaciones webforJ con las propiedades personalizadas de CSS
+  de tipografía de DWC.
+_i18n_title_hash: 603850e072131401265c4fc01027db93
+_i18n_description_hash: d3d0f2dd8584ca8d89a71da697864551
 _i18n_hash: 7c5f036abf897a890cad14af0a64c6bd
 ---
 Los tokens de tipografía se utilizan para mantener un conjunto consistente de estilos de fuente en toda tu aplicación.

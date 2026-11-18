@@ -1,9 +1,9 @@
 ---
 sidebar_position: 52
 title: HTML组件
-description: >-
-  Compose pages with typed Java wrappers for standard HTML elements like Div,
-  Anchor, Paragraph, Img, headings, and semantic containers.
+description: 使用 Div、Anchor、Paragraph、Img、标题和语义化容器等标准 HTML 元素的类型化 Java 封装来构建页面。
+_i18n_title_hash: 5108cbe4b9d8de5912e5861ed524a8b9
+_i18n_description_hash: 993358240d21cf5f8876182600d49f70
 _i18n_hash: b8c2cd3c3c48b561e6796ef23aa73fe7
 ---
 webforJ 提供了一组与标准 HTML 元素直接映射的组件，为最常见的网页构建块提供了一个类型化的 Java API。有关每个基础 HTML 元素的全面参考，请参阅 [MDN HTML 元素参考](https://developer.mozilla.org/en-US/docs/Web/HTML/Element)。

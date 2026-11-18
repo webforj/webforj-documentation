@@ -1,7 +1,12 @@
 ---
 title: Tarkkailijat ja reittiparametrit
 sidebar_position: 5
-description: Step 4 - Use route parameters to control what content loads.
+description: >-
+  Oppaan vaihe 4: anna käyttäjien muokata olemassa olevia asiakkaita
+  reittimallien, URL-osoitteessa välitettävien parametrien ja elinkaaren
+  tarkkailijoiden avulla.
+_i18n_title_hash: cc11d3794ca0b21249d2ee8bf7f95fe0
+_i18n_description_hash: 7262b0d443eca71f63496442376c761c
 _i18n_hash: 413e52a1a6601beef4ece9b9e7a1757e
 ---
 Sovellus sivulta [Reititys ja koostekomponentit](/docs/introduction/tutorial/routing-and-composites) voi lisätä tietokantaan vain uusia asiakkaita. Seuraavien käsitteiden avulla voit antaa käyttäjille mahdollisuuden myös muokata olemassa olevien asiakkaiden tietoja:

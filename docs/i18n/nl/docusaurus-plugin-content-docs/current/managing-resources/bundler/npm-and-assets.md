@@ -1,11 +1,12 @@
 ---
 title: Pakketten en assets
 sidebar_position: 30
-sidebar_class_name: new-content
 description: >-
-  Declare npm packages, load a module straight from one, install build-only
-  dependencies, rely on tree shaking, and import CSS and assets from a
-  component's entry.
+  npm-pakketten declareren, modules rechtstreeks laden, alleen
+  buildafhankelijkheden installeren, tree shaking benutten en CSS en assets
+  importeren via de component-entry.
+_i18n_title_hash: cac008272dedd4c9bdc7860f88782b1e
+_i18n_description_hash: c5b4b96ca397aad0a739c7025891df15
 _i18n_hash: 3b538e3785ee74397f156dd38ef8506a
 ---
 Een invoer gebruikt meer dan zijn eigen bron. Het importeert pakketten van npm, laadt een module rechtstreeks van een, trekt een stylesheet of een afbeelding binnen, en kan afkomstig zijn van een klasse die je uitbreidt of een bibliotheek waar je van afhankelijk bent. Deze pagina behandelt hoe die onderdelen de build bereiken.

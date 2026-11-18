@@ -1,7 +1,12 @@
 ---
 title: Enrutamiento y Composites
 sidebar_position: 4
-description: Step 3 - Make your app navigable.
+description: >-
+  Paso 3 del tutorial: traslada la interfaz a su propia página, añade una página
+  para nuevos clientes y conéctalas mediante enrutamiento, componentes
+  compuestos y ColumnsLayout.
+_i18n_title_hash: 83bb9e48a7d161810744afd1d7db2dd3
+_i18n_description_hash: 97c35f7eb7cca920ea9c9222e8c36397
 _i18n_hash: f32a8552d85a9c85b565fe6f026c93bb
 ---
 Hasta ahora, este tutorial ha sido solo una aplicación de una sola página. Este paso cambia eso.

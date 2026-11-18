@@ -2,8 +2,11 @@
 title: Assistant IA
 sidebar_position: 7
 description: >-
-  A coding agent that works inside your running webforJ app, writes Java freely
-  behind a compile gate, and applies changes with your approval.
+  Un agent de codage dans votre application webforJ en cours d’exécution écrit
+  librement du Java, soumis à compilation, et applique les changements avec
+  votre accord.
+_i18n_title_hash: 3542743c69e8fceb06c77e5e17299c89
+_i18n_description_hash: 6673a6abca875aa1ed434c7b3e424b94
 _i18n_hash: e9d943043e52eae5368dfe4ba7795142
 ---
 craftforJ inclut un agent de programmation complet qui fonctionne au sein de votre **application en cours d’exécution**. Il écrit librement du Java, compile son code avant même que vous le voyiez, applique les modifications et reprend son travail après le redémarrage de votre application. Tout ce qu’il fait, il le fait sur l’application réellement en cours d’exécution devant vous, et non à partir d’une supposition fondée sur votre dépôt.

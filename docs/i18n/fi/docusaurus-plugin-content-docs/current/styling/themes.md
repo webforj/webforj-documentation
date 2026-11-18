@@ -1,10 +1,12 @@
 ---
 sidebar_position: 2
 title: Teemat
-sidebar_class_name: updated-content
 description: >-
-  Apply built-in light, dark, and dark-pure themes with @AppTheme or define
-  custom themes through data-app-theme selectors.
+  Ota käyttöön sisäänrakennetut vaalea, tumma ja dark-pure-teema
+  @AppTheme-annotaatiolla tai määritä mukautettuja teemoja
+  data-app-theme-valitsimilla.
+_i18n_title_hash: 83915d1254927f41241e8630890bec6e
+_i18n_description_hash: 1368c75dc54022ae158f6ea3e7ffd22e
 _i18n_hash: 91e1a18f11aadea66df804dbaa4917d9
 ---
 Teema webforJ:ssä on nimetty joukko CSS-käyttäjäominaisuuksia (design tokens), jotka hallitsevat, miltä jokainen komponentti näyttää. Teemojen vaihtaminen laskee värit, varjot, pinnat ja reunat koko sovelluksessa välittömästi ilman uudelleenrakennusta.

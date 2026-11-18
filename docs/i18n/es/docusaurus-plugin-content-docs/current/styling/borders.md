@@ -1,6 +1,11 @@
 ---
 sidebar_position: 6
 title: Borde
+description: >-
+  Controla el ancho, estilo, color y escala del radio de borde del componente
+  mediante las propiedades CSS personalizadas de borde de DWC.
+_i18n_title_hash: 070554647306343cbea29ebfdd278ba8
+_i18n_description_hash: 17bf5d9150820aa1fb0756cc188ef746
 _i18n_hash: aec4d011f38db8c5a7a6c324eb76d724
 ---
 Las propiedades de borde se utilizan para controlar el estilo y el ancho del borde del componente. Consulta los [estilos de borde disponibles](https://developer.mozilla.org/en-US/docs/Web/CSS/border-style).

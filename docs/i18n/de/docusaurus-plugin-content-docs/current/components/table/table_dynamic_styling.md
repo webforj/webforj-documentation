@@ -3,8 +3,11 @@ sidebar_position: 21
 title: Dynamisches Styling
 slug: styling
 description: >-
-  Apply data-driven CSS to Table rows and cells using setRowPartProvider and
-  setCellPartProvider with shadow part selectors.
+  Wenden Sie datengetriebenes CSS auf Tabellenzeilen und -zellen an, indem Sie
+  setRowPartProvider und setCellPartProvider mit Shadow-Part-Selektoren
+  verwenden.
+_i18n_title_hash: 3602650b7ea69d04267ee9b90a60f0d8
+_i18n_description_hash: 6cd9fe372a73740b12ada0a0006aad29
 _i18n_hash: 6d82241fb67ffa1ce5a1e8c974a96dea
 ---
 <!-- vale off -->

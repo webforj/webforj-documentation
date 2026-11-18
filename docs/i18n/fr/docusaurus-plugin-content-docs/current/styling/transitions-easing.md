@@ -2,9 +2,10 @@
 sidebar_position: 10
 title: Transitions et easing
 description: >-
-  Animate UI changes with consistent DWC duration tokens and cubic-bezier easing
-  curves for natural-feeling transitions.
-sidebar_class_name: updated-content
+  Animez les changements de l’interface avec les jetons de durée DWC cohérents
+  et des courbes d’assouplissement cubic-bezier pour des transitions naturelles.
+_i18n_title_hash: 69a0b34a7d2c7891737bf58cf112d3c3
+_i18n_description_hash: 1ac2b00435c458a52a4b623472fb3b34
 _i18n_hash: d99ffb6e3feed9642c483aab7b42d227
 ---
 Les variables de transition sont utilisées pour fournir des durées d'animation cohérentes dans votre application. Elles contrôlent la durée nécessaire pour qu'une animation se termine.

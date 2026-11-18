@@ -1,10 +1,11 @@
 ---
 title: Tailwind
 sidebar_position: 60
-sidebar_class_name: new-content
 description: >-
-  Turn on the webforj-tailwind extension, apply utility classes from a view, and
-  understand how it generates and scans its own stylesheet.
+  Ota webforj-tailwind-laajennus käyttöön, käytä näkymässä apuluokkia ja opi,
+  miten se luo ja skannaa oman tyylitiedostonsa.
+_i18n_title_hash: ea2ef9c01d4832a00b2c2011f7899c4b
+_i18n_description_hash: b779c82c51fed20b8e821066cb54fe2c
 _i18n_hash: f588624ebd738977bb8be4e9887141d1
 ---
 [Tailwind CSS](https://tailwindcss.com/) on hyödyke-perusteinen CSS-kehys, jonka luokkien nimet vastaavat pieniä joukkoja CSS-deklaraatioita. Se on ainoa kuratoitu laajennus, joka toimitetaan mukana, koska suurin osa projekteista ei käytä sitä. Aktivoit sen id:llä, samalla tavalla kuin kytket päälle minkä tahansa laajennuksen, katso [Enabled by id](/docs/managing-resources/bundler/extensions/overview#enabled-by-id). Kun se on päällä, se tekee jotain, mitä muut eivät tee: se generoi oman sisääntulonsa.

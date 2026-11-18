@@ -1,10 +1,9 @@
 ---
 sidebar_position: 2
 title: 主题
-sidebar_class_name: updated-content
-description: >-
-  Apply built-in light, dark, and dark-pure themes with @AppTheme or define
-  custom themes through data-app-theme selectors.
+description: 使用 @AppTheme 应用内置的浅色、深色和纯深色主题，或通过 data-app-theme 选择器定义自定义主题。
+_i18n_title_hash: 83915d1254927f41241e8630890bec6e
+_i18n_description_hash: 1368c75dc54022ae158f6ea3e7ffd22e
 _i18n_hash: 91e1a18f11aadea66df804dbaa4917d9
 ---
 在 webforJ 中，主题是一组命名的 CSS 自定义属性（设计令牌），用于控制每个组件的外观。切换主题会瞬间重新计算整个应用中的颜色、阴影、表面和边框，而无需重建。

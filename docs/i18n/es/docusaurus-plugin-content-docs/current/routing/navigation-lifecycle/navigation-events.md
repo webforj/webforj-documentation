@@ -1,6 +1,11 @@
 ---
 sidebar_position: 4
 title: Eventos de navegación
+description: >-
+  Registra listeners globales del router para los eventos del ciclo de vida
+  WillEnter, DidEnter, WillLeave, DidLeave, Navigate y Activate.
+_i18n_title_hash: e554cbf8a0fdce0b4210586ed5c805df
+_i18n_description_hash: 3bb73da5a4adb69405e3f64bb4fd6380
 _i18n_hash: f41ebca54f574eeac4834234cf3a0e5b
 ---
 Además de los eventos del ciclo de vida específicos de los componentes, puedes registrar **escuchas de eventos globales** a nivel del enrutador. Esto permite el seguimiento de la navegación a nivel global a través de toda la aplicación, lo que resulta útil para el registro, la analítica u otras preocupaciones transversales.

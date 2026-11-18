@@ -1,6 +1,12 @@
 ---
 sidebar_position: 4
 title: Kontextergebnisse
+description: >-
+  Prüfen Sie ValidationResult nach einem Schreibvorgang von BindingContext,
+  reagieren Sie auf BindingContextValidateEvent und setzen Sie den Fokus
+  automatisch auf den ersten Validierungsfehler.
+_i18n_title_hash: e7d8a9375af19d900fa8a28d7b45dd54
+_i18n_description_hash: 529756d0434ff4cbcebbf992f81dc7fe
 _i18n_hash: b86bc425ad8c1537e99a44fa34a93b3a
 ---
 Wenn Sie Daten von der Benutzeroberfläche in das Modell schreiben, löst die `write`-Methode des `BindingContext` die Validierungen aus. Die Validierungsergebnisse bestimmen, ob die Daten akzeptabel sind.

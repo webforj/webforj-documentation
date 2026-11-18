@@ -2,8 +2,10 @@
 sidebar_position: 4
 title: Muunnos
 description: >-
-  Convert between UI and model data types in webforJ bindings by implementing
-  the Transformer interface and wiring it via useTransformer.
+  Muunna käyttöliittymän ja mallin tietotyyppejä webforJ-sidoksissa
+  toteuttamalla Transformer-rajapinta ja kytkemällä se useTransformer-kutsulla.
+_i18n_title_hash: 7793401b28a8b98f7f4ccce3a07c17df
+_i18n_description_hash: 0ca2ed52367787afc09f3b0043208744
 _i18n_hash: 7a8064dc7b603cd86ad965a41216c55c
 ---
 Data transformations convert between the data types used in UI components and those in your data model. This keeps data types compatible and appropriately formatted when moving data between the frontend and backend of your applications.

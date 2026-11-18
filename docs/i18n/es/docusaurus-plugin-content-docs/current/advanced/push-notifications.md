@@ -2,8 +2,11 @@
 sidebar_position: 39
 title: Notificaciones push
 description: >-
-  Use the Push class, PushSender, and PushMessage to subscribe browsers and send
-  notifications from the server, even when the app isn't open.
+  Usa la clase Push y las clases PushSender y PushMessage para suscribir
+  navegadores y enviar notificaciones desde el servidor, incluso cuando la
+  aplicación no esté abierta.
+_i18n_title_hash: 31577c8a54813edae7252a078e710d11
+_i18n_description_hash: 4d2f7572d905e17e4aef9067c26ee0dd
 _i18n_hash: be5e6f5947bf38824dde0289d6415971
 ---
 <DocChip chip='since' label='26.02' />

@@ -2,9 +2,10 @@
 sidebar_position: 10
 title: Übergänge und Easing
 description: >-
-  Animate UI changes with consistent DWC duration tokens and cubic-bezier easing
-  curves for natural-feeling transitions.
-sidebar_class_name: updated-content
+  Animieren Sie UI-Änderungen mit konsistenten DWC-Dauer-Tokens und
+  cubic-bezier-Easing-Kurven für natürlich wirkende Übergänge.
+_i18n_title_hash: 69a0b34a7d2c7891737bf58cf112d3c3
+_i18n_description_hash: 1ac2b00435c458a52a4b623472fb3b34
 _i18n_hash: d99ffb6e3feed9642c483aab7b42d227
 ---
 Übergangsvariablen werden verwendet, um konsistente Animationsdauern in Ihrer App bereitzustellen. Sie steuern, wie lange eine Animation benötigt, um abzuschließen.

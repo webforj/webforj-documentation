@@ -1,9 +1,9 @@
 ---
 title: AI 助手
 sidebar_position: 7
-description: >-
-  A coding agent that works inside your running webforJ app, writes Java freely
-  behind a compile gate, and applies changes with your approval.
+description: 可在运行中的 webforJ 应用内工作的编程代理，能在编译检查机制下自由编写 Java，并在获得你批准后应用更改。
+_i18n_title_hash: 3542743c69e8fceb06c77e5e17299c89
+_i18n_description_hash: 6673a6abca875aa1ed434c7b3e424b94
 _i18n_hash: e9d943043e52eae5368dfe4ba7795142
 ---
 craftforJ 内置了一个完整的编码代理，可在你的**运行中的应用**内工作。它可以自由编写 Java，在你看到代码之前先编译自己写的内容，应用更改，并在应用重启后继续工作。它所做的一切，都是针对你眼前实际运行的应用，而不是基于对你代码仓库的猜测。

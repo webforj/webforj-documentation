@@ -1,10 +1,11 @@
 ---
 title: Lenguajes de estilos
 sidebar_position: 11
-sidebar_class_name: new-content
 description: >-
-  Author your styles in CSS, compile them from Sass or Less, or generate them
-  with Tailwind, and load the result into a webforJ app.
+  Define tus estilos en CSS, compílalos desde Sass o Less o genéralos con
+  Tailwind, y carga el resultado en una aplicación webforJ.
+_i18n_title_hash: ef323f16958e1b8b7e2d2e9e170f4717
+_i18n_description_hash: c218c1194810a334b7f6b55f9094ee85
 _i18n_hash: 98eca77023e33bac367a1a250da900d7
 ---
 Sus estilos llegan a la página como CSS, pero no tiene que escribirlos como CSS. webforJ carga una hoja de estilos que usted autoriza, compila una desde un preprocesador como Sass o Less, o genera una desde Tailwind, y el resultado estiliza sus vistas de la misma manera, independientemente de su origen. Los tokens de DWC, [propiedades personalizadas de CSS](/docs/styling/css-variables), y [partes de sombra](/docs/styling/shadow-parts) cubiertos en el resto de esta sección se aplican dentro de cualquiera de ellos.

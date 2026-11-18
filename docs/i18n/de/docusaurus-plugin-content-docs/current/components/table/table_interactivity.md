@@ -3,8 +3,10 @@ sidebar_position: 40
 title: Interaktivität
 slug: Interactivity
 description: >-
-  Reference the keyboard shortcuts that move focus, select rows, and navigate
-  cells in the Table component.
+  Die Tastenkombinationen zum Verschieben des Fokus, Auswählen von Zeilen und
+  Navigieren zwischen Zellen in der Table-Komponente.
+_i18n_title_hash: fcbe6546766fcb51d1197a3d75a7a7f4
+_i18n_description_hash: 84575804ecb073661d379d81f9143b66
 _i18n_hash: 49377400524e9e1c3a25dd35cfb7750c
 ---
 Die Komponente `Table` reagiert auf verschiedene Tastatureingaben, um eine präzisere Interaktion zu ermöglichen. Die folgende Liste beschreibt das jeweilige Verhalten beim Drücken der angegebenen Taste:

@@ -1,6 +1,12 @@
 ---
 sidebar_position: 9
 title: Estado
+description: >-
+  Estiliza los estados interactivos de los componentes con tokens DWC para la
+  opacidad de deshabilitado, el color del anillo de foco y la escala al
+  presionar.
+_i18n_title_hash: 46a2a41cc6e552044816a2d04634545d
+_i18n_description_hash: 4effbc72c67b895751e8bbca5732a23f
 _i18n_hash: 3dc9896bce3e0577b2407f8ae4c863d0
 ---
 Los tokens de estado definen cómo los componentes responden visualmente a la interacción del usuario, como cuando están deshabilitados o enfocados. Estas variables ayudan a garantizar un comportamiento y un estilo consistentes en todos los elementos de la interfaz de usuario, y se pueden personalizar fácilmente para que coincidan con su sistema de diseño.

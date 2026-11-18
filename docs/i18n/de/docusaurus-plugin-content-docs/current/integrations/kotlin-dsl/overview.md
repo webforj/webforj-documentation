@@ -4,8 +4,10 @@ sidebar_position: 0
 hide_table_of_contents: true
 hide_giscus_comments: true
 description: >-
-  Build webforJ UIs declaratively with the Kotlin DSL, a preview feature, using
-  type-safe builders, lambdas with receivers, and nested blocks.
+  Erstellen Sie webforJ-UIs deklarativ mit der Kotlin DSL als Vorschaufunktion,
+  typsicheren Buildern, Lambdas mit Empfänger und verschachtelten Blöcken.
+_i18n_title_hash: f13c3e27af618f6ee317df130bcc1449
+_i18n_description_hash: 9c20cfcb5337abe9d4a7a42c7368d521
 _i18n_hash: 5beb40faf3cca20567062bc93ef15e2b
 ---
 <Head>

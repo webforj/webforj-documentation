@@ -1,9 +1,13 @@
 ---
-title: Aloittaminen
+title: 'Aloittaminen craftforJ:n kanssa'
+sidebar_label: Aloittaminen
 sidebar_position: 2
 description: >-
-  Add the devtools dependency, enable craftforJ in your configuration, and open
-  craftforJ over a running webforJ app.
+  Lisää devtools-riippuvuus, ota craftforJ käyttöön asetuksissa ja avaa
+  craftforJ käynnissä olevan webforJ-sovelluksen päälle.
+_i18n_title_hash: f1ea341283e88e09bf4972b24490d781
+_i18n_sidebar_label_hash: bf647454e36069fd16f1a7a35cf6a865
+_i18n_description_hash: d7080850c2e666ba58a8d5664a50d555
 _i18n_hash: 5d30f5dd80df008a05be5d4617c40369
 ---
 <!-- vale off -->

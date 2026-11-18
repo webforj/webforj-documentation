@@ -3,6 +3,9 @@ sidebar_position: 1
 title: 安全架构
 hide_table_of_contents: true
 hide_giscus_comments: true
+description: 探索构建自定义安全实现所需的基础接口与模式，突破 Spring Security 的限制。
+_i18n_title_hash: 09162aa1970c16d1328b5f8a48519a7c
+_i18n_description_hash: 092cebbbf60e6e8126b5fd46782d9512
 _i18n_hash: df2f795c6b65edc60adb39b549cb780b
 ---
 <Head>

@@ -1,6 +1,12 @@
 ---
 title: Beëindigings- en foutacties
-sidebar_position: 40
+sidebar_position: 25
+description: >-
+  Pas het afsluit- en foutgedrag van de app aan met
+  AppCloseAction-implementaties zoals MessageAction, RedirectAction en
+  NoneAction.
+_i18n_title_hash: ef23b0432ca9c389aeba4722efde47ec
+_i18n_description_hash: eb1e2f323874493825cdd2c58d8951af
 _i18n_hash: 1a250a51020b32c8b3471ae75ea8f750
 ---
 <!-- vale off -->

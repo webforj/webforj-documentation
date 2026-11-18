@@ -3,8 +3,10 @@ sidebar_position: 20
 title: Rendu
 slug: rendering
 description: >-
-  Transform Table cells into text, badges, icons, links, or custom HTML with
-  built-in renderers and the setRenderer method.
+  Transformez les cellules de Table en texte, badges, icônes, liens ou HTML
+  personnalisé grâce aux renderers intégrés et à la méthode setRenderer.
+_i18n_title_hash: a6e8f9aed2ac6481dc25a18a33342d03
+_i18n_description_hash: e89bf89353cdc76a4434e7b8b56b9b46
 _i18n_hash: 7d9beff25d6b372fb4309fe491ecad08
 ---
 <!-- vale Google.Headings = NO -->

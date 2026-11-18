@@ -1,6 +1,11 @@
 ---
 sidebar_position: 2
 title: Fundamentele architectuur
+description: >-
+  Leer de kerninterfaces RouteSecurityManager, Context, Configuration en
+  Evaluator kennen die de toegangscontrole van webforJ mogelijk maken.
+_i18n_title_hash: b6aaffd5f07403b7f17fe59120ce4bc7
+_i18n_description_hash: bfc7489b37a66f03a3b1f78bdf34407f
 _i18n_hash: 0506f859c3bd22ddca70550b6f3e368a
 ---
 Het webforJ-beveiligingssysteem is gebouwd op een fundament van kerninterfaces die samenwerken om toegangscontrole op route-niveau te bieden. Deze interfaces definiëren de contracten voor beveiligingsgedrag, waardoor verschillende implementaties, of ze nu op sessies zijn gebaseerd, op JSON Web Tokens (JWT), LDAP-geïntegreerd of database-ondersteund zijn, in hetzelfde onderliggende framework kunnen worden geïntegreerd.

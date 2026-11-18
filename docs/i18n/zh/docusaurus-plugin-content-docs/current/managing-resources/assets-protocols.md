@@ -1,9 +1,9 @@
 ---
 sidebar_position: 2
 title: 资源协议
-description: >-
-  Reference app resources with the webforJ ws, context, and icons protocols to
-  load static files, classpath content, and dynamic icons.
+description: 通过 webforJ 的 ws、context 和 icons 协议引用应用资源，加载静态文件、类路径内容和动态图标。
+_i18n_title_hash: ad36a9c9968f20e18457ef67e30389e5
+_i18n_description_hash: 9f72c9bf3d65820741fcad1244cdb710
 _i18n_hash: 3928ba255cb9887c80c20f904baf62b8
 ---
 webforJ 支持自定义资产协议，使资源访问结构化和高效。这些协议抽象了静态和动态资源检索的复杂性，确保资产在应用程序中无缝获取和集成。

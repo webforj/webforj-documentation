@@ -2,9 +2,11 @@
 title: Overstappen vanaf Swing
 sidebar_position: 5
 description: >-
-  Map Java Swing concepts such as JFrame, layout managers, listeners, the event
-  dispatch thread, table models, JOptionPane, and CardLayout to their webforJ
-  counterparts.
+  Koppel Java Swing-concepten zoals JFrame, layout managers, listeners, de event
+  dispatch thread, table models, JOptionPane en CardLayout aan hun equivalenten
+  in webforJ.
+_i18n_title_hash: 4334c9ef532372ad4ec7040646346991
+_i18n_description_hash: bb61f39a493a0bd89b7e48af68c639d2
 _i18n_hash: a55f88307cad0553b509d1cbb9c3a3f3
 ---
 Deze pagina koppelt de concepten van een Java Swing-desktopapp aan hun tegenhangers in webforJ. In beide gevallen is de UI gewone Java: componenten zijn Java-objecten, gebeurtenissen worden afgehandeld door listeners en layouts worden in code samengesteld. webforJ draait op de server en het framework houdt de browser synchroon met de componentstatus. Zie [Component architecture](/docs/architecture/controls-components) voor meer informatie over hoe dat werkt.

@@ -1,6 +1,12 @@
 ---
 title: Die DSL verwenden
 sidebar_position: 10
+description: >-
+  Erstellen Sie webforJ-Komponenten mit der Kotlin-DSL mithilfe von
+  camelCase-Builder-Funktionen, verschachtelten Blöcken und receivergebundener
+  Konfiguration.
+_i18n_title_hash: 19889ee2d799cdb3e9247afdc3b75822
+_i18n_description_hash: 29d3ff24a869a59903766ffe3ed5690a
 _i18n_hash: 05d1319dd97f2d32392408b2e4ae9058
 ---
 Die Kotlin DSL bietet Builder-Funktionen für webforJ-Komponenten. Jede Funktion erstellt eine Komponente, fügt sie einem übergeordneten Container hinzu und führt einen Konfigurationsblock aus. Diese Seite behandelt die Muster und Konventionen, die Sie beim Erstellen von UIs mit der DSL verwenden werden.

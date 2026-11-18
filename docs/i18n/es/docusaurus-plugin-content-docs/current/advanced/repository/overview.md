@@ -2,8 +2,11 @@
 title: Repositorio
 sidebar_position: 1
 description: >-
-  Bridge data collections to UI components with CollectionRepository, commit
-  changes for automatic sync, and apply base filters.
+  Vincula colecciones de datos con componentes de interfaz mediante
+  CollectionRepository, confirma cambios para sincronizarlos automáticamente y
+  aplica filtros base.
+_i18n_title_hash: 33fcf2b3ec4686d9cd06051c726d0ba2
+_i18n_description_hash: d7cea6cd57c5e5b8ea320d6f40bd904a
 _i18n_hash: 77548d09e4d712ce8f508917d3b953ae
 ---
 <!-- vale off -->

@@ -1,10 +1,9 @@
 ---
 title: Card
 sidebar_position: 17
-sidebar_class_name: new-content
-description: >-
-  Group related content and actions with the Card component, including slotted
-  regions. orientation, elevation, dividers, and click handling.
+description: 使用 Card 组件（包括插槽区域）对相关内容和操作进行分组，并配置方向、阴影、分隔线和点击处理。
+_i18n_title_hash: 1d565b9e5303987bb1b1938d5d458bca
+_i18n_description_hash: 4388d38d1859e8ce941ffdc7bb08a627
 _i18n_hash: 08b0239bc5bbeb0b14f3b03dda7b8b17
 ---
 <DocChip chip="shadow" />

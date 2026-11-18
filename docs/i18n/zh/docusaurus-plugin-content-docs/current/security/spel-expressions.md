@@ -1,9 +1,9 @@
 ---
 sidebar_position: 5
 title: SpEL 表达式
-description: >-
-  Author route authorization rules with Spring Expression Language using
-  @RouteAccess for role, authority, and custom checks.
+description: 使用 Spring 表达式语言，通过 @RouteAccess 编写路由授权规则，支持角色、权限和自定义检查。
+_i18n_title_hash: f8be7b2ae914fd0d5589b7186f85650d
+_i18n_description_hash: 0e10214807480f78836d0f1f2935ae08
 _i18n_hash: 59601d0d83fe7eb4b05bf8eab47515c3
 ---
 Spring 表达式语言（`SpEL`）提供了一种声明性方式，直接在注解中定义授权规则。`@RouteAccess` 注解使用 Spring Security 的内置授权函数评估 `SpEL` 表达式。

@@ -2,8 +2,11 @@
 sidebar_position: 12
 title: Traducción
 description: >-
-  Resolve localized strings from resource bundles or custom sources with the t()
-  method, MessageFormat placeholders, and browser locale detection.
+  Resuelve cadenas localizadas desde paquetes de recursos o fuentes
+  personalizadas con el método t(), marcadores de posición de MessageFormat y
+  detección de la configuración regional del navegador.
+_i18n_title_hash: 6dd08874f83507e9c7b23f1a46b7fa7c
+_i18n_description_hash: cf9df3ec7329b04be36c034e9a29d7de
 _i18n_hash: 565ad5b41fe9fa72e363b2db84809cbe
 ---
 # Traducción <DocChip chip='since' label='25.12' />

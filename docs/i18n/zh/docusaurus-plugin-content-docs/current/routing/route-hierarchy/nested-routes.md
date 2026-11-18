@@ -1,6 +1,9 @@
 ---
 sidebar_position: 2
 title: 嵌套路由
+description: 使用 @Route 的 outlet 参数构建父子路由层级，在多个视图间共享布局并复用 UI。
+_i18n_title_hash: e2119c007b50b2af6331785f9f03b752
+_i18n_description_hash: 9f67baa4b0a157ea25104063e0c0df64
 _i18n_hash: 5324d20d84c35f52067d0ba6d6448b71
 ---
 嵌套路由允许子路由在父路由内渲染，从而创建模块化和可重用的用户界面。父路由定义共享组件，而子路由则注入到这些父组件的特定出口中。

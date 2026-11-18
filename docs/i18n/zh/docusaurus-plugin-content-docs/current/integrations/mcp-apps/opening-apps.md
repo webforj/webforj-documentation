@@ -1,9 +1,9 @@
 ---
 title: 使用输入打开视图
 sidebar_position: 15
-description: >-
-  Accept structured opening input in a routed MCP App and choose its requested
-  display mode.
+description: 在路由式 MCP App 中接收结构化启动输入，让 AI 选择视图的初始状态，并选择客户端用于展示该视图的显示模式。
+_i18n_title_hash: 641ce292c434e6351081c2192b2fb20c
+_i18n_description_hash: 40ec8695fabff2edf283828b501926b8
 _i18n_hash: 158831b08974dd001c1322c38213e331
 ---
 打开输入允许 AI 选择视图的初始状态。例如，一个库存应用可以在客户端打开时接受一个仓库代码，并在路由渲染后应用该值。

@@ -3,8 +3,11 @@ sidebar_class_name: experimental-content
 sidebar_position: 40
 title: Ansichtsübergänge
 description: >-
-  Animate DOM changes with the browser View Transition API, applying fade,
-  slide, zoom, and shared morph effects between component states.
+  Animieren Sie DOM-Änderungen mit der View Transition API des Browsers und
+  nutzen Sie Fade-, Slide-, Zoom- und gemeinsame Morph-Effekte zwischen
+  Komponentenzuständen.
+_i18n_title_hash: 649968b224df3ec9d6f81f66ca245e03
+_i18n_description_hash: d609022b4c4300896558734622593f10
 _i18n_hash: 3440413f572744ea709085a2975c0023
 ---
 <JavadocLink type="foundation" location="com/webforj/ViewTransition" top='true'/>

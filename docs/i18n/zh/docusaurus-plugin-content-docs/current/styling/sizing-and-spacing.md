@@ -1,6 +1,9 @@
 ---
 sidebar_position: 5
 title: 尺寸与间距
+description: 使用 DWC 基于 rem 的尺寸和间距 CSS 变量，在各类布局中统一组件尺寸与间距尺度。
+_i18n_title_hash: c90e72ac432a0d05b25985d0532144c9
+_i18n_description_hash: ce424529b081c0661f49736ded38b9d4
 _i18n_hash: 05261a33707bc38ade5e855f5ae5ce47
 ---
 间距和尺寸代币用于在您的应用程序中提供一致的间距和尺寸。所有尺寸和间距属性以`rem`为单位定义。

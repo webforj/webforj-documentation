@@ -2,10 +2,9 @@
 sidebar_position: 20
 title: 列表
 hide_giscus_comments: true
-sidebar_class_name: new-content
-description: >-
-  Manage shared list features across ChoiceBox, ComboBox, and ListBox, including
-  ListItem objects, adding, removing, and selection APIs.
+description: 管理 ChoiceBox、ComboBox 和 ListBox 的通用列表功能，包括 ListItem 对象、添加、移除和选择 API。
+_i18n_title_hash: 691d1860ec58dd973e803e209697d065
+_i18n_description_hash: a401d26e16368b8848c0f4541af5b7ed
 _i18n_hash: 79a006a2c6a0435414d931e5bfb161bd
 ---
 <JavadocLink type="foundation" location="com/webforj/component/list/DwcList"/>

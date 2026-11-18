@@ -1,9 +1,12 @@
 ---
 title: Päivitys v26-designjärjestelmään
 description: >-
-  Reference for the design-system updates in DWC 26 - color engine, dark mode,
-  surfaces, shadows, typography, radius, focus ring, and interaction feedback.
+  Viite DWC 26:n suunnittelujärjestelmän päivityksiin: värimoottori, tumma tila,
+  pinnat, varjot, typografia, kulmien pyöristys, kohdistusrengas ja
+  vuorovaikutuksen palaute.
 sidebar_position: 2
+_i18n_title_hash: 57e2329747857ca19fa1eeb35d2edbff
+_i18n_description_hash: 37139541cdfaad3dc0113cbcd3ba034e
 _i18n_hash: 8a36bc047ecfc90874412da4d39643fb
 ---
 DWC 26 tuo mukanaan päivitetyn suunnittelujärjestelmän. Päivitys on asteittainen eikä täydellinen kirjoitus: useimmat v25 CSS-muuttujat ovat edelleen käytettävissä, teeman moottorin julkinen API on säilytetty ja olemassa olevat mukautukset toimivat edelleen ilman muutoksia.

@@ -1,6 +1,11 @@
 ---
 sidebar_position: 3
 title: Routen-Outlets
+description: >-
+  Kindrouten in übergeordneten Containern mit HasComponents-Outlets, Frames und
+  der RouteOutlet-Schnittstelle rendern.
+_i18n_title_hash: d56ab21a3ee2335468187aa95009f477
+_i18n_description_hash: d16eb4f7cd58ebe5849ed9566df13ad4
 _i18n_hash: 8a64cd917fe9f1de3f37ee01254e80e7
 ---
 Ein **Outlet** ist eine benannte Komponente, entweder ein [Routenlayout](./route-types#layout-routes) oder eine [Routenansicht](./route-types#view-routes), in der Kindrouten dynamisch gerendert werden. Es definiert, wo der Inhalt der Kindroute innerhalb der Elternroute angezeigt wird. Outlets sind grundlegend für die Erstellung modularer, geschachtelter UIs und flexibler Navigationsstrukturen.

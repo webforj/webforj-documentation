@@ -1,6 +1,12 @@
 ---
 title: Badge
 sidebar_position: 8
+description: >-
+  Affichez des nombres, des statuts ou de courts libellés avec le composant
+  Badge, ainsi que des thèmes, des icônes insérées et leur association à des
+  boutons ou des onglets.
+_i18n_title_hash: 454a5c95c970c24b3d747b01001fd13a
+_i18n_description_hash: 8235092b208c7d3d7378de4e72ac1128
 _i18n_hash: 1f599f2c8a833e09f2d945ed0ead5447
 ---
 <DocChip chip='shadow' />

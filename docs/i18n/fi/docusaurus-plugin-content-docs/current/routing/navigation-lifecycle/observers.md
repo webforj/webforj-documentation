@@ -2,8 +2,10 @@
 sidebar_position: 2
 title: Elinkaaritarkkailijat
 description: >-
-  Hook into route lifecycle stages by implementing WillEnter, DidEnter,
-  WillLeave, DidLeave, and Activate observer interfaces.
+  Osallistu reitin elinkaaren vaiheisiin toteuttamalla WillEnter-, DidEnter-,
+  WillLeave-, DidLeave- ja Activate-tarkkailijarajapinnat.
+_i18n_title_hash: 9f0a5c4e88206bb2e0f2b5879c53689c
+_i18n_description_hash: 3d7af4df66125852029789abf4e3281e
 _i18n_hash: 3f39161991064d0d2506c0cb1dcd3503
 ---
 Observers allow components to react to lifecycle events by implementing interfaces for specific stages. This pattern ensures a clean separation of concerns and simplifies handling navigation logic.

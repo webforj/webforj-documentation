@@ -2,9 +2,10 @@
 sidebar_position: 2
 title: Amenazas comunes
 description: >-
-  How common web threats such as cross-site scripting (XSS), cross-site request
-  forgery (CSRF), and SQL injection apply to a webforJ app, what the framework
-  handles, and where you stay responsible.
+  Cómo afectan amenazas como XSS, CSRF e inyección SQL a una app webforJ, qué
+  gestiona el framework y qué sigue siendo tu responsabilidad.
+_i18n_title_hash: 8b4d1efc268346c8ba8112962bcc171f
+_i18n_description_hash: 2c7e5b606d702abcaeca6493759538d7
 _i18n_hash: f19a2bbb311243417c723fe49ad7d72f
 ---
 Porque una aplicación webforJ se ejecuta en Java en el servidor y el navegador solo renderiza la interfaz (consulta el artículo sobre [Interacción Cliente/Servidor](/docs/architecture/client-server)), varias clases de ataque están contenidas por diseño. Otras dependen de cómo escribas tu código. Esta página analiza las amenazas más importantes y traza una línea clara entre lo que maneja webforJ y lo que te corresponde manejar a ti.

@@ -2,8 +2,10 @@
 sidebar_position: 3
 title: Navigatieblokkering
 description: >-
-  Intercept navigation with WillLeaveObserver veto handlers and the beforeunload
-  event to guard unsaved changes.
+  Onderschep navigatie met veto-handlers van WillLeaveObserver en het
+  beforeunload-event om verlies van niet-opgeslagen wijzigingen te voorkomen.
+_i18n_title_hash: f77bf38ee81cebb7c3385d40529ae2b4
+_i18n_description_hash: 8f209d7ebac58484a6ef0ce3f318daf6
 _i18n_hash: 0deeb3e0583fdd425fe2a604ee1e9164
 ---
 Navigatie blokkering voegt een of meer lagen van controle toe aan de gehele onderliggende router-API. Als er blokkering handlers aanwezig zijn, zal navigatie als volgt worden voorkomen:

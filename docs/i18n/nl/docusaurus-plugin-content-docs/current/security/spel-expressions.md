@@ -2,8 +2,10 @@
 sidebar_position: 5
 title: SpEL-expressies
 description: >-
-  Author route authorization rules with Spring Expression Language using
-  @RouteAccess for role, authority, and custom checks.
+  Stel autorisatieregels voor routes op met Spring Expression Language via
+  @RouteAccess voor rollen, bevoegdheden en aangepaste controles.
+_i18n_title_hash: f8be7b2ae914fd0d5589b7186f85650d
+_i18n_description_hash: 0e10214807480f78836d0f1f2935ae08
 _i18n_hash: 59601d0d83fe7eb4b05bf8eab47515c3
 ---
 Spring Expression Language (`SpEL`) biedt een declaratieve manier om autorisatieregels rechtstreeks in annotaties te definiëren. De annotatie `@RouteAccess` evalueert `SpEL`-expressies met behulp van de ingebouwde autorisatiefuncties van Spring Security.

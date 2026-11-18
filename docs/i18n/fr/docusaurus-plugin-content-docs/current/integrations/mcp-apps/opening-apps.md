@@ -2,8 +2,11 @@
 title: Ouvrir une vue avec une entrée
 sidebar_position: 15
 description: >-
-  Accept structured opening input in a routed MCP App and choose its requested
-  display mode.
+  Acceptez des données d’ouverture structurées dans une application MCP avec
+  routage pour laisser l’IA choisir l’état initial de la vue, puis sélectionnez
+  le mode d’affichage du client.
+_i18n_title_hash: 641ce292c434e6351081c2192b2fb20c
+_i18n_description_hash: 40ec8695fabff2edf283828b501926b8
 _i18n_hash: 158831b08974dd001c1322c38213e331
 ---
 L'entrée d'ouverture permet à l'IA de choisir l'état initial d'une vue. Par exemple, une application d'inventaire peut accepter un code d'entrepôt lorsque le client l'ouvre et appliquer cette valeur après que la route soit rendue.

@@ -2,8 +2,11 @@
 title: Depuración
 sidebar_position: 15
 description: >-
-  Attach a remote Java debugger to a running webforJ app from Visual Studio
-  Code, IntelliJ IDEA, or Eclipse using Jetty on port 8000.
+  Conecta un depurador remoto de Java a una aplicación webforJ en ejecución
+  desde Visual Studio Code, IntelliJ IDEA o Eclipse mediante Jetty en el puerto
+  8000.
+_i18n_title_hash: da7d763aac39b294c7453c77c10d8239
+_i18n_description_hash: a9b597788ed11cee25324e4c220963a8
 _i18n_hash: 6e761f399c4a1f8d562acf85f92af615
 ---
 La depuración es una parte esencial del desarrollo en Java, ya que ayuda a los desarrolladores a identificar y solucionar problemas de manera eficiente. Esta guía explica cómo configurar la depuración en webforJ para Visual Studio Code, IntelliJ IDEA y Eclipse.

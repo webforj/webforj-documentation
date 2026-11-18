@@ -2,8 +2,10 @@
 sidebar_position: 2
 title: Routeerbare apps
 description: >-
-  Enable webforJ routing with the @Routify annotation to scan packages, manage
-  frames, and control browser history.
+  Schakel routing in webforJ in met de @Routify-annotatie om pakketten te
+  scannen, frames te beheren en de browsergeschiedenis te regelen.
+_i18n_title_hash: afbbb0ecce6720c310b7f377107a8c4b
+_i18n_description_hash: 706242abdbb1742879ab084137767921
 _i18n_hash: bea0848523a00ddfff8d79265ea699ac
 ---
 Routing in webforJ is een optioneel hulpmiddel. Ontwikkelaars kunnen kiezen tussen de webforJ routingoplossing of een traditioneel model met `Frame` manipulatie en zonder deep linking. Om routing in te schakelen, moet de **`@Routify`** annotatie worden toegepast op het niveau van een klasse die `App` implementeert. Dit geeft webforJ de autoriteit om de browsergeschiedenis te beheren, te reageren op navigatie-evenementen en de componenten van de app weer te geven op basis van de URL.

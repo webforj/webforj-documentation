@@ -1,9 +1,11 @@
 ---
 title: Päivitys versioon 27.00
-description: Upgrade from 26.00 to 27.00
+description: Päivitä versiosta 26.00 versioon 27.00
 sidebar_position: 10
 sidebar_class_name: new-content
 draft: true
+_i18n_title_hash: f521441c4a5da00c1bc05ae7307c3644
+_i18n_description_hash: 2ca050c7f4bc5f02fb7c8680550799a3
 _i18n_hash: 85416371e550d0aedae0a0771aff67be
 ---
 Tämä dokumentaatio toimii oppaana webforJ-sovellusten päivittämiseen versiosta 26.00 versioon 27.00. Tässä ovat muutokset, jotka tarvitaan, jotta olemassa olevat sovellukset voivat jatkaa sujuvaa toimintaa. Kuten aina, katso [GitHubin julkaisutiedot](https://github.com/webforj/webforj/releases) saadaksesi kattavamman luettelon muutoksista versioiden välillä.

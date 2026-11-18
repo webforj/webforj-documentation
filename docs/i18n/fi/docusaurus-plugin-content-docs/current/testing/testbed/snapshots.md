@@ -1,9 +1,13 @@
 ---
 sidebar_position: 5
-title: Tilannevedokset
+title: Snapshot-testaus
+sidebar_label: Tilannevedokset
 description: >-
-  Compare everything a view shows with a stored text description of it, read
-  that description, and add the state of your own components to it.
+  Vertaa kaikkea näkymässä näkyvää tallennettuun tekstikuvaukseen, lue kuvaus ja
+  lisää siihen omien komponenttiesi tila.
+_i18n_title_hash: 9580d9202c32b5f9ce00a7486a475362
+_i18n_sidebar_label_hash: 9147e5e61a7b9260dec09f3a6eb3e5be
+_i18n_description_hash: 10901f96edea7329f873be1b33f4a845
 _i18n_hash: 2f709890e8d1fd70a61debc1de3ae63f
 ---
 Näkymän tarkistaminen kohta kohdalta vaatii yhden väitteen jokaista otsikkoa, painiketta ja kenttää kohti. Tilannekuva tarkistaa ne kaikki kerralla. Se kirjaa ylös kaiken, minkä käyttäjä näkisi näkymässä, yhden rivin kutakin komponenttia kohti, ja tallentaa kuvauksen testin viereen. Jokaisella myöhemmällä suorituskerralla näkymä kuvataan uudelleen ja sitä verrataan tallennettuun kuvaukseen. Näin kaikki muutokset sivun näkymässä saavat testin epäonnistumaan, ja muutos näkyy koodikatselmoinnissa pelkkänä tekstierona.

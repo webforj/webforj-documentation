@@ -1,9 +1,9 @@
 ---
 sidebar_position: 10
 title: 导航框架标题
-description: >-
-  Set browser frame titles per route with the @FrameTitle annotation or generate
-  them dynamically using HasFrameTitle.
+description: 使用 @FrameTitle 注解为每个路由设置浏览器框架标题，或通过 HasFrameTitle 动态生成标题。
+_i18n_title_hash: 8aa2c696e6ad4b2612b85b0a8b89e517
+_i18n_description_hash: abcdb6bc334f7fe8c0b777c908af1333
 _i18n_hash: 7b190f89d8eeb58df6d8a25ce863cc5e
 ---
 在webforJ中，所有路由都在一个框架内渲染，该框架作为一个顶层容器，负责显示当前路由的内容。当用户在不同路由之间导航时，框架标题会动态更新，以反映当前活动视图，帮助提供用户在应用程序中的当前位置的清晰上下文。

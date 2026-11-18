@@ -1,6 +1,11 @@
 ---
 sidebar_position: 5
 title: Dimensions et espacement
+description: >-
+  Appliquez une échelle cohérente de dimensions et d’espacement des composants
+  dans toutes les mises en page grâce aux variables CSS DWC basées sur rem.
+_i18n_title_hash: c90e72ac432a0d05b25985d0532144c9
+_i18n_description_hash: ce424529b081c0661f49736ded38b9d4
 _i18n_hash: 05261a33707bc38ade5e855f5ae5ce47
 ---
 Les jetons d'espacement et de taille sont utilisés pour fournir un espacement et une taille cohérents dans votre application. Toutes les propriétés de taille et d'espacement sont définies en `rem`.

@@ -2,8 +2,10 @@
 sidebar_position: 2
 title: Komponenttien etsiminen
 description: >-
-  Describe the components a TestBed test acts on the way a user picks them out
-  on the page, by type, text, label and what they contain.
+  Kuvaile komponentteja, joihin TestBed-testi kohdistuu, kuten käyttäjä
+  tunnistaa ne sivulta: tyypin, tekstin, nimikkeen ja sisällön perusteella.
+_i18n_title_hash: 08dd64ab65d0d7702d38cfa6f6f84c53
+_i18n_description_hash: 25fffbd57fce100bd5499727357275bb
 _i18n_hash: 3e31c9bc7b51ebd2ebaf1a5e44c6e94f
 ---
 Ennen painikkeen napsauttamista käyttäjä etsii sen sivulta: **Tallenna**-painikkeen tai sähköpostiosoitetta varten merkityn kentän. TestBed-testi löytää komponentit samalla tavalla `ComponentLocator`-luokan avulla. Locator kuvaa komponentin sen tyypin ja siinä näkyvän käyttäjälle luettavan tekstin perusteella ja etsii sitä sivulta, kun testi pyytää tulosta.

@@ -2,8 +2,10 @@
 title: AI-assistent
 sidebar_position: 7
 description: >-
-  A coding agent that works inside your running webforJ app, writes Java freely
-  behind a compile gate, and applies changes with your approval.
+  Een codeeragent die in je draaiende webforJ-app werkt, vrij Java schrijft met
+  een compilatiecontrole en wijzigingen pas na jouw goedkeuring toepast.
+_i18n_title_hash: 3542743c69e8fceb06c77e5e17299c89
+_i18n_description_hash: 6673a6abca875aa1ed434c7b3e424b94
 _i18n_hash: e9d943043e52eae5368dfe4ba7795142
 ---
 craftforJ bevat een volledige codeeragent die binnen je **actieve app** werkt. De agent schrijft vrijelijk Java, compileert wat hij heeft geschreven voordat jij het ooit te zien krijgt, past de wijziging toe en gaat verder met werken nadat je app opnieuw is opgestart. Alles wat de agent doet, doet hij met de app die daadwerkelijk voor je draait, en niet met een inschatting op basis van je repository.

@@ -1,7 +1,11 @@
 ---
 sidebar_position: 16
 title: MaskDecorator
-sidebar_class_name: new-content
+description: >-
+  Formatteer en parseer tekenreeksen, getallen, datums en tijden buiten
+  invoervelden met dezelfde maskersyntaxis als gemaskeerde velden in webforJ.
+_i18n_title_hash: a6dbdff539df9fc63cb6c6dd75d65e63
+_i18n_description_hash: d23fc1a918bd7c7cf5b77e574f20b472
 _i18n_hash: 30ecd8eeaa79a3e5f963e319373d1378
 ---
 <DocChip chip='since' label='24.10' />

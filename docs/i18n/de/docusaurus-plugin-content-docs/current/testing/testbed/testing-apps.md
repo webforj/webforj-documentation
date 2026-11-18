@@ -2,8 +2,11 @@
 sidebar_position: 6
 title: Apps testen
 description: >-
-  Start a TestBed test with the routes or the whole app, navigate, test secured
-  routes, answer dialogs, control timers, and answer for the browser.
+  Starten Sie einen TestBed-Test für Routen oder die gesamte App, navigieren
+  Sie, testen Sie geschützte Routen, beantworten Sie Dialoge und Browserabfragen
+  und steuern Sie Timer.
+_i18n_title_hash: 2b27784755b2277a897d0e090935069a
+_i18n_description_hash: 86e54866c6ec66c419b5c8aafddfe5db
 _i18n_hash: 4194d4d355b0e26f86b8c3c53ea353c9
 ---
 Eine Ansicht steht selten für sich allein. Eine Route führt zu ihr, die Routensicherheit kann sie schützen, sie fragt den Benutzer über Dialoge, aktualisiert sich nach einem Zeitgeber und fragt den Browser nach Antworten. In einer laufenden App übernehmen ein Server, ein Benutzer, die Uhr und der Browser jeweils ihren Teil. In einem TestBed-Test übernimmt der Test alle diese Rollen: Er legt fest, wie viel von der App ausgeführt wird, navigiert wie die Adressleiste, beantwortet Dialoge für den Benutzer, bestimmt, wann Zeit vergeht, und antwortet für den Browser.

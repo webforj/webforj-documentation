@@ -2,8 +2,11 @@
 sidebar_position: 5
 title: Enlace automático
 description: >-
-  Bind UI fields to bean properties automatically with BindingContext.of using
-  UseProperty, BindingExclude, and UseValidator annotations.
+  Vincula automáticamente los campos de la interfaz con las propiedades del bean
+  mediante BindingContext.of y las anotaciones UseProperty, BindingExclude y
+  UseValidator.
+_i18n_title_hash: 666e71f372d1b611262598ca5cd23499
+_i18n_description_hash: 985dfb18ded910f005bf2a2e040a8f9d
 _i18n_hash: 60ea231c7622e56330eef34d26d615cc
 ---
 webforJ ofrece varias características que simplifican el proceso de configuración y enlace automático para los desarrolladores. Esta sección demuestra cómo utilizar estas características de manera efectiva.

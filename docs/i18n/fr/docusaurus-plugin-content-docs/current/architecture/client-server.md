@@ -2,8 +2,11 @@
 sidebar_position: 5
 title: Interaction client/serveur
 description: >-
-  Understand how webforJ batches server-to-client calls, avoids costly round
-  trips, and uses caching and on-demand chunks for performance.
+  Découvrez comment webforJ regroupe les appels serveur-client, évite les
+  allers-retours coûteux et optimise les performances grâce au cache et aux
+  blocs chargés à la demande.
+_i18n_title_hash: 18b6a0908dc2b5b419e1f773895f2f39
+_i18n_description_hash: 8d46450d38cfc270f0bbb62a8e8941a2
 _i18n_hash: 893b34ce2601ff273d03ba4091b7bc51
 ---
 La section suivante discute des différentes qualités de performance et des meilleures pratiques pour webforJ, ainsi que des détails de mise en œuvre pour le framework.

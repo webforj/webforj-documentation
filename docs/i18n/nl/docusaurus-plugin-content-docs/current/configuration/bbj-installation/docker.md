@@ -2,8 +2,10 @@
 sidebar_position: 1
 title: Docker
 description: >-
-  Install Docker Desktop on Windows or Mac, pull the webforj/sandbox image, and
-  run BBjServices in a container for webforJ development.
+  Installeer Docker Desktop op Windows of Mac, haal de webforj/sandbox-image op
+  en voer BBjServices uit in een container voor ontwikkeling met webforJ.
+_i18n_title_hash: c5fd214cdd0d2b3b4272e73b022ba5c2
+_i18n_description_hash: 88d006d8c7409abe9deb818da1f8884a
 _i18n_hash: 6c644b1d4f54cfa22e3b978714a5849e
 ---
 # Docker-installatie

@@ -1,9 +1,14 @@
 ---
-title: Spring Boot
+title: Recarga en caliente con Spring Boot
+sidebar_label: Spring Boot
 sidebar_position: 30
 description: >-
-  Set up live reload in a Spring Boot webforJ app, with the development tools
-  delivered by the webforJ build plugin.
+  Configura la recarga en vivo en una aplicación webforJ de Spring Boot con las
+  herramientas de desarrollo proporcionadas por el complemento de compilación de
+  webforJ.
+_i18n_title_hash: d5c637214c47ee7e474c357635a126ba
+_i18n_sidebar_label_hash: d2b84a7bb8d211a07fd6ecbf4db9d426
+_i18n_description_hash: d2db8310c2f562443c975e7b774dbe44
 _i18n_hash: 2fa5b74377a864e82b67db98ee8c9c04
 ---
 En una aplicación de Spring Boot, el [plugin de construcción webforJ](/docs/configuration/build-plugin) entrega las herramientas de desarrollo para las ejecuciones de desarrollo. El proyecto no declara ninguna dependencia para ellas, y nunca forman parte de la aplicación empaquetada.

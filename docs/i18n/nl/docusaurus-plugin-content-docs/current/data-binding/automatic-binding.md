@@ -2,8 +2,10 @@
 sidebar_position: 5
 title: Automatische binding
 description: >-
-  Bind UI fields to bean properties automatically with BindingContext.of using
-  UseProperty, BindingExclude, and UseValidator annotations.
+  Koppel UI-velden automatisch aan bean-eigenschappen met BindingContext.of via
+  de annotaties UseProperty, BindingExclude en UseValidator.
+_i18n_title_hash: 666e71f372d1b611262598ca5cd23499
+_i18n_description_hash: 985dfb18ded910f005bf2a2e040a8f9d
 _i18n_hash: 60ea231c7622e56330eef34d26d615cc
 ---
 webforJ biedt verschillende functies die het configuratie- en automatische bindingproces voor ontwikkelaars stroomlijnen. Dit gedeelte laat zien hoe je deze functies effectief kunt gebruiken.

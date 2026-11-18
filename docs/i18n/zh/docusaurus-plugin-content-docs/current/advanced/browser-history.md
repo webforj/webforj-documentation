@@ -1,6 +1,9 @@
 ---
 title: 浏览器历史
 sidebar_position: 30
+description: 通过 Java 导航、添加或替换浏览器历史记录条目，无需重新加载页面即可控制后退、前进及 URL 状态。
+_i18n_title_hash: d7fe7e6519c3d23bbf458b5258a0d60d
+_i18n_description_hash: 9a11bddb7878a5ffd3af3a38688fa954
 _i18n_hash: 918006c1e505baa4bbffbfb32eb3d9d7
 ---
 <DocChip chip='since' label='24.12' />

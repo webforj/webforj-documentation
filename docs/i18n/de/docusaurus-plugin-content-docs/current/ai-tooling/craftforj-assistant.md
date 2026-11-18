@@ -1,10 +1,11 @@
 ---
 title: craftforJ-Assistent
 sidebar_position: 2
-sidebar_class_name: new-content
 description: >-
-  A coding agent inside your running webforJ app that writes Java freely,
-  compiles it, and applies it with your approval.
+  Ein Coding-Agent in Ihrer laufenden webforJ-App, der frei Java-Code schreibt,
+  kompiliert und nach Ihrer Zustimmung anwendet.
+_i18n_title_hash: e162e407d974aae33c2366767c2cbe96
+_i18n_description_hash: cc5da810e30e992ab9f2ca659b440b19
 _i18n_hash: 2c2a04b29b7b6de57e5689628cd659d0
 ---
 Der craftforJ-Assistent ist ein Programmieragent, der innerhalb Ihrer **laufenden App** arbeitet. Er schreibt Java frei, kompiliert, was er geschrieben hat, bevor Sie es jemals sehen, wendet die Änderungen an und arbeitet weiter, nachdem Ihre App neu gestartet wurde. Er wird mit webforJ als Teil von [craftforJ](/docs/craftforj) geliefert, der Entwicklungsumgebung, die Ihnen den Komponentenbaum, Routen, Live-Eigenschaften und das Design einer App während des Betriebs bereitstellt.

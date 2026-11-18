@@ -1,9 +1,9 @@
 ---
 title: 登录
 sidebar_position: 70
-description: >-
-  Display an authentication dialog with the Login component, handling
-  submission, validation, custom fields, and form action URLs.
+description: 使用 Login 组件显示身份验证对话框，并处理提交、验证、自定义字段和表单操作 URL。
+_i18n_title_hash: 99dea78007133396a7b8ed70578ac6ae
+_i18n_description_hash: 57996d096b30aae681f8cbaeb7f2d222
 _i18n_hash: 5016fc4d15ba24b16c61eed8e6e272ee
 ---
 <DocChip chip='shadow' />

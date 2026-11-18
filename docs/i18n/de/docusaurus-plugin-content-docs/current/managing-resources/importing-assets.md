@@ -2,8 +2,11 @@
 sidebar_position: 1
 title: Assets importieren
 description: >-
-  Attach JavaScript and CSS to webforJ components or the app using JavaScript,
-  InlineJavaScript, StyleSheet, and InlineStyleSheet annotations.
+  Binden Sie JavaScript und CSS mithilfe der Annotationen JavaScript,
+  InlineJavaScript, StyleSheet und InlineStyleSheet an webforJ-Komponenten oder
+  die Anwendung an.
+_i18n_title_hash: 2bb279247129f48aae96ef9448e7937b
+_i18n_description_hash: 536f6365a8d660553f582f17e63ae286
 _i18n_hash: 4343173cf0cbef440f24c05cf9ee3fbd
 ---
 Assets annotations bieten einen deklarativen Ansatz zur Einbettung externer und interner Ressourcen wie JavaScript und CSS innerhalb einer App statisch. Diese Annotationen vereinfachen das Ressourcenmanagement, indem sie sicherstellen, dass Abhängigkeiten zur richtigen Ausführungsphase geladen werden, was die manuelle Konfiguration verringert und die Wartbarkeit verbessert.

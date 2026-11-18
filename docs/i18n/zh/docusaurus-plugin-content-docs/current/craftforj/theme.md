@@ -1,9 +1,9 @@
 ---
 title: 主题
 sidebar_position: 6
-description: >-
-  Adjust the DWC design tokens of a running webforJ app, preview the result
-  immediately, and save it into your stylesheet.
+description: 调整正在运行的 webforJ 应用的 DWC 设计令牌，即时预览效果，并将其保存到样式表中。
+_i18n_title_hash: d721757161f7f70c5b0949fdb6ec2c30
+_i18n_description_hash: a8284dc3eaa8e204246a898c1e69582b
 _i18n_hash: fe089afe4f44e457a98622707bf995e5
 ---
 “主题”选项卡可让你在应用运行时更改其外观。它与应用已经使用的 [DWC 设计令牌](/docs/styling/css-variables)配合使用，因此，只需更改一次，就能影响所有读取该令牌的组件，而不必逐条修改规则。

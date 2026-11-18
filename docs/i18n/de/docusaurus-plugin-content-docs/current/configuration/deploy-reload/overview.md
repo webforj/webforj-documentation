@@ -3,8 +3,11 @@ title: Redeployment und Live Reload
 hide_table_of_contents: false
 hide_giscus_comments: true
 description: >-
-  Apply code changes to a running webforJ app during development, on the server
-  through hotswap or a restart, and in the browser through live reload.
+  Wenden Sie Codeänderungen während der Entwicklung in einer laufenden
+  webforJ-App an – serverseitig per Hotswap oder Neustart und im Browser per
+  Live-Reload.
+_i18n_title_hash: d038da25eadd3fa2b020437d8aac733d
+_i18n_description_hash: bf2e7ce0710fa98ee70bdafb74ac57eb
 _i18n_hash: 243a55fe41bec8aeb4dfc9f70561d80c
 ---
 Während der Entwicklung wendet webforJ gespeicherte Änderungen auf die laufende App an und aktualisiert den Browser. Klassenänderungen gelangen über ein [Hotswap-Tool](/docs/configuration/deploy-reload/hotswap) oder durch einen Neustart zur App. Das Live-Reload aktualisiert den Browser nach jedem von beidem.

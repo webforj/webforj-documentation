@@ -2,8 +2,11 @@
 title: MaskedDateField
 sidebar_position: 5
 description: >-
-  Capture localized date input with the MaskedDateField, applying configurable
-  masks, format indicators, parsing rules, and validation.
+  Saisissez des dates localisées avec MaskedDateField, en appliquant des masques
+  configurables, des indicateurs de format, des règles d’interprétation et la
+  validation.
+_i18n_title_hash: f2fd8508548912430b3bbaef1275010e
+_i18n_description_hash: 2b6f780d261eaedba0aee9fbcb8976dd
 _i18n_hash: b327e838739be59acec7bfbedc3bb027
 ---
 <DocChip chip='shadow' />

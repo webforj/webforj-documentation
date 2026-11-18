@@ -3,9 +3,9 @@ sidebar_position: 1
 title: 应用安全
 hide_table_of_contents: true
 hide_giscus_comments: true
-description: >-
-  How webforJ's server-driven model protects your app, the threats you remain
-  responsible for, and how to keep a deployment secure.
+description: webforJ 的服务器驱动模型如何保护你的应用、你仍需负责应对的威胁，以及如何确保部署安全。
+_i18n_title_hash: 2993e06f9e34b9da0ed41173d7d56a4a
+_i18n_description_hash: 4dfd7c6db5603bf452b8b8617acd834f
 _i18n_hash: f23f925b237729d4160089bb260cf329
 ---
 <Head>

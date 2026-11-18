@@ -1,6 +1,12 @@
 ---
 sidebar_position: 5
 title: Triggers
+description: >-
+  Bepaal wanneer webforJ bindingen valideert door automatische validatie in of
+  uit te schakelen, ValueChangeMode te gebruiken en handmatig opnieuw te
+  valideren.
+_i18n_title_hash: 84ff23e034dfdf2b03ed32a46c01b3a1
+_i18n_description_hash: b2ae28f54011b30985d64a98dd939423
 _i18n_hash: 97f59b66c18e6a2d02174c1ba99f88f1
 ---
 Bij standaardinstellingen valideren bindings automatisch componenten opnieuw wanneer gebruikers hun gegevens wijzigen, zoals het invoeren van nieuwe tekst, het aanvinken van een selectievakje of het selecteren van een nieuwe optie in een radioknop. Als je de automatische validaties wilt uitschakelen en deze alleen wilt rapporteren wanneer je naar het datamodel schrijft, kun je de binding zo configureren dat deze zijn uitgeschakeld. Dit geeft je controle over wanneer en hoe validaties plaatsvinden, zodat je validaties kunt beheren op basis van specifieke app-behoeften of gebruikersinteracties.

@@ -2,8 +2,10 @@
 sidebar_position: 2
 title: Asset-protocollen
 description: >-
-  Reference app resources with the webforJ ws, context, and icons protocols to
-  load static files, classpath content, and dynamic icons.
+  Verwijs naar app-bronnen via de webforJ-protocollen ws, context en icons om
+  statische bestanden, classpath-inhoud en dynamische pictogrammen te laden.
+_i18n_title_hash: ad36a9c9968f20e18457ef67e30389e5
+_i18n_description_hash: 9f72c9bf3d65820741fcad1244cdb710
 _i18n_hash: 3928ba255cb9887c80c20f904baf62b8
 ---
 webforJ ondersteunt aangepaste activa-protocollen die gestructureerde en efficiënte toegang tot bronnen mogelijk maken. Deze protocollen abstraheren de complexiteit van statische en dynamische brontoegang, zodat activa naadloos binnen de app kunnen worden opgehaald en geïntegreerd.

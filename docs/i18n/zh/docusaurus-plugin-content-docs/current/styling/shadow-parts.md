@@ -1,6 +1,9 @@
 ---
 sidebar_position: 2
 title: 阴影部件
+description: '使用 CSS ::part() 选择器深入 webforJ 组件的 shadow DOM，为内部元素设置样式，同时保留封装性。'
+_i18n_title_hash: 31662a0c4a4442424487da769c5b3950
+_i18n_description_hash: 99f09e929e55f230ab49324e4bac39bd
 _i18n_hash: bad90a86a29eaf34485d5ee9150aacb3
 ---
 CSS **阴影部分** 为开发人员提供了一种从外部样式化组件的阴影 DOM 中元素的方法，同时仍然保持封装。

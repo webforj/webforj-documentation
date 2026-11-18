@@ -1,7 +1,12 @@
 ---
 title: MCP-asiakkaan käyttö
 sidebar_position: 25
-description: Connect a rendered webforJ view to its MCP client.
+description: >-
+  Kytke renderöity webforJ MCP-sovellus asiakkaaseen: lähetä viestejä
+  keskusteluun, pidä malli ajan tasalla, poistu upotetusta näkymästä ja seuraa
+  muutoksia.
+_i18n_title_hash: 24fff6ea770815c5a817375183dc0393
+_i18n_description_hash: 7ff04cf57c5225b03eb08145cc9eafb3
 _i18n_hash: 082797b568bd8f308b625306c524d7ef
 ---
 MCP-sovellus ei välttämättä tarvitse pitää jokaista vuorovaikutusta sisällä upotetussa näkymässään. Se voi lähettää tietoa keskusteluun, pitää mallin ajan tasalla, kun käyttäjä muuttaa käyttöliittymää, tai pyytää asiakasta käsittelemään jotain kehykset ulkopuolella.

@@ -2,8 +2,10 @@
 title: Achtergrondtaken
 sidebar_position: 25
 description: >-
-  Run Spring @Async services from webforJ views and marshal progress and results
-  back to the UI thread with Environment.runLater.
+  Voer Spring @Async-services uit vanuit webforJ-weergaven en stuur voortgang en
+  resultaten terug naar de UI-thread met Environment.runLater.
+_i18n_title_hash: dab970e99be91f87ed9529a337f3f1e7
+_i18n_description_hash: 6f8f6d2a9b85f45bdc3c544bff6f892a
 _i18n_hash: 2760d6db6a7b7045e7612ca359d04a28
 ---
 Wanneer gebruikers op een knop klikken om een rapport te genereren of gegevens te verwerken, verwachten ze dat de interface responsief blijft. Voortgangsbalken moeten animeren, knoppen moeten reageren op hoveren en de app mag niet vastlopen. Met Spring's annotatie `@Async` kun je dit mogelijk maken door langlopende bewerkingen naar achtergrondthreads te verplaatsen.

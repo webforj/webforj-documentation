@@ -1,6 +1,12 @@
 ---
 sidebar_position: 1
 title: Routetypen
+description: >-
+  Maak onderscheid tussen webforJ-weergaveroutes die URL-segmenten
+  vertegenwoordigen en lay-outroutes die gedeelde UI omhullen zonder het pad te
+  wijzigen.
+_i18n_title_hash: 97e64bd13d93989b694c20c44f94956a
+_i18n_description_hash: 6d7aa8ee37d01c55048daa3c9bc555c3
 _i18n_hash: 75cb67715544b94ca99fc81c736ebcc7
 ---
 Routes zijn ingedeeld in twee hoofdtypen, **View Routes** en **Layout Routes**. De keuze van het roettype bepaalt hoe componenten aan URL's worden gekoppeld en hoe ze interactie hebben met andere delen van uw app.

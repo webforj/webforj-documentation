@@ -2,8 +2,11 @@
 sidebar_position: 3
 title: Testaus Seleniumilla
 description: >-
-  Drive a webforJ app from JUnit with Selenium WebDriver and WebDriverManager to
-  simulate user interactions and assert UI state.
+  Ohjaa webforJ-sovellusta JUnitista Selenium WebDriverin ja WebDriverManagerin
+  avulla simuloidaksesi käyttäjän toimintoja ja tarkistaaksesi käyttöliittymän
+  tilan.
+_i18n_title_hash: 64f6818b97b27c8eecd829fdffbc9da9
+_i18n_description_hash: 2dd665b81033474f039db9312b37da7d
 _i18n_hash: 482f683ba0db2228dfbfb9fdbea794e7
 ---
 Tässä dokumentaatiossa kuvataan webforJ-sovellusten testaaminen Seleniumilla. Esimerkissä keskitytään `webforj-archetype-hello-world`-sovelluksen `HelloWorldView`-näkymään.

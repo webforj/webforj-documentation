@@ -2,8 +2,10 @@
 sidebar_position: 4
 title: Assertions
 description: >-
-  Check what the user would see on a component with verifyThat, and read
-  failures that name the component and both values.
+  Vérifiez ce qu’un utilisateur verrait sur un composant avec verifyThat, et
+  consultez les échecs qui nomment le composant et les deux valeurs.
+_i18n_title_hash: c2835ffac5b588bf228fce7aff4d3432
+_i18n_description_hash: 6573b8db1f12ca8529bf287ae6684bb6
 _i18n_hash: 6414e2fab20d3bf7828413494af79b74
 ---
 Après une action du test, celui-ci vérifie ce que l’utilisateur verrait : le texte d’un bouton, si un champ peut être modifié, quel élément d’une liste est sélectionné. `verifyThat(component)` énonce ces attentes avec les mêmes termes, par exemple `isReadOnly()` ou `hasText("Save")`. Chaque vérification lit l’état du composant, le même état que celui affiché par le navigateur, et une vérification échouée indique le composant et les deux valeurs.

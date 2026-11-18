@@ -2,9 +2,10 @@
 sidebar_position: 2
 title: Veelvoorkomende bedreigingen
 description: >-
-  How common web threats such as cross-site scripting (XSS), cross-site request
-  forgery (CSRF), and SQL injection apply to a webforJ app, what the framework
-  handles, and where you stay responsible.
+  Hoe XSS, CSRF en SQL-injectie webforJ-apps treffen, wat het framework
+  afhandelt en waarvoor u zelf verantwoordelijk blijft.
+_i18n_title_hash: 8b4d1efc268346c8ba8112962bcc171f
+_i18n_description_hash: 2c7e5b606d702abcaeca6493759538d7
 _i18n_hash: f19a2bbb311243417c723fe49ad7d72f
 ---
 Omdat een webforJ-app in Java op de server draait en de browser alleen de interface weergeeft (zie het artikel over de [Client/Server Interactie](/docs/architecture/client-server)), zijn verschillende klassen van aanvallen bij ontwerp ingekapseld. Andere hangen nog steeds af van hoe je je code schrijft. Deze pagina behandelt de bedreigingen die het belangrijkst zijn en trekt een duidelijke lijn tussen wat webforJ afhandelt en wat jouw verantwoordelijkheid is.

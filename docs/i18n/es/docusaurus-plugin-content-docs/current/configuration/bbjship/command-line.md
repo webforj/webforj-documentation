@@ -2,8 +2,10 @@
 title: Línea de comandos
 sidebar_position: 7
 description: >-
-  The bbjship commands a BBj administrator runs on the BBj machine to manage the
-  deployment endpoint, deployed apps, development runs and BBjServices.
+  Comandos bbjship para gestionar en la máquina BBj el endpoint de despliegue,
+  las aplicaciones desplegadas, las ejecuciones de desarrollo y BBjServices.
+_i18n_title_hash: 660d3da18fc989381d42918e74f47399
+_i18n_description_hash: 62829e0289c048791d8a2d680291e7e6
 _i18n_hash: a80e91a6626a5c018604f40e37a5ff00
 ---
 # Línea de comandos <DocChip chip='since' label='26.03' /> {#command-line}

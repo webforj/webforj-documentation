@@ -4,8 +4,10 @@ title: Sanasto
 sidebar_class_name: sidebar--item__hidden
 slug: glossary
 description: >-
-  Definitions for terms used across webforJ documentation, including DOM, Shadow
-  DOM, and other web platform and framework concepts.
+  webforJ-dokumentaatiossa käytettyjen termien määritelmät, kuten DOM, Shadow
+  DOM sekä muut verkkopalustan ja sovelluskehyksen käsitteet.
+_i18n_title_hash: 31d109d162629f8d0cfc8ce8316c0567
+_i18n_description_hash: a6875fc0c7c07fa420f5f6c4dd606cf9
 _i18n_hash: b8c6955dd483c1d5904668a163666015
 ---
 ## DOM {#dom}

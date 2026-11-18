@@ -1,6 +1,9 @@
 ---
 sidebar_position: 6
 title: 边框
+description: 通过 DWC 边框 CSS 自定义属性控制组件边框宽度、样式、颜色和圆角级别。
+_i18n_title_hash: 070554647306343cbea29ebfdd278ba8
+_i18n_description_hash: 17bf5d9150820aa1fb0756cc188ef746
 _i18n_hash: aec4d011f38db8c5a7a6c324eb76d724
 ---
 边框属性用于控制组件的边框样式和宽度。请参阅[可用边框样式](https://developer.mozilla.org/en-US/docs/Web/CSS/border-style)。

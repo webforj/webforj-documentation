@@ -1,10 +1,11 @@
 ---
 title: AppNav
 sidebar_position: 6
-sidebar_class_name: new-content
 description: >-
-  Build hierarchical side navigation menus with AppNav and AppNavItem, linking
-  to routes, registered views, or external URLs.
+  Erstellen Sie hierarchische Seitennavigationsmenüs mit AppNav und AppNavItem,
+  die auf Routen, registrierte Ansichten oder externe URLs verweisen.
+_i18n_title_hash: 2247fdd8bd3cfaf0536a2ccdfd9338c3
+_i18n_description_hash: 3833e67fadf75ed7e1515b8808d42411
 _i18n_hash: c4ad786639b189058a38c808bd99ec8b
 ---
 <DocChip chip="shadow" />

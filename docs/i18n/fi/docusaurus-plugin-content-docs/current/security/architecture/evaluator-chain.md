@@ -1,6 +1,11 @@
 ---
 sidebar_position: 4
 title: Arvioijaketju
+description: >-
+  Arvioi reittien käyttöoikeudet prioriteettijärjestyksessä toimivalla
+  arvioijaketjulla vastuuketjumallia hyödyntäen.
+_i18n_title_hash: 98d72d3934038a7ee7ef067eee69dbc3
+_i18n_description_hash: 2ae51d5a0da5489be4b483fff2637312
 _i18n_hash: 5055a72d450daf8b98bdb995380a2e13
 ---
 Evaluointiketju on webforJ:n tietoturvajärjestelmän sydän. Se on priorisoitu arvioijien sekvenssi, joka tutkii reittejä ja tekee pääsypäätöksiä vastuuketjun suunnittelumallin avulla. Ymmärtämällä, miten ketju toimii, voit luoda mukautettuja arvioijia ja ratkaista odottamattomia pääsyn evätyksiä.

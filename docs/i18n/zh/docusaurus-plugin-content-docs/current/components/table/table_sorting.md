@@ -2,9 +2,9 @@
 sidebar_position: 15
 title: 排序
 slug: sorting
-description: >-
-  Enable per-column sorting on the Table, configure multi-column sorting, and
-  set sort priority programmatically.
+description: 为 Table 启用按列排序、配置多列排序，并以编程方式设置排序优先级。
+_i18n_title_hash: 2808a34767e19b842d906ab8ab6264c6
+_i18n_description_hash: 0982ea0da914bca56402ae5c96dd9ed8
 _i18n_hash: 7a910f5bdcaa8a9e053bcda6706808c2
 ---
 排序功能允许用户按列排列数据，让信息更易于阅读和分析。当用户需要快速查找某一列中的最大值或最小值时，这项功能会很有用。

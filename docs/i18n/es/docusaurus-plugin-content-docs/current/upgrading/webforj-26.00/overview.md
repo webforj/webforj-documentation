@@ -1,9 +1,14 @@
 ---
 title: Actualización a 26.00
-description: Upgrade from 25.00 to 26.00
+description: >-
+  Actualiza una app de webforJ de 25.00 a 26.00: Java 21 o 25, la nueva URL del
+  repositorio Maven, Spring Boot, cambios en las API Table y Repository y DWC
+  26.
 slug: /upgrading/webforj-26.00
 pagination_next: null
 sidebar_position: 1
+_i18n_title_hash: 35a959230718667d6e2ffd94f999c317
+_i18n_description_hash: 79e9f8c965681706044b4ee4aba2a992
 _i18n_hash: 3b9827a67a81e207508d7db72a650b64
 ---
 Esta documentación sirve como una guía para actualizar aplicaciones webforJ de 25.00 a 26.00. Aquí están los cambios necesarios para que las aplicaciones existentes sigan funcionando sin problemas. Como siempre, consulte el [resumen de lanzamientos de GitHub](https://github.com/webforj/webforj/releases) para una lista más completa de cambios entre versiones.

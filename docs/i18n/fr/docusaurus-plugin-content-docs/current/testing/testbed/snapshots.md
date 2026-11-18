@@ -1,9 +1,13 @@
 ---
 sidebar_position: 5
-title: Instantanés
+title: Tests de snapshots
+sidebar_label: Instantanés
 description: >-
-  Compare everything a view shows with a stored text description of it, read
-  that description, and add the state of your own components to it.
+  Comparez tout ce qu’affiche une vue à sa description textuelle enregistrée,
+  lisez-la et ajoutez-y l’état de vos propres composants.
+_i18n_title_hash: 9580d9202c32b5f9ce00a7486a475362
+_i18n_sidebar_label_hash: 9147e5e61a7b9260dec09f3a6eb3e5be
+_i18n_description_hash: 10901f96edea7329f873be1b33f4a845
 _i18n_hash: 2f709890e8d1fd70a61debc1de3ae63f
 ---
 Vérifier une vue élément par élément demande une assertion pour chaque libellé, bouton et champ. Un instantané vérifie tout en une seule fois. Il consigne tout ce qu’un utilisateur verrait dans la vue, une ligne par composant, et enregistre cette description à côté du test. À chaque exécution ultérieure, la vue est décrite à nouveau puis comparée à l’instantané : tout changement dans ce que la page affiche fait échouer le test, et le changement apparaît sous la forme d’un diff en texte brut lors de la revue de code.

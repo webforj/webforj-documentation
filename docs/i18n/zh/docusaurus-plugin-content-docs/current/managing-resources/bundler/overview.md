@@ -2,11 +2,9 @@
 title: 前端打包器
 hide_table_of_contents: true
 hide_giscus_comments: true
-sidebar_class_name: new-content
-description: >-
-  Understand how the webforJ frontend bundler turns class-level annotations into
-  compiled, per-route frontend assets, when to reach for it, and how a class
-  binds to the entry it needs.
+description: 了解 webforJ 前端打包器如何将类级注解转换为编译后的路由专属前端资源、何时使用它，以及类如何绑定所需入口。
+_i18n_title_hash: 0abbd35c99082689c5e8e2624d307090
+_i18n_description_hash: 1ce0ed69761a3d2fef808c115bbcb072
 _i18n_hash: 1276a78ae5197924d6577eae5bafe73b
 ---
 <Head>

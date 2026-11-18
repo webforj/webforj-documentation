@@ -2,8 +2,11 @@
 title: Abrir una vista con entrada
 sidebar_position: 15
 description: >-
-  Accept structured opening input in a routed MCP App and choose its requested
-  display mode.
+  Acepta datos estructurados de apertura en una aplicación MCP con enrutamiento
+  para que la IA elija el estado inicial de la vista y selecciona el modo de
+  visualización del cliente.
+_i18n_title_hash: 641ce292c434e6351081c2192b2fb20c
+_i18n_description_hash: 40ec8695fabff2edf283828b501926b8
 _i18n_hash: 158831b08974dd001c1322c38213e331
 ---
 La entrada de apertura permite que la IA elija el estado inicial de una vista. Por ejemplo, una aplicación de inventario puede aceptar un código de almacén cuando el cliente la abre y aplicar ese valor después de que se renderice la ruta.

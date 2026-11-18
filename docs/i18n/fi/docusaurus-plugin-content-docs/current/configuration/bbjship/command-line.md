@@ -2,8 +2,11 @@
 title: Komentorivi
 sidebar_position: 7
 description: >-
-  The bbjship commands a BBj administrator runs on the BBj machine to manage the
-  deployment endpoint, deployed apps, development runs and BBjServices.
+  BBj-ylläpitäjän BBj-koneella suorittamat bbjship-komennot käyttöönoton
+  päätepisteen, julkaistujen sovellusten, kehitysajojen ja
+  BBjServices-palveluiden hallintaan.
+_i18n_title_hash: 660d3da18fc989381d42918e74f47399
+_i18n_description_hash: 62829e0289c048791d8a2d680291e7e6
 _i18n_hash: a80e91a6626a5c018604f40e37a5ff00
 ---
 # Komentorivi <DocChip chip='since' label='26.03' /> {#command-line}

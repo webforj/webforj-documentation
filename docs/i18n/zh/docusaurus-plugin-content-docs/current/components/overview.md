@@ -3,9 +3,9 @@ title: 界面组件
 sidebar_position: 85
 hide_table_of_contents: true
 hide_giscus_comments: true
-description: >-
-  Browse the webforJ UI component catalog covering layouts, data entry,
-  navigation, feedback, and visualization components.
+description: 浏览 webforJ UI 组件目录，涵盖布局、数据输入、导航、反馈和可视化组件。
+_i18n_title_hash: 45ac037def4dc03161f6bedffcc3b307
+_i18n_description_hash: 97182b12d746c9ed301eeeced3480321
 _i18n_hash: 200027a33988025dba52cd07c34d2e27
 ---
 <Head>

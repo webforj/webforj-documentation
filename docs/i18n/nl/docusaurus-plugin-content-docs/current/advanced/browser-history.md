@@ -1,6 +1,12 @@
 ---
 title: Browsergeschiedenis
 sidebar_position: 30
+description: >-
+  Navigeer door de browsergeschiedenis, voeg items toe en vervang ze vanuit Java
+  om terug- en vooruitnavigatie en de URL-status te beheren zonder pagina's
+  opnieuw te laden.
+_i18n_title_hash: d7fe7e6519c3d23bbf458b5258a0d60d
+_i18n_description_hash: 9a11bddb7878a5ffd3af3a38688fa954
 _i18n_hash: 918006c1e505baa4bbffbfb32eb3d9d7
 ---
 <DocChip chip='since' label='24.12' />

@@ -1,6 +1,11 @@
 ---
 sidebar_position: 6
 title: Kyselyparametrit
+description: >-
+  Lue URL:n kyselymerkkijonon arvoja, muunna ne tyyppeihin ja käy ne läpi
+  webforJ-näkymissä ParametersBag- ja Location-rajapintojen avulla.
+_i18n_title_hash: 42bb3c16fb1e5d71306e769416df7852
+_i18n_description_hash: 80ce375665ca668e1ebac1e2f993818e
 _i18n_hash: 5a8313b16d83bfbef6e8d43589430f90
 ---
 Kyselyparametrit mahdollistavat lisätietojen siirtämisen URL-osoitteiden kautta, käyttämällä muotoa `?key1=value1&key2=value2`. Kun reittiparametreja käytetään vaadittavan tiedon siirtämiseen URL-polussa, kyselyparametrit tarjoavat joustavan mekanismin vapaaehtoisten tai lisätietojen siirtämiseen. Ne ovat erityisen hyödyllisiä sisällön suodattamisessa, lajittelussa tai käsitellessä useita arvoja samalla avaimella.

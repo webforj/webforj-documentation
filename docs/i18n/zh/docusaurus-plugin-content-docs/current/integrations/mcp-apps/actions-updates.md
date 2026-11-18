@@ -1,7 +1,9 @@
 ---
 title: 为已打开的视图添加工具
 sidebar_position: 20
-description: Add tools that work with an MCP App already open in the current conversation.
+description: 为已在对话中打开的 MCP App 发布更多工具，可将其设为带独立输入的操作，或设为重用打开时输入的更新工具。
+_i18n_title_hash: 746613a404d066e995f128f4f9a8206f
+_i18n_description_hash: 54c5c413a0ad07b7ef50cfc7fcce051a
 _i18n_hash: 0ad6819ba9550e2ffd2372c09b91a746
 ---
 MCP 应用可以发布工具，除了打开其视图的工具外。使用一个操作来进行一个独立的操作，并具有自己的输入。当应用需要一个与其打开工具具有相同输入的 `inventory_update` 工具时，实现更新观察者。

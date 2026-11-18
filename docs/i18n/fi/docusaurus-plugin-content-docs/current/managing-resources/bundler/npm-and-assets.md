@@ -1,11 +1,12 @@
 ---
 title: Paketit ja resurssit
 sidebar_position: 30
-sidebar_class_name: new-content
 description: >-
-  Declare npm packages, load a module straight from one, install build-only
-  dependencies, rely on tree shaking, and import CSS and assets from a
-  component's entry.
+  Määritä npm-paketit, lataa moduuli suoraan paketista, asenna vain koonnissa
+  tarvittavat riippuvuudet, hyödynnä tree shaking -optimointia ja tuo CSS sekä
+  resurssit komponentin aloitustiedostosta.
+_i18n_title_hash: cac008272dedd4c9bdc7860f88782b1e
+_i18n_description_hash: c5b4b96ca397aad0a739c7025891df15
 _i18n_hash: 3b538e3785ee74397f156dd38ef8506a
 ---
 Entry perustuu enemmän kuin omaan lähteeseensä. Se tuo paketteja npm:stä, lataa moduulin suoraan yhdestä, tuo tyylitiedoston tai kuvan ja voi saapua luokasta, jota laajennat tai kirjastosta, jota käytät. Tämä sivu käsittelee, miten nämä osat saavat rakennteen.

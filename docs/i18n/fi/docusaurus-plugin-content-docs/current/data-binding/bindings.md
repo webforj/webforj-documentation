@@ -1,10 +1,11 @@
 ---
 sidebar_position: 2
 title: Sidonnat
-sidebar_class_name: updated-content
 description: >-
-  Link Java Bean properties to webforJ UI components through BindingContext to
-  synchronize reads and writes between model and view.
+  Yhdistä Java Bean -ominaisuudet webforJ-komponentteihin BindingContextin
+  avulla ja synkronoi mallin ja näkymän väliset luku- ja kirjoitustoiminnot.
+_i18n_title_hash: 7f6d3619d9855ce68f747dbc829eb7c1
+_i18n_description_hash: 4f8f35d7dc178f4e8971bdd0f46f32e5
 _i18n_hash: 9a4b6da2f5a3bd524a0b3cf6a1eb86e1
 ---
 WebforJ:ssä sidonta yhdistää tietyn Java Bean -ominaisuuden käyttöliittymäkomponenttiin. Tämä yhteys mahdollistaa automaattiset päivitykset käyttöliittymän ja taustamallin välillä. Jokainen sidonta voi hallita tiedonsiirtoa, validoimista, muuntamista ja tapahtumien hallintaa.

@@ -2,8 +2,11 @@
 title: Befehlszeile
 sidebar_position: 7
 description: >-
-  The bbjship commands a BBj administrator runs on the BBj machine to manage the
-  deployment endpoint, deployed apps, development runs and BBjServices.
+  bbjship-Befehle, die BBj-Administratoren auf dem BBj-Rechner zur Verwaltung
+  des Deployment-Endpunkts, bereitgestellter Apps, Entwicklungsläufe und
+  BBjServices ausführen.
+_i18n_title_hash: 660d3da18fc989381d42918e74f47399
+_i18n_description_hash: 62829e0289c048791d8a2d680291e7e6
 _i18n_hash: a80e91a6626a5c018604f40e37a5ff00
 ---
 # Befehlszeile <DocChip chip='since' label='26.03' /> {#command-line}

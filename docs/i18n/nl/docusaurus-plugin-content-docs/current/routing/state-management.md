@@ -1,6 +1,11 @@
 ---
 sidebar_position: 7
 title: Statusbeheer
+description: >-
+  Geef de app-status weer in de URL met BrowserHistory pushState en
+  replaceState, voor bladwijzers en navigatie met de terugknop.
+_i18n_title_hash: deff2cd7bbe8bd2c81e03c21664ae7d1
+_i18n_description_hash: c11e5ea3c10d7f872927b1be08d3a688
 _i18n_hash: 0766f2c08642792af2fe62e832b4fa1a
 ---
 Creating seamless, dynamische gebruikerservaringen vereist vaak dat de staat van uw webapp in de URL wordt weerspiegeld en behouden blijft tijdens browsernavigatie-evenementen. U kunt dit bereiken zonder de pagina te herladen door gebruik te maken van URL-parameterupdates en het beheer van de geschiedenisstatus van de browser. Dit zorgt ervoor dat gebruikers specifieke weergaven kunnen delen, bookmarken of terugkeren naar de app, waarbij deze volledig op de hoogte is van hun eerdere interacties.

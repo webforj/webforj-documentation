@@ -1,9 +1,9 @@
 ---
 sidebar_position: 4
 title: 密钥管理
-description: >-
-  Keep database passwords, API keys, and other secrets out of your webforJ
-  source tree and configuration files by resolving them at runtime.
+description: 在运行时解析数据库密码、API 密钥和其他机密，避免将它们存放在 webforJ 源代码树和配置文件中。
+_i18n_title_hash: 5b750c6625464d4376d77d8495173d45
+_i18n_description_hash: 8d59287c4a268f383d320a083ca67267
 _i18n_hash: 3c20f1e66f7fb00f96c26f0b00d46f07
 ---
 每个秘密背后的规则，无论是数据库密码、API 密钥还是签名密钥，其真实价值绝不应存在于你的代码、`webforj.conf` 或你的仓库中。应在运行时解决这些值，以便相同的构建能够在每个环境中运行，并且泄露的仓库不会泄露任何信息。

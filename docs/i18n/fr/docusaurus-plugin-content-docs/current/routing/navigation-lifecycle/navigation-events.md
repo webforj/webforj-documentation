@@ -1,6 +1,11 @@
 ---
 sidebar_position: 4
 title: Événements de navigation
+description: >-
+  Enregistrez des écouteurs globaux du routeur pour les événements de cycle de
+  vie WillEnter, DidEnter, WillLeave, DidLeave, Navigate et Activate.
+_i18n_title_hash: e554cbf8a0fdce0b4210586ed5c805df
+_i18n_description_hash: 3bb73da5a4adb69405e3f64bb4fd6380
 _i18n_hash: f41ebca54f574eeac4834234cf3a0e5b
 ---
 En plus des événements de cycle de vie spécifiques aux composants, vous pouvez enregistrer des **écouteurs d'événements globaux** au niveau du routeur. Cela permet de suivre la navigation de manière globale dans toute l'application, ce qui est utile pour la journalisation, l'analyse ou d'autres préoccupations transversales.

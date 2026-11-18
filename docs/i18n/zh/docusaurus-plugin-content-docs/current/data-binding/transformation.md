@@ -1,9 +1,9 @@
 ---
 sidebar_position: 4
 title: 转换
-description: >-
-  Convert between UI and model data types in webforJ bindings by implementing
-  the Transformer interface and wiring it via useTransformer.
+description: 在 webforJ 绑定中转换 UI 与模型数据类型，只需实现 Transformer 接口并通过 useTransformer 进行配置。
+_i18n_title_hash: 7793401b28a8b98f7f4ccce3a07c17df
+_i18n_description_hash: 0ca2ed52367787afc09f3b0043208744
 _i18n_hash: 7a8064dc7b603cd86ad965a41216c55c
 ---
 数据转换在 UI 组件使用的数据类型与您数据模型中的数据类型之间进行转换。这确保在前端和后端之间移动数据时，数据类型是兼容的并且格式正确。

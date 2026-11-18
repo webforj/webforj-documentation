@@ -4,8 +4,10 @@ sidebar_position: 85
 hide_table_of_contents: true
 hide_giscus_comments: true
 description: >-
-  Browse the webforJ UI component catalog covering layouts, data entry,
-  navigation, feedback, and visualization components.
+  Bekijk de catalogus met webforJ UI-componenten voor lay-outs, gegevensinvoer,
+  navigatie, feedback en visualisatie.
+_i18n_title_hash: 45ac037def4dc03161f6bedffcc3b307
+_i18n_description_hash: 97182b12d746c9ed301eeeced3480321
 _i18n_hash: 200027a33988025dba52cd07c34d2e27
 ---
 <Head>

@@ -1,6 +1,9 @@
 ---
 sidebar_position: 20
 title: 间隔
+description: 使用 Interval 类按固定延迟安排重复事件，高效刷新数据、轮播内容或检测不活动状态。
+_i18n_title_hash: d16dd01adf735ed9b87eebff5fc39ce5
+_i18n_description_hash: b44e4bd00ad996c7bd98008b11044d14
 _i18n_hash: 1fd4c3fc2bf38df65a68d909a6ff77a3
 ---
 <DocChip chip='since' label='24.02' />

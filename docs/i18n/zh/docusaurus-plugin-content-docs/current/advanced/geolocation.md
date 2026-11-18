@@ -1,10 +1,9 @@
 ---
 sidebar_position: 35
-sidebar_class_name: new-content
 title: 地理位置
-description: >-
-  Request and watch the device's geographic position using the Geolocation
-  class, with high-accuracy, timeout, and maximum age controls.
+description: 使用 Geolocation 类请求并监视设备的地理位置，并控制高精度、超时和最大缓存时长。
+_i18n_title_hash: 323d4eb70b252acb4a04eaf9e0882597
+_i18n_description_hash: 21bd5be822268c6333ce2e132facd7c8
 _i18n_hash: 68083cf323f26b69a62bc3147145f4d2
 ---
 # 地理定位 <DocChip chip='since' label='26.01' />

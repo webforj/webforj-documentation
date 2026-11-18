@@ -1,9 +1,9 @@
 ---
 sidebar_position: 5
 title: 客户端/服务器交互
-description: >-
-  Understand how webforJ batches server-to-client calls, avoids costly round
-  trips, and uses caching and on-demand chunks for performance.
+description: 了解 webforJ 如何批量处理服务器到客户端的调用、避免昂贵的往返通信，并利用缓存和按需分块提升性能。
+_i18n_title_hash: 18b6a0908dc2b5b419e1f773895f2f39
+_i18n_description_hash: 8d46450d38cfc270f0bbb62a8e8941a2
 _i18n_hash: 893b34ce2601ff273d03ba4091b7bc51
 ---
 以下部分讨论了 webforJ 的各种性能特性和最佳实践，以及该框架的实现细节。

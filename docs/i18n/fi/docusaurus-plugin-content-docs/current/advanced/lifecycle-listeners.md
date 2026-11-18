@@ -2,8 +2,11 @@
 sidebar_position: 10
 title: Elinkaarikuuntelijat
 description: >-
-  Hook into webforJ app startup and shutdown phases with AppLifecycleListener to
-  initialize services, modify config, or clean up resources.
+  Käytä AppLifecycleListeneriä webforJ-sovelluksen käynnistys- ja
+  sammutusvaiheissa palvelujen alustamiseen, määritysten muokkaamiseen tai
+  resurssien vapauttamiseen.
+_i18n_title_hash: 834dcdd360648c5c2408cad0b4aedfb8
+_i18n_description_hash: d4a68cf021a9a227cf77109e1f92af1d
 _i18n_hash: 3ef33ca5104ef421c38d3db16c9fa453
 ---
 <!-- vale off -->

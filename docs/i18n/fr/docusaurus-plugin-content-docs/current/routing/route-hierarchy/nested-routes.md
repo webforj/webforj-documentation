@@ -1,6 +1,12 @@
 ---
 sidebar_position: 2
 title: Routes imbriquées
+description: >-
+  Composez des hiérarchies de routes parent-enfant avec le paramètre outlet de
+  @Route pour partager des mises en page et réutiliser l’interface entre les
+  vues.
+_i18n_title_hash: e2119c007b50b2af6331785f9f03b752
+_i18n_description_hash: 9f67baa4b0a157ea25104063e0c0df64
 _i18n_hash: 5324d20d84c35f52067d0ba6d6448b71
 ---
 Les routes imbriquées permettent de rendre des routes enfants au sein de routes parent, créant ainsi une interface utilisateur modulaire et réutilisable. Les routes parent définissent des composants partagés, tandis que les routes enfants sont injectées dans des points de sortie spécifiques au sein de ces composants parent.

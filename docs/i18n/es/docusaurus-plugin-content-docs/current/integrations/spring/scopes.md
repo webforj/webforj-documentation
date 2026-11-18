@@ -2,8 +2,11 @@
 title: Ámbitos
 sidebar_position: 16
 description: >-
-  Use WebforjSessionScope, EnvironmentScope, and RouteScope to control bean
-  lifetimes across sessions, browser tabs, and route hierarchies.
+  Usa WebforjSessionScope, EnvironmentScope y RouteScope para controlar el ciclo
+  de vida de los beans entre sesiones, pestañas del navegador y jerarquías de
+  rutas.
+_i18n_title_hash: 48b26d57c14af0500090800c2cdd0d58
+_i18n_description_hash: 8e90d0731ec08a67c2a3910b5bed33fb
 _i18n_hash: ea33564c3dec0bc26426440f3b448c53
 ---
 <!-- vale off -->

@@ -1,9 +1,9 @@
 ---
 title: 标准 webforJ 设置
 sidebar_position: 35
-description: >-
-  Assemble an MCP server and register webforJ MCP Apps in a standard
-  servlet-based webforJ application.
+description: 在标准的基于 servlet 的 webforJ 应用中搭建 MCP 服务器并注册 webforJ MCP Apps。
+_i18n_title_hash: 9df35a71000cce7561e7b362f282e9f7
+_i18n_description_hash: 185ca2cc41536027995045dfe388a5e1
 _i18n_hash: 0d4b2a9da02c480934e5527e0c6d4a44
 ---
 标准设置创建 MCP 服务器，注册其 servlet，并安装 webforJ 支持。

@@ -1,9 +1,11 @@
 ---
 title: Mise à niveau vers 27.00
-description: Upgrade from 26.00 to 27.00
+description: Passez de la version 26.00 à la version 27.00.
 sidebar_position: 10
 sidebar_class_name: new-content
 draft: true
+_i18n_title_hash: f521441c4a5da00c1bc05ae7307c3644
+_i18n_description_hash: 2ca050c7f4bc5f02fb7c8680550799a3
 _i18n_hash: 85416371e550d0aedae0a0771aff67be
 ---
 Cette documentation sert de guide pour mettre à niveau les applications webforJ de 26.00 à 27.00. Voici les modifications nécessaires pour que les applications existantes continuent de fonctionner sans problème. Comme toujours, consultez le [aperçu des versions GitHub](https://github.com/webforj/webforj/releases) pour une liste plus complète des changements entre les versions.

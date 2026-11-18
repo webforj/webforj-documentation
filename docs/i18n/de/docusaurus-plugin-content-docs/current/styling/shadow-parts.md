@@ -1,6 +1,12 @@
 ---
 sidebar_position: 2
 title: Shadow-Bereiche
+description: >-
+  Greifen Sie mit dem CSS-Selektor ::part() auf das Shadow DOM von
+  webforJ-Komponenten zu, um interne Elemente zu gestalten und die Kapselung zu
+  wahren.
+_i18n_title_hash: 31662a0c4a4442424487da769c5b3950
+_i18n_description_hash: 99f09e929e55f230ab49324e4bac39bd
 _i18n_hash: bad90a86a29eaf34485d5ee9150aacb3
 ---
 CSS **Shadow Parts** bieten Entwicklern eine Möglichkeit, Elemente innerhalb des Shadow DOM eines Komponents von außen zu stylen, während die Kapselung erhalten bleibt.

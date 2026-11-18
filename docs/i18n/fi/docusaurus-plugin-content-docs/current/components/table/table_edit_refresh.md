@@ -3,8 +3,11 @@ sidebar_position: 30
 title: Muokkaaminen ja päivittäminen
 slug: refreshing
 description: >-
-  Edit Table rows by mutating the bound Repository and call commit to refresh
-  the UI through RepositoryCommitEvent.
+  Muokkaa Table-rivejä muuttamalla sidottua Repository-instanssia ja kutsumalla
+  commit-metodia, jotta käyttöliittymä päivittyy
+  RepositoryCommitEvent-tapahtuman kautta.
+_i18n_title_hash: f4de95cd7a20c3ab229fb8c9596e84c7
+_i18n_description_hash: 40fec4995f2fa08bfe24c02da26aa209
 _i18n_hash: 84dec48293e6fa794713881310b6f303
 ---
 `Table`-taulukon tietojen muokkaaminen tapahtuu käsittelemällä `Repository`-säilöä, joka sisältää taulukon tiedot. `Repository` toimii siltana `Table`-taulukon ja taustalla olevan tietojoukon välillä ja tarjoaa menetelmiä tietojen hakemiseen, muokkaamiseen ja päivittämiseen. Alla olevassa esimerkissä toteutetaan toiminta, jolla halutun rivin ”Otsikko”-kenttää voidaan muokata.

@@ -3,8 +3,11 @@ title: Inspection des composants
 sidebar_position: 3
 sidebar_class_name: new-content
 description: >-
-  Browse the component tree webforJ built, select components from the page, and
-  change their properties while the app runs.
+  Explorez l’arborescence des composants créée par webforJ, sélectionnez des
+  composants sur la page et modifiez leurs propriétés pendant l’exécution de
+  l’application.
+_i18n_title_hash: 87bf9b08d5c7be91ce3029548b39c6de
+_i18n_description_hash: 74d957c09316753cbcd12bc0e7a38ea0
 _i18n_hash: 91fbaf620dc8967a50c4a5ce6b455841
 ---
 L’inspecteur affiche l’arborescence des composants construite par votre code Java. Un `Composite` apparaît sous la forme de la classe que vous avez écrite et contient les composants enfants que vous lui avez fournis, dans l’ordre où webforJ les conserve. La structure dans craftforJ correspond donc à celle de votre code source.

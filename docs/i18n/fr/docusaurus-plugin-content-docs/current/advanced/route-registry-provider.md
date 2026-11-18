@@ -1,7 +1,12 @@
 ---
 title: Fournisseur de registre de routes
 sidebar_position: 60
-sidebar_class_name: new-content
+description: >-
+  Remplacez l’analyse des routes par défaut par un fournisseur SPI personnalisé
+  pour intégrer Spring, CDI, OSGi ou les chargeurs de classes GraalVM au routage
+  webforJ.
+_i18n_title_hash: 547b4c801c5dfa92a205fc30c6d5e854
+_i18n_description_hash: 34e09a697be4ca5d2693de78b1cdf5a6
 _i18n_hash: 03f86cbc79737ca141cc9d2e1ad2e28f
 ---
 <!-- vale Google.Headings = NO -->

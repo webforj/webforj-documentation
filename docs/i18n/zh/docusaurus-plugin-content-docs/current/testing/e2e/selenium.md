@@ -1,9 +1,9 @@
 ---
 sidebar_position: 3
 title: 使用 Selenium 进行测试
-description: >-
-  Drive a webforJ app from JUnit with Selenium WebDriver and WebDriverManager to
-  simulate user interactions and assert UI state.
+description: 使用 Selenium WebDriver 和 WebDriverManager 从 JUnit 驱动 webforJ 应用，模拟用户交互并断言界面状态。
+_i18n_title_hash: 64f6818b97b27c8eecd829fdffbc9da9
+_i18n_description_hash: 2dd665b81033474f039db9312b37da7d
 _i18n_hash: 482f683ba0db2228dfbfb9fdbea794e7
 ---
 本文档概述了使用 Selenium 测试 webforJ 应用的流程，重点介绍如何测试 `webforj-archetype-hello-world` 中的 `HelloWorldView`。

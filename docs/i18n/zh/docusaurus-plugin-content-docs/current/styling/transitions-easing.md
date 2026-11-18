@@ -1,10 +1,9 @@
 ---
 sidebar_position: 10
 title: 过渡与缓动
-description: >-
-  Animate UI changes with consistent DWC duration tokens and cubic-bezier easing
-  curves for natural-feeling transitions.
-sidebar_class_name: updated-content
+description: 使用统一的 DWC 时长令牌和 cubic-bezier 缓动曲线，为 UI 变化添加动画，打造自然流畅的过渡效果。
+_i18n_title_hash: 69a0b34a7d2c7891737bf58cf112d3c3
+_i18n_description_hash: 1ac2b00435c458a52a4b623472fb3b34
 _i18n_hash: d99ffb6e3feed9642c483aab7b42d227
 ---
 过渡变量用于在您的应用程序中提供一致的动画持续时间。它们控制动画完成所需的时间。

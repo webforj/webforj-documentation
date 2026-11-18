@@ -1,6 +1,9 @@
 ---
 title: Badge
 sidebar_position: 8
+description: 使用 Badge 组件展示计数、状态或简短标签，并支持主题、插槽图标以及附加到按钮或选项卡上。
+_i18n_title_hash: 454a5c95c970c24b3d747b01001fd13a
+_i18n_description_hash: 8235092b208c7d3d7378de4e72ac1128
 _i18n_hash: 1f599f2c8a833e09f2d945ed0ead5447
 ---
 <DocChip chip='shadow' />

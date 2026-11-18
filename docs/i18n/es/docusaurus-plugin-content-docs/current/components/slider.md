@@ -2,8 +2,10 @@
 title: Slider
 sidebar_position: 101
 description: >-
-  Let users pick a numeric value with the Slider component, with configurable
-  range, step, tick marks, labels, and orientation.
+  Permite a los usuarios seleccionar un valor numérico con el componente Slider,
+  con rango, incremento, marcas, etiquetas y orientación configurables.
+_i18n_title_hash: 2d9b9a764fb0be4be10e1b2fce63f561
+_i18n_description_hash: 47404022a594cef8a729d2dbf74187b0
 _i18n_hash: 88cace5ce1650eaaf33dfc4535125dc0
 ---
 <DocChip chip="shadow" />

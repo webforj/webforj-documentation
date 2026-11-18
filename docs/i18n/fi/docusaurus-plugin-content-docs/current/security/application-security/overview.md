@@ -4,8 +4,10 @@ title: Sovelluksen suojaus
 hide_table_of_contents: true
 hide_giscus_comments: true
 description: >-
-  How webforJ's server-driven model protects your app, the threats you remain
-  responsible for, and how to keep a deployment secure.
+  Miten webforJ:n palvelinohjattu malli suojaa sovellustasi, mistä uhkista
+  vastaat itse ja miten pidät käyttöönoton turvallisena.
+_i18n_title_hash: 2993e06f9e34b9da0ed41173d7d56a4a
+_i18n_description_hash: 4dfd7c6db5603bf452b8b8617acd834f
 _i18n_hash: f23f925b237729d4160089bb260cf329
 ---
 <Head>

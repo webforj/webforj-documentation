@@ -1,9 +1,11 @@
 ---
-title: 安全
+title: craftforJ 安全性
+sidebar_label: 安全性
 sidebar_position: 9
-description: >-
-  What craftforJ can reach in your project, how it restricts access, and how to
-  confirm it's disabled in production.
+description: craftforJ 在项目中可访问的内容、它如何限制访问，以及如何确认其在生产环境中已禁用。
+_i18n_title_hash: d40b4a25cf76dc9bd5b7c249aa2e9549
+_i18n_sidebar_label_hash: 2fae32629d4ef4fc6341f1751b405e45
+_i18n_description_hash: 23c50b68d765e1e0ea555dbf3206b44a
 _i18n_hash: 5ffbc5b5c6e6cfcf64143712a21944d5
 ---
 craftforJ 读取和写入它所附加项目的源代码。本页描述了有关这一点的界限，以及如何确认在您部署的构建中 craftforJ 已关闭。

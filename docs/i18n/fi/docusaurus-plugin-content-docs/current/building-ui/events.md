@@ -2,10 +2,12 @@
 sidebar_position: 7
 title: Tapahtumat
 description: >-
-  Listen for component events, read the event payload, configure element events,
-  and dispatch your own custom events with the EventDispatcher.
+  Kuuntele komponenttitapahtumia, lue tapahtuman sisältö, määritä
+  elementtitapahtumia ja lähetä omia mukautettuja tapahtumia EventDispatcherin
+  avulla.
 slug: events
-sidebar_class_name: new-content
+_i18n_title_hash: 87f9f735a1d36793ceaecd4e47124b63
+_i18n_description_hash: c757c297f3646dabdf0f4be584b6432d
 _i18n_hash: 5ceda90a316ff6a1528a686565011f88
 ---
 Komponentit, olivatpa ne mukautettuja tai osa kehystä, tukevat tapahtumankäsittelyä. Voit lisätä tapahtumakuuntelijoita kaapataksesi erilaisia tapahtumia, kuten käyttäjän vuorovaikutusta, tilan muutoksia tai omia määrittelemäsi tapahtumia. Nämä kuuntelijat antavat sinun laukaista tiettyä käyttäytymistä sen perusteella, mitä sovelluksessasi tapahtuu.

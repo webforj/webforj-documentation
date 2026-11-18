@@ -1,9 +1,12 @@
 ---
 sidebar_position: 1
 title: 升级指南
+description: 了解 webforJ 的主版本、次版本和补丁版本发布节奏，并查找应用在不同版本间升级的指南。
 hide_table_of_contents: true
 hide_giscus_comments: true
 sidebar_class_name: has-new-content
+_i18n_title_hash: 5ad03cf921ac69b65e2437a73e2562db
+_i18n_description_hash: 8320b368881a28afe22a6ceaec88dfbf
 _i18n_hash: 31ec5b4108bae52597797c3add587e4c
 ---
 <Head>

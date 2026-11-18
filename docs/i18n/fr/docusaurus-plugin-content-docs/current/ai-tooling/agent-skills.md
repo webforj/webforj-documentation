@@ -2,8 +2,10 @@
 title: Compétences de l'agent
 sidebar_position: 10
 description: >-
-  Install Agent Skills so AI coding assistants follow webforJ workflows for
-  building forms, adding servlets, styling apps, and creating components.
+  Installez Agent Skills pour que les assistants de codage IA suivent les flux
+  de travail webforJ : formulaires, servlets, styles et composants.
+_i18n_title_hash: 29708548a94fe2952a0598dca6411701
+_i18n_description_hash: f6940bfd9278345accf64644193c7381
 _i18n_hash: 6dc21bfd21fb27f2e71cb2265f6cde8c
 ---
 Les compétences des agents enseignent aux assistants de codage IA comment construire des applications webforJ en utilisant les API appropriées, les jetons de conception et les modèles de composants. Au lieu de deviner les conventions du framework, l'assistant charge une compétence et suit un flux de travail structuré pour produire du code qui se compile et suit les meilleures pratiques dès le premier essai.

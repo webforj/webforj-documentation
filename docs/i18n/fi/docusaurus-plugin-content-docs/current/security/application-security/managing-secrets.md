@@ -2,8 +2,11 @@
 sidebar_position: 4
 title: Salaisuuksien hallinta
 description: >-
-  Keep database passwords, API keys, and other secrets out of your webforJ
-  source tree and configuration files by resolving them at runtime.
+  Pidä tietokannan salasanat, API-avaimet ja muut salaisuudet poissa
+  webforJ-lähdekoodipuusta ja määritystiedostoista ratkaisemalla ne
+  ajonaikaisesti.
+_i18n_title_hash: 5b750c6625464d4376d77d8495173d45
+_i18n_description_hash: 8d59287c4a268f383d320a083ca67267
 _i18n_hash: 3c20f1e66f7fb00f96c26f0b00d46f07
 ---
 Säännön mukaan jokaisen salaisuuden, kuten tietokannan salasanan, API-avaimen tai allekirjoitusavaimen, todellinen arvo ei koskaan elä koodissasi, `webforj.conf`-tiedostossasi tai varastossasi. Ratkaise se ajon aikana sen sijaan, jotta sama rakennus toimii kaikissa ympäristöissä ja vuotava varasto ei paljasta mitään.

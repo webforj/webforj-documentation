@@ -2,8 +2,11 @@
 title: Supervisión del frontend
 sidebar_position: 20
 description: >-
-  Rebuild the sources under src/main/frontend while a webforJ app runs, applying
-  stylesheet and image output in place and reloading the view for script output.
+  Reconstruye src/main/frontend mientras se ejecuta una aplicación webforJ;
+  aplica los estilos e imágenes en el acto y recarga la vista al generar
+  scripts.
+_i18n_title_hash: 87d66a6e5b9e657405313f309833cd07
+_i18n_description_hash: d5b96b8ea22c6930a214e543b2de01da
 _i18n_hash: 065e4f5ad8868a6758e682f38e2dd3b9
 ---
 El frontend watch reconstruye las fuentes bajo `src/main/frontend` mientras la aplicación se ejecuta y envía la salida al navegador. Es el lado de desarrollo del [agrupador de frontend](/docs/managing-resources/bundler/overview) y requiere que `webforj.devtools.livereload.enabled` esté activado, consulta la [configuración](/docs/configuration/deploy-reload/overview#settings).

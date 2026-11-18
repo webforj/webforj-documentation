@@ -2,8 +2,11 @@
 title: Projektin käyttöönotto
 sidebar_position: 1
 description: >-
-  Discover where to download the tutorial project, how to navigate it, and run
-  the apps within.
+  Hanki webforJ-tutoriaaliprojekti lähdekoodista, startforJ:stä tai
+  komentoriviltä, tutustu sen rakenteeseen ja asetuksiin ja suorita kunkin
+  vaiheen sovellus.
+_i18n_title_hash: 2876afc7fdfa9650513dfc9a2ffb3a93
+_i18n_description_hash: 1312c307fa70e0fe0e9d0e304f1a9f9c
 _i18n_hash: 95bc825bd041018765a732bf464d77b7
 ---
 Aloittaaksesi tämän opetusohjelman tarvitset projektillesi sijainnin, jossa voit hallita luokkiasi ja resurssejasi. Seuraavissa osioissa kuvataan eri tavat luoda webforJ-projekti tätä opetusohjelmaa varten.

@@ -1,10 +1,9 @@
 ---
 title: SCSS 和 Sass
 sidebar_position: 30
-sidebar_class_name: new-content
-description: >-
-  Compile SCSS or Sass to CSS with the webforj-scss extension, bind a class to
-  the stylesheet, and set a load path through bun.config.ts.
+description: 使用 webforj-scss 扩展将 SCSS 或 Sass 编译为 CSS，将类绑定到样式表，并通过 bun.config.ts 设置加载路径。
+_i18n_title_hash: 9bd51327ee5db5248d9c4d0c207c9650
+_i18n_description_hash: 241a3d6fadb39e11156b12f9a5d54e15
 _i18n_hash: b278152eaf94d853a152b4d605c71981
 ---
 [Sass](https://sass-lang.com/) 是一种样式表语言，它为 CSS 添加了变量、嵌套和函数，而 SCSS 是其类似 CSS 的语法。当存在 `.scss` 或 `.sass` 源文件时，SCSS 扩展就会激活，将其编译为 CSS，并作为样式加载。类绑定到编译后的样式表的方式与它绑定到脚本的方式相同。

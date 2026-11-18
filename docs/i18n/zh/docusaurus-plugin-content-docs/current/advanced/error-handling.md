@@ -1,9 +1,9 @@
 ---
 title: 错误处理
 sidebar_position: 5
-description: >-
-  Register custom ErrorHandler implementations through the Java Service Provider
-  Interface to respond to specific exceptions in webforJ apps.
+description: 通过 Java 服务提供者接口注册自定义 ErrorHandler 实现，以响应 webforJ 应用中的特定异常。
+_i18n_title_hash: ef43236673ca0bb606b14091061ac271
+_i18n_description_hash: b4ab779dfe355bf022be822e2fe09c15
 _i18n_hash: 55731ba6ae9454377d363fa461c817bc
 ---
 错误处理是开发可靠网页应用程序的关键方面。在webforJ中，错误处理被设计得灵活且可定制，允许开发者以最适合其应用需求的方式处理异常。

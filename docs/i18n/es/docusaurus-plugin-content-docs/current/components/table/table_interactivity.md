@@ -3,8 +3,10 @@ sidebar_position: 40
 title: Interactividad
 slug: Interactivity
 description: >-
-  Reference the keyboard shortcuts that move focus, select rows, and navigate
-  cells in the Table component.
+  Consulta los atajos de teclado para mover el foco, seleccionar filas y navegar
+  por las celdas del componente Table.
+_i18n_title_hash: fcbe6546766fcb51d1197a3d75a7a7f4
+_i18n_description_hash: 84575804ecb073661d379d81f9143b66
 _i18n_hash: 49377400524e9e1c3a25dd35cfb7750c
 ---
 El componente `Table` responderá a varias entradas del teclado para permitir una interacción más precisa. La siguiente lista describe los distintos comportamientos que se producen al pulsar la tecla indicada:

@@ -3,9 +3,11 @@ sidebar_class_name: experimental-content
 title: Je eigen extensie schrijven
 sidebar_position: 70
 description: >-
-  Add a build step by shipping a BundleExtension that declares packages,
-  contributes a Bun plugin, and activates on a file type, shown by building a
-  Svelte extension end to end.
+  Voeg een buildstap toe met een BundleExtension die pakketten declareert, een
+  Bun-plugin toevoegt en wordt geactiveerd voor een bestandstype, aan de hand
+  van een complete Svelte-extensie.
+_i18n_title_hash: 9292c5ca80322a02a99ceaa80ad25e43
+_i18n_description_hash: 32d224faa7145e60d4127addef762a95
 _i18n_hash: bffbcd5a76f34d542765e3c2b59ed24d
 ---
 <DocChip chip='since' label='26.01' />

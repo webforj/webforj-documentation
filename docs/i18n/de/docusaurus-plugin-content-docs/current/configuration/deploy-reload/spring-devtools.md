@@ -1,9 +1,13 @@
 ---
-title: Spring Boot
+title: Live-Reload mit Spring Boot
+sidebar_label: Spring Boot
 sidebar_position: 30
 description: >-
-  Set up live reload in a Spring Boot webforJ app, with the development tools
-  delivered by the webforJ build plugin.
+  Richten Sie Live-Reload in einer Spring Boot webforJ-App ein – mit den vom
+  webforJ-Build-Plugin bereitgestellten Entwicklungstools.
+_i18n_title_hash: d5c637214c47ee7e474c357635a126ba
+_i18n_sidebar_label_hash: d2b84a7bb8d211a07fd6ecbf4db9d426
+_i18n_description_hash: d2db8310c2f562443c975e7b774dbe44
 _i18n_hash: 2fa5b74377a864e82b67db98ee8c9c04
 ---
 In einer Spring Boot-App liefert das [webforJ-Build-Plugin](/docs/configuration/build-plugin) die Entwicklungstools für Entwicklungsdurchläufe. Das Projekt erklärt keine Abhängigkeit dafür, und sie sind niemals Teil der verpackten App.

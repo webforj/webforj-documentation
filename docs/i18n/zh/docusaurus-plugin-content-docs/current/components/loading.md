@@ -1,9 +1,9 @@
 ---
 title: 加载中
 sidebar_position: 65
-description: >-
-  Overlay a parent container with the Loading component to block interaction
-  during async tasks, with backdrop and spinner customization.
+description: 使用 Loading 组件覆盖父容器，在异步任务期间阻止交互，并自定义背景遮罩和加载指示器。
+_i18n_title_hash: 16bfbf9c462762cf1cba4134ec53c504
+_i18n_description_hash: 3153465ac2b1548f475a4d7a7b420ad0
 _i18n_hash: 6e4493f64eb29033ed8a5d594accdb33
 ---
 <DocChip chip="shadow" />

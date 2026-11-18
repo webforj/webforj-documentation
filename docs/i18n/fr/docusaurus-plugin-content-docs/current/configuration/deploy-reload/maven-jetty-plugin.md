@@ -2,8 +2,11 @@
 title: Jetty
 sidebar_position: 40
 description: >-
-  Run a webforJ app on the embedded Jetty server with the Maven Jetty plugin,
-  with live reload and hotswap during development.
+  Lancez une application webforJ sur le serveur Jetty intégré avec le plugin
+  Maven Jetty, avec rechargement en direct et échange à chaud pendant le
+  développement.
+_i18n_title_hash: 95dd2e7e150f2e8a04c35a78cb15b3e5
+_i18n_description_hash: 0090f7699180a26ef9808777682744c1
 _i18n_hash: 73514e3b51a43e4a876aefd5cf933577
 ---
 Le plugin Maven Jetty exécute l'application dans un serveur Jetty intégré directement à partir du projet. Un projet archétype définit `compile webforj:watch jetty:run` comme son objectif Maven par défaut, donc `mvn` sans arguments compile l'application, démarre le [frontend watch](/docs/configuration/deploy-reload/frontend-watch), et sert l'application sur Jetty.

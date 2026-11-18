@@ -1,7 +1,12 @@
 ---
 title: HelloWorld
+description: >-
+  Erstellen Sie mit dem HelloWorld-Archetyp eine minimale Begrüßungs-App und
+  sehen Sie, wie webforJ-Oberfläche, Layout und Event-Handler zusammenspielen.
 sidebar_position: 4
 hide_table_of_contents: true
+_i18n_title_hash: 68e109f0f40ca72a15e05cc22786f8e6
+_i18n_description_hash: fa270f324f1281787f59a90b54821409
 _i18n_hash: cb3f3145fbbb065c7acb18a6288d7453
 ---
 <Head>

@@ -2,8 +2,11 @@
 title: KI-Assistent
 sidebar_position: 7
 description: >-
-  A coding agent that works inside your running webforJ app, writes Java freely
-  behind a compile gate, and applies changes with your approval.
+  Ein Coding-Agent, der in Ihrer laufenden webforJ-App arbeitet, Java frei und
+  mit Kompilierungsprüfung schreibt und Änderungen erst nach Ihrer Freigabe
+  übernimmt.
+_i18n_title_hash: 3542743c69e8fceb06c77e5e17299c89
+_i18n_description_hash: 6673a6abca875aa1ed434c7b3e424b94
 _i18n_hash: e9d943043e52eae5368dfe4ba7795142
 ---
 craftforJ enthält einen vollständigen Coding-Agenten, der in deiner **laufenden App** arbeitet. Er schreibt Java, kompiliert den geschriebenen Code, bevor du ihn überhaupt siehst, wendet die Änderung an und arbeitet nach dem Neustart deiner App weiter. Alles, was er tut, tut er anhand der App, die tatsächlich vor dir läuft, statt anhand einer Vermutung auf Basis deines Repositorys.

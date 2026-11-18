@@ -2,8 +2,11 @@
 sidebar_position: 4
 title: Gestión de secretos
 description: >-
-  Keep database passwords, API keys, and other secrets out of your webforJ
-  source tree and configuration files by resolving them at runtime.
+  Mantén las contraseñas de bases de datos, las claves de API y otros secretos
+  fuera del árbol de código fuente y los archivos de configuración de webforJ;
+  resuélvelos en tiempo de ejecución.
+_i18n_title_hash: 5b750c6625464d4376d77d8495173d45
+_i18n_description_hash: 8d59287c4a268f383d320a083ca67267
 _i18n_hash: 3c20f1e66f7fb00f96c26f0b00d46f07
 ---
 La regla detrás de cada secreto, una contraseña de base de datos, una clave API, una clave de firma, es que su verdadero valor nunca vive en tu código, tu `webforj.conf` o tu repositorio. Resuélvelo en tiempo de ejecución en su lugar, para que la misma construcción funcione en cada entorno y un repositorio filtrado no revele nada.

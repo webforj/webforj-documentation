@@ -1,9 +1,13 @@
 ---
-title: Aan de slag
+title: Aan de slag met BBjShip
+sidebar_label: Aan de slag
 sidebar_position: 2
 description: >-
-  Create a webforJ app that runs with BBjServices from startforJ or the Maven
-  archetypes, run it on your local BBj and deploy it with BBjShip.
+  Maak een webforJ-app die met BBjServices draait via startforJ of de
+  Maven-archetypes, voer deze uit op je lokale BBj en deploy hem met BBjShip.
+_i18n_title_hash: d9e3e5ac3e2403d5be0e47a35ce72383
+_i18n_sidebar_label_hash: bf647454e36069fd16f1a7a35cf6a865
+_i18n_description_hash: 26154c9b4b2e58bb9de84893fd1f1763
 _i18n_hash: 913c105077586054f3af87216fe848e0
 ---
 Deze handleiding maakt een webforJ-app die met BBjServices wordt uitgevoerd, laat je de app tijdens de ontwikkeling op je lokale BBj uitvoeren en zet de app met BBjShip in productie.

@@ -1,11 +1,9 @@
 ---
 title: 扩展
 hide_giscus_comments: true
-sidebar_class_name: new-content
-description: >-
-  Understand how a bundler extension contributes a compiler, the three ways an
-  extension activates, how to configure one through bun.config.ts, and how to
-  write your own.
+description: 了解打包器扩展如何提供编译器、扩展激活的三种方式、如何通过 bun.config.ts 配置扩展，以及如何编写自己的扩展。
+_i18n_title_hash: 5e2f5f3c24ae8c6ab3eca618826b0e23
+_i18n_description_hash: 42c87d1f332118f0fe7b8fa8829c5fec
 _i18n_hash: 00c5421ebf8023e2d273f3836176733e
 ---
 import Tabs from '@theme/Tabs';

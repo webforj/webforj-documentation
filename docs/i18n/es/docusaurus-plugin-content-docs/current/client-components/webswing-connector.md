@@ -3,8 +3,10 @@ title: <dwc-webswing-connector>
 sidebar_class_name: sidebar--item__hidden
 slug: webswing-connector
 description: >-
-  Style the dwc-webswing-connector client component with CSS variables, shadow
-  parts, and slots for theming.
+  Aplica estilos al componente cliente dwc-webswing-connector con variables CSS,
+  partes shadow y slots para personalizar el tema.
+_i18n_title_hash: f843e5fd877e138ba0e9874c97d9d2d7
+_i18n_description_hash: 60c345c93dac5056e07038be5ac815e7
 _i18n_hash: b164dd9c84ced93642fb125ad0c8869d
 ---
 :::info COMPONENTE DEL CLIENTE

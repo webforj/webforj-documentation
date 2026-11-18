@@ -2,9 +2,10 @@
 sidebar_position: 2
 title: Yleiset uhat
 description: >-
-  How common web threats such as cross-site scripting (XSS), cross-site request
-  forgery (CSRF), and SQL injection apply to a webforJ app, what the framework
-  handles, and where you stay responsible.
+  Miten yleiset verkkouhat, kuten XSS, CSRF ja SQL-injektio, vaikuttavat
+  webforJ-sovellukseen, mitä kehys hoitaa ja mistä vastaat itse.
+_i18n_title_hash: 8b4d1efc268346c8ba8112962bcc171f
+_i18n_description_hash: 2c7e5b606d702abcaeca6493759538d7
 _i18n_hash: f19a2bbb311243417c723fe49ad7d72f
 ---
 Koska webforJ-sovellus toimii Javalla palvelimella ja selain renderöi vain käyttöliittymän (katso artikkeli [Asiakas/Palvelin vuorovaikutus](/docs/architecture/client-server)), useat hyökkäysluokat on suunniteltu sisällyttämään. Muut riippuvat siitä, miten kirjoitat koodisi. Tällä sivulla käydään läpi tärkeimmät uhkat ja tehdään selkeä ero sen välillä, mitä webforJ hoitaa ja mikä on sinun hoidettavissasi.

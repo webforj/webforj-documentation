@@ -2,8 +2,11 @@
 title: Fehlerbehandlung
 sidebar_position: 5
 description: >-
-  Register custom ErrorHandler implementations through the Java Service Provider
-  Interface to respond to specific exceptions in webforJ apps.
+  Registrieren Sie benutzerdefinierte ErrorHandler-Implementierungen mithilfe
+  des Java Service Provider Interface, um in webforJ-Apps auf bestimmte
+  Ausnahmen zu reagieren.
+_i18n_title_hash: ef43236673ca0bb606b14091061ac271
+_i18n_description_hash: b4ab779dfe355bf022be822e2fe09c15
 _i18n_hash: 55731ba6ae9454377d363fa461c817bc
 ---
 Fehlerbehandlung ist ein entscheidender Aspekt bei der Entwicklung zuverlässiger Webanwendungen. In webforJ ist die Fehlerbehandlung so konzipiert, dass sie flexibel und anpassbar ist, sodass Entwickler Ausnahmen auf die Weise behandeln können, die am besten den Anforderungen ihrer Anwendung entspricht.

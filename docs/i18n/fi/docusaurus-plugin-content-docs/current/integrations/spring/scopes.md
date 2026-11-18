@@ -2,8 +2,11 @@
 title: Alueet
 sidebar_position: 16
 description: >-
-  Use WebforjSessionScope, EnvironmentScope, and RouteScope to control bean
-  lifetimes across sessions, browser tabs, and route hierarchies.
+  Hallitse beanien elinkaarta istuntojen, selaimen välilehtien ja
+  reittihierarkioiden välillä käyttämällä WebforjSessionScope-,
+  EnvironmentScope- ja RouteScope-luokkia.
+_i18n_title_hash: 48b26d57c14af0500090800c2cdd0d58
+_i18n_description_hash: 8e90d0731ec08a67c2a3910b5bed33fb
 _i18n_hash: ea33564c3dec0bc26426440f3b448c53
 ---
 # Skopit <DocChip chip='since' label='25.03' />

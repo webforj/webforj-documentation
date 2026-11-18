@@ -2,9 +2,9 @@
 title: <dwc-accordion-panel>
 sidebar_class_name: sidebar--item__hidden
 slug: accordion-panel
-description: >-
-  Style the dwc-accordion-panel client component using CSS variables, shadow
-  parts, and slots for header, icon, and content customization.
+description: 使用 CSS 变量、shadow parts 和 slots，自定义 dwc-accordion-panel 客户端组件的标题、图标和内容样式。
+_i18n_title_hash: 092314aa79de61c3657f9e7e26e331b7
+_i18n_description_hash: e63d7a49d2a5f8d32e6938aae69d7091
 _i18n_hash: 75840b9f57e2a221fbefb69d50560310
 ---
 <DocChip chip='shadow' />

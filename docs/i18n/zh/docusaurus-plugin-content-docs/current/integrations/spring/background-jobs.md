@@ -1,9 +1,9 @@
 ---
 title: 后台任务
 sidebar_position: 25
-description: >-
-  Run Spring @Async services from webforJ views and marshal progress and results
-  back to the UI thread with Environment.runLater.
+description: 在 webforJ 视图中运行 Spring @Async 服务，并使用 Environment.runLater 将进度和结果调度回 UI 线程。
+_i18n_title_hash: dab970e99be91f87ed9529a337f3f1e7
+_i18n_description_hash: 6f8f6d2a9b85f45bdc3c544bff6f892a
 _i18n_hash: 2760d6db6a7b7045e7612ca359d04a28
 ---
 当用户点击按钮生成报告或处理数据时，他们希望界面保持响应。进度条应持续更新动画，按钮应对悬停做出响应，应用也不应冻结。Spring 的 `@Async` 注解通过将耗时操作移至后台线程，让这一切成为可能。

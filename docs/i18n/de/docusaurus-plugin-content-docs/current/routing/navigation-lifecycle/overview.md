@@ -2,6 +2,11 @@
 sidebar_position: 1
 title: Navigationslebenszyklus
 hide_giscus_comments: true
+description: >-
+  Koordinieren Sie Validierung, Datenladen und Bereinigung bei Routenwechseln
+  mithilfe der Navigationslebenszyklusereignisse von webforJ.
+_i18n_title_hash: eb500610c9232241433128cf033c935e
+_i18n_description_hash: 668e0d0d2db135f709ccc33ea1076d0d
 _i18n_hash: 14d81d1a9ff86af17370e0a7eb50608b
 ---
 Navigieren durch verschiedene Ansichten in einer Webanwendung umfasst mehrere Phasen und bietet Gelegenheiten, Aktionen vor, während oder nach einem Übergang auszuführen. Der Navigationslebenszyklus bietet ein ereignisgesteuertes System, das Entwicklern ermöglicht, wichtige Aspekte der Navigation zu verwalten, wie z.B. Datenvalidierung, Zugriffskontrolle, Aktualisierung der Benutzeroberfläche und Handhabung von Bereinigungen.

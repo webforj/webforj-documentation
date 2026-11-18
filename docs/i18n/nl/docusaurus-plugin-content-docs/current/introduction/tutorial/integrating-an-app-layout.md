@@ -1,7 +1,11 @@
 ---
 title: Een AppLayout integreren
 sidebar_position: 7
-description: Step 6 - Using the AppLayout and FlexLayout components.
+description: >-
+  Tutorial stap 6: breng de app samen in één layout met AppLayout, AppNav,
+  FlexLayout en route-outlets, naar het voorbeeld van het SideMenu-archetype.
+_i18n_title_hash: 1cf9808e378c413d31028f2590a4a1fe
+_i18n_description_hash: c1e6536f85e8d9aeb2a1089add85015d
 _i18n_hash: 3a2148bdfb680284a597a17c263609da
 ---
 In deze stap haal je alle onderdelen van je applicatie samen in een samenhangend app-lay-out. Aan het einde van deze stap zal de structuur van je app nauw aansluiten bij het [SideMenu archetype](/docs/building-ui/archetypes/sidemenu), en je zult een beter inzicht hebben in hoe de volgende componenten en concepten werken:

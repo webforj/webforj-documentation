@@ -2,8 +2,10 @@
 title: Spring Boot MCP 应用
 sidebar_position: 5
 description: >-
-  Build and publish a routed webforJ view as an MCP App with Spring Boot and
-  Spring AI.
+  在 Spring Boot 应用中，通过 Spring AI MCP 服务器将带路由的 webforJ 视图发布为 MCP App，让 AI
+  客户端能够以交互式视图打开它。
+_i18n_title_hash: ddc126392c29d9502efc6b6ba6e9c9ba
+_i18n_description_hash: 105213eca7850145153151c8f8790702
 _i18n_hash: c8aedcd8d0981805ce4fce3b338542c0
 ---
 Spring Boot 集成通过 Spring AI MCP 服务器发布路由的 webforJ 视图。当 Spring Boot 应用需要向 MCP 客户端（连接到服务器的 AI 应用）暴露交互式视图时，请使用它。

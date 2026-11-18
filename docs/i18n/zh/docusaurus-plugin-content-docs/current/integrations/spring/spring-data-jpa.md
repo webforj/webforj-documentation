@@ -2,8 +2,10 @@
 title: Spring Data JPA
 sidebar_position: 20
 description: >-
-  Adapt Spring Data JPA repositories to webforJ Table and Repository components
-  with SpringDataRepository, pagination, sorting, and Specifications.
+  将 Spring Data JPA 仓库集成到 webforJ Table 和 Repository 组件，支持
+  SpringDataRepository、分页、排序和 Specifications。
+_i18n_title_hash: 810bf4be9fd3907b3e5cff790716a958
+_i18n_description_hash: 7f0f559ffd7aba1cfabc95bf06ef6def
 _i18n_hash: 04bda665f576fabc5db3284e9ec201e9
 ---
 Spring Data JPA 是 Spring 应用程序中数据访问的事实标准，提供了存储库抽象、查询方法以及复杂查询的规范。webforJ 的 `SpringDataRepository` 适配器将 Spring Data 存储库与 webforJ 的 UI 组件连接起来，使您能够将 JPA 实体直接绑定到 UI 组件，实现动态过滤 JPA 规范，并处理分页。

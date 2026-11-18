@@ -1,9 +1,9 @@
 ---
 title: 概览
-description: >-
-  Follow a six-step tutorial to build a customer management app with webforJ and
-  Spring Boot, adding routing, data binding, and layout.
+description: 按照六个步骤，使用 webforJ 和 Spring Boot 构建客户管理应用，并添加路由、数据绑定和布局。
 hide_giscus_comments: true
+_i18n_title_hash: 3b878279a04dc47d60932cb294d96259
+_i18n_description_hash: f70c3af39a72655b0a92dd46905d7b89
 _i18n_hash: afa15cff5443cd3aab487ad1c8e8b0de
 ---
 本分步教程引导您通过使用 webforJ 和 Spring Boot 构建客户管理应用程序的过程。它教您如何创建一个现代、用户友好的界面，用于查看、添加和编辑客户数据。

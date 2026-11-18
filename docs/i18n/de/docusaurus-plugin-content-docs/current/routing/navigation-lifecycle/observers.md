@@ -2,8 +2,11 @@
 sidebar_position: 2
 title: Lifecycle-Observer
 description: >-
-  Hook into route lifecycle stages by implementing WillEnter, DidEnter,
-  WillLeave, DidLeave, and Activate observer interfaces.
+  Implementieren Sie die Observer-Interfaces WillEnter, DidEnter, WillLeave,
+  DidLeave und Activate, um sich in die Phasen des Routenlebenszyklus
+  einzuklinken.
+_i18n_title_hash: 9f0a5c4e88206bb2e0f2b5879c53689c
+_i18n_description_hash: 3d7af4df66125852029789abf4e3281e
 _i18n_hash: 3f39161991064d0d2506c0cb1dcd3503
 ---
 Beobachter ermöglichen es Komponenten, auf Lebenszyklusereignisse zu reagieren, indem sie Schnittstellen für spezifische Phasen implementieren. Dieses Muster gewährleistet eine saubere Trennung der Bedenken und vereinfacht die Handhabung von Navigationslogik.

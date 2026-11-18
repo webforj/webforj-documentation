@@ -1,7 +1,13 @@
 ---
 title: HelloWorld
+description: >-
+  Genera una aplicación mínima de saludo a partir del arquetipo HelloWorld para
+  ver cómo se integran una interfaz de usuario, un diseño y un controlador de
+  eventos básicos de webforJ.
 sidebar_position: 4
 hide_table_of_contents: true
+_i18n_title_hash: 68e109f0f40ca72a15e05cc22786f8e6
+_i18n_description_hash: fa270f324f1281787f59a90b54821409
 _i18n_hash: cb3f3145fbbb065c7acb18a6288d7453
 ---
 <Head>

@@ -2,9 +2,11 @@
 sidebar_position: 4
 title: Navegación de rutas
 description: >-
-  Trigger client-side navigation programmatically with Router.navigate, pass
-  parameters, and switch views without reloads.
+  Activa la navegación del lado del cliente con Router.navigate, pasa parámetros
+  y cambia de vista sin recargar la página.
 sidebar_class_name: updated-content
+_i18n_title_hash: c5ea3746fbe3df3509bcb240f3fb6699
+_i18n_description_hash: e889bdb63426de32d6804643d04818ef
 _i18n_hash: 0284f2481f307d68da728d81f4b3a6a2
 ---
 En webforJ, navegar entre rutas es el mecanismo central para cambiar vistas y componentes según las acciones del usuario o cambios en la URL. La navegación permite a los usuarios moverse sin problemas entre diferentes partes de la aplicación sin refrescar la página. Esta navegación del lado del cliente mantiene la aplicación receptiva y fluida mientras se preserva el estado de la aplicación.

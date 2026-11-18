@@ -1,7 +1,11 @@
 ---
 title: Routage et Composites
 sidebar_position: 4
-description: Step 3 - Make your app navigable.
+description: >-
+  Étape 3 : créez une page dédiée à l’interface et une page pour les nouveaux
+  clients, reliées par le routage, des composants composites et ColumnsLayout.
+_i18n_title_hash: 83bb9e48a7d161810744afd1d7db2dd3
+_i18n_description_hash: 97c35f7eb7cca920ea9c9222e8c36397
 _i18n_hash: f32a8552d85a9c85b565fe6f026c93bb
 ---
 Jusqu'à présent, ce tutoriel n'était qu'une application à une seule page. Cette étape change cela.  

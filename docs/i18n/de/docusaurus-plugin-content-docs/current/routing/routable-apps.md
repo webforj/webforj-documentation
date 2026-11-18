@@ -2,8 +2,10 @@
 sidebar_position: 2
 title: Routbare Apps
 description: >-
-  Enable webforJ routing with the @Routify annotation to scan packages, manage
-  frames, and control browser history.
+  Aktivieren Sie das Routing in webforJ mit der @Routify-Annotation, um Pakete
+  zu scannen, Frames zu verwalten und den Browserverlauf zu steuern.
+_i18n_title_hash: afbbb0ecce6720c310b7f377107a8c4b
+_i18n_description_hash: 706242abdbb1742879ab084137767921
 _i18n_hash: bea0848523a00ddfff8d79265ea699ac
 ---
 Das Routing in webforJ ist ein optionales Tool. Entwickler können zwischen der webforJ-Routing-Lösung oder einem traditionellen Modell mit `Frame`-Manipulation und ohne Deep Linking wählen. Um das Routing zu aktivieren, muss die **`@Routify`**-Annotation auf der Ebene einer Klasse, die `App` implementiert, angewendet werden. Dadurch erhält webforJ die Befugnis, den Verlauf des Browsers zu verwalten, auf Navigationsereignisse zu reagieren und die Komponenten der App basierend auf der URL zu rendern.

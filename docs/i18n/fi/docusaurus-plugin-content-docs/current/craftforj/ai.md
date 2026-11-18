@@ -2,8 +2,11 @@
 title: Tekoälyavustaja
 sidebar_position: 7
 description: >-
-  A coding agent that works inside your running webforJ app, writes Java freely
-  behind a compile gate, and applies changes with your approval.
+  Koodausagentti, joka toimii käynnissä olevassa webforJ-sovelluksessasi,
+  kirjoittaa Java-koodia vapaasti käännöstarkistuksen läpi ja toteuttaa
+  muutokset hyväksynnälläsi.
+_i18n_title_hash: 3542743c69e8fceb06c77e5e17299c89
+_i18n_description_hash: 6673a6abca875aa1ed434c7b3e424b94
 _i18n_hash: e9d943043e52eae5368dfe4ba7795142
 ---
 craftforJ sisältää täysiverisen koodausagentin, joka toimii **käynnissä olevan sovelluksesi** sisällä. Se kirjoittaa Javaa vapaasti, kääntää kirjoittamansa koodin ennen kuin näet sen, ottaa muutoksen käyttöön ja jatkaa työskentelyä sovelluksesi käynnistyttyä uudelleen. Kaiken se tekee juuri siinä sovelluksessa, joka on käynnissä edessäsi, eikä sen perusteella, mitä se arvelee lähdekoodivarastosi perusteella.

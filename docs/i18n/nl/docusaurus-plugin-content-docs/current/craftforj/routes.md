@@ -2,8 +2,11 @@
 title: Routes
 sidebar_position: 5
 description: >-
-  See every registered route in a running webforJ app, navigate to it from
-  craftforJ, and change the access rules declared on it.
+  Bekijk elke geregistreerde route in een draaiende webforJ-app, navigeer
+  ernaartoe vanuit craftforJ en wijzig de toegangsregels die ervoor zijn
+  ingesteld.
+_i18n_title_hash: b41067229f91bece9cdfc66681cdd7a3
+_i18n_description_hash: 6221e0d73e034d35b082471687f4e420
 _i18n_hash: ec7a4521cd9c4328f9cd6550ebc9d90b
 ---
 Het tabblad Routes toont de routeringstabel van de actieve app in de [hiërarchie](/docs/routing/route-hierarchy/overview) waarin de router deze bijhoudt, met de actieve route gemarkeerd. Routes die [dynamisch](/docs/routing/routes-registration) zijn geregistreerd, verschijnen naast routes met annotaties.

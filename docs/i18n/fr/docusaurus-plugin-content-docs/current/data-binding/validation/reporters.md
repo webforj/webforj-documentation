@@ -2,8 +2,10 @@
 sidebar_position: 3
 title: Rapporteurs
 description: >-
-  Surface validation outcomes through the DefaultBindingReporter or attach
-  custom reporters to bindings with the useReporter callback.
+  Affichez les résultats de validation avec DefaultBindingReporter ou associez
+  des reporters personnalisés aux bindings via le callback useReporter.
+_i18n_title_hash: 33224a43ff84f1a2547d0b6b171715c0
+_i18n_description_hash: 95a0ed8a06d35ed608b37f9fbee9f328
 _i18n_hash: e642fa150e90534cdaef8bb0955d4ff0
 ---
 import Tabs from '@theme/Tabs';

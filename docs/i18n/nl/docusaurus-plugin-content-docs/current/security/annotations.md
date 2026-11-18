@@ -1,6 +1,11 @@
 ---
 sidebar_position: 3
 title: Beveiligingsannotaties
+description: >-
+  Beperk webforJ-routes declaratief met de annotaties @AnonymousAccess,
+  @PermitAll, @RolesAllowed en @DenyAll.
+_i18n_title_hash: ac394acb99ded5e96ab7288396076139
+_i18n_description_hash: 939afd4f65e19372829c31d69d178393
 _i18n_hash: 564a7d991d26edb972bc2c7c99366f37
 ---
 Beveiligingsannotaties bieden een declaratieve manier om toegang tot routes in jouw webforJ-app te controleren. Door annotaties aan jouw routecomponenten toe te voegen, definieer je wie toegang heeft tot elke weergave zonder handmatige machtigingscontroles te schrijven. Het beveiligingssysteem handhaaft automatisch deze regels voordat een component wordt weergegeven.

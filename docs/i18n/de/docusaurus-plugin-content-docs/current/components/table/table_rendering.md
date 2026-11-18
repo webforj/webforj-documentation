@@ -3,8 +3,10 @@ sidebar_position: 20
 title: Darstellung
 slug: rendering
 description: >-
-  Transform Table cells into text, badges, icons, links, or custom HTML with
-  built-in renderers and the setRenderer method.
+  Wandeln Sie Table-Zellen mit integrierten Renderern und der Methode
+  setRenderer in Text, Badges, Symbole, Links oder benutzerdefiniertes HTML um.
+_i18n_title_hash: a6e8f9aed2ac6481dc25a18a33342d03
+_i18n_description_hash: e89bf89353cdc76a4434e7b8b56b9b46
 _i18n_hash: 7d9beff25d6b372fb4309fe491ecad08
 ---
 <!-- vale Google.Headings = NO -->

@@ -1,7 +1,9 @@
 ---
 sidebar_position: 2
 title: 校验器
-sidebar_class_name: updated-content
+description: 使用 useValidator 为绑定添加验证器，实现可复用的 Validator 类，并为每个 UI 字段自定义消息。
+_i18n_title_hash: 6c49f2cccba7312f02f0aa5a99b1a338
+_i18n_description_hash: a060e816eff9d9a63037f2fbac2e9f6a
 _i18n_hash: 996b617e97e439660bbe69f15d6355b9
 ---
 验证器在将数据提交到数据模型之前，会根据定义的约束对您的 UI 组件中的数据进行验证。您可以应用验证器来验证数据是否满足某些标准，例如是否在指定范围内、是否匹配某个模式或是否为空。

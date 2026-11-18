@@ -1,9 +1,9 @@
 ---
 sidebar_position: 2
 title: 生命周期观察者
-description: >-
-  Hook into route lifecycle stages by implementing WillEnter, DidEnter,
-  WillLeave, DidLeave, and Activate observer interfaces.
+description: 通过实现 WillEnter、DidEnter、WillLeave、DidLeave 和 Activate 观察者接口，接入路由生命周期的各个阶段。
+_i18n_title_hash: 9f0a5c4e88206bb2e0f2b5879c53689c
+_i18n_description_hash: 3d7af4df66125852029789abf4e3281e
 _i18n_hash: 3f39161991064d0d2506c0cb1dcd3503
 ---
 观察者允许组件对生命周期事件作出反应，通过实现特定阶段的接口。此模式确保了关注点的清晰分离，并简化了导航逻辑的处理。

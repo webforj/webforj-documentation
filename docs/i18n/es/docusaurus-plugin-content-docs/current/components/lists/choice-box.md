@@ -3,8 +3,11 @@ sidebar_position: 5
 title: ChoiceBox
 slug: choicebox
 description: >-
-  Pick a single value from a fixed set with the ChoiceBox dropdown, including
-  dropdown type styling, max row count, and keyboard navigation.
+  Selecciona un único valor de un conjunto fijo con el menú desplegable
+  ChoiceBox, con estilos según el tipo de desplegable, número máximo de filas y
+  navegación por teclado.
+_i18n_title_hash: 35c46e73340f12c2526025d732117e14
+_i18n_description_hash: 0d056a8083606dcdd49be49d30924ffa
 _i18n_hash: 1c1224ca662a0e268606dc1cb6a0e96a
 ---
 <DocChip chip='shadow' />

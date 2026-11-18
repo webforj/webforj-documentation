@@ -2,11 +2,11 @@
 title: Frontend-niputtaja
 hide_table_of_contents: true
 hide_giscus_comments: true
-sidebar_class_name: new-content
 description: >-
-  Understand how the webforJ frontend bundler turns class-level annotations into
-  compiled, per-route frontend assets, when to reach for it, and how a class
-  binds to the entry it needs.
+  Ymmärrä, miten webforJ:n bundleri kääntää luokka-annotaatiot reittikohtaisiksi
+  frontend-resursseiksi, milloin sitä käyttää ja miten luokka sidotaan entryyn.
+_i18n_title_hash: 0abbd35c99082689c5e8e2624d307090
+_i18n_description_hash: 1ce0ed69761a3d2fef808c115bbcb072
 _i18n_hash: 1276a78ae5197924d6577eae5bafe73b
 ---
 <Head>

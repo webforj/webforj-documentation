@@ -1,10 +1,11 @@
 ---
 title: Less
 sidebar_position: 40
-sidebar_class_name: new-content
 description: >-
-  Compile Less to CSS with the webforj-less extension, bind a class to the
-  stylesheet, and pass Less options through bun.config.ts.
+  Compilez Less en CSS avec l’extension webforj-less, associez une classe à la
+  feuille de style et transmettez les options Less via bun.config.ts.
+_i18n_title_hash: 1cfdf0e8d0c87a228c1f40d9bee7888b
+_i18n_description_hash: 4378822835500b71adce33d9479455dd
 _i18n_hash: febd9ab468f73672d97e3a0048d6371b
 ---
 [Less](https://lesscss.org/) est un langage de feuille de style qui ajoute des variables, des mixins et de l'imbrication au CSS. L'extension Less s'active lorsqu'une source `.less` est présente et la compile en CSS.

@@ -2,8 +2,11 @@
 sidebar_position: 2
 title: Comprendre les composants
 description: >-
-  Understand the webforJ component hierarchy, composition over inheritance,
-  lifecycle stages, and concern interfaces before building custom components.
+  Comprenez la hiérarchie des composants webforJ, la composition plutôt que
+  l’héritage, les étapes du cycle de vie et les interfaces transversales avant
+  de créer des composants personnalisés.
+_i18n_title_hash: 020bcc6f44ce8f4812fafcbd25fd6900
+_i18n_description_hash: a5b2b9392959180145ec2b75e5f3eb0b
 _i18n_hash: 7eff2c4778d4f2f95f0390d5a4ef7fbd
 ---
 <JavadocLink type="foundation" location="com/webforj/component/Component" top='true'/>

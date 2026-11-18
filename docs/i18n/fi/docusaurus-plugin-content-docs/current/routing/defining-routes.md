@@ -1,6 +1,11 @@
 ---
 sidebar_position: 3
 title: Reittien määrittäminen
+description: >-
+  Yhdistä URL-osoitteet webforJ-komponentteihin @Route-annotaatiolla ja määritä
+  useita polkuja samaan näkymään @RouteAlias-annotaatiolla.
+_i18n_title_hash: 2d0483918fc7d51246d68af1677b6b67
+_i18n_description_hash: 7b8fcb2501a652a3bec3f747bc28428b
 _i18n_hash: 4f7189d5ef27386506e9ecf950f145ed
 ---
 Reittien määrittäminen on olennaista URL-osoitteiden yhdistämiseksi tiettyihin komponentteihin. Tämä mahdollistaa sen hallitsemisen, kuinka eri osat käyttöliittymästäsi renderöidään URL-rakenteen perusteella. Kehys käyttää `@Route`-annotaatiota tehdäksesi tämän prosessin deklaratiiviseksi ja suoraviivaiseksi, mikä vähentää manuaalisen konfiguroinnin tarvetta.

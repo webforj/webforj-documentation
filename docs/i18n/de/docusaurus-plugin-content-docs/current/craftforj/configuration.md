@@ -1,9 +1,14 @@
 ---
-title: Konfiguration
+title: craftforJ-Konfiguration
+sidebar_label: Konfiguration
 sidebar_position: 8
 description: >-
-  Every craftforJ configuration property, its default, and what turning each
-  feature off changes.
+  Alle craftforJ-Eigenschaften für webforj.conf oder application.properties mit
+  Typ und Standardwert sowie den Änderungen beim Deaktivieren der jeweiligen
+  Funktion.
+_i18n_title_hash: 3eb5573b52d619504004137849515e97
+_i18n_sidebar_label_hash: 254f642527b45bc260048e30704edb39
+_i18n_description_hash: d219fb062890ca792008bd020a275a94
 _i18n_hash: f7e73354e4d9548e79122405c21ae275
 ---
 craftforJ ist in `webforj.conf` konfiguriert. Die Eigenschaftsnamen sind die gleichen wie in [Spring](/docs/integrations/spring/overview), also setze sie in `application.properties`, wenn dort deine Konfiguration gespeichert ist.

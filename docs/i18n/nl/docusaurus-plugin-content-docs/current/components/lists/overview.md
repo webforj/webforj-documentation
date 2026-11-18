@@ -2,10 +2,11 @@
 sidebar_position: 20
 title: Lijsten
 hide_giscus_comments: true
-sidebar_class_name: new-content
 description: >-
-  Manage shared list features across ChoiceBox, ComboBox, and ListBox, including
-  ListItem objects, adding, removing, and selection APIs.
+  Beheer gedeelde lijstfuncties voor ChoiceBox, ComboBox en ListBox, waaronder
+  ListItem-objecten en API's voor toevoegen, verwijderen en selecteren.
+_i18n_title_hash: 691d1860ec58dd973e803e209697d065
+_i18n_description_hash: a401d26e16368b8848c0f4541af5b7ed
 _i18n_hash: 79a006a2c6a0435414d931e5bfb161bd
 ---
 <JavadocLink type="foundation" location="com/webforj/component/list/DwcList"/>

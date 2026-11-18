@@ -1,9 +1,14 @@
 ---
 title: Upgraden naar 26.00
-description: Upgrade from 25.00 to 26.00
+description: >-
+  Upgrade je webforJ-app van 25.00 naar 26.00: Java 21 of 25, de nieuwe
+  Maven-repository-URL, Spring Boot, wijzigingen in de Table- en Repository-API
+  en DWC 26.
 slug: /upgrading/webforj-26.00
 pagination_next: null
 sidebar_position: 1
+_i18n_title_hash: 35a959230718667d6e2ffd94f999c317
+_i18n_description_hash: 79e9f8c965681706044b4ee4aba2a992
 _i18n_hash: 3b9827a67a81e207508d7db72a650b64
 ---
 Deze documentatie dient als een gids voor het upgraden van webforJ-apps van 25.00 naar 26.00.  

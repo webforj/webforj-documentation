@@ -1,8 +1,9 @@
 ---
 sidebar_position: 4
 description: >-
-  Install BBj locally and use the Plugin Manager to configure the webforJ plugin
-  for running apps against a local BBjServices instance.
+  Installeer BBj lokaal en gebruik de Plugin Manager om de webforJ-plug-in te
+  configureren voor het uitvoeren van apps met een lokale BBjServices-instantie.
+_i18n_description_hash: e66215e66c69da295722149782c9611b
 _i18n_hash: 5fbe602fa83b6147a07c4e2ad8ac3230
 ---
 # Lokale Installatie

@@ -3,8 +3,10 @@ title: Componenten inspecteren
 sidebar_position: 3
 sidebar_class_name: new-content
 description: >-
-  Browse the component tree webforJ built, select components from the page, and
-  change their properties while the app runs.
+  Blader door de componentenboom die webforJ heeft opgebouwd, selecteer
+  componenten op de pagina en wijzig hun eigenschappen terwijl de app actief is.
+_i18n_title_hash: 87bf9b08d5c7be91ce3029548b39c6de
+_i18n_description_hash: 74d957c09316753cbcd12bc0e7a38ea0
 _i18n_hash: 91fbaf620dc8967a50c4a5ce6b455841
 ---
 De Inspector toont de componentenboom die je Java-code heeft opgebouwd. Een `Composite` wordt weergegeven als de klasse die je hebt geschreven, met de onderliggende componenten die je eraan hebt toegevoegd in de volgorde waarin webforJ ze bevat. Zo komt de structuur in craftforJ overeen met de structuur in je broncode.

@@ -3,6 +3,12 @@ sidebar_position: 1
 title: Routenführung
 hide_table_of_contents: true
 hide_giscus_comments: true
+description: >-
+  Steuern Sie die clientseitige Navigation in webforJ mit URL-basiertem
+  Komponenten-Mapping, Deep Links und erhaltenem App-Zustand zwischen Ansichten.
+sidebar_class_name: has-new-content
+_i18n_title_hash: 786c4135070aa1910d2f4ac8b2253235
+_i18n_description_hash: 9e0d0414e6955f49982188cd8ec3079b
 _i18n_hash: ca4837305e1ca2ca2b6a4a244c8103f1
 ---
 <Head>

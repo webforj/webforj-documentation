@@ -3,8 +3,11 @@ title: Mise en forme
 hide_table_of_contents: true
 hide_giscus_comments: true
 description: >-
-  Style webforJ apps with the DWC design system using CSS custom properties,
-  palettes, shadow parts, and the Figma kit.
+  Personnalisez les applications webforJ avec le système de design DWC grâce aux
+  propriétés CSS personnalisées, aux palettes, aux parties d’ombre et au kit
+  Figma.
+_i18n_title_hash: be34f05f837d8dba4134095129ee3c06
+_i18n_description_hash: e414d786b1aa3fc98fc67eee039ca344
 _i18n_hash: 18caef78e838347a9b6376fb635573d9
 ---
 <Head>

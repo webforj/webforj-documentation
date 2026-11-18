@@ -2,8 +2,11 @@
 title: Modernisointitutoriaali
 sidebar_position: 4
 description: >-
-  Modernize a Swing customer management app step by step by embedding it with
-  WebswingConnector and layering in webforJ dialogs and forms.
+  Modernisoi Swing-asiakashallintasovellus vaihe vaiheelta upottamalla se
+  WebswingConnectorin avulla ja lisäämällä siihen webforJ-valintaikkunoita ja
+  lomakkeita.
+_i18n_title_hash: ce2c1617b227110c5e8667caef525848
+_i18n_description_hash: c6f587d9b49fcf1a740fbe0384b94c7e
 _i18n_hash: ded3a5a3abe3905086532c58861652f8
 ---
 Tässä opetusohjelmassa käydään läpi olemassa olevan Java Swing -sovelluksen modernisointi integroimalla se webforJ:hin `WebswingConnector`-komponentin avulla. Opit tekemään perinteisestä työpöytäsovelluksesta verkkokäyttöisen ja lisäämään siihen vähitellen moderneja verkkotoimintoja, kuten verkkopohjaisia valintaikkunoita ja vuorovaikutteisia lomakkeita webforJ-komponenttien avulla.

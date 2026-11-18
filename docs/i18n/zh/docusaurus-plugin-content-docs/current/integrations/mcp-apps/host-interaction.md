@@ -1,7 +1,9 @@
 ---
 title: 使用 MCP 客户端
 sidebar_position: 25
-description: Connect a rendered webforJ view to its MCP client.
+description: 让已渲染的 webforJ MCP App 与客户端协同工作：向对话发送消息、让模型及时了解情况、离开嵌入视图并跟踪变更。
+_i18n_title_hash: 24fff6ea770815c5a817375183dc0393
+_i18n_description_hash: 7ff04cf57c5225b03eb08145cc9eafb3
 _i18n_hash: 082797b568bd8f308b625306c524d7ef
 ---
 MCP 应用不必将每个交互都保留在其嵌入视图中。它可以向对话发送信息，在用户更改 UI 时保持模型知情，或请求客户端处理框架外的内容。

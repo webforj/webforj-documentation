@@ -1,9 +1,11 @@
 ---
-title: Spring Boot
+title: 使用 Spring Boot 实现实时重载
+sidebar_label: Spring Boot
 sidebar_position: 30
-description: >-
-  Set up live reload in a Spring Boot webforJ app, with the development tools
-  delivered by the webforJ build plugin.
+description: 在 Spring Boot webforJ 应用中配置实时重载，并通过 webforJ 构建插件提供开发工具。
+_i18n_title_hash: d5c637214c47ee7e474c357635a126ba
+_i18n_sidebar_label_hash: d2b84a7bb8d211a07fd6ecbf4db9d426
+_i18n_description_hash: d2db8310c2f562443c975e7b774dbe44
 _i18n_hash: 2fa5b74377a864e82b67db98ee8c9c04
 ---
 在Spring Boot应用程序中，[webforJ构建插件](/docs/configuration/build-plugin)提供了开发运行所需的开发工具。项目未声明对它们的任何依赖，并且它们从未成为打包应用的一部分。

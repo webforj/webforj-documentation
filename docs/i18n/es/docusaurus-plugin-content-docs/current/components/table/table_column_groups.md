@@ -2,8 +2,10 @@
 title: Grupos de columnas
 sidebar_position: 7
 description: >-
-  Group Table columns under shared, nestable multi-row headers using
-  ColumnGroup.of and setColumnGroups for complex layouts.
+  Agrupa las columnas de Table bajo encabezados compartidos, anidables y de
+  varias filas mediante ColumnGroup.of y setColumnGroups para diseños complejos.
+_i18n_title_hash: 3c3095c926e8bc5abd72a917fb83d9fe
+_i18n_description_hash: 997a29a980d468b1da442b18a046e12f
 _i18n_hash: 4babef21ef20728da6aa7eec5829e4d1
 ---
 <!-- vale off -->

@@ -1,9 +1,9 @@
 ---
 sidebar_position: 3
 title: 导航阻止
-description: >-
-  Intercept navigation with WillLeaveObserver veto handlers and the beforeunload
-  event to guard unsaved changes.
+description: 使用 WillLeaveObserver 否决处理程序和 beforeunload 事件拦截导航，防止未保存的更改丢失。
+_i18n_title_hash: f77bf38ee81cebb7c3385d40529ae2b4
+_i18n_description_hash: 8f209d7ebac58484a6ef0ce3f318daf6
 _i18n_hash: 0deeb3e0583fdd425fe2a604ee1e9164
 ---
 导航阻止为整个基础路由器API添加了一层或多层控制。如果存在任何阻止处理程序，导航将按如下方式被阻止：

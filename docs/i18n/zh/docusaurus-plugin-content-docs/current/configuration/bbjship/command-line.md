@@ -1,9 +1,9 @@
 ---
 title: 命令行
 sidebar_position: 7
-description: >-
-  The bbjship commands a BBj administrator runs on the BBj machine to manage the
-  deployment endpoint, deployed apps, development runs and BBjServices.
+description: 管理员在 BBj 机器上运行的 bbjship 命令，用于管理部署端点、已部署应用、开发运行实例和 BBjServices。
+_i18n_title_hash: 660d3da18fc989381d42918e74f47399
+_i18n_description_hash: 62829e0289c048791d8a2d680291e7e6
 _i18n_hash: a80e91a6626a5c018604f40e37a5ff00
 ---
 # 命令行 <DocChip chip='since' label='26.03' /> {#command-line}

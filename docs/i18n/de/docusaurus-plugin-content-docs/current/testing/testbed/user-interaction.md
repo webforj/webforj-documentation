@@ -2,8 +2,10 @@
 sidebar_position: 3
 title: Benutzerinteraktion
 description: >-
-  Act on the components of a TestBed test through the same gestures a user
-  makes, and get the same events a user causes.
+  Interagieren Sie mit den Komponenten eines TestBed-Tests wie ein Nutzer und
+  erhalten Sie dieselben Ereignisse, die ein Nutzer auslöst.
+_i18n_title_hash: b379ae9cadefbfa19b3cb284b2a4f17f
+_i18n_description_hash: 245b62a7ddafa9e115c0f775c7d15ccd
 _i18n_hash: 1abb4d1f79dc5eb1556e58df714dfac7
 ---
 Ihr Code kann für jede Komponente `setValue` oder `setEnabled` aufrufen, ein Benutzer jedoch nicht. Ein Benutzer gibt Text in ein sichtbares Feld ein und klickt auf eine aktivierte Schaltfläche. Ein Test mit TestBed verhält sich wie der Benutzer: über `UserInteraction`. Jede ihrer Aktionen prüft, ob ein Benutzer die Geste ausführen könnte, führt sie aus und lässt die Komponente sie wie bei einer Benutzeraktion im Browser an ihre Listener melden.

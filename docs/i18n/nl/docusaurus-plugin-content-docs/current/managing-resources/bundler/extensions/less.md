@@ -1,10 +1,11 @@
 ---
 title: Less
 sidebar_position: 40
-sidebar_class_name: new-content
 description: >-
-  Compile Less to CSS with the webforj-less extension, bind a class to the
-  stylesheet, and pass Less options through bun.config.ts.
+  Compileer Less naar CSS met de webforj-less-extensie, koppel een klasse aan de
+  stylesheet en geef Less-opties door via bun.config.ts.
+_i18n_title_hash: 1cfdf0e8d0c87a228c1f40d9bee7888b
+_i18n_description_hash: 4378822835500b71adce33d9479455dd
 _i18n_hash: febd9ab468f73672d97e3a0048d6371b
 ---
 [Less](https://lesscss.org/) is een stylesheettaal die variabelen, mixins en nesting aan CSS toevoegt. De Less-extensie wordt geactiveerd wanneer een `.less`-bron aanwezig is en compileert deze naar CSS.

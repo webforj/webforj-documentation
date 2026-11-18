@@ -1,10 +1,11 @@
 ---
 title: Tyylikielet
 sidebar_position: 11
-sidebar_class_name: new-content
 description: >-
-  Author your styles in CSS, compile them from Sass or Less, or generate them
-  with Tailwind, and load the result into a webforJ app.
+  Kirjoita tyylit CSS:llä, käännä ne Sassista tai Lessistä tai luo ne
+  Tailwindilla ja lataa lopputulos webforJ-sovellukseen.
+_i18n_title_hash: ef323f16958e1b8b7e2d2e9e170f4717
+_i18n_description_hash: c218c1194810a334b7f6b55f9094ee85
 _i18n_hash: 98eca77023e33bac367a1a250da900d7
 ---
 Tyylisi saapuvat sivulle CSS:nä, mutta sinun ei tarvitse kirjoittaa niitä CSS:nä. webforJ lataa sinun kirjoittamasi tyylitiedoston, kääntää sellaisen preprocessorin, kuten Sass tai Less, avulla tai generoi sen Tailwindista, ja tulos tyylittää näkymäsi samalla tavalla riippumatta siitä, mistä se tuli. DWC-tokenit, [CSS-mukautetut ominaisuudet](/docs/styling/css-variables) ja [varjopartit](/docs/styling/shadow-parts), joita käsitellään tämän osion muissa kohdissa, pätevät mikä tahansa niistä.

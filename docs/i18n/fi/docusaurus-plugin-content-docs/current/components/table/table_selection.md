@@ -3,8 +3,10 @@ sidebar_position: 10
 title: Valinta
 slug: selection
 description: >-
-  Configure single, multi, or no-selection modes on the Table and respond to row
-  selection events with appropriate listeners.
+  Määritä Table-taulukon valintatilaksi yksittäisvalinta, monivalinta tai ei
+  valintaa ja reagoi rivien valintatapahtumiin sopivilla kuuntelijoilla.
+_i18n_title_hash: 6ff9dd0d34f65181173c1e4bc39939de
+_i18n_description_hash: 5234b547d33af3354beaed6b39f2abf8
 _i18n_hash: 47f6b24c0a0621d810e5e2975a0b4749
 ---
 `Table`-komponentti tarjoaa erilaisia valintamahdollisuuksia. On olemassa menetelmiä yksittäisen kohteen valitsemiseen, useiden kohteiden valitsemiseen tai valintojen hallintaan ohjelmallisesti.

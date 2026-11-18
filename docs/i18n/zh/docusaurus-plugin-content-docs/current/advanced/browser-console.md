@@ -1,9 +1,9 @@
 ---
 sidebar_position: 15
 title: 浏览器控制台
-description: >-
-  Log messages from Java to the browser console with typed levels and styled
-  output using the BrowserConsole utility.
+description: 使用 BrowserConsole 工具将 Java 日志消息输出到浏览器控制台，并支持类型化日志级别和样式化输出。
+_i18n_title_hash: 6f2ee7ba1b1e5b6578e906d6668c151e
+_i18n_description_hash: e4f28991dd108877c1762cfaf098d444
 _i18n_hash: 5900eaf4e7be19839d40784d6532bff1
 ---
 <DocChip chip='since' label='24.10' />

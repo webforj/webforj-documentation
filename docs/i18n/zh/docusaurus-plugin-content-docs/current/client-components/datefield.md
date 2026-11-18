@@ -2,9 +2,9 @@
 title: <dwc-datefield>
 sidebar_class_name: sidebar--item__hidden
 slug: datefield
-description: >-
-  Customize the dwc-datefield client component using CSS variables and shadow
-  parts to theme the date input, calendar trigger, and label.
+description: 使用 CSS 变量和 shadow parts 自定义 dwc-datefield 客户端组件，为日期输入框、日历触发器和标签设置主题。
+_i18n_title_hash: eea0c57817e85d04475faab94ce48874
+_i18n_description_hash: 4352135bf1238fec7f969f8ca72c4db8
 _i18n_hash: 0464aa4fcd8ea24eec7278030aaefdc1
 ---
 <DocChip chip='shadow' />

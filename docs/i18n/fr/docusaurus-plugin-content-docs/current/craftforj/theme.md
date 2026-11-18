@@ -2,8 +2,11 @@
 title: Thème
 sidebar_position: 6
 description: >-
-  Adjust the DWC design tokens of a running webforJ app, preview the result
-  immediately, and save it into your stylesheet.
+  Ajustez les jetons de design DWC d’une application webforJ en cours
+  d’exécution, prévisualisez immédiatement le résultat et enregistrez-le dans
+  votre feuille de style.
+_i18n_title_hash: d721757161f7f70c5b0949fdb6ec2c30
+_i18n_description_hash: a8284dc3eaa8e204246a898c1e69582b
 _i18n_hash: fe089afe4f44e457a98622707bf995e5
 ---
 L’onglet Theme vous permet de modifier l’apparence de votre application pendant son exécution. Il utilise les [jetons de conception DWC](/docs/styling/css-variables) dont votre application se sert déjà : une seule modification s’applique à chaque composant qui utilise ce jeton, plutôt que de devoir modifier les règles une par une.

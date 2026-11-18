@@ -4,9 +4,12 @@ title: TestBed
 hide_table_of_contents: true
 hide_giscus_comments: true
 description: >-
-  The TestBed is webforJ's browserless testing, which runs views and components
-  in plain JUnit tests without a browser or a server.
+  Das TestBed ist die browserlose Testumgebung von webforJ, in der Views und
+  Komponenten in einfachen JUnit-Tests ohne Browser oder Server ausgeführt
+  werden.
 sidebar_class_name: new-content
+_i18n_title_hash: 7c61a86b49d51e587fea92f9ed752400
+_i18n_description_hash: 712ee5853d3d3904a4407b5b53e8b972
 _i18n_hash: a97354d7621ab9d89fc8b88c7592847f
 ---
 <Head>

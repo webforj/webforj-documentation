@@ -3,8 +3,10 @@ sidebar_position: 30
 title: Edición y actualización
 slug: refreshing
 description: >-
-  Edit Table rows by mutating the bound Repository and call commit to refresh
-  the UI through RepositoryCommitEvent.
+  Edita las filas de Table modificando el Repository vinculado y llama a commit
+  para actualizar la interfaz mediante RepositoryCommitEvent.
+_i18n_title_hash: f4de95cd7a20c3ab229fb8c9596e84c7
+_i18n_description_hash: 40fec4995f2fa08bfe24c02da26aa209
 _i18n_hash: 84dec48293e6fa794713881310b6f303
 ---
 La edición de datos en `Table` se realiza mediante la interacción con `Repository`, que contiene los datos de `Table`. `Repository` sirve de puente entre `Table` y el conjunto de datos subyacente, y ofrece métodos para recuperar, modificar y actualizar los datos. A continuación se muestra un ejemplo que implementa el comportamiento para editar el «Título» de una fila seleccionada.

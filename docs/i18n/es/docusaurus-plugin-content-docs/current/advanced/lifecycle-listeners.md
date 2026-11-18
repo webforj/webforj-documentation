@@ -2,8 +2,11 @@
 sidebar_position: 10
 title: Listeners de ciclo de vida
 description: >-
-  Hook into webforJ app startup and shutdown phases with AppLifecycleListener to
-  initialize services, modify config, or clean up resources.
+  Intervén en las fases de inicio y apagado de la aplicación webforJ con
+  AppLifecycleListener para inicializar servicios, modificar la configuración o
+  liberar recursos.
+_i18n_title_hash: 834dcdd360648c5c2408cad0b4aedfb8
+_i18n_description_hash: d4a68cf021a9a227cf77109e1f92af1d
 _i18n_hash: 3ef33ca5104ef421c38d3db16c9fa453
 ---
 <!-- vale off -->

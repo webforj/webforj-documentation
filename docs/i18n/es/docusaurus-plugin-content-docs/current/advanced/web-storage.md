@@ -1,6 +1,12 @@
 ---
-sidebar_position: 10
+sidebar_position: 35
 title: Almacenamiento web
+description: >-
+  Persiste datos del lado del cliente con CookieStorage, SessionStorage y
+  LocalStorage para conservar preferencias y estado entre solicitudes y
+  recargas.
+_i18n_title_hash: 877d6d7efd2455dfe8436239803341cc
+_i18n_description_hash: f551d98193b06baf10554c11a40a4346
 _i18n_hash: 12a907c67d42dedcc6ca3b62fe99e549
 ---
 <!-- vale off -->

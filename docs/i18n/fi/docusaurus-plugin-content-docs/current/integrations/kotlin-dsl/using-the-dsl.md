@@ -1,6 +1,11 @@
 ---
 title: 'DSL:n käyttö'
 sidebar_position: 10
+description: >-
+  Rakenna webforJ-komponentteja Kotlin DSL:llä camelCase-rakentajafunktioiden,
+  sisäkkäisten lohkojen ja vastaanottajaan sidotun konfiguroinnin avulla.
+_i18n_title_hash: 19889ee2d799cdb3e9247afdc3b75822
+_i18n_description_hash: 29d3ff24a869a59903766ffe3ed5690a
 _i18n_hash: 05d1319dd97f2d32392408b2e4ae9058
 ---
 Kotlin DSL tarjoaa rakentajatoimintoja webforJ-komponenteille. Kukin toiminto luo komponentin, lisää sen parentti-konttiinsa ja suorittaa konfigurointilohkon. Tämä sivu käsittelee malleja ja käytäntöjä, joita käytät rakentaessasi käyttöliittymiä DSL:llä.

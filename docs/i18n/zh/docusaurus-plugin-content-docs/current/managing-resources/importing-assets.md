@@ -2,8 +2,10 @@
 sidebar_position: 1
 title: 导入资源
 description: >-
-  Attach JavaScript and CSS to webforJ components or the app using JavaScript,
-  InlineJavaScript, StyleSheet, and InlineStyleSheet annotations.
+  使用 JavaScript、InlineJavaScript、StyleSheet 和 InlineStyleSheet 注解，将 JavaScript 和
+  CSS 附加到 webforJ 组件或应用程序。
+_i18n_title_hash: 2bb279247129f48aae96ef9448e7937b
+_i18n_description_hash: 536f6365a8d660553f582f17e63ae286
 _i18n_hash: 4343173cf0cbef440f24c05cf9ee3fbd
 ---
 资产注释提供了一种声明性的方法来静态嵌入应用程序中的外部和内联资源，例如 JavaScript 和 CSS。这些注释通过确保在适当的执行阶段加载依赖项，从而简化了资源管理，减少了手动配置并增强了可维护性。

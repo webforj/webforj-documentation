@@ -1,11 +1,12 @@
 ---
 title: Extensions
 hide_giscus_comments: true
-sidebar_class_name: new-content
 description: >-
-  Understand how a bundler extension contributes a compiler, the three ways an
-  extension activates, how to configure one through bun.config.ts, and how to
-  write your own.
+  Comprenez comment une extension de bundler fournit un compilateur, les trois
+  façons dont elle s’active, sa configuration via bun.config.ts et comment créer
+  la vôtre.
+_i18n_title_hash: 5e2f5f3c24ae8c6ab3eca618826b0e23
+_i18n_description_hash: 42c87d1f332118f0fe7b8fa8829c5fec
 _i18n_hash: 00c5421ebf8023e2d273f3836176733e
 ---
 import Tabs from '@theme/Tabs';

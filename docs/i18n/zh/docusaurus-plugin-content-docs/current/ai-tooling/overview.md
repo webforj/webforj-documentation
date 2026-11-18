@@ -3,8 +3,10 @@ title: webforJ AI 插件
 sidebar_position: 1
 slug: /ai-tooling
 description: >-
-  Install the webforJ AI plugin to add the MCP server and Agent Skills to Claude
-  Code, Copilot, Cursor, Gemini, and Codex in one step.
+  一步安装 webforJ AI 插件，即可将 MCP 服务器和 Agent Skills 添加到 Claude
+  Code、Copilot、Cursor、Gemini 和 Codex。
+_i18n_title_hash: 406450d3519ed7bb39cb30e5813be747
+_i18n_description_hash: 1e404a8b90cee36bd52c39dcfb70f837
 _i18n_hash: 44bdaad98af3599ab5fcf57c6a4756c1
 ---
 **webforJ AI 插件**是将您的 AI 编码助手连接到 webforJ 的推荐方式。一次安装为您的助手提供了完整的工具包：实时访问 webforJ 文档、项目搭建、主题生成、设计令牌验证，以及教它如何正确使用所有这些工具的结构化工作流程。

@@ -4,8 +4,11 @@ sidebar_position: 0
 hide_table_of_contents: true
 hide_giscus_comments: true
 description: >-
-  Combine webforJ UI components with Spring Boot for dependency injection,
-  Spring Data repositories, custom scopes, and live reload.
+  Associez les composants d’interface webforJ à Spring Boot pour l’injection de
+  dépendances, les dépôts Spring Data, les portées personnalisées et le
+  rechargement à chaud.
+_i18n_title_hash: 38008dd81c2f4d7985ecf6e0ce8af1d1
+_i18n_description_hash: cbe9423c66534c89100879333bf08fda
 _i18n_hash: 7af3520db108b976dda9856890c61979
 ---
 <Head>

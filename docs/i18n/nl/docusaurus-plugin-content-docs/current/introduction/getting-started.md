@@ -1,9 +1,11 @@
 ---
-title: Aan de Slag
+title: Een project maken
 description: >-
-  Create a new webforJ project from an archetype using either the startforJ web
-  wizard or a Maven command-line generator.
+  Maak een nieuw webforJ-project op basis van een archetype met de
+  startforJ-webwizard of een Maven-generator via de opdrachtregel.
 sidebar_position: 2
+_i18n_title_hash: be86ca474df5e14056bc0f20d2cdb767
+_i18n_description_hash: db9722f31ec5732d2ef1b7567078da5f
 _i18n_hash: ea669974a5f1b3a02a162f89bb16c6e3
 ---
 Dit artikel beschrijft de stappen om een nieuwe webforJ-app te maken met behulp van webforJ [archetypes](../building-ui/archetypes/overview.md). Archetypes bieden vooraf geconfigureerde projectstructuren en startercode, zodat je snel een project kunt opzetten en draaien. 

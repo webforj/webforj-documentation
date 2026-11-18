@@ -2,8 +2,10 @@
 sidebar_position: 2
 title: Observateurs de cycle de vie
 description: >-
-  Hook into route lifecycle stages by implementing WillEnter, DidEnter,
-  WillLeave, DidLeave, and Activate observer interfaces.
+  Interceptez les étapes du cycle de vie des routes en implémentant les
+  interfaces d’observation WillEnter, DidEnter, WillLeave, DidLeave et Activate.
+_i18n_title_hash: 9f0a5c4e88206bb2e0f2b5879c53689c
+_i18n_description_hash: 3d7af4df66125852029789abf4e3281e
 _i18n_hash: 3f39161991064d0d2506c0cb1dcd3503
 ---
 Les observateurs permettent aux composants de réagir aux événements du cycle de vie en implémentant des interfaces pour des étapes spécifiques. Ce modèle garantit une séparation claire des préoccupations et simplifie la gestion de la logique de navigation.

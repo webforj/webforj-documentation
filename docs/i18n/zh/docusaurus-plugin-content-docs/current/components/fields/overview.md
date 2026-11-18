@@ -2,9 +2,9 @@
 sidebar_position: 20
 title: 字段
 hide_giscus_comments: true
-description: >-
-  Share common field properties across webforJ input components, including
-  labels, helper text, required state, spellcheck, and prefix or suffix slots.
+description: 在 webforJ 输入组件间共享通用字段属性，包括标签、辅助文本、必填状态、拼写检查以及前缀或后缀插槽。
+_i18n_title_hash: a4ca5edd20d0b5d502ebece575681f58
+_i18n_description_hash: fa15a2aed7f24e5520f84440981dc662
 _i18n_hash: 56462cf4d659ce15f72a624acae60f0f
 ---
 <JavadocLink type="foundation" location="com/webforj/component/field/DwcField"/>

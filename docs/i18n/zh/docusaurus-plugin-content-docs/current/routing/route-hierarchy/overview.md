@@ -2,9 +2,9 @@
 sidebar_position: 1
 title: 路由层级
 hide_giscus_comments: true
-description: >-
-  Organize webforJ routes into parent-child trees with view routes, layout
-  routes, outlets, and nested components.
+description: 将 webforJ 路由组织成父子树结构，包含视图路由、布局路由、出口和嵌套组件。
+_i18n_title_hash: 9efa0a285cc1eb30cf7a63d79dc97170
+_i18n_description_hash: 7382223dd1bfaa572d36732205d62653
 _i18n_hash: 4bfc9c9d46d57c866c67a2baaf2e3c3a
 ---
 <!-- vale off -->

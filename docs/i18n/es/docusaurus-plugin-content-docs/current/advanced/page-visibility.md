@@ -1,10 +1,11 @@
 ---
 title: Visibilidad de la página
 sidebar_position: 32
-sidebar_class_name: new-content
 description: >-
-  Detect when the tab hosting your app moves between the foreground and the
-  background, and react in Java.
+  Detecta cuándo la pestaña que aloja tu aplicación pasa del primer plano al
+  segundo plano y reacciona en Java.
+_i18n_title_hash: 81265a8a403fe0ab7cad1d253e17af5b
+_i18n_description_hash: 321fc422134e216464334627cf977f82
 _i18n_hash: 8382d0314f6143663c03e11409de08d5
 ---
 <DocChip chip='since' label='26.01' />

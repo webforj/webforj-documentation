@@ -2,7 +2,12 @@
 sidebar_position: 35
 title: TextField
 slug: textfield
-description: A single-line input component for entering and editing text data.
+description: >-
+  Permettez aux utilisateurs de saisir et modifier une ligne de texte avec le
+  TextField de webforJ : types e-mail, téléphone, URL et recherche, motifs,
+  espaces réservés et limites de longueur.
+_i18n_title_hash: f0bfb289e820988a0d3e577bed6156a8
+_i18n_description_hash: 8475d58b0df3df16ed9e7fa3edb82dd9
 _i18n_hash: 2f01abb14f66d83dd6edd3cc18ac560e
 ---
 <DocChip chip='shadow' />

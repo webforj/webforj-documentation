@@ -1,9 +1,9 @@
 ---
 title: 自定义数据源
 sidebar_position: 4
-description: >-
-  Wire REST APIs, databases, or external services to webforJ components by
-  supplying find, count, and key-lookup functions to DelegatingRepository.
+description: 通过向 DelegatingRepository 提供查找、计数和按键查找函数，将 REST API、数据库或外部服务接入 webforJ 组件。
+_i18n_title_hash: fef40af7c35e0f087a78842487f49e67
+_i18n_description_hash: ee4b7c98567805ee16c713e4d2fce688
 _i18n_hash: 7d203b803816c64e9ca77d8b49bf34ed
 ---
 <!-- vale off -->

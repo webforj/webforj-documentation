@@ -2,8 +2,11 @@
 title: ColumnsLayout
 sidebar_position: 25
 description: >-
-  Arrange child components into a responsive multi-column grid with the
-  ColumnsLayout component using configurable breakpoints and alignment.
+  Organiza los componentes secundarios en una cuadrícula adaptable de varias
+  columnas con ColumnsLayout, usando puntos de quiebre y alineación
+  configurables.
+_i18n_title_hash: ca48f926bd9a89a10984d9aebb802fb1
+_i18n_description_hash: 338a67c2cc7d54e824a82db02ac63b2a
 _i18n_hash: 3705994e0ddda1a54c0582b290942549
 ---
 <DocChip chip="shadow" />

@@ -1,10 +1,12 @@
 ---
 sidebar_position: 35
-sidebar_class_name: new-content
 title: Geolocatie
 description: >-
-  Request and watch the device's geographic position using the Geolocation
-  class, with high-accuracy, timeout, and maximum age controls.
+  Vraag de geografische positie van het apparaat op en volg deze met de klasse
+  Geolocation, met instellingen voor hoge nauwkeurigheid, time-out en maximale
+  leeftijd.
+_i18n_title_hash: 323d4eb70b252acb4a04eaf9e0882597
+_i18n_description_hash: 21bd5be822268c6333ce2e132facd7c8
 _i18n_hash: 68083cf323f26b69a62bc3147145f4d2
 ---
 # Geolocatie <DocChip chip='since' label='26.01' />

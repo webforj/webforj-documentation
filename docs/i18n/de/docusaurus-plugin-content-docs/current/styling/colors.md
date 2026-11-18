@@ -1,6 +1,11 @@
 ---
 sidebar_position: 3
 title: Farben
+description: >-
+  Konfigurieren Sie DWC-Farbpaletten anhand von Farbton- und Sättigungswerten,
+  die konsistente Abstufungen für Primär-, Status- und neutrale Töne erzeugen.
+_i18n_title_hash: 5d50889672f6f860d14f502de3de1957
+_i18n_description_hash: ca4b83cfb72b17ff6d45c7160386764c
 _i18n_hash: cc233e97e4b7333262eb47b14bfe572a
 ---
 webforJ bietet ein Farbsystem, das auf CSS-Custom-Properties basiert. Diese Farbvariablen sorgen für einen konsistenten visuellen Stil in Ihrer Anwendung und geben Ihnen die volle Kontrolle, um Farbpaletten gemäß Ihren Designanforderungen anzupassen.

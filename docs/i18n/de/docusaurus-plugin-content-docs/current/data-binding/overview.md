@@ -4,8 +4,11 @@ title: Datenbindung
 hide_table_of_contents: true
 hide_giscus_comments: true
 description: >-
-  Connect webforJ UI components to Java backend models with two-way
-  synchronization, validation, and transformation through BindingContext.
+  Verbinden Sie webforJ-UI-Komponenten mit Java-Backend-Modellen – mit
+  bidirektionaler Synchronisierung, Validierung und Transformation über
+  BindingContext.
+_i18n_title_hash: e6823146440d01364375e13d56daf0fb
+_i18n_description_hash: 5b11f79b578884709b0cec6e700dcc79
 _i18n_hash: 75d09e2278ebe54cb17f4dbc69444449
 ---
 <Head>

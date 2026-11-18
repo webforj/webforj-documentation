@@ -1,6 +1,11 @@
 ---
 sidebar_position: 2
 title: Verschachtelte Routen
+description: >-
+  Erstellen Sie Eltern-Kind-Routenhierarchien mit dem Outlet-Parameter @Route,
+  um Layouts zu teilen und UI in verschiedenen Ansichten wiederzuverwenden.
+_i18n_title_hash: e2119c007b50b2af6331785f9f03b752
+_i18n_description_hash: 9f67baa4b0a157ea25104063e0c0df64
 _i18n_hash: 5324d20d84c35f52067d0ba6d6448b71
 ---
 Verschachtelte Routen ermöglichen es, untergeordnete Routen innerhalb von übergeordneten Routen darzustellen, wodurch eine modulare und wiederverwendbare Benutzeroberfläche entsteht. Übergeordnete Routen definieren gemeinsame Komponenten, während untergeordnete Routen in spezifische Ausgaben innerhalb dieser übergeordneten Komponenten eingefügt werden.

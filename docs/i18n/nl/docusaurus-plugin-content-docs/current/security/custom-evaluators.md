@@ -2,8 +2,10 @@
 sidebar_position: 6
 title: Aangepaste evaluators
 description: >-
-  Write custom RouteSecurityEvaluators for context-aware checks like ownership
-  verification beyond role-based permissions.
+  Schrijf aangepaste RouteSecurityEvaluators voor contextafhankelijke controles,
+  zoals eigendomsverificatie naast rolgebaseerde machtigingen.
+_i18n_title_hash: bc2b1c2e298d9f03eab4245d1e096b93
+_i18n_description_hash: 2141a4f92c449ecd3c92743e87cd1a95
 _i18n_hash: d1edb7260efb2928e988a2cdf313f380
 ---
 Custom evaluators breiden het beveiligingssysteem van webforJ uit met gespecialiseerde toegangscodes die verder gaan dan de basisverificatie en rolchecks. Gebruik ze wanneer je dynamische voorwaarden moet verifiëren die afhankelijk zijn van de context van het verzoek, niet alleen van de gebruikersmachtigingen.

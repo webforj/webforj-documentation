@@ -1,6 +1,9 @@
 ---
 sidebar_position: 11
 title: 路由注册
+description: 通过 RouteRegistry API 在运行时注册、更新和移除路由，实现动态且基于角色的导航。
+_i18n_title_hash: 8a7bc298f8cb539f9cf61da9a122766e
+_i18n_description_hash: 272079001ee3337284a48bdd42c714e1
 _i18n_hash: def139d3db58322c269afef10acdf5fd
 ---
 除了[使用 `@Route` 注释注册路由](./defining-routes)之外，可以根据应用逻辑、用户角色或其他条件动态注册、更新或删除路由。这种灵活性使您能够更动态地管理导航，而不是在编译时静态定义路由。

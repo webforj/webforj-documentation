@@ -1,6 +1,9 @@
 ---
 title: 通信
 sidebar_position: 3
+description: 通过 WebswingConnector 生命周期和自定义操作处理器，在 webforJ 应用与嵌入式 Swing 应用之间交换操作和事件。
+_i18n_title_hash: 07a3dd247ad6bec7fe401aa11619959f
+_i18n_description_hash: ff71369ed4c59b3d245fa7a9333cba81
 _i18n_hash: 06bf57e08ee82a4970539b73215c1540
 ---
 `WebswingConnector` 提供了您与嵌入式 Swing 应用之间的双向通信。这使您能够向 Swing 应用发送命令，并在其中发生事件时接收通知。

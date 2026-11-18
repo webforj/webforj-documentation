@@ -1,7 +1,12 @@
 ---
 title: Perussovelluksen luominen
 sidebar_position: 2
-description: Step 1 - Add components to an app.
+description: >-
+  Tutoriaali, vaihe 1: luo webforJ- ja Spring Boot -sovelluksen pääluokka, lisää
+  vuorovaikutteisia webforJ- ja HTML-elementtikomponentteja ja muotoile ne
+  CSS:llä.
+_i18n_title_hash: 77334ced5b31edd07d2f1ff1963a042a
+_i18n_description_hash: 605dd7412a18f918843f8ca34a104fc4
 _i18n_hash: d7385c22706cf76508b7e1971186f88d
 ---
 In [Projektin asetukset](/docs/introduction/tutorial/project-setup) loit webforJ-projektin. Nyt on aika luoda projektin pääluokka ja lisätä interaktiivinen käyttöliittymä webforJ-komponentteja käyttäen. Tässä vaiheessa opit seuraavista asioista:

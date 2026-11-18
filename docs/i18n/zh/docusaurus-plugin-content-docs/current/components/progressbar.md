@@ -1,9 +1,9 @@
 ---
 title: ProgressBar
 sidebar_position: 90
-description: >-
-  Visualize task completion with the ProgressBar component, supporting
-  determinate and indeterminate modes, orientation, and themes.
+description: 使用 ProgressBar 组件直观展示任务完成情况，支持确定和不确定模式、方向设置及主题。
+_i18n_title_hash: 0af8128a43d9b5e2b1d76084b5163ce4
+_i18n_description_hash: 99f4a02674b96fb1c02bbf206d60baa4
 _i18n_hash: 47c51276d2b1da6c6bef337f76403515
 ---
 <DocChip chip='shadow' />

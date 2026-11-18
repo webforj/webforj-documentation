@@ -3,8 +3,10 @@ sidebar_position: 40
 title: Interactivité
 slug: Interactivity
 description: >-
-  Reference the keyboard shortcuts that move focus, select rows, and navigate
-  cells in the Table component.
+  Consultez les raccourcis clavier pour déplacer le focus, sélectionner des
+  lignes et naviguer entre les cellules du composant Table.
+_i18n_title_hash: fcbe6546766fcb51d1197a3d75a7a7f4
+_i18n_description_hash: 84575804ecb073661d379d81f9143b66
 _i18n_hash: 49377400524e9e1c3a25dd35cfb7750c
 ---
 Le composant `Table` réagit à différentes saisies au clavier pour permettre une interaction plus précise. La liste suivante décrit le comportement associé à chaque touche :

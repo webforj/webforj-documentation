@@ -1,6 +1,11 @@
 ---
 sidebar_position: 3
 title: Bestanden downloaden
+description: >-
+  Start client-side downloads in webforJ met de downloadmethoden van Page, die
+  inputstreams, bytearrays, bestanden of resourcepaden accepteren.
+_i18n_title_hash: 333738631384ca07eb5b6c1647d48255
+_i18n_description_hash: 818049041c516aae899204589b855bac
 _i18n_hash: 013e64888b44110c108f80adf492be10
 ---
 webforJ biedt methoden om bestandsdownloads te initiëren, waardoor het eenvoudig is om bestanden via de browser aan gebruikers te bezorgen. De <JavadocLink type="foundation" location="com/webforj/Page" code='true'>Page</JavadocLink> klasse biedt verschillende manieren om bestanden te downloaden, of ze nu komen van invoerstromen, byte-arrays, fysieke bestanden of bronnen.

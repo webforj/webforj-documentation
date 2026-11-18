@@ -2,8 +2,10 @@
 sidebar_position: 10
 title: Titels van navigatieframe
 description: >-
-  Set browser frame titles per route with the @FrameTitle annotation or generate
-  them dynamically using HasFrameTitle.
+  Stel de titel van het browservenster per route in met de @FrameTitle-annotatie
+  of genereer deze dynamisch met HasFrameTitle.
+_i18n_title_hash: 8aa2c696e6ad4b2612b85b0a8b89e517
+_i18n_description_hash: abcdb6bc334f7fe8c0b777c908af1333
 _i18n_hash: 7b190f89d8eeb58df6d8a25ce863cc5e
 ---
 In webforJ worden alle routes weergegeven binnen een Frame, dat dient als een bovenliggende container die verantwoordelijk is voor het weergeven van de inhoud van de huidige route. Terwijl gebruikers tussen verschillende routes navigeren, wordt de Frame Title dynamisch bijgewerkt om de actieve weergave weer te geven, wat helpt om duidelijke context te bieden over de huidige locatie van de gebruiker binnen de app.

@@ -1,9 +1,11 @@
 ---
 sidebar_position: 5
-title: 快照
-description: >-
-  Compare everything a view shows with a stored text description of it, read
-  that description, and add the state of your own components to it.
+title: 快照测试
+sidebar_label: 快照
+description: 将视图显示的所有内容与其存储的文本描述进行比较，读取该描述，并将你自己的组件状态添加进去。
+_i18n_title_hash: 9580d9202c32b5f9ce00a7486a475362
+_i18n_sidebar_label_hash: 9147e5e61a7b9260dec09f3a6eb3e5be
+_i18n_description_hash: 10901f96edea7329f873be1b33f4a845
 _i18n_hash: 2f709890e8d1fd70a61debc1de3ae63f
 ---
 逐项检查视图，需要为每个标签、按钮和字段编写一条断言。快照则可以一次检查所有内容。它会逐行记录用户在视图中看到的所有内容，每个组件占一行，并将描述与测试一同保存。之后每次运行都会重新描述视图并进行比较，因此页面显示内容的任何变化都会导致测试失败；变化内容会以纯文本差异的形式显示在代码审查中。

@@ -1,6 +1,11 @@
 ---
 title: Käyttäjän käsittely
 sidebar_position: 4
+description: >-
+  Lue nykyinen käyttäjä, roolit ja käyttöoikeudet Spring Securityn
+  SecurityContextHolderista webforJ-näkymissä.
+_i18n_title_hash: 0f0e722ca6ee385a8194f6269374b2fa
+_i18n_description_hash: 4b344fafeed2e9752cecd34bc69c30ec
 _i18n_hash: 5a29cabdc472de49bcc1db895b982485
 ---
 Spring Security tallentaa todennetun käyttäjätiedon `SecurityContextHolder`-objektiin, joka tarjoaa pääsyn käyttäjätunnukseen, rooleihin ja valtuuksiin koko sovelluksessa. Tässä osiossa näytetään, kuinka hakemaan ja käyttämään tätä tietoa webforJ-näkymissä ja -komponenteissa.

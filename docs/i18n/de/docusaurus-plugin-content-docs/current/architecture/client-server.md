@@ -2,8 +2,11 @@
 sidebar_position: 5
 title: Client/Server-Interaktion
 description: >-
-  Understand how webforJ batches server-to-client calls, avoids costly round
-  trips, and uses caching and on-demand chunks for performance.
+  Erfahren Sie, wie webforJ Server-zu-Client-Aufrufe bündelt, kostspielige
+  Roundtrips vermeidet und Caching sowie bedarfsgeladene Chunks zur
+  Leistungssteigerung nutzt.
+_i18n_title_hash: 18b6a0908dc2b5b419e1f773895f2f39
+_i18n_description_hash: 8d46450d38cfc270f0bbb62a8e8941a2
 _i18n_hash: 893b34ce2601ff273d03ba4091b7bc51
 ---
 Der folgende Abschnitt behandelt verschiedene Leistungsqualitäten und bewährte Verfahren für webforJ sowie Implementierungsdetails für das Framework.

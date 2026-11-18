@@ -1,7 +1,11 @@
 ---
 title: 升级到 25.00
-description: Upgrade from 24.00 to 25.00
+description: >-
+  将 webforJ 应用从 24.00 升级到 25.00：Jetty 12 和 POM 变更、App 类 API 变更、表格排序、组件中的 HTML
+  渲染及其他变更。
 sidebar_position: 30
+_i18n_title_hash: 5e4c3fc942b0f770a90f302fb5aa57a0
+_i18n_description_hash: a05a20a3fa1be8daab4f33898d23e1b9
 _i18n_hash: 6fdaf15e67e0015f7319572200ccc353
 ---
 本文件作为将 webforJ 应用从 24.00 升级到 25.00 的指南。这里列出了现有应用程序所需的更改，以继续顺利运行。与往常一样，请参阅 [GitHub 发布概述](https://github.com/webforj/webforj/releases) 以获取版本间更改的更全面列表。

@@ -2,9 +2,9 @@
 title: <dwc-format-number>
 sidebar_class_name: sidebar--item__hidden
 slug: format-number
-description: >-
-  Style the dwc-format-number client component with CSS variables, shadow parts,
-  and slots for theming.
+description: 使用 CSS 变量、shadow parts 和 slots 为 dwc-format-number 客户端组件定制主题样式。
+_i18n_title_hash: 280110bd3f89083d95ba677e153c7e7a
+_i18n_description_hash: d0dc80a7883bfe1a1e563065999029bb
 _i18n_hash: fefdb279121533ecca7fc75083421d8d
 ---
 :::info 客户端组件

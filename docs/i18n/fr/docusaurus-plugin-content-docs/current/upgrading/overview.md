@@ -1,9 +1,15 @@
 ---
 sidebar_position: 1
 title: Guides de mise à niveau
+description: >-
+  Comprenez le cycle de publication de webforJ pour les versions majeures,
+  mineures et correctives, et découvrez comment mettre à niveau vos
+  applications.
 hide_table_of_contents: true
 hide_giscus_comments: true
 sidebar_class_name: has-new-content
+_i18n_title_hash: 5ad03cf921ac69b65e2437a73e2562db
+_i18n_description_hash: 8320b368881a28afe22a6ceaec88dfbf
 _i18n_hash: 31ec5b4108bae52597797c3add587e4c
 ---
 <Head>

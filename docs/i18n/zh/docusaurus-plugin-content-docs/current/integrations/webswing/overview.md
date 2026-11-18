@@ -2,9 +2,9 @@
 title: Webswing
 hide_table_of_contents: true
 hide_giscus_comments: true
-description: >-
-  Embed legacy Swing, JavaFX, or SWT desktop apps inside a webforJ UI through
-  Webswing for progressive modernization and hybrid experiences.
+description: 通过 Webswing 将传统 Swing、JavaFX 或 SWT 桌面应用嵌入 webforJ UI，实现渐进式现代化与混合体验。
+_i18n_title_hash: 2e5d4e6133d5cb0ee82f8b6e37cd0767
+_i18n_description_hash: 349a14bb13871c58d909824c9d874837
 _i18n_hash: 300c45aa8cc9f51831219f75d74d31b6
 ---
 # Webswing <DocChip chip='since' label='25.10' />

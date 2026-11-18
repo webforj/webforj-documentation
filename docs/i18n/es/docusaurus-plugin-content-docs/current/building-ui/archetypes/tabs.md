@@ -1,7 +1,12 @@
 ---
 title: Tabs
+description: >-
+  Crea la estructura de un proyecto webforJ a partir del arquetipo Tabs para
+  organizar varias vistas o secciones en una interfaz de pestañas limpia.
 sidebar_position: 2
 hide_table_of_contents: true
+_i18n_title_hash: 7015777bcc86cd0c5e4819310d62b040
+_i18n_description_hash: cd7299804b89f888a2cc546473cacb5e
 _i18n_hash: 45cda55105424ae29b7687c84641d77c
 ---
 <Head>

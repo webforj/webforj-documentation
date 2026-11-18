@@ -1,9 +1,9 @@
 ---
 title: FlexLayout
 sidebar_position: 45
-description: >-
-  Arrange children in rows or columns with the FlexLayout component, controlling
-  direction, justification, alignment, wrapping, and growth.
+description: 使用 FlexLayout 组件将子元素按行或列排列，并控制方向、主轴对齐、交叉轴对齐、换行和伸展。
+_i18n_title_hash: 8493a6c812bf04a03ee2b8d1b7d7aa90
+_i18n_description_hash: ab53c5c7ac9638ad61fce62a43764d7a
 _i18n_hash: cd16392e244062d863d403e50cc56ddd
 ---
 <JavadocLink type="flexlayout" location="com/webforj/component/layout/flexlayout/FlexLayout" top='true'/>

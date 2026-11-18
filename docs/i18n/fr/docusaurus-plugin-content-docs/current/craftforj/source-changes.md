@@ -3,8 +3,10 @@ title: Application des modifications
 sidebar_position: 4
 sidebar_class_name: new-content
 description: >-
-  Review the changes you made in craftforJ as a diff, choose where each one is
-  written, and apply them to your Java source.
+  Examinez les modifications que vous avez apportées dans craftforJ sous forme
+  de diff, choisissez où les écrire et appliquez-les à votre code Java.
+_i18n_title_hash: 1d4bdf08028cc5435b587d169fcbcca6
+_i18n_description_hash: 94b3ce8de0f856395c768daf8badda83
 _i18n_hash: c421d594499c29fdae8dd88ca6e35e3d
 ---
 Modifier une propriété dans craftforJ change l’application en cours d’exécution, et rien d’autre. Pour conserver une modification, examinez-la et inscrivez-la dans le fichier Java d’où elle provient. Cette page décrit cette étape.

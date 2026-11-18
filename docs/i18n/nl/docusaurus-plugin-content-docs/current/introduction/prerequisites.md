@@ -1,9 +1,11 @@
 ---
 title: Vereisten
 description: >-
-  What a webforJ development environment needs, a Java 21 or higher JDK, Maven
-  or Gradle, and an editor with Java support.
+  Wat een webforJ-ontwikkelomgeving nodig heeft: een JDK voor Java 21 of hoger,
+  Maven of Gradle en een editor met Java-ondersteuning.
 sidebar_position: 1
+_i18n_title_hash: ee68e5b99222bbc29a480fcb0d1d6ee2
+_i18n_description_hash: f47ef53eb5070fb49f6ccd2d5e28ee5e
 _i18n_hash: 038e0cf692852d650329b263c25aaf55
 ---
 Aan de slag met webforJ is eenvoudig, omdat er maar een paar vereisten zijn. Gebruik deze gids om je ontwikkelomgeving in te stellen met de essentiële tools die je nodig hebt om aan de slag te gaan met webforJ.

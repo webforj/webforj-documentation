@@ -2,9 +2,11 @@
 sidebar_position: 4
 title: Routenavigatie
 description: >-
-  Trigger client-side navigation programmatically with Router.navigate, pass
-  parameters, and switch views without reloads.
+  Activeer client-side navigatie met Router.navigate, geef parameters door en
+  wissel van weergave zonder de pagina opnieuw te laden.
 sidebar_class_name: updated-content
+_i18n_title_hash: c5ea3746fbe3df3509bcb240f3fb6699
+_i18n_description_hash: e889bdb63426de32d6804643d04818ef
 _i18n_hash: 0284f2481f307d68da728d81f4b3a6a2
 ---
 In webforJ is navigeren tussen routes de kernmechanisme voor het schakelen van weergaven en componenten op basis van gebruikersacties of URL-wijzigingen. Navigatie stelt gebruikers in staat om naadloos tussen verschillende delen van de app te verplaatsen zonder de pagina te vernieuwen. Deze client-side navigatie houdt de app responsief en soepel terwijl de status van de app behouden blijft.

@@ -1,9 +1,11 @@
 ---
 title: Vue d'ensemble
 description: >-
-  Follow a six-step tutorial to build a customer management app with webforJ and
-  Spring Boot, adding routing, data binding, and layout.
+  Suivez six étapes pour créer une application de gestion des clients avec
+  webforJ et Spring Boot, avec routage, liaison de données et mise en page.
 hide_giscus_comments: true
+_i18n_title_hash: 3b878279a04dc47d60932cb294d96259
+_i18n_description_hash: f70c3af39a72655b0a92dd46905d7b89
 _i18n_hash: afa15cff5443cd3aab487ad1c8e8b0de
 ---
 Ce tutoriel étape par étape vous guide à travers le processus de création d'une application de gestion de clients en utilisant webforJ et Spring Boot. Il vous apprend à créer une interface moderne et conviviale pour visualiser, ajouter et modifier les données des clients.

@@ -1,6 +1,11 @@
 ---
 sidebar_position: 11
 title: Reittien rekisteröinti
+description: >-
+  Rekisteröi, päivitä ja poista reittejä ajon aikana RouteRegistry API:n avulla
+  dynaamista, roolit huomioivaa navigointia varten.
+_i18n_title_hash: 8a7bc298f8cb539f9cf61da9a122766e
+_i18n_description_hash: 272079001ee3337284a48bdd42c714e1
 _i18n_hash: def139d3db58322c269afef10acdf5fd
 ---
 Lisäksi [reittien rekisteröimisestä `@Route`-annotaatioiden avulla](./defining-routes) on mahdollista rekisteröidä, päivittää tai poistaa reittejä dynaamisesti ajoitusvaiheessa sovelluksen logiikan, käyttäjäroolien tai muiden ehtojen perusteella. Tämä joustavuus mahdollistaa navigoinnin hallitsemisen dynaamisemmin, sen sijaan, että reitit määriteltäisiin staattisesti käännösvaiheessa.

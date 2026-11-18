@@ -1,9 +1,9 @@
 ---
 title: 现代化教程
 sidebar_position: 4
-description: >-
-  Modernize a Swing customer management app step by step by embedding it with
-  WebswingConnector and layering in webforJ dialogs and forms.
+description: 通过嵌入 WebswingConnector，并逐步添加 webforJ 对话框和表单，逐步实现 Swing 客户管理应用的现代化。
+_i18n_title_hash: ce2c1617b227110c5e8667caef525848
+_i18n_description_hash: c6f587d9b49fcf1a740fbe0384b94c7e
 _i18n_hash: ded3a5a3abe3905086532c58861652f8
 ---
 本教程将介绍如何通过集成 `WebswingConnector`，将现有 Java Swing 应用现代化。你将学习如何让传统桌面应用可通过 Web 访问，并逐步添加现代 Web 功能，例如基于 Web 的对话框，以及使用 webforJ 组件构建的交互式表单。

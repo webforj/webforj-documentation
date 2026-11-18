@@ -2,8 +2,11 @@
 sidebar_position: 5
 title: Automaattinen sidonta
 description: >-
-  Bind UI fields to bean properties automatically with BindingContext.of using
-  UseProperty, BindingExclude, and UseValidator annotations.
+  Sido käyttöliittymän kentät automaattisesti beanin ominaisuuksiin
+  BindingContext.of-metodin avulla käyttäen UseProperty-, BindingExclude- ja
+  UseValidator-annotaatioita.
+_i18n_title_hash: 666e71f372d1b611262598ca5cd23499
+_i18n_description_hash: 985dfb18ded910f005bf2a2e040a8f9d
 _i18n_hash: 60ea231c7622e56330eef34d26d615cc
 ---
 webforJ tarjoaa useita ominaisuuksia, jotka yksinkertaistavat kehittäjien konfigurointia ja automaattista sitomista. Tämä osio havainnollistaa, kuinka näitä ominaisuuksia voidaan käyttää tehokkaasti.

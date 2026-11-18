@@ -2,8 +2,10 @@
 title: 配置 MCP 应用
 sidebar_position: 30
 description: >-
-  Configure the public app origin, allowed embedding clients, and external
-  browser domains.
+  在 application.properties 或 webforj.conf 中配置 MCP
+  App：应用的公共源、获准嵌入它的客户端，以及外部浏览器域名。
+_i18n_title_hash: 336a154a443ab7f5a3d3ae8d2a9379d6
+_i18n_description_hash: 21bb9e473a744985ccab201f743c7c52
 _i18n_hash: 6d6d861d57b9a398007bd9a792e9ec1f
 ---
 将MCP应用程序设置添加到`application.properties`，或者在使用标准webforJ设置时添加到`webforj.conf`。设置客户端可以访问应用程序的地址，然后仅添加部署所需的客户端和浏览器来源。

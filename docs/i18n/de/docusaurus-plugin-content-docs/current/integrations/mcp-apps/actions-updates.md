@@ -1,7 +1,12 @@
 ---
 title: Werkzeuge für eine geöffnete Ansicht hinzufügen
 sidebar_position: 20
-description: Add tools that work with an MCP App already open in the current conversation.
+description: >-
+  Ergänzen Sie eine bereits geöffnete MCP App in der Unterhaltung um Tools: als
+  Aktionen mit eigener Eingabe oder als Aktualisierungstool mit der
+  ursprünglichen Eingabe.
+_i18n_title_hash: 746613a404d066e995f128f4f9a8206f
+_i18n_description_hash: 54c5c413a0ad07b7ef50cfc7fcce051a
 _i18n_hash: 0ad6819ba9550e2ffd2372c09b91a746
 ---
 Eine MCP-App kann Werkzeuge zusätzlich zu dem Werkzeug veröffentlichen, das ihre Ansicht öffnet. Verwenden Sie eine Aktion für einen eigenständigen Vorgang mit eigener Eingabe. Implementieren Sie den Update-Beobachter, wenn die App ein `inventory_update` Werkzeug benötigt, das dieselbe Eingabe wie ihr öffnendes Werkzeug hat.

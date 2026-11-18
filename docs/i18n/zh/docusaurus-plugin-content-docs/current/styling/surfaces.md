@@ -1,6 +1,9 @@
 ---
 sidebar_position: 8
 title: 表面
+description: 使用三个支持模式切换的 DWC 表面令牌，为页面背景、卡片以及弹出层或对话框构建 UI 层级。
+_i18n_title_hash: d40d1008e1abc156a84c98148422b0b9
+_i18n_description_hash: 35f5960e176694545a805c578abc82b8
 _i18n_hash: cac300e6e9c10cd9d1da6b266e536c74
 ---
 DWC 定义了三个表面级别，用于组织 UI 层次结构，并结合 [shadows](./shadows)。所有 [palette colors](./colors) 都经过测试，以确保与这些表面具有足够的对比度。

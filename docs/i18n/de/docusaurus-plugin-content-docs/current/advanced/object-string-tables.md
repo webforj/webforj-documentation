@@ -1,6 +1,12 @@
 ---
 title: Objekt- und Zeichenketten-Tabellen
 sidebar_position: 45
+description: >-
+  Speichern Sie gemeinsam genutzte Java-Objekte und Zeichenfolgenwerte
+  anwendungsweit oder pro HTTP-Sitzung mit ObjectTable, SessionObjectTable und
+  StringTable.
+_i18n_title_hash: 37132a5869c490e9daef74f8ebef0b39
+_i18n_description_hash: f5444ec2a09c6cfddf6b4f34b0db888f
 _i18n_hash: 2ec33737ccaf06670b4c1cd16369d858
 ---
 Die `ObjectTable`, `SessionObjectTable` und `StringTable` bieten statischen Zugriff auf gemeinsame Daten in einer webforJ-Umgebung. Alle sind von überall in Ihrer Anwendung zugänglich und dienen unterschiedlichen Zwecken:

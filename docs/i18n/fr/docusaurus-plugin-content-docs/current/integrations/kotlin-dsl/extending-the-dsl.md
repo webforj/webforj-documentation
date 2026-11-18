@@ -1,6 +1,12 @@
 ---
 title: Étendre la DSL
 sidebar_position: 20
+description: >-
+  Ajoutez des composants personnalisés et des widgets composites au DSL Kotlin
+  de webforJ grâce aux fonctions d’extension HasComponents et à l’utilitaire
+  init.
+_i18n_title_hash: 014c4cceda14f1687856a5a58adbbeaf
+_i18n_description_hash: 57d3ef483b81236e4197e2e67ca7b5de
 _i18n_hash: d9b9528f9a0fb3489ff11391012158f5
 ---
 Le Kotlin DSL est extensible, permettant l'ajout de fonctions DSL pour des composants personnalisés ou des bibliothèques tierces. Vous pouvez créer des composants composites qui utilisent le DSL en interne.

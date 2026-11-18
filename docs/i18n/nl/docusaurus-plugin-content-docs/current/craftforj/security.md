@@ -1,9 +1,13 @@
 ---
-title: Beveiliging
+title: craftforJ-beveiliging
+sidebar_label: Beveiliging
 sidebar_position: 9
 description: >-
-  What craftforJ can reach in your project, how it restricts access, and how to
-  confirm it's disabled in production.
+  Wat craftforJ binnen je project kan bereiken, hoe het de toegang beperkt en
+  hoe je bevestigt dat het in productie is uitgeschakeld.
+_i18n_title_hash: d40b4a25cf76dc9bd5b7c249aa2e9549
+_i18n_sidebar_label_hash: 2fae32629d4ef4fc6341f1751b405e45
+_i18n_description_hash: 23c50b68d765e1e0ea555dbf3206b44a
 _i18n_hash: 5ffbc5b5c6e6cfcf64143712a21944d5
 ---
 craftforJ leest en schrijft de bron van het project waaraan het is gekoppeld. Deze pagina beschrijft de grenzen daaromheen en hoe je kunt bevestigen dat craftforJ is uitgeschakeld in de builds die je implementeert.

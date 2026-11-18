@@ -1,9 +1,9 @@
 ---
 sidebar_position: 4
 title: 断言
-description: >-
-  Check what the user would see on a component with verifyThat, and read
-  failures that name the component and both values.
+description: 使用 verifyThat 检查用户在组件上看到的内容，并查看注明组件和两个值的失败信息。
+_i18n_title_hash: c2835ffac5b588bf228fce7aff4d3432
+_i18n_description_hash: 6573b8db1f12ca8529bf287ae6684bb6
 _i18n_hash: 6414e2fab20d3bf7828413494af79b74
 ---
 测试执行操作后，会检查用户实际看到的内容：按钮上的文本、字段是否可编辑，以及列表中显示为已选中的项目。`verifyThat(component)` 会用同样的词语描述这些预期，例如 `isReadOnly()` 或 `hasText("Save")`。每项检查都会读取组件的状态，也就是浏览器显示的状态；检查失败时，会指出组件以及预期值和实际值。

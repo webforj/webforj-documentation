@@ -2,8 +2,10 @@
 title: Alert
 sidebar_position: 5
 description: >-
-  Display contextual feedback messages with the Alert component, including
-  themes, expanses, dismissible close events, and rich content.
+  Zeigen Sie mit der Alert-Komponente kontextbezogene Feedbackmeldungen an – mit
+  Designs, Größen, Schließen-Ereignissen und umfangreichen Inhalten.
+_i18n_title_hash: b92071d61c88498171928745ca53078b
+_i18n_description_hash: 8782dad2d0339ec66d647f9aeb5be54d
 _i18n_hash: 1008b6fbbcfab4361660689ceb08135c
 ---
 <DocChip chip='shadow' />

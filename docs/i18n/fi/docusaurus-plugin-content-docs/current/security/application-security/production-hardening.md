@@ -2,8 +2,11 @@
 sidebar_position: 3
 title: Tuotannon kovennus
 description: >-
-  Practical steps for running a webforJ app safely in production, from transport
-  encryption and dependency upkeep to server-side checks and disclosure.
+  Ohjeita webforJ-sovelluksen turvalliseen tuotantokäyttöön: siirtoyhteyden
+  salaus, riippuvuuksien päivitys, palvelinpuolen tarkistukset ja tietojen
+  ilmoittaminen.
+_i18n_title_hash: 09f8f90702830845e3d1367de3eca29d
+_i18n_description_hash: 0b6b251e53807e5d480d50424a6d2568
 _i18n_hash: 62e3e574855705f8b97295f4ebe5169b
 ---
 webforJ:n [server-driven model](/docs/architecture/client-server) ja sisäänrakennetut suojat [yleisiä uhkia](/docs/security/application-security/common-threats) vastaan kattavat paljon, mutta turvallinen käyttöönotto riippuu silti siitä, miten käytät sovellusta. Alla olevat vaiheet täydentävät kokonaiskuvaa.

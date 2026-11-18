@@ -1,6 +1,11 @@
 ---
 sidebar_position: 7
 title: Gestion de l'état
+description: >-
+  Reflétez l’état de l’application dans l’URL avec BrowserHistory, pushState et
+  replaceState pour gérer les favoris et la navigation avec le bouton Retour.
+_i18n_title_hash: deff2cd7bbe8bd2c81e03c21664ae7d1
+_i18n_description_hash: c11e5ea3c10d7f872927b1be08d3a688
 _i18n_hash: 0766f2c08642792af2fe62e832b4fa1a
 ---
 Créer des expériences utilisateur fluides et dynamiques nécessite souvent que l'état de votre application web soit reflété dans l'URL et conservé lors des événements de navigation dans le navigateur. Vous pouvez y parvenir sans recharger la page en profitant des mises à jour des paramètres URL et de la gestion de l'état de l'historique du navigateur. Cela garantit que les utilisateurs peuvent partager, ajouter à leurs favoris ou revenir à des vues spécifiques avec l'application pleinement consciente de leurs interactions précédentes.

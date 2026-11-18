@@ -1,6 +1,11 @@
 ---
 sidebar_position: 6
 title: Bordure
+description: >-
+  Contrôlez l’épaisseur, le style, la couleur et l’échelle du rayon des bordures
+  du composant à l’aide des propriétés CSS personnalisées de DWC.
+_i18n_title_hash: 070554647306343cbea29ebfdd278ba8
+_i18n_description_hash: 17bf5d9150820aa1fb0756cc188ef746
 _i18n_hash: aec4d011f38db8c5a7a6c324eb76d724
 ---
 Les propriétés de bordure sont utilisées pour contrôler le style et la largeur de la bordure du composant. Voir [les styles de bordure disponibles](https://developer.mozilla.org/en-US/docs/Web/CSS/border-style).

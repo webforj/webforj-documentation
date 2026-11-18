@@ -1,6 +1,11 @@
 ---
 sidebar_position: 6
 title: Parámetros de consulta
+description: >-
+  Lee, convierte tipos e itera sobre los valores de la cadena de consulta de URL
+  en vistas de webforJ mediante las API ParametersBag y Location.
+_i18n_title_hash: 42bb3c16fb1e5d71306e769416df7852
+_i18n_description_hash: 80ce375665ca668e1ebac1e2f993818e
 _i18n_hash: 5a8313b16d83bfbef6e8d43589430f90
 ---
 Los parámetros de consulta te permiten pasar datos adicionales a través de las URL, utilizando el formato `?key1=value1&key2=value2`. Mientras que los parámetros de ruta se utilizan para pasar datos requeridos dentro de la ruta de la URL, los parámetros de consulta proporcionan un mecanismo flexible para pasar datos opcionales o adicionales. Son especialmente útiles al filtrar contenido, ordenar o manejar múltiples valores para la misma clave.

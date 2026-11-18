@@ -1,6 +1,11 @@
 ---
 sidebar_position: 7
 title: Tilanhallinta
+description: >-
+  Esitä sovelluksen tila URL-osoitteessa BrowserHistoryn pushState- ja
+  replaceState-kutsuilla, jotta kirjanmerkit ja selaimen paluupainike toimivat.
+_i18n_title_hash: deff2cd7bbe8bd2c81e03c21664ae7d1
+_i18n_description_hash: c11e5ea3c10d7f872927b1be08d3a688
 _i18n_hash: 0766f2c08642792af2fe62e832b4fa1a
 ---
 Luodakseen saumattomia, dynaamisia käyttäjäkokemuksia, vaaditaan usein, että verkkosovelluksen tila heijastuu URL-osoitteessa ja säilyy selaimen navigointitapahtumien aikana. Voit saavuttaa tämän ilman sivun lataamista hyödyntämällä URL-parametrien päivityksiä ja selaushistorian tilan hallintaa. Tämä varmistaa, että käyttäjät voivat jakaa, lisätä kirjanmerkkejä tai palata tiettyihin näkymiin, joista sovellus on täysin tietoinen heidän aiemmista vuorovaikutuksistaan.

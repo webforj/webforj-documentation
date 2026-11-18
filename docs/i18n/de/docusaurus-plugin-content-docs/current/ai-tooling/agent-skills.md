@@ -2,8 +2,10 @@
 title: Agentenfähigkeiten
 sidebar_position: 10
 description: >-
-  Install Agent Skills so AI coding assistants follow webforJ workflows for
-  building forms, adding servlets, styling apps, and creating components.
+  Installieren Sie Agent Skills, damit KI-Assistenten webforJ-Workflows für
+  Formulare, Servlets, App-Styling und Komponenten befolgen.
+_i18n_title_hash: 29708548a94fe2952a0598dca6411701
+_i18n_description_hash: f6940bfd9278345accf64644193c7381
 _i18n_hash: 6dc21bfd21fb27f2e71cb2265f6cde8c
 ---
 Agent Skills lehren KI-Coding-Assistenten, wie man webforJ-Anwendungen mit den richtigen APIs, Design-Token und Komponentenmustern erstellt. Anstatt Vermutungen über Framework-Konventionen anzustellen, lädt der Assistent eine Fähigkeit und folgt einem strukturierten Workflow, um Code zu produzieren, der beim ersten Versuch kompiliert und den besten Praktiken folgt.

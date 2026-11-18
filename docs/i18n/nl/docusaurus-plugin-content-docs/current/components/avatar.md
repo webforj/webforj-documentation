@@ -2,8 +2,10 @@
 title: Avatar
 sidebar_position: 7
 description: >-
-  Represent users with the Avatar component, showing profile images,
-  auto-computed initials, custom initials, or icons for identification.
+  Geef gebruikers weer met de Avatar-component, met profielfoto's, automatisch
+  berekende initialen, aangepaste initialen of pictogrammen ter identificatie.
+_i18n_title_hash: 32036005d1f6ed59803ba3e13c80993e
+_i18n_description_hash: 6d72c47211b7eb31b3287c69e9b2bff2
 _i18n_hash: a19b6cefc7a422d075f42ddedfcddfce
 ---
 <DocChip chip='shadow' />

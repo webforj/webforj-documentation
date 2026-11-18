@@ -1,11 +1,10 @@
 ---
 sidebar_position: 7
 title: 事件
-description: >-
-  Listen for component events, read the event payload, configure element events,
-  and dispatch your own custom events with the EventDispatcher.
+description: 监听组件事件、读取事件负载、配置元素事件，并使用 EventDispatcher 分发自定义事件。
 slug: events
-sidebar_class_name: new-content
+_i18n_title_hash: 87f9f735a1d36793ceaecd4e47124b63
+_i18n_description_hash: c757c297f3646dabdf0f4be584b6432d
 _i18n_hash: 5ceda90a316ff6a1528a686565011f88
 ---
 组件，无论是自定义的还是框架的一部分，都支持事件处理。您可以添加事件侦听器以捕获各种类型的事件，例如用户交互、状态变化或您自己定义的事件。这些侦听器允许您针对应用程序中发生的事情触发特定行为。

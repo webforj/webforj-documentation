@@ -1,9 +1,11 @@
 ---
 title: Yleiskatsaus
 description: >-
-  Follow a six-step tutorial to build a customer management app with webforJ and
-  Spring Boot, adding routing, data binding, and layout.
+  Seuraa kuusivaiheista opasta ja rakenna asiakashallintasovellus webforJ:llä ja
+  Spring Bootilla. Lisää siihen reititys, tietojen sidonta ja asettelu.
 hide_giscus_comments: true
+_i18n_title_hash: 3b878279a04dc47d60932cb294d96259
+_i18n_description_hash: f70c3af39a72655b0a92dd46905d7b89
 _i18n_hash: afa15cff5443cd3aab487ad1c8e8b0de
 ---
 Tämä vaiheittainen opas ohjaa sinut asiakashallintasovelluksen rakentamisprosessin läpi käyttäen webforJ:ta ja Spring Bootia. Se opettaa sinulle, kuinka luoda moderni, käyttäjäystävällinen käyttöliittymä asiakastietojen tarkasteluun, lisäämiseen ja muokkaamiseen.

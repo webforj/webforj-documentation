@@ -1,7 +1,11 @@
 ---
 sidebar_position: 2
 title: Validaattorit
-sidebar_class_name: updated-content
+description: >-
+  Liitä validoijat sidoksiin useValidator-menetelmällä, toteuta
+  uudelleenkäytettäviä Validator-luokkia ja määritä viestit kenttäkohtaisesti.
+_i18n_title_hash: 6c49f2cccba7312f02f0aa5a99b1a338
+_i18n_description_hash: a060e816eff9d9a63037f2fbac2e9f6a
 _i18n_hash: 996b617e97e439660bbe69f15d6355b9
 ---
 Validatorit validoivat tietoja käyttöliittymäkomponenteissasi määriteltyjen rajoitteiden mukaisesti ennen tämän tiedon sitomista tietomalliin. Voit soveltaa validoijia varmistaaksesi, että tiedot täyttävät tietyt kriteerit, kuten olevan tietyn alueen sisällä, vastaavan mallia tai ettei se ole tyhjää.

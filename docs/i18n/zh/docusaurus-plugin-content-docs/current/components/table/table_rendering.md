@@ -2,9 +2,9 @@
 sidebar_position: 20
 title: 渲染
 slug: rendering
-description: >-
-  Transform Table cells into text, badges, icons, links, or custom HTML with
-  built-in renderers and the setRenderer method.
+description: 使用内置渲染器和 setRenderer 方法，将 Table 单元格转换为文本、徽章、图标、链接或自定义 HTML。
+_i18n_title_hash: a6e8f9aed2ac6481dc25a18a33342d03
+_i18n_description_hash: e89bf89353cdc76a4434e7b8b56b9b46
 _i18n_hash: 7d9beff25d6b372fb4309fe491ecad08
 ---
 <!-- vale Google.Headings = NO -->

@@ -1,6 +1,12 @@
 ---
 sidebar_position: 3
 title: Descargando archivos
+description: >-
+  Inicia descargas en el cliente desde webforJ mediante los métodos de descarga
+  de Page, que aceptan flujos de entrada, matrices de bytes, archivos o rutas de
+  recursos.
+_i18n_title_hash: 333738631384ca07eb5b6c1647d48255
+_i18n_description_hash: 818049041c516aae899204589b855bac
 _i18n_hash: 013e64888b44110c108f80adf492be10
 ---
 webforJ proporciona métodos para iniciar descargas de archivos, facilitando la entrega de archivos a los usuarios a través del navegador. La <JavadocLink type="foundation" location="com/webforj/Page" code='true'>Page</JavadocLink> clase ofrece varias formas de descargar archivos, ya sea que provengan de flujos de entrada, matrices de bytes, archivos físicos o recursos.

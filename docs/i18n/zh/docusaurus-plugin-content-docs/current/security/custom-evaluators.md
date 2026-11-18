@@ -1,9 +1,9 @@
 ---
 sidebar_position: 6
 title: 自定义评估器
-description: >-
-  Write custom RouteSecurityEvaluators for context-aware checks like ownership
-  verification beyond role-based permissions.
+description: 编写自定义 RouteSecurityEvaluators，执行超越基于角色权限的上下文感知检查，例如所有权验证。
+_i18n_title_hash: bc2b1c2e298d9f03eab4245d1e096b93
+_i18n_description_hash: 2141a4f92c449ecd3c92743e87cd1a95
 _i18n_hash: d1edb7260efb2928e988a2cdf313f380
 ---
 自定义评估器扩展了 webforJ 的安全系统，提供了超出基本身份验证和角色检查的专门访问控制逻辑。当您需要验证依赖于请求上下文的动态条件，而不仅仅是用户权限时，请使用它们。

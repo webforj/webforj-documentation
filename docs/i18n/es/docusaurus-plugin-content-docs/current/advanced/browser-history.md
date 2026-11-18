@@ -1,6 +1,11 @@
 ---
 title: Historial del navegador
 sidebar_position: 30
+description: >-
+  Navega, añade y reemplaza entradas del historial del navegador desde Java para
+  controlar atrás, adelante y el estado de la URL sin recargar la página.
+_i18n_title_hash: d7fe7e6519c3d23bbf458b5258a0d60d
+_i18n_description_hash: 9a11bddb7878a5ffd3af3a38688fa954
 _i18n_hash: 918006c1e505baa4bbffbfb32eb3d9d7
 ---
 <DocChip chip='since' label='24.12' />

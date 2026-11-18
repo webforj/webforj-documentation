@@ -1,6 +1,11 @@
 ---
 sidebar_position: 4
 title: Navigointitapahtumat
+description: >-
+  Rekisteröi globaalit reitittimen kuuntelijat WillEnter-, DidEnter-,
+  WillLeave-, DidLeave-, Navigate- ja Activate-elinkaaritapahtumille.
+_i18n_title_hash: e554cbf8a0fdce0b4210586ed5c805df
+_i18n_description_hash: 3bb73da5a4adb69405e3f64bb4fd6380
 _i18n_hash: f41ebca54f574eeac4834234cf3a0e5b
 ---
 Lisäksi komponenttikohtaisten elinkaaritapahtumien ohella voit rekisteröidä **globaalit tapahtumakuuntelijat** reitittimen tasolla. Tämä mahdollistaa navigoinnin seuraamisen globaalisti koko sovelluksessa, mikä on hyödyllistä lokitusta, analytiikkaa tai muita poikkileikkavia huolenaiheita varten.

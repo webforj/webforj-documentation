@@ -1,7 +1,12 @@
 ---
 title: Observadores y parámetros de ruta
 sidebar_position: 5
-description: Step 4 - Use route parameters to control what content loads.
+description: >-
+  Paso 4 del tutorial: permite a los usuarios editar clientes existentes
+  mediante patrones de ruta, parámetros en la URL y observadores del ciclo de
+  vida.
+_i18n_title_hash: cc11d3794ca0b21249d2ee8bf7f95fe0
+_i18n_description_hash: 7262b0d443eca71f63496442376c761c
 _i18n_hash: 413e52a1a6601beef4ece9b9e7a1757e
 ---
 La aplicación de [Routing and Composites](/docs/introduction/tutorial/routing-and-composites) solo puede agregar clientes nuevos a la base de datos. Con los siguientes conceptos, permitirás que los usuarios también editen los datos de los clientes existentes:

@@ -2,8 +2,11 @@
 sidebar_position: 6
 title: Beispiel für eine eigene Implementierung
 description: >-
-  Build a session-based security stack by implementing SecurityConfiguration,
-  SecurityContext, SecurityManager, and SecurityRegistrar.
+  Erstellen Sie einen sitzungsbasierten Sicherheits-Stack durch Implementierung
+  von SecurityConfiguration, SecurityContext, SecurityManager und
+  SecurityRegistrar.
+_i18n_title_hash: 3b3fc3ebbcefc179b89d2cb0776ad553
+_i18n_description_hash: d15bc6f7e55fb744acf1719ea673317d
 _i18n_hash: d9c19543624a63acab79e429e6289133
 ---
 Dieser Leitfaden beschreibt, wie eine vollständige benutzerdefinierte Sicherheitsimplementierung mit sitzungsbasierter Authentifizierung erstellt wird. Sie werden lernen, wie die vier Kernschnittstellen zusammenarbeiten, indem Sie sie von Grund auf implementieren.

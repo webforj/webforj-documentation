@@ -1,9 +1,13 @@
 ---
-title: Comenzando
+title: Primeros pasos con BBjShip
+sidebar_label: Comenzando
 sidebar_position: 2
 description: >-
-  Create a webforJ app that runs with BBjServices from startforJ or the Maven
-  archetypes, run it on your local BBj and deploy it with BBjShip.
+  Crea una aplicación de webforJ con BBjServices desde startforJ o los
+  arquetipos de Maven, ejecútala en tu BBj local y despliégala con BBjShip.
+_i18n_title_hash: d9e3e5ac3e2403d5be0e47a35ce72383
+_i18n_sidebar_label_hash: bf647454e36069fd16f1a7a35cf6a865
+_i18n_description_hash: 26154c9b4b2e58bb9de84893fd1f1763
 _i18n_hash: 913c105077586054f3af87216fe848e0
 ---
 Esta guía crea una aplicación webforJ que se ejecuta con BBjServices, la ejecuta en tu BBj local durante el desarrollo y la implementa con BBjShip.

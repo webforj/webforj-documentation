@@ -1,11 +1,11 @@
 ---
 sidebar_position: 1
 title: 资源管理
-description: >-
-  Manage JavaScript, CSS, and other assets in webforJ apps with declarative
-  annotations, runtime injection APIs, and custom URL protocols.
+description: 在 webforJ 应用中通过声明式注解、运行时注入 API 和自定义 URL 协议管理 JavaScript、CSS 及其他资源。
 hide_table_of_contents: true
 hide_giscus_comments: true
+_i18n_title_hash: a71e8aa6e3aa0dbb165119f7b68682a3
+_i18n_description_hash: 1c0c8794c1ad64d279c287d021118800
 _i18n_hash: 7aee2ee29fd227575e12f1450422d0a1
 ---
 <Head>

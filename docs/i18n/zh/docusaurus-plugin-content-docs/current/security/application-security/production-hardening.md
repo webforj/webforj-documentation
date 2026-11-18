@@ -1,9 +1,9 @@
 ---
 sidebar_position: 3
 title: 生产环境加固
-description: >-
-  Practical steps for running a webforJ app safely in production, from transport
-  encryption and dependency upkeep to server-side checks and disclosure.
+description: 在生产环境中安全运行 webforJ 应用的实用步骤，涵盖传输加密、依赖项维护、服务器端检查和漏洞披露。
+_i18n_title_hash: 09f8f90702830845e3d1367de3eca29d
+_i18n_description_hash: 0b6b251e53807e5d480d50424a6d2568
 _i18n_hash: 62e3e574855705f8b97295f4ebe5169b
 ---
 webforJ的 [服务器驱动模型](/docs/architecture/client-server) 和内置的对 [常见威胁](/docs/security/application-security/common-threats) 的保护涵盖了很多，但安全的部署仍然依赖于你如何操作应用程序。以下步骤补充了整体情况。

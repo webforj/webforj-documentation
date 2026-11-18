@@ -2,9 +2,9 @@
 title: BBjServices
 sidebar_position: 45
 sidebar_class_name: new-content
-description: >-
-  Set up live reload and hotswap for a webforJ app that runs in the BBjServices
-  of your own machine through BBjShip.
+description: 为通过 BBjShip 在本机 BBjServices 中运行的 webforJ 应用配置实时重载和热替换。
+_i18n_title_hash: eb97b1db9b06f14a61c4bc40bbf5417c
+_i18n_description_hash: a9c8628ad4d7e7f1ab55604d48f7b1e8
 _i18n_hash: 46a42789a4b05b258a057e9acae1ef12
 ---
 在 BBjServices 中，构建不会启动自己的服务器。`mvn compile webforj:watch` 通过 [BBjShip](/docs/configuration/bbjship/overview) 从项目直接在您自己的机器上运行应用程序。带有 BBj 特性的原型项目将此设置为其默认的 Maven 目标，因此不带参数的 `mvn` 会编译应用程序，启动 [frontend watch](/docs/configuration/deploy-reload/frontend-watch)，并运行应用程序。

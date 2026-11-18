@@ -1,6 +1,11 @@
 ---
 title: Asennus ja määritys
 sidebar_position: 2
+description: >-
+  Asenna Webswing-palvelin, rekisteröi Swing-sovellus hallintakonsolissa ja
+  määritä CORS, jotta webforJ voi upottaa sen WebswingConnectorilla.
+_i18n_title_hash: 6220432d4a9990aa961b3e368edaafdd
+_i18n_description_hash: d662aa6a75a899b4c2df885526b3fa0f
 _i18n_hash: d948bababbedcfe831d4af62f8b6b088
 ---
 Webswingin integroiminen webforJ:hin koostuu kahdesta komponentista: Webswing-palvelimesta, joka isännöi Swing-sovellustasi, ja `WebswingConnector`-komponentista webforJ-sovelluksessasi, joka upottaa sen.

@@ -2,9 +2,9 @@
 sidebar_position: 10
 title: 选择
 slug: selection
-description: >-
-  Configure single, multi, or no-selection modes on the Table and respond to row
-  selection events with appropriate listeners.
+description: 在 Table 上配置单选、多选或无选择模式，并使用相应的监听器响应行选择事件。
+_i18n_title_hash: 6ff9dd0d34f65181173c1e4bc39939de
+_i18n_description_hash: 5234b547d33af3354beaed6b39f2abf8
 _i18n_hash: 47f6b24c0a0621d810e5e2975a0b4749
 ---
 `Table` 组件提供各种选择功能。可以选择单个项目、多个项目或以编程方式管理选择。

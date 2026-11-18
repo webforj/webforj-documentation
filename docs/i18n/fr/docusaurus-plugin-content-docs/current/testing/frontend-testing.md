@@ -1,10 +1,12 @@
 ---
 title: Tests frontend
 sidebar_position: 5
-sidebar_class_name: new-content
 description: >-
-  Write tests for the frontend sources of a webforJ app with the Bun test
-  runner.
+  Testez les sources TypeScript et la logique client d’une application webforJ
+  avec Bun : où placer les tests près des sources frontend et comment les
+  lancer.
+_i18n_title_hash: 68de7033809511e9c6c5947b06b149d6
+_i18n_description_hash: 8ec21415ae4edbce4bd1b9ddc70295c3
 _i18n_hash: 31f4ee87c13ac75eb209408feef510fb
 ---
 # Tests frontend <DocChip chip='since' label='26.01' /> {#frontend-testing}

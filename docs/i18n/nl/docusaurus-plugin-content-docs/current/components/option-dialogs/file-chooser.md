@@ -2,8 +2,10 @@
 title: Bestandskiezer
 sidebar_position: 10
 description: >-
-  Open a blocking FileChooserDialog to let users pick files or directories from
-  the server, with selection modes and initial paths.
+  Open een blokkerende FileChooserDialog waarmee gebruikers bestanden of mappen
+  op de server kunnen kiezen, met selectiemodi en beginpaden.
+_i18n_title_hash: a673521f69c30df2ae8266bd6ccfecec
+_i18n_description_hash: ef5caf0c5d7f27a4a2b2151d9cbad0e2
 _i18n_hash: c86dfab4207241cab3bb28da3e1236ab
 ---
 <DocChip chip='shadow' />

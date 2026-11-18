@@ -2,8 +2,11 @@
 sidebar_position: 10
 title: Architecture des composants
 description: >-
-  See how webforJ components are built on the DwcComponent base class, why
-  component classes are final, and why composition replaces inheritance.
+  Découvrez comment les composants webforJ reposent sur la classe de base
+  DwcComponent, pourquoi leurs classes sont finales et pourquoi la composition
+  remplace l’héritage.
+_i18n_title_hash: 7a4630c005d8b0818b5638516ad4d213
+_i18n_description_hash: a6deb81b80d301647bdea62a37649387
 _i18n_hash: 13c29b780cb00a918fe6e0a98c5e783a
 ---
 webforJ fournit une API Java pour une bibliothèque de composants web et gère chacun d’eux depuis le serveur. Cette page explique la structure des composants et comment les étendre.

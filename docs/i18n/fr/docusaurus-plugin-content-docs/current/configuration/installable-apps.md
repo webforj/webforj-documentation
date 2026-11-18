@@ -2,8 +2,11 @@
 title: Applications installables
 sidebar_position: 20
 description: >-
-  Annotate a webforJ app with AppProfile to generate a Web App Manifest with
-  icons, screenshots, and metadata for device installation.
+  Annotez une application webforJ avec AppProfile pour générer un manifeste
+  d’application web contenant des icônes, des captures d’écran et des
+  métadonnées pour l’installation sur appareil.
+_i18n_title_hash: a5b70f9c8f9685da6dcfe93f3408df1a
+_i18n_description_hash: bc36f42c2161f51f55b2fb3ef9ee66dc
 _i18n_hash: 9aa99cc9da864a6808d72602b6e5c572
 ---
 <DocChip chip='since' label='24.21' />

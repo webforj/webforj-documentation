@@ -1,6 +1,11 @@
 ---
 title: Tables d'objets et de chaînes
 sidebar_position: 45
+description: >-
+  Stockez des objets Java partagés et des chaînes à l’échelle de l’application
+  ou par session HTTP avec ObjectTable, SessionObjectTable et StringTable.
+_i18n_title_hash: 37132a5869c490e9daef74f8ebef0b39
+_i18n_description_hash: f5444ec2a09c6cfddf6b4f34b0db888f
 _i18n_hash: 2ec33737ccaf06670b4c1cd16369d858
 ---
 L'`ObjectTable`, le `SessionObjectTable` et le `StringTable` fournissent un accès statique aux données partagées dans un environnement webforJ. Tous sont accessibles de n'importe où dans votre application et servent des objectifs différents :

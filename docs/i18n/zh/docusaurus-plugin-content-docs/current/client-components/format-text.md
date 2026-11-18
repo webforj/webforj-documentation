@@ -3,8 +3,10 @@ title: <dwc-format-text>
 sidebar_class_name: sidebar--item__hidden
 slug: format-text
 description: >-
-  Style the dwc-format-text client component with CSS variables, shadow parts,
-  and slots for theming.
+  使用 CSS 变量、shadow parts 和 slots 为 dwc-format-text 客户端组件设置样式；webforJ
+  组件均基于此构建，可借此匹配你的主题。
+_i18n_title_hash: a93fa9b2feff104af884c4dfe3217950
+_i18n_description_hash: 86a3bcc9bf058355dbd327977c59d555
 _i18n_hash: 7fb91a50d3c9304120e1be03d9ad6d4b
 ---
 :::info 客户端组件

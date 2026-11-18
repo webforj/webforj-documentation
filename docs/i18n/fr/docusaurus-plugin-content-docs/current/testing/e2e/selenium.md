@@ -2,8 +2,11 @@
 sidebar_position: 3
 title: Tester avec Selenium
 description: >-
-  Drive a webforJ app from JUnit with Selenium WebDriver and WebDriverManager to
-  simulate user interactions and assert UI state.
+  Pilotez une application webforJ depuis JUnit avec Selenium WebDriver et
+  WebDriverManager pour simuler des interactions utilisateur et vérifier l’état
+  de l’interface.
+_i18n_title_hash: 64f6818b97b27c8eecd829fdffbc9da9
+_i18n_description_hash: 2dd665b81033474f039db9312b37da7d
 _i18n_hash: 482f683ba0db2228dfbfb9fdbea794e7
 ---
 Cette documentation décrit le processus de test d’applications webforJ avec Selenium, en se concentrant plus particulièrement sur `HelloWorldView` de

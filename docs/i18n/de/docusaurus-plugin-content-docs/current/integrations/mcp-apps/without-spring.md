@@ -2,8 +2,10 @@
 title: Standard-webforJ-Einrichtung
 sidebar_position: 35
 description: >-
-  Assemble an MCP server and register webforJ MCP Apps in a standard
-  servlet-based webforJ application.
+  Richten Sie einen MCP-Server ein und registrieren Sie webforJ MCP Apps in
+  einer standardmäßigen servletbasierten webforJ-Anwendung.
+_i18n_title_hash: 9df35a71000cce7561e7b362f282e9f7
+_i18n_description_hash: 185ca2cc41536027995045dfe388a5e1
 _i18n_hash: 0d4b2a9da02c480934e5527e0c6d4a44
 ---
 Die Standardkonfiguration erstellt den MCP-Server, registriert seinen Servlet und installiert die Unterstützung für webforJ selbst.

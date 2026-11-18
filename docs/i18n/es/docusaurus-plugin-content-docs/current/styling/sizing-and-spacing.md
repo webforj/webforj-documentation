@@ -1,6 +1,11 @@
 ---
 sidebar_position: 5
 title: Tamaños y espaciado
+description: >-
+  Aplica una escala coherente de tamaños y espaciado de componentes en todos los
+  diseños mediante las variables CSS de tamaño y espacio de DWC basadas en rem.
+_i18n_title_hash: c90e72ac432a0d05b25985d0532144c9
+_i18n_description_hash: ce424529b081c0661f49736ded38b9d4
 _i18n_hash: 05261a33707bc38ade5e855f5ae5ce47
 ---
 Los tokens de espaciado y tamaño se utilizan para proporcionar un espaciado y un tamaño consistentes en su aplicación. Todas las propiedades de tamaño y espaciado se definen en `rem`.

@@ -1,6 +1,11 @@
 ---
 sidebar_position: 9
 title: Status
+description: >-
+  Stijl de statussen van interactieve componenten met DWC-tokens voor dekking
+  bij uitschakeling, focusringkleur en schaal bij indrukken.
+_i18n_title_hash: 46a2a41cc6e552044816a2d04634545d
+_i18n_description_hash: 4effbc72c67b895751e8bbca5732a23f
 _i18n_hash: 3dc9896bce3e0577b2407f8ae4c863d0
 ---
 State tokens definiëren hoe componenten visueel reageren op gebruikersinteractie, zoals wanneer ze zijn uitgeschakeld of gefocust. Deze variabelen helpen ervoor te zorgen dat er consistent gedrag en styling is over alle UI-elementen, en kunnen gemakkelijk worden aangepast om overeen te komen met uw ontwerpsysteem.

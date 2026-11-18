@@ -1,6 +1,11 @@
 ---
 sidebar_position: 11
 title: Registro de rutas
+description: >-
+  Registra, actualiza y elimina rutas en tiempo de ejecución mediante la API
+  RouteRegistry para una navegación dinámica adaptada a roles.
+_i18n_title_hash: 8a7bc298f8cb539f9cf61da9a122766e
+_i18n_description_hash: 272079001ee3337284a48bdd42c714e1
 _i18n_hash: def139d3db58322c269afef10acdf5fd
 ---
 Además de [registrar rutas utilizando las anotaciones `@Route`](./defining-routes), es posible registrar, actualizar o eliminar rutas dinámicamente en tiempo de ejecución según la lógica de la aplicación, los roles de usuario u otras condiciones. Esta flexibilidad permite gestionar la navegación de forma más dinámica, en lugar de definir rutas de manera estática en el momento de la compilación.

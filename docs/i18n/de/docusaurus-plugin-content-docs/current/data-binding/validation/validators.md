@@ -1,7 +1,12 @@
 ---
 sidebar_position: 2
 title: Validatoren
-sidebar_class_name: updated-content
+description: >-
+  Fügen Sie Validatoren mit useValidator zu Bindings hinzu, implementieren Sie
+  wiederverwendbare Validator-Klassen und überschreiben Sie Meldungen für
+  einzelne UI-Felder.
+_i18n_title_hash: 6c49f2cccba7312f02f0aa5a99b1a338
+_i18n_description_hash: a060e816eff9d9a63037f2fbac2e9f6a
 _i18n_hash: 996b617e97e439660bbe69f15d6355b9
 ---
 Validatoren validieren Daten innerhalb Ihrer UI-Komponenten gegen definierte Einschränkungen, bevor diese Daten dem Datenmodell zugeführt werden. Sie können Validatoren anwenden, um zu überprüfen, ob Daten bestimmten Kriterien entsprechen, wie beispielsweise innerhalb eines festgelegten Bereichs zu sein, einem Muster zu entsprechen oder nicht leer zu sein.

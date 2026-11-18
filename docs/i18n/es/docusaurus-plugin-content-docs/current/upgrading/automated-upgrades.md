@@ -2,8 +2,11 @@
 sidebar_position: 1
 title: Actualizaciones Automatizadas
 description: >-
-  Migrate webforJ projects between versions automatically with OpenRewrite
-  recipes that rename APIs, update dependencies, and flag manual fixes.
+  Migra automáticamente proyectos de webforJ entre versiones con recetas de
+  OpenRewrite que renombran las API, actualizan dependencias y señalan ajustes
+  manuales.
+_i18n_title_hash: c886957f296bc816bf28d60a7f60bdca
+_i18n_description_hash: 53bc4f38a0e9d1c8e8e2aeefeb18e215
 _i18n_hash: 8c889d8dea5c90aad2ef224d152e611e
 ---
 # Usando OpenRewrite {#using-openrewrite}

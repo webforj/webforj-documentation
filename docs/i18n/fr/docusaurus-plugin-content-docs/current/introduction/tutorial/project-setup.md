@@ -2,8 +2,11 @@
 title: Configuration du projet
 sidebar_position: 1
 description: >-
-  Discover where to download the tutorial project, how to navigate it, and run
-  the apps within.
+  Obtenez le projet tutoriel webforJ via son code source, startforJ ou la ligne
+  de commande, explorez sa structure et sa configuration, puis lancez
+  l’application de chaque étape.
+_i18n_title_hash: 2876afc7fdfa9650513dfc9a2ffb3a93
+_i18n_description_hash: 1312c307fa70e0fe0e9d0e304f1a9f9c
 _i18n_hash: 95bc825bd041018765a732bf464d77b7
 ---
 Pour commencer ce tutoriel, vous avez besoin d’un emplacement pour votre projet, où vous pourrez gérer vos classes et vos ressources. Les sections suivantes décrivent les différentes façons de créer votre projet webforJ pour ce tutoriel.

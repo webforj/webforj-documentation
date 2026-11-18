@@ -2,8 +2,10 @@
 title: Probar una app MCP
 sidebar_position: 10
 description: >-
-  Test a webforJ MCP App with an MCP Apps-capable host, including the Codex app,
-  Claude Desktop, and MCPJam.
+  Prueba una aplicación MCP de webforJ en hosts compatibles con MCP Apps, como
+  la app Codex, Claude Desktop y MCPJam.
+_i18n_title_hash: 7f71eea7469350732da92cb8dbb4e4b6
+_i18n_description_hash: e20e4fdfb07d14a8402f4ac41e313b47
 _i18n_hash: fb9683202651a3aca86843cf27c0626e
 ---
 Las aplicaciones de webforJ MCP pueden ejecutarse en cualquier host compatible con MCP Apps. Las instrucciones aquí cubren la aplicación Codex y Claude Desktop a través de un endpoint HTTPS accesible, y MCPJam a través de localhost. La herramienta mínima `inventory` sin entrada del [Spring Boot setup](./spring) es suficiente para confirmar que un host puede descubrir la herramienta y renderizar la vista de Inventario.

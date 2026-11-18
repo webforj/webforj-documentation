@@ -1,6 +1,11 @@
 ---
 sidebar_position: 3
 title: Définir des routes
+description: >-
+  Associez des URL aux composants webforJ avec l’annotation @Route et définissez
+  plusieurs chemins vers la même vue à l’aide de @RouteAlias.
+_i18n_title_hash: 2d0483918fc7d51246d68af1677b6b67
+_i18n_description_hash: 7b8fcb2501a652a3bec3f747bc28428b
 _i18n_hash: 4f7189d5ef27386506e9ecf950f145ed
 ---
 La définition des routes est essentielle pour mapper les URL à des composants spécifiques. Cela vous permet de contrôler comment différentes parties de votre interface utilisateur sont rendues en fonction de la structure de l'URL. Le framework utilise l'annotation `@Route` pour rendre ce processus déclaratif et simple, réduisant le besoin de configuration manuelle.

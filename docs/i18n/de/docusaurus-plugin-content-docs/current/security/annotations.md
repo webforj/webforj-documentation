@@ -1,6 +1,11 @@
 ---
 sidebar_position: 3
 title: Sicherheits-Annotationen
+description: >-
+  Beschränken Sie den Zugriff auf webforJ-Routen deklarativ mit den Annotationen
+  @AnonymousAccess, @PermitAll, @RolesAllowed und @DenyAll.
+_i18n_title_hash: ac394acb99ded5e96ab7288396076139
+_i18n_description_hash: 939afd4f65e19372829c31d69d178393
 _i18n_hash: 564a7d991d26edb972bc2c7c99366f37
 ---
 Sicherheitsannotationen bieten eine deklarative Möglichkeit, den Zugriff auf Routen in Ihrer webforJ-App zu steuern. Durch das Hinzufügen von Annotationen zu Ihren Routenkomponenten definieren Sie, wer auf jede Ansicht zugreifen kann, ohne manuelle Berechtigungsprüfungen schreiben zu müssen. Das Sicherheitssystem setzt diese Regeln automatisch durch, bevor eine Komponente gerendert wird.

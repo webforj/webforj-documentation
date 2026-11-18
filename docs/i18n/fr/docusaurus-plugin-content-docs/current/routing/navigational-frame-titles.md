@@ -2,8 +2,10 @@
 sidebar_position: 10
 title: Titres de cadre de navigation
 description: >-
-  Set browser frame titles per route with the @FrameTitle annotation or generate
-  them dynamically using HasFrameTitle.
+  Définissez le titre de la fenêtre du navigateur pour chaque route avec
+  l’annotation @FrameTitle, ou générez-le dynamiquement avec HasFrameTitle.
+_i18n_title_hash: 8aa2c696e6ad4b2612b85b0a8b89e517
+_i18n_description_hash: abcdb6bc334f7fe8c0b777c908af1333
 _i18n_hash: 7b190f89d8eeb58df6d8a25ce863cc5e
 ---
 Dans webforJ, toutes les routes sont rendues dans un Frame, qui sert de conteneur de niveau supérieur responsable de l'affichage du contenu de la route actuelle. À mesure que les utilisateurs naviguent entre les différentes routes, le titre du Frame est mis à jour dynamiquement pour refléter la vue active, aidant à fournir un contexte clair sur la localisation actuelle de l'utilisateur dans l'application.

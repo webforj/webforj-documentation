@@ -2,8 +2,11 @@
 title: InfiniteScroll
 sidebar_position: 60
 description: >-
-  Load more content as users scroll with the InfiniteScroll component, emitting
-  scroll events and showing a customizable loading spinner.
+  Carga más contenido a medida que los usuarios se desplazan con el componente
+  InfiniteScroll, que emite eventos de desplazamiento y muestra un indicador de
+  carga personalizable.
+_i18n_title_hash: c823c2bc7ee4483246ea53609bb719c4
+_i18n_description_hash: 80fa79875ce1267b977ecc6608ae3fdf
 _i18n_hash: f021168e8d6187e38da9107bd2f3ad65
 ---
 <DocChip chip="shadow" />

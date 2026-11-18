@@ -2,8 +2,11 @@
 title: Button
 sidebar_position: 15
 description: >-
-  Trigger click actions in webforJ with the Button component, including themes,
-  expanses, prefix and suffix icons, and disabled state.
+  Käynnistä napsautustoimintoja webforJ:ssä Button-komponentilla ja tutustu
+  teemoihin, kokoluokkiin, etuliite- ja jälkiliitekuvakkeisiin sekä käytöstä
+  poistettuun tilaan.
+_i18n_title_hash: 87b7760f14fbff78d8819291f36ab9a0
+_i18n_description_hash: c583543628d123061cd0f7d65f964bea
 _i18n_hash: 31fa93b60126cba6b26198da5a5c15b5
 ---
 <DocChip chip="shadow" />

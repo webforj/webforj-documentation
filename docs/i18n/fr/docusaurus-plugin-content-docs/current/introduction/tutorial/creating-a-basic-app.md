@@ -1,7 +1,12 @@
 ---
 title: Créer une app de base
 sidebar_position: 2
-description: Step 1 - Add components to an app.
+description: >-
+  Étape 1 : créez la classe principale d’une application webforJ et Spring Boot,
+  ajoutez des composants webforJ interactifs et des éléments HTML, puis
+  stylisez-les en CSS.
+_i18n_title_hash: 77334ced5b31edd07d2f1ff1963a042a
+_i18n_description_hash: 605dd7412a18f918843f8ca34a104fc4
 _i18n_hash: d7385c22706cf76508b7e1971186f88d
 ---
 Dans [Configuration du projet](/docs/introduction/tutorial/project-setup), vous avez généré un projet webforJ. Maintenant, il est temps de créer la classe principale pour le projet et d'ajouter une interface interactive en utilisant les composants webforJ. À cette étape, vous apprendrez à propos de :

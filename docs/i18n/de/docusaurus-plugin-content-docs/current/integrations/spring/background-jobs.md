@@ -2,8 +2,10 @@
 title: Hintergrundaufgaben
 sidebar_position: 25
 description: >-
-  Run Spring @Async services from webforJ views and marshal progress and results
-  back to the UI thread with Environment.runLater.
+  Führen Sie Spring-@Async-Dienste aus webforJ-Ansichten aus und übertragen Sie
+  Fortschritt und Ergebnisse mit Environment.runLater zurück in den UI-Thread.
+_i18n_title_hash: dab970e99be91f87ed9529a337f3f1e7
+_i18n_description_hash: 6f8f6d2a9b85f45bdc3c544bff6f892a
 _i18n_hash: 2760d6db6a7b7045e7612ca359d04a28
 ---
 Wenn Benutzer auf eine Schaltfläche klicken, um einen Bericht zu erstellen oder Daten zu verarbeiten, erwarten sie, dass die Benutzeroberfläche weiterhin reagiert. Fortschrittsbalken sollten animiert werden, Schaltflächen auf Hover reagieren und die App nicht einfrieren. Mit Spring lässt sich dies durch die Annotation `@Async` erreichen, die lang laufende Vorgänge in Hintergrundthreads verschiebt.

@@ -1,7 +1,9 @@
 ---
 title: 观察者与路由参数
 sidebar_position: 5
-description: Step 4 - Use route parameters to control what content loads.
+description: 教程第 4 步：通过路由模式、URL 传递的参数值和生命周期观察器，让用户编辑现有客户信息。
+_i18n_title_hash: cc11d3794ca0b21249d2ee8bf7f95fe0
+_i18n_description_hash: 7262b0d443eca71f63496442376c761c
 _i18n_hash: 413e52a1a6601beef4ece9b9e7a1757e
 ---
 [Routing and Composites](/docs/introduction/tutorial/routing-and-composites) 中的应用只能向数据库添加新客户。利用以下概念，你可以让用户也能编辑现有客户的数据：

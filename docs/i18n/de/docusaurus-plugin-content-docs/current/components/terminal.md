@@ -2,8 +2,11 @@
 title: Terminal
 sidebar_position: 126
 description: >-
-  Embed an interactive terminal emulator with the Terminal component for shells,
-  dashboards, debug consoles, and remote access tools.
+  Integrieren Sie mit der Terminal-Komponente einen interaktiven
+  Terminal-Emulator für Shells, Dashboards, Debug-Konsolen und
+  Remote-Zugriffswerkzeuge.
+_i18n_title_hash: 514d8a494f087c0d549b9536c2ef3bd9
+_i18n_description_hash: dfc70e8cc93b57d86753ad3e8497a97e
 _i18n_hash: 231986360b04eb43ad3b6fecc9f02816
 ---
 <DocChip chip="shadow" />

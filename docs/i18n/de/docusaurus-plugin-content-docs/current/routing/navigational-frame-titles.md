@@ -2,8 +2,10 @@
 sidebar_position: 10
 title: Navigations-Frame-Titel
 description: >-
-  Set browser frame titles per route with the @FrameTitle annotation or generate
-  them dynamically using HasFrameTitle.
+  Legen Sie Browser-Fenstertitel pro Route mit der @FrameTitle-Annotation fest
+  oder generieren Sie sie dynamisch mit HasFrameTitle.
+_i18n_title_hash: 8aa2c696e6ad4b2612b85b0a8b89e517
+_i18n_description_hash: abcdb6bc334f7fe8c0b777c908af1333
 _i18n_hash: 7b190f89d8eeb58df6d8a25ce863cc5e
 ---
 In webforJ werden alle Routen innerhalb eines Frames gerendert, der als oberste Containeranordnung dient und für die Anzeige des Inhalts der aktuellen Route verantwortlich ist. Wenn Benutzer zwischen verschiedenen Routen navigieren, wird der Titel des Frames dynamisch aktualisiert, um die aktive Ansicht widerzuspiegeln, was hilft, den Benutzer darüber zu informieren, wo er sich derzeit innerhalb der App befindet.

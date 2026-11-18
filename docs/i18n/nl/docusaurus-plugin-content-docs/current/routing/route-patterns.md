@@ -2,8 +2,10 @@
 sidebar_position: 5
 title: Routepatronen
 description: >-
-  Define dynamic URL segments, optional parameters, wildcards, and regex
-  constraints to match webforJ routes precisely.
+  Definieer dynamische URL-segmenten, optionele parameters, wildcards en
+  regexvoorwaarden om webforJ-routes nauwkeurig te matchen.
+_i18n_title_hash: e852c1a8c41ae5c7177d4e3e08d466fc
+_i18n_description_hash: 7fd2fcf7b040e6d79a1b6cd69fcfe610
 _i18n_hash: a6c1267e034c1562652cc01d0f336640
 ---
 **Route Patterns** worden gebruikt om te definiëren hoe URL's map naar specifieke views, inclusief dynamische en optionele segmenten, reguliere expressies en wildcards. Routepatronen stellen het framework in staat om URL's te matchen, parameters te extraheren en URL's dynamisch te genereren. Ze spelen een cruciale rol in de structuur van de navigatie van een app en de weergave van componenten op basis van de locatie van de browser.

@@ -1,6 +1,12 @@
 ---
 sidebar_position: 3
 title: Téléchargement de fichiers
+description: >-
+  Déclenchez des téléchargements côté client depuis webforJ avec les méthodes de
+  téléchargement de Page, qui acceptent des flux d’entrée, des tableaux
+  d’octets, des fichiers ou des chemins de ressources.
+_i18n_title_hash: 333738631384ca07eb5b6c1647d48255
+_i18n_description_hash: 818049041c516aae899204589b855bac
 _i18n_hash: 013e64888b44110c108f80adf492be10
 ---
 webforJ fournit des méthodes pour initier des téléchargements de fichiers, facilitant ainsi la livraison de fichiers aux utilisateurs via le navigateur. La <JavadocLink type="foundation" location="com/webforj/Page" code='true'>classe Page</JavadocLink> offre plusieurs façons de télécharger des fichiers, qu'ils proviennent de flux d'entrée, de tableaux d'octets, de fichiers physiques ou de ressources.

@@ -3,8 +3,11 @@ title: Remplacement à chaud
 sidebar_position: 10
 sidebar_class_name: new-content
 description: >-
-  Apply compiled class changes to a running webforJ app without a restart,
-  through HotswapAgent or JRebel configured in the webforJ build plugin.
+  Appliquez les modifications des classes compilées à une application webforJ en
+  cours d’exécution sans redémarrage, via HotswapAgent ou JRebel configuré dans
+  le plug-in de build webforJ.
+_i18n_title_hash: 4c7d4b6c634a74bdd513c24e964a1c12
+_i18n_description_hash: 29f601a92ca65c4705cbe7c7a163aeb4
 _i18n_hash: 5c17c1ef76de9c15b7177aee4b2b8419
 ---
 # Remplacement à chaud <DocChip chip='since' label='26.02' />

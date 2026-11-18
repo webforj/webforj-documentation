@@ -1,10 +1,11 @@
 ---
 title: Less
 sidebar_position: 40
-sidebar_class_name: new-content
 description: >-
-  Compile Less to CSS with the webforj-less extension, bind a class to the
-  stylesheet, and pass Less options through bun.config.ts.
+  Käännä Less CSS:ksi webforj-less-laajennuksella, liitä luokka tyylitiedostoon
+  ja välitä Less-asetukset bun.config.ts:n kautta.
+_i18n_title_hash: 1cfdf0e8d0c87a228c1f40d9bee7888b
+_i18n_description_hash: 4378822835500b71adce33d9479455dd
 _i18n_hash: febd9ab468f73672d97e3a0048d6371b
 ---
 [Less](https://lesscss.org/) on tyylitiedostokieli, joka lisää muuttujia, sekoittimia ja sisennystä CSS:ään. Less-laajennus aktivoituu, kun `.less`-lähde on läsnä, ja kääntää sen CSS:ksi.

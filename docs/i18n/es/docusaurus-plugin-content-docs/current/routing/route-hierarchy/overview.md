@@ -3,8 +3,10 @@ sidebar_position: 1
 title: Jerarquía de rutas
 hide_giscus_comments: true
 description: >-
-  Organize webforJ routes into parent-child trees with view routes, layout
-  routes, outlets, and nested components.
+  Organiza las rutas de webforJ en árboles padre-hijo con rutas de vista, rutas
+  de layout, outlets y componentes anidados.
+_i18n_title_hash: 9efa0a285cc1eb30cf7a63d79dc97170
+_i18n_description_hash: 7382223dd1bfaa572d36732205d62653
 _i18n_hash: 4bfc9c9d46d57c866c67a2baaf2e3c3a
 ---
 <!-- vale off -->

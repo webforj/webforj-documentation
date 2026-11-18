@@ -1,9 +1,9 @@
 ---
 title: 输入对话框
 sidebar_position: 25
-description: >-
-  Prompt users for text, numbers, dates, colors, or other typed values with the
-  modal InputDialog and message-type styling.
+description: 使用模态 InputDialog 和消息类型样式，提示用户输入文本、数字、日期、颜色或其他类型的值。
+_i18n_title_hash: d867ebf3ebffb0f9cf6b9a02eca2d859
+_i18n_description_hash: 3ca91f0b236ce679f2e58ba8c3ab0026
 _i18n_hash: b797a58a2e413b1be6d2cfd814d74efa
 ---
 <DocChip chip='shadow' />

@@ -2,8 +2,11 @@
 title: Confirmer
 sidebar_position: 5
 description: >-
-  Show a blocking ConfirmDialog with up to three options, configurable button
-  sets, message types, and timeout behavior.
+  Affichez une ConfirmDialog bloquante avec jusqu’à trois options, des jeux de
+  boutons configurables, différents types de messages et une gestion du délai
+  d’expiration.
+_i18n_title_hash: 70d9be9b139893aa6c69b5e77e614311
+_i18n_description_hash: 3497e05e5e9c7e757580110cb1043e55
 _i18n_hash: 0d5432d42be98a19b1a6938b306b0442
 ---
 <DocChip chip='shadow' />

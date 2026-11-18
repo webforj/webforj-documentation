@@ -2,8 +2,10 @@
 title: Spring Boot
 sidebar_position: 10
 description: >-
-  Generate a Spring Boot webforJ project with startforJ or Maven archetypes, or
-  convert an existing WAR project to an embedded Tomcat JAR.
+  Genera un proyecto webforJ con Spring Boot usando startforJ o arquetipos de
+  Maven, o convierte un proyecto WAR existente en un JAR con Tomcat integrado.
+_i18n_title_hash: d2b84a7bb8d211a07fd6ecbf4db9d426
+_i18n_description_hash: 8f17a650175989495986b4a03543884e
 _i18n_hash: 98535c8b91fd041be0dcb32840ef9302
 ---
 Spring Boot es una opción popular para crear aplicaciones Java, ya que proporciona inyección de dependencias, configuración automática y un modelo de servidor integrado. Al usar Spring Boot con webforJ, puedes inyectar servicios, repositorios y otros beans administrados por Spring directamente en tus componentes de interfaz de usuario mediante la inyección por constructor.

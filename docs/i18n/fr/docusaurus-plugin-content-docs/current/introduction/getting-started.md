@@ -1,9 +1,11 @@
 ---
-title: Commencer
+title: Créer un projet
 description: >-
-  Create a new webforJ project from an archetype using either the startforJ web
-  wizard or a Maven command-line generator.
+  Créez un nouveau projet webforJ à partir d’un archétype avec l’assistant web
+  startforJ ou un générateur Maven en ligne de commande.
 sidebar_position: 2
+_i18n_title_hash: be86ca474df5e14056bc0f20d2cdb767
+_i18n_description_hash: db9722f31ec5732d2ef1b7567078da5f
 _i18n_hash: ea669974a5f1b3a02a162f89bb16c6e3
 ---
 Cet article décrit les étapes pour créer une nouvelle application webforJ en utilisant les [archétypes](../building-ui/archetypes/overview.md) webforJ. Les archétypes fournissent des structures de projet préconfigurées et un code de démarrage afin que vous puissiez démarrer un projet rapidement.

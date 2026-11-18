@@ -1,9 +1,9 @@
 ---
 title: Upload
 sidebar_position: 160
-description: >-
-  Select and upload one or more files from the local machine with the Upload
-  component using drag-and-drop, filters, and per-file or batch event tracking.
+description: 使用 Upload 组件从本地设备选择并上传一个或多个文件，支持拖放、筛选，以及按单个文件或批次跟踪事件。
+_i18n_title_hash: 91412465ea9169dfd901dd5e7c96dd99
+_i18n_description_hash: 89be01dd11d5fba2888cb41b8a3fe9ca
 _i18n_hash: df26b1e4b51f3ba6ece7602ca1a1f33f
 ---
 <DocChip chip="shadow" />

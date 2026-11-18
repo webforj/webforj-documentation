@@ -2,8 +2,11 @@
 sidebar_position: 2
 title: Protocolos de recursos
 description: >-
-  Reference app resources with the webforJ ws, context, and icons protocols to
-  load static files, classpath content, and dynamic icons.
+  Referencia los recursos de la aplicación con los protocolos ws, context e
+  icons de webforJ para cargar archivos estáticos, contenido del classpath e
+  iconos dinámicos.
+_i18n_title_hash: ad36a9c9968f20e18457ef67e30389e5
+_i18n_description_hash: 9f72c9bf3d65820741fcad1244cdb710
 _i18n_hash: 3928ba255cb9887c80c20f904baf62b8
 ---
 webforJ admite protocolos de activos personalizados que permiten un acceso estructurado y eficiente a los recursos. Estos protocolos abstraen las complejidades de la recuperación de recursos estáticos y dinámicos, asegurando que los activos se obtengan e integren sin problemas dentro de la aplicación.

@@ -3,8 +3,10 @@ title: <dwc-dialog>
 sidebar_class_name: sidebar--item__hidden
 slug: dialog
 description: >-
-  Style the dwc-dialog client component via CSS variables, shadow parts, and
-  slots to theme the modal surface, header, body, and footer.
+  Personaliza el componente dwc-dialog con variables CSS, partes de shadow y
+  slots para definir el estilo del modal, su encabezado, cuerpo y pie.
+_i18n_title_hash: fc04dc098a8d243cf6ebce0832b96c7d
+_i18n_description_hash: edc91e93e249db8ceb0794776d0ff651
 _i18n_hash: 4d0f0421f78bcf206b1a50e73c7ba522
 ---
 <DocChip chip='shadow' />

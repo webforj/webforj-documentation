@@ -1,11 +1,9 @@
 ---
 title: 包与资源
 sidebar_position: 30
-sidebar_class_name: new-content
-description: >-
-  Declare npm packages, load a module straight from one, install build-only
-  dependencies, rely on tree shaking, and import CSS and assets from a
-  component's entry.
+description: 声明 npm 包、直接从包中加载模块、安装仅用于构建的依赖、利用 tree shaking，并从组件入口导入 CSS 和资源。
+_i18n_title_hash: cac008272dedd4c9bdc7860f88782b1e
+_i18n_description_hash: c5b4b96ca397aad0a739c7025891df15
 _i18n_hash: 3b538e3785ee74397f156dd38ef8506a
 ---
 条目不仅依赖于自己的源。它会从 npm 导入包，直接加载一个模块，拉入样式表或图像，还可以来自您扩展的类或您依赖的库。此页面涵盖这些组件如何进入构建。

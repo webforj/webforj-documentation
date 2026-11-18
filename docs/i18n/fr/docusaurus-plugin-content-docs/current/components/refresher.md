@@ -2,8 +2,11 @@
 title: Révision
 sidebar_position: 101
 description: >-
-  Enable pull-to-refresh on scrollable areas with the Refresher component, with
-  pull, release, and refreshing states and i18n labels.
+  Activez l’actualisation par glissement dans les zones défilables avec
+  Refresher, ses états de traction, relâchement et actualisation, et ses
+  libellés i18n.
+_i18n_title_hash: 0bdb4a2e7c3469c1f5e907b4cdfbadff
+_i18n_description_hash: 35001ca44a2b196c0a0858ee4ffa2b90
 _i18n_hash: 9bb531347032e46ccbb9e7fa28c403f8
 ---
 <DocChip chip="shadow" />

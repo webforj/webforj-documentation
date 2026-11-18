@@ -1,6 +1,9 @@
 ---
 sidebar_position: 7
 title: 阴影
+description: 使用 DWC box-shadow 阴影等级为元素分层，从 xs 到 2xl，并自动适配浅色和深色模式。
+_i18n_title_hash: dde98fa66ef8081029ffb8f24d643c89
+_i18n_description_hash: 7df2812ce68443fa138e9f5942ad4039
 _i18n_hash: 423494230ee54caa83fec778e905871b
 ---
 影子属性在元素框架周围添加阴影效果。阴影表示用户界面中层叠在一起的项目。

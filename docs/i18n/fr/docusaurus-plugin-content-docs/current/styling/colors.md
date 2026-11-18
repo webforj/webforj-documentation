@@ -1,6 +1,12 @@
 ---
 sidebar_position: 3
 title: Couleurs
+description: >-
+  Configurez les palettes de couleurs DWC à l’aide de valeurs initiales de
+  teinte et de saturation pour générer des nuances cohérentes de couleurs
+  principales, d’état et neutres.
+_i18n_title_hash: 5d50889672f6f860d14f502de3de1957
+_i18n_description_hash: ca4b83cfb72b17ff6d45c7160386764c
 _i18n_hash: cc233e97e4b7333262eb47b14bfe572a
 ---
 webforJ fournit un système de couleurs basé sur les propriétés CSS personnalisées. Ces variables de couleur maintiennent un style visuel cohérent à travers votre application tout en vous donnant un contrôle total pour personnaliser les palettes selon vos besoins en design.

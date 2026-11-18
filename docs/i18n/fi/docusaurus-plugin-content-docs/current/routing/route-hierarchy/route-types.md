@@ -1,6 +1,11 @@
 ---
 sidebar_position: 1
 title: Reittityypit
+description: >-
+  Erota URL-polun osia vastaavat webforJ-näkymäreitit asettelureiteistä, jotka
+  tarjoavat jaetun käyttöliittymän muuttamatta polkua.
+_i18n_title_hash: 97e64bd13d93989b694c20c44f94956a
+_i18n_description_hash: 6d7aa8ee37d01c55048daa3c9bc555c3
 _i18n_hash: 75cb67715544b94ca99fc81c736ebcc7
 ---
 Reitit jaotellaan kahteen päätyyppiin, **Näyttöreitit** ja **Asettelureitit**. Reittityypin valinta määrää, miten komponentit kytkeytyvät URL-osoitteisiin ja miten ne vuorovaikuttavat sovelluksen muiden osien kanssa.

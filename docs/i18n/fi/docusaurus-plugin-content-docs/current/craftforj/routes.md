@@ -2,8 +2,10 @@
 title: Reitit
 sidebar_position: 5
 description: >-
-  See every registered route in a running webforJ app, navigate to it from
-  craftforJ, and change the access rules declared on it.
+  Näe kaikki käynnissä olevan webforJ-sovelluksen rekisteröidyt reitit, siirry
+  niihin craftforJ:stä ja muuta niille määritettyjä käyttöoikeussääntöjä.
+_i18n_title_hash: b41067229f91bece9cdfc66681cdd7a3
+_i18n_description_hash: 6221e0d73e034d35b082471687f4e420
 _i18n_hash: ec7a4521cd9c4328f9cd6550ebc9d90b
 ---
 Reitit-välilehti näyttää käynnissä olevan sovelluksen reititystaulukon siinä [hierarkiassa](/docs/routing/route-hierarchy/overview), jossa reititin säilyttää sen. Aktiivinen reitti on merkitty. [Dynaamisesti](/docs/routing/routes-registration) rekisteröidyt reitit näkyvät annotaatiolla määritettyjen reittien rinnalla.

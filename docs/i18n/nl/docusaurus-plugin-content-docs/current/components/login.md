@@ -2,8 +2,10 @@
 title: Inloggen
 sidebar_position: 70
 description: >-
-  Display an authentication dialog with the Login component, handling
-  submission, validation, custom fields, and form action URLs.
+  Toon een authenticatiedialoog met de Login-component, inclusief afhandeling
+  van formulierinzendingen, validatie, aangepaste velden en actie-URL's.
+_i18n_title_hash: 99dea78007133396a7b8ed70578ac6ae
+_i18n_description_hash: 57996d096b30aae681f8cbaeb7f2d222
 _i18n_hash: 5016fc4d15ba24b16c61eed8e6e272ee
 ---
 <DocChip chip='shadow' />

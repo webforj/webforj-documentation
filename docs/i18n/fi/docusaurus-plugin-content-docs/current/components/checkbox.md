@@ -1,6 +1,12 @@
 ---
 title: CheckBox
 sidebar_position: 20
+description: >-
+  Vaihda yksittäisiä asetuksia tai valitse useita vaihtoehtoja
+  CheckBox-komponentilla, joka tukee tekstin sijoittelua ja määrittämätöntä
+  tilaa.
+_i18n_title_hash: 7ea0f1332ade5b23b34502a3bfe715a2
+_i18n_description_hash: f825b02bd928f121f6489e0760739f2e
 _i18n_hash: 7946f6753a03194ecdcf7e20a7053012
 ---
 <DocChip chip="shadow" />

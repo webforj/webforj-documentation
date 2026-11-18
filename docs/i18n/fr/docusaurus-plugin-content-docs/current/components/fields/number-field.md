@@ -3,9 +3,11 @@ sidebar_position: 25
 title: NumberField
 slug: numberfield
 description: >-
-  A component that provides a default browser-based input field for entering
-  numeric values, with built-in controls for incrementing or decrementing the
-  value.
+  Un composant qui fournit un champ de saisie natif du navigateur pour entrer
+  des valeurs numériques, avec des commandes intégrées pour augmenter ou
+  diminuer la valeur.
+_i18n_title_hash: f6346c367156dac84a3977a5e41783ea
+_i18n_description_hash: 72960b6400b513de8ff1052af8f67141
 _i18n_hash: aa5037e2faa2968328081b1811dcabb0
 ---
 <DocChip chip='shadow' />

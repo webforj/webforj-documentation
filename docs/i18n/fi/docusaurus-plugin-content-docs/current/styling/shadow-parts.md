@@ -1,6 +1,11 @@
 ---
 sidebar_position: 2
 title: Varjo-osat
+description: >-
+  Muotoile webforJ-komponentin shadow DOMin sisäisiä elementtejä CSS:n
+  ::part()-valitsimella kapseloinnin säilyttäen.
+_i18n_title_hash: 31662a0c4a4442424487da769c5b3950
+_i18n_description_hash: 99f09e929e55f230ab49324e4bac39bd
 _i18n_hash: bad90a86a29eaf34485d5ee9150aacb3
 ---
 CSS **Varjostin osat** antavat kehittäjille keinon tyylitellä elementtejä komponentin varjostin DOM:issa ulkopuolelta, samalla säilyttäen kapseloinnin.

@@ -2,8 +2,10 @@
 title: Toast
 sidebar_position: 140
 description: >-
-  Show transient notifications with the Toast component, configuring duration,
-  theme, and placement via Toast.show or open.
+  Affichez des notifications temporaires avec le composant Toast, en configurant
+  la durée, le thème et la position via Toast.show ou open.
+_i18n_title_hash: 5109e5186f58eddfd59aab2a43505faf
+_i18n_description_hash: 9d9e6834c4851439947bd51b14cc7ff7
 _i18n_hash: d46665cad03749940ad45e5be8b3991d
 ---
 <DocChip chip="shadow" />

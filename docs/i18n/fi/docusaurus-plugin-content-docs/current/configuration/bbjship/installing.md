@@ -2,8 +2,10 @@
 title: BBjShipin asentaminen
 sidebar_position: 4
 description: >-
-  Install BBjShip on your own machine with the webforJ Maven plugin, or on a
-  shared BBj server with the BBj Plugin Manager.
+  Asenna BBjShip omalle koneellesi webforJ Maven -liitännäisellä tai jaetulle
+  BBj-palvelimelle BBj Plugin Managerilla.
+_i18n_title_hash: 15b144f47750a67569617d0c0d2680b3
+_i18n_description_hash: 63b20308a72dc28d7fe6d243ee303897
 _i18n_hash: b5b4d6d8d79017066eecfcda86557633
 ---
 # BBjShipin asentaminen <DocChip chip='since' label='26.03' />

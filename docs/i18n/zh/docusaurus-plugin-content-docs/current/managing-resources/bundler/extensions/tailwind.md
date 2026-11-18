@@ -1,10 +1,9 @@
 ---
 title: Tailwind
 sidebar_position: 60
-sidebar_class_name: new-content
-description: >-
-  Turn on the webforj-tailwind extension, apply utility classes from a view, and
-  understand how it generates and scans its own stylesheet.
+description: 启用 webforj-tailwind 扩展，在视图中应用工具类，并了解它如何生成和扫描自己的样式表。
+_i18n_title_hash: ea2ef9c01d4832a00b2c2011f7899c4b
+_i18n_description_hash: b779c82c51fed20b8e821066cb54fe2c
 _i18n_hash: f588624ebd738977bb8be4e9887141d1
 ---
 [Tailwind CSS](https://tailwindcss.com/) 是一个实用优先的 CSS 框架，其类名对应一小组 CSS 声明。这是一个经过精心策划的扩展，因为大多数项目不使用它。你通过 id 启用它，方式和你打开任何扩展一样，见 [Enabled by id](/docs/managing-resources/bundler/extensions/overview#enabled-by-id)。当它开启时，它做一些其他扩展不做的事情：它生成自己的条目。

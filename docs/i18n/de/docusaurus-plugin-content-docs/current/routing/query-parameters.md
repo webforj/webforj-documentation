@@ -1,6 +1,11 @@
 ---
 sidebar_position: 6
 title: Query-Parameter
+description: >-
+  Werte aus URL-Query-Strings in webforJ-Views mit den APIs ParametersBag und
+  Location auslesen, typisieren und durchlaufen.
+_i18n_title_hash: 42bb3c16fb1e5d71306e769416df7852
+_i18n_description_hash: 80ce375665ca668e1ebac1e2f993818e
 _i18n_hash: 5a8313b16d83bfbef6e8d43589430f90
 ---
 Abfrageparameter ermöglichen es Ihnen, zusätzliche Daten über URLs zu übermitteln, und zwar im Format `?key1=value1&key2=value2`. Während Routenparameter verwendet werden, um erforderliche Daten innerhalb des URL-Pfads zu übermitteln, bieten Abfrageparameter einen flexiblen Mechanismus zum Übermitteln von optionalen oder zusätzlichen Daten. Sie sind besonders nützlich beim Filtern von Inhalten, Sortieren oder Verarbeiten mehrerer Werte für denselben Schlüssel.

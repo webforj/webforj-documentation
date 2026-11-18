@@ -1,9 +1,11 @@
 ---
 title: Upgraden naar 27.00
-description: Upgrade from 26.00 to 27.00
+description: Upgraden van 26.00 naar 27.00
 sidebar_position: 10
 sidebar_class_name: new-content
 draft: true
+_i18n_title_hash: f521441c4a5da00c1bc05ae7307c3644
+_i18n_description_hash: 2ca050c7f4bc5f02fb7c8680550799a3
 _i18n_hash: 85416371e550d0aedae0a0771aff67be
 ---
 Deze documentatie dient als een gids voor het upgraden van webforJ-apps van 26.00 naar 27.00. Hier zijn de wijzigingen die nodig zijn voor bestaande apps om soepel te blijven draaien. Zoals altijd, zie de [GitHub release-overzicht](https://github.com/webforj/webforj/releases) voor een completer overzicht van de wijzigingen tussen releases.

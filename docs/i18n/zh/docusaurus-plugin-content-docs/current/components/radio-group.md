@@ -2,9 +2,9 @@
 title: RadioButtonGroup
 slug: radiobuttongroup
 sidebar_position: 100
-description: >-
-  Coordinate mutually exclusive RadioButton selections with RadioButtonGroup,
-  including nested containers and dynamic membership.
+description: 使用 RadioButtonGroup 协调互斥的 RadioButton 选项，并支持嵌套容器和动态成员变更。
+_i18n_title_hash: d4e90d249152f51ce89856d949334c00
+_i18n_description_hash: 3a2bef7377e56a348f463bba872ed0c8
 _i18n_hash: a616c60faaf0d58f9d9a1e778318880a
 ---
 <DocChip chip='since' label='23.01' />

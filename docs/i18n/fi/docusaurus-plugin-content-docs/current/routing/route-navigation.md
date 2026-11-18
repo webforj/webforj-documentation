@@ -2,9 +2,11 @@
 sidebar_position: 4
 title: Reittinavigointi
 description: >-
-  Trigger client-side navigation programmatically with Router.navigate, pass
-  parameters, and switch views without reloads.
+  Käynnistä asiakaspuolen navigointi ohjelmallisesti Router.navigate-metodilla,
+  välitä parametreja ja vaihda näkymiä ilman uudelleenlatauksia.
 sidebar_class_name: updated-content
+_i18n_title_hash: c5ea3746fbe3df3509bcb240f3fb6699
+_i18n_description_hash: e889bdb63426de32d6804643d04818ef
 _i18n_hash: 0284f2481f307d68da728d81f4b3a6a2
 ---
 In webforJ, navigointi reittien välillä on keskeinen mekanismi näkymien ja komponenttien vaihtamiseksi käyttäjän toimien tai URL-muutosten perusteella. Navigointi mahdollistaa käyttäjien siirtymisen saumattomasti sovelluksen eri osien välillä ilman, että sivua tarvitsisi päivittää. Tämä asiakaspuolen navigointi pitää sovelluksen responsiivisena ja sujuvana samalla, kun se säilyttää sovelluksen tilan.

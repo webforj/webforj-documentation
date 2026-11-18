@@ -3,6 +3,11 @@ sidebar_position: 1
 title: Champs masqués
 hide_table_of_contents: true
 hide_giscus_comments: true
+description: >-
+  Imposez une saisie structurée pour les dates, heures, nombres et identifiants
+  grâce aux champs masqués et à leurs règles de formatage communes.
+_i18n_title_hash: dc1cc70e0c06aa95e082fe86cf858a37
+_i18n_description_hash: b30f619ed3eba334cafe0f0df1161da9
 _i18n_hash: f613888a848d8f0b2da31066485b9bfc
 ---
 <Head>

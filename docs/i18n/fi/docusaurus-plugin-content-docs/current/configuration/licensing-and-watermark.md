@@ -2,8 +2,10 @@
 title: Lisensointi ja vesileima
 sidebar_position: 45
 description: >-
-  Request a webforJ trial certificate and place certificate.bls in the resources
-  directory to remove the unlicensed runtime watermark.
+  Pyydä webforJ-kokeilulisenssitodistus ja sijoita certificate.bls
+  resources-hakemistoon poistaaksesi lisensoimattoman ajonaikaisen vesileiman.
+_i18n_title_hash: b4d1a3762b461a3aec9573e2aecf656b
+_i18n_description_hash: 0e0d9d060bfe3ebbd3d3a2c1a290746c
 _i18n_hash: 98575d4533b0e62a9c8a701b40622a52
 ---
 Oletusarvoisesti webforJ-projekteja voi suorittaa, mutta niille ei ole liitetty lisenssitodistusta. Kun suoritat lisenssitöntä projektia, vesileima näkyy käynnissä olevan sovelluksen käyttöliittymässä, kunnes voimassa oleva lisenssi on syötetty.

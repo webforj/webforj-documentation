@@ -2,8 +2,10 @@
 title: Spring Boot
 sidebar_position: 10
 description: >-
-  Generate a Spring Boot webforJ project with startforJ or Maven archetypes, or
-  convert an existing WAR project to an embedded Tomcat JAR.
+  Luo Spring Boot webforJ -projekti startforJ- tai Maven-arkkityypeillä tai
+  muunna olemassa oleva WAR-projekti upotetuksi Tomcat JAR -paketiksi.
+_i18n_title_hash: d2b84a7bb8d211a07fd6ecbf4db9d426
+_i18n_description_hash: 8f17a650175989495986b4a03543884e
 _i18n_hash: 98535c8b91fd041be0dcb32840ef9302
 ---
 Spring Boot on suosittu valinta Java-sovellusten rakentamiseen. Se tarjoaa riippuvuuksien injektoinnin, automaattisen määrityksen ja sulautetun palvelimen mallin. Kun käytät Spring Bootia webforJ:n kanssa, voit injektoida palveluita, tietovarastoja ja muita Springin hallinnoimia beaneja suoraan käyttöliittymäkomponentteihisi konstruktorin kautta.

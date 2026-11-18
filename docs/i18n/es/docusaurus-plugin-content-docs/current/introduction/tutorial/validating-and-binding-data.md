@@ -2,7 +2,12 @@
 title: Validación y vinculación de datos
 sidebar_position: 6
 pagination_next: null
-description: Step 5 - Add validation checks and bind data to the UI.
+description: >-
+  Paso 5 del tutorial: vincula el formulario con la entidad Customer mediante el
+  enlace de datos de webforJ y añade validaciones para que los usuarios
+  introduzcan datos completos y precisos.
+_i18n_title_hash: 1b39fb4dd349eb66fe08e936754d96dd
+_i18n_description_hash: 8e9a4e957d28ea020d323e4584e497b2
 _i18n_hash: 97f423188eb353ac27b8e9179e93b224
 ---
 Tu aplicación de [Observadores y parámetros de ruta](/docs/introduction/tutorial/observers-and-route-parameters) puede usar `FormView` para editar los datos de clientes existentes. Este paso usa [Vinculación de datos](/docs/data-binding/overview), que conecta directamente los componentes de la interfaz de usuario con el modelo de datos para sincronizar los valores automáticamente. Esto reduce el código repetitivo de la aplicación y permite añadir comprobaciones de validación a la entidad de Spring `Customer`, para que los usuarios proporcionen información completa y precisa al rellenar los formularios. En este paso se abordan los siguientes conceptos:

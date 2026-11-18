@@ -2,10 +2,12 @@
 sidebar_position: 7
 title: Eventos
 description: >-
-  Listen for component events, read the event payload, configure element events,
-  and dispatch your own custom events with the EventDispatcher.
+  Escucha eventos de componentes, lee la carga útil del evento, configura
+  eventos de elementos y envía tus propios eventos personalizados con
+  EventDispatcher.
 slug: events
-sidebar_class_name: new-content
+_i18n_title_hash: 87f9f735a1d36793ceaecd4e47124b63
+_i18n_description_hash: c757c297f3646dabdf0f4be584b6432d
 _i18n_hash: 5ceda90a316ff6a1528a686565011f88
 ---
 Los componentes, ya sean personalizados o parte del marco, admiten el manejo de eventos. Puedes agregar oyentes de eventos para capturar varios tipos de eventos, como interacciones del usuario, cambios en el estado o eventos que definas tú mismo. Estos oyentes te permiten activar un comportamiento específico en respuesta a lo que sucede en tu aplicación.

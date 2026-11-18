@@ -1,9 +1,9 @@
 ---
 title: Jetty
 sidebar_position: 40
-description: >-
-  Run a webforJ app on the embedded Jetty server with the Maven Jetty plugin,
-  with live reload and hotswap during development.
+description: 使用 Maven Jetty 插件在内嵌 Jetty 服务器上运行 webforJ 应用，并在开发过程中启用实时重载和热替换。
+_i18n_title_hash: 95dd2e7e150f2e8a04c35a78cb15b3e5
+_i18n_description_hash: 0090f7699180a26ef9808777682744c1
 _i18n_hash: 73514e3b51a43e4a876aefd5cf933577
 ---
 Maven Jetty 插件直接在嵌入式 Jetty 服务器上运行应用程序，来自项目。一个原型项目将 `compile webforj:watch jetty:run` 设置为其默认的 Maven 目标，因此没有参数的 `mvn` 将编译应用程序，启动 [frontend watch](/docs/configuration/deploy-reload/frontend-watch)，并在 Jetty 上提供应用程序。

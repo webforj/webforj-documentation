@@ -2,9 +2,11 @@
 title: Swingistä tuleville
 sidebar_position: 5
 description: >-
-  Map Java Swing concepts such as JFrame, layout managers, listeners, the event
-  dispatch thread, table models, JOptionPane, and CardLayout to their webforJ
-  counterparts.
+  Yhdistä Swing-käsitteet: JFrame, asettelunhallinta, kuuntelijat, tapahtumien
+  jakelusäie, taulukkomallit, JOptionPane ja CardLayout niiden
+  webforJ-vastineisiin.
+_i18n_title_hash: 4334c9ef532372ad4ec7040646346991
+_i18n_description_hash: bb61f39a493a0bd89b7e48af68c639d2
 _i18n_hash: a55f88307cad0553b509d1cbb9c3a3f3
 ---
 Tällä sivulla Java Swing -työpöytäsovelluksen käsitteet yhdistetään niitä vastaaviin webforJ-käsitteisiin. Kummassakin käyttöliittymä kirjoitetaan tavallisena Javana: komponentit ovat Java-olioita, tapahtumia käsitellään kuuntelijoilla ja asettelut koostetaan koodissa. webforJ toimii palvelimella, ja kehys pitää selaimen synkronoituna komponenttien tilan kanssa. Katso, miten tämä toimii, kohdasta [Komponenttiarkkitehtuuri](/docs/architecture/controls-components).

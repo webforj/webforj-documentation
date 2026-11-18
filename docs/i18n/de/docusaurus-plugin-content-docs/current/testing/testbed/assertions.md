@@ -2,8 +2,10 @@
 sidebar_position: 4
 title: Zusicherungen
 description: >-
-  Check what the user would see on a component with verifyThat, and read
-  failures that name the component and both values.
+  Prüfen Sie, was Nutzer bei einer Komponente mit verifyThat sehen, und lesen
+  Sie Fehlermeldungen, die die Komponente und beide Werte nennen.
+_i18n_title_hash: c2835ffac5b588bf228fce7aff4d3432
+_i18n_description_hash: 6573b8db1f12ca8529bf287ae6684bb6
 _i18n_hash: 6414e2fab20d3bf7828413494af79b74
 ---
 Nachdem ein Test eine Aktion ausgeführt hat, prüft er, was der Benutzer sehen würde: den Text auf einer Schaltfläche, ob ein Feld bearbeitet werden kann und welches Element in einer Liste als ausgewählt angezeigt wird. Mit `verifyThat(component)` werden diese Erwartungen in denselben Worten formuliert, zum Beispiel mit `isReadOnly()` oder `hasText("Save")`. Jede Prüfung liest den Zustand der Komponente aus – denselben Zustand, den der Browser anzeigt. Bei einer fehlgeschlagenen Prüfung werden die Komponente und beide Werte genannt.

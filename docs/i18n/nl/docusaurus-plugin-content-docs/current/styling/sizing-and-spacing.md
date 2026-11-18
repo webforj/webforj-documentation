@@ -1,6 +1,11 @@
 ---
 sidebar_position: 5
 title: Formaten en witruimte
+description: >-
+  Pas in layouts een consistente schaal voor componentgrootte en -tussenruimte
+  toe met de op rem gebaseerde CSS-variabelen voor grootte en ruimte van DWC.
+_i18n_title_hash: c90e72ac432a0d05b25985d0532144c9
+_i18n_description_hash: ce424529b081c0661f49736ded38b9d4
 _i18n_hash: 05261a33707bc38ade5e855f5ae5ce47
 ---
 Spacing en sizing tokens worden gebruikt om consistente spacing en sizing in je app te bieden. Alle sizing en spacing eigenschappen zijn gedefinieerd in `rem`.

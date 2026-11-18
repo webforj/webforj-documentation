@@ -1,6 +1,11 @@
 ---
 sidebar_position: 3
 title: Suojausannotaatiot
+description: >-
+  Rajoita webforJ-reittejä deklaratiivisesti @AnonymousAccess-, @PermitAll-,
+  @RolesAllowed- ja @DenyAll-annotaatioilla.
+_i18n_title_hash: ac394acb99ded5e96ab7288396076139
+_i18n_description_hash: 939afd4f65e19372829c31d69d178393
 _i18n_hash: 564a7d991d26edb972bc2c7c99366f37
 ---
 Turvallisuusannotaatiot tarjoavat deklaratiivisen tavan hallita pääsyä reitteihin webforJ-sovelluksessa. Lisäämällä annotaatioita reittikomponentteihisi määrittelet, kuka voi käyttää kutakin näkymää ilman manuaalisten käyttöoikeustarkistusten kirjoittamista. Turvallisuusjärjestelmä valvoo näitä sääntöjä automaattisesti ennen kuin mitään komponenttia renderöidään.

@@ -2,7 +2,12 @@
 title: Validation et liaison des données
 sidebar_position: 6
 pagination_next: null
-description: Step 5 - Add validation checks and bind data to the UI.
+description: >-
+  Étape 5 du tutoriel : liez le formulaire à l’entité Customer avec la liaison
+  de données webforJ et ajoutez des validations pour garantir des données
+  complètes et exactes.
+_i18n_title_hash: 1b39fb4dd349eb66fe08e936754d96dd
+_i18n_description_hash: 8e9a4e957d28ea020d323e4584e497b2
 _i18n_hash: 97f423188eb353ac27b8e9179e93b224
 ---
 Votre application issue de [Observateurs et paramètres de route](/docs/introduction/tutorial/observers-and-route-parameters) peut utiliser `FormView` pour modifier les données d’un client existant. Cette étape utilise la [liaison de données](/docs/data-binding/overview), qui connecte directement les composants de l’interface utilisateur au modèle de données afin de synchroniser automatiquement les valeurs. Cela réduit le code répétitif de votre application et vous permet d’ajouter des règles de validation à l’entité Spring `Customer`, afin que vos utilisateurs fournissent des informations complètes et exactes lorsqu’ils remplissent les formulaires. Cette étape aborde les concepts suivants :

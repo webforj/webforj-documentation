@@ -1,6 +1,11 @@
 ---
 sidebar_position: 4
 title: Chaîne d'évaluateurs
+description: >-
+  Évaluez l’accès aux routes à l’aide d’une chaîne d’évaluateurs ordonnée par
+  priorité, selon le modèle de chaîne de responsabilité.
+_i18n_title_hash: 98d72d3934038a7ee7ef067eee69dbc3
+_i18n_description_hash: 2ae51d5a0da5489be4b483fff2637312
 _i18n_hash: 5055a72d450daf8b98bdb995380a2e13
 ---
 La chaîne d'évaluateurs est le cœur du système de sécurité de webforJ. C'est une séquence d'évaluateurs ordonnée par priorité qui examine les routes et prend des décisions d'accès en utilisant le modèle de conception de la chaîne de responsabilité. Comprendre comment fonctionne la chaîne vous aide à créer des évaluateurs personnalisés et à résoudre des refus d'accès inattendus.

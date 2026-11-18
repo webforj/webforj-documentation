@@ -3,8 +3,11 @@ sidebar_position: 25
 title: Suuret tietojoukot
 slug: data
 description: >-
-  Handle large Table datasets efficiently with virtual scrolling, dynamic row
-  loading, DOM recycling, and overscan tuning.
+  Käsittele suuria Table-datasettejä tehokkaasti virtuaalivierityksellä, rivien
+  dynaamisella latauksella, DOM-elementtien kierrätyksellä ja overscan-asetusten
+  hienosäädöllä.
+_i18n_title_hash: 1b0d4950ca3cbdd2297a5f2ff1dd19c8
+_i18n_description_hash: 9fb9c6561a4655fb69c94ec6235850e8
 _i18n_hash: 63e45952d3d3f88d3aa435435c0905e6
 ---
 ## Virtuaalivieritys {#virtual-scrolling}

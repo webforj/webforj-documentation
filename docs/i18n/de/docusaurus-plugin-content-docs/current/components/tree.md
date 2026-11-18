@@ -2,8 +2,10 @@
 title: Tree
 sidebar_position: 150
 description: >-
-  Display hierarchical data with the Tree component, using TreeNode parent-child
-  links, expand or collapse, icons, and selection.
+  Hierarchische Daten mit der Tree-Komponente anzeigen – mit
+  TreeNode-Eltern-Kind-Beziehungen, Auf- und Zuklappen, Symbolen und Auswahl.
+_i18n_title_hash: 3b0c14770e6bd663518496da60f524da
+_i18n_description_hash: f321e213162d6b06e6c5c60b89c35ecf
 _i18n_hash: cacef36e8323b6349fa209a7c057c88b
 ---
 <DocChip chip="shadow" />

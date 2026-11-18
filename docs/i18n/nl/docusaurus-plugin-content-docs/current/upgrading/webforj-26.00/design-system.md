@@ -1,9 +1,12 @@
 ---
 title: Upgraden naar het v26-designsysteem
 description: >-
-  Reference for the design-system updates in DWC 26 - color engine, dark mode,
-  surfaces, shadows, typography, radius, focus ring, and interaction feedback.
+  Referentie voor de updates van het designsysteem in DWC 26: kleurengine,
+  donkere modus, oppervlakken, schaduwen, typografie, hoekradius, focusring en
+  interactiefeedback.
 sidebar_position: 2
+_i18n_title_hash: 57e2329747857ca19fa1eeb35d2edbff
+_i18n_description_hash: 37139541cdfaad3dc0113cbcd3ba034e
 _i18n_hash: 8a36bc047ecfc90874412da4d39643fb
 ---
 DWC 26 introduceert een vernieuwd ontwerpsysteem. De update is incrementeel in plaats van een volledige herschrijving: de meeste v25 CSS-variabelen blijven beschikbaar, de openbare API van de themamotor is behouden en bestaande aanpassingen blijven werken zonder veranderingen.

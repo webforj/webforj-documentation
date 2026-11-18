@@ -3,8 +3,11 @@ sidebar_class_name: experimental-content
 sidebar_position: 40
 title: Transiciones de vista
 description: >-
-  Animate DOM changes with the browser View Transition API, applying fade,
-  slide, zoom, and shared morph effects between component states.
+  Anima los cambios del DOM con la API View Transition del navegador y aplica
+  efectos de fundido, deslizamiento, zoom y transformación compartida entre
+  estados de componentes.
+_i18n_title_hash: 649968b224df3ec9d6f81f66ca245e03
+_i18n_description_hash: d609022b4c4300896558734622593f10
 _i18n_hash: 3440413f572744ea709085a2975c0023
 ---
 <JavadocLink type="foundation" location="com/webforj/ViewTransition" top='true'/>

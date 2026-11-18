@@ -1,10 +1,9 @@
 ---
 sidebar_position: 2
 title: 常见威胁
-description: >-
-  How common web threats such as cross-site scripting (XSS), cross-site request
-  forgery (CSRF), and SQL injection apply to a webforJ app, what the framework
-  handles, and where you stay responsible.
+description: 跨站脚本攻击（XSS）、跨站请求伪造（CSRF）和 SQL 注入等常见网络威胁如何影响 webforJ 应用，框架会处理哪些问题，以及哪些责任仍由你承担。
+_i18n_title_hash: 8b4d1efc268346c8ba8112962bcc171f
+_i18n_description_hash: 2c7e5b606d702abcaeca6493759538d7
 _i18n_hash: f19a2bbb311243417c723fe49ad7d72f
 ---
 因为 webforJ 应用程序在服务器上运行 Java，而浏览器只呈现界面（请参阅 [Client/Server Interaction](/docs/architecture/client-server) 文章），因此几类攻击在设计上被遏制。其他的仍然取决于您编写代码的方式。本页将逐步介绍最重要的威胁，并明确界定 webforJ 处理的内容与您需要处理的内容之间的界限。

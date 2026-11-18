@@ -2,8 +2,11 @@
 title: Tâches en arrière-plan
 sidebar_position: 25
 description: >-
-  Run Spring @Async services from webforJ views and marshal progress and results
-  back to the UI thread with Environment.runLater.
+  Lancez des services Spring @Async depuis les vues webforJ et renvoyez la
+  progression et les résultats au thread de l’interface avec
+  Environment.runLater.
+_i18n_title_hash: dab970e99be91f87ed9529a337f3f1e7
+_i18n_description_hash: 6f8f6d2a9b85f45bdc3c544bff6f892a
 _i18n_hash: 2760d6db6a7b7045e7612ca359d04a28
 ---
 Lorsque les utilisateurs cliquent sur un bouton pour générer un rapport ou traiter des données, ils s’attendent à ce que l’interface reste réactive. Les barres de progression doivent s’animer, les boutons réagir au survol et l’application ne doit pas se figer. L’annotation `@Async` de Spring permet cela en déplaçant les opérations de longue durée vers des threads d’arrière-plan.

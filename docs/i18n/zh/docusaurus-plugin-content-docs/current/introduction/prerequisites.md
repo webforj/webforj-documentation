@@ -1,9 +1,9 @@
 ---
 title: 前提条件
-description: >-
-  What a webforJ development environment needs, a Java 21 or higher JDK, Maven
-  or Gradle, and an editor with Java support.
+description: webforJ 开发环境需要 Java 21 或更高版本的 JDK、Maven 或 Gradle，以及支持 Java 的编辑器。
 sidebar_position: 1
+_i18n_title_hash: ee68e5b99222bbc29a480fcb0d1d6ee2
+_i18n_description_hash: f47ef53eb5070fb49f6ccd2d5e28ee5e
 _i18n_hash: 038e0cf692852d650329b263c25aaf55
 ---
 开始使用 webforJ 非常简单，因为只有几个前提条件。使用本指南设置您的开发环境，配备您启动和运行 webforJ 所需的基本工具。

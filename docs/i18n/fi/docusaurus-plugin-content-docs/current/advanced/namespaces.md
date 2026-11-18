@@ -2,8 +2,10 @@
 title: Nimiavaruudet
 sidebar_position: 40
 description: >-
-  Share thread-safe key-value state across sessions, thread groups, or the
-  entire JVM using Private, Group, and Global namespaces.
+  Jaa säieturvallista avain–arvo-tilaa istuntojen, säieryhmien tai koko JVM:n
+  välillä Private-, Group- ja Global-nimiavaruuksien avulla.
+_i18n_title_hash: 13d28e8dfc702e3456e0767dff9a128a
+_i18n_description_hash: ec54a556d3e544a7d8720bf8b6e77b59
 _i18n_hash: f932a175d81df4147cae1335991db3d5
 ---
 <DocChip chip='since' label='24.22' />

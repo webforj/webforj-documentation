@@ -1,6 +1,12 @@
 ---
 sidebar_position: 9
 title: État
+description: >-
+  Stylisez les états interactifs des composants avec les jetons DWC : opacité
+  désactivée, couleur de l’anneau de focus et échelles de retour visuel à
+  l’appui.
+_i18n_title_hash: 46a2a41cc6e552044816a2d04634545d
+_i18n_description_hash: 4effbc72c67b895751e8bbca5732a23f
 _i18n_hash: 3dc9896bce3e0577b2407f8ae4c863d0
 ---
 Les jetons d'état définissent comment les composants réagissent visuellement à l'interaction de l'utilisateur, par exemple lorsque ceux-ci sont désactivés ou en focus. Ces variables aident à assurer un comportement et un style cohérents à travers tous les éléments de l'interface utilisateur, et peuvent être facilement personnalisées pour correspondre à votre système de design.

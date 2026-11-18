@@ -1,7 +1,11 @@
 ---
 sidebar_position: 2
 title: Validatoren
-sidebar_class_name: updated-content
+description: >-
+  Koppel validators aan bindings met useValidator, implementeer herbruikbare
+  Validator-klassen en overschrijf berichten per UI-veld.
+_i18n_title_hash: 6c49f2cccba7312f02f0aa5a99b1a338
+_i18n_description_hash: a060e816eff9d9a63037f2fbac2e9f6a
 _i18n_hash: 996b617e97e439660bbe69f15d6355b9
 ---
 Validators valideren gegevens binnen uw UI-componenten tegen gedefinieerde beperkingen voordat deze gegevens aan het datamodel worden toegevoegd. U kunt validators toepassen om te controleren of gegevens aan bepaalde criteria voldoen, zoals binnen een gespecificeerd bereik vallen, overeenkomen met een patroon of niet leeg zijn.

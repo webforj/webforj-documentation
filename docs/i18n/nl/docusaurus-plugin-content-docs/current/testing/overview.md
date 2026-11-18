@@ -2,10 +2,12 @@
 sidebar_position: 1
 title: Testen
 description: >-
-  Combine JUnit unit tests with Selenium or Playwright end-to-end tests to
-  validate webforJ components, logic, and full user journeys.
+  Combineer JUnit-unittests met Selenium- of Playwright-end-to-endtests om
+  webforJ-componenten, logica en volledige gebruikersstromen te valideren.
 hide_table_of_contents: true
 hide_giscus_comments: true
+_i18n_title_hash: fa6a5a3224d7da66d9e0bdec25f62cf0
+_i18n_description_hash: 36401179d0d5ab207bcb58463efe9ee6
 _i18n_hash: 58ac266506a221d71e22c723189aa08f
 ---
 <Head>

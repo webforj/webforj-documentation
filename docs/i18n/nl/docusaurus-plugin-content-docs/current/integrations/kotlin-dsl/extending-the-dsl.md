@@ -1,6 +1,11 @@
 ---
 title: De DSL uitbreiden
 sidebar_position: 20
+description: >-
+  Voeg aangepaste componenten en samengestelde widgets toe aan de webforJ Kotlin
+  DSL met HasComponents-extensiefuncties en de init-helper.
+_i18n_title_hash: 014c4cceda14f1687856a5a58adbbeaf
+_i18n_description_hash: 57d3ef483b81236e4197e2e67ca7b5de
 _i18n_hash: d9b9528f9a0fb3489ff11391012158f5
 ---
 De Kotlin DSL is uitbreidbaar, waardoor je DSL-functies voor aangepaste componenten of derde-partijbibliotheken kunt toevoegen. Je kunt samengestelde componenten bouwen die de DSL intern gebruiken.

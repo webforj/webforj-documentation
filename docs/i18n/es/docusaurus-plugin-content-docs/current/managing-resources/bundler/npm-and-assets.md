@@ -1,11 +1,12 @@
 ---
 title: Paquetes y recursos
 sidebar_position: 30
-sidebar_class_name: new-content
 description: >-
-  Declare npm packages, load a module straight from one, install build-only
-  dependencies, rely on tree shaking, and import CSS and assets from a
-  component's entry.
+  Declara paquetes npm, carga módulos directamente de ellos, instala
+  dependencias de compilación, usa tree shaking e importa CSS y recursos desde
+  la entrada del componente.
+_i18n_title_hash: cac008272dedd4c9bdc7860f88782b1e
+_i18n_description_hash: c5b4b96ca397aad0a739c7025891df15
 _i18n_hash: 3b538e3785ee74397f156dd38ef8506a
 ---
 Una entrada se basa en más que su propia fuente. Importa paquetes de npm, carga un módulo directamente desde uno, incorpora una hoja de estilos o una imagen, y puede provenir de una clase que extiendes o de una biblioteca de la que depende. Esta página cubre cómo esos elementos llegan a la compilación.

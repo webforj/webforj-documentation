@@ -1,11 +1,12 @@
 ---
 sidebar_position: 11
 title: Suorita JavaScript
-sidebar_class_name: new-content
 description: >-
-  Run client-side JavaScript from Java with executeJs, executeJsAsync, and
-  executeJsVoidAsync at the app or element level.
+  Suorita asiakaspuolen JavaScriptiä Javasta executeJs-, executeJsAsync- ja
+  executeJsVoidAsync-menetelmillä sovellus- tai elementtitasolla.
 slug: execute-javascript
+_i18n_title_hash: 8b077d58b96796af109e4fa39e4962f8
+_i18n_description_hash: e89c2426b981bf3e450b314ba956923e
 _i18n_hash: c1d5b030c6f39ac6c83afc05ca4bb398
 ---
 import JavadocLink from '@site/src/components/DocsTools/JavadocLink';

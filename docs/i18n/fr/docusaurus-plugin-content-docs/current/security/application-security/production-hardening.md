@@ -2,8 +2,11 @@
 sidebar_position: 3
 title: Renforcement pour la production
 description: >-
-  Practical steps for running a webforJ app safely in production, from transport
-  encryption and dependency upkeep to server-side checks and disclosure.
+  Conseils pratiques pour exécuter une application webforJ en toute sécurité en
+  production, du chiffrement des communications et de la mise à jour des
+  dépendances aux vérifications côté serveur et à la divulgation.
+_i18n_title_hash: 09f8f90702830845e3d1367de3eca29d
+_i18n_description_hash: 0b6b251e53807e5d480d50424a6d2568
 _i18n_hash: 62e3e574855705f8b97295f4ebe5169b
 ---
 Le modèle [piloté par le serveur](/docs/architecture/client-server) de webforJ et ses dispositifs de protection intégrés contre les [menaces courantes](/docs/security/application-security/common-threats) couvrent beaucoup de choses, mais un déploiement sécurisé dépend encore de la façon dont vous exploitez l'application. Les étapes ci-dessous complètent le tableau.

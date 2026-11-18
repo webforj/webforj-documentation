@@ -2,8 +2,11 @@
 sidebar_position: 5
 title: Liaison automatique
 description: >-
-  Bind UI fields to bean properties automatically with BindingContext.of using
-  UseProperty, BindingExclude, and UseValidator annotations.
+  Liez automatiquement les champs de l’interface utilisateur aux propriétés d’un
+  bean avec BindingContext.of et les annotations UseProperty, BindingExclude et
+  UseValidator.
+_i18n_title_hash: 666e71f372d1b611262598ca5cd23499
+_i18n_description_hash: 985dfb18ded910f005bf2a2e040a8f9d
 _i18n_hash: 60ea231c7622e56330eef34d26d615cc
 ---
 webforJ offre plusieurs fonctionnalités qui rationalisent le processus de configuration et de liaison automatique pour les développeurs. Cette section montre comment utiliser ces fonctionnalités de manière efficace.

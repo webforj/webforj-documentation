@@ -1,7 +1,10 @@
 ---
 title: Tabs
+description: 使用 Tabs 原型搭建 webforJ 项目，通过简洁的选项卡界面组织多个视图或区域。
 sidebar_position: 2
 hide_table_of_contents: true
+_i18n_title_hash: 7015777bcc86cd0c5e4819310d62b040
+_i18n_description_hash: cd7299804b89f888a2cc546473cacb5e
 _i18n_hash: 45cda55105424ae29b7687c84641d77c
 ---
 <Head>

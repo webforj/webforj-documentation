@@ -1,6 +1,11 @@
 ---
 sidebar_position: 4
 title: Navigationsereignisse
+description: >-
+  Registrieren Sie globale Router-Listener für die Lebenszyklusereignisse
+  WillEnter, DidEnter, WillLeave, DidLeave, Navigate und Activate.
+_i18n_title_hash: e554cbf8a0fdce0b4210586ed5c805df
+_i18n_description_hash: 3bb73da5a4adb69405e3f64bb4fd6380
 _i18n_hash: f41ebca54f574eeac4834234cf3a0e5b
 ---
 Zusätzlich zu komponentenspezifischen Lebenszyklusereignissen können Sie **globale Ereignislistener** auf Routerniveau registrieren. Dies ermöglicht das Tracking der Navigation global über die gesamte App hinweg, was nützlich für Protokollierung, Analytik oder andere bereichsübergreifende Anliegen ist.

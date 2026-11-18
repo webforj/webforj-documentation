@@ -3,8 +3,10 @@ title: <dwc-textfield>
 sidebar_class_name: sidebar--item__hidden
 slug: textfield
 description: >-
-  Customize the dwc-textfield input with CSS variables and shadow parts
-  targeting label, border, prefix, suffix, and clear button.
+  Personnalisez le champ dwc-textfield avec des variables CSS et des shadow
+  parts ciblant label, border, prefix, suffix et clear button.
+_i18n_title_hash: 5253ab746b89484ad1092c106a34aeb7
+_i18n_description_hash: 205018d34f4cdd56b3bcbab573c68608
 _i18n_hash: ada21443f7ca8671392737bc82955707
 ---
 <DocChip chip='shadow' />

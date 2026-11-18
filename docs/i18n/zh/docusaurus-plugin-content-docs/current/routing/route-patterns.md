@@ -1,9 +1,9 @@
 ---
 sidebar_position: 5
 title: 路由模式
-description: >-
-  Define dynamic URL segments, optional parameters, wildcards, and regex
-  constraints to match webforJ routes precisely.
+description: 定义动态 URL 片段、可选参数、通配符和正则表达式约束，精准匹配 webforJ 路由。
+_i18n_title_hash: e852c1a8c41ae5c7177d4e3e08d466fc
+_i18n_description_hash: 7fd2fcf7b040e6d79a1b6cd69fcfe610
 _i18n_hash: a6c1267e034c1562652cc01d0f336640
 ---
 **路由模式**用于定义如何将 URL 映射到特定视图，包括动态和可选段、正则表达式和通配符。路由模式使框架能够匹配 URL、提取参数并动态生成 URL。它们在基于浏览器位置构建应用程序的导航和组件渲染方面发挥了关键作用。

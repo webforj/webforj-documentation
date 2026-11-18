@@ -2,8 +2,10 @@
 title: Thema
 sidebar_position: 6
 description: >-
-  Adjust the DWC design tokens of a running webforJ app, preview the result
-  immediately, and save it into your stylesheet.
+  Passe die DWC-Design-Tokens einer laufenden webforJ-App an, sieh dir das
+  Ergebnis sofort an und speichere es in deinem Stylesheet.
+_i18n_title_hash: d721757161f7f70c5b0949fdb6ec2c30
+_i18n_description_hash: a8284dc3eaa8e204246a898c1e69582b
 _i18n_hash: fe089afe4f44e457a98622707bf995e5
 ---
 Über den Tab „Theme“ kannst du das Aussehen deiner App ändern, während sie läuft. Er nutzt die [DWC-Design-Tokens](/docs/styling/css-variables), die deine App bereits verwendet. Eine einzelne Änderung wirkt sich dadurch auf jede Komponente aus, die dieses Token verwendet, statt nur auf eine einzelne Regel.

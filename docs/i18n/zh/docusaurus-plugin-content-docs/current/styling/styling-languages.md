@@ -1,10 +1,9 @@
 ---
 title: 样式语言
 sidebar_position: 11
-sidebar_class_name: new-content
-description: >-
-  Author your styles in CSS, compile them from Sass or Less, or generate them
-  with Tailwind, and load the result into a webforJ app.
+description: 使用 CSS 编写样式，通过 Sass 或 Less 编译，或使用 Tailwind 生成样式，然后将结果加载到 webforJ 应用中。
+_i18n_title_hash: ef323f16958e1b8b7e2d2e9e170f4717
+_i18n_description_hash: c218c1194810a334b7f6b55f9094ee85
 _i18n_hash: 98eca77023e33bac367a1a250da900d7
 ---
 您的样式以 CSS 的形式到达页面，但您不必将其写为 CSS。 webforJ 加载您编写的样式表，或从 Sass 或 Less 等预处理器编译出样式表，或从 Tailwind 生成样式表，结果是无论来自何处，都以相同的方式样式化您的视图。本节其余部分涵盖的 DWC 令牌、[CSS 自定义属性](/docs/styling/css-variables) 和 [阴影部分](/docs/styling/shadow-parts) 可以在其中任何一个应用。

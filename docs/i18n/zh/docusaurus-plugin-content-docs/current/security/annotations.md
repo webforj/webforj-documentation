@@ -1,6 +1,11 @@
 ---
 sidebar_position: 3
 title: 安全注解
+description: >-
+  使用 @AnonymousAccess、@PermitAll、@RolesAllowed 和 @DenyAll 注解，以声明式方式限制 webforJ
+  路由访问。
+_i18n_title_hash: ac394acb99ded5e96ab7288396076139
+_i18n_description_hash: 939afd4f65e19372829c31d69d178393
 _i18n_hash: 564a7d991d26edb972bc2c7c99366f37
 ---
 安全注释提供了一种声明性的方法来控制您在 webforJ 应用中的路由访问。通过将注释添加到路由组件中，您定义了谁可以访问每个视图，而不需要写手动的权限检查。安全系统会在任何组件渲染之前自动强制执行这些规则。

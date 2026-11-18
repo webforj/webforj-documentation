@@ -3,8 +3,11 @@ title: <dwc-login>
 sidebar_class_name: sidebar--item__hidden
 slug: login
 description: >-
-  Style the dwc-login client component using CSS variables, shadow parts, and
-  slots to theme the form surface, fields, and action buttons.
+  Personnalisez le composant client dwc-login à l’aide de variables CSS, de
+  parties shadow et de slots pour appliquer un thème à la surface du formulaire,
+  aux champs et aux boutons d’action.
+_i18n_title_hash: 89f846c6677915f6edf864955481f14c
+_i18n_description_hash: f912fdcf5ca70acf1801e85444346da0
 _i18n_hash: 858de4ff1faa5598f89edc084391ad96
 ---
 <DocChip chip='shadow' />

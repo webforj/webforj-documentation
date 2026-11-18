@@ -2,8 +2,10 @@
 sidebar_position: 2
 title: Componenten vinden
 description: >-
-  Describe the components a TestBed test acts on the way a user picks them out
-  on the page, by type, text, label and what they contain.
+  Beschrijf de componenten waarop een TestBed-test zich richt zoals een
+  gebruiker ze op de pagina herkent: op type, tekst, label en inhoud.
+_i18n_title_hash: 08dd64ab65d0d7702d38cfa6f6f84c53
+_i18n_description_hash: 25fffbd57fce100bd5499727357275bb
 _i18n_hash: 3e31c9bc7b51ebd2ebaf1a5e44c6e94f
 ---
 Voordat een gebruiker op een knop klikt, zoekt die de knop op de pagina: de knop **Save** of het veld met het label voor het e-mailadres. Een TestBed-test zoekt componenten op dezelfde manier, met `ComponentLocator`. Een locator beschrijft een component aan de hand van het type en van wat de gebruiker erop leest, en doorzoekt de pagina wanneer de test om het resultaat vraagt.

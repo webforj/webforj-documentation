@@ -3,8 +3,11 @@ title: <dwc-avatar>
 sidebar_class_name: sidebar--item__hidden
 slug: avatar
 description: >-
-  Customize the dwc-avatar client component using CSS variables and shadow parts
-  to style size, background, initials, and image rendering.
+  Personnalisez le composant client dwc-avatar à l’aide de variables CSS et de
+  shadow parts pour définir la taille, l’arrière-plan, les initiales et le rendu
+  de l’image.
+_i18n_title_hash: 2436baddc7252a7effeb293084c8282c
+_i18n_description_hash: f80c42484d237062a78bde23c9ae0248
 _i18n_hash: 97f5d77b993fe8d49597cb7a2719d38c
 ---
 <DocChip chip='shadow' />

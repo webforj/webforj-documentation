@@ -2,8 +2,11 @@
 title: Spring Data JPA
 sidebar_position: 20
 description: >-
-  Adapt Spring Data JPA repositories to webforJ Table and Repository components
-  with SpringDataRepository, pagination, sorting, and Specifications.
+  Adaptez les dépôts Spring Data JPA aux composants Table et Repository de
+  webforJ avec SpringDataRepository, la pagination, le tri et les
+  Specifications.
+_i18n_title_hash: 810bf4be9fd3907b3e5cff790716a958
+_i18n_description_hash: 7f0f559ffd7aba1cfabc95bf06ef6def
 _i18n_hash: 04bda665f576fabc5db3284e9ec201e9
 ---
 Spring Data JPA est la norme de facto pour l'accès aux données dans les applications Spring, fournissant des abstractions de dépôt, des méthodes de requête et des spécifications pour des requêtes complexes. L'adaptateur `SpringDataRepository` de webforJ fait le pont entre les dépôts Spring Data et les composants UI de webforJ, vous permettant de lier directement des entités JPA aux composants UI, d'implémenter un filtrage dynamique avec des spécifications JPA et de gérer la pagination.

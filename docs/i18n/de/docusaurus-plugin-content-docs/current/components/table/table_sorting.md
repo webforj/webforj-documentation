@@ -3,8 +3,11 @@ sidebar_position: 15
 title: Sortierung
 slug: sorting
 description: >-
-  Enable per-column sorting on the Table, configure multi-column sorting, and
-  set sort priority programmatically.
+  Aktivieren Sie die Sortierung pro Spalte in der Table, konfigurieren Sie die
+  Sortierung nach mehreren Spalten und legen Sie die Sortierpriorität
+  programmgesteuert fest.
+_i18n_title_hash: 2808a34767e19b842d906ab8ab6264c6
+_i18n_description_hash: 0982ea0da914bca56402ae5c96dd9ed8
 _i18n_hash: 7a910f5bdcaa8a9e053bcda6706808c2
 ---
 Die Sortierung ermöglicht es Benutzern, Daten in Spalten nach Reihenfolge anzuordnen, sodass Informationen leichter zu lesen und zu analysieren sind. Das ist hilfreich, wenn Benutzer schnell die höchsten oder niedrigsten Werte in einer bestimmten Spalte finden müssen.

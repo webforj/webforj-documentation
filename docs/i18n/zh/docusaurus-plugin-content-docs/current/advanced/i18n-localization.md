@@ -1,9 +1,9 @@
 ---
 sidebar_position: 12
 title: 翻译
-description: >-
-  Resolve localized strings from resource bundles or custom sources with the t()
-  method, MessageFormat placeholders, and browser locale detection.
+description: 使用 t() 方法、MessageFormat 占位符和浏览器区域设置检测，从资源包或自定义来源解析本地化字符串。
+_i18n_title_hash: 6dd08874f83507e9c7b23f1a46b7fa7c
+_i18n_description_hash: cf9df3ec7329b04be36c034e9a29d7de
 _i18n_hash: 565ad5b41fe9fa72e363b2db84809cbe
 ---
 # Translation <DocChip chip='since' label='25.12' />

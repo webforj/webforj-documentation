@@ -1,7 +1,12 @@
 ---
 title: Intégrer un AppLayout
 sidebar_position: 7
-description: Step 6 - Using the AppLayout and FlexLayout components.
+description: >-
+  Tutoriel, étape 6 : réunissez l’application dans une seule mise en page avec
+  AppLayout, AppNav, FlexLayout et des emplacements de routes, proche de
+  l’archétype SideMenu.
+_i18n_title_hash: 1cf9808e378c413d31028f2590a4a1fe
+_i18n_description_hash: c1e6536f85e8d9aeb2a1089add85015d
 _i18n_hash: 3a2148bdfb680284a597a17c263609da
 ---
 Dans cette étape, vous allez rassembler toutes les parties de votre application dans une mise en page cohérente. À la fin de cette étape, la structure de votre application ressemblera de près à l' [archétype SideMenu](/docs/building-ui/archetypes/sidemenu), et vous aurez une meilleure compréhension du fonctionnement des composants et concepts suivants :

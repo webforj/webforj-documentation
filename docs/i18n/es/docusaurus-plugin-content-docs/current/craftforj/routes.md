@@ -2,8 +2,10 @@
 title: Rutas
 sidebar_position: 5
 description: >-
-  See every registered route in a running webforJ app, navigate to it from
-  craftforJ, and change the access rules declared on it.
+  Visualiza todas las rutas registradas en una app webforJ en ejecución, navega
+  a ellas desde craftforJ y cambia las reglas de acceso declaradas.
+_i18n_title_hash: b41067229f91bece9cdfc66681cdd7a3
+_i18n_description_hash: 6221e0d73e034d35b082471687f4e420
 _i18n_hash: ec7a4521cd9c4328f9cd6550ebc9d90b
 ---
 La pestaña Rutas muestra la tabla de enrutamiento de la aplicación en ejecución, en la [jerarquía](/docs/routing/route-hierarchy/overview) en la que la mantiene el enrutador, y marca la ruta activa. Las rutas registradas [dinámicamente](/docs/routing/routes-registration) aparecen junto a las anotadas.

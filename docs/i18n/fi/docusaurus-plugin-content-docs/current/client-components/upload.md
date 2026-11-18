@@ -3,8 +3,10 @@ title: <dwc-upload>
 sidebar_class_name: sidebar--item__hidden
 slug: upload
 description: >-
-  Customize the dwc-upload drop zone, file list, and progress through CSS
-  variables and shadow parts for visual theming.
+  Mukauta dwc-upload-komponentin pudotusaluetta, tiedostoluetteloa ja
+  edistymispalkkia CSS-muuttujilla ja shadow part -määrityksillä.
+_i18n_title_hash: 8bae127b4242c42ea38702f2ae5090e9
+_i18n_description_hash: ae7240e6d73c45ac84f382aecbcc4941
 _i18n_hash: cce04573a91c17bb60172549e99ed66c
 ---
 <DocChip chip='shadow' />

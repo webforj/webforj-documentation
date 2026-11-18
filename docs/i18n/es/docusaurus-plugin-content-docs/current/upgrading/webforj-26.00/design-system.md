@@ -1,9 +1,12 @@
 ---
 title: Actualización al sistema de diseño v26
 description: >-
-  Reference for the design-system updates in DWC 26 - color engine, dark mode,
-  surfaces, shadows, typography, radius, focus ring, and interaction feedback.
+  Referencia de las actualizaciones del sistema de diseño de DWC 26: motor de
+  color, modo oscuro, superficies, sombras, tipografía, bordes, foco e
+  interacciones.
 sidebar_position: 2
+_i18n_title_hash: 57e2329747857ca19fa1eeb35d2edbff
+_i18n_description_hash: 37139541cdfaad3dc0113cbcd3ba034e
 _i18n_hash: 8a36bc047ecfc90874412da4d39643fb
 ---
 DWC 26 introduce un sistema de diseño renovado. La actualización es incremental en lugar de una reescritura completa: la mayoría de las variables CSS de la v25 siguen disponibles, la API pública del motor de temas se mantiene, y las personalizaciones existentes continúan funcionando sin cambios.

@@ -1,6 +1,12 @@
 ---
 title: Utiliser la DSL
 sidebar_position: 10
+description: >-
+  Composez des composants webforJ avec le DSL Kotlin à l’aide de fonctions de
+  construction en camelCase, de blocs imbriqués et d’une configuration à portée
+  de récepteur.
+_i18n_title_hash: 19889ee2d799cdb3e9247afdc3b75822
+_i18n_description_hash: 29d3ff24a869a59903766ffe3ed5690a
 _i18n_hash: 05d1319dd97f2d32392408b2e4ae9058
 ---
 La DSL Kotlin fournit des fonctions de construction pour les composants webforJ. Chaque fonction crée un composant, l'ajoute à un conteneur parent et exécute un bloc de configuration. Cette page couvre les motifs et conventions que vous utiliserez lors de la construction d'interfaces utilisateur avec la DSL.

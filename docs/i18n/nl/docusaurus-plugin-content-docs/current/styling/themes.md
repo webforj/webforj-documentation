@@ -1,10 +1,11 @@
 ---
 sidebar_position: 2
 title: Thema's
-sidebar_class_name: updated-content
 description: >-
-  Apply built-in light, dark, and dark-pure themes with @AppTheme or define
-  custom themes through data-app-theme selectors.
+  Pas ingebouwde lichte, donkere en puur donkere thema's toe met @AppTheme of
+  definieer aangepaste thema's via data-app-theme-selectors.
+_i18n_title_hash: 83915d1254927f41241e8630890bec6e
+_i18n_description_hash: 1368c75dc54022ae158f6ea3e7ffd22e
 _i18n_hash: 91e1a18f11aadea66df804dbaa4917d9
 ---
 Een thema in webforJ is een genaamd stel CSS-aangepaste eigenschappen (ontwerptokens) dat bepaalt hoe elk component eruitziet. Het schakelen tussen thema's herberekent kleuren, schaduwen, oppervlakken en randen onmiddellijk door de hele app, zonder opnieuw op te bouwen.

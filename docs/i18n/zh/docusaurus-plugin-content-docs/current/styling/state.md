@@ -1,6 +1,9 @@
 ---
 sidebar_position: 9
 title: 状态
+description: 使用 DWC 令牌设置交互式组件状态，包括禁用透明度、焦点环颜色和按压反馈缩放比例。
+_i18n_title_hash: 46a2a41cc6e552044816a2d04634545d
+_i18n_description_hash: 4effbc72c67b895751e8bbca5732a23f
 _i18n_hash: 3dc9896bce3e0577b2407f8ae4c863d0
 ---
 状态令牌定义了组件如何在用户交互时进行视觉响应，例如在禁用或聚焦时。这些变量有助于确保所有 UI 元素的一致行为和样式，并且可以轻松自定义以匹配您的设计系统。

@@ -1,6 +1,12 @@
 ---
 sidebar_position: 20
 title: Aikaväli
+description: >-
+  Ajasta toistuvia tapahtumia kiinteällä viiveellä Interval-luokan avulla
+  tietojen päivittämiseen, sisällön vaihtamiseen tai toimettomuuden
+  tunnistamiseen tehokkaasti.
+_i18n_title_hash: d16dd01adf735ed9b87eebff5fc39ce5
+_i18n_description_hash: b44e4bd00ad996c7bd98008b11044d14
 _i18n_hash: 1fd4c3fc2bf38df65a68d909a6ff77a3
 ---
 <DocChip chip='since' label='24.02' />

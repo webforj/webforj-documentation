@@ -1,9 +1,13 @@
 ---
+sidebar_class_name: experimental-content
 sidebar_position: 4
 title: PropertyDescriptorTester
 description: >-
-  Validate PropertyDescriptor fields on wrapped web components by checking
-  getters, setters, and default values with PropertyDescriptorTester.
+  Validez les champs de PropertyDescriptor sur les composants web encapsulés en
+  vérifiant les getters, setters et valeurs par défaut avec
+  PropertyDescriptorTester.
+_i18n_title_hash: 02f782cb951d1d9e773f4befa4695b3b
+_i18n_description_hash: 708e9b7d84d2da3bf2b448bcaf00e975
 _i18n_hash: 5b14fba4a11a4da57a032123bd27be6b
 ---
 <DocChip chip='since' label='23.06' />

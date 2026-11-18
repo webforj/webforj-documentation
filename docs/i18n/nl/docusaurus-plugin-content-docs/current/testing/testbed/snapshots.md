@@ -1,9 +1,14 @@
 ---
 sidebar_position: 5
-title: Momentopnamen
+title: Snapshottesten
+sidebar_label: Momentopnamen
 description: >-
-  Compare everything a view shows with a stored text description of it, read
-  that description, and add the state of your own components to it.
+  Vergelijk alles wat een view weergeeft met een opgeslagen tekstuele
+  beschrijving, lees die beschrijving en voeg de status van je eigen componenten
+  eraan toe.
+_i18n_title_hash: 9580d9202c32b5f9ce00a7486a475362
+_i18n_sidebar_label_hash: 9147e5e61a7b9260dec09f3a6eb3e5be
+_i18n_description_hash: 10901f96edea7329f873be1b33f4a845
 _i18n_hash: 2f709890e8d1fd70a61debc1de3ae63f
 ---
 Een weergave stap voor stap controleren vereist één assertion voor elk label, elke knop en elk veld. Met een snapshot controleer je alles in één keer. Die legt alles vast wat een gebruiker in de weergave zou zien, met één regel per component, en bewaart die beschrijving bij de test. Bij elke volgende uitvoering wordt de weergave opnieuw beschreven en vergeleken. Elke wijziging in wat de pagina toont, laat de test dus mislukken. De wijziging is bovendien als een gewone tekstdiff te zien tijdens code review.

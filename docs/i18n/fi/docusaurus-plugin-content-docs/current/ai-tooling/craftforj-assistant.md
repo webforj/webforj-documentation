@@ -1,10 +1,12 @@
 ---
 title: craftforJ-avustaja
 sidebar_position: 2
-sidebar_class_name: new-content
 description: >-
-  A coding agent inside your running webforJ app that writes Java freely,
-  compiles it, and applies it with your approval.
+  Käynnissä olevaan webforJ-sovellukseesi integroitu koodausagentti, joka
+  kirjoittaa vapaasti Java-koodia, kääntää sen ja ottaa muutokset käyttöön
+  hyväksynnälläsi.
+_i18n_title_hash: e162e407d974aae33c2366767c2cbe96
+_i18n_description_hash: cc5da810e30e992ab9f2ca659b440b19
 _i18n_hash: 2c2a04b29b7b6de57e5689628cd659d0
 ---
 craftforJ-avustaja on koodausagentti, joka toimii sisällä **käynnissä olevassa sovelluksessa**. Se kirjoittaa Javaa vapaasti, kääntää kirjoituksensa ennen kuin näet sen, soveltaa muutosta ja jatkaa toimintaa sovelluksen uudelleenkäynnistyksen jälkeen. Se tulee mukana webforJ:ssä osana [craftforJ](/docs/craftforj), kehitysympäristö, joka antaa sinulle komponenttipuun, reitit, elävät ominaisuudet ja teemat sovellukselle sen toimiessa.

@@ -1,6 +1,12 @@
 ---
 title: Einrichtung und Konfiguration
 sidebar_position: 2
+description: >-
+  Installieren Sie den Webswing-Server, registrieren Sie eine Swing-App in der
+  Administrationskonsole und konfigurieren Sie CORS, damit webforJ sie mit
+  WebswingConnector einbetten kann.
+_i18n_title_hash: 6220432d4a9990aa961b3e368edaafdd
+_i18n_description_hash: d662aa6a75a899b4c2df885526b3fa0f
 _i18n_hash: d948bababbedcfe831d4af62f8b6b088
 ---
 Die Integration von Webswing mit webforJ umfasst zwei Komponenten: den Webswing-Server, der Ihre Swing-App hostet, und die Komponente `WebswingConnector` in Ihrer webforJ-App, die sie einbettet.

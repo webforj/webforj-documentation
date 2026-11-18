@@ -1,11 +1,11 @@
 ---
 sidebar_position: 1
 title: 测试
-description: >-
-  Combine JUnit unit tests with Selenium or Playwright end-to-end tests to
-  validate webforJ components, logic, and full user journeys.
+description: 结合 JUnit 单元测试与 Selenium 或 Playwright 端到端测试，验证 webforJ 组件、逻辑和完整用户流程。
 hide_table_of_contents: true
 hide_giscus_comments: true
+_i18n_title_hash: fa6a5a3224d7da66d9e0bdec25f62cf0
+_i18n_description_hash: 36401179d0d5ab207bcb58463efe9ee6
 _i18n_hash: 58ac266506a221d71e22c723189aa08f
 ---
 <Head>

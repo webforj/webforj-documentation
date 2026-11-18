@@ -2,8 +2,10 @@
 sidebar_position: 40
 title: Minifier-Plugin
 description: >-
-  Discover and minify CSS and JavaScript assets referenced by webforJ
-  annotations during the Maven or Gradle production build.
+  CSS- und JavaScript-Assets, auf die webforJ-Annotationen verweisen, während
+  des Maven- oder Gradle-Produktionsbuilds ermitteln und minimieren.
+_i18n_title_hash: ce0a54c72328ba87c49f170cd4776dbb
+_i18n_description_hash: e55310fa8ef52e6699f57b08e42f2333
 _i18n_hash: fc6e1dd15c6b453f014feb4cdf449953
 ---
 # Minifier-Plugin <DocChip chip='since' label='25.11' />

@@ -2,10 +2,12 @@
 sidebar_position: 0
 title: Archetypen
 description: >-
-  Pick a starter archetype such as SideMenu, Tabs, Blank, or HelloWorld to
-  scaffold a webforJ project with prebuilt structure and dependencies.
+  Wählen Sie ein Starter-Archetype wie SideMenu, Tabs, Blank oder HelloWorld, um
+  ein webforJ-Projekt mit vorgefertigter Struktur und Abhängigkeiten anzulegen.
 hide_table_of_contents: true
 hide_giscus_comments: true
+_i18n_title_hash: 929200d413d5862d8126f6e924e36bdc
+_i18n_description_hash: 67decc37b3e96bb2d09b7134cd7e1503
 _i18n_hash: 6bf7d20225657d88d7a8d10ebe56b878
 ---
 <Head>

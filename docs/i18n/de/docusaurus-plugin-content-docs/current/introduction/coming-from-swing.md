@@ -2,9 +2,11 @@
 title: Von Swing kommend
 sidebar_position: 5
 description: >-
-  Map Java Swing concepts such as JFrame, layout managers, listeners, the event
-  dispatch thread, table models, JOptionPane, and CardLayout to their webforJ
-  counterparts.
+  Java-Swing-Konzepte wie JFrame, Layout-Manager, Listener, Event Dispatch
+  Thread, Tabellenmodelle, JOptionPane und CardLayout ihren
+  webforJ-Entsprechungen zuordnen.
+_i18n_title_hash: 4334c9ef532372ad4ec7040646346991
+_i18n_description_hash: bb61f39a493a0bd89b7e48af68c639d2
 _i18n_hash: a55f88307cad0553b509d1cbb9c3a3f3
 ---
 Diese Seite ordnet die Konzepte einer Java-Swing-Desktop-App ihren Entsprechungen in webforJ zu. In beiden Fällen wird die UI in reinem Java erstellt: Komponenten sind Java-Objekte, Ereignisse werden von Listenern verarbeitet und Layouts werden im Code zusammengesetzt. webforJ wird auf dem Server ausgeführt, und das Framework hält den Browser mit dem Zustand der Komponenten synchron. Unter [Komponentenarchitektur](/docs/architecture/controls-components) erfahren Sie, wie das funktioniert.

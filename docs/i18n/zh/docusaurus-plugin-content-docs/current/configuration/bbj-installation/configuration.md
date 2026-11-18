@@ -2,9 +2,9 @@
 title: 安装插件
 sidebar_position: 3
 displayed_sidebar: documentationSidebar
-description: >-
-  Configure the webforJ install Maven plugin with deploy URL, class name,
-  publish name, and debug flags for BBjServices deployments.
+description: 为 BBjServices 部署配置 webforJ 安装 Maven 插件，包括部署 URL、类名、发布名称和调试标志。
+_i18n_title_hash: 3bacc5e229c5c7fd1c3a148923c99ad8
+_i18n_description_hash: b25aa4767e03c8d85843475f4120b6ac
 _i18n_hash: 1019285125db3439621951fe22047837
 ---
 :::danger 已弃用并将在未来版本中删除

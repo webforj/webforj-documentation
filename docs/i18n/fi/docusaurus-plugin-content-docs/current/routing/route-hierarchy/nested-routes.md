@@ -1,6 +1,11 @@
 ---
 sidebar_position: 2
 title: Sisäkkäiset reitit
+description: >-
+  Luo ylä- ja alireittien hierarkioita @Route-reitin outlet-parametrilla, jotta
+  voit jakaa asetteluja ja käyttää käyttöliittymää uudelleen eri näkymissä.
+_i18n_title_hash: e2119c007b50b2af6331785f9f03b752
+_i18n_description_hash: 9f67baa4b0a157ea25104063e0c0df64
 _i18n_hash: 5324d20d84c35f52067d0ba6d6448b71
 ---
 Sisäkkäiset reitit mahdollistavat lapsireittien renderöimisen vanhempien reittien sisällä, luoden modulaarisen ja uudelleenkäytettävän käyttöliittymän. Vanhempireitit määrittävät jaetut komponentit, kun taas lapsireitit injektoidaan erityisiin ulostuloihin näissä vanhempikomponenteissa.

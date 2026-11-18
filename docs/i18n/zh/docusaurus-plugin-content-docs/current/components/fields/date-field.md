@@ -2,9 +2,9 @@
 sidebar_position: 10
 title: DateField
 slug: datefield
-description: >-
-  A component that provides a default browser-based date picker for selecting a
-  date through an input field.
+description: 一个组件，提供默认的浏览器日期选择器，方便通过输入框选择日期。
+_i18n_title_hash: b499b8faa9f8e4e7037e2720e4af216e
+_i18n_description_hash: 238653416ff3af7d9a9105dc7d262bc8
 _i18n_hash: 173c4a1d080dc6e0c01828131af61c08
 ---
 <DocChip chip='shadow' />

@@ -2,8 +2,11 @@
 sidebar_position: 5
 title: Modèles de route
 description: >-
-  Define dynamic URL segments, optional parameters, wildcards, and regex
-  constraints to match webforJ routes precisely.
+  Définissez des segments d’URL dynamiques, des paramètres facultatifs, des
+  jokers et des contraintes regex pour faire correspondre précisément les routes
+  webforJ.
+_i18n_title_hash: e852c1a8c41ae5c7177d4e3e08d466fc
+_i18n_description_hash: 7fd2fcf7b040e6d79a1b6cd69fcfe610
 _i18n_hash: a6c1267e034c1562652cc01d0f336640
 ---
 **Les modèles de route** sont utilisés pour définir comment les URL correspondent à des vues spécifiques, y compris des segments dynamiques et optionnels, des expressions régulières et des jokers. Les modèles de route permettent au framework de faire correspondre les URL, d'extraire des paramètres et de générer des URL dynamiquement. Ils jouent un rôle critique dans la structuration de la navigation d'une application et du rendu des composants en fonction de la localisation du navigateur.

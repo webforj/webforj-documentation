@@ -2,8 +2,11 @@
 sidebar_position: 1
 title: Automatische upgrades
 description: >-
-  Migrate webforJ projects between versions automatically with OpenRewrite
-  recipes that rename APIs, update dependencies, and flag manual fixes.
+  Migreer webforJ-projecten automatisch tussen versies met OpenRewrite-recepten
+  die API’s hernoemen, afhankelijkheden bijwerken en handmatige aanpassingen
+  signaleren.
+_i18n_title_hash: c886957f296bc816bf28d60a7f60bdca
+_i18n_description_hash: 53bc4f38a0e9d1c8e8e2aeefeb18e215
 _i18n_hash: 8c889d8dea5c90aad2ef224d152e611e
 ---
 # OpenRewrite gebruiken {#using-openrewrite}

@@ -3,8 +3,11 @@ sidebar_position: 5
 title: Spalten
 slug: columns
 description: >-
-  Define Table columns with labels, value providers, visibility, navigability,
-  sizing, and user-interaction events.
+  Definieren Sie Tabellenspalten mit Beschriftungen, Wertlieferanten,
+  Sichtbarkeit, Navigierbarkeit, Größenangaben und Ereignissen zur
+  Benutzerinteraktion.
+_i18n_title_hash: 168b82d33f8073018c50a4f658a02559
+_i18n_description_hash: 635a1e80ea1f81e9e244913dd7f2767e
 _i18n_hash: 5ca9d9959c258db42780e52dad8c463d
 ---
 <DocChip chip='since' label='24.00' />

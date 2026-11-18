@@ -1,10 +1,11 @@
 ---
 title: Tailwind
 sidebar_position: 60
-sidebar_class_name: new-content
 description: >-
-  Turn on the webforj-tailwind extension, apply utility classes from a view, and
-  understand how it generates and scans its own stylesheet.
+  Schakel de webforj-tailwind-extensie in, pas utilityklassen toe vanuit een
+  view en ontdek hoe deze zijn eigen stylesheet genereert en scant.
+_i18n_title_hash: ea2ef9c01d4832a00b2c2011f7899c4b
+_i18n_description_hash: b779c82c51fed20b8e821066cb54fe2c
 _i18n_hash: f588624ebd738977bb8be4e9887141d1
 ---
 [Tailwind CSS](https://tailwindcss.com/) is een utility-first CSS framework waarvan de classnamen elke map naar een kleine set CSS-declaraties. Het is de enige gecureerde extensie die wordt meegeleverd, omdat de meeste projecten het niet gebruiken. Je schakelt het in met id, op dezelfde manier zoals je elke extensie inschakelt, zie [Enabled by id](/docs/managing-resources/bundler/extensions/overview#enabled-by-id). Wanneer het aan staat, doet het iets wat de anderen niet doen: het genereert een eigen invoer.

@@ -1,6 +1,11 @@
 ---
 sidebar_position: 3
 title: Routen definieren
+description: >-
+  Ordnen Sie URLs mit der Annotation @Route webforJ-Komponenten zu und
+  definieren Sie mit @RouteAlias mehrere Pfade für dieselbe Ansicht.
+_i18n_title_hash: 2d0483918fc7d51246d68af1677b6b67
+_i18n_description_hash: 7b8fcb2501a652a3bec3f747bc28428b
 _i18n_hash: 4f7189d5ef27386506e9ecf950f145ed
 ---
 Die Definition von Routen ist entscheidend, um URLs bestimmten Komponenten zuzuordnen. Dadurch können Sie steuern, wie verschiedene Teile Ihrer Benutzeroberfläche basierend auf der URL-Struktur gerendert werden. Das Framework verwendet die `@Route`-Annotation, um diesen Prozess deklarativ und unkompliziert zu gestalten, wodurch der Bedarf an manueller Konfiguration verringert wird.

@@ -2,9 +2,9 @@
 sidebar_position: 15
 title: DateTimeField
 slug: datetimefield
-description: >-
-  A component that provides a default browser-based date and time picker for
-  selecting both date and time through a single input field.
+description: 提供浏览器原生日期和时间选择器的组件，可通过单个输入框选择日期和时间。
+_i18n_title_hash: 8b1ed2c54f99d5cb1005f14f5231bf7f
+_i18n_description_hash: 341b7408b219c9653f53f8f10782855d
 _i18n_hash: 9ccb17716ffd5fa2d32781fc603d5042
 ---
 <DocChip chip='shadow' />

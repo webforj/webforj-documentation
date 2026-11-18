@@ -1,7 +1,11 @@
 ---
 title: 创建基础应用
 sidebar_position: 2
-description: Step 1 - Add components to an app.
+description: >-
+  教程第 1 步：创建 webforJ 和 Spring Boot 应用的主类，添加交互式 webforJ 和 HTML 元素组件，并使用 CSS
+  为其设置样式。
+_i18n_title_hash: 77334ced5b31edd07d2f1ff1963a042a
+_i18n_description_hash: 605dd7412a18f918843f8ca34a104fc4
 _i18n_hash: d7385c22706cf76508b7e1971186f88d
 ---
 在 [项目设置](/docs/introduction/tutorial/project-setup) 中，您生成了一个 webforJ 项目。现在是时候为该项目创建主类，并使用 webforJ 组件添加交互式界面。在此步骤中，您将了解：

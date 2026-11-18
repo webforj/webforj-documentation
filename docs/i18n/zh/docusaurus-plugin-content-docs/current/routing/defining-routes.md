@@ -1,6 +1,9 @@
 ---
 sidebar_position: 3
 title: 定义路由
+description: 使用 @Route 注解将 URL 映射到 webforJ 组件，并通过 @RouteAlias 为同一视图定义多个路径。
+_i18n_title_hash: 2d0483918fc7d51246d68af1677b6b67
+_i18n_description_hash: 7b8fcb2501a652a3bec3f747bc28428b
 _i18n_hash: 4f7189d5ef27386506e9ecf950f145ed
 ---
 定义路由对于将 URL 映射到特定组件是至关重要的。这使您能够根据 URL 结构控制 UI 的不同部分如何渲染。该框架使用 `@Route` 注释使此过程声明式和简单，从而减少手动配置的需要。

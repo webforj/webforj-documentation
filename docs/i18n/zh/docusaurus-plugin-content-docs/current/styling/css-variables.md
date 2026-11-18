@@ -1,9 +1,9 @@
 ---
 sidebar_position: 1
 title: CSS 变量
-description: >-
-  Define, scope, and consume CSS custom properties to control webforJ component
-  styling at runtime without preprocessors.
+description: 定义、限定作用域并使用 CSS 自定义属性，无需预处理器即可在运行时控制 webforJ 组件样式。
+_i18n_title_hash: 2d7e2edeeba349ead8ed25e6c5760a7d
+_i18n_description_hash: 036f57c7d8da4b9c825604c84a4db45e
 _i18n_hash: 8e09f9776dc8bb74a1d37e6ba2bdceb0
 ---
 CSS变量在定制webforJ组件外观方面发挥着核心作用。这些变量存储可重用的值，例如颜色、字体大小和间距，可以在您的应用程序中一致地应用。

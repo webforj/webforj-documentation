@@ -2,7 +2,12 @@
 title: Tietojen validointi ja sidonta
 sidebar_position: 6
 pagination_next: null
-description: Step 5 - Add validation checks and bind data to the UI.
+description: >-
+  Oppaan vaihe 5: sido lomake Customer-entiteettiin webforJ-tietosidonnalla ja
+  lisää validointitarkistukset, jotta käyttäjät syöttävät täydelliset ja oikeat
+  tiedot.
+_i18n_title_hash: 1b39fb4dd349eb66fe08e936754d96dd
+_i18n_description_hash: 8e9a4e957d28ea020d323e4584e497b2
 _i18n_hash: 97f423188eb353ac27b8e9179e93b224
 ---
 Sovelluksesi, jonka loit vaiheessa [Observers and Route Parameters](/docs/introduction/tutorial/observers-and-route-parameters), voi käyttää `FormView`-näkymää olemassa olevien asiakastietojen muokkaamiseen. Tässä vaiheessa käytetään [tietojen sidontaa](/docs/data-binding/overview), joka yhdistää käyttöliittymän komponentit suoraan tietomalliin ja synkronoi arvot automaattisesti. Tämä vähentää sovelluksesi toistuvaa koodia ja mahdollistaa validointitarkistusten lisäämisen Spring-entiteettiin `Customer`, jolloin käyttäjät antavat lomakkeita täyttäessään täydelliset ja oikeat tiedot. Tässä vaiheessa käsitellään seuraavia käsitteitä:

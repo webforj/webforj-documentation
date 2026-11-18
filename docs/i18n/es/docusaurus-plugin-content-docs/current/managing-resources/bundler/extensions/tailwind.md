@@ -1,10 +1,11 @@
 ---
 title: Tailwind
 sidebar_position: 60
-sidebar_class_name: new-content
 description: >-
-  Turn on the webforj-tailwind extension, apply utility classes from a view, and
-  understand how it generates and scans its own stylesheet.
+  Activa la extensión webforj-tailwind, aplica clases de utilidad desde una
+  vista y descubre cómo genera y analiza su propia hoja de estilos.
+_i18n_title_hash: ea2ef9c01d4832a00b2c2011f7899c4b
+_i18n_description_hash: b779c82c51fed20b8e821066cb54fe2c
 _i18n_hash: f588624ebd738977bb8be4e9887141d1
 ---
 [Tailwind CSS](https://tailwindcss.com/) es un marco CSS de utilidad primero cuyos nombres de clase se asignan a un pequeño conjunto de declaraciones CSS. Es la única extensión curada que se envía, porque la mayoría de los proyectos no la utilizan. Se habilita por id, de la misma manera que se activa cualquier extensión, consulta [Habilitado por id](/docs/managing-resources/bundler/extensions/overview#enabled-by-id). Cuando está activado, hace algo que los demás no hacen: genera su propia entrada.

@@ -2,9 +2,9 @@
 title: <dwc-field-spinner>
 sidebar_class_name: sidebar--item__hidden
 slug: field-spinner
-description: >-
-  Customize the dwc-field-spinner client component via CSS variables and shadow
-  parts to theme the input field and increment controls.
+description: 通过 CSS 变量和 shadow parts 自定义 dwc-field-spinner 客户端组件，为输入字段和递增控件设置主题。
+_i18n_title_hash: 2bcb10e1df09dc7161fe7211b64ef6f2
+_i18n_description_hash: be2ed1fcd9c53af97efd0c0761bb69be
 _i18n_hash: d3ed67c87156553e5c2525013ba06139
 ---
 <DocChip chip='shadow' />

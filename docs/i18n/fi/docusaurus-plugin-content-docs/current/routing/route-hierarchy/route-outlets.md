@@ -1,6 +1,11 @@
 ---
 sidebar_position: 3
 title: Reittiulostulot
+description: >-
+  Renderöi lapsireitit ylätason säilöissä HasComponents-ulostulojen, kehysten ja
+  RouteOutlet-rajapinnan avulla.
+_i18n_title_hash: d56ab21a3ee2335468187aa95009f477
+_i18n_description_hash: d16eb4f7cd58ebe5849ed9566df13ad4
 _i18n_hash: 8a64cd917fe9f1de3f37ee01254e80e7
 ---
 An **outlet** on määritelty komponentti, joko [reittinäkymä](./route-types#layout-routes) tai [reittinäkymä](./route-types#view-routes), jossa lapsireitit renderoidaan dynaamisesti. Se määrittää, mihin lapsireitin sisältö ilmestyy vanhempi-reitillä. Outletit ovat keskeisiä modulaaristen, sisäkkäisten käyttöliittymien ja joustavien navigointirakenteiden luomisessa.

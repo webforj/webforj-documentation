@@ -1,10 +1,9 @@
 ---
 title: 现有项目
 sidebar_position: 3
-description: >-
-  Move an existing webforJ project from the webforJ install plugin to BBjShip
-  with one OpenRewrite run, and what the migration changes in the build and the
-  configuration.
+description: 通过一次 OpenRewrite 运行，将现有 webforJ 项目从 webforJ 安装插件迁移到 BBjShip，并了解迁移对构建和配置的影响。
+_i18n_title_hash: 75633561a836e8bea083d17c962c72c0
+_i18n_description_hash: 333139950d198c97c18e5f8b4f1581ee
 _i18n_hash: 36b02a0227a79d8b8aa9929d930c3e75
 ---
 一个使用已弃用的 webforJ 安装插件进行部署的项目通过一次 OpenRewrite 运行迁移到 BBjShip。该运行更改项目的 `pom.xml` 和 `webforj.conf`。Java 代码、样式表和资源保持不变。

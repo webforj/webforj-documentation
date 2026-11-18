@@ -2,8 +2,10 @@
 sidebar_position: 5
 title: 自动绑定
 description: >-
-  Bind UI fields to bean properties automatically with BindingContext.of using
-  UseProperty, BindingExclude, and UseValidator annotations.
+  使用 UseProperty、BindingExclude 和 UseValidator 注解，通过 BindingContext.of 自动将 UI
+  字段绑定到 bean 属性。
+_i18n_title_hash: 666e71f372d1b611262598ca5cd23499
+_i18n_description_hash: 985dfb18ded910f005bf2a2e040a8f9d
 _i18n_hash: 60ea231c7622e56330eef34d26d615cc
 ---
 webforJ 提供了一些功能，可以简化开发人员的配置和自动绑定过程。本节演示了如何有效使用这些功能。

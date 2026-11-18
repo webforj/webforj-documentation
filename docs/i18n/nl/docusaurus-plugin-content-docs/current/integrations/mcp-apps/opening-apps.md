@@ -2,8 +2,10 @@
 title: Een view met invoer openen
 sidebar_position: 15
 description: >-
-  Accept structured opening input in a routed MCP App and choose its requested
-  display mode.
+  Accepteer gestructureerde initiële invoer in een gerouteerde MCP App, zodat de
+  AI de beginstatus van de weergave bepaalt, en kies hoe de client deze toont.
+_i18n_title_hash: 641ce292c434e6351081c2192b2fb20c
+_i18n_description_hash: 40ec8695fabff2edf283828b501926b8
 _i18n_hash: 158831b08974dd001c1322c38213e331
 ---
 Opening input stelt de AI in staat om de initiële staat van een weergave te kiezen. Bijvoorbeeld, een inventaris-app kan een magazijncode accepteren wanneer de client deze opent en die waarde toepassen nadat de route is weergegeven.

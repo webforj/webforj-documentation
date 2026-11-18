@@ -1,10 +1,11 @@
 ---
 title: Seiten-Sichtbarkeit
 sidebar_position: 32
-sidebar_class_name: new-content
 description: >-
-  Detect when the tab hosting your app moves between the foreground and the
-  background, and react in Java.
+  Erkennen Sie, wenn der Tab mit Ihrer App zwischen Vorder- und Hintergrund
+  wechselt, und reagieren Sie in Java.
+_i18n_title_hash: 81265a8a403fe0ab7cad1d253e17af5b
+_i18n_description_hash: 321fc422134e216464334627cf977f82
 _i18n_hash: 8382d0314f6143663c03e11409de08d5
 ---
 <DocChip chip='since' label='26.01' />

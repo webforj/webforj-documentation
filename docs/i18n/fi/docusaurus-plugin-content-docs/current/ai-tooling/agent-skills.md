@@ -2,8 +2,10 @@
 title: Agentin taidot
 sidebar_position: 10
 description: >-
-  Install Agent Skills so AI coding assistants follow webforJ workflows for
-  building forms, adding servlets, styling apps, and creating components.
+  Asenna Agent Skills ohjaamaan tekoälyavustajia webforJ-työnkuluissa:
+  lomakkeet, servletit, sovellusten tyylit ja komponentit.
+_i18n_title_hash: 29708548a94fe2952a0598dca6411701
+_i18n_description_hash: f6940bfd9278345accf64644193c7381
 _i18n_hash: 6dc21bfd21fb27f2e71cb2265f6cde8c
 ---
 Agent Skills opettavat AI-koodausassistentteja rakentamaan webforJ-sovelluksia oikeiden API:en, suunnittelutunnusten ja komponenttimallien avulla. Sen sijaan, että arvailisit kehyskonventioita, avustaja lataa taidon ja seuraa rakenteellista työnkulkua tuottaakseen koodia, joka kääntyy ja noudattaa parhaita käytäntöjä ensimmäisellä yrityksellä.

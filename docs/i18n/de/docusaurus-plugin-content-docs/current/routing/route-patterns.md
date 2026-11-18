@@ -2,8 +2,10 @@
 sidebar_position: 5
 title: Routen-Muster
 description: >-
-  Define dynamic URL segments, optional parameters, wildcards, and regex
-  constraints to match webforJ routes precisely.
+  Definieren Sie dynamische URL-Segmente, optionale Parameter, Platzhalter und
+  Regex-Einschränkungen, um webforJ-Routen präzise abzugleichen.
+_i18n_title_hash: e852c1a8c41ae5c7177d4e3e08d466fc
+_i18n_description_hash: 7fd2fcf7b040e6d79a1b6cd69fcfe610
 _i18n_hash: a6c1267e034c1562652cc01d0f336640
 ---
 **Routenmuster** werden verwendet, um zu definieren, wie URLs bestimmten Ansichten zugeordnet werden, einschließlich dynamischer und optionaler Segmente, regulärer Ausdrücke und Wildcards. Routenmuster ermöglichen es dem Framework, URLs abzugleichen, Parameter zu extrahieren und URLs dynamisch zu generieren. Sie spielen eine entscheidende Rolle bei der Strukturierung der Navigation einer Anwendung und der Komponentenanzeige basierend auf dem Standort des Browsers.

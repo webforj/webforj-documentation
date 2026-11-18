@@ -2,8 +2,10 @@
 title: Virheenjäljitys
 sidebar_position: 15
 description: >-
-  Attach a remote Java debugger to a running webforJ app from Visual Studio
-  Code, IntelliJ IDEA, or Eclipse using Jetty on port 8000.
+  Yhdistä etä-Java-debuggeri käynnissä olevaan webforJ-sovellukseen Visual
+  Studio Codesta, IntelliJ IDEAsta tai Eclipsestä Jettyllä portissa 8000.
+_i18n_title_hash: da7d763aac39b294c7453c77c10d8239
+_i18n_description_hash: a9b597788ed11cee25324e4c220963a8
 _i18n_hash: 6e761f399c4a1f8d562acf85f92af615
 ---
 Virheenkorjaus on olennainen osa Java-kehitystä, sillä se auttaa kehittäjiä tunnistamaan ja korjaamaan ongelmia tehokkaasti. Tässä oppaassa kerrotaan, miten virheenkorjaus määritetään webforJ:ssä Visual Studio Codea, IntelliJ IDEAa ja Eclipseä varten.

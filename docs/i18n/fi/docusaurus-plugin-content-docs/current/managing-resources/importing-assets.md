@@ -2,8 +2,10 @@
 sidebar_position: 1
 title: Resurssien tuominen
 description: >-
-  Attach JavaScript and CSS to webforJ components or the app using JavaScript,
-  InlineJavaScript, StyleSheet, and InlineStyleSheet annotations.
+  Liitä JavaScript ja CSS webforJ-komponentteihin tai sovellukseen JavaScript-,
+  InlineJavaScript-, StyleSheet- ja InlineStyleSheet-annotaatioilla.
+_i18n_title_hash: 2bb279247129f48aae96ef9448e7937b
+_i18n_description_hash: 536f6365a8d660553f582f17e63ae286
 _i18n_hash: 4343173cf0cbef440f24c05cf9ee3fbd
 ---
 Assets-annotaatiot tarjoavat deklaratiivisen lähestymistavan ulkoisten ja inline-resurssien, kuten JavaScriptin ja CSS:n, upottamiseen sovellukseen staattisesti. Nämä annotaatiot yksinkertaistavat resurssien hallintaa takaamalla, että riippuvuudet ladataan oikeassa suoritusvaiheessa, vähentäen manuaalista konfigurointia ja parantaen ylläpidettävyyttä.

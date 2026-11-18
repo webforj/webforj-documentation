@@ -1,6 +1,12 @@
 ---
 title: Historique du navigateur
 sidebar_position: 30
+description: >-
+  Naviguez dans l’historique du navigateur, ajoutez ou remplacez des entrées
+  depuis Java pour gérer les boutons précédent et suivant et l’URL sans
+  recharger la page.
+_i18n_title_hash: d7fe7e6519c3d23bbf458b5258a0d60d
+_i18n_description_hash: 9a11bddb7878a5ffd3af3a38688fa954
 _i18n_hash: 918006c1e505baa4bbffbfb32eb3d9d7
 ---
 <DocChip chip='since' label='24.12' />

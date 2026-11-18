@@ -1,6 +1,9 @@
 ---
 sidebar_position: 5
 title: 触发器
+description: 通过切换 auto-validate、使用 ValueChangeMode 并手动触发重新验证，控制 webforJ 何时验证绑定。
+_i18n_title_hash: 84ff23e034dfdf2b03ed32a46c01b3a1
+_i18n_description_hash: b2ae28f54011b30985d64a98dd939423
 _i18n_hash: 97f59b66c18e6a2d02174c1ba99f88f1
 ---
 通过默认设置，当用户修改数据时，例如输入新文本、勾选一个复选框或选择一个单选按钮中的新选项，绑定会自动重新验证组件。如果您希望关闭自动验证，并仅在写入数据模型时报告验证，可以配置绑定以关闭它们。这使您能够控制验证何时以及如何发生，从而可以根据特定应用程序需求或用户交互管理验证。

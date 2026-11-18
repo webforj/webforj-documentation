@@ -3,8 +3,11 @@ sidebar_position: 20
 title: Campos
 hide_giscus_comments: true
 description: >-
-  Share common field properties across webforJ input components, including
-  labels, helper text, required state, spellcheck, and prefix or suffix slots.
+  Comparte propiedades comunes de campo entre los componentes de entrada de
+  webforJ, como etiquetas, texto de ayuda, estado obligatorio, revisión
+  ortográfica y espacios para prefijos o sufijos.
+_i18n_title_hash: a4ca5edd20d0b5d502ebece575681f58
+_i18n_description_hash: fa15a2aed7f24e5520f84440981dc662
 _i18n_hash: 56462cf4d659ce15f72a624acae60f0f
 ---
 <JavadocLink type="foundation" location="com/webforj/component/field/DwcField"/>

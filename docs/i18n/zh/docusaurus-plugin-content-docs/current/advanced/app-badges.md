@@ -1,10 +1,11 @@
 ---
 sidebar_position: 38
-sidebar_class_name: new-content
 title: 应用徽章
 description: >-
-  Paint notification badges onto the operating system app icon and the browser
-  tab favicon.
+  使用 App.setBadge 在操作系统应用图标上显示通知徽章，并使用 Page.setIconBadge 在浏览器标签页 favicon
+  上显示徽章，了解各自的要求。
+_i18n_title_hash: 3c0f7d310eca6067a9eef6de9145ea90
+_i18n_description_hash: 1b09a1435cd022425bc03df97e5b5353
 _i18n_hash: ff5a388432db849aa6d7b7ac1f48aa89
 ---
 # 应用徽章 <DocChip chip='since' label='26.01' />

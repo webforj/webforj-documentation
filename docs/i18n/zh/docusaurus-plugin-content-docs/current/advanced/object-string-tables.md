@@ -1,6 +1,11 @@
 ---
 title: 对象与字符串表
 sidebar_position: 45
+description: >-
+  使用 ObjectTable、SessionObjectTable 和 StringTable，在整个应用范围或每个 HTTP 会话中存储共享的 Java
+  对象和字符串值。
+_i18n_title_hash: 37132a5869c490e9daef74f8ebef0b39
+_i18n_description_hash: f5444ec2a09c6cfddf6b4f34b0db888f
 _i18n_hash: 2ec33737ccaf06670b4c1cd16369d858
 ---
 `ObjectTable`、`SessionObjectTable` 和 `StringTable` 提供在 webforJ 环境中对共享数据的静态访问。它们可以在应用中的任何位置访问，并具有不同的用途：

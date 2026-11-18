@@ -3,8 +3,11 @@ title: Redeploiement et Actualisation en Direct
 hide_table_of_contents: false
 hide_giscus_comments: true
 description: >-
-  Apply code changes to a running webforJ app during development, on the server
-  through hotswap or a restart, and in the browser through live reload.
+  Appliquez des changements de code à une application webforJ en cours
+  d’exécution : hotswap ou redémarrage côté serveur, rechargement en direct dans
+  le navigateur.
+_i18n_title_hash: d038da25eadd3fa2b020437d8aac733d
+_i18n_description_hash: bf2e7ce0710fa98ee70bdafb74ac57eb
 _i18n_hash: 243a55fe41bec8aeb4dfc9f70561d80c
 ---
 Pendant le développement, webforJ applique les modifications enregistrées à l'application en cours d'exécution et met à jour le navigateur. Les modifications de classe atteignent l'application via un [outil de hotswap](/docs/configuration/deploy-reload/hotswap) ou par un redémarrage. Le rechargement en direct met à jour le navigateur après l'un ou l'autre.

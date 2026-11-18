@@ -1,9 +1,11 @@
 ---
-title: Aloittaminen
+title: Luo projekti
 description: >-
-  Create a new webforJ project from an archetype using either the startforJ web
-  wizard or a Maven command-line generator.
+  Luo uusi webforJ-projekti arkkityypin pohjalta joko startforJ-verkkovelhon tai
+  Maven-komentorivigeneraattorin avulla.
 sidebar_position: 2
+_i18n_title_hash: be86ca474df5e14056bc0f20d2cdb767
+_i18n_description_hash: db9722f31ec5732d2ef1b7567078da5f
 _i18n_hash: ea669974a5f1b3a02a162f89bb16c6e3
 ---
 Tässä artikkelissa kuvataan vaiheet uuden webforJ-sovelluksen luomiseksi käyttämällä webforJ [archetypeja](../building-ui/archetypes/overview.md). Archetypet tarjoavat valmiiksi määritettyjä projektirakenteita ja aloituskoodia, jotta voit saada projektin nopeasti käyntiin. 

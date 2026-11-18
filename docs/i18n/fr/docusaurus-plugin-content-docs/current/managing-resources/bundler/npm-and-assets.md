@@ -1,11 +1,12 @@
 ---
 title: Paquets et ressources
 sidebar_position: 30
-sidebar_class_name: new-content
 description: >-
-  Declare npm packages, load a module straight from one, install build-only
-  dependencies, rely on tree shaking, and import CSS and assets from a
-  component's entry.
+  Déclarez des packages npm, chargez-y un module, ajoutez des dépendances de
+  build, utilisez le tree shaking et importez CSS et ressources à l’entrée du
+  composant.
+_i18n_title_hash: cac008272dedd4c9bdc7860f88782b1e
+_i18n_description_hash: c5b4b96ca397aad0a739c7025891df15
 _i18n_hash: 3b538e3785ee74397f156dd38ef8506a
 ---
 Une entrée s'appuie sur plus que sa propre source. Elle importe des packages depuis npm, charge un module directement à partir de l'un d'eux, intègre une feuille de style ou une image, et peut provenir d'une classe que vous étendez ou d'une bibliothèque dont vous dépendez. Cette page traite de la manière dont ces éléments atteignent la compilation.

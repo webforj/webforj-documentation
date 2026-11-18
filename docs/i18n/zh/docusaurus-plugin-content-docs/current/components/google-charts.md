@@ -2,8 +2,10 @@
 title: Google Charts
 sidebar_position: 50
 description: >-
-  Render bar, line, pie, geo, and other Google Charts in webforJ using the
-  GoogleChart component with a typed Java options map and data API.
+  使用类型化的 Java 选项映射和数据 API，通过 GoogleChart 组件在 webforJ 中渲染柱状图、折线图、饼图、地理图及其他 Google
+  Charts。
+_i18n_title_hash: 768fc40acae001023a6f21ce0fa07b6e
+_i18n_description_hash: 59110a49959365fe4f1f2a0604d55e13
 _i18n_hash: 8e1916e526ef45c55ca75c6cd32a4e7f
 ---
 <DocChip chip='shadow' />

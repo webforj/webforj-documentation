@@ -2,8 +2,10 @@
 title: 部署
 sidebar_position: 5
 description: >-
-  Package, deploy and undeploy webforJ apps in BBjServices with the bbj-package,
-  bbj-deploy and bbj-undeploy goals of the webforJ Maven plugin.
+  使用 webforJ Maven 插件的 bbj-package、bbj-deploy 和 bbj-undeploy 目标，在 BBjServices
+  中打包、部署和取消部署 webforJ 应用。
+_i18n_title_hash: 99da218397f313ea17892c90fa6ceefc
+_i18n_description_hash: cfbfc51a5076a5273069e6c920d1f2ee
 _i18n_hash: 77099210b317740da114b7881490bd09
 ---
 # 部署 <DocChip chip='since' label='26.03' /> {#deploying}

@@ -2,9 +2,9 @@
 title: 热替换
 sidebar_position: 10
 sidebar_class_name: new-content
-description: >-
-  Apply compiled class changes to a running webforJ app without a restart,
-  through HotswapAgent or JRebel configured in the webforJ build plugin.
+description: 无需重启，即可通过在 webforJ 构建插件中配置 HotswapAgent 或 JRebel，将编译后的类更改应用到正在运行的 webforJ 应用。
+_i18n_title_hash: 4c7d4b6c634a74bdd513c24e964a1c12
+_i18n_description_hash: 29f601a92ca65c4705cbe7c7a163aeb4
 _i18n_hash: 5c17c1ef76de9c15b7177aee4b2b8419
 ---
 # 热替换 <DocChip chip='since' label='26.02' />

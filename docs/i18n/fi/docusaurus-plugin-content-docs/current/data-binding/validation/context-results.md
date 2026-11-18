@@ -1,6 +1,12 @@
 ---
 sidebar_position: 4
 title: Kontekstitulokset
+description: >-
+  Tarkastele ValidationResult-tulosta BindingContext-kirjoituksen jälkeen,
+  reagoi BindingContextValidateEvent-tapahtumaan ja kohdista fokus
+  automaattisesti ensimmäiseen validointivirheeseen.
+_i18n_title_hash: e7d8a9375af19d900fa8a28d7b45dd54
+_i18n_description_hash: 529756d0434ff4cbcebbf992f81dc7fe
 _i18n_hash: b86bc425ad8c1537e99a44fa34a93b3a
 ---
 When you write data from the UI to the model, the `write` method of the `BindingContext` triggers the validations. The validation results determine whether the data is acceptable.

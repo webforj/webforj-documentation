@@ -2,8 +2,11 @@
 title: Guardar archivo
 sidebar_position: 15
 description: >-
-  Prompt users for a save location with the FileSaveDialog, configuring initial
-  path, default filename, and overwrite behavior.
+  Solicita a los usuarios una ubicación para guardar con FileSaveDialog,
+  configurando la ruta inicial, el nombre de archivo predeterminado y el
+  comportamiento al sobrescribir.
+_i18n_title_hash: a6ed317bd67229e42bb06f70e8df0215
+_i18n_description_hash: 25e5b1972d65043e5a269ecf40d7ef55
 _i18n_hash: 861257322ca233cfa9e0eed5e4d3aa95
 ---
 <DocChip chip='shadow' />

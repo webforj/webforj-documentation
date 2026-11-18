@@ -1,9 +1,9 @@
 ---
 title: 测试 MCP 应用
 sidebar_position: 10
-description: >-
-  Test a webforJ MCP App with an MCP Apps-capable host, including the Codex app,
-  Claude Desktop, and MCPJam.
+description: 使用支持 MCP Apps 的宿主（包括 Codex app、Claude Desktop 和 MCPJam）测试 webforJ MCP App。
+_i18n_title_hash: 7f71eea7469350732da92cb8dbb4e4b6
+_i18n_description_hash: e20e4fdfb07d14a8402f4ac41e313b47
 _i18n_hash: fb9683202651a3aca86843cf27c0626e
 ---
 webforJ MCP 应用可以在任何支持 MCP 应用的主机上运行。这里的说明涵盖了通过可访问的 HTTPS 端点运行的 Codex 应用和 Claude Desktop，以及通过 localhost 运行的 MCPJam。来自 [Spring Boot 设置](./spring) 的最小无输入 `inventory` 工具足以确认主机可以发现该工具并呈现 Inventory 视图。

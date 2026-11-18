@@ -1,9 +1,9 @@
 ---
 title: 应用基础
-description: >-
-  Walk through the Application and HomeView classes of the hello-world archetype
-  to see how routing, annotations, and views shape a webforJ app.
+description: 通过 hello-world 原型中的 Application 和 HomeView 类，了解路由、注解和视图如何构建 webforJ 应用。
 sidebar_position: 3
+_i18n_title_hash: e48edafdc7bcfdffa196d313ed92facc
+_i18n_description_hash: d1fd89c71b0a465e14d96c833f078c57
 _i18n_hash: 2ebddfe300802013e4376681bc2ccf04
 ---
 一旦在您的项目中设置了webforJ及其依赖项，您就可以开始创建应用程序结构。本文将介绍基本webforJ应用程序的关键元素，特别关注`Application`和`HomeView`类，这是`webforj-archetype-hello-world`起始项目中的基础类。

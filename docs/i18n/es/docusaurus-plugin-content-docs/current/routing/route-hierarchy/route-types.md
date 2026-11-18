@@ -1,6 +1,12 @@
 ---
 sidebar_position: 1
 title: Tipos de ruta
+description: >-
+  Distingue las rutas de vista de webforJ, que se asignan a segmentos de URL, de
+  las rutas de layout, que envuelven una interfaz compartida sin modificar la
+  ruta.
+_i18n_title_hash: 97e64bd13d93989b694c20c44f94956a
+_i18n_description_hash: 6d7aa8ee37d01c55048daa3c9bc555c3
 _i18n_hash: 75cb67715544b94ca99fc81c736ebcc7
 ---
 Las rutas se clasifican en dos tipos principales, **Rutas de Vista** y **Rutas de Diseño**. La elección del tipo de ruta determina cómo se mapean los componentes a las URL y cómo interactúan con otras partes de tu aplicación.

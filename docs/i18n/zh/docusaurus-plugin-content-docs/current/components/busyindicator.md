@@ -1,9 +1,9 @@
 ---
 title: BusyIndicator
 sidebar_position: 10
-description: >-
-  Block the entire interface during long-running operations using the
-  BusyIndicator overlay with a customizable spinner, message, and backdrop.
+description: 在长时间运行的操作期间，使用 BusyIndicator 覆盖层阻止整个界面，并自定义加载动画、消息和背景遮罩。
+_i18n_title_hash: ec5a98aecd123dfd4a81662536be07f0
+_i18n_description_hash: 464931f634e400328e96f62833939c7c
 _i18n_hash: a6ab827c0422e8f10369500acc310007
 ---
 <DocChip chip="shadow" />

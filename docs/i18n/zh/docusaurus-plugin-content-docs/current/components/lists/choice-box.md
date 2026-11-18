@@ -2,9 +2,9 @@
 sidebar_position: 5
 title: ChoiceBox
 slug: choicebox
-description: >-
-  Pick a single value from a fixed set with the ChoiceBox dropdown, including
-  dropdown type styling, max row count, and keyboard navigation.
+description: 使用 ChoiceBox 下拉菜单从固定选项中选择单个值，并支持下拉类型样式、最大行数和键盘导航。
+_i18n_title_hash: 35c46e73340f12c2526025d732117e14
+_i18n_description_hash: 0d056a8083606dcdd49be49d30924ffa
 _i18n_hash: 1c1224ca662a0e268606dc1cb6a0e96a
 ---
 <DocChip chip='shadow' />

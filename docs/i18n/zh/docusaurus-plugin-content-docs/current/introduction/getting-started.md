@@ -1,9 +1,9 @@
 ---
-title: 开始使用
-description: >-
-  Create a new webforJ project from an archetype using either the startforJ web
-  wizard or a Maven command-line generator.
+title: 创建项目
+description: 使用 startforJ 网页向导或 Maven 命令行生成器，通过项目原型创建新的 webforJ 项目。
 sidebar_position: 2
+_i18n_title_hash: be86ca474df5e14056bc0f20d2cdb767
+_i18n_description_hash: db9722f31ec5732d2ef1b7567078da5f
 _i18n_hash: ea669974a5f1b3a02a162f89bb16c6e3
 ---
 本文概述了使用 webforJ [原型](../building-ui/archetypes/overview.md) 创建新 webforJ 应用的步骤。原型提供了预配置的项目结构和启动代码，以便您能够快速启动和运行项目。

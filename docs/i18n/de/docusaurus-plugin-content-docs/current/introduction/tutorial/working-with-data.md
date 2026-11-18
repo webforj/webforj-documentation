@@ -1,7 +1,12 @@
 ---
 title: Arbeiten mit Daten
 sidebar_position: 3
-description: Step 2 - Use Spring to work with data.
+description: >-
+  Tutorial Schritt 2: Erstellen Sie ein Kunden-Datenmodell mit
+  Spring-Annotationen, verwalten Sie die Daten und zeigen Sie sie in der webforJ
+  Table-Komponente an.
+_i18n_title_hash: 3ffdb1797f04c23a215070b004733b13
+_i18n_description_hash: 5a06171b41a1ff325265e66fd007c8c6
 _i18n_hash: f1c000ec07cb278db9d60d5f90d71743
 ---
 In diesem Schritt lernst du, wie du mit Spring ein Datenmodell erstellst und die Daten visuell darstellst.  

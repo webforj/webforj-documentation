@@ -1,6 +1,11 @@
 ---
 sidebar_position: 5
 title: Größen und Abstände
+description: >-
+  Nutzen Sie DWC-CSS-Variablen auf rem-Basis für Größen und Abstände, um
+  layoutsübergreifend einheitliche Skalierungen zu erzielen.
+_i18n_title_hash: c90e72ac432a0d05b25985d0532144c9
+_i18n_description_hash: ce424529b081c0661f49736ded38b9d4
 _i18n_hash: 05261a33707bc38ade5e855f5ae5ce47
 ---
 Abstand- und Größen-Tokens werden verwendet, um konsistenten Abstand und Größen in Ihrer App bereitzustellen. Alle Größen- und Abstands-Eigenschaften sind in `rem` definiert.

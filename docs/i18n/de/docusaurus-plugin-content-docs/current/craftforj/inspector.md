@@ -3,8 +3,10 @@ title: Komponenten untersuchen
 sidebar_position: 3
 sidebar_class_name: new-content
 description: >-
-  Browse the component tree webforJ built, select components from the page, and
-  change their properties while the app runs.
+  Erkunde den von webforJ erstellten Komponentenbaum, wähle Komponenten auf der
+  Seite aus und ändere ihre Eigenschaften, während die App läuft.
+_i18n_title_hash: 87bf9b08d5c7be91ce3029548b39c6de
+_i18n_description_hash: 74d957c09316753cbcd12bc0e7a38ea0
 _i18n_hash: 91fbaf620dc8967a50c4a5ce6b455841
 ---
 Der Inspector zeigt den Komponentenbaum, den Ihr Java-Code erstellt hat. Ein `Composite` erscheint als die von Ihnen geschriebene Klasse und enthält die untergeordneten Komponenten in der Reihenfolge, in der webforJ sie verwaltet. Dadurch entspricht die Struktur in craftforJ der Struktur in Ihrem Quellcode.

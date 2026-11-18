@@ -2,8 +2,10 @@
 title: Näkymän avaaminen syötteellä
 sidebar_position: 15
 description: >-
-  Accept structured opening input in a routed MCP App and choose its requested
-  display mode.
+  Vastaanota reititetyssä MCP Appissa rakenteinen aloitussyöte, jotta tekoäly
+  voi valita näkymän alkutilan, ja valitse asiakkaan käyttämä näyttötila.
+_i18n_title_hash: 641ce292c434e6351081c2192b2fb20c
+_i18n_description_hash: 40ec8695fabff2edf283828b501926b8
 _i18n_hash: 158831b08974dd001c1322c38213e331
 ---
 Avaamisen syöttö antaa tekoälyn valita näkymän alkuperäisen tilan. Esimerkiksi varastonhallintaohjelma voi hyväksyä varastokoodin, kun asiakas avaa sen, ja soveltaa tätä arvoa reitin renderöinnin jälkeen.

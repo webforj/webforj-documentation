@@ -1,9 +1,9 @@
 ---
 title: 文件上传
 sidebar_position: 20
-description: >-
-  Capture client uploads with the FileUploadDialog, returning an UploadedFile
-  that you can filter, move, and process server-side.
+description: 使用 FileUploadDialog 接收客户端上传文件，并返回 UploadedFile，供你在服务器端筛选、移动和处理。
+_i18n_title_hash: 99e8ebaa5ad2fafe4e141574f6b4a73f
+_i18n_description_hash: f71040f63f6870bc3a8f7c46fd53dcfc
 _i18n_hash: 411ef7de8459154002fa2a620f073b0d
 ---
 <DocChip chip='shadow' />

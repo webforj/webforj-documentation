@@ -3,8 +3,10 @@ sidebar_position: 30
 title: Modification et actualisation
 slug: refreshing
 description: >-
-  Edit Table rows by mutating the bound Repository and call commit to refresh
-  the UI through RepositoryCommitEvent.
+  Modifiez les lignes de Table en modifiant le Repository associé, puis appelez
+  commit pour actualiser l’interface via RepositoryCommitEvent.
+_i18n_title_hash: f4de95cd7a20c3ab229fb8c9596e84c7
+_i18n_description_hash: 40fec4995f2fa08bfe24c02da26aa209
 _i18n_hash: 84dec48293e6fa794713881310b6f303
 ---
 La modification des données dans le `Table` s’effectue en interagissant avec le `Repository` qui contient les données du `Table`. Le `Repository` sert de passerelle entre le `Table` et le jeu de données sous-jacent, en proposant des méthodes pour récupérer, modifier et actualiser les données. Voici un exemple qui permet de modifier le « Title » d’une ligne donnée.

@@ -1,7 +1,12 @@
 ---
 title: AppLayoutin integrointi
 sidebar_position: 7
-description: Step 6 - Using the AppLayout and FlexLayout components.
+description: >-
+  Opastuksen vaihe 6: kokoa sovellus yhteen asetteluun AppLayout-, AppNav- ja
+  FlexLayout-komponenteilla sekä reittien sisältöpaikoilla SideMenu-arkkityypin
+  tapaan.
+_i18n_title_hash: 1cf9808e378c413d31028f2590a4a1fe
+_i18n_description_hash: c1e6536f85e8d9aeb2a1089add85015d
 _i18n_hash: 3a2148bdfb680284a597a17c263609da
 ---
 Tässä vaiheessa yhdistät kaikki sovelluksesi osat yhtenäiseksi sovellussarakkeeksi. Tämän vaiheen lopussa sovelluksesi rakenne muistuttaa läheisesti [SideMenu-mallia](/docs/building-ui/archetypes/sidemenu), ja ymmärrät paremmin, miten seuraavat komponentit ja käsitteet toimivat:

@@ -1,10 +1,14 @@
 ---
 sidebar_position: 30
-title: 测试
+title: 使用 Spring Boot 进行测试
+sidebar_label: 测试
 description: >-
-  Test a webforJ Spring Boot app without a browser with @SpringBootTest and
-  @WebforjTest, with injected beans and Spring Security on routes.
+  使用 @SpringBootTest 和 @WebforjTest，无需浏览器即可测试 webforJ Spring Boot 应用，并在路由上使用注入的
+  Bean 和 Spring Security。
 sidebar_class_name: new-content
+_i18n_title_hash: 8d82a1e400f9e685fcd681c82650d41b
+_i18n_sidebar_label_hash: fa6a5a3224d7da66d9e0bdec25f62cf0
+_i18n_description_hash: 72fe3d7eea930520dd90cffc7ac44227
 _i18n_hash: be6b059b304f8b957535c4ce318ac31c
 ---
 # 测试 <DocChip chip='since' label='26.03' />

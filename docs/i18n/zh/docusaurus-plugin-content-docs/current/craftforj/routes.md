@@ -1,9 +1,9 @@
 ---
 title: 路由
 sidebar_position: 5
-description: >-
-  See every registered route in a running webforJ app, navigate to it from
-  craftforJ, and change the access rules declared on it.
+description: 查看正在运行的 webforJ 应用中所有已注册的路由，从 craftforJ 导航至这些路由，并修改其声明的访问规则。
+_i18n_title_hash: b41067229f91bece9cdfc66681cdd7a3
+_i18n_description_hash: 6221e0d73e034d35b082471687f4e420
 _i18n_hash: ec7a4521cd9c4328f9cd6550ebc9d90b
 ---
 “Routes”选项卡会显示运行中应用的路由表，路由器会按照[层级结构](/docs/routing/route-hierarchy/overview)保存路由，并标记当前活动路由。[动态](/docs/routing/routes-registration)注册的路由也会与带注解的路由一同显示。

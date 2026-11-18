@@ -2,8 +2,10 @@
 title: Toolbar
 sidebar_position: 145
 description: >-
-  Lay out action controls with the Toolbar component, placing components into
-  Start, Title, Content, and End slots with compact mode.
+  Organiza los controles de acción con el componente Toolbar, colocando
+  componentes en los espacios Start, Title, Content y End con el modo compacto.
+_i18n_title_hash: ef05c8098cdb2b34e39c80515fc037bd
+_i18n_description_hash: 7656a1c628c100fff112807efa5d27e5
 _i18n_hash: 166b39dabe94c73ecf6310dfdc1ba626
 ---
 <DocChip chip="shadow" />

@@ -2,8 +2,11 @@
 title: Configurar una app MCP
 sidebar_position: 30
 description: >-
-  Configure the public app origin, allowed embedding clients, and external
-  browser domains.
+  Configura una app MCP en application.properties o webforj.conf: el origen
+  público de la app, los clientes autorizados a incrustarla y los dominios
+  externos del navegador.
+_i18n_title_hash: 336a154a443ab7f5a3d3ae8d2a9379d6
+_i18n_description_hash: 21bb9e473a744985ccab201f743c7c52
 _i18n_hash: 6d6d861d57b9a398007bd9a792e9ec1f
 ---
 Agregue la configuración de la aplicación MCP a `application.properties`, o a `webforj.conf` cuando use la configuración estándar de webforJ. Establezca la dirección donde el cliente puede acceder a la aplicación, luego agregue solo los orígenes del cliente y del navegador que requiere el despliegue.

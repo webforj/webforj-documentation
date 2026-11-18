@@ -1,10 +1,10 @@
 ---
 sidebar_position: 5
 title: 元素
-description: >-
-  Integrate raw HTML tags and custom web components in webforJ using the Element
-  class to add children, set content, and call JavaScript functions.
+description: 使用 Element 类在 webforJ 中集成原生 HTML 标签和自定义 Web 组件，添加子元素、设置内容并调用 JavaScript 函数。
 slug: element
+_i18n_title_hash: aa56a2e65d8106aef3c61e4f6bf94fdb
+_i18n_description_hash: 7198daecc02e269ec73afea1289bfe54
 _i18n_hash: dff3b1c4df821aad3c4c7a4c66cfff65
 ---
 <JavadocLink type="foundation" location="com/webforj/component/element/Element" top='true'/>

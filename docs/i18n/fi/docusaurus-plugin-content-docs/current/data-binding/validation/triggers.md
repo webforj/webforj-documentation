@@ -1,6 +1,12 @@
 ---
 sidebar_position: 5
 title: Liipaisimet
+description: >-
+  Hallitse, milloin webforJ validoi sidokset kytkemällä automaattisen
+  validoinnin päälle tai pois, käyttämällä ValueChangeMode-asetusta ja
+  käynnistämällä validoinnin uudelleen manuaalisesti.
+_i18n_title_hash: 84ff23e034dfdf2b03ed32a46c01b3a1
+_i18n_description_hash: b2ae28f54011b30985d64a98dd939423
 _i18n_hash: 97f59b66c18e6a2d02174c1ba99f88f1
 ---
 Oletuksena sidokset vahvistavat automaattisesti komponentteja, kun käyttäjät muokkaavat niiden tietoja, kuten syöttämällä uutta tekstiä, tarkistamalla valintaruudun tai valitsemalla uuden vaihtoehdon radiopainikkeessa. Jos haluat poistaa automaattiset vahvistukset käytöstä ja raportoida ne vain tietomalliin kirjoitettaessa, voit määrittää sidonnan poistamaan ne käytöstä. Tämä antaa sinulle hallintaa siitä, milloin ja miten vahvistukset tapahtuvat, jolloin voit hallita vahvistuksia sovelluksen erityisten tarpeiden tai käyttäjäinteraktioiden mukaan.

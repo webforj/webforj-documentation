@@ -2,8 +2,10 @@
 sidebar_position: 3
 title: Navigatiestroom
 description: >-
-  Trace how RouteSecurityObserver intercepts navigation, runs evaluators, and
-  redirects users before any view renders.
+  Volg hoe RouteSecurityObserver navigatie onderschept, evaluatoren uitvoert en
+  gebruikers omleidt voordat een view wordt weergegeven.
+_i18n_title_hash: 6badde74c2e26d4f0486f2b4b491745a
+_i18n_description_hash: b801bb30c1fa7b39e5cc2ec5cb3f60bd
 _i18n_hash: bf6b927b675a5784340999a5e268581c
 ---
 Beveiligingshandhaving in webforJ vindt automatisch plaats tijdens navigatie. Wanneer een gebruiker op een link klikt of naar een route navigeert, onderschept het beveiligingssysteem de navigatie, evalueert het de toegangsregels en staat het de navigatie toe of verwijst het de gebruiker door naar een geschikte pagina. Deze onderschepping is onzichtbaar voor gebruikers en vereist geen handmatige beveiligingscontroles in de code van je componenten.
