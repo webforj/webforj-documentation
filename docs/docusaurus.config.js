@@ -150,16 +150,17 @@ module.exports = async function createConfig() {
         },
         sitemap: {
           lastmod: 'date',
-          // tag, author and pagination listings duplicate post content
+          // tag, author and pagination listings duplicate post content;
+          // blog and cookbook are not translated, so their locale copies stay out
           ignorePatterns: [
             '/blog/tags/**',
             '/blog/authors/**',
             '/blog/page/**',
             '/cookbook/tags/**',
-            '/*/blog/tags/**',
-            '/*/blog/authors/**',
-            '/*/blog/page/**',
-            '/*/cookbook/tags/**',
+            '/*/blog',
+            '/*/blog/**',
+            '/*/cookbook',
+            '/*/cookbook/**',
           ],
         },
         gtag: {
