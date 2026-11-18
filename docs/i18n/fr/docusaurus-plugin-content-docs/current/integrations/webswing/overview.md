@@ -2,8 +2,10 @@
 title: Webswing
 hide_table_of_contents: true
 hide_giscus_comments: true
-sidebar_class_name: new-content
-_i18n_hash: 853a4bb057c1a3499c26d4714120170f
+description: >-
+  Embed legacy Swing, JavaFX, or SWT desktop apps inside a webforJ UI through
+  Webswing for progressive modernization and hybrid experiences.
+_i18n_hash: 300c45aa8cc9f51831219f75d74d31b6
 ---
 # Webswing <DocChip chip='since' label='25.10' />
 
@@ -15,49 +17,53 @@ _i18n_hash: 853a4bb057c1a3499c26d4714120170f
   `}</style>
 </Head>
 
-Webswing est une technologie de serveur web qui permet aux applications de bureau Java (Swing, JavaFX, SWT) de fonctionner dans un navigateur web sans aucune modification du code source original. Il rend l'application de bureau sur le serveur et diffuse l'interface vers le navigateur en utilisant le canvas HTML5, gérant toutes les interactions utilisateur de manière transparente.
+Webswing est une technologie de serveur web qui permet d’exécuter des applications Java de bureau (Swing, JavaFX, SWT) dans un navigateur web sans modifier le code source d’origine. Elle exécute l’application de bureau sur le serveur et diffuse son interface dans le navigateur à l’aide d’un canevas HTML5, tout en gérant de manière transparente les interactions de l’utilisateur.
 
-## Ce que Webswing résout {#what-webswing-solves}
+## Ce que Webswing permet de résoudre {#what-webswing-solves}
 
-De nombreuses organisations ont des investissements considérables dans des applications de bureau Java contenant une logique métier critique développée au fil des ans ou des décennies. Ces applications ne peuvent souvent pas être facilement réécrites en raison de :
+De nombreuses organisations ont beaucoup investi dans des applications Java de bureau qui contiennent une logique métier essentielle, développée au fil des ans, voire des décennies. Il est souvent difficile de réécrire ces applications en raison des facteurs suivants :
 
-- Logique de domaine complexe qui serait risqué de recréer
-- Intégration avec des bibliothèques ou du matériel spécifiques au bureau
-- Contraintes de temps et de coûts pour une réécriture complète
-- Besoin de maintenir la parité fonctionnelle avec les fonctionnalités existantes
+- Une logique métier complexe qu’il serait risqué de recréer
+- Une intégration avec des bibliothèques ou du matériel propres aux applications de bureau
+- Les contraintes de temps et de coût liées à une réécriture complète
+- La nécessité de préserver la parité fonctionnelle avec les fonctionnalités existantes
 
-Webswing permet à ces applications d'être accessibles depuis le web sans modification, préservant leur fonctionnalité et apparence d'origine.
+Webswing permet de rendre ces applications accessibles sur le web sans les modifier, tout en préservant leurs fonctionnalités et leur apparence d’origine.
 
 ## Intégration avec webforJ {#integration-with-webforj}
 
-L'intégration Webswing de webforJ fournit le composant `WebswingConnector`, qui vous permet d'incorporer des applications hébergées par Webswing directement dans votre application webforJ. Cela crée des opportunités pour :
+L’intégration de Webswing à webforJ fournit le composant `WebswingConnector`, qui vous permet d’intégrer directement dans votre application webforJ des applications hébergées sur Webswing. Cela ouvre la voie à plusieurs possibilités :
 
 ### Modernisation progressive {#progressive-modernization}
 
-Au lieu d'une réécriture totale, vous pouvez :
+Au lieu de réécrire l’application entièrement ou pas du tout, vous pouvez :
 
-1. Commencer par intégrer votre application Swing existante via `WebswingConnector`
-2. Construire de nouvelles fonctionnalités dans webforJ autour de l'application intégrée
-3. Remplacer progressivement les composants Swing par des équivalents webforJ
-4. Finalement éliminer complètement l'application héritée
+1. Commencer par intégrer votre application Swing existante avec `WebswingConnector`
+2. Créer de nouvelles fonctionnalités dans webforJ autour de l’application intégrée
+3. Remplacer progressivement les composants Swing par leurs équivalents webforJ
+4. Éliminer à terme l’application héritée
 
 ### Applications hybrides {#hybrid-applications}
 
-Combinez une interface utilisateur web moderne construite avec webforJ avec des fonctionnalités de bureau spécialisées :
+Associez une interface web moderne créée avec webforJ à des fonctionnalités de bureau spécialisées :
 
-- Utilisez webforJ pour les interfaces utilisateurs, tableaux de bord et rapports
-- Exploitez Swing pour des visualisations complexes ou des éditeurs spécialisés
-- Maintenez une expérience d'application intégrée unique
+- Utiliser webforJ pour les interfaces destinées aux utilisateurs, les tableaux de bord et les rapports
+- Tirer parti de Swing pour les visualisations complexes ou les éditeurs spécialisés
+- Préserver une expérience unifiée dans une seule application
 
-## Comment ça fonctionne {#how-it-works}
+:::tip Remplacer les équivalents Swing
+Consultez [Passer de Swing à webforJ](/docs/introduction/coming-from-swing) pour comparer les composants Swing à leurs équivalents dans webforJ. Ces comparaisons incluent des références pertinentes pour vous aider à utiliser chaque fonctionnalité équivalente de webforJ.
+:::
 
-L'intégration fonctionne à travers trois couches :
+## Fonctionnement {#how-it-works}
 
-1. **Serveur Webswing** : exécute votre application de bureau Java, capturant sa sortie visuelle et traitant les entrées utilisateur
-2. **Composant WebswingConnector** : un composant webforJ qui intègre le client Webswing, gérant la connexion et la communication avec le serveur
-3. **Protocole de communication** : messagerie bidirectionnelle qui permet à votre application webforJ d'envoyer des commandes à l'application Swing et de recevoir des événements en retour
+L’intégration repose sur trois couches :
 
-Lorsque l'utilisateur accède à votre application webforJ, le `WebswingConnector` établit une connexion au serveur Webswing. Le serveur crée ou se reconnecte à une instance de l'application, et commence à diffuser l'état visuel vers le navigateur. Les interactions utilisateur (souris, clavier) sont capturées et envoyées au serveur, où elles sont rejouées sur l'application Swing réelle.
+1. **Serveur Webswing** : exécute votre application Java de bureau, capture son rendu visuel et traite les entrées de l’utilisateur
+2. **Composant WebswingConnector** : composant webforJ qui intègre le client Webswing et gère la connexion ainsi que la communication avec le serveur
+3. **Protocole de communication** : messagerie bidirectionnelle qui permet à votre application webforJ d’envoyer des commandes à l’application Swing et d’en recevoir des événements
+
+Lorsqu’un utilisateur accède à votre application webforJ, `WebswingConnector` établit une connexion avec le serveur Webswing. Le serveur crée une instance de l’application ou s’y reconnecte, puis commence à diffuser son état visuel dans le navigateur. Les interactions de l’utilisateur (souris, clavier) sont capturées et envoyées au serveur, où elles sont reproduites dans l’application Swing proprement dite.
 
 ## Thèmes {#topics}
 

@@ -264,7 +264,7 @@
   "chip.label.shadow": "3f39588bb19e28051d9aedfbb170025c",
   "chip.tooltipText.name": "ed6293ec72eaeaf37695b49b2ce8670d",
   "chip.tooltipText.webforJ.version.snapshot": "d47385da209696756efa26ecb3206ee0",
-  "chip.tooltipText.scoped": "9951d506b8a4e12e32607749c8b89e35",
+  "chip.tooltipText.scoped": "23614794b31ddcd8eef0054b74f51553",
   "chip.label.scoped": "423f62fd0413b98ab4dd487ec060e628",
   "chip.tooltipText.experimental": "85892e35f65e6e8d2472c09be46bb19f",
   "chip.label.experimental": "704b5561562b054400f33f22cf61c5f5",
@@ -1863,5 +1863,10 @@
   "page.modernization.band.book": "078140dcab08c976b398d5a07c18238c",
   "page.modernization.band.email": "389471b8330e5e6d7f5ce238f59f5294",
   "page.modernization.band.languages": "a33956c138d8d49d1deee80d07f477ca",
-  "page.modernization.guides.title": "2a237a54df77dac8eb9e107547e1a147"
+  "page.modernization.guides.title": "2a237a54df77dac8eb9e107547e1a147",
+  "page.modernization.hero.factJava": "397f0b4b1d23775dbaae4e2973a247d5",
+  "page.modernization.hero.factJavaValue": "289d02e59d6bd742ed1568fd17afbf79",
+  "page.modernization.start.step4.textAutoStart": "6c54eefca733f3751b08e56a85fb30b0",
+  "page.modernization.partner.leadConnector": "c110814640e3232f85e4c92d19c33497",
+  "page.modernization.partner.webswing.textPlain": "88926231de6530369b691019b8be6153"
 }

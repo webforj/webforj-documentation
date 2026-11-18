@@ -754,7 +754,7 @@
     "description": "Hover text to explain this feature is only available in a snapshot version of webforJ."
   },
   "chip.tooltipText.scoped": {
-    "message": "Tämä komponentti käyttää rajattuja komponentteja, vaihtoehtoista lähestymistapaa varjodomille, selaimen API:lle, joka mahdollistaa kapseloinnin. Nämä komponentit rajaavat tyylinsä vältääkseen vuotoja tai konflikteja sen sijaan, että luottaisivat alkuperäiseen varjodomiin.",
+    "message": "Tämä komponentti käyttää rajattuja komponentteja vuotojen ja ristiriitojen välttämiseksi natiivin shadow DOMin sijaan.",
     "description": "Hover text to explain this component is scoped, an alternative approach to the shadow DOM (document object model)."
   },
   "chip.label.scoped": {
@@ -5721,5 +5721,20 @@
   },
   "page.modernization.guides.title": {
     "message": "Lue oppaat"
+  },
+  "page.modernization.hero.factJava": {
+    "message": "BASIS International on toimittanut Java-pohjaista teknologiaa yli 20 vuoden ajan."
+  },
+  "page.modernization.hero.factJavaValue": {
+    "message": "Yli 20 vuotta"
+  },
+  "page.modernization.start.step4.textAutoStart": {
+    "message": "Lisää WebswingConnector näkymään kuten vaiheessa 1. WebswingOptions muuttaa sen toimintaa, esimerkiksi poistamalla automaattisen käynnistyksen käytöstä, jolloin sovelluksesi päättää, milloin yhteys avataan."
+  },
+  "page.modernization.partner.leadConnector": {
+    "message": "Webswing tuo Java-työpöytäsovelluksesi selaimeen jo tänään. webforJ vie sitä eteenpäin näkymä kerrallaan WebswingConnectorin avulla."
+  },
+  "page.modernization.partner.webswing.textPlain": {
+    "message": "Renderöi Swing-, JavaFX- tai SWT-sovelluksen palvelimella ja suoratoistaa sen käyttöliittymän selaimeen."
   }
 }

@@ -6,14 +6,18 @@ slug: glossary
 description: >-
   Definitions for terms used across webforJ documentation, including DOM, Shadow
   DOM, and other web platform and framework concepts.
-_i18n_hash: 5567c28b0575afa1ce7a9fcafcbe429c
+_i18n_hash: b8c6955dd483c1d5904668a163666015
 ---
 ## DOM {#dom}
 
-DOM（文档对象模型）是网页文档的编程接口。它将页面结构表示为一个对象树，其中每个节点对应于一个HTML元素。JavaScript和网页框架使用DOM动态访问和操控网页的内容、结构和样式。
+DOM（文档对象模型）是用于处理 Web 文档的编程接口。它将页面结构表示为对象树，其中每个节点对应一个 HTML 元素。JavaScript 和 Web 框架使用 DOM 动态访问和操作网页的内容、结构和样式。
 
 ## Shadow DOM {#shadow-dom}
 
-Shadow DOM是一种网络标准，允许在特定元素内封装DOM（文档对象模型）和CSS，称为影子树。这个隔离的DOM和CSS与主文档DOM是分开的，有效地为组件创建了一个作用域边界。Shadow DOM有助于创建自包含的可重用网页组件，可以将其添加到网页中，而无需担心与页面上其他样式和脚本的冲突。
+Shadow DOM 是一项 Web 标准，允许将 DOM（文档对象模型）和 CSS 封装在特定元素内，形成影子树。这个隔离的 DOM 和 CSS 与主文档的 DOM 分离，从而为组件创建作用域边界。借助 Shadow DOM，可以创建自包含且可复用的 Web 组件，并将其添加到网页中，而不必担心与页面上的其他样式和脚本发生冲突。
 
-它还引入了像影子部分和插槽的功能，允许开发者为父页面自定义而暴露影子树的某些部分。这提供了一种灵活的方法将内容传入组件，并自定义其外观，同时保持封装性。
+它还引入了影子部件和插槽等功能，开发者可以通过这些功能向父页面开放影子树中的特定部分，以供自定义。这样既能灵活地向组件传递内容并自定义其外观，又能保持封装性。
+
+## 作用域组件 {#scoped-components}
+
+样式被隔离、以避免与组件外部样式发生冲突的组件。这种隔离通过为组件样式添加唯一的数据属性实现，而不是依赖原生 Shadow DOM。

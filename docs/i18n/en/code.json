@@ -5721,5 +5721,20 @@
   },
   "page.modernization.guides.title": {
     "message": "Read the guides"
+  },
+  "page.modernization.hero.factJava": {
+    "message": "BASIS International has 20+ years of delivering technology built on Java"
+  },
+  "page.modernization.hero.factJavaValue": {
+    "message": "20+ years"
+  },
+  "page.modernization.start.step4.textAutoStart": {
+    "message": "Add a WebswingConnector to a view, as in phase 1. WebswingOptions changes its behavior, for example turning off auto start so your app decides when the connection opens."
+  },
+  "page.modernization.partner.leadConnector": {
+    "message": "Webswing runs the Java desktop app you have in the browser today. webforJ carries it forward screen by screen through the WebswingConnector."
+  },
+  "page.modernization.partner.webswing.textPlain": {
+    "message": "Renders the Swing, JavaFX or SWT app on the server and streams its interface to the browser."
   }
 }

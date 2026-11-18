@@ -6,14 +6,18 @@ slug: glossary
 description: >-
   Definitions for terms used across webforJ documentation, including DOM, Shadow
   DOM, and other web platform and framework concepts.
-_i18n_hash: 5567c28b0575afa1ce7a9fcafcbe429c
+_i18n_hash: b8c6955dd483c1d5904668a163666015
 ---
 ## DOM {#dom}
 
-Het DOM (Document Object Model) is een programmeerinterface voor webdocumenten. Het vertegenwoordigt de paginastuctuur als een boom van objecten, waarbij elke knoop overeenkomt met een HTML-element. JavaScript en webframeworks gebruiken het DOM om dynamisch toegang te krijgen tot en de inhoud, structuur en styling van webpagina's te manipuleren.
+De DOM (Document Object Model) is een programmeerinterface voor webdocumenten. Deze stelt de paginastructuur voor als een boom van objecten, waarbij elk knooppunt overeenkomt met een HTML-element. JavaScript en webframeworks gebruiken de DOM om de inhoud, structuur en opmaak van webpagina's dynamisch te benaderen en aan te passen.
 
 ## Shadow DOM {#shadow-dom}
 
-Shadow DOM is een webstandaard die het mogelijk maakt om het DOM (Document Object Model) en CSS binnen een specifiek element, bekend als de schaduwboom, te encapsuleren. Dit geïsoleerde DOM en CSS zijn gescheiden van het hoofddocument DOM, waardoor effectief een afgebakende scope voor de component ontstaat. Shadow DOM helpt om zelfvoorzienende, herbruikbare webcomponenten te creëren die aan een webpagina kunnen worden toegevoegd zonder zich zorgen te maken over conflicten met andere stijlen en scripts op de pagina.
+Shadow DOM is een webstandaard waarmee de DOM (Document Object Model) en CSS binnen een specifiek element, de shadow tree genoemd, kunnen worden ingekapseld. Deze geïsoleerde DOM en CSS staan los van de DOM van het hoofddocument, waardoor er effectief een afgebakende scope voor de component ontstaat. Shadow DOM helpt bij het maken van zelfstandige, herbruikbare webcomponenten die aan een webpagina kunnen worden toegevoegd zonder dat u zich zorgen hoeft te maken over conflicten met andere stijlen en scripts op de pagina.
 
-Het introduceert ook functies zoals schaduwonderdelen en slots, waarmee ontwikkelaars bepaalde delen van de schaduwboom kunnen blootstellen voor aanpassing door de bovenliggende pagina. Dit biedt een flexibele manier om inhoud in de component door te geven en het uiterlijk aan te passen, terwijl encapsulatie behouden blijft.
+Het introduceert ook functies zoals shadow parts en slots, waarmee ontwikkelaars bepaalde delen van de shadow tree beschikbaar kunnen maken voor aanpassing door de bovenliggende pagina. Zo kan inhoud op flexibele wijze aan de component worden doorgegeven en kan het uiterlijk ervan worden aangepast, terwijl de inkapseling behouden blijft.
+
+## Componenten met een beperkte scope {#scoped-components}
+
+Componenten waarvan de stijlen zijn geïsoleerd om conflicten met stijlen buiten de component te voorkomen. Deze isolatie wordt bereikt door unieke data-attributen op de stijlen van de component toe te passen, in plaats van te vertrouwen op de native shadow DOM.

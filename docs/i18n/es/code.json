@@ -754,7 +754,7 @@
     "description": "Hover text to explain this feature is only available in a snapshot version of webforJ."
   },
   "chip.tooltipText.scoped": {
-    "message": "Este componente utiliza componentes encapsulados, una alternativa al shadow DOM, una API del navegador que permite la encapsulación. Estos componentes restringen sus estilos para evitar filtraciones o conflictos en lugar de depender del shadow DOM nativo.",
+    "message": "Este componente usa componentes con ámbito para evitar filtraciones y conflictos, en lugar de depender del shadow DOM nativo.",
     "description": "Hover text to explain this component is scoped, an alternative approach to the shadow DOM (document object model)."
   },
   "chip.label.scoped": {
@@ -5721,5 +5721,20 @@
   },
   "page.modernization.guides.title": {
     "message": "Consulta las guías"
+  },
+  "page.modernization.hero.factJava": {
+    "message": "BASIS International lleva más de 20 años ofreciendo tecnología basada en Java."
+  },
+  "page.modernization.hero.factJavaValue": {
+    "message": "Más de 20 años"
+  },
+  "page.modernization.start.step4.textAutoStart": {
+    "message": "Añade un WebswingConnector a una vista, como en la fase 1. WebswingOptions modifica su comportamiento; por ejemplo, desactiva el inicio automático para que tu aplicación decida cuándo se abre la conexión."
+  },
+  "page.modernization.partner.leadConnector": {
+    "message": "Webswing ejecuta hoy en tu navegador la aplicación de escritorio Java que tienes. webforJ la hace avanzar, pantalla a pantalla, mediante WebswingConnector."
+  },
+  "page.modernization.partner.webswing.textPlain": {
+    "message": "Renderiza la aplicación Swing, JavaFX o SWT en el servidor y transmite su interfaz al navegador."
   }
 }

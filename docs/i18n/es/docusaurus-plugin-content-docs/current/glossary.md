@@ -6,14 +6,18 @@ slug: glossary
 description: >-
   Definitions for terms used across webforJ documentation, including DOM, Shadow
   DOM, and other web platform and framework concepts.
-_i18n_hash: 5567c28b0575afa1ce7a9fcafcbe429c
+_i18n_hash: b8c6955dd483c1d5904668a163666015
 ---
 ## DOM {#dom}
 
-El DOM (Modelo de Objetos del Documento) es una interfaz de programación para documentos web. Representa la estructura de la página como un árbol de objetos, donde cada nodo corresponde a un elemento HTML. JavaScript y los frameworks web utilizan el DOM para acceder y manipular dinámicamente el contenido, la estructura y el estilo de las páginas web.
+El DOM (Document Object Model) es una interfaz de programación para documentos web. Representa la estructura de la página como un árbol de objetos, donde cada nodo corresponde a un elemento HTML. JavaScript y los frameworks web usan el DOM para acceder y manipular dinámicamente el contenido, la estructura y los estilos de las páginas web.
 
-## Shadow DOM {#shadow-dom}
+## DOM de sombra {#shadow-dom}
 
-Shadow DOM es un estándar web que permite la encapsulación del DOM (Modelo de Objetos del Documento) y CSS dentro de un elemento específico, conocido como el árbol de sombra. Este DOM y CSS aislados son separados del DOM del documento principal, creando efectivamente un límite de alcance para el componente. Shadow DOM ayuda a crear componentes web reutilizables y autónomos que se pueden agregar a una página web sin preocuparse por conflictos con otros estilos y scripts en la página.
+El DOM de sombra es un estándar web que permite encapsular el DOM (Document Object Model) y el CSS dentro de un elemento específico, conocido como árbol de sombra. Este DOM y CSS aislados están separados del DOM del documento principal, lo que crea un límite de ámbito para el componente. El DOM de sombra ayuda a crear componentes web autocontenidos y reutilizables que se pueden agregar a una página web sin preocuparse por conflictos con otros estilos y scripts de la página.
 
-También introduce características como partes de sombra y slots que permiten a los desarrolladores exponer ciertas partes del árbol de sombra para su personalización por la página principal. Esto proporciona una forma flexible de pasar contenido al componente y personalizar su apariencia mientras se mantiene la encapsulación.
+También introduce funciones como las partes de sombra y las ranuras, que permiten a los desarrolladores exponer determinadas partes del árbol de sombra para que la página principal las personalice. Esto ofrece una forma flexible de pasar contenido al componente y personalizar su apariencia, a la vez que se mantiene el encapsulamiento.
+
+## Componentes con ámbito {#scoped-components}
+
+Componentes cuyos estilos están aislados para evitar conflictos con los estilos externos al componente. Este aislamiento se logra aplicando atributos de datos únicos a los estilos del componente, en lugar de depender del DOM de sombra nativo.

@@ -754,7 +754,7 @@
     "description": "Hover text to explain this feature is only available in a snapshot version of webforJ."
   },
   "chip.tooltipText.scoped": {
-    "message": "此组件使用作用域组件，作为一种替代影子DOM的方法，浏览器API用于实现封装。这些组件将样式作用域设置，以避免泄漏或冲突，而不是依赖于本地影子DOM。",
+    "message": "此组件使用作用域组件来避免泄漏和冲突，而非依赖原生 shadow DOM。",
     "description": "Hover text to explain this component is scoped, an alternative approach to the shadow DOM (document object model)."
   },
   "chip.label.scoped": {
@@ -5721,5 +5721,20 @@
   },
   "page.modernization.guides.title": {
     "message": "阅读指南"
+  },
+  "page.modernization.hero.factJava": {
+    "message": "BASIS International 拥有 20 多年基于 Java 提供技术的经验\n"
+  },
+  "page.modernization.hero.factJavaValue": {
+    "message": "20+年"
+  },
+  "page.modernization.start.step4.textAutoStart": {
+    "message": "像第一阶段一样，将 WebswingConnector 添加到视图中。WebswingOptions 可更改其行为，例如关闭自动启动，让应用决定何时建立连接。"
+  },
+  "page.modernization.partner.leadConnector": {
+    "message": "Webswing 让你如今可以在浏览器中运行 Java 桌面应用。webforJ 通过 WebswingConnector 逐屏延续这一体验。"
+  },
+  "page.modernization.partner.webswing.textPlain": {
+    "message": "在服务器上渲染 Swing、JavaFX 或 SWT 应用，并将其界面流式传输到浏览器。"
   }
 }
