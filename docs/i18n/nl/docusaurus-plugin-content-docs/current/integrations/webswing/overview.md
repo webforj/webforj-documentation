@@ -1,13 +1,14 @@
 ---
-title: Webswing
+title: 'Webswing met webforJ: een Swing-app stap voor stap moderniseren'
 hide_table_of_contents: true
 hide_giscus_comments: true
 description: >-
-  Integreer bestaande Swing-, JavaFX- of SWT-desktopapps via Webswing in een
-  webforJ-interface voor geleidelijke modernisering en hybride ervaringen.
-_i18n_title_hash: 2e5d4e6133d5cb0ee82f8b6e37cd0767
-_i18n_description_hash: 349a14bb13871c58d909824c9d874837
-_i18n_hash: 300c45aa8cc9f51831219f75d74d31b6
+  Gebruik Webswing om een Swing-, JavaFX- of SWT-app in de browser uit te
+  voeren, in een webforJ-app te integreren en stap voor stap te vervangen door
+  webschermen.
+_i18n_title_hash: 698c1a9e98e2ef808c204b0bc4be4669
+_i18n_description_hash: 3bd3bdba7583bc1699e8d6153577eb56
+_i18n_hash: 53117d208e8a0b0a2e46705f9edd1cdc
 ---
 # Webswing <DocChip chip='since' label='25.10' />
 
@@ -19,42 +20,46 @@ _i18n_hash: 300c45aa8cc9f51831219f75d74d31b6
   `}</style>
 </Head>
 
-Webswing is een webservertechnologie waarmee Java-desktopapplicaties (Swing, JavaFX, SWT) zonder aanpassingen aan de oorspronkelijke broncode in een webbrowser kunnen worden uitgevoerd. De desktopapplicatie wordt op de server weergegeven en de interface wordt met HTML5-canvas naar de browser gestreamd, terwijl alle gebruikersinteracties transparant worden afgehandeld.
+Webswing voert een Swing-, JavaFX- of SWT-app in de browser uit zonder wijzigingen in de broncode. Met webforJ sluit je die app in een webapp in en vervang je deze scherm voor scherm. Om berichten tussen beide uit te wisselen, voeg je de Webswing-API toe aan de Swing-app.
+
+Webswing is een webservertechnologie. De desktopapp wordt op de server weergegeven en de interface wordt met HTML5-canvas naar de browser gestreamd, waarbij alle gebruikersinteracties transparant worden afgehandeld.
+
+Zie [Swing moderniseren](/modernization) voor een overzicht van het volledige traject: van de desktopapp in de browser uitvoeren tot deze uitfaseren.
 
 ## Wat Webswing oplost {#what-webswing-solves}
 
-Veel organisaties hebben aanzienlijk geïnvesteerd in Java-desktopapplicaties met essentiële bedrijfslogica die in de loop van jaren of decennia is ontwikkeld. Deze applicaties zijn vaak niet eenvoudig te herschrijven vanwege:
+Veel organisaties hebben flink geïnvesteerd in Java-desktopapplicaties met essentiële bedrijfslogica die in de loop van jaren of decennia is ontwikkeld. Deze applicaties zijn vaak niet eenvoudig te herschrijven vanwege:
 
-- Complexe domeinlogica die riskant zou zijn om opnieuw te implementeren
-- Integratie met desktop-specifieke bibliotheken of hardware
-- Beperkingen in tijd en kosten voor een volledige herschrijving
-- De noodzaak om dezelfde functionaliteit te behouden
+- Complexe domeinlogica die riskant zou zijn om opnieuw te maken
+- Integratie met desktopspecifieke bibliotheken of hardware
+- De tijd en kosten van een volledige herschrijving
+- De noodzaak om de bestaande app qua functionaliteit te evenaren
 
-Met Webswing kunnen deze applicaties zonder aanpassingen via het web toegankelijk worden gemaakt, met behoud van hun oorspronkelijke functionaliteit en uiterlijk.
+Met Webswing zijn deze applicaties zonder aanpassingen toegankelijk via het web. Ze behouden hun oorspronkelijke functies en uiterlijk.
 
 ## Integratie met webforJ {#integration-with-webforj}
 
-De Webswing-integratie van webforJ biedt het component `WebswingConnector`, waarmee je applicaties die op Webswing worden gehost rechtstreeks in je webforJ-app kunt insluiten. Dit biedt mogelijkheden voor:
+De Webswing-integratie van webforJ biedt de component `WebswingConnector`, waarmee je applicaties die door Webswing worden gehost rechtstreeks in je webforJ-app kunt insluiten. Dit biedt mogelijkheden voor:
 
-### Geleidelijke modernisering {#progressive-modernization}
+### Stapsgewijze modernisering {#progressive-modernization}
 
 In plaats van alles in één keer te herschrijven, kun je:
 
 1. Beginnen met het insluiten van je bestaande Swing-app via `WebswingConnector`
 2. Nieuwe functies in webforJ bouwen rond de ingesloten app
-3. Swing-componenten geleidelijk vervangen door webforJ-equivalenten
+3. Swing-componenten geleidelijk vervangen door equivalenten in webforJ
 4. De verouderde app uiteindelijk volledig uitfaseren
 
 ### Hybride applicaties {#hybrid-applications}
 
-Combineer moderne webinterfaces gebouwd met webforJ met gespecialiseerde desktopfunctionaliteit:
+Combineer een moderne webinterface die met webforJ is gebouwd met gespecialiseerde desktopfuncties:
 
 - Gebruik webforJ voor gebruikersinterfaces, dashboards en rapporten
-- Benut Swing voor complexe visualisaties of gespecialiseerde editors
-- Behoud één geïntegreerde app-ervaring
+- Behoud Swing voor complexe visualisaties of gespecialiseerde editors
+- Zorg voor één geïntegreerde app-ervaring
 
-:::tip Swing-equivalenten vervangen
-Raadpleeg [Overstappen van Swing](/docs/introduction/coming-from-swing) voor vergelijkingen tussen Swing-componenten en hun webforJ-equivalenten. De vergelijkingen bevatten relevante verwijzingen om je te helpen elke equivalente functie in webforJ te gebruiken.
+:::tip Swing-tegenhangers vervangen
+Raadpleeg [Overstappen vanaf Swing](/docs/introduction/coming-from-swing) voor vergelijkingen tussen Swing-componenten en hun equivalenten in webforJ. De vergelijkingen bevatten relevante verwijzingen om je te helpen de functies van elk equivalent in webforJ te gebruiken.
 :::
 
 ## Hoe het werkt {#how-it-works}
@@ -62,10 +67,10 @@ Raadpleeg [Overstappen van Swing](/docs/introduction/coming-from-swing) voor ver
 De integratie werkt via drie lagen:
 
 1. **Webswing Server**: voert je Java-desktopapp uit, legt de visuele uitvoer vast en verwerkt gebruikersinvoer
-2. **WebswingConnector-component**: een webforJ-component dat de Webswing-client insluit en de verbinding en communicatie met de server beheert
-3. **Communicatieprotocol**: bidirectionele berichtenuitwisseling waarmee je webforJ-app opdrachten naar de Swing-app kan sturen en gebeurtenissen kan ontvangen
+2. **WebswingConnector Component**: een webforJ-component die de Webswing-client insluit en de verbinding en communicatie met de server beheert
+3. **Communicatieprotocol**: tweerichtingsberichtenuitwisseling waarmee je webforJ-app opdrachten naar de Swing-app kan sturen en gebeurtenissen kan ontvangen
 
-Wanneer een gebruiker je webforJ-app opent, maakt `WebswingConnector` verbinding met de Webswing-server. De server maakt een app-instantie aan of maakt opnieuw verbinding met een bestaande instantie, en begint de visuele status naar de browser te streamen. Gebruikersinteracties (muis, toetsenbord) worden vastgelegd en naar de server gestuurd, waar ze opnieuw worden uitgevoerd in de daadwerkelijke Swing-app.
+Wanneer een gebruiker je webforJ-app opent, brengt `WebswingConnector` een verbinding met de Webswing-server tot stand. De server maakt een app-instantie aan of maakt er opnieuw verbinding mee en begint de visuele status naar de browser te streamen. Gebruikersinteracties (muis, toetsenbord) worden vastgelegd en naar de server gestuurd, waar ze opnieuw worden afgespeeld in de daadwerkelijke Swing-app.
 
 ## Onderwerpen {#topics}
 
