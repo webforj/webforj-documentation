@@ -109,7 +109,7 @@ Shown below are example buttons with each of the supported Themes applied: <br/>
 <ComponentDemo
 path='/webforj/buttonthemes'
 files={['src/main/java/com/webforj/samples/views/button/ButtonThemesView.java']}
-height='175px'
+height='350px'
 />
 
 ### Expanses {#expanses}
