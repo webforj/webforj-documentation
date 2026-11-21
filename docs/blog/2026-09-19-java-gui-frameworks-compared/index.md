@@ -13,7 +13,7 @@ hide_table_of_contents: false
 
 You are starting a Java desktop app and have to pick a toolkit. Or you own a Swing app and wonder whether JavaFX would have been the better bet. Both toolkits are maintained, both are plain Java, and the choice still shapes years of work.
 
-JavaFX vs Swing in 2026 comes down to this. Swing ships inside the JDK and is the safe choice for a codebase that already uses it. JavaFX is the more modern toolkit, with CSS styling, FXML layouts, observable properties and built-in charts, and it is the stronger pick for a new desktop app. This post compares the two on the points that change the decision, with the same screen written in both. It ends with the case neither toolkit covers: users who need the app in a browser.
+JavaFX vs Swing in 2026 comes down to this. Swing ships inside the JDK and is the safe choice for a codebase that already uses it. JavaFX is the more modern toolkit, with CSS styling, FXML layouts, observable properties and built-in charts, and it is the stronger pick for a new desktop app. This post compares the two on the points that change the decision, with the same screen written in both. It ends with the case neither toolkit covers: users who need the app in a browser, where Webswing and webforJ take over.
 
 <!-- truncate -->
 

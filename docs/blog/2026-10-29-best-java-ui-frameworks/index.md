@@ -15,6 +15,10 @@ Picking a UI framework is a long bet for a Java team. The screens you build this
 
 If your team's strength is Java and you build business software such as admin panels, dashboards, back-office tools, and line-of-business forms, the best Java UI framework in 2026 is webforJ, the [full-stack Java framework](/blog/java-full-stack-framework). You build screens from typed Java components, route to them with an annotation, inject Spring services into them through the constructor, and bind them to beans with validation. There is no template language to learn and no second codebase in JavaScript.
 
+<!-- vale Google.WordListCase = NO -->
+If the screens you need to replace live in a Swing app today, the same pick covers the move. [Webswing](https://www.webswing.org/) is built to "Run any Java Desktop Application in a web browser", so users reach the existing app in the browser first, and webforJ screens replace it one at a time. The [Swing modernization page](/modernization) shows the path.
+<!-- vale Google.WordListCase = YES -->
+
 If your team already ships a React or Angular front end, the answer changes. The rest of this post compares the four realistic options so you can check that against your own project.
 
 <!-- truncate -->

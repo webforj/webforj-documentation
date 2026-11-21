@@ -13,7 +13,11 @@ hide_table_of_contents: false
 
 Your Swing app still does its job. It holds years of business rules, and the people who know it are down the hall. The pressure comes from elsewhere: users want the browser, IT wants simpler rollouts, and nobody wants to keep hiring for a desktop toolkit. So you start searching for Java Swing alternatives and find a long list with very different trade-offs.
 
-This post sorts the Java Swing alternatives into three kinds, says what each one means for your team and your existing code, and says when each is the right pick. We build webforJ, so we also make the case for it. webforJ is the full-stack Java framework for business web apps: you build the whole app, screens included, in Java.
+The short answer depends on where the app has to run and who writes the screens. An app that must stay on the desktop moves to JavaFX or SWT. A company with a JavaScript team puts React or Angular in front of its Java services. A Java team taking a business app to the browser picks a full-stack Java framework, and that's the category we build in: webforJ, where you build the whole app, screens included, in Java.
+
+<!-- vale Google.WordListCase = NO -->
+For a Swing app, webforJ also covers the move itself. [Webswing](https://www.webswing.org/) is built to "Run any Java Desktop Application in a web browser", so users reach the existing app in the browser first, and webforJ screens replace it one at a time. The rest of this post compares the three options and says when each is the right pick.
+<!-- vale Google.WordListCase = YES -->
 
 <!-- truncate -->
 
@@ -41,7 +45,7 @@ For a Swing team the price is the second codebase. The screens are rewritten in 
 
 This is the category where the team and the language stay the same. The screens become Java classes that run in the browser, so a developer who writes services can also write the user interface. Routing, forms, tables, security and translation come from the same framework, so there is no second stack to add.
 
-That is the idea behind webforJ, and it is the category we recommend for a Java team with a Swing business app. The rest of the case is about the move itself.
+That's the idea behind webforJ, and it's the category we recommend for a Java team with a Swing business app. The rest of the case is about the move itself.
 
 ## Keep the app running while you move {#keep-running}
 
