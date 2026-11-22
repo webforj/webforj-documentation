@@ -150,7 +150,9 @@ If you prefer reading, [Webswing and webforJ: a modernization roadmap](/blog/web
 
 ### Can I modernize a Java Swing app without JavaScript? {#faq-without-javascript}
 
-Yes. Webswing puts the existing Swing app in the browser without source changes, and webforJ lets you build every new screen in Java. Your team keeps working in one language from the database to the browser.
+<!-- vale Google.WordListCase = NO -->
+Yes. Webswing puts the existing Swing app in the browser without source changes, and webforJ lets you build every new screen in Java. Your team keeps working in one language from the database to the browser. For the enterprise side of that plan, with phases, team impact and risks, see how to [modernize a Java Swing application](/blog/swing-modernization-enterprise).
+<!-- vale Google.WordListCase = YES -->
 
 ### Do I have to rewrite the Swing app first? {#faq-rewrite-first}
 

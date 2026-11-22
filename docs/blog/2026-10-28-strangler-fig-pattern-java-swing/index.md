@@ -105,11 +105,13 @@ When the last Swing screen has a webforJ replacement, the connector view has not
 
 ## How long does it take? {#how-long}
 
-That depends on how many screens the app has and how tangled they are with the logic, so no single number fits every app. The pattern does change when your users see results. The app is in the browser after step 1, and every replaced screen ships on its own, so you measure progress in screens moved instead of waiting for a cutover date.
+<!-- vale Google.WordListCase = NO -->
+That depends on how many screens the app has and how tangled they're with the logic, so no single number fits every app. The pattern does change when your users see results. The app is in the browser after step 1, and every replaced screen ships on its own, so you measure progress in screens moved instead of waiting for a cutover date. To plan the budget and the team around it, the [enterprise guide to modernizing a Java Swing application](/blog/swing-modernization-enterprise) lays out a phased roadmap.
+<!-- vale Google.WordListCase = YES -->
 
 ## AI on each strangled screen {#ai-port}
 
-The pattern hands you work in small pieces, and a small piece is what an AI coding assistant handles well. For each replaced screen, it can draft the webforJ form that answers a connector action, and return it with a test that passes or fails before anyone reviews it. [The AI verification loop for Java](/blog/ai-verification-loop-java) covers how those checks run. The Swing side of each action stays with your team, because it lives in the Swing app and uses the Webswing Java API.
+The pattern hands you work in small pieces, and a small piece is what an AI coding assistant handles well, which is why the guide to [migrating a Java desktop app to the web with AI](/blog/ai-modernize-java-desktop-app) moves one screen at a time. For each replaced screen, it can draft the webforJ form that answers a connector action, and return it with a test that passes or fails before anyone reviews it. [The AI verification loop for Java](/blog/ai-verification-loop-java) covers how those checks run. The Swing side of each action stays with your team, because it lives in the Swing app and uses the Webswing Java API.
 
 ## Frequently asked questions {#faq}
 

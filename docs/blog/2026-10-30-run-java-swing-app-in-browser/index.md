@@ -67,7 +67,7 @@ Yes. Webswing runs Swing, JavaFX and SWT desktop apps in the browser, and `Websw
 
 ### Should I compare this with a full rewrite? {#faq-rewrite}
 
-If you are still choosing a direction, [how to migrate a Swing app to the web](/blog/migrate-swing-app-to-web) compares the paths side by side. This post covers the first step of the combined one: getting the existing app into a browser today.
+If you are still choosing a direction, [how to migrate a Swing app to the web](/blog/migrate-swing-app-to-web) compares the paths side by side, and [Java Swing alternatives](/blog/java-swing-alternatives) weighs what can replace Swing itself. This post covers the first step of the combined one: getting the existing app into a browser today.
 
 ## Register your Swing app on Webswing {#start}
 

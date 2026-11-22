@@ -240,7 +240,7 @@ A bridge uses server resources. Webswing renders on the server and streams to th
 
 ## Which screens to migrate first {#what-to-migrate-first}
 
-Start where the web helps most. Search screens, list and detail views, and reports gain the most from being reachable without an install. Leave screens with custom painting, drag and drop editors, or hardware access for last. Those may keep running under Webswing for a long time, which is a valid outcome.
+Start where the web helps most. Search screens, list and detail views, and reports gain the most from being reachable without an install. Leave screens with custom painting, drag and drop editors, or hardware access for last. Those may keep running under Webswing for a long time, which is a valid outcome. For using an AI assistant on the screens you do move, see how to [migrate a Java desktop app to the web with AI](/blog/ai-modernize-java-desktop-app).
 
 ## Frequently asked questions {#faq}
 
