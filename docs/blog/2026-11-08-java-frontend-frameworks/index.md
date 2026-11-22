@@ -21,7 +21,7 @@ For most Java teams building business apps, the best frontend framework for a Ja
 
 Every Java frontend choice falls into one of these shapes.
 
-**Server-rendered templates.** [Thymeleaf](https://www.thymeleaf.org/) is a server-side template engine. A Spring MVC controller fills a model and the browser receives a finished page, so interactivity beyond forms and links means adding JavaScript yourself.
+**Server-rendered templates.** [Thymeleaf](https://www.thymeleaf.org/) is a server-side template engine. A Spring MVC controller fills a model and the browser receives a finished page, so interactivity beyond forms and links means adding JavaScript yourself. When that becomes the daily work, a [Thymeleaf alternative](/blog/thymeleaf-alternative-spring-boot) keeps the screens in Java.
 
 **Component frameworks from the Java EE line.** [Jakarta Faces](https://jakarta.ee/specifications/faces/), formerly JSF, is the Jakarta EE specification for server-side component UIs, with XHTML views bound to managed beans.
 

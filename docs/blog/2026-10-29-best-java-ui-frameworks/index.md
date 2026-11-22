@@ -46,7 +46,7 @@ The table maps each approach to where the UI code lives.
 
 [Thymeleaf](https://www.thymeleaf.org/) is a server-side Java template engine with Spring integration. A controller returns a model, and a template renders it to HTML. This is a good fit when the page is mostly content and the interactions are links and form posts.
 
-The limits show up when screens become interactive. A sortable grid, an inline edit, or a dialog needs JavaScript that you write and maintain next to the templates. Thymeleaf gives you rendering, not a component model, so every interactive widget is something you assemble from HTML, CSS, and scripts.
+The limits show up when screens become interactive. A sortable grid, an inline edit, or a dialog needs JavaScript that you write and maintain next to the templates. Thymeleaf gives you rendering, not a component model, so every interactive widget is something you assemble from HTML, CSS, and scripts. For a Spring Boot app that has reached that point, the [Thymeleaf alternative](/blog/thymeleaf-alternative-spring-boot) post shows the same screens built as Java components.
 
 ## Component views with Jakarta Faces {#jakarta-faces}
 
