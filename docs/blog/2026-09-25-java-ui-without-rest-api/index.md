@@ -51,7 +51,7 @@ The full connection between the Spring integration and the component model is do
 
 The state management problem also changes shape. The UI component reads from the service on each render. There's no local cache to invalidate because there's no local copy: the component reads the data it needs when it needs it. The data lives in one place.
 
-This is not a new pattern. GWT used the same model in the 2000s, with Java on both sides and an RPC mechanism in between. The architecture isn't novel; what's changed is that modern Java UI frameworks make it straightforward without requiring a separate RPC layer.
+This isn't a new pattern. GWT used the same model in the 2000s, with Java on both sides and an RPC mechanism in between. The architecture isn't novel; what's changed is that modern Java UI frameworks make it straightforward without requiring a separate RPC layer. For teams still on GWT, the [GWT alternative](/blog/gwt-alternative) post shows how its RPC services turn into direct service calls.
 
 ## When the REST API is still the right answer {#when-the-rest-api-is-still-the-right-answer}
 

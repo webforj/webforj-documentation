@@ -1,5 +1,5 @@
 ---
-title: "Struts to Spring Boot migration with webforJ"
+title: "Struts alternative: migrate to Spring Boot with webforJ"
 description: "Struts to Spring Boot migration with webforJ, an Apache Struts alternative: replace action and JSP pairs with Java views and keep your services."
 slug: apache-struts-alternative
 date: 2026-06-08

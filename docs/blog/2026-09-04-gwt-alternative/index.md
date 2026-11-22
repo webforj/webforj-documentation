@@ -1,5 +1,5 @@
 ---
-title: "GWT to Spring Boot migration: move your UI to webforJ"
+title: "GWT alternative: move a Google Web Toolkit UI to webforJ"
 description: "A GWT to Spring Boot migration with webforJ, a GWT alternative: keep your UI in Java, skip the JavaScript compile step and replace RPC with service calls."
 slug: gwt-alternative
 date: 2026-09-04

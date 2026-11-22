@@ -90,7 +90,7 @@ webforJ is a full-stack Java framework for business web apps. It gives the incre
 
 New screens are built in webforJ next to the embedded app, in the same browser tab. The two sides can exchange data both ways. That part needs a small addition on the Swing side using the Webswing Java API, which the [communication docs](/docs/integrations/webswing/communication) cover. Screen by screen, the webforJ side grows and the Swing side shrinks until it can be retired.
 
-**For Struts, JSF and JSP web apps,** there is no bridge to run, because these apps already live in a browser. Here, avoiding a full rewrite means rebuilding the UI in Java, page by page, against the services you already have. You rewrite the screens, not the system.
+**For Struts, JSF and JSP web apps,** there is no bridge to run, because these apps already live in a browser. Here, avoiding a full rewrite means rebuilding the UI in Java, page by page, against the services you already have. You rewrite the screens, not the system. The [Struts alternative](/blog/apache-struts-alternative) guide shows that move for an action and its JSP page.
 
 In both cases the new screens are written the way a Java developer already thinks. Components are Java objects, events are listeners, and layouts are composed in Java. The business logic stays where it is, and if it already runs on Spring, the beans stay too. Existing Spring Data repositories, for example, [work with webforJ components without modification](/docs/integrations/spring/spring-data-jpa).
 

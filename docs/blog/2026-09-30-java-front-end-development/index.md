@@ -22,7 +22,7 @@ This guide is for Java teams deciding how to build a browser UI. It covers what 
 Yes. Modern browsers run JavaScript, not Java, so the real question is where your UI code lives. The wider question of [whether Java is good for web development](/blog/is-java-good-for-web-development) comes down to four common beliefs, checked one by one. There are three honest answers.
 
 1. **Your UI code runs in the browser as JavaScript or TypeScript.** Java stays on the server as a data API.
-2. **Your UI code is Java, compiled or translated to something the browser runs.** This was the path of toolkits like [GWT](https://www.gwtproject.org/).
+2. **Your UI code is Java, compiled or translated to something the browser runs.** This was the path of toolkits like [GWT](https://www.gwtproject.org/). Teams still on it can see how its concepts map in a [GWT alternative](/blog/gwt-alternative) that keeps the UI in Java.
 3. **Your UI code is Java and runs on the server, and the browser acts as a display and input device.** This is how webforJ works.
 
 The third model is the one that removes the front end as a separate discipline. You never design a REST contract for your own screens, never duplicate validation in two languages, and never keep two build pipelines in sync.

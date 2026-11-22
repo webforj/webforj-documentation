@@ -158,7 +158,7 @@ This is two companies, one path. Webswing runs the existing app in the browser t
 
 ### Legacy Java web apps {#web-apps}
 
-For JSP, JSF and Struts there is no bridge to run, and none is needed. These apps already run in a browser. Here, avoiding a full rewrite means rebuilding only the UI, in Java, while the Java backend and the Java team stay. You rebuild the pages one at a time against the same services, and retire the old pages as each replacement goes live.
+For JSP, JSF and Struts there is no bridge to run, and none is needed. These apps already run in a browser. Here, avoiding a full rewrite means rebuilding only the UI, in Java, while the Java backend and the Java team stay. You rebuild the pages one at a time against the same services, and retire the old pages as each replacement goes live. For a Struts app, the [Struts alternative](/blog/apache-struts-alternative) guide maps each action and its JSP page to a webforJ view.
 
 That is a different choice from the usual advice to rewrite the front end in Angular or React. The services, the transactions and the people stay in Java. The [JSP modernization post](/blog/jsp-modernization) shows what a Java-native path looks like for that case.
 
