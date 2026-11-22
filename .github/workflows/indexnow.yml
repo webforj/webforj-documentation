@@ -8,8 +8,8 @@ on:
     types: [completed]
   workflow_dispatch:
 
-# Only the newest run matters: each run sends every page changed in the last
-# 2 days, so a new deploy cancels the run still waiting from the previous one.
+# Only the newest run matters: each run sends the pages changed since the last
+# completed run, so a new deploy cancels the run still waiting from the previous one.
 concurrency:
   group: indexnow
   cancel-in-progress: true
@@ -18,11 +18,25 @@ jobs:
   notify:
     if: ${{ github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 60
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
+      # The lastmod values sent by the previous run, so each changed page is sent once.
+      - name: Restore Sent Pages
+        uses: actions/cache/restore@v4
+        with:
+          path: .indexnow/sent.json
+          key: indexnow-sent-${{ github.run_id }}
+          restore-keys: indexnow-sent-
+
       - name: Notify IndexNow
         working-directory: docs
-        run: node tools/indexnow.mjs --recent
+        run: node tools/indexnow.mjs --recent --state ../.indexnow/sent.json
+
+      - name: Save Sent Pages
+        uses: actions/cache/save@v4
+        with:
+          path: .indexnow/sent.json
+          key: indexnow-sent-${{ github.run_id }}
