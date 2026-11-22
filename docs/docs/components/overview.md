@@ -15,7 +15,7 @@ description: Browse the webforJ UI component catalog covering layouts, data entr
 </Head>
 
 <Head>
-  <title>UI Components | User Interface Application Building Components</title>
+  <title>Java UI Components | webforJ</title>
 </Head>
 
 In webforJ, applications are created using modular units known as Components, which facilitate quick and efficient UI development. The framework offers a range of essential components like buttons, input elements, and layout containers. After mastering the fundamentals, you can consult the [JavaDocs](https://javadoc.io/doc/com.webforj) for a detailed overview of all components and their functionalities.

@@ -1,5 +1,5 @@
 ---
-title: "Azul 2026 State of Java Survey & Report: Where webforJ Fits"
+title: "Azul 2026 State of Java Survey: Where webforJ Fits"
 description: "What Azul's 2026 State of Java Survey of over 2,000 Java professionals says about cloud computing, app security and AI output, and where webforJ helps."
 slug: azul-2026-state-of-java-report
 date: 2026-08-13
