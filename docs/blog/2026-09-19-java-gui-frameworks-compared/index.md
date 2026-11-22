@@ -199,9 +199,9 @@ The decision guides go further. [Java Swing to web migration](/blog/migrate-swin
 
 For a new desktop app, JavaFX. It has data binding, CSS styling and built-in charts. Stay with Swing when you already have a Swing codebase, or when the app must run on a plain JDK with no extra modules.
 
-### Is JavaFX still used in 2026? {#faq-javafx-still-used}
+### Is JavaFX dead or still used in 2026? {#faq-javafx-still-used}
 
-Yes. JavaFX is developed as the open source OpenJFX project and ships a new release every six months. Version 27 arrived in September 2026.
+It's alive and still used. JavaFX is developed as the open source OpenJFX project and ships a new release every six months. Version 27 arrived in September 2026.
 
 ### Is Java Swing still used in 2026? {#faq-swing-still-used}
 

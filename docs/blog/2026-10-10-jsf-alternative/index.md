@@ -214,7 +214,7 @@ An AI coding assistant can draft each webforJ view from a Faces page and its bac
 
 For teams that want to keep writing the UI in Java, webforJ is a strong choice. It keeps the server-side component model that JSF users know, but replaces XHTML views with Java classes and EL bindings with a typed `BindingContext`.
 
-### Is the Faces standard deprecated? {#faq-deprecated}
+### Is JSF dead or deprecated? {#faq-deprecated}
 
 No. Jakarta Faces is an active Jakarta EE specification, and the [specification page](https://jakarta.ee/specifications/faces/) lists version 4.1 for Jakarta EE 11 and version 5.0 under development for Jakarta EE 12. Teams move for developer experience, not because the standard is gone.
 

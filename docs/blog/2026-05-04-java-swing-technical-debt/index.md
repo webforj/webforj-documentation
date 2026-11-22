@@ -132,6 +132,10 @@ No. Swing is still part of the JDK's `java.desktop` module and existing apps kee
 
 Swing has not been removed from the JDK, so it has no end-of-life date we can point to. Your support timeline comes from the Java runtime you deploy it on and the libraries your app depends on. Plan the modernization around your own requirements, not around a Swing sunset.
 
+### Is Java Swing deprecated? {#faq-swing-deprecated}
+
+No. The `javax.swing` package isn't deprecated. The Swing class marked for removal was `JApplet`, as part of the Applet API, and it goes away in JDK 26. The rest of Swing still ships in the `java.desktop` module.
+
 ### Why modernize a Swing app? {#faq-why-modernize-swing}
 
 Modernize when users need browser access, when client deployment becomes a burden, or when your Swing expertise is concentrated in a few people. With webforJ you can do it gradually: embed the Swing app first, then replace screens with Java-based webforJ components while the app stays in production.

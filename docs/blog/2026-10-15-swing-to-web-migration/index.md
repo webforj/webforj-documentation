@@ -1,6 +1,6 @@
 ---
 title: "Convert Swing to web: a Swing to webforJ mapping guide"
-description: "Convert Swing to web screen by screen: map JFrame, layout managers, JTable, JOptionPane and SwingWorker to webforJ, with before and after code."
+description: "Convert a Java Swing app to a web app screen by screen: map JFrame, layout managers, JTable, JOptionPane and SwingWorker to webforJ, with before and after code."
 slug: swing-to-web-migration
 date: 2026-10-15
 authors: webforJ

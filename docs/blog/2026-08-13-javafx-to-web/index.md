@@ -1,6 +1,6 @@
 ---
 title: "JavaFX to web: move your desktop UI to the browser in Java"
-description: "Plan a JavaFX to web move that keeps Java. See how stages, scenes, controls, FXML and bindings map to webforJ, and which screens to port first."
+description: "Plan a JavaFX to web app move that keeps Java. See how stages, scenes, controls, FXML and bindings map to webforJ, and which screens to port first."
 slug: javafx-to-web
 date: 2026-08-13
 authors: Hyyan Abo Fakher
@@ -13,7 +13,7 @@ hide_table_of_contents: false
 
 Your JavaFX app works. Users like it, the domain logic took years to get right, and now someone wants it in a browser: no installer, no JRE on every laptop, access from a phone, or access from a customer site. Rewriting it in JavaScript would throw away the one thing you have plenty of, which is Java.
 
-JavaFX to web does not need a second language. With webforJ, a full-stack Java framework, you keep Java, keep your services and domain classes, and rebuild the screens as routes and components that render in the browser. Screens move one at a time, so the app stays releasable the whole way.
+JavaFX to web doesn't need a second language. With webforJ, a full-stack Java framework, you keep Java, keep your services and domain classes, and rebuild the screens as routes and components of a web app that runs in the browser. Screens move one at a time, so the app stays releasable the whole way.
 
 <!-- truncate -->
 
@@ -121,6 +121,12 @@ To decide which JavaFX screens to rebuild first and which to keep running in the
 ### How do I migrate JavaFX to web without learning JavaScript? {#faq-no-javascript}
 
 Build the UI in Java with webforJ. Screens become routes, controls become webforJ components, and layout is Java code. Your services and domain classes stay as they are.
+
+### Can JavaFX be used for web applications? {#faq-javafx-web-apps}
+
+<!-- vale Google.WordListCase = NO -->
+Not on its own. JavaFX is a desktop toolkit, so its screens open in a window on the user's machine, not in a browser tab. To reach the browser, you run the existing app through [Webswing](https://www.webswing.org/), which is built to "Run any Java Desktop Application in a web browser", or you rebuild the screens as webforJ views, which are web pages written in Java. The two also work together: Webswing first, then one screen at a time.
+<!-- vale Google.WordListCase = YES -->
 
 ### Can I run a JavaFX app in the browser without rewriting it? {#faq-run-in-browser}
 

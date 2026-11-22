@@ -80,6 +80,10 @@ webforJ is built for apps that run in the browser. If your app must run offline 
 
 It depends on where the app has to run. For business apps that move to the browser, with a Java team that wants to keep its code and its language, the alternative that fits is a full-stack Java framework such as webforJ. For an app that must stay on the desktop, JavaFX or SWT fits better.
 
+### Is JavaFX the replacement for Swing? {#faq-javafx-replacement}
+
+Only on the desktop. JavaFX is the newer Java desktop toolkit, but moving to it means rewriting every screen, because the two toolkits have different component models, and the result is still a desktop app. If users need the app in a browser, a rewrite in JavaFX is the wrong target. Rebuild the screens in a full-stack Java framework such as webforJ instead.
+
 ### Can I keep my Swing app and move to the web? {#faq-keep}
 
 Yes. Webswing runs your Swing app in a web browser without changes to the source code, and `WebswingConnector` embeds it in a webforJ app. You then replace screens one at a time while old and new screens communicate.
