@@ -2040,3 +2040,10 @@
     transition: none !important;
   }
 }
+
+/* The three ways in: three columns on wide screens instead of four. */
+@media (min-width: 1100px) {
+  .pathThree {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}

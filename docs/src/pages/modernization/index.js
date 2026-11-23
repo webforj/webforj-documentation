@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Layout from '@theme/Layout';
 import Link from '@docusaurus/Link';
 import CodeBlock from '@theme/CodeBlock';
@@ -6,6 +6,7 @@ import Translate, { translate } from '@docusaurus/Translate';
 import { ArrowIcon, ExternalIcon } from '@site/src/components/pageKit/icons';
 import usePauseOffscreen from '@site/src/components/pageKit/usePauseOffscreen';
 import { CONTACT_URL, CONTACT_EMAIL, TEAM_LANGUAGES } from '@site/src/components/connect/links';
+import { contactMailto } from '@site/src/components/PostCta';
 import {
   PHASE_CODE,
   SWING_SENDS,
@@ -123,9 +124,9 @@ function getPhases() {
         message: 'Build new screens around it',
       }),
       text: translate({
-        id: 'page.modernization.phases.p2.text',
+        id: 'page.modernization.phases.p2.textApi',
         message:
-          'New screens are written in webforJ and sit next to the embedded app. The two sides send each other actions, so a click in Swing can open a web form and a save on the web updates the Swing table. Users work in old and new screens in the same browser tab.',
+          'New screens are written in webforJ and sit next to the embedded app. The Swing app adds the Webswing API, and the two sides send each other actions, so a click in Swing can open a web form and a save on the web updates the Swing table. Users work in old and new screens in the same browser tab.',
       }),
       file: 'CustomerTableView.java',
       code: PHASE_CODE.hybrid,
@@ -249,8 +250,8 @@ function getStays() {
         message: 'The toolchain',
       }),
       text: translate({
-        id: 'page.modernization.stays.toolchain.text',
-        message: 'Maven, your IDE, your debugger and your existing tests continue to apply.',
+        id: 'page.modernization.stays.toolchain.textLogic',
+        message: 'Maven, your IDE and your debugger stay the same, and your existing tests keep covering the business logic the new screens call.',
       }),
     },
   ];
@@ -546,36 +547,41 @@ function Hero() {
       <div className={`${styles.container} ${styles.heroGrid}`}>
         <div>
           <p className={styles.eyebrow}>
-            <Translate id="page.modernization.hero.eyebrow">{'Swing modernization'}</Translate>
+            <Translate id="page.modernization.hero.eyebrowApps">{'For Swing, JavaFX and SWT apps'}</Translate>
           </p>
           <h1 className={styles.heroTitle}>
-            <Translate id="page.modernization.hero.title1">{'Swing to the web,'}</Translate>{' '}
+            <Translate id="page.modernization.hero.titleMove">{'Move your Java desktop app to the web,'}</Translate>{' '}
             <span>
               <Translate id="page.modernization.hero.title2">{'one screen at a time'}</Translate>
             </span>
           </h1>
           <p className={styles.heroLead}>
-            <Translate id="page.modernization.hero.lead">
+            <Translate id="page.modernization.hero.leadFirst">
               {
-                'Your Swing, JavaFX or SWT app runs in a web browser without changes to its source. Then you build new screens in webforJ around it and replace the old ones at your own pace. The Java team and the code stay.'
+                'Your Swing, JavaFX or SWT app runs in the browser first, with no changes to its source. Then your Java team rebuilds it in webforJ, one screen at a time. The desktop client goes, the team and the code stay.'
               }
             </Translate>
           </p>
           <div className={styles.actions}>
             <a
               className={`${styles.button} ${styles.buttonPrimary}`}
+              href={useScreenshotMailto()}>
+              <Translate id="page.modernization.hero.screenshot">{'Send a screenshot'}</Translate>
+              <ArrowIcon className={styles.icon} />
+            </a>
+            <a
+              className={`${styles.button} ${styles.buttonSecondary}`}
               href={CONTACT_URL}
               target="_blank"
               rel="noopener noreferrer">
-              <Translate id="page.modernization.hero.talk">{'Talk to the team'}</Translate>
-              <ArrowIcon className={styles.icon} />
+              <Translate id="page.modernization.hero.bookCall">{'Book a call'}</Translate>
             </a>
-            <Link
-              className={`${styles.button} ${styles.buttonSecondary}`}
-              to="/docs/integrations/webswing/tutorial">
-              <Translate id="page.modernization.hero.cta">{'Follow the tutorial'}</Translate>
-            </Link>
           </div>
+          <p className={styles.heroNote}>
+            <Translate id="page.modernization.hero.note">
+              {'One screenshot is enough. We reply with how that screen moves to webforJ.'}
+            </Translate>
+          </p>
           <dl className={styles.heroFacts}>
             <div>
               <dt>
@@ -600,6 +606,214 @@ function Hero() {
         <HeroScreen />
       </div>
     </header>
+  );
+}
+
+// Support dates for the runtime a desktop Java app ships to every PC. Each
+// fact is from the Oracle Java SE Support Roadmap, JEP 504 or the Java SE
+// Universal Subscription FAQ, linked under the list.
+function getClock() {
+  return [
+    {
+      title: translate({ id: 'page.modernization.why.java8.title', message: 'Java 8' }),
+      text: translate({
+        id: 'page.modernization.why.java8.text',
+        message: 'Premier Support ended in March 2022. Extended Support, the last level with new fixes, runs until December 2030.',
+      }),
+    },
+    {
+      title: translate({ id: 'page.modernization.why.java17.title', message: 'Java 17' }),
+      text: translate({
+        id: 'page.modernization.why.java17.text',
+        message: 'Premier Support ended in September 2026. Extended Support, the last level with new fixes, runs until September 2029.',
+      }),
+    },
+    {
+      title: translate({ id: 'page.modernization.why.webstart.title', message: 'Java Web Start' }),
+      text: translate({
+        id: 'page.modernization.why.webstart.text',
+        message: 'Oracle Java SE 11 and later don’t include it. Oracle supports it only on Java SE 8.',
+      }),
+    },
+    {
+      title: translate({ id: 'page.modernization.why.applet.title', message: 'Applets' }),
+      text: translate({
+        id: 'page.modernization.why.applet.text',
+        message: 'JDK 26 removed the Applet API, which had been deprecated for removal since JDK 17.',
+      }),
+    },
+    {
+      title: translate({ id: 'page.modernization.why.subscription.title', message: 'The Java subscription' }),
+      text: translate({
+        id: 'page.modernization.why.subscription.text',
+        message: 'Oracle sells the Java SE Universal Subscription by an employee-based metric, not by desktops.',
+      }),
+    },
+  ];
+}
+
+const CLOCK_SOURCES = [
+  { href: 'https://www.oracle.com/java/technologies/java-se-support-roadmap.html', label: 'Oracle Java SE Support Roadmap' },
+  { href: 'https://openjdk.org/jeps/504', label: 'JEP 504' },
+  { href: 'https://www.oracle.com/java/technologies/java-se-subscription-faq.html', label: 'Java SE Universal Subscription FAQ' },
+];
+
+function WhyNow() {
+  const clock = getClock();
+  return (
+    <section className={styles.why} aria-labelledby="modernization-why" id="why-now">
+      <div className={`${styles.container} ${styles.staysGrid}`}>
+        <div>
+          <SectionTitle
+            id="modernization-why"
+            eyebrow={<Translate id="page.modernization.why.eyebrow">{'Why now'}</Translate>}
+            title={<Translate id="page.modernization.why.title1">{'Java 8 Extended Support'}</Translate>}
+            accent={<Translate id="page.modernization.why.title2">{'ends in December 2030'}</Translate>}
+          />
+          <p className={styles.sectionLead}>
+            <Translate id="page.modernization.why.lead">
+              {
+                'Every PC that runs your app also runs its own Java runtime. Oracle publishes support dates for that runtime, and Java 8 Premier Support already ended in March 2022.'
+              }
+            </Translate>
+          </p>
+          <div className={styles.changes}>
+            <p className={styles.changesLabel}>
+              <Translate id="page.modernization.why.webLabel">{'On the web'}</Translate>
+            </p>
+            <p className={styles.changesText}>
+              <Translate id="page.modernization.why.webText">
+                {'A web app runs its Java on your server. The runtime lives in one place you update, not on every desktop.'}
+              </Translate>
+            </p>
+          </div>
+          <div className={styles.actions}>
+            <a
+              className={`${styles.button} ${styles.buttonPrimary}`}
+              href={useScreenshotMailto()}>
+              <Translate id="page.modernization.why.screenshot">{'Send a screenshot'}</Translate>
+              <ArrowIcon className={styles.icon} />
+            </a>
+          </div>
+        </div>
+        <div>
+          <ol className={styles.staysList}>
+            {clock.map((item, i) => (
+              <li key={item.title}>
+                <span className={styles.staysNumber}>{String(i + 1).padStart(2, '0')}</span>
+                <div>
+                  <h3 className={styles.staysTitle}>{item.title}</h3>
+                  <p className={styles.staysText}>{item.text}</p>
+                </div>
+              </li>
+            ))}
+          </ol>
+          <p className={styles.sources}>
+            <Translate id="page.modernization.why.sources">{'Sources:'}</Translate>{' '}
+            {CLOCK_SOURCES.map((source, i) => (
+              <React.Fragment key={source.href}>
+                {i > 0 && ', '}
+                <a className={styles.textLink} href={source.href} target="_blank" rel="noopener noreferrer">
+                  {source.label}
+                </a>
+              </React.Fragment>
+            ))}
+          </p>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// What a buyer asks before a move: size, Java version, security and cost.
+function getPlan() {
+  return [
+    {
+      title: translate({ id: 'page.modernization.plan.size.title', message: 'Size it by screens' }),
+      text: translate({
+        id: 'page.modernization.plan.size.text',
+        message: 'The work grows with the screen count and how tightly UI and business logic mix. Move one simple list and edit form first, then measure.',
+      }),
+      to: '/docs/integrations/webswing/tutorial',
+      link: translate({ id: 'page.modernization.plan.size.link', message: 'Follow the tutorial' }),
+    },
+    {
+      title: translate({ id: 'page.modernization.plan.java.title', message: 'Java 21 or higher' }),
+      text: translate({
+        id: 'page.modernization.plan.java.text',
+        message: 'webforJ needs Java 21 or higher. Webswing runs the existing app as it is, so only the code the new screens call must run on Java 21.',
+      }),
+      to: '/docs/introduction/prerequisites',
+      link: translate({ id: 'page.modernization.plan.java.link', message: 'See the prerequisites' }),
+    },
+    {
+      title: translate({ id: 'page.modernization.plan.security.title', message: 'Security at every route' }),
+      text: translate({
+        id: 'page.modernization.plan.security.text',
+        message: 'Each route can require a login or a role through annotations, with Spring Security on Spring Boot. Your Java code runs on the server.',
+      }),
+      to: '/docs/security/overview',
+      link: translate({ id: 'page.modernization.plan.security.link', message: 'Read about route security' }),
+    },
+    {
+      title: translate({ id: 'page.modernization.plan.cost.title', message: 'What it costs' }),
+      text: translate({
+        id: 'page.modernization.plan.cost.text',
+        message: 'The plans are on the pricing page. For a figure that fits your own app, send the team one screenshot or book a call.',
+      }),
+      href: 'https://webforj.com/pricing/',
+      link: translate({ id: 'page.modernization.plan.cost.link', message: 'See the pricing page' }),
+    },
+  ];
+}
+
+function Plan() {
+  const plan = getPlan();
+  return (
+    <section className={styles.plan} aria-labelledby="modernization-plan" id="plan">
+      <div className={styles.container}>
+        <div className={styles.introRow}>
+          <div>
+            <SectionTitle
+              id="modernization-plan"
+              eyebrow={<Translate id="page.modernization.plan.eyebrow">{'Before you start'}</Translate>}
+              title={<Translate id="page.modernization.plan.title1">{'What to plan'}</Translate>}
+              accent={<Translate id="page.modernization.plan.title2">{'for your app'}</Translate>}
+            />
+          </div>
+          <p className={styles.introLead}>
+            <Translate id="page.modernization.plan.lead">
+              {'Most questions before a move are about size, versions, security and cost. Here is what each one depends on.'}
+            </Translate>
+          </p>
+        </div>
+        <ol className={styles.planGrid}>
+          {plan.map((item, i) => (
+            <li key={item.title} className={styles.faqItem}>
+              <span className={styles.staysNumber}>{String(i + 1).padStart(2, '0')}</span>
+              <h3 className={styles.faqQuestion}>{item.title}</h3>
+              <p className={styles.faqAnswer}>{item.text}</p>
+              {item.to && (
+                <Link className={`${styles.textLink} ${styles.planLink}`} to={item.to}>
+                  {item.link}
+                  <ArrowIcon className={styles.iconSmall} />
+                </Link>
+              )}
+              {item.href && (
+                <a
+                  className={`${styles.textLink} ${styles.planLink}`}
+                  href={item.href}
+                  target="_blank"
+                  rel="noopener noreferrer">
+                  {item.link}
+                  <ExternalIcon className={styles.iconSmall} />
+                </a>
+              )}
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section>
   );
 }
 
@@ -1030,16 +1244,6 @@ function Start() {
                 }
               </Translate>
             </p>
-            <div className={styles.logoPlate}>
-              <img
-                src={WEBSWING_LOGO}
-                width={1901}
-                height={380}
-                alt="Webswing"
-                loading="lazy"
-                decoding="async"
-              />
-            </div>
             <div
               className={styles.osTabs}
               role="tablist"
@@ -1111,9 +1315,9 @@ function Start() {
               </Translate>
             </h3>
             <p className={styles.stepText}>
-              <Translate id="page.modernization.start.step3.text">
+              <Translate id="page.modernization.start.step3.textPom">
                 {
-                  'The webforj-webswing module provides WebswingConnector and the classes around it.'
+                  'The webforj-webswing module provides WebswingConnector and the classes around it. Add it as a dependency to the pom.xml of your webforJ app.'
                 }
               </Translate>
             </p>
@@ -1129,9 +1333,9 @@ function Start() {
               </Translate>
             </h3>
             <p className={styles.stepText}>
-              <Translate id="page.modernization.start.step4.textAutoStart">
+              <Translate id="page.modernization.start.step4.textOptions">
                 {
-                  'Add a WebswingConnector to a view, as in phase 1. WebswingOptions changes its behavior, for example turning off auto start so your app decides when the connection opens.'
+                  'Add a WebswingConnector to a view, as in phase 1. WebswingOptions changes its behavior, such as turning off auto start until your app opens the connection.'
                 }
               </Translate>
             </p>
@@ -1150,33 +1354,34 @@ function getPartnerProof() {
     {
       term: translate({ id: 'page.modernization.partner.proof.list.term', message: 'Partners page' }),
       desc: translate({
-        id: 'page.modernization.partner.proof.list.desc',
-        message: 'Webswing lists webforJ on its partners page.',
+        id: 'page.modernization.partner.proof.list.text',
+        message: 'Webswing names webforJ as a partner on the partners page of its own website.',
       }),
       href: LINKS.webswingPartners,
     },
     {
       term: translate({ id: 'page.modernization.partner.proof.release.term', message: 'Announced' }),
       desc: translate({
-        id: 'page.modernization.partner.proof.release.desc',
-        message: 'webforJ announced the partnership with its 25.10 release, together with WebswingConnector.',
+        id: 'page.modernization.partner.proof.release.text',
+        message: 'webforJ announced the partnership with its 25.10 release, together with the new WebswingConnector.',
       }),
       to: '/blog/whats-new-v25.10#webswing-integration-for-progressive-modernization',
     },
     {
       term: translate({ id: 'page.modernization.partner.proof.webinar.term', message: 'Joint webinar' }),
       desc: translate({
-        id: 'page.modernization.partner.proof.webinar.desc',
-        message: 'Webswing and webforJ experts showed how to take a desktop Java app to the web in November 2025.',
+        id: 'page.modernization.partner.proof.webinar.text',
+        message: 'In November 2025, Webswing and webforJ experts took a desktop Java app to the web.',
       }),
       href: LINKS.jointWebinar,
     },
     {
       term: translate({ id: 'page.modernization.partner.proof.events.term', message: 'Events together' }),
       desc: translate({
-        id: 'page.modernization.partner.proof.events.desc',
-        message: 'The two teams appeared together at Java Forum Stuttgart 2025 and shared a booth at JavaOne 2026.',
+        id: 'page.modernization.partner.proof.events.text',
+        message: 'The two teams appeared at Java Forum Stuttgart 2025 and shared a JavaOne 2026 booth.',
       }),
+      href: 'https://www.webswing.org/en/blog/webswing-summary-2025',
     },
   ];
 }
@@ -1264,9 +1469,9 @@ function Partnership() {
                 <Translate id="page.modernization.partner.webforj.title">{'Carries it forward'}</Translate>
               </h3>
               <p className={styles.pathText}>
-                <Translate id="page.modernization.partner.webforj.text">
+                <Translate id="page.modernization.partner.webforj.textShort">
                   {
-                    'Embeds the running app in a webforJ view with WebswingConnector, available since webforJ 25.10, and is the framework every new screen is written in.'
+                    'Embeds the running app in a webforJ view, then becomes the framework for every new screen.'
                   }
                 </Translate>
               </p>
@@ -1281,6 +1486,7 @@ function Partnership() {
                 {row.to && (
                   <Link className={styles.textLink} to={row.to}>
                     {row.desc}
+                    <ArrowIcon className={styles.iconSmall} />
                   </Link>
                 )}
                 {row.href && (
@@ -1299,6 +1505,22 @@ function Partnership() {
   );
 }
 
+// Same subject and prefilled text as the "Send a screenshot" box under the
+// modernization posts (PostCta topics.js and SCREENSHOT_NOTE).
+const SCREENSHOT_SUBJECT = 'My app screen: how would it move to webforJ?';
+const SCREENSHOT_NOTE =
+  'Attached is a screenshot of one screen from our app. It is built with: (Swing, JavaFX, other)';
+
+// The screenshot email names the page the reader was on. The server render
+// has no window, so the link is rebuilt after mount to keep hydration equal.
+function useScreenshotMailto() {
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+  return mounted
+    ? contactMailto(SCREENSHOT_SUBJECT, SCREENSHOT_NOTE)
+    : `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(SCREENSHOT_SUBJECT)}`;
+}
+
 // The one thing the page asks a buyer to do.
 function TalkBand() {
   return (
@@ -1307,25 +1529,32 @@ function TalkBand() {
         <div className={styles.bandInner}>
           <div>
             <h2 id="modernization-band" className={styles.bandTitle}>
-              <Translate id="page.modernization.band.title">{'Talk to the team about your app'}</Translate>
+              <Translate id="page.modernization.band.titleScreen">{'Send us one screen of your app'}</Translate>
             </h2>
             <p className={styles.bandText}>
-              <Translate id="page.modernization.band.text">
+              <Translate id="page.modernization.band.screenshotText">
                 {
-                  'Bring the app, the stack it runs on and your timeline. The team that builds webforJ will walk you through the path from the first screen to the last.'
+                  'Attach a screenshot of one screen and we reply with how it moves to webforJ. Or book a call and bring the app, the stack it runs on and your timeline.'
                 }
               </Translate>
             </p>
           </div>
           <div className={styles.bandSide}>
-            <a
-              className={`${styles.button} ${styles.buttonPrimary}`}
-              href={CONTACT_URL}
-              target="_blank"
-              rel="noopener noreferrer">
-              <Translate id="page.modernization.band.book">{'Book a call'}</Translate>
-              <ArrowIcon className={styles.icon} />
-            </a>
+            <div className={styles.bandButtons}>
+              <a
+                className={`${styles.button} ${styles.buttonPrimary}`}
+                href={useScreenshotMailto()}>
+                <Translate id="page.modernization.band.screenshot">{'Send a screenshot'}</Translate>
+                <ArrowIcon className={styles.icon} />
+              </a>
+              <a
+                className={`${styles.button} ${styles.bandGhost}`}
+                href={CONTACT_URL}
+                target="_blank"
+                rel="noopener noreferrer">
+                <Translate id="page.modernization.band.book">{'Book a call'}</Translate>
+              </a>
+            </div>
             <p className={styles.bandMeta}>
               <Translate
                 id="page.modernization.band.email"
@@ -1360,11 +1589,14 @@ function Next() {
     <section className={styles.next} aria-labelledby="modernization-next">
       <div className={styles.container}>
         <div className={styles.introRow}>
-          <SectionTitle
-            id="modernization-next"
-            title={<Translate id="page.modernization.next.title1">{'Pick your'}</Translate>}
-            accent={<Translate id="page.modernization.next.title2">{'first screen'}</Translate>}
-          />
+          <div>
+            <SectionTitle
+              id="modernization-next"
+              eyebrow={<Translate id="page.modernization.next.eyebrow">{'Next steps'}</Translate>}
+              title={<Translate id="page.modernization.next.title1">{'Pick your'}</Translate>}
+              accent={<Translate id="page.modernization.next.title2">{'first screen'}</Translate>}
+            />
+          </div>
           <p className={styles.introLead}>
             <Translate id="page.modernization.next.lead">
               {
@@ -1409,6 +1641,79 @@ function Next() {
   );
 }
 
+// Questions buyers ask before they write. Each answer restates a fact from
+// this page, the Webswing docs or the enterprise decision guide.
+function getFaq() {
+  return [
+    {
+      q: translate({ id: 'page.modernization.faq.source.q', message: 'Can the app run in a browser unchanged?' }),
+      a: translate({
+        id: 'page.modernization.faq.source.a',
+        message: 'Yes. Webswing runs Swing, JavaFX and SWT apps in the browser as they are, without changes to their source code.',
+      }),
+    },
+    {
+      q: translate({ id: 'page.modernization.faq.features.q', message: 'Can feature work go on during the move?' }),
+      a: translate({
+        id: 'page.modernization.faq.features.a',
+        message: 'Yes. The app keeps running through Webswing while screens are replaced one at a time, so releases go on at your pace.',
+      }),
+    },
+    {
+      q: translate({ id: 'page.modernization.faq.logic.q', message: 'What happens to our Java business logic?' }),
+      a: translate({
+        id: 'page.modernization.faq.logic.a',
+        message: 'It stays. New webforJ screens are written in Java, so they call the same classes your Swing screens call today.',
+      }),
+    },
+    {
+      q: translate({ id: 'page.modernization.faq.js.q', message: 'Can the team stay in Java the whole way?' }),
+      a: translate({
+        id: 'page.modernization.faq.js.a',
+        message: 'Yes. Each webforJ screen is a Java class that calls your existing services directly, with no separate frontend project.',
+      }),
+    },
+    {
+      q: translate({ id: 'page.modernization.faq.bridge.q', message: 'Does Webswing stay in place for good?' }),
+      a: translate({
+        id: 'page.modernization.faq.bridge.a',
+        message: 'It is the bridge. It gives browser access right away while screens move to webforJ, until the desktop app is retired.',
+      }),
+    },
+    {
+      q: translate({ id: 'page.modernization.faq.ai.q', message: 'How does AI help with the migration?' }),
+      a: translate({
+        id: 'page.modernization.faq.ai.a',
+        message: 'AI assistants help your team build and check each new webforJ screen, while your engineers review and test every one.',
+      }),
+    },
+  ];
+}
+
+function Faq() {
+  const faq = getFaq();
+  return (
+    <section className={styles.faq} aria-labelledby="modernization-faq" id="faq">
+      <div className={styles.container}>
+        <SectionTitle
+          id="modernization-faq"
+          eyebrow={<Translate id="page.modernization.faq.eyebrow">{'Questions'}</Translate>}
+          title={<Translate id="page.modernization.faq.title1">{'What teams ask'}</Translate>}
+          accent={<Translate id="page.modernization.faq.title2">{'before they start'}</Translate>}
+        />
+        <dl className={styles.faqList}>
+          {faq.map((item) => (
+            <div key={item.q} className={styles.faqItem}>
+              <dt className={styles.faqQuestion}>{item.q}</dt>
+              <dd className={styles.faqAnswer}>{item.a}</dd>
+            </div>
+          ))}
+        </dl>
+      </div>
+    </section>
+  );
+}
+
 export default function Modernization() {
   return (
     <Layout
@@ -1423,12 +1728,15 @@ export default function Modernization() {
       })}>
       <main className={styles.page}>
         <Hero />
+        <WhyNow />
         <Partnership />
         <Stays />
         <Journey />
         <Channel />
         <AiPort />
+        <Plan />
         <Start />
+        <Faq />
         <TalkBand />
         <Next />
       </main>

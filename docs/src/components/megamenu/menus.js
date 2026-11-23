@@ -58,7 +58,7 @@ export function getMenu(name) {
           {
             label: translate({ id: "component.megaMenu.products.swingModernization.label", message: "Swing modernization" }),
             slug: "swing-modernization",
-            tone: "#2cc3b6",
+            tone: "#60a5fa",
             tagline: translate({ id: "component.megaMenu.products.swingModernization.tagline", message: "Bring Swing apps to the web" }),
             description: translate({ id: "component.megaMenu.products.swingModernization.description", message: "Run existing Swing, JavaFX, or SWT apps in the browser through Webswing, then move them to webforJ one screen at a time." }),
             cta: translate({ id: "component.megaMenu.products.swingModernization.cta", message: "Start modernizing" }),

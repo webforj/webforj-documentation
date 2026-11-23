@@ -17,9 +17,9 @@ function getTitle() {
 
 function getDescription() {
   return translate({
-    id: 'page.home.meta.description',
+    id: 'page.home.meta.descriptionSpring',
     message:
-      'Build the whole web app in Java, from UI to data, with any backend. AI-ready, with a screen-by-screen path from Swing to the web. Docs, guides and live demos.',
+      'Build business web apps fully in Java with webforJ, standalone or with Spring Boot. Move a Swing app to the web one screen at a time. Docs, guides and demos.',
   });
 }
 
@@ -659,8 +659,8 @@ function Stack() {
         ))}
       </div>
       <p className={styles.stackCaption}>
-        <Translate id="page.home.stack.caption">
-          A click on the screen runs your Java code and comes back as an update.
+        <Translate id="page.home.stack.captionLayers">
+          Screens, logic and data in one Java app, standalone or with Spring Boot.
         </Translate>
       </p>
     </div>
@@ -682,9 +682,9 @@ function Hero() {
             </span>
           </h1>
           <p className={styles.heroLead}>
-            <Translate id="page.home.hero.lead">
+            <Translate id="page.home.hero.leadHook">
               {
-                'webforJ is the full-stack Java framework for business web apps: you build the whole app, screens included, in Java. These docs take you from the first project to production.'
+                'One language from the screen to the database. webforJ is the full-stack Java framework for business web apps, standalone or with Spring Boot. Got a Swing app? Bring it to the web one screen at a time.'
               }
             </Translate>
           </p>
@@ -769,7 +769,7 @@ function CodeToScreen() {
                 <Mark number={1} />
                 <div className={styles.drawnField}>
                   <span className={styles.drawnLabel}>Name</span>
-                  <span className={styles.drawnInput}>Ada</span>
+                  <span className={styles.drawnInput}>John Doe</span>
                 </div>
               </div>
               <div className={styles.drawnRow}>
@@ -778,11 +778,78 @@ function CodeToScreen() {
               </div>
               <div className={styles.drawnRow}>
                 <Mark number={3} />
-                <span className={styles.drawnMessage}>Hello, Ada!</span>
+                <span className={styles.drawnMessage}>Hello, John Doe!</span>
               </div>
             </div>
           </div>
         </div>
+      </div>
+    </section>
+  );
+}
+
+// The three ways into webforJ, right under the hero: a new app, a Swing app
+// that moves to the web, and an existing Spring Boot app.
+function getStarts() {
+  return [
+    [
+      translate({ id: 'page.home.starts.new.step', message: 'New app' }),
+      translate({ id: 'page.home.starts.new.title', message: 'Build it in Java' }),
+      translate({
+        id: 'page.home.starts.new.text',
+        message: 'Generate a project and build the whole app, screens included, in Java.',
+      }),
+      '/docs/introduction/getting-started',
+    ],
+    [
+      translate({ id: 'page.home.starts.swing.step', message: 'Swing app' }),
+      translate({ id: 'page.home.starts.swing.title', message: 'Move it to the web' }),
+      translate({
+        id: 'page.home.starts.swing.text',
+        message: 'Run the desktop app in the browser, then move it one screen at a time.',
+      }),
+      '/modernization',
+    ],
+    [
+      translate({ id: 'page.home.starts.spring.step', message: 'Spring Boot' }),
+      translate({ id: 'page.home.starts.spring.title', message: 'Add it to Spring' }),
+      translate({
+        id: 'page.home.starts.spring.text',
+        message: 'Inject your Spring services and repositories straight into webforJ views.',
+      }),
+      '/docs/integrations/spring/overview',
+    ],
+  ];
+}
+
+function Starts() {
+  const starts = getStarts();
+  return (
+    <section className={styles.pathSection} aria-labelledby="home-starts">
+      <div className={styles.container}>
+        <h2 id="home-starts" className={styles.bigTitle}>
+          <Translate id="page.home.starts.title1">Where do you start?</Translate>
+          <span>
+            <Translate id="page.home.starts.title2">Three ways in.</Translate>
+          </span>
+        </h2>
+        <ol className={`${styles.path} ${styles.pathThree}`}>
+          {starts.map(([step, title, text, to], index) => (
+            <li key={to}>
+              <Link className={styles.stop} to={to}>
+                <span className={styles.stopNumber} aria-hidden="true">
+                  {index + 1}
+                </span>
+                <span className={styles.stopStep}>{step}</span>
+                <span className={styles.stopTitle}>{title}</span>
+                <span className={styles.stopText}>{text}</span>
+                <span className={styles.stopGo} aria-hidden="true">
+                  <ArrowIcon className={styles.icon} />
+                </span>
+              </Link>
+            </li>
+          ))}
+        </ol>
       </div>
     </section>
   );
@@ -905,7 +972,7 @@ function AiReady() {
               />
               <Command text="mvn test" typeClass={styles.type3} revealClass={styles.at3} />
               <span className={`${styles.fail} ${styles.show} ${styles.at4}`}>
-                <i>FAIL</i> Expected TextField to have value &lt;Grace&gt; but it has &lt;Ada&gt;.
+                <i>FAIL</i> Expected TextField to have value &lt;Grace&gt; but it has &lt;John Doe&gt;.
               </span>
               <span className={`${styles.dim} ${styles.show} ${styles.at5}`}>
                 #{' '}
@@ -1060,6 +1127,7 @@ export default function Home() {
       </Head>
       <main className={styles.page}>
         <Hero />
+        <Starts />
         <CodeToScreen />
         <Path />
         <Layers />
