@@ -30,6 +30,8 @@ Every Swing to web migration plan falls into one of these four shapes. The first
 
 The rest of this guide compares them on the things that decide a project: how much code you rewrite, which skills the team needs, how long users wait, and where you end up.
 
+The calendar is part of that decision. A desktop app ships a Java runtime to every PC, and the [Oracle Java SE Support Roadmap](https://www.oracle.com/java/technologies/java-se-support-roadmap.html) fixes how long each one is supported. Java 8 Premier Support ended in March 2022, Extended Support ends in December 2030, and Java Web Start is supported on Java 8 only. A web app runs its Java on your server, in one place you update.
+
 ## Path 1: rewrite with JavaScript and REST {#javascript-rewrite}
 
 This is the path most search results describe. You put an API in front of your services, then build every screen again in a different language, with a different component model, a different build tool and a different way of handling state.
@@ -96,7 +98,7 @@ Use this table to match your situation to a path.
 | --- | --- | --- |
 | Users need the app in a browser within weeks, UI stays as it is | Webswing | No UI code changes |
 | Java team, no JavaScript skills, UI needs to become a real web UI | webforJ | Same language, reuse domain code |
-| Large app with many screens, cannot stop shipping | Webswing, then webforJ | Browser access now, replace screens over time |
+| Large app with many screens, can't stop shipping | Webswing, then webforJ | Browser access now, replace screens over time |
 | Few screens, simple forms and tables | webforJ directly | Small enough to rebuild without a bridge |
 | Dedicated JavaScript front-end team and a ready REST API | JavaScript rewrite | Fits the team you already have |
 | Specialized Swing editor or visualization too costly to rebuild | Webswing for that screen, webforJ elsewhere | Hybrid app with one embedded screen |

@@ -27,6 +27,7 @@ Swing is the GUI toolkit for Java desktop applications. It still works, and that
 
 - **Access.** Users expect to open a link on any device. A desktop client needs installation, updates and a managed workstation.
 - **Security review.** Every installed client is a distribution and patching question for your security team.
+- **Runtime support.** A desktop app ships a Java runtime to every PC, and that runtime has fixed support dates. In the [Oracle Java SE Support Roadmap](https://www.oracle.com/java/technologies/java-se-support-roadmap.html), Java 8 Premier Support ended in March 2022 and Extended Support ends in December 2030. Java Web Start is supported on Java 8 only.
 - **Key people.** Each year fewer engineers know why the app behaves the way it does, and the code becomes the only full record of the rules.
 - **Hiring and retention.** Engineers who want to build web products are hard to attract to a desktop-only codebase.
 - **Strategic freedom.** Customer portals, partner access and remote work all assume a browser.
