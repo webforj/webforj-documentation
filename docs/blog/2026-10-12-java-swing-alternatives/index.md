@@ -51,6 +51,8 @@ That's the idea behind webforJ, and it's the category we recommend for a Java te
 
 The risk in any rewrite is the long stretch where the old app is frozen and the new one isn't ready. With webforJ you can avoid it. [Webswing](/docs/integrations/webswing/overview) runs the existing Swing, JavaFX or SWT app in the browser without changes to its source, and webforJ's `WebswingConnector` embeds it, so new Java screens replace old ones while users keep working.
 
+The embedded Swing app doesn't have to look like a different app either. With the [Swing look and feel](/docs/integrations/webswing/look-and-feel), one JAR and one call at startup give it the colors, fonts and buttons of webforJ, in a light and a dark palette, so old and new screens share one look.
+
 So the move is a series of small releases, not one big cutover. How to pick the path and the order of work is laid out in the [Java Swing to web migration guide](/blog/migrate-swing-app-to-web).
 
 ## Compare the categories {#compare}

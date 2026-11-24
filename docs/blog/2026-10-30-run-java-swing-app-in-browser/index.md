@@ -49,6 +49,8 @@ Two settings matter when both servers run. Webswing and webforJ both default to 
 
 From here you have a webforJ app with one view that holds the old app. You can add routes and new screens around it without the Swing code knowing.
 
+To make the old app look like part of the new one, add the [Swing look and feel](/docs/integrations/webswing/look-and-feel) to the Swing app. It's one JAR on the classpath and one call at startup, and the rest of the Swing code doesn't change. The Swing screens then use the colors, fonts, and buttons of webforJ and can take the primary color of the webforJ app, so users don't feel they switch apps.
+
 ## What happens after it runs in the browser? {#after}
 
 The two sides talk through the connector, as the [communication guide](/docs/integrations/webswing/communication) shows. The webforJ app calls `performAction()` to send a named action, with optional data, to the Swing app. In the other direction, the connector fires an initialize event when the connection is ready, a start event when the Swing app has fully loaded, and action events for the custom actions the Swing app sends through the Webswing Java API.

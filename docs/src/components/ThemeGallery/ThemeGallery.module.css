@@ -1,0 +1,107 @@
+.gallery {
+  margin: 1.5rem 0;
+}
+
+.frame {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 10px;
+  overflow: hidden;
+  background: var(--ifm-background-surface-color);
+  cursor: zoom-in;
+}
+
+.frame:hover {
+  border-color: var(--ifm-color-emphasis-500);
+}
+
+.image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-top: 0.75rem;
+}
+
+.modes {
+  display: inline-flex;
+  padding: 3px;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 8px;
+}
+
+.mode {
+  padding: 0.3rem 0.9rem;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--ifm-color-emphasis-700);
+  font: inherit;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.mode:hover {
+  color: var(--ifm-font-color-base);
+}
+
+.modeActive,
+.modeActive:hover {
+  background: var(--ifm-color-emphasis-200);
+  color: var(--ifm-font-color-base);
+}
+
+.swatches {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.swatch {
+  width: 22px;
+  height: 22px;
+  padding: 0;
+  border: 2px solid var(--ifm-background-color);
+  border-radius: 50%;
+  background: var(--swatch);
+  box-shadow: 0 0 0 1px var(--ifm-color-emphasis-300);
+  cursor: pointer;
+}
+
+.swatchActive {
+  box-shadow: 0 0 0 2px var(--swatch);
+}
+
+.swatchLabel {
+  min-width: 3.5rem;
+  color: var(--ifm-color-emphasis-700);
+  font-size: 0.875rem;
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  background: rgb(0 0 0 / 88%);
+  cursor: zoom-out;
+}
+
+.overlayImage {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}

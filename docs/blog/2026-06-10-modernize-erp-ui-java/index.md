@@ -66,7 +66,7 @@ That is the seam that makes a gradual migration possible. A web toolbar, a new s
 
 **Fact:** the path has four steps:
 
-1. Start by embedding your existing Swing app via `WebswingConnector`.
+1. Start by embedding your existing Swing app via `WebswingConnector`, and give it the [Swing look and feel](/docs/integrations/webswing/look-and-feel) so it shares one palette with the new webforJ screens.
 2. Build new features in webforJ around the embedded app.
 3. Gradually replace Swing components with webforJ equivalents.
 4. Eventually phase out the legacy app entirely.

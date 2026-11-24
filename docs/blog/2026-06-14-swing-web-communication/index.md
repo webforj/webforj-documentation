@@ -61,6 +61,8 @@ public class CustomerBridgeView extends Composite<FlexLayout> {
 
 The connector starts on its own when it is added to the page. If you want control over timing, the two-argument constructor `new WebswingConnector(url, false)` skips the automatic start and you call `start()` yourself.
 
+The embedded app doesn't have to look like a different program. Add the [Swing look and feel](/docs/integrations/webswing/look-and-feel) JAR to the Swing app's classpath and select it with one call at startup, and the Swing window gets the colors, fonts, buttons and focus outlines of webforJ in a light or a dark palette. The rest of the Swing code doesn't change, and the Swing window and the webforJ page around it share one palette.
+
 ## Know when Swing is ready {#know-when-ready}
 
 The connector fires two lifecycle events. `onInitialize` fires when the Webswing connection is established and ready for communication. `onStart` fires when the Swing app has fully loaded and is running. Both are useful for telling the user what is happening:

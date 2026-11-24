@@ -44,6 +44,8 @@ Your Java team and your domain code stay in place the whole time. The sections b
 
 This is the host tree of the pattern. Right away your users get a web address for the app they already use, and you have not touched a line of its code. The [setup guide](/docs/integrations/webswing/setup) covers installing the Webswing server, registering your app in the admin console and allowing your webforJ app's origin through CORS.
 
+The host tree can also take on the colors of the new growth. Add the [Swing look and feel](/docs/integrations/webswing/look-and-feel) JAR to the Swing app's classpath and select it with one call at startup, and the app gets the colors, fonts, buttons and focus outlines of webforJ in a light or a dark palette. It reads the same token names as webforJ themes, so the Swing app can use the primary color of your webforJ app. When webforJ screens start to grow around it, both sides share one palette and users don't feel they switch apps.
+
 ## Step 2: embed it with WebswingConnector {#step-two}
 
 The `WebswingConnector` component embeds a Webswing-hosted app inside a webforJ view. It needs the `webforj-webswing` module, which you add to your `pom.xml`, and a webforJ version of `25.10` or later. The view below is the whole embedding:

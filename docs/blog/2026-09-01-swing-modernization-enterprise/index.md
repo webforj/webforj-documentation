@@ -69,6 +69,8 @@ Host the existing app with Webswing and embed it in a webforJ app through the `W
 
 The desktop build does not have to disappear on day one. When the Swing app runs as a regular desktop app, `WebswingUtil.getWebswingApi()` returns `null`, so the same code base can serve desktop users and browser users during the move.
 
+The embedded app can also take on the look of the web screens. Add the [Swing look and feel](/docs/integrations/webswing/look-and-feel) to its classpath and select it with one call at startup, and the Swing app gets the colors, fonts, buttons, and focus outlines of webforJ. It comes with a light and a dark palette. When Phase 2 adds webforJ screens next to it, both sides share one palette.
+
 ### Phase 2: move screens by priority {#phase-2}
 
 Pick screens by business value: the ones customers use, the ones with the most support tickets, the ones that block a new product. Each moves to a webforJ screen written in Java. While the move is in progress, the embedded Swing app and the new screens can exchange actions and events through the connector, so users see one app, not two. That two-way messaging needs a small addition on the Swing side, where the app calls the Webswing API. The [communication model](/docs/integrations/webswing/communication) is documented, and we cover the approach in [our post on Swing and web communication](/blog/swing-web-communication).

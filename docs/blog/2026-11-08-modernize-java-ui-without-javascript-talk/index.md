@@ -83,6 +83,10 @@ The live demo makes the point quickly. Stephan configures a stock Swing app in t
 
 That is the fastest answer to the browser request. Configure the app, deploy it, and your users open it in a browser. It also buys the time to modernize properly instead of under pressure.
 
+:::tip New since the talk
+The familiar look can change too. The [Swing look and feel](/docs/integrations/webswing/look-and-feel) is one JAR on the classpath and one call at startup, and it gives the Swing app the colors, fonts, and buttons of webforJ in a light or a dark palette. The rest of the Swing code doesn't change. Once webforJ screens join in step two, both sides share one palette, so users don't feel they switch apps.
+:::
+
 ## Step two: new screens in webforJ {#step-two-webforj}
 
 Webswing keeps the existing UI as it is, including its fixed desktop layouts. The real modernization starts when new work moves to webforJ, and it can start right away. The [Webswing connector](/docs/integrations/webswing/setup) embeds the Webswing-hosted app inside a webforJ view, so old and new screens live in one modern UI:

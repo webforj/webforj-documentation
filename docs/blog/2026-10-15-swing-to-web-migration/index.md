@@ -236,6 +236,8 @@ public class LegacyScreenView extends Composite<Div> {
 
 The connector is two-way. The Swing app can send named actions to webforJ, which the example handles with `onAction`, and webforJ can call back with `performAction`. Sending those actions takes a small addition to the Swing app that uses the Webswing Java API. That lets you replace one dialog at a time. The old table stays in Swing, and a double click opens a webforJ form instead of the Swing dialog. The [modernization tutorial](/docs/integrations/webswing/tutorial) builds this scenario with a customer table.
 
+While old and new screens share the tab, the [Swing look and feel](/docs/integrations/webswing/look-and-feel) keeps them in one palette. It's one JAR on the Swing app's classpath, selected with one call at startup, and it gives the Swing screens the colors, fonts, buttons and focus outlines of webforJ in a light or a dark palette. It reads the same token names as webforJ themes, so the Swing table can use the primary color of the webforJ form next to it, and users don't feel they switch apps.
+
 A bridge uses server resources. Webswing renders on the server and streams to the browser, so each active user session holds a running Swing instance. Treat it as scaffolding that you remove as screens move over.
 
 ## Which screens to migrate first {#what-to-migrate-first}

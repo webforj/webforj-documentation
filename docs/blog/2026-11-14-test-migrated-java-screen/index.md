@@ -25,6 +25,8 @@ A test turns what you checked by hand into something the build checks on every c
 
 Be clear about what it tests. The TestBed tests the new webforJ screens. The Swing screens still running inside [Webswing](/docs/integrations/webswing/overview) are rendered on the server and streamed to the browser as an HTML5 canvas, so a TestBed test never reaches them. The old screen is your reference. The new screen is what the test pins.
 
+For users, both sides can still look like one app. The [Swing look and feel](/docs/integrations/webswing/look-and-feel) gives the Swing screens the colors, fonts and buttons of webforJ with one JAR and one call at startup, so moving between an old screen and a new one doesn't feel like switching apps.
+
 ## Step 1: write down what users rely on {#step-1-list-behavior}
 
 Before you port a screen, open the old one and list what a user reads and does on it, as plain sentences. Take a small subscribe form as the example:

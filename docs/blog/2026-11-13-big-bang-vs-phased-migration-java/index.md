@@ -49,9 +49,11 @@ For a desktop app, phasing has always had one hard requirement: a bridge. Users 
 
 [Webswing](/docs/integrations/webswing/overview) runs a Java desktop app (Swing, JavaFX, SWT) on the server and streams its interface to the browser on an HTML5 canvas, without modifications to the original source code. Mouse and keyboard input go back to the server and are replayed on the actual app.
 
-For the cutover that means two things. Every user can move to the browser before a single screen is rebuilt, which takes the desktop install off the table early. And the screens they know stay as they were, because the same Swing app is still receiving their input. Shortcuts the browser keeps for itself, such as closing or reloading the tab, are the exception.
+For the cutover that means two things. Every user can move to the browser before a single screen is rebuilt, which takes the desktop install off the table early. And the screens they know work as they did, because the same Swing app is still receiving their input. Shortcuts the browser keeps for itself, such as closing or reloading the tab, are the exception.
 
-The rollback plan for step zero is the desktop build itself. The app's code hasn't changed, so the installed client still works for anyone who needs it during the transition.
+Step zero is also the moment to give the Swing app the palette of the new screens. The [Swing look and feel](/docs/integrations/webswing/look-and-feel) is one JAR on the Swing app's classpath, selected with one call at startup, and it brings the colors, fonts, buttons and focus outlines of webforJ in a light and a dark palette. The rest of the Swing code doesn't change. When the first webforJ screen arrives next to the Swing ones, both sides already share one palette, so users don't feel they switch apps.
+
+The rollback plan for step zero is the desktop build itself. The app's screens haven't changed, so the installed client still works for anyone who needs it during the transition.
 
 Webswing and webforJ are partners: Webswing runs the existing app in the browser, and webforJ carries it forward screen by screen through the `WebswingConnector`.
 

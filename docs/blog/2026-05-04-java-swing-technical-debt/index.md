@@ -100,6 +100,8 @@ public class LegacyOrdersView extends Composite<FlexLayout> {
 
 The action names, `refresh` and `orderSaved` here, are defined by your Swing app through the Webswing Java API. The [communication page](/docs/integrations/webswing/communication) describes the lifecycle events and the payloads you can send in each direction.
 
+The embedded app can also look like the new screens. Add the [Swing look and feel](/docs/integrations/webswing/look-and-feel) JAR to the Swing app's classpath and select it with one call at startup. The Swing screens then use the colors, fonts and buttons of webforJ, so users don't feel they switch apps when they move between old and new screens.
+
 ## What you get after migrating {#what-you-get-after-migrating}
 
 Once a screen is rebuilt in webforJ, it is a server-side Java UI. State and business logic stay on the server, and the browser receives a thin client. The framework batches server-to-client calls, and the browser loads a small JavaScript bootstrap and fetches further chunks on demand (see [client and server](/docs/architecture/client-server)). You write Java with components, events and data binding, not HTML templates or a separate JavaScript front end.

@@ -26,6 +26,7 @@ import ExperimentalWarning from '@site/src/components/DocsTools/ExperimentalWarn
 import AutomatedUpgradeTip from '@site/src/components/DocsTools/AutomatedUpgradeTip';
 import AISkillTip from '@site/src/components/DocsTools/AISkillTip';
 import VideoPlayer from '@site/src/components/VideoPlayer';
+import ThemeGallery from '@site/src/components/ThemeGallery/ThemeGallery';
 
 
 export default {
@@ -50,6 +51,7 @@ export default {
   ExpandMoreIcon,
   GalleryCard,
   GalleryGrid,
+  ThemeGallery,
   table: TableWrapper,
   ExperimentalWarning,
   AutomatedUpgradeTip,

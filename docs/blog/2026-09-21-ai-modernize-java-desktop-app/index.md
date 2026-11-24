@@ -83,6 +83,8 @@ public class LegacyOrdersView extends Composite<Div> {
 
 The connector is bidirectional. `performAction` sends a command to the Swing app, and `onAction` receives the actions the Swing app sends back. The action names and data formats are defined by your Swing code through the Webswing Java API, which is covered in [Communication](/docs/integrations/webswing/communication). That channel is how a new webforJ toolbar can drive a legacy screen, and how a legacy selection can update a new web panel next to it.
 
+The embedded screens can also look like the new ones. Add the [Swing look and feel](/docs/integrations/webswing/look-and-feel) JAR to the Swing app's classpath and select it with one call at startup, and the Swing screens get the colors, fonts, and buttons of webforJ in a light or a dark palette. The rest of the Swing code doesn't change, and users don't feel they switch apps when they move between old and new screens.
+
 One practical rule: Webswing and webforJ need different ports, and cross-origin embedding needs the allowed origins configured in the Webswing admin console. Do this on day one, because it is the first thing that blocks a demo.
 
 ## Rebuild with AI: the brief {#rebuild-with-ai}

@@ -74,6 +74,8 @@ Every dialog or menu that you implement in webforJ will improve your users' expe
 Users will feel more comfortable, and you avoid the higher risk of all-or-nothing rewrites while the app moves toward a full web UI.
 To weigh this path against a rewrite or a browser-only move, read the [Java Swing to web migration guide](/blog/migrate-swing-app-to-web).
 
+To make the embedded Swing screens match the new ones, add the [Swing look and feel](/docs/integrations/webswing/look-and-feel) to the Swing app. It's one JAR on the classpath and one call at startup, and it gives the Swing app the colors, fonts, buttons, and focus outlines of webforJ. It comes with a light and a dark palette. Both sides then share one palette, so users don't feel they switch apps.
+
 The same split shows where AI fits. On the Webswing side the Swing UI streams as it is, so an AI assistant has nothing there to change. On the webforJ side, an assistant can draft the new screens in Java and return each one with a test for your developers to review. That cycle is [the AI verification loop for Java](/blog/ai-verification-loop-java).
 
 With Webswing and webforJ, you have no reason to stay locked into the desktop environment!

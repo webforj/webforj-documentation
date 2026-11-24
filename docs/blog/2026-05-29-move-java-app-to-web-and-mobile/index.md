@@ -89,6 +89,8 @@ The path has two tools:
 - **[Webswing](/docs/integrations/webswing/overview)** runs a Java desktop app (Swing, JavaFX, or SWT) in a web browser without changes to its source code. Users get browser access right away.
 - **webforJ** is where the new screens are built, in Java, with modern components, layouts, and themes. The [Webswing connector](/docs/integrations/webswing/setup) embeds the old app inside a webforJ view, so both can live in one UI while you move.
 
+To make that one UI feel like one app, the [Swing look and feel](/docs/integrations/webswing/look-and-feel) gives the Swing app the colors, fonts, and buttons of webforJ. It's one JAR on the classpath and one call at startup, and the rest of the Swing code doesn't change.
+
 ## The demo: four stages {#four-stages}
 
 The live demo is the heart of the webinar. It starts with a Swing app running in the browser through Webswing: a table, a form, and a small pie chart, exactly as users know them. Then it modernizes the app in stages:

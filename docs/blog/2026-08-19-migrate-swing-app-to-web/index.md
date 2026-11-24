@@ -66,7 +66,7 @@ For how the two sides exchange data and events during a migration, see [Swing an
 
 The strongest plan for many teams is not a choice between 2 and 3. The webforJ Webswing integration provides the `WebswingConnector` component, which embeds a Webswing-hosted app directly inside a webforJ app. The sequence is:
 
-1. Embed your existing Swing app with `WebswingConnector`.
+1. Embed your existing Swing app with `WebswingConnector`, and give it the [Swing look and feel](/docs/integrations/webswing/look-and-feel) so it shares one palette with the webforJ screens.
 2. Build new features in webforJ around the embedded app.
 3. Gradually replace Swing components with webforJ equivalents.
 4. Eventually phase out the legacy app entirely.
