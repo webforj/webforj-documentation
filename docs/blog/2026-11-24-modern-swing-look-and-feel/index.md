@@ -18,7 +18,7 @@ A modern look and feel for Java Swing closes most of that gap without touching y
 <!-- truncate -->
 
 :::tip Try it in one minute
-[Download the Order Desk demo](https://cdn.webforj.com/dwc-swing-laf/0.2.0/dwc-swing-laf-demo.jar) and run `java -jar dwc-swing-laf-demo.jar` with Java 21 or newer. Switch palettes and primary colors from the **View** menu.
+[Download the Order Desk demo](https://dwc.style/docs/#/swing/downloads) and run `java -jar dwc-swing-laf-demo.jar` with Java 21 or newer. Switch palettes and primary colors from the **View** menu.
 :::
 
 Here is the Order Desk demo with the theme installed. Switch the palette and the primary color below the screenshot, and select it to enlarge.
@@ -36,7 +36,7 @@ Every control in those windows is a standard Swing component: a `JTree`, a `JTab
 
 ## Install it with one call {#install}
 
-[Download the theme JAR](https://cdn.webforj.com/dwc-swing-laf/0.2.0/dwc-swing-laf.jar) and add it to the classpath. On the event dispatch thread, select it before the first window opens:
+[Download the theme JAR](https://dwc.style/docs/#/swing/downloads) and add it to the classpath. On the event dispatch thread, select it before the first window opens:
 
 ```java
 try {

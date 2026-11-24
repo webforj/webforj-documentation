@@ -14,7 +14,7 @@ Swing and DWC draw their controls differently. Both sides can use the same light
 
 ## Try the demo {#try-the-demo}
 
-Order Desk is a Swing app with the theme installed. [Download the Order Desk demo](https://cdn.webforj.com/dwc-swing-laf/0.2.0/dwc-swing-laf-demo.jar), then run it with Java 21 or newer:
+Order Desk is a Swing app with the theme installed. [Download the Order Desk demo](https://dwc.style/docs/#/swing/downloads), then run it with Java 21 or newer:
 
 ```bash
 java -jar dwc-swing-laf-demo.jar
@@ -35,7 +35,7 @@ Every control in Order Desk is a standard Swing component. Switch the palette an
 
 ## Install the theme {#install-the-theme}
 
-[Download the theme JAR](https://cdn.webforj.com/dwc-swing-laf/0.2.0/dwc-swing-laf.jar) and add it to the classpath of the Swing app. It needs Java 21 or newer and includes both palettes and the Inter font.
+[Download the theme JAR](https://dwc.style/docs/#/swing/downloads) and add it to the classpath of the Swing app. It needs Java 21 or newer and includes both palettes and the Inter font.
 
 On the Swing event dispatch thread, select the look and feel before the app creates its first window:
 
