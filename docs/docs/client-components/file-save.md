@@ -6,7 +6,7 @@ description: Style the dwc-file-save client component using CSS variables and sh
 ---
 
 <DocChip chip='shadow' />
-    
+
 :::info CLIENT COMPONENT
 This section outlines styling information for the **`<dwc-file-save>`** component. This component is **client side only** - it can't be instantiated on its own via the API, but may make up part of API components.
 :::

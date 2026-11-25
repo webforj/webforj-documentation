@@ -5736,5 +5736,251 @@
   },
   "page.modernization.partner.webswing.textPlain": {
     "message": "在服务器上渲染 Swing、JavaFX 或 SWT 应用，并将其界面流式传输到浏览器。"
+  },
+  "page.home.meta.descriptionSpring": {
+    "message": "使用 webforJ 全程以 Java 构建业务 Web 应用，可独立运行或搭配 Spring Boot。逐个界面将 Swing 应用迁移到 Web。文档、指南和演示。"
+  },
+  "page.home.stack.captionLayers": {
+    "message": "界面、逻辑和数据集于一个 Java 应用，可独立运行或搭配 Spring Boot。"
+  },
+  "page.home.hero.leadHook": {
+    "message": "从界面到数据库，只用一种语言。webforJ 是面向企业 Web 应用的全栈 Java 框架，可独立运行，也可与 Spring Boot 搭配。还在用 Swing 应用？一次将一个界面迁移到 Web。"
+  },
+  "page.home.starts.new.step": {
+    "message": "新建应用"
+  },
+  "page.home.starts.new.title": {
+    "message": "用 Java 构建"
+  },
+  "page.home.starts.new.text": {
+    "message": "生成项目并使用 Java 构建完整应用，包括所有界面。"
+  },
+  "page.home.starts.swing.step": {
+    "message": "Swing 应用"
+  },
+  "page.home.starts.swing.title": {
+    "message": "将其移到网上"
+  },
+  "page.home.starts.swing.text": {
+    "message": "在浏览器中运行桌面应用，然后每次移动一屏。"
+  },
+  "page.home.starts.spring.step": {
+    "message": "Spring Boot"
+  },
+  "page.home.starts.spring.title": {
+    "message": "添加到 Spring\n"
+  },
+  "page.home.starts.spring.text": {
+    "message": "将 Spring 服务和存储库直接注入 webforJ 视图。"
+  },
+  "page.home.starts.title1": {
+    "message": "从哪里开始？"
+  },
+  "page.home.starts.title2": {
+    "message": "三种进入方式"
+  },
+  "page.modernization.phases.p2.textApi": {
+    "message": "新界面采用 webforJ 编写，与嵌入式应用并行运行。Swing 应用接入 Webswing API，双方可以互相传递操作：在 Swing 中点击即可打开网页表单，在网页中保存则会更新 Swing 表格。用户可在同一个浏览器标签页中使用新旧界面。"
+  },
+  "page.modernization.stays.toolchain.textLogic": {
+    "message": "Maven、IDE 和调试器保持不变，现有测试仍覆盖新界面调用的业务逻辑。"
+  },
+  "page.modernization.hero.eyebrowApps": {
+    "message": "适用于 Swing、JavaFX 和 SWT 应用程序\n"
+  },
+  "page.modernization.hero.titleMove": {
+    "message": "将 Java 桌面应用迁移到 Web，"
+  },
+  "page.modernization.hero.leadFirst": {
+    "message": "你的 Swing、JavaFX 或 SWT 应用无需修改源代码，即可先在浏览器中运行。随后，Java 团队逐屏将其重建为 webforJ 应用。桌面客户端不复存在，团队和代码依然保留。"
+  },
+  "page.modernization.hero.screenshot": {
+    "message": "发送截图"
+  },
+  "page.modernization.hero.bookCall": {
+    "message": "预约通话"
+  },
+  "page.modernization.hero.note": {
+    "message": "一张截图就够了。我们会告诉你如何将该界面迁移到 webforJ。"
+  },
+  "page.modernization.why.java8.title": {
+    "message": "Java 8"
+  },
+  "page.modernization.why.java8.text": {
+    "message": "高级支持已于2022年3月结束。扩展支持（最后一个提供新修复的支持级别）将持续至2030年12月。"
+  },
+  "page.modernization.why.java17.title": {
+    "message": "Java 17"
+  },
+  "page.modernization.why.java17.text": {
+    "message": "Premier 支持已于 2026 年 9 月结束。扩展支持是最后一个提供新修复的级别，将持续至 2029 年 9 月。"
+  },
+  "page.modernization.why.webstart.title": {
+    "message": "Java Web Start"
+  },
+  "page.modernization.why.webstart.text": {
+    "message": "Oracle Java SE 11 及更高版本不包含它。Oracle 仅在 Java SE 8 上支持它。"
+  },
+  "page.modernization.why.applet.title": {
+    "message": "小程序"
+  },
+  "page.modernization.why.applet.text": {
+    "message": "JDK 26 移除了 Applet API，该 API 自 JDK 17 起已被弃用并计划移除。"
+  },
+  "page.modernization.why.subscription.title": {
+    "message": "Java 订阅"
+  },
+  "page.modernization.why.subscription.text": {
+    "message": "Oracle 销售 Java SE Universal Subscription 时按员工人数计费，而非按桌面设备数。"
+  },
+  "page.modernization.why.eyebrow": {
+    "message": "为什么是现在"
+  },
+  "page.modernization.why.title1": {
+    "message": "Java 8 延长支持"
+  },
+  "page.modernization.why.title2": {
+    "message": "于2030年12月结束"
+  },
+  "page.modernization.why.lead": {
+    "message": "每台运行您应用的 PC 都有自己的 Java 运行时。Oracle 会公布该运行时的支持日期，而 Java 8 的 Premier Support 已于 2022 年 3 月结束。"
+  },
+  "page.modernization.why.webLabel": {
+    "message": "在网上"
+  },
+  "page.modernization.why.webText": {
+    "message": "Web 应用的 Java 在您的服务器上运行。运行时只需在一个位置更新，无需逐台更新桌面设备。"
+  },
+  "page.modernization.why.screenshot": {
+    "message": "发送截图"
+  },
+  "page.modernization.why.sources": {
+    "message": "来源："
+  },
+  "page.modernization.plan.size.title": {
+    "message": "按屏幕调整大小"
+  },
+  "page.modernization.plan.size.text": {
+    "message": "工作量会随着屏幕数量和 UI 与业务逻辑的耦合程度增加。先迁移一个简单的列表和编辑表单，再评估。"
+  },
+  "page.modernization.plan.size.link": {
+    "message": "按照教程操作"
+  },
+  "page.modernization.plan.java.title": {
+    "message": "Java 21 或更高版本"
+  },
+  "page.modernization.plan.java.text": {
+    "message": "webforJ 需要 Java 21 或更高版本。Webswing 可按原样运行现有应用，因此只有新界面调用的代码必须在 Java 21 上运行。"
+  },
+  "page.modernization.plan.java.link": {
+    "message": "查看先决条件"
+  },
+  "page.modernization.plan.security.title": {
+    "message": "每条路由都安全"
+  },
+  "page.modernization.plan.security.text": {
+    "message": "每个路由都可以通过注解设置登录或角色要求，并在 Spring Boot 中使用 Spring Security。你的 Java 代码在服务器上运行。"
+  },
+  "page.modernization.plan.security.link": {
+    "message": "了解路由安全"
+  },
+  "page.modernization.plan.cost.title": {
+    "message": "费用是多少"
+  },
+  "page.modernization.plan.cost.text": {
+    "message": "套餐信息请查看定价页面。如需获取适合您应用的报价，请向团队发送截图或预约通话。"
+  },
+  "page.modernization.plan.cost.link": {
+    "message": "查看定价页面"
+  },
+  "page.modernization.plan.eyebrow": {
+    "message": "开始之前"
+  },
+  "page.modernization.plan.title1": {
+    "message": "要规划什么"
+  },
+  "page.modernization.plan.title2": {
+    "message": "适用于您的应用"
+  },
+  "page.modernization.plan.lead": {
+    "message": "迁移前，大多数问题都与规模、版本、安全性和成本有关。以下介绍各项分别取决于什么。"
+  },
+  "page.modernization.start.step3.textPom": {
+    "message": "webforj-webswing 模块提供了 WebswingConnector 及其相关类。将其添加为 webforJ 应用 pom.xml 中的依赖项。"
+  },
+  "page.modernization.start.step4.textOptions": {
+    "message": "将 WebswingConnector 添加到视图中，与第一阶段相同。WebswingOptions 可更改其行为，例如关闭自动启动，直到应用程序建立连接。"
+  },
+  "page.modernization.partner.proof.list.text": {
+    "message": "Webswing 在其官网的合作伙伴页面将 webforJ 列为合作伙伴。"
+  },
+  "page.modernization.partner.proof.release.text": {
+    "message": "webforJ 在 25.10 版本发布时宣布了这项合作，并推出了全新的 WebswingConnector。"
+  },
+  "page.modernization.partner.proof.webinar.text": {
+    "message": "2025年11月，Webswing 和 webforJ 专家将一款桌面 Java 应用迁移到了 Web。"
+  },
+  "page.modernization.partner.proof.events.text": {
+    "message": "两支团队亮相 Java Forum Stuttgart 2025，并共同设立了 JavaOne 2026 展位。"
+  },
+  "page.modernization.partner.webforj.textShort": {
+    "message": "将正在运行的应用嵌入 webforJ 视图，然后作为每个新屏幕的框架。"
+  },
+  "page.modernization.band.titleScreen": {
+    "message": "向我们发送一张应用界面截图\n"
+  },
+  "page.modernization.band.screenshotText": {
+    "message": "附上一张屏幕截图，我们会告诉您如何将其迁移到 webforJ。或者预约通话，介绍您的应用、所用技术栈和时间安排。"
+  },
+  "page.modernization.band.screenshot": {
+    "message": "发送截图"
+  },
+  "page.modernization.next.eyebrow": {
+    "message": "后续步骤"
+  },
+  "page.modernization.faq.source.q": {
+    "message": "该应用能否不做任何更改就在浏览器中运行？"
+  },
+  "page.modernization.faq.source.a": {
+    "message": "是的。Webswing 可让 Swing、JavaFX 和 SWT 应用在浏览器中原样运行，无需修改源代码。"
+  },
+  "page.modernization.faq.features.q": {
+    "message": "迁移期间可以继续开发功能吗？"
+  },
+  "page.modernization.faq.features.a": {
+    "message": "是的。应用通过 Webswing 持续运行，屏幕逐个替换，因此您可以按自己的节奏发布。"
+  },
+  "page.modernization.faq.logic.q": {
+    "message": "我们的 Java 业务逻辑会怎样？"
+  },
+  "page.modernization.faq.logic.a": {
+    "message": "这一点保持不变。新的 webforJ 界面使用 Java 编写，因此调用的仍是您现在的 Swing 界面所调用的相同类。"
+  },
+  "page.modernization.faq.js.q": {
+    "message": "团队能否全程使用 Java？"
+  },
+  "page.modernization.faq.js.a": {
+    "message": "是的。每个 webforJ 页面都是一个 Java 类，可直接调用现有服务，无需单独的前端项目。"
+  },
+  "page.modernization.faq.bridge.q": {
+    "message": "Webswing 会永久保留吗？"
+  },
+  "page.modernization.faq.bridge.a": {
+    "message": "它是过渡方案，可立即提供浏览器访问，同时将界面迁移到 webforJ，直至桌面应用退役。"
+  },
+  "page.modernization.faq.ai.q": {
+    "message": "AI 如何助力迁移？"
+  },
+  "page.modernization.faq.ai.a": {
+    "message": "AI 助手帮助团队构建并检查每个新的 webforJ 页面，工程师则逐一审查和测试。"
+  },
+  "page.modernization.faq.eyebrow": {
+    "message": "问题"
+  },
+  "page.modernization.faq.title1": {
+    "message": "团队会问什么\n"
+  },
+  "page.modernization.faq.title2": {
+    "message": "开始前"
   }
 }

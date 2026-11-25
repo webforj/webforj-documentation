@@ -5736,5 +5736,251 @@
   },
   "page.modernization.partner.webswing.textPlain": {
     "message": "Rendert de Swing-, JavaFX- of SWT-app op de server en streamt de interface naar de browser."
+  },
+  "page.home.meta.descriptionSpring": {
+    "message": "Bouw zakelijke webapps volledig in Java met webforJ, zelfstandig of met Spring Boot. Verplaats een Swing-app stap voor stap naar het web. Documentatie, handleidingen en demo's."
+  },
+  "page.home.stack.captionLayers": {
+    "message": "Schermen, logica en data in één Java-app, standalone of met Spring Boot."
+  },
+  "page.home.hero.leadHook": {
+    "message": "Eén taal, van scherm tot database. webforJ is het full-stack Java-framework voor zakelijke webapps, zelfstandig of met Spring Boot. Heb je een Swing-app? Breng die scherm voor scherm naar het web."
+  },
+  "page.home.starts.new.step": {
+    "message": "Nieuwe app"
+  },
+  "page.home.starts.new.title": {
+    "message": "Bouw het in Java\n"
+  },
+  "page.home.starts.new.text": {
+    "message": "Genereer een project en bouw de volledige app, inclusief schermen, in Java."
+  },
+  "page.home.starts.swing.step": {
+    "message": "Swing-app"
+  },
+  "page.home.starts.swing.title": {
+    "message": "Verplaats het naar het web"
+  },
+  "page.home.starts.swing.text": {
+    "message": "Start de desktopapp in de browser en navigeer vervolgens scherm voor scherm."
+  },
+  "page.home.starts.spring.step": {
+    "message": "Spring Boot"
+  },
+  "page.home.starts.spring.title": {
+    "message": "Voeg het toe aan Spring"
+  },
+  "page.home.starts.spring.text": {
+    "message": "Injecteer je Spring-services en repositories rechtstreeks in webforJ-views."
+  },
+  "page.home.starts.title1": {
+    "message": "Waar begin je?"
+  },
+  "page.home.starts.title2": {
+    "message": "Drie manieren om binnen te komen."
+  },
+  "page.modernization.phases.p2.textApi": {
+    "message": "Nieuwe schermen worden geschreven in webforJ en staan naast de ingebedde app. De Swing-app voegt de Webswing API toe, zodat beide kanten acties naar elkaar kunnen sturen. Zo kan een klik in Swing een webformulier openen en werkt opslaan op het web de Swing-tabel bij. Gebruikers werken in oude en nieuwe schermen in hetzelfde browsertabblad."
+  },
+  "page.modernization.stays.toolchain.textLogic": {
+    "message": "Maven, je IDE en debugger blijven hetzelfde, en je bestaande tests blijven de bedrijfslogica afdekken die de nieuwe schermen aanroepen."
+  },
+  "page.modernization.hero.eyebrowApps": {
+    "message": "Voor Swing-, JavaFX- en SWT-apps\n"
+  },
+  "page.modernization.hero.titleMove": {
+    "message": "Verplaats je Java-desktopapp naar het web,"
+  },
+  "page.modernization.hero.leadFirst": {
+    "message": "Je Swing-, JavaFX- of SWT-app draait eerst in de browser, zonder wijzigingen aan de broncode. Daarna bouwt je Java-team deze scherm voor scherm opnieuw in webforJ. De desktopclient verdwijnt, het team en de code blijven."
+  },
+  "page.modernization.hero.screenshot": {
+    "message": "Screenshot verzenden"
+  },
+  "page.modernization.hero.bookCall": {
+    "message": "Plan een gesprek"
+  },
+  "page.modernization.hero.note": {
+    "message": "Eén screenshot is genoeg. We laten zien hoe dat scherm naar webforJ wordt overgezet."
+  },
+  "page.modernization.why.java8.title": {
+    "message": "Java 8"
+  },
+  "page.modernization.why.java8.text": {
+    "message": "Premier Support eindigde in maart 2022. Extended Support, het laatste niveau met nieuwe fixes, loopt tot december 2030."
+  },
+  "page.modernization.why.java17.title": {
+    "message": "Java 17"
+  },
+  "page.modernization.why.java17.text": {
+    "message": "Premier Support eindigde in september 2026. Extended Support, het laatste niveau met nieuwe correcties, loopt tot september 2029."
+  },
+  "page.modernization.why.webstart.title": {
+    "message": "Java Web Start"
+  },
+  "page.modernization.why.webstart.text": {
+    "message": "Oracle Java SE 11 en later bevatten het niet. Oracle ondersteunt het alleen op Java SE 8."
+  },
+  "page.modernization.why.applet.title": {
+    "message": "Applets"
+  },
+  "page.modernization.why.applet.text": {
+    "message": "JDK 26 heeft de Applet API verwijderd, die sinds JDK 17 was aangemerkt voor verwijdering."
+  },
+  "page.modernization.why.subscription.title": {
+    "message": "Het Java-abonnement"
+  },
+  "page.modernization.why.subscription.text": {
+    "message": "Oracle verkoopt de Java SE Universal Subscription op basis van het aantal werknemers, niet op basis van het aantal desktops."
+  },
+  "page.modernization.why.eyebrow": {
+    "message": "Waarom nu?"
+  },
+  "page.modernization.why.title1": {
+    "message": "Uitgebreide ondersteuning voor Java 8"
+  },
+  "page.modernization.why.title2": {
+    "message": "eindigt in december 2030"
+  },
+  "page.modernization.why.lead": {
+    "message": "Elke pc waarop je app draait, heeft ook een eigen Java-runtime. Oracle publiceert de ondersteuningsdatums voor die runtime, en Java 8 Premier Support is al in maart 2022 geëindigd."
+  },
+  "page.modernization.why.webLabel": {
+    "message": "Op het web"
+  },
+  "page.modernization.why.webText": {
+    "message": "Een webapp draait Java op uw server. De runtime staat op één plek die u bijwerkt, niet op elke desktop."
+  },
+  "page.modernization.why.screenshot": {
+    "message": "Screenshot versturen"
+  },
+  "page.modernization.why.sources": {
+    "message": "Bronnen:"
+  },
+  "page.modernization.plan.size.title": {
+    "message": "Pas de grootte aan op basis van schermen\n"
+  },
+  "page.modernization.plan.size.text": {
+    "message": "De hoeveelheid werk neemt toe naarmate er meer schermen zijn en de UI en bedrijfslogica sterker verweven zijn. Zet eerst één eenvoudige lijst en één bewerkingsformulier over en meet daarna."
+  },
+  "page.modernization.plan.size.link": {
+    "message": "Volg de tutorial"
+  },
+  "page.modernization.plan.java.title": {
+    "message": "Java 21 of hoger"
+  },
+  "page.modernization.plan.java.text": {
+    "message": "webforJ vereist Java 21 of hoger. Webswing voert de bestaande app uit zoals die is, dus alleen de code die door de nieuwe schermen wordt aangeroepen, moet op Java 21 draaien."
+  },
+  "page.modernization.plan.java.link": {
+    "message": "Bekijk de vereisten"
+  },
+  "page.modernization.plan.security.title": {
+    "message": "Beveiliging voor elke route"
+  },
+  "page.modernization.plan.security.text": {
+    "message": "Elke route kan via annotaties een login of rol vereisen met Spring Security op Spring Boot. Je Java-code draait op de server."
+  },
+  "page.modernization.plan.security.link": {
+    "message": "Lees meer over routebeveiliging\n"
+  },
+  "page.modernization.plan.cost.title": {
+    "message": "Wat het kost"
+  },
+  "page.modernization.plan.cost.text": {
+    "message": "De abonnementen staan op de prijspagina. Stuur het team een screenshot of plan een gesprek om een bedrag te bepalen dat bij je app past."
+  },
+  "page.modernization.plan.cost.link": {
+    "message": "Bekijk de prijspagina"
+  },
+  "page.modernization.plan.eyebrow": {
+    "message": "Voordat je begint"
+  },
+  "page.modernization.plan.title1": {
+    "message": "Wat te plannen?"
+  },
+  "page.modernization.plan.title2": {
+    "message": "voor je app"
+  },
+  "page.modernization.plan.lead": {
+    "message": "De meeste vragen vóór een overstap gaan over omvang, versies, beveiliging en kosten. Hier lees je waarvan elk afhangt."
+  },
+  "page.modernization.start.step3.textPom": {
+    "message": "De webforj-webswing-module biedt WebswingConnector en de bijbehorende klassen. Voeg deze als afhankelijkheid toe aan de pom.xml van je webforJ-app."
+  },
+  "page.modernization.start.step4.textOptions": {
+    "message": "Voeg een WebswingConnector toe aan een view, zoals in fase 1. WebswingOptions wijzigt het gedrag, bijvoorbeeld door automatisch starten uit te schakelen totdat je app de verbinding opent."
+  },
+  "page.modernization.partner.proof.list.text": {
+    "message": "Webswing vermeldt webforJ als partner op de partnerpagina van zijn eigen website."
+  },
+  "page.modernization.partner.proof.release.text": {
+    "message": "webforJ kondigde het partnerschap aan in de 25.10-release, samen met de nieuwe WebswingConnector."
+  },
+  "page.modernization.partner.proof.webinar.text": {
+    "message": "In november 2025 brachten experts van Webswing en webforJ een Java-desktopapp naar het web."
+  },
+  "page.modernization.partner.proof.events.text": {
+    "message": "De twee teams waren aanwezig op Java Forum Stuttgart 2025 en deelden een stand op JavaOne 2026."
+  },
+  "page.modernization.partner.webforj.textShort": {
+    "message": "Voegt de draaiende app in een webforJ-weergave in en vormt vervolgens de basis voor elk nieuw scherm."
+  },
+  "page.modernization.band.titleScreen": {
+    "message": "Stuur ons één scherm van je app\n"
+  },
+  "page.modernization.band.screenshotText": {
+    "message": "Voeg een screenshot van één scherm toe en we laten zien hoe het naar webforJ wordt overgezet. Of plan een gesprek en vertel ons over je app, de stack waarop die draait en je planning."
+  },
+  "page.modernization.band.screenshot": {
+    "message": "Stuur een screenshot\n"
+  },
+  "page.modernization.next.eyebrow": {
+    "message": "Volgende stappen"
+  },
+  "page.modernization.faq.source.q": {
+    "message": "Kan de app ongewijzigd in een browser draaien?"
+  },
+  "page.modernization.faq.source.a": {
+    "message": "Ja. Webswing voert Swing-, JavaFX- en SWT-apps in de browser uit zoals ze zijn, zonder wijzigingen in de broncode."
+  },
+  "page.modernization.faq.features.q": {
+    "message": "Kan featureontwikkeling doorgaan tijdens de migratie?"
+  },
+  "page.modernization.faq.features.a": {
+    "message": "Ja. De app blijft via Webswing draaien terwijl schermen één voor één worden vervangen, zodat je releases in je eigen tempo kunt doen."
+  },
+  "page.modernization.faq.logic.q": {
+    "message": "Wat gebeurt er met onze Java-bedrijfslogica?"
+  },
+  "page.modernization.faq.logic.a": {
+    "message": "Het blijft hetzelfde. Nieuwe webforJ-schermen worden in Java geschreven, dus gebruiken ze dezelfde klassen als je Swing-schermen nu."
+  },
+  "page.modernization.faq.js.q": {
+    "message": "Kan het team van begin tot eind in Java blijven?"
+  },
+  "page.modernization.faq.js.a": {
+    "message": "Ja. Elk webforJ-scherm is een Java-klasse die je bestaande services rechtstreeks aanroept, zonder apart frontendproject."
+  },
+  "page.modernization.faq.bridge.q": {
+    "message": "Blijft Webswing voorgoed op zijn plek?"
+  },
+  "page.modernization.faq.bridge.a": {
+    "message": "Het vormt de brug. Het biedt direct toegang via de browser terwijl schermen naar webforJ migreren, totdat de desktopapp wordt uitgefaseerd."
+  },
+  "page.modernization.faq.ai.q": {
+    "message": "Hoe helpt AI bij de migratie?"
+  },
+  "page.modernization.faq.ai.a": {
+    "message": "AI-assistenten helpen je team bij het bouwen en controleren van elk nieuw webforJ-scherm, terwijl je engineers elk scherm beoordelen en testen."
+  },
+  "page.modernization.faq.eyebrow": {
+    "message": "Vragen"
+  },
+  "page.modernization.faq.title1": {
+    "message": "Wat teams vragen\n"
+  },
+  "page.modernization.faq.title2": {
+    "message": "voordat ze beginnen"
   }
 }

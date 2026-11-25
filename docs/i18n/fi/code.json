@@ -5736,5 +5736,251 @@
   },
   "page.modernization.partner.webswing.textPlain": {
     "message": "Renderöi Swing-, JavaFX- tai SWT-sovelluksen palvelimella ja suoratoistaa sen käyttöliittymän selaimeen."
+  },
+  "page.home.meta.descriptionSpring": {
+    "message": "Rakenna yrityskäyttöön tarkoitettuja verkkosovelluksia kokonaan Javalla webforJ:n avulla, itsenäisesti tai Spring Bootin kanssa. Siirrä Swing-sovellus verkkoon näyttö kerrallaan. Dokumentaatio, oppaat ja demot."
+  },
+  "page.home.stack.captionLayers": {
+    "message": "Näytöt, logiikka ja data yhdessä Java-sovelluksessa – itsenäisesti tai Spring Bootin kanssa."
+  },
+  "page.home.hero.leadHook": {
+    "message": "Yksi kieli näytöltä tietokantaan. webforJ on täyden pinon Java-kehys yritysten verkkosovelluksiin, itsenäisenä tai Spring Bootin kanssa. Onko sinulla Swing-sovellus? Tuo se verkkoon yksi näyttö kerrallaan."
+  },
+  "page.home.starts.new.step": {
+    "message": "Uusi sovellus"
+  },
+  "page.home.starts.new.title": {
+    "message": "Rakenna se Javalla\n"
+  },
+  "page.home.starts.new.text": {
+    "message": "Luo projekti ja rakenna koko sovellus näyttöineen Javalla."
+  },
+  "page.home.starts.swing.step": {
+    "message": "Swing-sovellus"
+  },
+  "page.home.starts.swing.title": {
+    "message": "Siirrä se verkkoon"
+  },
+  "page.home.starts.swing.text": {
+    "message": "Käynnistä työpöytäsovellus selaimessa ja siirry sitten eteenpäin yksi näyttö kerrallaan."
+  },
+  "page.home.starts.spring.step": {
+    "message": "Spring Boot"
+  },
+  "page.home.starts.spring.title": {
+    "message": "Lisää se Springiin\n"
+  },
+  "page.home.starts.spring.text": {
+    "message": "Injektoi Spring-palvelut ja repositoriot suoraan webforJ-näkymiin."
+  },
+  "page.home.starts.title1": {
+    "message": "Mistä aloitat?"
+  },
+  "page.home.starts.title2": {
+    "message": "Kolme tapaa päästä sisään."
+  },
+  "page.modernization.phases.p2.textApi": {
+    "message": "Uudet näkymät toteutetaan webforJ:llä, ja ne toimivat upotetun sovelluksen rinnalla. Swing-sovellukseen lisätään Webswing API, jonka avulla sovellukset voivat lähettää toimintoja toisilleen: Swingissä tehty napsautus voi avata verkkolomakkeen, ja verkossa tallennettu muutos päivittää Swing-taulukon. Käyttäjät voivat käyttää vanhoja ja uusia näkymiä samassa selaimen välilehdessä."
+  },
+  "page.modernization.stays.toolchain.textLogic": {
+    "message": "Maven, IDE:si ja debuggerisi pysyvät ennallaan, ja nykyiset testisi kattavat edelleen uusien näkymien käyttämän liiketoimintalogiikan."
+  },
+  "page.modernization.hero.eyebrowApps": {
+    "message": "Swing-, JavaFX- ja SWT-sovelluksille"
+  },
+  "page.modernization.hero.titleMove": {
+    "message": "Siirrä Java-työpöytäsovelluksesi verkkoon\n"
+  },
+  "page.modernization.hero.leadFirst": {
+    "message": "Swing-, JavaFX- tai SWT-sovelluksesi toimii ensin selaimessa ilman lähdekoodimuutoksia. Sitten Java-tiimisi rakentaa sen uudelleen webforJ:llä, yksi näkymä kerrallaan. Työpytäversio poistuu, mutta tiimi ja koodi säilyvät."
+  },
+  "page.modernization.hero.screenshot": {
+    "message": "Lähetä kuvakaappaus"
+  },
+  "page.modernization.hero.bookCall": {
+    "message": "Varaa puhelu"
+  },
+  "page.modernization.hero.note": {
+    "message": "Yksi kuvakaappaus riittää. Kerromme, miten kyseinen näkymä toteutetaan webforJ:llä."
+  },
+  "page.modernization.why.java8.title": {
+    "message": "Java 8"
+  },
+  "page.modernization.why.java8.text": {
+    "message": "Premier Support päättyi maaliskuussa 2022. Extended Support, viimeinen uusien korjausten tukitaso, jatkuu joulukuuhun 2030 asti."
+  },
+  "page.modernization.why.java17.title": {
+    "message": "Java 17"
+  },
+  "page.modernization.why.java17.text": {
+    "message": "Premier Support päättyi syyskuussa 2026. Extended Support, viimeinen taso, jolla julkaistaan uusia korjauksia, jatkuu syyskuuhun 2029."
+  },
+  "page.modernization.why.webstart.title": {
+    "message": "Java Web Start"
+  },
+  "page.modernization.why.webstart.text": {
+    "message": "Oracle Java SE 11 ja sitä uudemmat versiot eivät sisällä sitä. Oracle tukee sitä vain Java SE 8:ssa."
+  },
+  "page.modernization.why.applet.title": {
+    "message": "Sovelmat"
+  },
+  "page.modernization.why.applet.text": {
+    "message": "JDK 26 poisti Applet API:n, joka oli merkitty poistettavaksi JDK 17:stä lähtien."
+  },
+  "page.modernization.why.subscription.title": {
+    "message": "Java-tilaus"
+  },
+  "page.modernization.why.subscription.text": {
+    "message": "Oracle myy Java SE Universal Subscription -tilausta työntekijämäärän, ei työasemien, perusteella."
+  },
+  "page.modernization.why.eyebrow": {
+    "message": "Miksi nyt?"
+  },
+  "page.modernization.why.title1": {
+    "message": "Java 8:n laajennettu tuki"
+  },
+  "page.modernization.why.title2": {
+    "message": "päättyy joulukuussa 2030"
+  },
+  "page.modernization.why.lead": {
+    "message": "Jokaisessa sovellustasi käyttävässä tietokoneessa toimii myös oma Java runtime. Oracle julkaisee runtimen tukiaikataulut, ja Java 8:n Premier Support päättyi jo maaliskuussa 2022."
+  },
+  "page.modernization.why.webLabel": {
+    "message": "Verkossa"
+  },
+  "page.modernization.why.webText": {
+    "message": "Verkkosovellus suorittaa Javaa palvelimellasi. Suoritusaikaympäristö on yhdessä paikassa, jota päivität, ei jokaisella työpöydällä."
+  },
+  "page.modernization.why.screenshot": {
+    "message": "Lähetä kuvakaappaus"
+  },
+  "page.modernization.why.sources": {
+    "message": "Lähteet:"
+  },
+  "page.modernization.plan.size.title": {
+    "message": "Mitoita näytön koon mukaan\n"
+  },
+  "page.modernization.plan.size.text": {
+    "message": "Työmäärä kasvaa näyttöjen määrän ja käyttöliittymän sekä liiketoimintalogiikan kytkeytymisen mukaan. Siirrä ensin yksi yksinkertainen luettelo ja muokkauslomake ja arvioi sitten."
+  },
+  "page.modernization.plan.size.link": {
+    "message": "Seuraa tutoriaalia"
+  },
+  "page.modernization.plan.java.title": {
+    "message": "Java 21 tai uudempi"
+  },
+  "page.modernization.plan.java.text": {
+    "message": "webforJ edellyttää Java 21:tä tai uudempaa. Webswing suorittaa olemassa olevan sovelluksen sellaisenaan, joten vain uusien näkymien käyttämän koodin täytyy toimia Java 21:llä."
+  },
+  "page.modernization.plan.java.link": {
+    "message": "Katso edellytykset"
+  },
+  "page.modernization.plan.security.title": {
+    "message": "Tietoturvaa jokaisella reitillä"
+  },
+  "page.modernization.plan.security.text": {
+    "message": "Jokainen reitti voi annotaatioiden avulla vaatia kirjautumisen tai tietyn roolin, kun Spring Security on käytössä Spring Bootissa. Java-koodisi suoritetaan palvelimella."
+  },
+  "page.modernization.plan.security.link": {
+    "message": "Lue reittien tietoturvasta"
+  },
+  "page.modernization.plan.cost.title": {
+    "message": "Mitä se maksaa"
+  },
+  "page.modernization.plan.cost.text": {
+    "message": "Paketit löytyvät hinnoittelusivulta. Jos haluat sovellukseesi sopivan tarjouksen, lähetä tiimille kuvakaappaus tai varaa puhelu."
+  },
+  "page.modernization.plan.cost.link": {
+    "message": "Tutustu hinnoittelusivuun"
+  },
+  "page.modernization.plan.eyebrow": {
+    "message": "Ennen kuin aloitat"
+  },
+  "page.modernization.plan.title1": {
+    "message": "Mitä suunnitella?"
+  },
+  "page.modernization.plan.title2": {
+    "message": "sovelluksellesi"
+  },
+  "page.modernization.plan.lead": {
+    "message": "Ennen siirtymistä useimmat kysymykset koskevat kokoa, versioita, tietoturvaa ja kustannuksia. Tässä kerrotaan, mistä kukin riippuu."
+  },
+  "page.modernization.start.step3.textPom": {
+    "message": "webforj-webswing-moduuli tarjoaa WebswingConnectorin ja siihen liittyvät luokat. Lisää se webforJ-sovelluksesi pom.xml-tiedostoon riippuvuudeksi."
+  },
+  "page.modernization.start.step4.textOptions": {
+    "message": "Lisää WebswingConnector näkymään kuten vaiheessa 1. WebswingOptions muuttaa sen toimintaa, esimerkiksi poistamalla automaattikäynnistyksen käytöstä siihen asti, kun sovelluksesi avaa yhteyden."
+  },
+  "page.modernization.partner.proof.list.text": {
+    "message": "Webswing mainitsee webforJ:n kumppaninaan verkkosivustonsa kumppanisivulla."
+  },
+  "page.modernization.partner.proof.release.text": {
+    "message": "webforJ ilmoitti kumppanuudesta 25.10-julkaisunsa yhteydessä sekä uudesta WebswingConnectorista."
+  },
+  "page.modernization.partner.proof.webinar.text": {
+    "message": "Marraskuussa 2025 Webswingin ja webforJ:n asiantuntijat toivat Java-työpöytäsovelluksen verkkoon."
+  },
+  "page.modernization.partner.proof.events.text": {
+    "message": "Kaksi tiimiä osallistui Java Forum Stuttgart 2025 -tapahtumaan ja jakoi JavaOne 2026 -messuosaston."
+  },
+  "page.modernization.partner.webforj.textShort": {
+    "message": "Upottaa käynnissä olevan sovelluksen webforJ-näkymään ja toimii sitten jokaisen uuden näytön kehyksenä."
+  },
+  "page.modernization.band.titleScreen": {
+    "message": "Lähetä meille yksi näkymä sovelluksestasi\n"
+  },
+  "page.modernization.band.screenshotText": {
+    "message": "Liitä kuvakaappaus yhdestä näkymästä, niin kerromme, miten se siirretään webforJ:hin. Tai varaa puhelu ja ota mukaan sovelluksesi, sen teknologiapino ja aikataulusi."
+  },
+  "page.modernization.band.screenshot": {
+    "message": "Lähetä kuvakaappaus"
+  },
+  "page.modernization.next.eyebrow": {
+    "message": "Seuraavat vaiheet"
+  },
+  "page.modernization.faq.source.q": {
+    "message": "Voiko sovellus toimia selaimessa ilman muutoksia?"
+  },
+  "page.modernization.faq.source.a": {
+    "message": "Kyllä. Webswing suorittaa Swing-, JavaFX- ja SWT-sovelluksia selaimessa sellaisinaan, ilman muutoksia niiden lähdekoodiin."
+  },
+  "page.modernization.faq.features.q": {
+    "message": "Voiko ominaisuuksien kehitystyötä jatkaa siirron aikana?"
+  },
+  "page.modernization.faq.features.a": {
+    "message": "Kyllä. Sovellus pysyy käynnissä Webswingin kautta, kun näkymiä korvataan yksi kerrallaan, joten voit julkaista omaan tahtiisi."
+  },
+  "page.modernization.faq.logic.q": {
+    "message": "Mitä Java-liiketoimintalogiikallemme tapahtuu?"
+  },
+  "page.modernization.faq.logic.a": {
+    "message": "Se säilyy. Uudet webforJ-näkymät kirjoitetaan Javalla, joten ne kutsuvat samoja luokkia kuin nykyiset Swing-näkymäsi."
+  },
+  "page.modernization.faq.js.q": {
+    "message": "Voiko tiimi pysyä Javassa alusta loppuun?"
+  },
+  "page.modernization.faq.js.a": {
+    "message": "Kyllä. Jokainen webforJ-näkymä on Java-luokka, joka kutsuu suoraan olemassa olevia palveluitasi ilman erillistä frontend-projektia."
+  },
+  "page.modernization.faq.bridge.q": {
+    "message": "Pysyykö Webswing pysyvästi paikallaan?"
+  },
+  "page.modernization.faq.bridge.a": {
+    "message": "Se toimii siltana. Se mahdollistaa selainkäytön heti, kun näkymiä siirretään webforJ:hin, kunnes työpöytäsovellus poistetaan käytöstä."
+  },
+  "page.modernization.faq.ai.q": {
+    "message": "Miten tekoäly auttaa migraatiossa?"
+  },
+  "page.modernization.faq.ai.a": {
+    "message": "Tekoälyavustajat auttavat tiimiäsi rakentamaan ja tarkistamaan jokaisen uuden webforJ-näkymän, ja insinöörisi käyvät ne kaikki läpi ja testaavat ne."
+  },
+  "page.modernization.faq.eyebrow": {
+    "message": "Kysymykset"
+  },
+  "page.modernization.faq.title1": {
+    "message": "Mitä tiimit kysyvät"
+  },
+  "page.modernization.faq.title2": {
+    "message": "ennen kuin he aloittavat"
   }
 }

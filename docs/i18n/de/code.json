@@ -5736,5 +5736,251 @@
   },
   "page.modernization.partner.webswing.textPlain": {
     "message": "Rendert die Swing-, JavaFX- oder SWT-App auf dem Server und streamt ihre Oberfläche in den Browser."
+  },
+  "page.home.meta.descriptionSpring": {
+    "message": "Erstellen Sie Business-Web-Apps vollständig in Java mit webforJ – eigenständig oder mit Spring Boot. Migrieren Sie Ihre Swing-App Bildschirm für Bildschirm ins Web. Dokumentation, Anleitungen und Demos."
+  },
+  "page.home.stack.captionLayers": {
+    "message": "Oberflächen, Logik und Daten in einer Java-App – eigenständig oder mit Spring Boot."
+  },
+  "page.home.hero.leadHook": {
+    "message": "Eine Sprache – vom Bildschirm bis zur Datenbank. webforJ ist das Full-Stack-Java-Framework für geschäftliche Web-Apps, eigenständig oder mit Spring Boot. Sie haben eine Swing-App? Bringen Sie sie Bildschirm für Bildschirm ins Web."
+  },
+  "page.home.starts.new.step": {
+    "message": "Neue App"
+  },
+  "page.home.starts.new.title": {
+    "message": "In Java erstellen"
+  },
+  "page.home.starts.new.text": {
+    "message": "Erstelle ein Projekt und entwickle die gesamte App inklusive aller Bildschirme in Java."
+  },
+  "page.home.starts.swing.step": {
+    "message": "Swing-Anwendung"
+  },
+  "page.home.starts.swing.title": {
+    "message": "Ins Web verschieben"
+  },
+  "page.home.starts.swing.text": {
+    "message": "Starten Sie die Desktop-App im Browser und wechseln Sie dann jeweils einen Bildschirm weiter."
+  },
+  "page.home.starts.spring.step": {
+    "message": "Spring Boot"
+  },
+  "page.home.starts.spring.title": {
+    "message": "Zu Spring hinzufügen"
+  },
+  "page.home.starts.spring.text": {
+    "message": "Injizieren Sie Ihre Spring-Services und -Repositories direkt in webforJ-Ansichten."
+  },
+  "page.home.starts.title1": {
+    "message": "Wo fängst du an?"
+  },
+  "page.home.starts.title2": {
+    "message": "Drei Einstiegsmöglichkeiten."
+  },
+  "page.modernization.phases.p2.textApi": {
+    "message": "Neue Ansichten werden in webforJ erstellt und laufen neben der eingebetteten Anwendung. Die Swing-App ergänzt die Webswing-API, und beide Seiten tauschen Aktionen aus: Ein Klick in Swing kann ein Webformular öffnen, und beim Speichern im Web wird die Swing-Tabelle aktualisiert. Nutzer arbeiten im selben Browser-Tab mit alten und neuen Ansichten."
+  },
+  "page.modernization.stays.toolchain.textLogic": {
+    "message": "Maven, Ihre IDE und Ihr Debugger bleiben unverändert, und Ihre bestehenden Tests decken weiterhin die Geschäftslogik ab, die von den neuen Ansichten genutzt wird."
+  },
+  "page.modernization.hero.eyebrowApps": {
+    "message": "Für Swing-, JavaFX- und SWT-Anwendungen"
+  },
+  "page.modernization.hero.titleMove": {
+    "message": "Bringen Sie Ihre Java-Desktop-App ins Web,"
+  },
+  "page.modernization.hero.leadFirst": {
+    "message": "Ihre Swing-, JavaFX- oder SWT-App läuft zuerst im Browser – ohne Änderungen am Quellcode. Anschließend baut Ihr Java-Team sie Bildschirm für Bildschirm in webforJ nach. Der Desktop-Client verschwindet, Team und Code bleiben."
+  },
+  "page.modernization.hero.screenshot": {
+    "message": "Screenshot senden"
+  },
+  "page.modernization.hero.bookCall": {
+    "message": "Gespräch vereinbaren"
+  },
+  "page.modernization.hero.note": {
+    "message": "Ein Screenshot genügt. Wir zeigen Ihnen, wie dieser Bildschirm zu webforJ migriert wird."
+  },
+  "page.modernization.why.java8.title": {
+    "message": "Java 8"
+  },
+  "page.modernization.why.java8.text": {
+    "message": "Premier Support endete im März 2022. Extended Support, die letzte Supportstufe mit neuen Fehlerbehebungen, läuft bis Dezember 2030."
+  },
+  "page.modernization.why.java17.title": {
+    "message": "Java 17"
+  },
+  "page.modernization.why.java17.text": {
+    "message": "Der Premier Support endete im September 2026. Der Extended Support, die letzte Stufe mit neuen Fehlerbehebungen, läuft bis September 2029."
+  },
+  "page.modernization.why.webstart.title": {
+    "message": "Java Web Start"
+  },
+  "page.modernization.why.webstart.text": {
+    "message": "Oracle Java SE 11 und höher enthalten es nicht. Oracle unterstützt es nur für Java SE 8."
+  },
+  "page.modernization.why.applet.title": {
+    "message": "Applets"
+  },
+  "page.modernization.why.applet.text": {
+    "message": "JDK 26 hat die Applet-API entfernt, die seit JDK 17 als veraltet und zur Entfernung vorgesehen war."
+  },
+  "page.modernization.why.subscription.title": {
+    "message": "Das Java-Abonnement"
+  },
+  "page.modernization.why.subscription.text": {
+    "message": "Oracle verkauft das Java SE Universal Subscription auf Basis der Mitarbeiterzahl, nicht der Anzahl der Desktops."
+  },
+  "page.modernization.why.eyebrow": {
+    "message": "Warum jetzt?"
+  },
+  "page.modernization.why.title1": {
+    "message": "Erweiterter Support für Java 8"
+  },
+  "page.modernization.why.title2": {
+    "message": "endet im Dezember 2030"
+  },
+  "page.modernization.why.lead": {
+    "message": "Auf jedem PC, auf dem Ihre App läuft, läuft auch eine eigene Java-Laufzeitumgebung. Oracle veröffentlicht Support-Zeiträume für diese Laufzeitumgebung. Der Premier Support für Java 8 endete bereits im März 2022."
+  },
+  "page.modernization.why.webLabel": {
+    "message": "Im Web"
+  },
+  "page.modernization.why.webText": {
+    "message": "Eine Web-App führt Java auf Ihrem Server aus. Die Laufzeitumgebung wird zentral aktualisiert, nicht auf jedem Desktop."
+  },
+  "page.modernization.why.screenshot": {
+    "message": "Screenshot senden"
+  },
+  "page.modernization.why.sources": {
+    "message": "Quellen:"
+  },
+  "page.modernization.plan.size.title": {
+    "message": "An Bildschirmgröße anpassen"
+  },
+  "page.modernization.plan.size.text": {
+    "message": "Der Aufwand steigt mit der Anzahl der Bildschirme und damit, wie eng UI und Geschäftslogik verzahnt sind. Migriere zuerst eine einfache Liste und ein Bearbeitungsformular und miss anschließend."
+  },
+  "page.modernization.plan.size.link": {
+    "message": "Folge dem Tutorial."
+  },
+  "page.modernization.plan.java.title": {
+    "message": "Java 21 oder höher"
+  },
+  "page.modernization.plan.java.text": {
+    "message": "webforJ benötigt Java 21 oder höher. Webswing führt die bestehende App unverändert aus. Daher muss nur der Code, den die neuen Bildschirme aufrufen, unter Java 21 laufen."
+  },
+  "page.modernization.plan.java.link": {
+    "message": "Voraussetzungen ansehen"
+  },
+  "page.modernization.plan.security.title": {
+    "message": "Sicherheit auf jeder Route"
+  },
+  "page.modernization.plan.security.text": {
+    "message": "Jede Route kann mithilfe von Annotationen eine Anmeldung oder eine Rolle erfordern – mit Spring Security in Spring Boot. Ihr Java-Code läuft auf dem Server."
+  },
+  "page.modernization.plan.security.link": {
+    "message": "Mehr über Routensicherheit erfahren"
+  },
+  "page.modernization.plan.cost.title": {
+    "message": "Was es kostet"
+  },
+  "page.modernization.plan.cost.text": {
+    "message": "Die Tarife finden Sie auf der Preisseite. Für einen auf Ihre App zugeschnittenen Preis senden Sie dem Team einen Screenshot oder vereinbaren Sie einen Gesprächstermin."
+  },
+  "page.modernization.plan.cost.link": {
+    "message": "Preisseite ansehen"
+  },
+  "page.modernization.plan.eyebrow": {
+    "message": "Bevor Sie beginnen"
+  },
+  "page.modernization.plan.title1": {
+    "message": "Was planen?"
+  },
+  "page.modernization.plan.title2": {
+    "message": "für Ihre App"
+  },
+  "page.modernization.plan.lead": {
+    "message": "Die meisten Fragen vor einem Umzug betreffen Größe, Versionen, Sicherheit und Kosten. Hier erfahren Sie, wovon die einzelnen abhängen."
+  },
+  "page.modernization.start.step3.textPom": {
+    "message": "Das Modul webforj-webswing stellt WebswingConnector und die zugehörigen Klassen bereit. Fügen Sie es als Abhängigkeit zur pom.xml Ihrer webforJ-App hinzu."
+  },
+  "page.modernization.start.step4.textOptions": {
+    "message": "Fügen Sie einer Ansicht wie in Phase 1 einen WebswingConnector hinzu. WebswingOptions ändern sein Verhalten, z. B. indem der Auto-Start deaktiviert wird, bis Ihre App die Verbindung öffnet."
+  },
+  "page.modernization.partner.proof.list.text": {
+    "message": "Webswing führt webforJ auf der Partnerseite seiner Website als Partner auf."
+  },
+  "page.modernization.partner.proof.release.text": {
+    "message": "webforJ gab die Partnerschaft mit seinem Release 25.10 zusammen mit dem neuen WebswingConnector bekannt."
+  },
+  "page.modernization.partner.proof.webinar.text": {
+    "message": "Im November 2025 brachten Webswing- und webforJ-Experten eine Desktop-Java-App ins Web."
+  },
+  "page.modernization.partner.proof.events.text": {
+    "message": "Die beiden Teams waren beim Java Forum Stuttgart 2025 vertreten und teilten sich einen Stand auf der JavaOne 2026."
+  },
+  "page.modernization.partner.webforj.textShort": {
+    "message": "Bindet die laufende App in eine webforJ-Ansicht ein und dient anschließend als Framework für jeden neuen Bildschirm."
+  },
+  "page.modernization.band.titleScreen": {
+    "message": "Senden Sie uns einen Bildschirm Ihrer App."
+  },
+  "page.modernization.band.screenshotText": {
+    "message": "Laden Sie einen Screenshot einer Ansicht hoch, und wir zeigen Ihnen, wie sie zu webforJ migriert wird. Oder buchen Sie ein Gespräch und bringen Sie Ihre App, den Tech-Stack und Ihren Zeitplan mit."
+  },
+  "page.modernization.band.screenshot": {
+    "message": "Screenshot senden"
+  },
+  "page.modernization.next.eyebrow": {
+    "message": "Nächste Schritte"
+  },
+  "page.modernization.faq.source.q": {
+    "message": "Kann die App unverändert im Browser ausgeführt werden?"
+  },
+  "page.modernization.faq.source.a": {
+    "message": "Ja. Webswing führt Swing-, JavaFX- und SWT-Anwendungen unverändert im Browser aus, ohne Änderungen am Quellcode."
+  },
+  "page.modernization.faq.features.q": {
+    "message": "Kann die Feature-Arbeit während des Umzugs weitergehen?"
+  },
+  "page.modernization.faq.features.a": {
+    "message": "Ja. Die App läuft über Webswing weiter, während die Bildschirme nach und nach ersetzt werden. So erfolgen Releases in Ihrem Tempo."
+  },
+  "page.modernization.faq.logic.q": {
+    "message": "Was passiert mit unserer Java-Geschäftslogik?"
+  },
+  "page.modernization.faq.logic.a": {
+    "message": "Es bleibt alles beim Alten. Neue webforJ-Bildschirme werden in Java geschrieben und rufen daher dieselben Klassen auf wie Ihre bisherigen Swing-Bildschirme."
+  },
+  "page.modernization.faq.js.q": {
+    "message": "Kann das Team durchgehend bei Java bleiben?"
+  },
+  "page.modernization.faq.js.a": {
+    "message": "Ja. Jeder webforJ-Bildschirm ist eine Java-Klasse, die Ihre vorhandenen Services direkt aufruft – ohne separates Frontend-Projekt."
+  },
+  "page.modernization.faq.bridge.q": {
+    "message": "Bleibt Webswing dauerhaft bestehen?"
+  },
+  "page.modernization.faq.bridge.a": {
+    "message": "Es schlägt die Brücke: Es ermöglicht sofortigen Browserzugriff, während die Ansichten zu webforJ migriert werden, bis die Desktop-App eingestellt wird."
+  },
+  "page.modernization.faq.ai.q": {
+    "message": "Wie hilft KI bei der Migration?"
+  },
+  "page.modernization.faq.ai.a": {
+    "message": "KI-Assistenten helfen Ihrem Team, jeden neuen webforJ-Bildschirm zu erstellen und zu prüfen, während Ihre Entwickler jeden einzelnen überprüfen und testen."
+  },
+  "page.modernization.faq.eyebrow": {
+    "message": "Fragen"
+  },
+  "page.modernization.faq.title1": {
+    "message": "Was Teams fragen"
+  },
+  "page.modernization.faq.title2": {
+    "message": "bevor sie starten"
   }
 }
