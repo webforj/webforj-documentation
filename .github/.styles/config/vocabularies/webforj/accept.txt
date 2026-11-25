@@ -107,7 +107,6 @@ Google Cloud
 Cloud Run
 Cloud Build
 App Engine
-Clever Cloud
 Elastic Beanstalk
 Application Load Balancer
 Amazon ECS
@@ -121,12 +120,6 @@ Jetty
 Heroku
 Corretto
 Scalingo
-Upsun
-Northflank
-Traefik
-Caddy
-Dokku
-Coolify
 Lightsail
 Cloudflare
 dynos

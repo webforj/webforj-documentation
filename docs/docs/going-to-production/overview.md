@@ -21,7 +21,7 @@ This section walks through the path in order:
 1. **Prepare the app**: build it for production, check it locally, and learn what the host must provide.
 2. **Pick a packaging**: an executable JAR, a WAR for a servlet container, or a deployment to BBjServices.
 3. **Containerize**: build a Docker image that runs on any container platform.
-4. **Deploy to the cloud**: step-by-step guides for AWS, Azure, Google Cloud, and Heroku, plus other platforms that fit.
+4. **Deploy to the cloud**: step-by-step guides for AWS, Azure, Google Cloud, and Heroku.
 5. **Deploy to traditional servers**: run the WAR on Tomcat or Jetty.
 
 ## What a host must provide {#what-a-host-must-provide}
