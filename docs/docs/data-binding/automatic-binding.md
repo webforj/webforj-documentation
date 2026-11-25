@@ -172,7 +172,7 @@ context
     .add()
 ```
 
- When utilizing [Jakarta annotations](./validation/jakarta-validation.md), the binding can automatically detect required state based on the presence of any of the following annotations on bean properties:
+ When using [Jakarta annotations](./validation/jakarta-validation.md), the binding can automatically detect required state based on the presence of any of the following annotations on bean properties:
 
 1. `@NotNull`
 2. `@NotEmpty`
