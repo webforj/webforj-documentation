@@ -99,3 +99,35 @@ BBjServices
 BBjShip
 BBj Plugin Manager
 Stylesheet
+AWS
+ECS
+NAT
+JAR
+Google Cloud
+Cloud Run
+Cloud Build
+App Engine
+Clever Cloud
+Elastic Beanstalk
+Application Load Balancer
+Amazon ECS
+Fargate
+Azure Container Apps
+App Service
+Red Hat OpenShift
+OpenShift
+Tomcat
+Jetty
+Heroku
+Corretto
+Scalingo
+Upsun
+Northflank
+Traefik
+Caddy
+Dokku
+Coolify
+Lightsail
+Cloudflare
+dynos
+Deploying to the Cloud

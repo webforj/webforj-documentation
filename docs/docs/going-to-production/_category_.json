@@ -1,0 +1,9 @@
+{
+  "label": "Going to Production",
+  "position": 95,
+  "className": "has-new-content cat-icon cat-icon--production",
+  "link": {
+    "type": "doc",
+    "id": "overview"
+  }
+}

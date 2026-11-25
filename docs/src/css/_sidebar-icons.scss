@@ -88,6 +88,10 @@
     @include _icon("atom");
   }
 
+  .cat-icon--production > .menu__list-item-collapsible > .menu__link::before {
+    @include _icon("cloud-upload");
+  }
+
   .cat-icon--upgrading > .menu__list-item-collapsible > .menu__link::before {
     @include _icon("arrow-up-circle");
   }

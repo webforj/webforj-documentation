@@ -1,0 +1,9 @@
+{
+  "label": "Deploying to the Cloud",
+  "position": 5,
+  "key": "going-to-production-cloud",
+  "link": {
+    "type": "doc",
+    "id": "overview"
+  }
+}
