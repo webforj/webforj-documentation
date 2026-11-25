@@ -75,7 +75,7 @@ public class DataView extends Composite<Div> {
 }
 ```
 
-For a `@Scheduled` task, the env needs to come from somewhere in the session's lifecycle. Capture it in the view's constructor or in the button click handler that starts the work, store it as a field, and reference it from the scheduled callback.
+For a `@Scheduled` task, the `env` needs to come from somewhere in the session's lifecycle. Capture it in the view's constructor or in the button click handler that starts the work, store it as a field, and reference it from the scheduled callback.
 
 ## The mistake that compiles and fails at runtime
 
@@ -92,11 +92,11 @@ executor.submit(() -> {
 
 This compiles and starts fine. It fails at runtime with a `NullPointerException` when the background thread fires, because `getCurrent()` returns `null` there. The null propagates into `runLater()`, which can't dispatch to a null target.
 
-Read the env before you submit. Store it in a local variable captured by the lambda.
+Read the `env` before you submit. Store it in a local variable captured by the lambda.
 
 ## For polling: Interval instead of a background thread
 
-If what you want is a UI refresh every N seconds — polling a database or API on a schedule — the [`Interval`](/docs/advanced/interval) component is cleaner than a background thread plus `runLater`. An `Interval` fires its callback on the session thread directly. No env capture, no `runLater` wrapper needed.
+If what you want is a UI refresh every N seconds, such as for polling a database or API on a schedule, the [`Interval`](/docs/advanced/interval) component is cleaner than a background thread plus `runLater`. An `Interval` fires its callback on the session thread directly. No Environment capture, no `runLater` wrapper needed.
 
 Use `Environment.runLater()` when the update is driven by a background computation. Use `Interval` when the update is driven purely by time.
 
