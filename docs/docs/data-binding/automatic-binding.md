@@ -172,9 +172,14 @@ context
     .add()
 ```
 
- When utilizing [Jakarta annotations](./validation/jakarta-validation.md), the binding can be automatically detect required state based on the presence of any of the following annotations on bean properties:
+ When using [Jakarta annotations](./validation/jakarta-validation.md), the binding can automatically detect required state based on the presence of any of the following annotations on bean properties:
 
 1. `@NotNull`
 2. `@NotEmpty`
 3. `@NotBlank`
-4. `@Size`
+4. `@Size`*
+
+:::note Using `@Size` for a required binding <DocChip chip='since' label='26.10' />
+`@Size` only marks the bound component as required if it has a defined `min` value.
+In earlier versions, `@Size` always marks the bound component as required.
+:::
