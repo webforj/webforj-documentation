@@ -12,75 +12,49 @@ import SearchMetadata from '@theme/SearchMetadata';
 
 // Sections published in every locale but never translated. Their locale
 // copies are English duplicates, so they point at the English page as
-// canonical and carry no hreflang alternates.
+// canonical.
 const UNTRANSLATED_SECTIONS = /^(blog|cookbook)(\/|$)/;
 
-function useIsUntranslated() {
+// Search, archive, tag, author and pagination listings repeat the titles and
+// descriptions of the content they list and have nothing of their own to
+// rank for. They match the listings the sitemap leaves out.
+const LISTING_PAGES =
+  /^(search|blog\/archive|blog\/(tags|authors|page)(\/.*)?|cookbook\/tags(\/.*)?)\/?$/;
+
+function usePathSuffix() {
   const {
     siteConfig: {baseUrl},
   } = useDocusaurusContext();
   const {pathname} = useLocation();
-  const suffix = pathname.startsWith(baseUrl)
+  return pathname.startsWith(baseUrl)
     ? pathname.slice(baseUrl.length)
     : pathname.replace(/^\//, '');
-  return UNTRANSLATED_SECTIONS.test(suffix);
+}
+
+function useIsUntranslated() {
+  return UNTRANSLATED_SECTIONS.test(usePathSuffix());
 }
 
 const bcp47ToOpenGraphLocale = (code) => code.replace('-', '_');
 
-function AlternateLangHeaders({untranslated}) {
+// Translations are for visitors of the site, not for search engines: only
+// the default locale is indexed, so pages carry no hreflang alternates and
+// every other locale is marked noindex, as are the listing pages.
+function LocaleHeaders({untranslated}) {
   const {
     i18n: {currentLocale, defaultLocale, localeConfigs},
   } = useDocusaurusContext();
-  const alternatePageUtils = useAlternatePageUtils();
-  const currentHtmlLang = localeConfigs[currentLocale].htmlLang;
-
-  if (untranslated) {
-    return (
-      <Head>
-        <meta
-          property="og:locale"
-          content={bcp47ToOpenGraphLocale(localeConfigs[defaultLocale].htmlLang)}
-        />
-      </Head>
-    );
-  }
+  const ogLocale = untranslated ? defaultLocale : currentLocale;
+  const hidden =
+    currentLocale !== defaultLocale || LISTING_PAGES.test(usePathSuffix());
 
   return (
     <Head>
-      {Object.entries(localeConfigs).map(([locale, {htmlLang}]) => (
-        <link
-          key={locale}
-          rel="alternate"
-          href={alternatePageUtils.createUrl({
-            locale,
-            fullyQualified: true,
-          })}
-          hrefLang={htmlLang}
-        />
-      ))}
-      <link
-        rel="alternate"
-        href={alternatePageUtils.createUrl({
-          locale: defaultLocale,
-          fullyQualified: true,
-        })}
-        hrefLang="x-default"
-      />
-
+      {hidden && <meta name="robots" content="noindex, follow" />}
       <meta
         property="og:locale"
-        content={bcp47ToOpenGraphLocale(currentHtmlLang)}
+        content={bcp47ToOpenGraphLocale(localeConfigs[ogLocale].htmlLang)}
       />
-      {Object.values(localeConfigs)
-        .filter((config) => currentHtmlLang !== config.htmlLang)
-        .map((config) => (
-          <meta
-            key={`meta-og-${config.htmlLang}`}
-            property="og:locale:alternate"
-            content={bcp47ToOpenGraphLocale(config.htmlLang)}
-          />
-        ))}
     </Head>
   );
 }
@@ -131,7 +105,7 @@ export default function SiteMetadata() {
 
       <CanonicalUrlHeaders untranslated={untranslated} />
 
-      <AlternateLangHeaders untranslated={untranslated} />
+      <LocaleHeaders untranslated={untranslated} />
 
       <SearchMetadata tag={DEFAULT_SEARCH_TAG} locale={currentLocale} />
 
