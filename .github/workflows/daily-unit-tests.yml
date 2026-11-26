@@ -19,10 +19,16 @@ concurrency:
 
 jobs:
   unit-tests:
-    name: Unit Tests
+    name: Unit Tests (${{ matrix.webforj }})
     runs-on: ubuntu-slim
     permissions:
       contents: read
+    strategy:
+      fail-fast: false
+      matrix:
+        # stable tests the webforJ version in pom.xml, snapshot tests the
+        # version in development
+        webforj: [stable, snapshot]
     steps:
       - name: Check local time
         id: local
@@ -39,12 +45,59 @@ jobs:
           echo "run=${run:-false}" >> "$GITHUB_OUTPUT"
           echo "Berlin $(TZ=Europe/Berlin date), Albuquerque $(TZ=America/Denver date), run=${run:-false}"
 
-      - name: Checkout Repository
+      # The snapshot version comes from the webforJ root pom on main. The run
+      # is skipped while that version is a release or has no published snapshot
+      - name: Resolve webforJ version
+        id: webforj
         if: steps.local.outputs.run == 'true'
+        env:
+          TARGET: ${{ matrix.webforj }}
+          WEBFORJ_POM: https://raw.githubusercontent.com/webforj/webforj/main/pom.xml
+          SNAPSHOTS: https://central.sonatype.com/repository/maven-snapshots/com/webforj/webforj
+        run: |
+          if [ "$TARGET" = "stable" ]; then
+            echo "run=true" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          version=$(curl -fsSL --retry 3 "$WEBFORJ_POM" | sed -n 's:.*<version>\(.*\)</version>.*:\1:p' | head -n 1)
+          if ! printf '%s' "$version" | grep -Eq '^[0-9]+(\.[0-9]+)+(-SNAPSHOT)?$'; then
+            echo "Could not read the webforJ version from $WEBFORJ_POM: '$version'"
+            exit 1
+          fi
+
+          case "$version" in
+            *-SNAPSHOT) ;;
+            *)
+              echo "webforJ main is on $version, which is not a snapshot. Skipping."
+              echo "run=false" >> "$GITHUB_OUTPUT"
+              exit 0
+              ;;
+          esac
+
+          status=$(curl -sL --retry 3 -o /dev/null -w '%{http_code}' "$SNAPSHOTS/$version/maven-metadata.xml")
+          case "$status" in
+            200)
+              echo "Testing webforJ $version"
+              echo "run=true" >> "$GITHUB_OUTPUT"
+              echo "args=-U -Dwebforj.version=$version" >> "$GITHUB_OUTPUT"
+              ;;
+            404)
+              echo "webforJ $version is not published yet. Skipping."
+              echo "run=false" >> "$GITHUB_OUTPUT"
+              ;;
+            *)
+              echo "The snapshot repository returned $status for webforJ $version"
+              exit 1
+              ;;
+          esac
+
+      - name: Checkout Repository
+        if: steps.webforj.outputs.run == 'true'
         uses: actions/checkout@v4
 
       - name: Set up JDK 21
-        if: steps.local.outputs.run == 'true'
+        if: steps.webforj.outputs.run == 'true'
         uses: actions/setup-java@v3
         with:
           distribution: 'temurin'
@@ -52,20 +105,20 @@ jobs:
           cache: 'maven'
 
       - name: Set up Maven
-        if: steps.local.outputs.run == 'true'
+        if: steps.webforj.outputs.run == 'true'
         uses: stCarolas/setup-maven@v5
         with:
           maven-version: 3.9.9
 
       - name: Run unit tests
-        if: steps.local.outputs.run == 'true'
-        run: mvn -B test
+        if: steps.webforj.outputs.run == 'true'
+        run: mvn -B test ${{ steps.webforj.outputs.args }}
 
       - name: Upload unit test results
-        if: failure() && steps.local.outputs.run == 'true'
+        if: failure() && steps.webforj.outputs.run == 'true'
         uses: actions/upload-artifact@v4
         with:
-          name: daily-unit-test-results
+          name: daily-unit-test-results-${{ matrix.webforj }}
           path: target/surefire-reports/
           if-no-files-found: ignore
           retention-days: 7
