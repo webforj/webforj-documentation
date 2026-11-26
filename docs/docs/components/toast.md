@@ -26,6 +26,10 @@ Toast toast = new Toast("Operation completed successfully!", 3000, Theme.SUCCESS
 toast.open();
 ```
 
+:::tip Automatic Cleanup
+A `Toast` shown with `Toast.show()` is destroyed automatically once it closes. A `Toast` created with a constructor isn't, so call `close()` when you no longer need it.
+:::
+
 <ComponentDemo
 path='/webforj/toast'
 files={[
