@@ -12,7 +12,7 @@ import matter from 'gray-matter';
 import fs from 'fs-extra';
 import md5 from 'md5';
 import { translateBatch, translateDescription, translateTitle, TranslationResult, TranslationTask } from './translate';
-import { validateTranslatedMdx } from './validate';
+import { validatePlaceholders, validateTranslatedMdx } from './validate';
 
 const siteDir = options.project;
 
@@ -555,7 +555,8 @@ async function translateJSON(
       content: englishMessage,
       locale,
       isUIString: true,
-      key
+      key,
+      validate: async (translated) => validatePlaceholders(englishMessage, translated)
     });
   }
 
@@ -612,7 +613,8 @@ async function translateJSONOldWay(
       content: messageValue,
       locale,
       isUIString: true,
-      key
+      key,
+      validate: async (translated) => validatePlaceholders(messageValue, translated)
     });
   }
 
@@ -700,7 +702,8 @@ async function translateCodeJSON(locale: string) {
       content: englishMessage,
       locale,
       isUIString: true,
-      key
+      key,
+      validate: async (translated) => validatePlaceholders(englishMessage, translated)
     });
   }
 
@@ -763,7 +766,8 @@ async function translateCodeJSONOldWay(locale: string, jsonPath: string) {
       content: messageValue,
       locale,
       isUIString: true,
-      key
+      key,
+      validate: async (translated) => validatePlaceholders(messageValue, translated)
     });
   }
 

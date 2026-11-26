@@ -694,7 +694,7 @@
     "description": "Instructions for creating a new project"
   },
   "componentArchetype.step1": {
-    "message": "Siirry oikeaan kansioon: Avaa terminaali ja siirry kansioon, johon haluat luoda uuden projektin.",
+    "message": "{strong}Siirry oikeaan kansioon{/strong}: Avaa terminaali ja siirry kansioon, johon haluat luoda uuden projektin.",
     "description": "First step instruction"
   },
   "componentArchetype.step2": {

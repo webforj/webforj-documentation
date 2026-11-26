@@ -52,3 +52,24 @@ export async function validateTranslatedMdx(
   }
   return compileError(translatedContent);
 }
+
+const PLACEHOLDER = /\{[^{}]*\}/g;
+
+/**
+ * Checks that a translated UI string keeps the `{placeholders}` of its
+ * English source. Docusaurus fills them in by name, so a translated or
+ * dropped placeholder shows up as raw text on the page.
+ *
+ * Returns an error message, or null when the placeholders match.
+ */
+export function validatePlaceholders(
+  sourceText: string,
+  translatedText: string
+): string | null {
+  const expected = (sourceText.match(PLACEHOLDER) ?? []).sort();
+  const actual = (translatedText.match(PLACEHOLDER) ?? []).sort();
+  if (expected.join('\n') === actual.join('\n')) {
+    return null;
+  }
+  return `placeholders differ from the source: expected ${expected.join(' ') || 'none'}, got ${actual.join(' ') || 'none'}`;
+}

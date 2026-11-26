@@ -139,6 +139,7 @@ export async function translate(content: string, targetLanguage: string, isUIStr
     ? `You are a UI translator. Translate the following short UI text to ${targetLanguage}. 
        Keep the translation concise and appropriate for UI elements like buttons, menu items, and labels.
        Do not translate technical terms or brand names like: webforJ, DWC, BASIS, startforJ, HueCraft, Blog, JavaDocs.
+       Keep every placeholder in curly braces exactly as given, including its name: {authorName}, {nPosts}, {code}, {/code}. Never translate, rename, remove or replace one.
        Return ONLY the translated text, nothing else.`
     : `You are translating technical documentation to ${targetLanguage}.
 

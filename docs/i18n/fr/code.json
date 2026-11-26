@@ -698,7 +698,7 @@
     "description": "First step instruction"
   },
   "componentArchetype.step2": {
-    "message": "<strong>Exécutez la commande {code}archetype:generate{/code}:</strong> Utilisez la commande Maven ci-dessous et personnalisez {code}groupId{/code}, {code}artifactId{/code} et {code}version{/code} selon les besoins de votre projet.",
+    "message": "{strong}Exécutez la commande {code}archetype:generate{/code}{/strong}: Utilisez la commande Maven ci-dessous et personnalisez {code}groupId{/code}, {code}artifactId{/code} et {code}version{/code} selon les besoins de votre projet.",
     "description": "Second step instruction"
   },
   "componentArchetype.table.argument": {
