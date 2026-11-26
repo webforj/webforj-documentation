@@ -14,7 +14,7 @@
     <maven.compiler.target>21</maven.compiler.target>
     <webforj.version>26.03</webforj.version>
     <warFileName>${project.artifactId}-${project.version}</warFileName>
-    <jetty.version>12.1.2</jetty.version>
+    <jetty.version>12.1.8</jetty.version>
     <playwright.version>1.50.0</playwright.version>
     <threadCount>8</threadCount>
 
@@ -218,8 +218,8 @@
 
       <!-- Run Jetty server -->
       <plugin>
-        <groupId>org.eclipse.jetty.ee10</groupId>
-        <artifactId>jetty-ee10-maven-plugin</artifactId>
+        <groupId>org.eclipse.jetty.ee11</groupId>
+        <artifactId>jetty-ee11-maven-plugin</artifactId>
         <version>${jetty.version}</version>
         <configuration>
           <scan>${jetty.scan}</scan>
