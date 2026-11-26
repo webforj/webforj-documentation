@@ -7,19 +7,19 @@ description: >-
   UseValidator.
 _i18n_title_hash: 666e71f372d1b611262598ca5cd23499
 _i18n_description_hash: 985dfb18ded910f005bf2a2e040a8f9d
-_i18n_hash: 60ea231c7622e56330eef34d26d615cc
+_i18n_hash: 55ac69466d077caf09fa5b765b76074a
 ---
-webforJ ofrece varias características que simplifican el proceso de configuración y enlace automático para los desarrolladores. Esta sección demuestra cómo utilizar estas características de manera efectiva.
+webforJ ofrece varias funciones que agilizan la configuración y el proceso de vinculación automática para los desarrolladores. En esta sección se muestra cómo usar estas funciones de manera eficaz.
 
-## Usando `BindingContext.of` {#using-bindingcontextof}
+## Uso de `BindingContext.of` {#using-bindingcontextof}
 
-El método `BindingContext.of` vincula automáticamente los componentes de la interfaz de usuario a las propiedades de una clase bean especificada, simplificando el proceso de vinculación y reduciendo la configuración manual. Alinea los componentes vinculables, declarados como campos dentro de un formulario o aplicación, con las propiedades del bean según sus nombres.
+El método `BindingContext.of` vincula automáticamente los componentes de la interfaz de usuario con las propiedades de una clase bean especificada, lo que simplifica el proceso de vinculación y reduce la configuración manual. Alinea los componentes vinculables, declarados como campos dentro de un formulario o una aplicación, con las propiedades del bean según sus nombres.
 
 ```java
 public class HeroRegistration extends App {
-  // Componentes vinculables
-  TextField name = new TextField("Campo de texto");
-  ComboBox power = new ComboBox("Poder");
+  // Bindable components
+  TextField name = new TextField("Text Field");
+  ComboBox power = new ComboBox("Power");
 
   // ...
 
@@ -36,26 +36,27 @@ public class Hero {
   private String name;
   private String power;
 
-  // Setters y getters
+  // Setters and getters
 }
 ```
 
 ### Anotación `UseProperty` {#useproperty-annotation}
 
-Cuando desees vincular una propiedad de bean a un componente de interfaz de usuario que tenga un nombre diferente, utiliza la anotación `UseProperty`. Esta anotación proporciona mayor precisión al vincular propiedades de bean a componentes de interfaz de usuario, especialmente cuando trabajas con [propiedades de bean anidadas](/docs/data-binding/bindings#nested-bean-properties).
+Cuando quieras vincular una propiedad de un bean con un componente de la interfaz de usuario que tenga un nombre diferente, usa la anotación `UseProperty`.
+Esta anotación permite vincular con mayor precisión las propiedades de los beans a los componentes de la interfaz de usuario, especialmente al trabajar con [propiedades anidadas de beans](/docs/data-binding/bindings#nested-bean-properties).
 
 ```java
 public class HeroRegistration extends App {
-  // Vincula a la propiedad name
+  // Binds to the name property
   @UseProperty("name")
-  TextField nameField = new TextField("Nombre");
+  TextField nameField = new TextField("Name");
 
-  // Vincula a la propiedad anidada address.street
+  // Binds to the nested address.street property
   @UseProperty("address.street")
-  TextField streetField = new TextField("Calle");
+  TextField streetField = new TextField("Street");
 
-  // Vincula a la propiedad power
-  ComboBox power = new ComboBox("Poder");
+  // Binds to the power property
+  ComboBox power = new ComboBox("Power");
 
   // ...
 }
@@ -63,16 +64,16 @@ public class HeroRegistration extends App {
 
 ### Anotación `BindingExclude` {#bindingexclude-annotation}
 
-Utiliza la anotación `BindingExclude` para excluir un componente de las configuraciones de vinculación automática cuando prefieras vincularlo manualmente o excluirlo por completo.
+Usa la anotación `BindingExclude` para excluir un componente de las configuraciones de vinculación automática cuando prefieras vincularlo manualmente o excluirlo por completo.
 
 ```java
 public class HeroRegistration extends App {
-  // Componentes vinculables
+  // Bindable components
   @UseProperty("name")
-  TextField nameField = new TextField("Campo de texto");
+  TextField nameField = new TextField("Text Field");
 
   @BindingExclude
-  ComboBox power = new ComboBox("Poder");
+  ComboBox power = new ComboBox("Power");
 
   // ...
 }
@@ -80,63 +81,64 @@ public class HeroRegistration extends App {
 
 ### Anotación `UseValidator` {#usevalidator-annotation}
 
-Utiliza la anotación `UseValidator` para declarar validadores que imponen reglas de validación adicionales durante la vinculación. Los validadores se aplican en el orden en que los especifiques.
+Usa la anotación `UseValidator` para declarar validadores que apliquen reglas de validación adicionales durante la vinculación. Los validadores se aplican en el orden en que los especifiques.
 
 ```java
 public class UserRegistration extends App {
 
   @UseValidator(EmailValidator.class)
-  TextField email = new TextField("Dirección de correo electrónico");
+  TextField email = new TextField("Email Address");
 }
 ```
 
 ### Anotación `UseTransformer` {#usetransformer-annotation}
 
-Utiliza la anotación `UseTransformer` para declarar una clase transformadora directamente en un campo de interfaz de usuario. El `BindingContext` aplica automáticamente el transformador especificado.
+Usa la anotación `UseTransformer` para declarar una clase de transformación directamente en un campo de la interfaz de usuario. `BindingContext` aplica automáticamente el transformador especificado.
 
 ```java
 public class UserRegistration extends App {
 
   @UseProperty("date")
   @UseTransformer(DateTransformer.class)
-  DateField dateField = new DateField("Campo de fecha");
+  DateField dateField = new DateField("Date Field");
 }
 ```
 
 ### Anotación `BindingReadOnly` {#bindingreadonly-annotation}
 
-Utiliza `BindingReadOnly` para [marcar un enlace como solo lectura](./bindings/#configuring-readonly-bindings).
+Usa `BindingReadOnly` para [marcar una vinculación como de solo lectura](./bindings/#configuring-readonly-bindings).
 
 ```java
 public class UserRegistration extends App {
 
   @BindingReadOnly
-  TextField IDField = new TextField("ID de usuario");
+  TextField IDField = new TextField("User ID");
 }
 ```
 
 ### Anotación `BindingRequired` {#bindingrequired-annotation}
 
-Utiliza `BindingRequired` para marcar un enlace como requerido. Consulta también [detecciones de enlace requeridas](#required-binding-detections).
+Usa `BindingReadOnly` para marcar una vinculación como obligatoria. Consulta también [detección de vinculaciones obligatorias](#required-binding-detections).
+
 
 ```java
 public class UserRegistration extends App {
 
   @BindingRequired
-  TextField emailField = new TextField("Correo electrónico del usuario");
+  TextField emailField = new TextField("User Email");
 }
 ```
 
-## Escribiendo datos automáticamente {#writing-data-automatically}
+## Escritura automática de datos {#writing-data-automatically}
 
-Para mejorar la capacidad de respuesta y dinamismo de las aplicaciones, puedes utilizar el método `observe`. Este método asegura que los cambios en los componentes de la interfaz de usuario se propaguen inmediatamente al modelo de datos. Es especialmente útil cuando necesitas una sincronización continua entre el modelo de datos y la interfaz de usuario.
+Para aumentar la capacidad de respuesta y el dinamismo de las aplicaciones, puedes usar el método `observe`. Este método garantiza que los cambios en los componentes de la interfaz de usuario se propaguen inmediatamente al modelo de datos. Es especialmente útil cuando necesitas una sincronización continua entre el modelo de datos y la interfaz de usuario.
 
-El método `observe` registra un oyente de `ValueChangeEvent` en todos los enlaces en el contexto para monitorear los cambios realizados por el usuario y, luego, escribe instantáneamente estos cambios en las propiedades vinculadas del modelo si son válidos. Cuando invocas este método por primera vez, refleja las propiedades del bean en los componentes de la interfaz de usuario.
+El método `observe` registra un listener de `ValueChangeEvent` en todas las vinculaciones del contexto para supervisar los cambios realizados por el usuario y, luego, escribe de inmediato esos cambios en las propiedades vinculadas del modelo si son válidos. La primera vez que invocas este método, refleja las propiedades del bean en los componentes de la interfaz de usuario.
 
-Aquí tienes un ejemplo de cómo utilizar `observe`:
+Aquí tienes un ejemplo de cómo usar `observe`:
 
 ```java
-Hero bean = new Hero("Superman", "Volador");
+Hero bean = new Hero("Superman", "Fly");
 BindingContext<Hero> context = BindingContext.of(this, Hero.class, true);
 context.observe(bean);
 context.onValidate(e -> {
@@ -146,25 +148,26 @@ context.onValidate(e -> {
 submit.onClick(e -> {
   ValidationResult results = context.validate();
   if (results.isValid()) {
-    // Toma acción con el bean.
+    // Take action with the bean.
   }
 });
 ```
 
 :::info Dirección de actualización
-Este enlace automático es unidireccional; las actualizaciones se reflejan en el modelo cuando actualizas los componentes de la interfaz de usuario, pero los cambios en el modelo solo se reflejan en los componentes de la interfaz de usuario una vez, cuando invocas el método por primera vez.
+Esta vinculación automática es unidireccional: las actualizaciones se reflejan en el modelo cuando actualizas los componentes de la interfaz de usuario, pero los cambios en el modelo solo se reflejan en los componentes de la interfaz de usuario una vez, cuando invocas el método por primera vez.
 :::
 
 :::tip Consideraciones
-Si bien `observe` aumenta la interactividad de las aplicaciones, es importante usarlo con juicio:
+Aunque `observe` aumenta la interactividad de las aplicaciones, es importante usarlo con criterio:
 
-- **Impacto en el rendimiento**: Actualizaciones frecuentes pueden afectar el rendimiento, especialmente con modelos complejos o servicios de backend lentos.
-- **Experiencia del usuario**: Las actualizaciones automáticas no deben interrumpir la capacidad del usuario para ingresar datos cómodamente.
+- **Impacto en el rendimiento**: las actualizaciones frecuentes pueden afectar al rendimiento, especialmente con modelos complejos o servicios de backend lentos.
+- **Experiencia del usuario**: las actualizaciones automáticas no deberían impedir que el usuario introduzca datos cómodamente.
 :::
 
-## Detecciones de enlace requeridas {#required-binding-detections}
 
-Cuando marcas un enlace como requerido, marca el componente como requerido, siempre que el componente admita este estado a través de la interfaz `RequiredAware`. El enlace no impone este estado por sí mismo, sino que lo establece en el componente cuando es aplicable.
+## Detección de vinculaciones obligatorias {#required-binding-detections}
+
+Al marcar una vinculación como obligatoria, también se marca el componente como obligatorio, siempre que el componente admita este estado mediante la interfaz `RequiredAware`. La vinculación no impone este estado por sí misma, sino que lo establece en el componente cuando corresponde.
 
 ```java
 BindingContext<User> context = new BindingContext<>(User.class, true);
@@ -174,9 +177,14 @@ context
     .add()
 ```
 
- Al utilizar [anotaciones de Jakarta](./validation/jakarta-validation.md), el enlace puede detectar automáticamente el estado requerido según la presencia de alguna de las siguientes anotaciones en las propiedades del bean:
+ Al usar [anotaciones de Jakarta](./validation/jakarta-validation.md), la vinculación puede detectar automáticamente el estado obligatorio según la presencia de cualquiera de las siguientes anotaciones en las propiedades del bean:
 
 1. `@NotNull`
 2. `@NotEmpty`
 3. `@NotBlank`
-4. `@Size`
+4. `@Size`*
+
+:::note Uso de `@Size` para una vinculación obligatoria <DocChip chip='since' label='26.10' />
+`@Size` solo marca el componente vinculado como obligatorio si tiene definido un valor `min`.
+En versiones anteriores, `@Size` siempre marca el componente vinculado como obligatorio.
+:::

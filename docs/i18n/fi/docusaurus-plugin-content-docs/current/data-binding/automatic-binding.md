@@ -7,19 +7,19 @@ description: >-
   UseValidator-annotaatioita.
 _i18n_title_hash: 666e71f372d1b611262598ca5cd23499
 _i18n_description_hash: 985dfb18ded910f005bf2a2e040a8f9d
-_i18n_hash: 60ea231c7622e56330eef34d26d615cc
+_i18n_hash: 55ac69466d077caf09fa5b765b76074a
 ---
-webforJ tarjoaa useita ominaisuuksia, jotka yksinkertaistavat kehittäjien konfigurointia ja automaattista sitomista. Tämä osio havainnollistaa, kuinka näitä ominaisuuksia voidaan käyttää tehokkaasti.
+webforJ tarjoaa useita ominaisuuksia, jotka sujuvoittavat kehittäjien määritys- ja automaattista sidontaprosessia. Tässä osiossa näytetään, miten näitä ominaisuuksia käytetään tehokkaasti.
 
-## Using `BindingContext.of` {#using-bindingcontextof}
+## `BindingContext.of`-metodin käyttäminen {#using-bindingcontextof}
 
-`BindingContext.of` -metodi sitoo automaattisesti käyttöliittymäkomponentit määritellyn bean-luokan ominaisuuksiin, yksinkertaistaen sitomista ja vähentäen manuaalista asetusta. Se yhdistää sidottavat komponentit, jotka on määritelty kenttinä lomakkeessa tai sovelluksessa, bean-ominaisuuksiin niiden nimien perusteella.
+`BindingContext.of`-metodi sitoo käyttöliittymäkomponentit automaattisesti määritetyn bean-luokan ominaisuuksiin, mikä yksinkertaistaa sidontaprosessia ja vähentää manuaalista määritystyötä. Se kohdistaa sidottavat komponentit, jotka on määritetty kenttinä lomakkeessa tai sovelluksessa, bean-ominaisuuksiin niiden nimien perusteella.
 
 ```java
 public class HeroRegistration extends App {
-  // Sitoutuvat komponentit
-  TextField name = new TextField("Tekstikenttä");
-  ComboBox power = new ComboBox("Voima");
+  // Bindable components
+  TextField name = new TextField("Text Field");
+  ComboBox power = new ComboBox("Power");
 
   // ...
 
@@ -36,104 +36,106 @@ public class Hero {
   private String name;
   private String power;
 
-  // Asetus- ja hakufunktiot
+  // Setters and getters
 }
 ```
 
-### `UseProperty` annotation {#useproperty-annotation}
+### `UseProperty`-annotaatio {#useproperty-annotation}
 
-Kun haluat sitoa bean-ominaisuuden käyttöliittymäkomponenttiin, jolla on eri nimi, käytä `UseProperty` -annotaatiota. Tämä annotaatio antaa tarkkuutta bean-ominaisuuksien sitomisessa käyttöliittymäkomponentteihin, erityisesti kun käsittelet [sisäkkäisiä bean-ominaisuuksia](/docs/data-binding/bindings#nested-bean-properties).
+Kun haluat sitoa bean-ominaisuuden käyttöliittymäkomponenttiin, jolla on eri nimi, käytä `UseProperty`-annotaatiota.
+Tämä annotaatio tarkentaa bean-ominaisuuksien ja käyttöliittymäkomponenttien välisiä sidontoja etenkin silloin, kun käsittelet [sisäkkäisiä bean-ominaisuuksia](/docs/data-binding/bindings#nested-bean-properties).
 
 ```java
 public class HeroRegistration extends App {
-  // Sitoo name-ominaisuuteen
+  // Binds to the name property
   @UseProperty("name")
-  TextField nameField = new TextField("Nimi");
+  TextField nameField = new TextField("Name");
 
-  // Sitoo sisäkkäiseen address.street-ominaisuuteen
+  // Binds to the nested address.street property
   @UseProperty("address.street")
-  TextField streetField = new TextField("Katu");
+  TextField streetField = new TextField("Street");
 
-  // Sitoo power-ominaisuuteen
-  ComboBox power = new ComboBox("Voima");
+  // Binds to the power property
+  ComboBox power = new ComboBox("Power");
 
   // ...
 }
 ```
 
-### `BindingExclude` annotation {#bindingexclude-annotation}
+### `BindingExclude`-annotaatio {#bindingexclude-annotation}
 
-Käytä `BindingExclude` -annotaatiota, jotta voit jättää komponentin automaattisten sitomis- ja konfigurointitusten ulkopuolelle, kun haluat sitoa sen manuaalisesti tai jättää sen kokonaan pois.
+Käytä `BindingExclude`-annotaatiota, kun haluat jättää komponentin automaattisen sidonnan ulkopuolelle esimerkiksi siksi, että sidot sen mieluummin itse tai et halua sitoa sitä lainkaan.
 
 ```java
 public class HeroRegistration extends App {
-  // Sitoutuvat komponentit
+  // Bindable components
   @UseProperty("name")
-  TextField nameField = new TextField("Tekstikenttä");
+  TextField nameField = new TextField("Text Field");
 
   @BindingExclude
-  ComboBox power = new ComboBox("Voima");
+  ComboBox power = new ComboBox("Power");
 
   // ...
 }
 ```
 
-### `UseValidator` annotation {#usevalidator-annotation}
+### `UseValidator`-annotaatio {#usevalidator-annotation}
 
-Käytä `UseValidator` -annotaatiota sääntelemään validoijia, jotka pakottavat lisävalidaatiosäännöt sitomisen aikana. Validoijat soveltuvat siinä järjestyksessä, kuin määrittelet ne.
+Käytä `UseValidator`-annotaatiota määrittääksesi validoijat, jotka valvovat sidonnan aikana lisävalidointisääntöjä. Validoijat suoritetaan määrittämässäsi järjestyksessä.
 
 ```java
 public class UserRegistration extends App {
 
   @UseValidator(EmailValidator.class)
-  TextField email = new TextField("Sähköpostiosoite");
+  TextField email = new TextField("Email Address");
 }
 ```
 
-### `UseTransformer` annotation {#usetransformer-annotation}
+### `UseTransformer`-annotaatio {#usetransformer-annotation}
 
-Käytä `UseTransformer` -annotaatiota ilmoittaaksesi muuntajaluokan suoraan käyttöliittymäkentälle. `BindingContext` soveltaa automaattisesti määritettyä muuntajaa.
+Käytä `UseTransformer`-annotaatiota määrittääksesi muunnosluokan suoraan käyttöliittymäkentässä. `BindingContext` ottaa määritetyn muuntimen automaattisesti käyttöön.
 
 ```java
 public class UserRegistration extends App {
 
   @UseProperty("date")
   @UseTransformer(DateTransformer.class)
-  DateField dateField = new DateField("Päivämääräkenttä");
+  DateField dateField = new DateField("Date Field");
 }
 ```
 
-### `BindingReadOnly` annotation {#bindingreadonly-annotation}
+### `BindingReadOnly`-annotaatio {#bindingreadonly-annotation}
 
-Käytä `BindingReadOnly` -annotaatiota [merkitäksesi sitomisen vain luku -tilaksi](./bindings/#configuring-readonly-bindings).
+Käytä `BindingReadOnly`-annotaatiota [merkitäksesi sidonnan vain luku -tilaiseksi](./bindings/#configuring-readonly-bindings).
 
 ```java
 public class UserRegistration extends App {
 
   @BindingReadOnly
-  TextField IDField = new TextField("Käyttäjän ID");
+  TextField IDField = new TextField("User ID");
 }
 ```
 
-### `BindingRequired` annotation {#bindingrequired-annotation}
+### `BindingRequired`-annotaatio {#bindingrequired-annotation}
 
-Käytä `BindingRequired` -annotaatiota merkitäksesi sitomisen pakolliseksi. Katso myös [pakollisten sitomisten tunnistukset](#required-binding-detections).
+Käytä `BindingReadOnly`-annotaatiota merkitäksesi sidonnan pakolliseksi. Katso myös [pakollisten sidontojen tunnistaminen](#required-binding-detections).
+
 
 ```java
 public class UserRegistration extends App {
 
   @BindingRequired
-  TextField emailField = new TextField("Käyttäjän sähköposti");
+  TextField emailField = new TextField("User Email");
 }
 ```
 
-## Writing data automatically {#writing-data-automatically}
+## Tietojen automaattinen kirjoittaminen {#writing-data-automatically}
 
-Sovellusten reaktiivisuuden ja dynaamisuuden parantamiseksi voit käyttää `observe` -metodia. Tämä metodi varmistaa, että muutokset käyttöliittymäkomponenteissa leviävät heti tietomalliin. Se on erityisen hyödyllinen, kun tarvitset jatkuvaa synkronointia tietomallin ja käyttöliittymän välillä.
+Voit parantaa sovellusten reagointikykyä ja dynaamisuutta käyttämällä `observe`-metodia. Se varmistaa, että käyttöliittymäkomponenttien muutokset välittyvät välittömästi tietomalliin. Metodi on erityisen hyödyllinen, kun tietomalli ja käyttöliittymä on pidettävä jatkuvasti synkronoituina.
 
-`Observe`-metodi rekisteröi `ValueChangeEvent`-kuuntelijan kaikille sitomisille kontekstissa, jotta se voi seurata käyttäjän tekemiä muutoksia ja kirjoittaa välittömästi nämä muutokset mallin sidottuihin ominaisuuksiin, jos ne ovat voimassa. Kun käytät tätä metodia ensimmäisen kerran, se heijastaa bean-ominaisuuksia käyttöliittymäkomponenteissa.
+`observe`-metodi rekisteröi `ValueChangeEvent`-kuuntelijan kaikille kontekstin sidonnoille, jolloin se voi seurata käyttäjän tekemiä muutoksia ja kirjoittaa ne heti mallin sidottuihin ominaisuuksiin, jos muutokset ovat kelvollisia. Kun kutsut metodia ensimmäisen kerran, se heijastaa bean-ominaisuudet käyttöliittymäkomponentteihin.
 
-Tässä on esimerkki siitä, kuinka käyttää `observe`:
+Esimerkki `observe`-metodin käytöstä:
 
 ```java
 Hero bean = new Hero("Superman", "Fly");
@@ -146,37 +148,43 @@ context.onValidate(e -> {
 submit.onClick(e -> {
   ValidationResult results = context.validate();
   if (results.isValid()) {
-    // Toimi beanin kanssa.
+    // Take action with the bean.
   }
 });
 ```
 
 :::info Päivityssuunta
-Tämä automaattinen sitominen on yksisuuntainen; päivitykset heijastuvat malliin, kun päivität käyttöliittymäkomponentteja, mutta muutokset mallissa heijastuvat käyttöliittymäkomponentteihin vain kerran, kun käytät metodia ensimmäisen kerran.
+Tämä automaattinen sidonta on yksisuuntainen: käyttöliittymäkomponenttien päivitykset näkyvät mallissa, mutta mallin muutokset näkyvät käyttöliittymäkomponenteissa vain kerran, kun kutsut metodia ensimmäisen kerran.
 :::
 
-:::tip Huomioita
-Vaikka `observe` lisää sovellusten vuorovaikutteisuutta, on tärkeää käyttää sitä harkiten:
+:::tip Huomioitavaa
+Vaikka `observe` lisää sovellusten vuorovaikutteisuutta, sitä on tärkeää käyttää harkiten:
 
-- **Suorituskykyvaikutus**: Usein tapahtuvat päivitykset voivat vaikuttaa suorituskykyyn, erityisesti monimutkaisilla malleilla tai hitaita taustapalveluita käyttäessä.
-- **Käyttäjäkokemus**: Automaattisten päivitysten ei tulisi häiritä käyttäjän mahdollisuutta syöttää tietoja mukavasti.
+- **Suorituskykyvaikutus**: Tiheät päivitykset voivat heikentää suorituskykyä etenkin monimutkaisten mallien tai hitaiden taustapalveluiden yhteydessä.
+- **Käyttökokemus**: Automaattiset päivitykset eivät saa haitata käyttäjän mahdollisuutta syöttää tietoja vaivattomasti.
 :::
 
-## Required binding detections {#required-binding-detections}
 
-Kun merkitset sitomisen pakolliseksi, se merkitsee komponentin pakolliseksi, edellyttäen että komponentti tukee tätä tilaa `RequiredAware` -rajapinnan kautta. Sitoja ei pakota tätä tilaa itse, vaan asettaa sen komponentille, kun se on sovellettavissa.
+## Pakollisten sidontojen tunnistaminen {#required-binding-detections}
+
+Kun merkitset sidonnan pakolliseksi, komponentti merkitään pakolliseksi, jos se tukee tätä tilaa `RequiredAware`-rajapinnan kautta. Sidonta ei itsessään pakota tätä tilaa, vaan asettaa sen komponentille silloin, kun se on mahdollista.
 
 ```java
 BindingContext<User> context = new BindingContext<>(User.class, true);
 context
   .bind(emailField, "email")
     .required()
-    .add();
+    .add()
 ```
 
-Kun käytetään [Jakarta-annotaatioita](./validation/jakarta-validation.md), sitominen voi automaattisesti tunnistaa pakollisen tilan sen perusteella, että bean-ominaisuuksissa on jokin seuraavista annotaatioista:
+ Käytettäessä [Jakarta-annotaatioita](./validation/jakarta-validation.md) sidonta voi tunnistaa pakollisen tilan automaattisesti, jos bean-ominaisuudessa on jokin seuraavista annotaatioista:
 
 1. `@NotNull`
 2. `@NotEmpty`
 3. `@NotBlank`
-4. `@Size`
+4. `@Size`*
+
+:::note `@Size`-annotaation käyttäminen pakollisessa sidonnassa <DocChip chip='since' label='26.10' />
+`@Size` merkitsee sidotun komponentin pakolliseksi vain, jos sille on määritetty `min`-arvo.
+Aiemmissa versioissa `@Size` merkitsi sidotun komponentin aina pakolliseksi.
+:::

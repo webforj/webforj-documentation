@@ -6,17 +6,17 @@ description: >-
   de annotaties UseProperty, BindingExclude en UseValidator.
 _i18n_title_hash: 666e71f372d1b611262598ca5cd23499
 _i18n_description_hash: 985dfb18ded910f005bf2a2e040a8f9d
-_i18n_hash: 60ea231c7622e56330eef34d26d615cc
+_i18n_hash: 55ac69466d077caf09fa5b765b76074a
 ---
-webforJ biedt verschillende functies die het configuratie- en automatische bindingproces voor ontwikkelaars stroomlijnen. Dit gedeelte laat zien hoe je deze functies effectief kunt gebruiken.
+webforJ biedt verschillende functies die het configuratie- en automatische bindingsproces voor ontwikkelaars vereenvoudigen. In dit gedeelte wordt getoond hoe je deze functies effectief kunt gebruiken.
 
-## Gebruik `BindingContext.of` {#using-bindingcontextof}
+## `BindingContext.of` gebruiken {#using-bindingcontextof}
 
-De `BindingContext.of` methode bindt automatisch UI-componenten aan de eigenschappen van een gespecificeerde bean-klasse, wat het bindingproces vereenvoudigt en de handmatige configuratie vermindert. Het stelt bindbare componenten, die als velden binnen een formulier of app zijn gedeclareerd, gelijk aan bean-eigenschappen op basis van hun namen.
+De methode `BindingContext.of` bindt UI-componenten automatisch aan de eigenschappen van een opgegeven bean-klasse. Zo wordt het bindingsproces eenvoudiger en is er minder handmatige configuratie nodig. De methode koppelt bindbare componenten die als velden binnen een formulier of app zijn gedeclareerd aan bean-eigenschappen op basis van hun namen.
 
 ```java
 public class HeroRegistration extends App {
-  // Bindbare componenten
+  // Bindable components
   TextField name = new TextField("Text Field");
   ComboBox power = new ComboBox("Power");
 
@@ -35,38 +35,39 @@ public class Hero {
   private String name;
   private String power;
 
-  // Setters en getters
+  // Setters and getters
 }
 ```
 
-### `UseProperty` annotatie {#useproperty-annotation}
+### De annotatie `UseProperty` {#useproperty-annotation}
 
-Wanneer je een bean-eigenschap wilt binden aan een UI-component met een andere naam, gebruik dan de `UseProperty` annotatie. Deze annotatie biedt meer precisie bij het binden van bean-eigenschappen aan UI-componenten, vooral wanneer je te maken hebt met [geneste bean-eigenschappen](/docs/data-binding/bindings#nested-bean-properties).
+Als je een bean-eigenschap wilt binden aan een UI-component met een andere naam, gebruik je de annotatie `UseProperty`.
+Deze annotatie zorgt voor een nauwkeurigere koppeling van bean-eigenschappen aan UI-componenten, vooral wanneer je werkt met [geneste bean-eigenschappen](/docs/data-binding/bindings#nested-bean-properties).
 
 ```java
 public class HeroRegistration extends App {
-  // Bindt aan de naam-eigenschap
+  // Binds to the name property
   @UseProperty("name")
-  TextField nameField = new TextField("Naam");
+  TextField nameField = new TextField("Name");
 
-  // Bindt aan de geneste address.street eigenschap
+  // Binds to the nested address.street property
   @UseProperty("address.street")
-  TextField streetField = new TextField("Straat");
+  TextField streetField = new TextField("Street");
 
-  // Bindt aan de power-eigenschap
+  // Binds to the power property
   ComboBox power = new ComboBox("Power");
 
   // ...
 }
 ```
 
-### `BindingExclude` annotatie {#bindingexclude-annotation}
+### De annotatie `BindingExclude` {#bindingexclude-annotation}
 
-Gebruik de `BindingExclude` annotatie om een component uit automatische bindingconfiguraties uit te sluiten wanneer je het handmatig wilt binden of helemaal wilt uitsluiten.
+Gebruik de annotatie `BindingExclude` om een component uit te sluiten van automatische bindingsconfiguraties wanneer je deze liever handmatig bindt of helemaal wilt uitsluiten.
 
 ```java
 public class HeroRegistration extends App {
-  // Bindbare componenten
+  // Bindable components
   @UseProperty("name")
   TextField nameField = new TextField("Text Field");
 
@@ -77,62 +78,63 @@ public class HeroRegistration extends App {
 }
 ```
 
-### `UseValidator` annotatie {#usevalidator-annotation}
+### De annotatie `UseValidator` {#usevalidator-annotation}
 
-Gebruik de `UseValidator` annotatie om validators te declareren die aanvullende validatieregels afdwingen tijdens het binden. Validators worden toegepast in de volgorde waarin je ze opgeeft.
+Gebruik de annotatie `UseValidator` om validators te declareren die tijdens het binden aanvullende validatieregels afdwingen. Validators worden toegepast in de volgorde waarin je ze opgeeft.
 
 ```java
 public class UserRegistration extends App {
 
   @UseValidator(EmailValidator.class)
-  TextField email = new TextField("E-mailadres");
+  TextField email = new TextField("Email Address");
 }
 ```
 
-### `UseTransformer` annotatie {#usetransformer-annotation}
+### De annotatie `UseTransformer` {#usetransformer-annotation}
 
-Gebruik de `UseTransformer` annotatie om een transformer-klasse direct op een UI-veld te declareren. De `BindingContext` past de opgegeven transformer automatisch toe.
+Gebruik de annotatie `UseTransformer` om rechtstreeks op een UI-veld een transformerklasse te declareren. De `BindingContext` past de opgegeven transformer automatisch toe.
 
 ```java
 public class UserRegistration extends App {
 
   @UseProperty("date")
   @UseTransformer(DateTransformer.class)
-  DateField dateField = new DateField("Datumveld");
+  DateField dateField = new DateField("Date Field");
 }
 ```
 
-### `BindingReadOnly` annotatie {#bindingreadonly-annotation}
+### De annotatie `BindingReadOnly` {#bindingreadonly-annotation}
 
-Gebruik de `BindingReadOnly` om [een binding als alleen-lezen te markeren](./bindings/#configuring-readonly-bindings).
+Gebruik `BindingReadOnly om [een binding als alleen-lezen te markeren](./bindings/#configuring-readonly-bindings).
 
 ```java
 public class UserRegistration extends App {
 
   @BindingReadOnly
-  TextField IDField = new TextField("Gebruikers-ID");
+  TextField IDField = new TextField("User ID");
 }
 ```
 
-### `BindingRequired` annotatie {#bindingrequired-annotation}
+### De annotatie `BindingRequired` {#bindingrequired-annotation}
 
-Gebruik de `BindingRequired` om een binding als vereist te markeren. Zie ook [detecties van vereiste bindingen](#required-binding-detections).
+Gebruik `BindingReadOnly` om een binding als verplicht te markeren. Zie ook [detectie van verplichte bindings](#required-binding-detections).
+
 
 ```java
 public class UserRegistration extends App {
 
   @BindingRequired
-  TextField emailField = new TextField("E-mailadres gebruiker");
+  TextField emailField = new TextField("User Email");
 }
 ```
 
 ## Gegevens automatisch schrijven {#writing-data-automatically}
 
-Om de responsiviteit en dynamiek van toepassingen te verbeteren, kun je de `observe` methode gebruiken. Deze methode zorgt ervoor dat wijzigingen in UI-componenten onmiddellijk worden doorgegeven aan het datamodel. Het is bijzonder handig wanneer je een continue synchronisatie tussen het datamodel en de UI nodig hebt.
+Om applicaties responsiever en dynamischer te maken, kun je de methode `observe` gebruiken. Deze methode zorgt ervoor dat wijzigingen in UI-componenten direct worden doorgegeven aan het gegevensmodel. Dit is vooral handig wanneer je het gegevensmodel en de UI voortdurend met elkaar wilt synchroniseren.
 
-De `observe` methode registreert een `ValueChangeEvent` listener op alle bindings in de context om wijzigingen door de gebruiker te monitoren en schrijft deze wijzigingen onmiddellijk naar de gebonden eigenschappen van het model als ze geldig zijn. Wanneer je deze methode voor het eerst aanroept, weerspiegelt het de bean-eigenschappen in de UI-componenten.
+De methode `observe` registreert een `ValueChangeEvent`-listener op alle bindings in de context om wijzigingen van de gebruiker te volgen. Vervolgens schrijft de methode deze wijzigingen direct naar de gebonden eigenschappen van het model, mits ze geldig zijn. Wanneer je deze methode voor het eerst aanroept, worden de bean-eigenschappen weergegeven in de UI-componenten.
 
-Hier is een voorbeeld van hoe je `observe` kunt gebruiken:
+Hier volgt een voorbeeld van het gebruik van `observe`:
 
 ```java
 Hero bean = new Hero("Superman", "Fly");
@@ -145,26 +147,26 @@ context.onValidate(e -> {
 submit.onClick(e -> {
   ValidationResult results = context.validate();
   if (results.isValid()) {
-    // Actie ondernemen met de bean.
+    // Take action with the bean.
   }
 });
 ```
 
-:::info Update Richting
-Deze automatische binding is unidirectioneel; updates worden weerspiegeld in het model wanneer je UI-componenten bijwerkt, maar wijzigingen in het model worden alleen eenmaal in de UI-componenten weerspiegeld, wanneer je de methode voor het eerst aanroept.
+:::info Updaterichting
+Deze automatische binding is unidirectioneel: wijzigingen in UI-componenten worden doorgegeven aan het model, maar wijzigingen in het model worden alleen bij de eerste aanroep van de methode weergegeven in de UI-componenten.
 :::
 
-:::tip Overwegingen
-Hoewel `observe` de interactiviteit van toepassingen verhoogt, is het belangrijk om het verstandig te gebruiken:
+:::tip Aandachtspunten
+Hoewel `observe` applicaties interactiever maakt, is het belangrijk om deze functie met beleid te gebruiken:
 
-- **Prestaties Impact**: Frequente updates kunnen de prestaties beïnvloeden, vooral bij complexe modellen of trage backend-diensten.
-- **Gebruikerservaring**: Automatische updates moeten de gebruiker niet storen bij het comfortabel invoeren van gegevens.
+- **Prestatie-impact**: frequente updates kunnen de prestaties beïnvloeden, vooral bij complexe modellen of trage back-endservices.
+- **Gebruikerservaring**: automatische updates mogen de gebruiker niet hinderen bij het comfortabel invoeren van gegevens.
 :::
 
 
-## Detecties van vereiste bindingen {#required-binding-detections}
+## Detectie van verplichte bindings {#required-binding-detections}
 
-Wanneer je een binding als vereist markeert, markeert het de component als vereist, op voorwaarde dat de component deze staat ondersteunt via de `RequiredAware` interface. De binding handhaaft deze staat niet zelf, maar stelt deze in op de component wanneer van toepassing.
+Wanneer je een binding als verplicht markeert, wordt de component als verplicht gemarkeerd, mits de component deze status ondersteunt via de interface `RequiredAware`. De binding dwingt deze status niet zelf af, maar stelt deze waar mogelijk in op de component.
 
 ```java
 BindingContext<User> context = new BindingContext<>(User.class, true);
@@ -174,9 +176,14 @@ context
     .add()
 ```
 
-Wanneer je [Jakarta annotaties](./validation/jakarta-validation.md) gebruikt, kan de binding automatisch de vereiste staat detecteren op basis van de aanwezigheid van een van de volgende annotaties op bean-eigenschappen:
+Bij gebruik van [Jakarta-annotaties](./validation/jakarta-validation.md) kan de binding de verplichte status automatisch detecteren op basis van de aanwezigheid van een van de volgende annotaties op bean-eigenschappen:
 
 1. `@NotNull`
 2. `@NotEmpty`
 3. `@NotBlank`
-4. `@Size`
+4. `@Size`*
+
+:::note `@Size` gebruiken voor een verplichte binding <DocChip chip='since' label='26.10' />
+`@Size` markeert de gebonden component alleen als verplicht als er een waarde voor `min` is opgegeven.
+In eerdere versies markeert `@Size` de gebonden component altijd als verplicht.
+:::

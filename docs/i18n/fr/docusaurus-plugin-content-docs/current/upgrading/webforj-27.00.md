@@ -6,21 +6,40 @@ sidebar_class_name: new-content
 draft: true
 _i18n_title_hash: f521441c4a5da00c1bc05ae7307c3644
 _i18n_description_hash: 2ca050c7f4bc5f02fb7c8680550799a3
-_i18n_hash: 85416371e550d0aedae0a0771aff67be
+_i18n_hash: 2757e1b06263f629ef0c1e5c15785122
 ---
-Cette documentation sert de guide pour mettre à niveau les applications webforJ de 26.00 à 27.00. Voici les modifications nécessaires pour que les applications existantes continuent de fonctionner sans problème. Comme toujours, consultez le [aperçu des versions GitHub](https://github.com/webforj/webforj/releases) pour une liste plus complète des changements entre les versions.
+Cette documentation explique comment mettre à niveau les applications webforJ de la version 26.00 à la version 27.00.  
+Voici les modifications nécessaires pour que les applications existantes continuent de fonctionner correctement.  
+Comme toujours, consultez la [présentation des versions sur GitHub](https://github.com/webforj/webforj/releases) pour obtenir une liste plus complète des changements apportés entre les versions.
 
 <!-- INTRO_END -->
 
 <AutomatedUpgradeTip />
 
-## Texte et contenu HTML {#text-and-html-content}
+## Contenu texte et HTML {#text-and-html-content}
 
-Les versions antérieures traitaient une valeur enveloppée dans `<html>` et passée à `setText()` comme du HTML. Ce comportement est obsolète et est supprimé dans webforJ 27.00. Le paramètre `webforj.legacyHtmlInText` le contrôle :
+Dans les versions précédentes, une valeur encadrée par `<html>` et transmise à `setText()` était traitée comme du HTML. Ce comportement est obsolète et a été supprimé dans webforJ 27.00. Le paramètre `webforj.legacyHtmlInText` permet de le contrôler :
 
-- `true` (par défaut) : une valeur enveloppée dans `<html>` rend son contenu en tant que HTML.
-- `false` : La même valeur est affichée littéralement.
+- `true` (par défaut) : une valeur encadrée par `<html>` affiche son contenu en HTML.
+- `false` : la même valeur est affichée littéralement.
 
-Le wrapper `<html>` n'est jamais affiché dans les deux cas.
+Dans les deux cas, l’encadrement `<html>` n’est jamais affiché.
 
-La première fois qu'une valeur enveloppée dans `<html>` atteint `setText()`, un avertissement est enregistré, mentionnant le composant et le site d'appel, afin que l'appel puisse être déplacé vers `setHtml()`.
+La première fois qu’une valeur encadrée par `<html>` est transmise à `setText()`, un avertissement est consigné. Il indique le nom du composant et l’emplacement de l’appel, afin de permettre de remplacer cet appel par `setHtml()`.
+
+## Liaison obligatoire avec `@Size` {#required-binding-using-size-annotation}
+
+Dans les versions antérieures à 27.00, l’utilisation de l’[annotation Jakarta](/docs/data-binding/validation/jakarta-validation) `@Size` rendait automatiquement le composant lié obligatoire.
+Désormais, `@Size` ne rend un composant lié obligatoire que si une valeur `min` est définie.
+
+```java
+// no longer marks the field as required
+@Size(max = 80, message = "Street must be shorter than 80 characters")
+private String street;
+```
+
+```java
+// marks the field as required
+@Size(min = 2, max = 80, message = "Street must be between 2 and 80 characters")
+private String street;
+```
