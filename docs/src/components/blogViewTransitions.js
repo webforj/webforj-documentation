@@ -25,15 +25,24 @@ let installed = false;
 let bypass = false;
 let pending = null;
 
+// the site base, which carries the locale on translated pages (`/es/`)
+let baseUrl = '/';
+
+function sitePath(pathname) {
+  return baseUrl !== '/' && pathname.startsWith(baseUrl)
+    ? `/${pathname.slice(baseUrl.length)}`
+    : pathname;
+}
+
 function isBlogPath(pathname) {
-  return /^\/blog(\/|$)/.test(pathname);
+  return /^\/blog(\/|$)/.test(sitePath(pathname));
 }
 
 // a post, as opposed to a listing (home, pages, tags, authors, archive)
 function isPostPath(pathname) {
   return (
     isBlogPath(pathname) &&
-    !/^\/blog(\/page\/\d+|\/tags(\/.*)?|\/authors(\/.*)?|\/archive)?\/?$/.test(pathname)
+    !/^\/blog(\/page\/\d+|\/tags(\/.*)?|\/authors(\/.*)?|\/archive)?\/?$/.test(sitePath(pathname))
   );
 }
 
@@ -101,7 +110,8 @@ function onClick(event) {
 }
 
 // Called once on the client by the blog layout
-export function installBlogViewTransitions() {
+export function installBlogViewTransitions(siteBaseUrl = '/') {
+  baseUrl = siteBaseUrl;
   if (installed || typeof document === 'undefined') return;
   if (!document.startViewTransition || reducedMotion()) return;
   installed = true;

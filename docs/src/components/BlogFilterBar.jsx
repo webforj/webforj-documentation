@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import Link from '@docusaurus/Link';
-import { useLocation } from '@docusaurus/router';
+import useSitePathname from './useSitePathname';
 import clsx from 'clsx';
 import Translate, { translate } from '@docusaurus/Translate';
 import { useBlogListingCount } from './BlogListingCount';
@@ -78,7 +78,7 @@ function listingOutput({ count, unit }) {
 const POSTS_PER_PAGE = 12;
 
 export default function BlogFilterBar() {
-  const { pathname } = useLocation();
+  const pathname = useSitePathname();
   const listing = useBlogListingCount();
   const categories = getCategories();
   const page = Number(pathname.match(/^\/blog\/page\/(\d+)/)?.[1] ?? 1);

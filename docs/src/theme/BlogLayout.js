@@ -2,6 +2,8 @@ import React, { useEffect, useLayoutEffect } from 'react';
 import BlogLayout from '@theme-original/BlogLayout';
 import BlogFilterBar from '@site/src/components/BlogFilterBar';
 import { useLocation } from '@docusaurus/router';
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+import useSitePathname from '@site/src/components/useSitePathname';
 import { HtmlClassNameProvider, PageMetadata } from '@docusaurus/theme-common';
 import {
   installBlogViewTransitions,
@@ -26,10 +28,12 @@ const visuallyHidden = {
 };
 
 export default function BlogLayoutWrapper({ children, ...props }) {
-  const { pathname } = useLocation();
+  const { pathname: fullPathname } = useLocation();
+  const pathname = useSitePathname();
+  const { baseUrl } = useDocusaurusContext().siteConfig;
 
   const showFilterBar =
-    pathname === '/blog' ||
+    /^\/blog\/?$/.test(pathname) ||
     /^\/blog\/page\//.test(pathname) ||
     pathname.startsWith('/blog/tags/');
 
@@ -40,11 +44,11 @@ export default function BlogLayoutWrapper({ children, ...props }) {
   // page transitions inside the blog: set up once, and tell a running
   // transition when the next blog page is on screen
   useEffect(() => {
-    installBlogViewTransitions();
-  }, []);
+    installBlogViewTransitions(baseUrl);
+  }, [baseUrl]);
   useLayoutEffect(() => {
-    blogPageRendered(pathname);
-  }, [pathname]);
+    blogPageRendered(fullPathname);
+  }, [fullPathname]);
 
   return (
     <HtmlClassNameProvider className={isBlogHome ? 'blog-home' : undefined}>

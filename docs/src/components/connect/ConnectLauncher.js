@@ -1,6 +1,6 @@
 import React, { useEffect, useId, useRef, useState } from 'react';
 import clsx from 'clsx';
-import { useLocation } from '@docusaurus/router';
+import useSitePathname from '@site/src/components/useSitePathname';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import Translate, { translate } from '@docusaurus/Translate';
 import { FaArrowRight, FaEnvelope, FaGithub, FaWandMagicSparkles, FaXmark } from 'react-icons/fa6';
@@ -265,7 +265,7 @@ function useGreeting(open, pathname) {
 // A "Questions? Ask us" button in the corner of every page, opening a small
 // panel with the ways to reach and follow webforJ
 export default function ConnectLauncher() {
-  const { pathname } = useLocation();
+  const pathname = useSitePathname();
   const [open, setOpen] = useState(false);
   // the panel plays its exit animation before it leaves
   const [closing, setClosing] = useState(false);
